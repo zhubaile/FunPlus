@@ -26,7 +26,7 @@ class Home extends Component {
         <div>当前语言类型：{ this.props.Locale }</div>
         <div>
           <span>当前用户性别：</span>
-          <FormattedMessage id="i18n.sex" />
+          <FormattedMessage id="app.zbl.a" />
         </div>
         <Button type="normal">
           <Link to="i18n">去国际化测试页面</Link>

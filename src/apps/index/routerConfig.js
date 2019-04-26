@@ -4,7 +4,7 @@ import { asideMenuConfig } from './menuConfig';
 // 这样有一个弊端 没有按需加载，后期可以引入按需加载
 //  import Home from './pages/home';
 // import User from './pages/user';
-import I18n from './pages/i18n';
+// import I18n from './pages/i18n';
 // import Fail from './pages/Fail';
 
 const Home = React.lazy(() => import('./pages/home'));
@@ -19,10 +19,6 @@ const routerConfig = [
   {
     path: '/user',
     component: User,
-  },
-  {
-    path: "/I18n",
-    component: I18n,
   },
 ];
 

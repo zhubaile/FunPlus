@@ -1,7 +1,7 @@
 export default {
   // Aside Menu
-  'app.menu.dashboard': 'Dashboard',
-  'app.menu.dashboard.monitor': '监控页',
+  'app.menu.home': 'Dashboard',
+  'app.menu.home.monitor': '监控页',
 
   'app.menu.chart': '图表页',
   'app.menu.chart.basic': '基础图表',

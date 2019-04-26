@@ -8,7 +8,9 @@ import {
   FormError as IceFormError,
 } from '@icedesign/form-binder';
 import IceIcon from '@icedesign/icon';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
+@injectIntl
 @withRouter
 class UserRegister extends Component {
   static displayName = 'UserRegister';
@@ -72,7 +74,9 @@ class UserRegister extends Component {
   render() {
     return (
       <div style={styles.container}>
-        <h4 style={styles.title}>注 册</h4>
+        <h4 style={styles.title}>
+          <FormattedMessage id="app.register.register" />
+        </h4>
         <IceFormBinderWrapper
           value={this.state.value}
           onChange={this.formChange}
@@ -81,31 +85,34 @@ class UserRegister extends Component {
           <div style={styles.formItems}>
             <div style={styles.formItem}>
               <IceIcon type="person" size="small" style={styles.inputIcon} />
-              <IceFormBinder name="name" required message="请输入正确的用户名">
-                <Input
-                  size="large"
-                  placeholder="用户名"
-                  style={styles.inputCol}
-                />
-              </IceFormBinder>
+              <FormattedMessage id='app.register.user.errorname'>
+                {txt => (
+                  <IceFormBinder name="name" required message={txt}>
+                    <Input
+                      size="large"
+                      placeholder="用户名"
+                      style={styles.inputCol}
+                    />
+                  </IceFormBinder>
+                )}
+              </FormattedMessage>
               <IceFormError name="name" />
             </div>
 
             <div style={styles.formItem}>
               <IceIcon type="mail" size="small" style={styles.inputIcon} />
-              <IceFormBinder
-                type="email"
-                name="email"
-                required
-                message="请输入正确的邮箱"
-              >
-                <Input
-                  size="large"
-                  maxLength={20}
-                  placeholder="邮箱"
-                  style={styles.inputCol}
-                />
-              </IceFormBinder>
+              <FormattedMessage id='app.register.user.errormailbox'>
+                {txt => (
+                  <IceFormBinder type="email" name="email" required message={txt}>
+                    <Input
+                      size="large"
+                      maxLength={20}
+                      placeholder="邮箱"
+                      style={styles.inputCol}
+                    />
+                  </IceFormBinder>
+                )}
+              </FormattedMessage>
               <IceFormError name="email" />
             </div>
 
@@ -152,10 +159,10 @@ class UserRegister extends Component {
                 style={styles.submitBtn}
                 size="large"
               >
-                注 册
+                <FormattedMessage id="app.register.register" />
               </Button>
-              <Link to="/login" style={styles.tips}>
-                使用已有账户登录
+              <Link to="/user/login" style={styles.tips}>
+                <FormattedMessage id="app.sendregister.newaccount" />
               </Link>
             </div>
           </div>
@@ -195,6 +202,8 @@ const styles = {
   },
   submitBtn: {
     width: '100%',
+    height: '40px',
+    borderRadius: '8px',
   },
   tips: {
     marginTop: '20px',

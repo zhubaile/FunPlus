@@ -93,7 +93,7 @@ export default class Header extends Component {
                 return (
                   <Nav.Item key={nav.path}>
                     <Link {...linkProps}>
-                      <span style={{ display: 'block',height: "80px",lineHeight: '80px;' }}>
+                      <span style={{ display: 'block' }}>
                         {nav.icon ? (
                           <FoundationSymbol
                             style={{ marginRight: '8px' }}

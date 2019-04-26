@@ -60,6 +60,12 @@ export default class BasicLayout extends Component {
     const layoutClassName = 'ice-design-layout-dark ice-design-layout';
 
     return (
+      /**
+       * Header头部文件
+       * Aside侧边导航栏
+       * MainRoutes主题内容
+       * Footer尾部
+       */
       <div className={layoutClassName}>
         <Layout>
           <Header
