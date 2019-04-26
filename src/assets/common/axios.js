@@ -4,7 +4,7 @@ import qs from 'qs';
 
 const ajaxConfig = {
   timeout: 30000,
-  urlPrefix: '/api/v1/',
+  urlPrefix: 'http://192.168.1.113:3000/web/beta/v1.0',
 };
 
 const ajaxBase = (param) => {
@@ -35,14 +35,14 @@ const ajaxBase = (param) => {
         status: (params.data.status === 200),
         data: params.data,
       };
-    } 
+    }
     return {
       status: false,
       data: {
         'status': 404,
         'message': '网络错误',
       },
-    }; 
+    };
   });
 };
 

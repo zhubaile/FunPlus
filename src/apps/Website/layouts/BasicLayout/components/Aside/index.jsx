@@ -72,9 +72,7 @@ export default class Aside extends Component {
           {Array.isArray(asideMenuConfig) &&
             asideMenuConfig.length > 0 &&
             asideMenuConfig.map((nav, index) => {
-              debugger;
               if (nav.children && nav.children.length > 0) {
-                debugger;
                 return (
                   <Nav.SubNav
                     key={index}
@@ -94,7 +92,6 @@ export default class Aside extends Component {
                     }
                   >
                     {nav.children.map((item) => {
-                      debugger;
                       const linkProps = {};
                       if (item.newWindow) {
                         linkProps.href = item.path;
@@ -104,7 +101,6 @@ export default class Aside extends Component {
                       } else {
                         linkProps.to = item.path;
                       }
-                      debugger;
                       return (
                         <Nav.Item key={item.path}>
                           <Link {...linkProps}>{item.name}</Link>
@@ -123,7 +119,6 @@ export default class Aside extends Component {
               } else {
                 linkProps.to = nav.path;
               }
-              debugger;
               return (
                 <Nav.Item key={nav.path}>
                   <Link {...linkProps}>

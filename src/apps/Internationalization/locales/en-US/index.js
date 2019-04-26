@@ -7,6 +7,7 @@ import chart from './chart';
 import table from './table';
 import list from './list';
 import menu from './menu';
+import login from './Login/login';
 
 export default {
   'app.btn.edit': 'Edit',
@@ -24,4 +25,5 @@ export default {
   ...exception,
   ...profile,
   ...list,
+  ...login,
 };

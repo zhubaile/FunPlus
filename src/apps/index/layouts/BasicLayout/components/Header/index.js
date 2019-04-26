@@ -95,11 +95,11 @@ export default class Header extends Component {
                 />
                 <div className="user-profile">
                   <span className="user-name">
-                     <FormattedMessage id="app.header.user.name" />
+                    <FormattedMessage id="app.header.user.name" />
                   </span>
                   <br />
                   <span className="user-department">
-                     <FormattedMessage id="app.header.user.department" />
+                    <FormattedMessage id="app.header.user.department" />
                   </span>
                 </div>
                 <FoundationSymbol
@@ -118,7 +118,7 @@ export default class Header extends Component {
                 onClick={this.handleSetting}
               >
                 <FoundationSymbol type="repair" size="small" />
-                 <FormattedMessage id="app.header.user.setting" />
+                <FormattedMessage id="app.header.user.setting" />
               </li>
               <li
                 className="user-profile-menu-item"
@@ -126,7 +126,7 @@ export default class Header extends Component {
               >
                 <a href="website.html" style={{ color: '#666' }}>
                   <FoundationSymbol type="person" size="small" />
-                   <FormattedMessage id="app.header.user.logout" />
+                  <FormattedMessage id="app.header.user.logout" />
                 </a>
 
               </li>

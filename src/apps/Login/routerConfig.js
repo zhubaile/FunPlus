@@ -1,26 +1,27 @@
-import Home from './pages/home';
+// import Home from './pages/home';
 import Login from './pages/UserLogin';
 import Register from './pages/UserRegister';
+import SendMailbox from './pages/SendMailbox';
 
 // ========系统首页============ //
-const home = [
+const login = [
   // 系统首页
   {
-    path: '/home',
-    component: Home,
-  },
-  {
-    path: '/login',
+    path: '/user/login',
     component: Login,
   },
   {
-    path: '/register',
+    path: '/user/register',
     component: Register,
+  },
+  {
+    path: '/user/sendmailbox',
+    component: SendMailbox,
   },
 ];
 
 
-export default [].concat(home, [{
+export default [].concat(login, [{
   path: '*',
   component: Login,
 }]);
