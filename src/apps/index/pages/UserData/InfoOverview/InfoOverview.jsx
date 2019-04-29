@@ -8,7 +8,7 @@ const { Row, Col } = Grid;
 // MOCK 数据，实际业务按需进行替换
 const mockData = [
   [
-    { name: '业务数据类型', value: '收款数据', zbl: '打款业务时局' , aa: 'aaa' , bb: 'bbb', cc: 'ccc' },
+    { name: '我是朱柏乐', value: '收款数据', zbl: '打款业务时局' , aa: 'aaa' , bb: 'bbb', cc: 'ccc' },
   ],
   [
     { name: '成功交易金额', value: '0.00', zbl: '0.00' },
