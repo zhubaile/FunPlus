@@ -4,8 +4,9 @@ import qs from 'qs';
 
 const ajaxConfig = {
   timeout: 30000,
-  urlPrefix: 'http://192.168.1.113:3000/web/beta/v1.0',
+  urlPrefix: 'http://192.168.1.122:3000/web/beta/v1.0',
 };
+// http://192.168.1.113:3000/web/beta/v1.0   发送邮箱的借口
 
 const ajaxBase = (param) => {
   const axiosParam = Object.assign({

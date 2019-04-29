@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { Grid } from '@alifd/next';
 import Footer from './components/Footer';
 import Intro from './components/Intro';
-import  routerData  from '../../routerConfig';
+import routerData from '../../routerConfig';
 // import PageLoading from '../../components/PageLoading';
 
 const { Row, Col } = Grid;

@@ -9,6 +9,7 @@ import {
 } from '@icedesign/form-binder';
 import IceIcon from '@icedesign/icon';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { registerUser } from '../../api';
 
 @injectIntl
 @withRouter
@@ -24,6 +25,7 @@ class UserRegister extends Component {
     this.state = {
       value: {
         name: '',
+        tel: '',
         email: '',
         passwd: '',
         rePasswd: '',
@@ -32,27 +34,43 @@ class UserRegister extends Component {
   }
 
   checkPasswd = (rule, values, callback) => {
+    const { intl } = this.props;
+    const pass = intl.formatMessage({ id: 'app.register.user.errorpass' }),
+      minpass = intl.formatMessage({ id: 'app.register.user.minpass' }),
+      maxpass = intl.formatMessage({ id: 'app.register.user.maxpass' });
     if (!values) {
-      callback('请输入正确的密码');
+      callback(pass);
     } else if (values.length < 8) {
-      callback('密码必须大于8位');
+      callback(minpass);
     } else if (values.length > 16) {
-      callback('密码必须小于16位');
+      callback(maxpass);
     } else {
       callback();
     }
   };
 
   checkPasswd2 = (rule, values, callback, stateValues) => {
+    const { intl } = this.props;
+    const pass = intl.formatMessage({ id: 'app.register.user.errorpass' }),
+      Atypism = intl.formatMessage({ id: 'app.register.user.Atypism' });
     if (!values) {
-      callback('请输入正确的密码');
+      callback(pass);
     } else if (values && values !== stateValues.passwd) {
-      callback('两次输入密码不一致');
+      callback(Atypism);
     } else {
       callback();
     }
   };
-
+  checkTel=(rule, values, callback)=>{
+    const phoneReg = /^[1][3,4,5,7,8][0-9]{9}$/;
+    const { intl } = this.props;
+    const phone = intl.formatMessage({ id: 'app.register.user.phone' });
+    if (!values || !(phoneReg.test(values))) {
+      callback(phone);
+    } else {
+      callback();
+    }
+  };
   formChange = (value) => {
     this.setState({
       value,
@@ -65,13 +83,34 @@ class UserRegister extends Component {
         console.log('errors', errors);
         return;
       }
-      console.log(values);
-      Message.success('注册成功');
-      this.props.history.push('/user/login');
+      const { intl } = this.props;
+      // 注册的ajax请求
+      registerUser({
+        name: 'values.name',
+        tel: 'values.tel',
+        email: 'values.email',
+        passwd: 'values.passwd',
+        rePasswd: 'values.rePasswd',
+      }).then(
+        ({ status, data }) => {
+          console.log(values);
+          Message.success(intl.formatMessage({ id: 'app.register.success' }));
+          // Message.success('注册成功');
+          this.props.history.push('/user/login');
+        }
+      ).catch(
+        ({ status, data }) => {
+          console.log(values);
+          Message.success(intl.formatMessage({ id: 'app.register.error' }));
+          // Message.success('注册失败');
+          this.props.history.push('/user/register');
+        }
+      );
     });
   };
 
   render() {
+    const { intl } = this.props;
     return (
       <div style={styles.container}>
         <h4 style={styles.title}>
@@ -90,13 +129,27 @@ class UserRegister extends Component {
                   <IceFormBinder name="name" required message={txt}>
                     <Input
                       size="large"
-                      placeholder="用户名"
+                      placeholder={intl.formatMessage({ id: 'app.login.username' })}
                       style={styles.inputCol}
                     />
                   </IceFormBinder>
                 )}
               </FormattedMessage>
               <IceFormError name="name" />
+            </div>
+
+            <div style={styles.formItem}>
+              <IceIcon type="phone" size="small" style={styles.inputIcon} />
+              <IceFormBinder label="tel" format="tel" name="tel" required validator={this.checkTel}>
+                <Input
+                  format="tel"
+                  name="tel"
+                  size="large"
+                  placeholder={intl.formatMessage({ id: 'app.register.phone' })}
+                  style={styles.inputCol}
+                />
+              </IceFormBinder>
+              <IceFormError name="tel" />
             </div>
 
             <div style={styles.formItem}>
@@ -107,7 +160,7 @@ class UserRegister extends Component {
                     <Input
                       size="large"
                       maxLength={20}
-                      placeholder="邮箱"
+                      placeholder={intl.formatMessage({ id: 'app.register.mailbox' })}
                       style={styles.inputCol}
                     />
                   </IceFormBinder>
@@ -126,7 +179,7 @@ class UserRegister extends Component {
                 <Input
                   htmlType="password"
                   size="large"
-                  placeholder="至少8位密码"
+                  placeholder={intl.formatMessage({ id: 'app.register.user.minpass' })}
                   style={styles.inputCol}
                 />
               </IceFormBinder>
@@ -145,7 +198,7 @@ class UserRegister extends Component {
                 <Input
                   htmlType="password"
                   size="large"
-                  placeholder="确认密码"
+                  placeholder={intl.formatMessage({ id: 'app.register.confirm password' })}
                   style={styles.inputCol}
                 />
               </IceFormBinder>
