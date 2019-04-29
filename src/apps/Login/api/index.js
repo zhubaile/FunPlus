@@ -24,10 +24,11 @@ export async function sendMailbox(params) {
 // 登录接口
 export async function loginUser(params) {
   return ajaxAmd.post({
-    url: 'getUserAccount',
+    url: '/user/login',
     data: params ,
   });
 }
+// 注册接口
 export async function registerUser(params) {
   return ajaxAmd.post({
     url: 'getUserAccount',

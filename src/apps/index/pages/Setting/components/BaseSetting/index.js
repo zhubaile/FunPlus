@@ -14,22 +14,18 @@ const formItemLayout = {
 };
 
 function beforeUpload(info) {
-  debugger;
   console.log('beforeUpload callback : ', info);
 }
 
 function onChange(info) {
-  debugger;
   console.log('onChane callback : ', info);
 }
 
-function onSuccess(res, file) {
-  debugger;
-  console.log('onSuccess callback : ', res, file);
+function onSuccess(data, file) {
+  console.log('onSuccess callback : ', file);
 }
 
 function onError(file) {
-  debugger;
   console.log('onError callback : ', file);
 }
 
@@ -73,13 +69,10 @@ class SettingsForm extends Component {
   };
 
   validateAllFormField = (values, errors) => {
-    debugger;
     console.log('error', errors, 'value', values);
     if (!errors) {
-      debugger;
       // 提交当前填写的数据
     } else {
-      debugger;
       // 处理表单报错
     }
   };
@@ -94,7 +87,7 @@ class SettingsForm extends Component {
           <Form value={this.state.value} onChange={this.formChange} ref="form">
             <div style={styles.formContent}>
               <h2 style={styles.formTitle}>
-                {/*<FormattedMessage id="app.setting.pagetitle" />*/}
+                {/* <FormattedMessage id="app.setting.pagetitle" /> */}
                 企业认证
               </h2>
 
@@ -118,15 +111,25 @@ class SettingsForm extends Component {
                   id: 'app.setting.avatar.message',
                 })}
               >
+                {/* action 为代理的模式，在.webpackrc.js中设置 */}
                 <Upload.Card
+                  action="/web/beta/v1.0/uploadPhoto"
                   name="avatar"
-                  action=""
                   limit={1}
-                  accept="image/*"
+                  accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
                   beforeUpload={beforeUpload}
                   onChange={onChange}
                   onSuccess={onSuccess}
                   onError={onError}
+                  formatter={(res, file) => {
+                    // (上传图片)函数里面根据当前服务器返回的响应数据
+                    // 重新拼装符合组件要求的数据格式   res为后端返回的数据
+                    // success: res.errCode === 200 ,200没有引号,这个坑踩了三个小时
+                    return {
+                      success: res.errCode === 0 ,
+                      url: res.data.downloadURL,
+                    };
+                  }}
                 />
               </FormItem>
 
@@ -214,7 +217,7 @@ class SettingsForm extends Component {
                 label={formatMessage({ id: 'app.setting.description' })}
                 {...formItemLayout}
               >
-                <Input.TextArea placeholder="请输入描述..." name="description"/>
+                <Input.TextArea placeholder="请输入描述..." name="description" />
               </FormItem>
 
               <Row style={{ marginTop: 20 }}>

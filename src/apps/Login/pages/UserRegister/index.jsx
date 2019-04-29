@@ -38,7 +38,6 @@ class UserRegister extends Component {
     const pass = intl.formatMessage({ id: 'app.register.user.errorpass' }),
       minpass = intl.formatMessage({ id: 'app.register.user.minpass' }),
       maxpass = intl.formatMessage({ id: 'app.register.user.maxpass' });
-    debugger;
     if (!values) {
       callback(pass);
     } else if (values.length < 8) {
