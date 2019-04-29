@@ -17,7 +17,7 @@ import './index.scss';
 @withRouter
 export default class Header extends Component {
   handleSetting = () => {
-    this.props.history.push('/account/setting');
+    this.props.history.push('/setting');
   };
 
   getLocaleKey = (item) => {

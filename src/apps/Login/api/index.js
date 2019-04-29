@@ -28,6 +28,12 @@ export async function loginUser(params) {
     data: params ,
   });
 }
+export async function registerUser(params) {
+  return ajaxAmd.post({
+    url: 'getUserAccount',
+    data: params ,
+  });
+}
 //  获取用户权限
 export function functionUser() {
   return ajaxAmd.post({

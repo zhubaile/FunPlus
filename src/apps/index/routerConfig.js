@@ -7,8 +7,9 @@ import { asideMenuConfig } from './menuConfig';
 // import I18n from './pages/i18n';
 // import Fail from './pages/Fail';
 
-const Home = React.lazy(() => import('./pages/home'));
+const Home = React.lazy(() => import('./pages/UserData'));
 const User = React.lazy(() => import('./pages/user'));
+const Setting = React.lazy(() => import('./pages/Setting'));
 // ========系统首页============ //
 const routerConfig = [
   // 系统首页
@@ -19,6 +20,10 @@ const routerConfig = [
   {
     path: '/user',
     component: User,
+  },
+  {
+    path: '/setting',
+    component: Setting,
   },
 ];
 

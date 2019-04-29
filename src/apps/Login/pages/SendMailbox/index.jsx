@@ -54,6 +54,7 @@ class UserRegister extends Component {
   };
 
   render() {
+    const { intl } = this.props;
     return (
       <div style={styles.container}>
         <h4 style={styles.title}>
@@ -77,7 +78,7 @@ class UserRegister extends Component {
                       hasClear
                       size="large"
                       maxLength={20}
-                      placeholder="请输入您的邮箱"
+                      placeholder={ intl.formatMessage({ id: 'app.sendregister.mailbox' }) }
                       style={styles.inputCol}
                     />
                   </IceFormBinder>

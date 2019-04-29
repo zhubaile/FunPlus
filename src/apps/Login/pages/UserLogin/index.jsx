@@ -54,8 +54,11 @@ class UserLogin extends Component {
         pwd: values.password,
       });
       console.log(values);
-      Message.success('登录成功');
+      const { intl } = this.props;
+     // const aa = intl.formatMessage({ id: 'app.login.Login successfully' });
+      Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
       // this.props.history.push('/');  //可以添加配置的路由为跳转
+      // Message.success("登录成功");
       window.location.href = "index.html"; // 跳转到中后台界面
       // window.open('index.html');    //打开新的窗口
     });
@@ -67,9 +70,8 @@ class UserLogin extends Component {
       type: this.state.type === 'password' ? 'text' : 'password',
     });
   }
-
   render() {
-    // const nnnn = <FormattedMessage id='app.login.sign.in' />; // nnnn的值为登录
+    const { intl } = this.props;
     return (
       <div style={styles.container}>
         <h4 style={styles.title}>
@@ -119,7 +121,7 @@ class UserLogin extends Component {
                       hasClear
                       size="large"
                       maxLength={20}
-                      placeholder='用户名'
+                      placeholder={ intl.formatMessage({ id: 'app.login.username' }) }
                       style={styles.inputCol}
                     />
                   </IceFormBinder>
@@ -136,7 +138,7 @@ class UserLogin extends Component {
                     <Input
                       size="large"
                       htmlType={this.state.type}
-                      placeholder="密码"
+                      placeholder={ intl.formatMessage({ id: 'app.login.password' }) }
                       style={styles.inputCol}
                     />
                   </IceFormBinder>
