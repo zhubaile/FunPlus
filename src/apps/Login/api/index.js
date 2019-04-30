@@ -16,9 +16,10 @@ export async function getMenu(params) {
 }
 // 发送邮件
 export async function sendMailbox(params) {
+  debugger;
   return ajaxAmd.get({
     url: '/sendRegisterMail',
-    data: params ,
+    params,
   });
 }
 // 登录接口
@@ -31,7 +32,7 @@ export async function loginUser(params) {
 // 注册接口
 export async function registerUser(params) {
   return ajaxAmd.post({
-    url: 'getUserAccount',
+    url: '/user/register',
     data: params ,
   });
 }

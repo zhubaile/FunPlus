@@ -39,4 +39,11 @@ export default {
   'app.header.user.department': '技术部',
   'app.header.user.setting': '设置',
   'app.header.user.logout': '退出',
+
+  // xinde
+  'app.menu.userdata': '用户信息',
+  'app.menu.pay': '支付场景',
+  'app.menu.pay.crossborder': '跨境支付',
+  'app.menu.pay.enterprise': '企业打款',
+  'app.menu.pay.submerchants': '子商户',
 };

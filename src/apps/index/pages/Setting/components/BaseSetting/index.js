@@ -90,7 +90,7 @@ class SettingsForm extends Component {
                 {/* <FormattedMessage id="app.setting.pagetitle" /> */}
                 企业认证
               </h2>
-
+              {/* 企业名称 */}
               <FormItem
                 label={formatMessage({ id: 'app.setting.name' })}
                 {...formItemLayout}
@@ -102,7 +102,31 @@ class SettingsForm extends Component {
               >
                 <Input name="name" placeholder="请输入您的企业名称" />
               </FormItem>
-
+              {/* 企业营业执照号码 */}
+              <FormItem
+                label={formatMessage({ id: 'app.setting.name' })}
+                {...formItemLayout}
+                required
+                maxLength={10}
+                requiredMessage={formatMessage({
+                  id: 'app.setting.name.message',
+                })}
+              >
+                <Input name="name" placeholder="请输入您的企业营业执照号码" />
+              </FormItem>
+              {/* 企业联系地址 */}
+              <FormItem
+                label={formatMessage({ id: 'app.setting.name' })}
+                {...formItemLayout}
+                required
+                maxLength={10}
+                requiredMessage={formatMessage({
+                  id: 'app.setting.name.message',
+                })}
+              >
+                <Input name="name" placeholder="请输入您的企业联系地址" />
+              </FormItem>
+              {/* 营业执照上传 */}
               <FormItem
                 label={formatMessage({ id: 'app.setting.avatar' })}
                 {...formItemLayout}
@@ -112,6 +136,55 @@ class SettingsForm extends Component {
                 })}
               >
                 {/* action 为代理的模式，在.webpackrc.js中设置 */}
+                <Upload.Card
+                  action="/web/beta/v1.0/uploadPhoto"
+                  name="avatar"
+                  limit={1}
+                  accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+                  beforeUpload={beforeUpload}
+                  onChange={onChange}
+                  onSuccess={onSuccess}
+                  onError={onError}
+                  formatter={(res, file) => {
+                    // (上传图片)函数里面根据当前服务器返回的响应数据
+                    // 重新拼装符合组件要求的数据格式   res为后端返回的数据
+                    // success: res.errCode === 200 ,200没有引号,这个坑踩了三个小时
+                    return {
+                      success: res.errCode === 0 ,
+                      url: res.data.downloadURL,
+                    };
+                  }}
+                />
+              </FormItem>
+              {/* 法人身份证正反面上传 */}
+              <FormItem
+                label={formatMessage({ id: 'app.setting.avatar' })}
+                {...formItemLayout}
+                required
+                requiredMessage={formatMessage({
+                  id: 'app.setting.avatar.message',
+                })}
+              >
+                {/* action 为代理的模式，在.webpackrc.js中设置 */}
+                <Upload.Card
+                  action="/web/beta/v1.0/uploadPhoto"
+                  name="avatar"
+                  limit={1}
+                  accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+                  beforeUpload={beforeUpload}
+                  onChange={onChange}
+                  onSuccess={onSuccess}
+                  onError={onError}
+                  formatter={(res, file) => {
+                    // (上传图片)函数里面根据当前服务器返回的响应数据
+                    // 重新拼装符合组件要求的数据格式   res为后端返回的数据
+                    // success: res.errCode === 200 ,200没有引号,这个坑踩了三个小时
+                    return {
+                      success: res.errCode === 0 ,
+                      url: res.data.downloadURL,
+                    };
+                  }}
+                />
                 <Upload.Card
                   action="/web/beta/v1.0/uploadPhoto"
                   name="avatar"
@@ -157,18 +230,8 @@ class SettingsForm extends Component {
               >
                 <Switch name="notice" />
               </FormItem>
-
-              <FormItem
-                label={formatMessage({ id: 'app.setting.email' })}
-                {...formItemLayout}
-                required
-                requiredMessage={formatMessage({
-                  id: 'app.setting.email.message',
-                })}
-              >
-                <Input htmlType="email" name="email" />
-              </FormItem>
-
+              {/* 联系人信息 */}
+              {/* 联系人姓名 */}
               <FormItem
                 label={formatMessage({ id: 'app.setting.website' })}
                 {...formItemLayout}
@@ -181,10 +244,21 @@ class SettingsForm extends Component {
                 <Input
                   name="siteUrl"
                   type="url"
-                  placeholder="https://alibaba.github.io/ice"
+                  placeholder="联系人姓名"
                 />
               </FormItem>
-
+              {/* 联系人常用邮箱 */}
+              <FormItem
+                label={formatMessage({ id: 'app.setting.email' })}
+                {...formItemLayout}
+                required
+                requiredMessage={formatMessage({
+                  id: 'app.setting.email.message',
+                })}
+              >
+                <Input htmlType="email" name="email" placeholder="联系人邮箱" />
+              </FormItem>
+              {/* 联系人电话 */}
               <FormItem
                 label={formatMessage({ id: 'app.setting.github' })}
                 {...formItemLayout}
@@ -197,11 +271,11 @@ class SettingsForm extends Component {
                 <Input
                   type="url"
                   name="githubUrl"
-                  placeholder="https://github.com/alibaba/ice"
+                  placeholder="联系人电话"
                 />
               </FormItem>
 
-              <FormItem
+              {/*  <FormItem
                 label={formatMessage({ id: 'app.setting.twitter' })}
                 {...formItemLayout}
                 required
@@ -212,7 +286,7 @@ class SettingsForm extends Component {
               >
                 <Input name="twitterUrl" placeholder="https://twitter.com" />
               </FormItem>
-
+*/}
               <FormItem
                 label={formatMessage({ id: 'app.setting.description' })}
                 {...formItemLayout}

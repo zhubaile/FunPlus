@@ -8,7 +8,7 @@ const { Row, Col } = Grid;
 // MOCK 数据，实际业务按需进行替换
 const mockData = [
   [
-    { name: '业务数据类型', value: '收款数据', zbl: '打款业务时局' , aa: 'aaa' , bb: 'bbb', cc: 'ccc' },
+    { name: '我是朱柏乐', value: '收款数据', zbl: '打款业务时局' , aa: 'aaa' , bb: 'bbb', cc: 'ccc' },
   ],
   [
     { name: '成功交易金额', value: '0.00', zbl: '0.00' },
@@ -65,7 +65,7 @@ export default class InfoOverview extends Component {
   render() {
     return (
       <IceContainer style={styles.container}>
-        <h4 style={styles.containerTitle}>交易数据展示</h4>
+        <h2 style={styles.containerTitle}>交易数据展示</h2>
         <Tab>
           <Tab.Item title="今日交易">
             <Row wrap gutter={20} style={styles.row}>
@@ -158,7 +158,6 @@ const styles = {
     whiteSpace: 'nowrap',
     color: 'rgba(0, 0, 0, 0.85)',
     fontWeight: '500',
-    borderBottom: '1px solid #f0f0f0',
   },
   row: {
     padding: '20px',

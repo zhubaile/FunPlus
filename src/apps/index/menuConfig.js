@@ -22,21 +22,26 @@ const headerMenuConfig = [
 const asideMenuConfig = [
   {
     name: 'monitor',
-    path: '/home',
-    icon: 'home2',
+    path: '/userdata', // 用户数据信息
+    icon: 'yonghu',
   },
   {
-    name: 'chart',
-    path: '/chart',
-    icon: 'chart1',
+    name: 'pay',
+    path: '/pay', // 支付场景
+    icon: 'yonghu',
     children: [
       {
-        name: 'basic',
-        path: '/chart/basic',
+        name: 'crossborder',
+        path: '/pay/crossborder',
+        // authority: 'admin',
       },
       {
-        name: 'general',
-        path: '/chart/general',
+        name: 'enterprise',
+        path: '/pay/enterprise',
+      },
+      {
+        name: 'submerchants',
+        path: '/pay/submerchants',
       },
     ],
   },
@@ -113,6 +118,7 @@ const asideMenuConfig = [
       },
     ],
   },
+
   {
     name: 'exception',
     path: '/exception',

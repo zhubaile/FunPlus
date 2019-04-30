@@ -146,6 +146,7 @@ export default class Aside extends Component {
     return (
       <NavItem key={item.path}>
         <Link to={item.path}>
+          <FoundationSymbol size="small" type={item.icon} />
           <FormattedMessage id={this.getLocaleKey(item)} />
         </Link>
       </NavItem>
@@ -181,10 +182,10 @@ export default class Aside extends Component {
         {isMobile && <Logo />}
 
         {isMobile && !openDrawer && (
-          <a className="menu-btn" onClick={this.toggleMenu}>
-            <FoundationSymbol type="menu" size="small" />
-          </a>
-        )}
+        <a className="menu-btn" onClick={this.toggleMenu}>
+          <FoundationSymbol type="menu" size="small" />
+        </a>
+      )}
 
         {!isMobile && (
           <a className="collapse-btn" onClick={this.toggleCollapse}>
@@ -197,6 +198,7 @@ export default class Aside extends Component {
         )}
 
         <Nav
+          className="aaa"
           style={{ width: collapse ? 60 : 200 }}
           mode={collapse ? 'popup' : 'inline'}
           iconOnly={collapse}

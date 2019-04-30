@@ -70,10 +70,7 @@ class UserLogin extends Component {
           this.props.history.push('/user/login');
         }
       );
-      // debugger;
-      // console.log(values);
       // const { intl } = this.props;
-      // const aa = intl.formatMessage({ id: 'app.login.Login successfully' });
       // Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
       // this.props.history.push('/');  //可以添加配置的路由为跳转
       // Message.success("登录成功");
