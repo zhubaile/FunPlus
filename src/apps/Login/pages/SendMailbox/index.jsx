@@ -43,8 +43,18 @@ class UserRegister extends Component {
       }
       // ajax方法
       sendMailbox({
-        emali: values.email,
-      });
+        email: values.email,
+      }).then(
+        ({ status, data }) => {
+          debugger;
+          if (data.errCode == 0) {
+            console.log(values);
+            Message.success('请注意查收邮件');
+          } else {
+            Message.success(data.message);
+          }
+        }
+      );
       // 可以再请求成功以后执行这个
       // Message.success('请您注意查收邮件');
     /*  console.log(values);

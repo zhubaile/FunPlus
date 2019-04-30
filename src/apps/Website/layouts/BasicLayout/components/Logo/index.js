@@ -7,9 +7,9 @@ export default class Logo extends PureComponent {
     return (
       <div >
         <IceImg
-          height={40}
           width={100}
-          src={require('./images/logo.png')}
+          height={40}
+          src={require('../../../../../../assets/img/index/logo.jpg')}
           style={{ ...styles.logoStyle, ...this.props.style }}
         />
       </div>
@@ -20,15 +20,15 @@ export default class Logo extends PureComponent {
 
 const styles = {
   logoStyle: {
+    width: '100%',
     display: 'block',
     maxWidth: '180px',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     fontSize: '28px',
-    color: '#fff',
     fontWeight: 'bold',
     textDecoration: 'none',
-    background:'red',
+    background: 'red',
   },
 };

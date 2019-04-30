@@ -19,16 +19,21 @@ class UserRegister extends Component {
   static propTypes = {};
 
   static defaultProps = {};
-
   constructor(props) {
     super(props);
+    console.log(this.props.match); // 获取到详细的路由地址
+    console.log(this.props.match.url);
+    const zbl = this.props.match.url;
+    console.log(zbl);
+    const zzz = "朱柏乐";
     this.state = {
       value: {
         name: '',
         tel: '',
-        email: '',
+        email: zzz,
         passwd: '',
         rePasswd: '',
+        sign: zbl,
       },
     };
   }
@@ -79,6 +84,7 @@ class UserRegister extends Component {
 
   handleSubmit = () => {
     this.refs.form.validateAll((errors, values) => {
+      debugger;
       if (errors) {
         console.log('errors', errors);
         return;
@@ -91,6 +97,7 @@ class UserRegister extends Component {
         email: 'values.email',
         passwd: 'values.passwd',
         rePasswd: 'values.rePasswd',
+        sign: 's',
       }).then(
         ({ status, data }) => {
           console.log(values);
