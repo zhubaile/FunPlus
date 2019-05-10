@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // 载入默认全局样式 normalize
 import '@alifd/next/reset.scss';
-import { HashRouter as Router } from 'react-router-dom';
+// import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import {
   Provider,
 } from 'react-redux';

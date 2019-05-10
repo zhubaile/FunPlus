@@ -11,6 +11,13 @@ module.exports = {
   // 如果需要代理请解开下面注释
   devServer: {
     proxy: proxy,
+    historyApiFallback: {
+      index: 'build/index.html',
+      rewrites:[
+        { from: /^\/website/, to:'build/website.html' },
+        { from: /^\/user/, to:'build/login.html' }
+      ],
+    }
   },
   resolve: {
     // webpack 别名配置

@@ -10,6 +10,7 @@ import {
 import IceIcon from '@icedesign/icon';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { registerUser } from '../../api';
+import IceImg from '@icedesign/img';
 
 @injectIntl
 @withRouter
@@ -120,113 +121,131 @@ class UserRegister extends Component {
     const { intl } = this.props;
     return (
       <div style={styles.container}>
-        <h4 style={styles.title}>
-          <FormattedMessage id="app.register.register" />
-        </h4>
-        <IceFormBinderWrapper
-          value={this.state.value}
-          onChange={this.formChange}
-          ref="form"
-        >
-          <div style={styles.formItems}>
-            <div style={styles.formItem}>
-              <IceIcon type="person" size="small" style={styles.inputIcon} />
-              <FormattedMessage id='app.register.user.errorname'>
-                {txt => (
-                  <IceFormBinder name="name" required message={txt}>
-                    <Input
-                      size="large"
-                      placeholder={intl.formatMessage({ id: 'app.login.username' })}
-                      style={styles.inputCol}
-                    />
-                  </IceFormBinder>
-                )}
-              </FormattedMessage>
-              <IceFormError name="name" />
-            </div>
+        <div style={styles.left}>
+          <h4 style={styles.title}>
+            <FormattedMessage id="app.register.register" />
+          </h4>
+          <IceFormBinderWrapper
+            value={this.state.value}
+            onChange={this.formChange}
+            ref="form"
+          >
+            <div style={styles.formItems}>
+              <div style={styles.formItem}>
+                <IceIcon type="person" size="small" style={styles.inputIcon} />
+                <FormattedMessage id='app.register.user.errorname'>
+                  {txt => (
+                    <IceFormBinder name="name" required message={txt}>
+                      <Input
+                        size="large"
+                        placeholder={intl.formatMessage({ id: 'app.login.username' })}
+                        style={styles.inputCol}
+                      />
+                    </IceFormBinder>
+                  )}
+                </FormattedMessage>
+                <IceFormError name="name" />
+              </div>
 
-            <div style={styles.formItem}>
-              <IceIcon type="phone" size="small" style={styles.inputIcon} />
-              <IceFormBinder label="tel" format="tel" name="tel" required validator={this.checkTel}>
-                <Input
-                  format="tel"
-                  name="tel"
+              <div style={styles.formItem}>
+                <IceIcon type="phone" size="small" style={styles.inputIcon} />
+                <IceFormBinder label="tel" format="tel" name="tel" required validator={this.checkTel}>
+                  <Input
+                    format="tel"
+                    name="tel"
+                    size="large"
+                    placeholder={intl.formatMessage({ id: 'app.register.phone' })}
+                    style={styles.inputCol}
+                  />
+                </IceFormBinder>
+                <IceFormError name="tel" />
+              </div>
+
+              <div style={styles.formItem}>
+                <IceIcon type="mail" size="small" style={styles.inputIcon} />
+                <FormattedMessage id='app.register.user.errormailbox'>
+                  {txt => (
+                    <IceFormBinder type="email" name="email" required message={txt}>
+                      <Input
+                        size="large"
+                        maxLength={20}
+                        placeholder={intl.formatMessage({ id: 'app.register.mailbox' })}
+                        style={styles.inputCol}
+                      />
+                    </IceFormBinder>
+                  )}
+                </FormattedMessage>
+                <IceFormError name="email" />
+              </div>
+
+              <div style={styles.formItem}>
+                <IceIcon type="lock" size="small" style={styles.inputIcon} />
+                <IceFormBinder
+                  name="passwd"
+                  required
+                  validator={this.checkPasswd}
+                >
+                  <Input
+                    htmlType="password"
+                    size="large"
+                    placeholder={intl.formatMessage({ id: 'app.register.user.minpass' })}
+                    style={styles.inputCol}
+                  />
+                </IceFormBinder>
+                <IceFormError name="passwd" />
+              </div>
+
+              <div style={styles.formItem}>
+                <IceIcon type="lock" size="small" style={styles.inputIcon} />
+                <IceFormBinder
+                  name="rePasswd"
+                  required
+                  validator={(rule, values, callback) =>
+                    this.checkPasswd2(rule, values, callback, this.state.value)
+                  }
+                >
+                  <Input
+                    htmlType="password"
+                    size="large"
+                    placeholder={intl.formatMessage({ id: 'app.register.confirm password' })}
+                    style={styles.inputCol}
+                  />
+                </IceFormBinder>
+                <IceFormError name="rePasswd" />
+              </div>
+
+              <div className="footer">
+                <Button
+                  type="primary"
+                  onClick={this.handleSubmit}
+                  style={styles.submitBtn}
                   size="large"
-                  placeholder={intl.formatMessage({ id: 'app.register.phone' })}
-                  style={styles.inputCol}
-                />
-              </IceFormBinder>
-              <IceFormError name="tel" />
+                >
+                  <FormattedMessage id="app.register.register" />
+                </Button>
+                <Link to="/user/login" style={styles.tips}>
+                  <FormattedMessage id="app.sendregister.newaccount" />
+                </Link>
+              </div>
             </div>
-
-            <div style={styles.formItem}>
-              <IceIcon type="mail" size="small" style={styles.inputIcon} />
-              <FormattedMessage id='app.register.user.errormailbox'>
-                {txt => (
-                  <IceFormBinder type="email" name="email" required message={txt}>
-                    <Input
-                      size="large"
-                      maxLength={20}
-                      placeholder={intl.formatMessage({ id: 'app.register.mailbox' })}
-                      style={styles.inputCol}
-                    />
-                  </IceFormBinder>
-                )}
-              </FormattedMessage>
-              <IceFormError name="email" />
-            </div>
-
-            <div style={styles.formItem}>
-              <IceIcon type="lock" size="small" style={styles.inputIcon} />
-              <IceFormBinder
-                name="passwd"
-                required
-                validator={this.checkPasswd}
-              >
-                <Input
-                  htmlType="password"
-                  size="large"
-                  placeholder={intl.formatMessage({ id: 'app.register.user.minpass' })}
-                  style={styles.inputCol}
-                />
-              </IceFormBinder>
-              <IceFormError name="passwd" />
-            </div>
-
-            <div style={styles.formItem}>
-              <IceIcon type="lock" size="small" style={styles.inputIcon} />
-              <IceFormBinder
-                name="rePasswd"
-                required
-                validator={(rule, values, callback) =>
-                  this.checkPasswd2(rule, values, callback, this.state.value)
-                }
-              >
-                <Input
-                  htmlType="password"
-                  size="large"
-                  placeholder={intl.formatMessage({ id: 'app.register.confirm password' })}
-                  style={styles.inputCol}
-                />
-              </IceFormBinder>
-              <IceFormError name="rePasswd" />
-            </div>
-
-            <div className="footer">
-              <Button
-                type="primary"
-                onClick={this.handleSubmit}
-                style={styles.submitBtn}
-                size="large"
-              >
-                <FormattedMessage id="app.register.register" />
-              </Button>
-              <Link to="/user/login" style={styles.tips}>
-                <FormattedMessage id="app.sendregister.newaccount" />
-              </Link>
-            </div>
+          </IceFormBinderWrapper>
+        </div>
+        <div style={styles.right}>
+          <div style={styles.box}>
+            <IceImg
+              src={require('../../../../assets/img/login/tel.png')}
+            />
+            <p>咨询电话</p>
+            <a>000-1111-2222</a>
           </div>
-        </IceFormBinderWrapper>
+          <div style={styles.box}>
+            <IceImg
+              src={require('../../../../assets/img/login/email.png')}
+            />
+            <p>电子邮箱</p>
+            <a>YanYue@3FunPlus.com</a>
+          </div>
+        </div>
       </div>
     );
   }
@@ -234,10 +253,20 @@ class UserRegister extends Component {
 
 const styles = {
   container: {
-    width: '400px',
+    width: '700px',
     padding: '40px',
     background: '#fff',
     borderRadius: '6px',
+    marginTop: '-60px',
+    border: '#cccccc 1px solid',
+    display: 'flex',
+  },
+  left: {
+    float: 'left',
+    // width: '350px',
+    paddingRight: '30px',
+    borderRight: '#ccc 1px solid',
+    flexGrow: '1',
   },
   title: {
     margin: '0 0 40px',
@@ -269,6 +298,21 @@ const styles = {
     marginTop: '20px',
     display: 'block',
     textAlign: 'center',
+  },
+  right: {
+    float: 'left',
+    // width: '250px',
+    flexGrow: '1',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+  },
+  box: {
+    textAlign: 'center',
+    marginTop: '20px',
+    cursor: 'pointer',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 };
 

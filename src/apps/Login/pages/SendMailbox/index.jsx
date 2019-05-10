@@ -122,6 +122,8 @@ const styles = {
     padding: '40px',
     background: '#fff',
     borderRadius: '6px',
+    marginTop: '-60px',
+    border: '#cccccc 1px solid',
   },
   title: {
     margin: '0 0 40px',

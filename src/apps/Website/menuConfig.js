@@ -4,18 +4,18 @@
 
 const headerMenuConfig = [
   {
-    name: '首页',
+    name: '登录',
     path: '/',
     icon: 'home',
   },
   {
-    name: '反馈',
+    name: '注册',
     path: 'https://github.com/alibaba/ice',
     external: true,
     newWindow: true,
     icon: 'message',
   },
-  {
+  /* {
     name: '帮助',
     path: 'https://alibaba.github.io/ice',
     external: true,
@@ -26,44 +26,44 @@ const headerMenuConfig = [
       { name: '部门管理', path: '/manage/department', icon: 'lights' },
       { name: '团队管理', path: '/manage/team', icon: 'atm' },
     ],
-  },
+  }, */
 ];
 
 const asideMenuConfig = [
   {
-    name: '管理概况',
-    path: '/manage',
+    name: '产品',
+    path: '/product',
     icon: 'account',
     children: [
-      { name: '管理de', path: '/manage/department', icon: 'account' },
-      { name: '管理de', path: '/manage/company', icon: 'account' },
+      { name: '支付方式', path: '/website/product/mode', icon: 'account' },
+      { name: '商业管理', path: '/website/product/administration', icon: 'account' },
     ],
   },
 
   {
-    name: '测试专用',
-    path: '/account',
+    name: '帮助中心',
+    path: '/helpcenter',
     icon: 'set',
     children: [
-      { name: '质量管理', path: '/account/ceshi', icon: 'account' },
+      { name: '快速开发', path: '/helpcenter/develop', icon: 'refresh' },
+      { name: '会员系统', path: '/helpcenter/member', icon: 'refresh' },
+      { name: '多级商户管理系统', path: '/helpcenter/multistage', icon: 'refresh' },
+      { name: 'SDK下载', path: '/helpcenter/sdk', icon: 'refresh' },
     ],
   },
   {
-    name: '好asdd ',
-    path: '/account',
-    icon: 'account',
-  },
-  {
-    name: '我是谁',
-    path: '/user',
+    name: '解决方案',
+    path: '/solution',
     icon: 'account',
     children: [
-      { name: '登录', path: '/user/login', icon: 'refresh' },
-      { name: '测试', path: '/account/ceshi', icon: 'account' },
+      { name: '物流行业解决方案', path: '/solution/logistics', icon: 'refresh' },
+      { name: '电商行业解决方案', path: '/solution/retailers', icon: 'refresh' },
+      { name: '交通出行解决方案', path: '/solution/traffic', icon: 'refresh' },
+      { name: '跨境支付解决方案', path: '/solution/border', icon: 'refresh' },
     ],
   },
   {
-    name: '专项管理',
+    name: '论坛',
     path: '/special',
     icon: 'set',
   },

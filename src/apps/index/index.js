@@ -12,7 +12,7 @@ import {
 import '@alifd/next/reset.scss';
 import LanguageProvider from '../Internationalization/LocaleProvider';
 import { getLocale } from '../Internationalization/locale';
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import BasicLayout from './layouts/BasicLayout';
 import router from "./router";
 
