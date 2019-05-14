@@ -68,7 +68,7 @@ class UserLogin extends Component {
         ({ status, data }) => {
           console.log(values);
           Message.success('登录失败');
-          this.props.history.push('/user/login');
+          // this.props.history.push('/user/login');
         }
       );
       // const { intl } = this.props;
@@ -142,7 +142,7 @@ class UserLogin extends Component {
                   </Checkbox>
                 </IceFormBinder>
                 <a style={{ float: 'right', cursor: 'pointer' }}>
-                 忘记密码
+                  <FormattedMessage id='app.login.forget.password' />
                 </a>
               </div>
 
@@ -167,14 +167,14 @@ class UserLogin extends Component {
             <IceImg
               src={require('../../../../assets/img/login/tel.png')}
             />
-            <p>咨询电话</p>
+            <p> <FormattedMessage id='app.login.Tel.consult' /></p>
             <a>000-1111-2222</a>
           </div>
           <div style={styles.box}>
             <IceImg
               src={require('../../../../assets/img/login/email.png')}
             />
-            <p>电子邮箱</p>
+            <p><FormattedMessage id='app.login.Mail.box' /></p>
             <a>YanYue@3FunPlus.com</a>
           </div>
         </div>

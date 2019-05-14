@@ -8,7 +8,9 @@ import Logo from '../Logo';
 import './index.scss';
 import Aside from '../Aside';
 import SelectLang from '../../../../../Internationalization/SelectLang';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
+@injectIntl
 @withRouter
 export default class Header extends Component {
   render() {
@@ -16,7 +18,7 @@ export default class Header extends Component {
     const { pathname } = location;
     return (
       <div className="header-container">
-        <div className="header-nav">
+        <div className="header-nav" id='linktop'>
           <Aside />
         </div>
         <div className="header-navbar">
@@ -116,9 +118,8 @@ export default class Header extends Component {
                   登录
                 </Link> */}
                 <a href="login.html" style={{ color: '#666' }}>
-                  登录
-                  <FoundationSymbol type="person" size="small" />
-                  {/* <FormattedMessage id="app.header.user.logout" /> */}
+                  {/* <FoundationSymbol type="person" size="small" /> */}
+                   <FormattedMessage id="app.login.sign.in" />
                 </a>
               </li>
             </ul>

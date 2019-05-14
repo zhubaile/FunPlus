@@ -30,17 +30,16 @@ const styles = {
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'column',
     backgroundImage: `url(${require("../../../../../assets/img/helpcenter/develop/ks-bg1.png")})`,
     backgroundSize: '100% 100%',
   },
   left: {
-    width: '65%',
+    width: '50%',
     marginTop: '100px',
     marginBottom: '200px',
     color: '#fff',
   },
   right: {
-    width: '35%',
+    width: '20%',
   },
 };

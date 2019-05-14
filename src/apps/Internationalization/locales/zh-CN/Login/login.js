@@ -11,6 +11,9 @@ export default {
   'app.login.Login successfully': '登陆成功',
   'app.login.username': '用户名',
   'app.login.password': '密码',
+  'app.login.forget.password': '忘记密码',
+  'app.login.Tel.consult': '咨询电话',
+  'app.login.Mail.box': '电子邮箱',
 
   // 发送注册界面
   'app.register.register': '注册',
@@ -33,5 +36,6 @@ export default {
   'app.register.confirm password': '确认密码',
   'app.register.success': '注册成功',
   'app.register.error': '注册失败',
+
 
 };

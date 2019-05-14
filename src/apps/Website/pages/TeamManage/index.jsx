@@ -4,6 +4,7 @@ import Overview from './components/Overview';
 import TrendAnalysis from './components/TrendAnalysis';
 import BaseInfo from '../../components/BaseInfo';
 
+
 export default class TeamManage extends Component {
   static displayName = 'TeamManage';
 

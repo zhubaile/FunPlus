@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Button } from '@alifd/next';
 import { Link } from 'react-router-dom';
+import { FormattedMessage, injectIntl } from 'react-intl';
+
+
 
 export default class FooterLinks extends Component {
   static displayName = 'FooterLinks';
@@ -36,7 +39,7 @@ export default class FooterLinks extends Component {
                     className="footer-box-content-name"
                     style={styles.footerBoxContentName}
                   >
-                    产品中心
+                    <FormattedMessage id='app.website.footer.productcenter' />
                   </div>
                   <div className="footer-box-content-subitem">
                     <ul>
@@ -51,7 +54,7 @@ export default class FooterLinks extends Component {
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
-                          支付方式
+                          <FormattedMessage id='app.website.footer.Paymentmethod' />
                         </a>
                       </li>
                       <li
@@ -65,7 +68,7 @@ export default class FooterLinks extends Component {
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
-                          解决方案
+                          <FormattedMessage id='app.website.footer.Solution' />
                         </a>
                       </li>
                       <li
@@ -79,7 +82,7 @@ export default class FooterLinks extends Component {
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
-                          商业管理
+                          <FormattedMessage id='app.website.footer.businessmanagement' />
                         </a>
                       </li>
                     </ul>
@@ -98,7 +101,7 @@ export default class FooterLinks extends Component {
                     className="footer-box-content-name"
                     style={styles.footerBoxContentName}
                   >
-                    帮助中心
+                    <FormattedMessage id='app.website.footer.Helpcenter' />
                   </div>
                   <div className="footer-box-content-subitem">
                     <ul>
@@ -113,7 +116,7 @@ export default class FooterLinks extends Component {
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
-                          开发文档
+                          <FormattedMessage id='app.website.footer.Developingdocuments' />
                         </a>
                       </li>
                       <li
@@ -127,7 +130,7 @@ export default class FooterLinks extends Component {
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
-                          快速开发
+                          <FormattedMessage id='app.website.footer.Rapiddevelopment' />
                         </a>
                       </li>
                       <li
@@ -141,7 +144,7 @@ export default class FooterLinks extends Component {
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
-                          会员系统
+                          <FormattedMessage id='app.website.footer.Membershipsystem' />
                         </a>
                       </li>
                       <li
@@ -155,7 +158,7 @@ export default class FooterLinks extends Component {
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
-                          常见问题
+                          <FormattedMessage id='app.website.footer.Commonproblem' />
                         </a>
                       </li>
                     </ul>
@@ -175,7 +178,7 @@ export default class FooterLinks extends Component {
                     className="footer-box-content-name"
                     style={styles.footerBoxContentName}
                   >
-                    关于我们
+                    <FormattedMessage id='app.website.footer.Aboutus' />
                   </div>
                   <div className="footer-box-content-subitem">
                     <ul>
@@ -190,7 +193,7 @@ export default class FooterLinks extends Component {
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
-                          联系我们
+                          <FormattedMessage id='app.website.footer.Contactus' />
                         </a>
                       </li>
                       <li
@@ -204,7 +207,7 @@ export default class FooterLinks extends Component {
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
-                          新闻媒体
+                          <FormattedMessage id='app.website.footer.newsmedia' />
                         </a>
                       </li>
                       <li
@@ -218,7 +221,7 @@ export default class FooterLinks extends Component {
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
-                          资质
+                          <FormattedMessage id='app.website.footer.Qualifications' />
                         </a>
                       </li>
                     </ul>
@@ -237,7 +240,7 @@ export default class FooterLinks extends Component {
                     className="footer-box-content-name"
                     style={styles.footerBoxContentName}
                   >
-                    服务支持
+                    <FormattedMessage id='app.website.footer.Servicesupport' />
                   </div>
                   <div className="footer-box-content-subitem">
                     <ul>
@@ -252,7 +255,7 @@ export default class FooterLinks extends Component {
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
-                          SDK下载
+                          <FormattedMessage id='app.website.footer.SDKDownload' />
                         </a>
                       </li>
                       <li
@@ -266,8 +269,8 @@ export default class FooterLinks extends Component {
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
-                          <Link to='/demo/experience' style={styles.footerBoxContentItemLink}>
-                            DEMO体验
+                          <Link to='/website/demo/experience' style={styles.footerBoxContentItemLinks}>
+                            <FormattedMessage id='app.website.footer.DEMOexperience' />
                           </Link>
                         </a>
                       </li>
@@ -283,10 +286,10 @@ export default class FooterLinks extends Component {
               className="footer-box-right-title"
               style={styles.footerBoxRightTitle}
             >
-              服务热线：010-666-888
+              <FormattedMessage id='app.website.footer.hotline' />：010-666-888
             </div>
             <div>
-              <Button type="primary" style={{ borderRadius: '20px' }}>立即咨询</Button>
+              <Button type="primary" style={{ borderRadius: '20px' }}> <FormattedMessage id='app.website.footer.Immediateconsultation' /></Button>
             </div>
           </div>
           <div className="footer-clearfix" style={styles.footerClearfix} />
@@ -372,6 +375,11 @@ const styles = {
     fontSize: '16px',
     color: '#000',
     opacity: '0.6',
+    textDecoration: 'none',
+  },
+  footerBoxContentItemLinks: {
+    fontSize: '16px',
+    color: '#000',
     textDecoration: 'none',
   },
   footerBoxRightTitle: {

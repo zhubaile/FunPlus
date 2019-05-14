@@ -32,7 +32,7 @@ const headerMenuConfig = [
 const asideMenuConfig = [
   {
     name: '产品',
-    path: '/product',
+    path: '/website/product',
     icon: 'account',
     children: [
       { name: '支付方式', path: '/website/product/mode', icon: 'account' },
@@ -42,29 +42,29 @@ const asideMenuConfig = [
 
   {
     name: '帮助中心',
-    path: '/helpcenter',
+    path: '/website/helpcenter',
     icon: 'set',
     children: [
-      { name: '快速开发', path: '/helpcenter/develop', icon: 'refresh' },
-      { name: '会员系统', path: '/helpcenter/member', icon: 'refresh' },
-      { name: '多级商户管理系统', path: '/helpcenter/multistage', icon: 'refresh' },
-      { name: 'SDK下载', path: '/helpcenter/sdk', icon: 'refresh' },
+      { name: '快速开发', path: '/website/helpcenter/develop', icon: 'refresh' },
+      { name: '会员系统', path: '/website/helpcenter/member', icon: 'refresh' },
+      { name: '多级商户管理系统', path: '/website/helpcenter/multistage', icon: 'refresh' },
+      { name: 'SDK下载', path: '/website/helpcenter/sdk', icon: 'refresh' },
     ],
   },
   {
     name: '解决方案',
-    path: '/solution',
+    path: '/website/solution',
     icon: 'account',
     children: [
-      { name: '物流行业解决方案', path: '/solution/logistics', icon: 'refresh' },
-      { name: '电商行业解决方案', path: '/solution/retailers', icon: 'refresh' },
-      { name: '交通出行解决方案', path: '/solution/traffic', icon: 'refresh' },
-      { name: '跨境支付解决方案', path: '/solution/border', icon: 'refresh' },
+      { name: '物流行业解决方案', path: '/website/solution/logistics', icon: 'refresh' },
+      { name: '电商行业解决方案', path: '/website/solution/retailers', icon: 'refresh' },
+      { name: '交通出行解决方案', path: '/website/solution/traffic', icon: 'refresh' },
+      { name: '跨境支付解决方案', path: '/website/solution/border', icon: 'refresh' },
     ],
   },
   {
     name: '论坛',
-    path: '/special',
+    path: '/website/special',
     icon: 'set',
   },
 ];

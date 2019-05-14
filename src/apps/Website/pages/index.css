@@ -1,21 +1,36 @@
-/* 首页 */
+/* 首页  word-wrap:break-word 英文换行*/
+*{ font-family:MicrosoftYaHei; }
 .shouye , .prodect{padding: 0; margin: 0;}
 h1{ font-size: 36px;}
 p{ font-size: 20px;}
 img{ background-size: 100% 100%;}
+
+/* 首页的咨询 */
+.shouye .consultation{ position: fixed; bottom: 50px; right: 15px; width: 44px; cursor: pointer;}
+.shouye .consultation a{ width: 44px; height: 44px;background:rgba(0,162,246,1); display: flex; justify-content: center;}
+.shouye .consultation p{ width: 20px; font-size: 20px; margin-left: 12px; word-wrap: break-word; font-weight: 400; color: rgba(51,51,51,1); cursor: pointer; padding-bottom: 10px;}
+/* 咨询弹框 */
+.consultpopup{ position: fixed; bottom: 50px; right: 100px; width: 365px; height: 500px; z-index: 9999; background: #fff;  box-shadow: 0 0 10px #666666;}
+.consultpopup .consultpopup-head{ width: 365px; height: 50px; background:rgba(0,162,246,1); color: #fff; font-weight: 400; line-height: 50px;}
+.consultpopup .consultpopup-head .consultpopup-head-left{ float: left; padding-left: 10px; font-size: 16px;}
+.consultpopup .consultpopup-head .consultpopup-head-right{ float: right; padding-right: 10px; cursor: pointer;}
+.consultpopup .consultpopup-main{ width: 365px; height: 350px;}
+.consultpopup .consultpopup-userinput{ width: 365px; height: 100px; border-top: 2px solid rgba(47, 50, 51, 0.2); padding: 10px;}
+
+.consultpopup .consultpopup-footer .sendbtn{ border-radius: 5px; position: absolute; bottom: 5px; right: 5px;}
 /* 导航下面的展示内容 */
 .nav-belowimg{background-size: 100% 100%; display: flex; justify-content: center;}
 .nav-belowimg-conter{display: flex;width: 70%;align-items: center;justify-content: center;}
-.nav-belowimg-conter-left{float: left;margin-top: 150px;margin-bottom: 150px;width: 60%;color: #fff;}
+.nav-belowimg-conter-left{float: left;margin-top: 150px;margin-bottom: 150px;width: 60%;color: #fff; font-weight:400;}
 .nav-belowimg-conter-left h1{ font-size: 36px;}
 .nav-belowimg-conter-left h3{ font-size: 28px;}
-.nav-belowimg-conter-left p{ font-size: 16px; margin-top: 20px; width: 70%}
+.nav-belowimg-conter-left p{ font-size: 16px; margin-top: 20px; width: 70%; line-height: 30px;}
 .nav-belowimg-conter-right{float: left;width: 40%;}
 /* 依托的内容(许多重复使用) */
 .rely{width: 100%; display: flex; justify-content: center;}
 .rely-conter{ display: flex;width: 70%;align-items: center;justify-content: center;}
 .rely-conter-left{ float: left; width: 40%; color: #000; margin-top: 150px;margin-bottom: 150px; padding: 20px;}
-.rely-conter-left>p{ display: block; width: 70%; opacity: 0.6; text-indent: 2em;}
+.rely-conter-left>p{ display: block; width: 70%; color: #333; text-indent: 2em; line-height: 40px;}
 .rely-conter-right{ float: left; width: 60%; display: flex; flex-direction: column; align-items: center;justify-content: center;}
 .rely-conter-right-box{ width: 80%;}
 /* 产品服务 */
@@ -25,12 +40,14 @@ img{ background-size: 100% 100%;}
 .service-conter-top strong{ font-size: 38px; margin-left: -10px;}
 .service-conter-top .text{ font-size: 20px; font-weight: 400; opacity: 0.8;}
 .service-conter-botton{margin-top: 150px; display: flex; align-items: center; justify-content: center; margin-bottom: 100px; flex-direction: column;}
-.service-conter-botton-box{float: left;width: 20%;height: 290px;margin-left: 2%;display: flex;flex-direction: column;align-items: center; justify-content: center; border: 2px solid #000; cursor: pointer;}
+.service-conter-botton-box{float: left;width: 20%;height: 290px;margin-left: 2%;display: flex;flex-direction: column;align-items: center; justify-content: center;  cursor: pointer; background: rgba(255,255,255,1)}
 
 .service-conter-botton-box:hover.service-conter-botton-box{
   transform:translateY(-50px);/**上移元素**/
   -ms-transform:translateY(-50px);
   -webkit-transform:translateY(-50px);
+  /*box-shadow: 0 0 6px #a7ecfd;*/
+  box-shadow: 0 0 30px #9ad6fd;
 }
 
 .service-conter-botton-box>h2{ font-size: 20px;}
@@ -48,6 +65,7 @@ img{ background-size: 100% 100%;}
 /*  */
 .footer{ width: 100%; display: flex; justify-content: center; color: #fff; background-size: 100% 100%;}
 .footer-conter-left{ width: 80%; float: left; margin-top: 150px; margin-bottom: 150px; }
+.footer-conter-left p{ line-height: 36px;}
 
 /* 产品 */
 /* 通用的 文字在左图片在右*/
@@ -68,7 +86,7 @@ img{ background-size: 100% 100%;}
 .commonly-right .commonly-conter .commonly-conter-right{ width: 50%;}
 .commonly-right .commonly-conter .commonly-conter-right .commonly-conter-right-box{ width: 200px; font-size: 36px; font-weight: 400; color: #333333;}
 .commonly-right .commonly-conter .commonly-conter-right .commonly-conter-right-box>div{width: 100%; height: 10px; background:linear-gradient(82deg,rgba(85,137,244,1) 0%,rgba(145,195,249,1) 51%,rgba(220,243,255,1) 100%);border-radius:3px;}
-.commonly-right .commonly-conter .commonly-conter-right .commonly-conter-right p{ width: 80%; margin-top: 40px;}
+.commonly-right .commonly-conter .commonly-conter-right p{ margin-top: 40px; line-height: 30px; width: 380px; text-indent: 2em; }
 
 /* 适用场景 */
 .scene{ width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 50px;flex-direction: column;}
@@ -90,7 +108,7 @@ img{ background-size: 100% 100%;}
 
 /* 解决方案的css Solution */
 /* 跨境支付 */
-.solution-border{ width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+.solution-border{ width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 50px 0;}
 .solution-border .solution-border-top{ width: 60%; font-size: 20px;}
 .solution-border .solution-border-top>p{ width: 40%; margin-left: 50px;}
 .solution-border .solution-border-botton{ width: 60%; margin-top: 30px;}
@@ -150,9 +168,9 @@ img{ background-size: 100% 100%;}
 .helpmember-footer-conter{ width: 70%; display: flex; flex-direction: column;}
 .helpmember-footer-conter .helpmember-footer-conter-top{ display: flex;  flex-direction: column;align-items: center; margin-bottom: 50px;}
 .helpmember-footer-conter .helpmember-footer-conter-botton ul{display: flex;}
-.helpmember-footer-conter-botton ul li{ width: 20%; display: flex; justify-content: center; flex-direction: column; align-items: center; flex-grow: 1; border: 3px solid #c0e0fe; margin: 0 5%; padding: 20px 0;}
+.helpmember-footer-conter-botton ul li{ width: 20%; display: flex; justify-content: center; flex-direction: column; align-items: center; flex-grow: 1; margin: 0 5%; padding: 10px;  box-shadow: 0 0 20px #9ad6fd;}
 .helpmember-footer-conter-botton ul li strong{ font-size: 22px;}
-.helpmember-footer-conter-botton ul li p{ font-size: 16px;}
+.helpmember-footer-conter-botton ul li p{ font-size: 14px; line-height: 22px;}
 
 /* SDK */
 .helpsdk{ width: 100%; display: flex; justify-content: center; flex-direction: column; align-items: center; margin-bottom: 30px;}
@@ -218,7 +236,7 @@ img{ background-size: 100% 100%;}
 .footer-bottom-left .footer-bottom-left-main .qrcode .qrcode-bottom div{ float: right; margin-right: 15px; margin-top: -5px;}
 /* demopay里面的图片轮播 */
 .footer-bottom-left .footer-bottom-left-img{ position: absolute; top: 100px; right: 100px;width: 175px; height: 150px;}
-.next-slick img {margin: 0 10px;background: #4F74B3;color: #fff;line-height: 150px;text-align: center;}
+.next-slick img {margin: 0 10px;color: #fff;line-height: 150px;text-align: center;}
 .next-slick-slide.next-slick-active{ margin-left: 0;}
 
 

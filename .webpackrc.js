@@ -8,13 +8,18 @@ proxy['/web/beta/v1.0/uploadPhoto'] = {
 };
 // http://192.168.1.105:3000/web/beta/v1.0/uploadPhoto
 module.exports = {
-  // 如果需要代理请解开下面注释
+  // 如果需要代理请解开下面注释   regex e("abc")
   devServer: {
     proxy: proxy,
     historyApiFallback: {
       index: 'build/index.html',
       rewrites:[
-        { from: /^\/website/, to:'build/website.html' },
+        { from: /\/index.html$/, to:'build/index.html' },
+        { from: /\/website.html$/, to:'build/website.html' },  // 匹配已website.html结束的字符，匹配成功跳转到website.html
+        { from: /\/login.html$/, to:'build/login.html' },
+        { from: /^\/website/, to:'build/website.html' },     // 匹配已website开头的字符，匹配成功跳转到website.html
+        /*{ from: /(?=website)/, to:'build/website.html' },
+        { from: /(?=login)/, to:'build/login.html' },*/
         { from: /^\/user/, to:'build/login.html' }
       ],
     }

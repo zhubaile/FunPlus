@@ -1,135 +1,181 @@
 import React, { Component } from 'react';
-// import { FormattedMessage, injectIntl } from 'react-intl'; // 国际化
-import Img from '@icedesign/img';
-import { Button, Icon, Nav } from '@alifd/next';
-// import SolutionFooter from '../components/SolutionFooter';
+import { FormattedMessage, injectIntl } from 'react-intl'; // 国际化
+import { Button, Icon, Nav, Slider } from '@alifd/next';
+import HelpcenterHeader from '../../Components/HelpcenterHeader';
+import HelpcenterFooter from '../../Components/HelpcenterFooter';
 import '../../index.css';
-
-
-export default class Ceshi extends Component {
+// import $ from 'jquery';
+@injectIntl
+export default class Member extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    const {
+      intl: { formatMessage },
+    } = this.props;
+    const headerh1 = formatMessage({ id: 'app.website.helpmultistage.header.h1' }) ,
+      headerp = formatMessage({ id: 'app.website.helpmultistage.header.p' }) ,
+      footerh1 = formatMessage({ id: 'app.website.helpmultistage.footer.h1' }) ,
+      footerp = formatMessage({ id: 'app.website.helpmultistage.footer.p' });
+    this.state = {
+      HHcontent: headerh1,
+      HPcontent: headerp,
+      FHcontent: footerh1,
+      FPcontent: footerp,
+    };
   }
   render() {
+    const settings = {
+      className: 'custom-slide center',
+      autoplay: true,
+      autoplaySpeed: '4000',
+      lazyLoad: true,
+      slidesToShow: 3,
+      centerMode: true,
+      infinite: true,
+      dots: true,
+      centerPadding: '60px',
+      speed: 500,
+      arrowSize: "large",
+      arrowPosition: "outer",
+      dotsClass: 'dots-cusst',
+    };
+    const { intl: { formatMessage } } = this.props;
+    const dots1 = formatMessage({ id: 'app.website.helpmultistage.slider.dots1' }) ,
+      dots2 = formatMessage({ id: 'app.website.helpmultistage.slider.dots2' }) ,
+      dots3 = formatMessage({ id: 'app.website.helpmultistage.slider.dots3' }) ,
+      dots4 = formatMessage({ id: 'app.website.helpmultistage.slider.dots4' }) ,
+      dots5 = formatMessage({ id: 'app.website.helpmultistage.slider.dots5' });
+    const navigation = [dots1,dots2,dots3,dots4,dots5];
     return (
-      <div className='prodect'>
+      <div className='helpmember'>
+        <HelpcenterHeader HHcontent={this.state.HHcontent} HPcontent={this.state.HPcontent} />
         {/* 导航下面的展示内容 */}
-        <div className='nav-belowimg' style={{ backgroundImage: `url(${require("../../../../../assets/img/shouye/bg1.png")})` }}>
-          <div className='nav-belowimg-conter'>
-            <div className='nav-belowimg-conter-left'>
-              <h1>-电商行业解决方案 </h1>
-              <p>专为各类电商平台打造的一套完整企业资金管理解决方案，
-                可帮企业一站式解决资金存管、支付、 二清、 税务、余额增值、投融资问题。</p>
-            </div>
-            <div className='nav-belowimg-conter-right'>
-            </div>
+        <div className="helpmember-topcontent">
+          <h2 style={{ fontSize: '26px' }}><FormattedMessage id='app.website.helpmultistage.topcontent.h2' /></h2>
+          <p><FormattedMessage id='app.website.helpmultistage.topcontent.p' />
+          </p>
+        </div>
+        {/* 多级商户管理系统 */}
+        <div className='helpmember-account'>
+          <div className=' helpmember-account-top'>
+            <strong><FormattedMessage id='app.website.helpmultistage.accounttop.strong' /></strong><FormattedMessage id='app.website.helpmultistage.accounttop.strongsize' />
+          </div>
+          <div className='helpmember-account-bottom'>
+            <Slider {...settings}
+                    dotsRender={(index, current) => {
+                      // 锚点问题
+                      // 两个错误，不能使用遍历，遍历之前没有return
+                      /* return zbl.map((index) => {
+                        debugger;
+                        return <a>{index}</a>;
+                      }); */
+                      return <a>{navigation[index]}</a>;
+                    }}
+            >
+              <div>
+                <div className='Carousel' >
+                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj10.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <h2><FormattedMessage id='app.website.helpmultistage.slider.dots1' /></h2>
+                  <button><FormattedMessage id='app.website.helpmultistage.Carousel.button' /></button>
+                  <p><FormattedMessage id='app.website.helpmultistage.Carousel1p' /></p>
+                  <a href="javascript:;"><FormattedMessage id='app.website.helpmultistage.Carousel.a' /></a>
+                </div>
+              </div>
+              <div>
+                <div className='Carousel' >
+                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj7.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <h2><FormattedMessage id='app.website.helpmultistage.slider.dots2' /></h2>
+                  <button><FormattedMessage id='app.website.helpmultistage.Carousel.button' /></button>
+                  <p><FormattedMessage id='app.website.helpmultistage.Carousel2p' /></p>
+                  <a href="javascript:;"><FormattedMessage id='app.website.helpmultistage.Carousel.a' /></a>
+                </div>
+              </div>
+              <div>
+                <div className='Carousel' >
+                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj8.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <h2><FormattedMessage id='app.website.helpmultistage.slider.dots3' /></h2>
+                  <button><FormattedMessage id='app.website.helpmultistage.Carousel.button' /></button>
+                  <p><FormattedMessage id='app.website.helpmultistage.Carousel3p' /></p>
+                  <a href="javascript:;"><FormattedMessage id='app.website.helpmultistage.Carousel.a' /></a>
+                </div>
+              </div>
+              <div>
+                <div className='Carousel' >
+                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj9.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <h2><FormattedMessage id='app.website.helpmultistage.slider.dots4' /></h2>
+                  <button><FormattedMessage id='app.website.helpmultistage.Carousel.button' /></button>
+                  <p><FormattedMessage id='app.website.helpmultistage.Carousel4p' /></p>
+                  <a href="javascript:;"><FormattedMessage id='app.website.helpmultistage.Carousel.a' /></a>
+                </div>
+              </div>
+              <div>
+                <div className='Carousel' >
+                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj11.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <h2><FormattedMessage id='app.website.helpmultistage.slider.dots5' /></h2>
+                  <button><FormattedMessage id='app.website.helpmultistage.Carousel.button' /></button>
+                  <p><FormattedMessage id='app.website.helpmultistage.Carousel5p' /></p>
+                  <a href="javascript:;"><FormattedMessage id='app.website.helpmultistage.Carousel.a' /></a>
+                </div>
+              </div>
+            </Slider>
           </div>
         </div>
         {/* 电商 */}
-        <div className='service'>
-          <div className='service-conter'>
-            <div className='service-conter-top'>
-              <div>
-                <div style={{ backgroundImage: `url(${require("../../../../../assets/img/solution/logistics/wl2.png")})`,width: '395px', height: '60px', textAlign: 'center', lineHeight: '60px',fontWeight: '400',fontSize: '36px' }}>电商行业解决方案</div>
-                <p style={{ fontSize: '20px' , opacity: '0.8' }}>(适用场景：面向中国消费者收费)</p>
-              </div>
-            </div>
+        <div className='helpmember-imgleft'>
+          <div className='helpmember-imgleft-left'>
+            <h2><FormattedMessage id='app.website.helpmultistage.imgleftleft' /></h2>
+            <img src={require('../../../../../assets/img/helpcenter/member/hy7.png')} style={{ width: '300px', height: '300px' }} alt="" />
+          </div>
+          <div className='helpmember-imgleft-right'>
+            <FormattedMessage id='app.website.helpmultistage.imgleftright' />
           </div>
         </div>
-        {/*  */}
-        <div className='commonly-right'>
-          <div className='commonly-conter'>
-            <div className='commonly-conter-left'>
-              <img
-                src={require('../../../../../assets/img/solution/retailers/ds1.png')}
-              />
-            </div>
-            <div className='commonly-conter-right'>
-              <p style={{ width: '380px', textIndent: '2em' }}>围绕电商平台业务高并发、层级复杂、支付营销多样化等特点提供从系统、支付到售后的全流程定制服务实现商品交易、订单分发、会员管理等一站式精细化运营满足多层次交易、分销、分润需求，降低企业运营成本提升管理效率和用户黏性，最大化商户营收。</p>
-            </div>
+        <div className='helpmember-imgright'>
+          <div className='helpmember-imgright-left'>
+            <FormattedMessage id='app.website.helpmultistage.imgrightleft' />
+          </div>
+          <div className='helpmember-imgright-right'>
+            <h2><FormattedMessage id='app.website.helpmultistage.imgrightright' /></h2>
+            <img src={require('../../../../../assets/img/helpcenter/member/hy8.png')} style={{ width: '300px', height: '300px' }} alt="" />
           </div>
         </div>
+
         {/*  */}
-        <div className='service'>
-          <div className='service-conter'>
-            <div className='service-conter-top'>
+        <div className='helpmember-footer'>
+          <div className='helpmember-footer-conter'>
+            <div className='helpmember-footer-conter-top'>
               <div>
-                <img src={require('../../../../../assets/img/solution/retailers/small.png')} style={{ width: '60px' }} alt="" />
-                <strong>需</strong>要解决的问题
-                <p className='text'>-problem to be solved-</p>
+                <h1><strong><FormattedMessage id='app.website.helpmultistage.footertop.strong' /></strong><FormattedMessage id='app.website.helpmultistage.footertop.strongsize' /></h1>
               </div>
             </div>
-            <div className='service-conter-botton'>
-              <img src={require('../../../../../assets/img/solution/retailers/ds2.png')} style={{ width: '100%' }} alt="" />
-              <p>专为各类电商平台打造的一套完整企业资金管理解决方案</p>
-              <p> 可帮企业一站式解决资金存管、支付、 二清、 税务、余额增值、投融资问题。</p>
-            </div>
-          </div>
-        </div>
-        {/*  */}
-        <div className='scene'>
-          <div className='scene-conter'>
-            <div className='scene-conter-top'>
-              <div>
-                <h1>解决方案构架图</h1>
-              </div>
-            </div>
-            <div className='scene-conter-xxl'>
-              <img src={require('../../../../../assets/img/solution/retailers/ds3.png')} style={{ width: '100%' }} alt="" />
-            </div>
-          </div>
-        </div>
-        {/*  */}
-        <div className='service'>
-          <div className='service-conter'>
-            <div className='service-conter-top'>
-              <div>
-                <h1>解决方案构优势</h1>
-              </div>
-            </div>
-            <div className='service-conter-botton'>
+            <div className='helpmember-footer-conter-botton'>
               <ul>
-                <li className='service-conter-botton-box'>
-                  <img src={require('../../../../../assets/img/solution/retailers/ds4.png')} alt="" />
-                  <h2>精准化营销</h2>
-                  <div style={{ width: '40%', height: '1px', borderTop: '2px solid #EB6100' }} />
-                  <p>
-                    解决会员管理与用户沉淀难题
-                    实现付费渗透与支付营销闭环
-                  </p>
+                <li>
+                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj3.png')} alt="" />
+                  <strong><FormattedMessage id='app.website.helpmultistage.footerbottom.strong1' /></strong>
+                  <p><FormattedMessage id='app.website.helpmultistage.footerbottom.p1' /></p>
                 </li>
-                <li className='service-conter-botton-box'>
-                  <img src={require('../../../../../assets/img/solution/retailers/ds5.png')} alt="" />
-                  <h2>智能分析与展现</h2>
-                  <div style={{ width: '40%', height: '1px', borderTop: '2px solid #E5DB4C' }} />
-                  <p>
-                    为商户提供效果统计、走势分析
-                    全方位把控付费情况与用户黏性
-                  </p>
+                <li>
+                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj4.png')} alt="" />
+                  <strong><FormattedMessage id='app.website.helpmultistage.footerbottom.strong2' /></strong>
+                  <p><FormattedMessage id='app.website.helpmultistage.footerbottom.p2' /></p>
                 </li>
-                <li className='service-conter-botton-box'>
-                  <img src={require('../../../../../assets/img/solution/retailers/ds6.png')} alt="" />
-                  <h2>多级分润系统</h2>
-                  <div style={{ width: '40%', height: '1px', borderTop: '2px solid #009944' }} />
-                  <p>提供多方全程的电子化分润服务
-                    节省商户运营成本,加快资金流转效率
-                  </p>
+                <li>
+                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj5.png')} alt="" />
+                  <strong><FormattedMessage id='app.website.helpmultistage.footerbottom.strong3' /></strong>
+                  <p><FormattedMessage id='app.website.helpmultistage.footerbottom.p3' /></p>
                 </li>
-                <li className='service-conter-botton-box'>
-                  <img src={require('../../../../../assets/img/solution/retailers/ds7.png')} alt="" />
-                  <h2>安全的风控体系</h2>
-                  <div style={{ width: '40%', height: '1px', borderTop: '2px solid #AE5DA1' }} />
-                  <p>系统承载量可达10亿级
-                    全方位保障电商交易安全
-                  </p>
+                <li>
+                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj6.png')} alt="" />
+                  <strong><FormattedMessage id='app.website.helpmultistage.footerbottom.strong4' /></strong>
+                  <p><FormattedMessage id='app.website.helpmultistage.footerbottom.p4' /></p>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-       {/*  */}
-        {/*<SolutionFooter />*/}
+        {/*  */}
+        <HelpcenterFooter FHcontent={this.state.FHcontent} FPcontent={this.state.FPcontent} />
       </div>
     );
   }

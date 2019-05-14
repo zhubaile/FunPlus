@@ -11,7 +11,7 @@ export default class Logo extends PureComponent {
             width={120}
             height={40}
             src={require('../../../../../../assets/img/index/ailogo.png')}
-            style={{ ...styles.logoStyle, ...this.props.style }}
+            style={{ ...styles.logoStyle }}
           />
         </Link>
       </div>

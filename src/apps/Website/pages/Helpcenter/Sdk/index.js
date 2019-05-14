@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
-// import { FormattedMessage, injectIntl } from 'react-intl'; // 国际化
+import { FormattedMessage, injectIntl } from 'react-intl'; // 国际化
 import Img from '@icedesign/img';
 import { Button, Icon, Nav, Tab } from '@alifd/next';
 import HelpcenterHeader from '../../Components/HelpcenterHeader';
 import '../../index.css';
 
-
+@injectIntl
 export default class Sdk extends Component {
   constructor(props) {
     super(props);
+    const {
+      intl: { formatMessage },
+    } = this.props;
+    const headerh1 = formatMessage({ id: 'app.website.helpsdk.header.h1' }) ,
+      headerp = formatMessage({ id: 'app.website.helpsdk.header.p' }) ;
     this.state = {
-      HHcontent: '-SDK下载',
-      HPcontent: '让你快速梳理商户结构，搭建复杂场景下的商户关系，便捷地管理商户层级和基本信息。。',
+      HHcontent: headerh1,
+      HPcontent: headerp,
     };
   }
   render() {
@@ -26,37 +31,27 @@ export default class Sdk extends Component {
               <li>
                 <img src={require('../../../../../assets/img/helpcenter/SDK/android.2.png')} alt="" />
                 <strong>Android SDK</strong>
-                <p>下载文件包含：
-                  SDK接入文档/混淆配置
-                  Android 调试DEMO</p>
+                <p><FormattedMessage id='app.website.helpsdk.main.li1p' /></p>
               </li>
               <li>
                 <img src={require('../../../../../assets/img/helpcenter/SDK/ios.2.png')} alt="" />
                 <strong>IOS SDK</strong>
-                <p>下载文件包含：
-                  SDK接入文档
-                  IOS 调试DEMO</p>
+                <p><FormattedMessage id='app.website.helpsdk.main.li2p' /></p>
               </li>
               <li>
                 <img src={require('../../../../../assets/img/helpcenter/SDK/h5.2.png')} alt="" />
                 <strong>H5 SDK</strong>
-                <p>下载文件包含：
-                  SDK接入文档
-                  H5 调试DEMO</p>
+                <p><FormattedMessage id='app.website.helpsdk.main.li3p' /></p>
               </li>
               <li>
                 <img src={require('../../../../../assets/img/helpcenter/SDK/PC.2.png')} alt="" />
                 <strong>PC SDK</strong>
-                <p>下载文件包含：
-                  SDK接入文档
-                  PC 调试DEMO</p>
+                <p><FormattedMessage id='app.website.helpsdk.main.li4p' /></p>
               </li>
               <li>
                 <img src={require('../../../../../assets/img/helpcenter/SDK/cloud.2.png')} alt="" />
                 <strong>SERVICE DEMO</strong>
-                <p>下载文件包含：
-                  服务端接入文档
-                  Java | PHP | Python | C#</p>
+                <p><FormattedMessage id='app.website.helpsdk.main.li5p' /></p>
               </li>
             </ul>
           </div>

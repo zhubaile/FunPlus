@@ -43,43 +43,43 @@ const routerConfig = [
     component: Administration,
   },
   {
-    path: '/solution/logistics', // 解决方案 物流
+    path: '/website/solution/logistics', // 解决方案 物流
     component: Logistics,
   },
   {
-    path: '/solution/retailers', //  电商
+    path: '/website/solution/retailers', //  电商
     component: Retailers,
   },
   {
-    path: '/solution/traffic', //  交通
+    path: '/website/solution/traffic', //  交通
     component: Traffic,
   },
   {
-    path: '/solution/border', // 跨境
+    path: '/website/solution/border', // 跨境
     component: Border,
   },
   {
-    path: '/helpcenter/develop', // 帮助 快速开发
+    path: '/website/helpcenter/develop', // 帮助 快速开发
     component: Develop,
   },
   {
-    path: '/helpcenter/member', // 会员系统
+    path: '/website/helpcenter/member', // 会员系统
     component: Member,
   },
   {
-    path: '/helpcenter/multistage', // 多级商户
+    path: '/website/helpcenter/multistage', // 多级商户
     component: Multistage,
   },
   {
-    path: '/helpcenter/sdk', // SDK下载
+    path: '/website/helpcenter/sdk', // SDK下载
     component: Sdk,
   },
   {
-    path: '/demo/experience', // demo体验
+    path: '/website/demo/experience', // demo体验
     component: Experience,
   },
   {
-    path: '/demo/pay', // demo支付
+    path: '/website/demo/pay', // demo支付
     component: DemoPay,
   },
   {

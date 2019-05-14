@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import IceContainer from '@icedesign/container';
+import { FormattedMessage, injectIntl } from 'react-intl'; // 国际化
 import { Button, Icon, Nav } from '@alifd/next';
 
 export default class SolutionFooter extends Component {
@@ -12,8 +12,9 @@ export default class SolutionFooter extends Component {
   render() {
     return (
       <div style={styles.container}>
-        <h1 style={{ color: '#fff' }}>立刻获得解决方案</h1>
-        <Button style={{ borderRadius: '20px' , color: '#00A2F6', marginTop: '50px', width: '120px', height: '30px' }}>联系我们</Button>
+        <h1 style={{ color: '#fff' }}>
+          <FormattedMessage id='app.website.jiejue.footer.h1' /></h1>
+        <Button style={{ borderRadius: '20px' , color: '#00A2F6', marginTop: '50px', width: '120px', height: '30px' }}><FormattedMessage id='app.website.jiejue.footer.Button' /></Button>
       </div>
     );
   }

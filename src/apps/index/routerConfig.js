@@ -43,6 +43,10 @@ const routerConfig = [
     component: UserData,
   },
   {
+    path: '/user/index.html', // 用户数据信息(用户后台首页)
+    component: UserData,
+  },
+  {
     path: '/pay/crossborder', // 三个支付场景
     component: Crossborder,
   },
