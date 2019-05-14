@@ -10,6 +10,7 @@ import {
 import IceIcon from '@icedesign/icon';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { loginUser } from '../../api';
+import IceImg from '@icedesign/img';
 
 @withRouter
   @injectIntl
@@ -67,7 +68,7 @@ class UserLogin extends Component {
         ({ status, data }) => {
           console.log(values);
           Message.success('登录失败');
-          this.props.history.push('/user/login');
+          // this.props.history.push('/user/login');
         }
       );
       // const { intl } = this.props;
@@ -89,110 +90,94 @@ class UserLogin extends Component {
     const { intl } = this.props;
     return (
       <div style={styles.container}>
-        <h4 style={styles.title}>
-          <FormattedMessage id='app.login.sign.in' />
-        </h4>
-        <IceFormBinderWrapper
-          value={this.state.value}
-          onChange={this.formChange}
-          ref="form"
-        >
-          <div style={styles.formItems}>
-            <div style={styles.formItem}>
-              <IceIcon type="person" size="small" style={styles.inputIcon} />
-              {/* <IceFormBinder name="username" required message="用户名错误">
-                <Input
-                  hasClear
+        <div style={styles.left}>
+          <h4 style={styles.title}>
+            <FormattedMessage id='app.login.sign.in' />
+          </h4>
+          <IceFormBinderWrapper
+            value={this.state.value}
+            onChange={this.formChange}
+            ref="form"
+          >
+            <div style={styles.formItems}>
+              <div style={styles.formItem}>
+                <IceIcon type="person" size="small" style={styles.inputIcon} />
+                <FormattedMessage id='app.login.user.errormessage'>
+                  {txt => (
+                    <IceFormBinder name="username" required message={txt}>
+                      <Input
+                        hasClear
+                        size="large"
+                        maxLength={20}
+                        placeholder={ intl.formatMessage({ id: 'app.login.username' }) }
+                        style={styles.inputCol}
+                      />
+                    </IceFormBinder>
+                  )}
+                </FormattedMessage>
+                <IceFormError name="username" />
+              </div>
+
+              <div style={styles.formItem}>
+                <IceIcon type="lock" size="small" style={styles.inputIcon} />
+                <FormattedMessage id='app.login.pass.errormessage'>
+                  {txt => (
+                    <IceFormBinder name="password" required message={txt}>
+                      <Input
+                        size="large"
+                        htmlType={this.state.type}
+                        placeholder={ intl.formatMessage({ id: 'app.login.password' }) }
+                        style={styles.inputCol}
+                      />
+                    </IceFormBinder>
+                  )}
+                </FormattedMessage>
+                <IceFormError name="password" />
+              </div>
+
+              <div style={styles.formItem}>
+                <IceFormBinder name="checkbox">
+                  <Checkbox style={styles.checkbox}>
+                    <FormattedMessage id='app.login.storage.number' />
+                  </Checkbox>
+                </IceFormBinder>
+                <a style={{ float: 'right', cursor: 'pointer' }}>
+                  <FormattedMessage id='app.login.forget.password' />
+                </a>
+              </div>
+
+              <div style={styles.footer}>
+                <Button
+                  type="primary"
                   size="large"
-                  maxLength={20}
-                  placeholder='邮箱账号'
-                  style={styles.inputCol}
-                />
-              </IceFormBinder>
-              <IceFormError name="username" /> */}
-              {/* 获取不到用户名的输入框内的值 */}
-              {/* <FormattedMessage id='app.login.user.errormessage'>
-                {txt => (
-                  <IceFormBinder name="username" required message={txt}>
-                    <FormattedMessage id="app.login.send">
-                      {txt =>(
-                        <Input
-                          hasClear
-                          size="large"
-                          maxLength={20}
-                          placeholder={txt}
-                          style={styles.inputCol}
-                        />
-                      )}
-                    </FormattedMessage>
-                  </IceFormBinder>
-                )}
-              </FormattedMessage>
-              <IceFormError name="username" /> */}
-              <FormattedMessage id='app.login.user.errormessage'>
-                {txt => (
-                  <IceFormBinder name="username" required message={txt}>
-                    <Input
-                      hasClear
-                      size="large"
-                      maxLength={20}
-                      placeholder={ intl.formatMessage({ id: 'app.login.username' }) }
-                      style={styles.inputCol}
-                    />
-                  </IceFormBinder>
-                )}
-              </FormattedMessage>
-              <IceFormError name="username" />
+                  onClick={this.handleSubmit}
+                  style={styles.submitBtn}
+                >
+                  <FormattedMessage id='app.login.sign.in' />
+                </Button>
+                <Link to="/user/sendmailbox" style={styles.tips}>
+                  <FormattedMessage id='app.login.register.now' />
+                </Link>
+              </div>
             </div>
-
-            <div style={styles.formItem}>
-              <IceIcon type="lock" size="small" style={styles.inputIcon} />
-              <FormattedMessage id='app.login.pass.errormessage'>
-                {txt => (
-                  <IceFormBinder name="password" required message={txt}>
-                    <Input
-                      size="large"
-                      htmlType={this.state.type}
-                      placeholder={ intl.formatMessage({ id: 'app.login.password' }) }
-                      style={styles.inputCol}
-                    />
-                  </IceFormBinder>
-                )}
-              </FormattedMessage>
-              {/* <IceFormBinder name="password" required message="密码错误">
-                <Input
-                  size="large"
-                  htmlType={this.state.type}
-                  placeholder="密码"
-                  style={styles.inputCol}
-                />
-              </IceFormBinder> */}
-              <IceFormError name="password" />
-            </div>
-
-            <div style={styles.formItem}>
-              <IceFormBinder name="checkbox">
-                <Checkbox style={styles.checkbox}>
-                  <FormattedMessage id='app.login.storage.number' />
-                </Checkbox>
-              </IceFormBinder>
-            </div>
-
-            <div style={styles.footer}>
-              <Button
-                type="primary"
-                size="large"
-                onClick={this.handleSubmit}
-                style={styles.submitBtn}
-              >
-                <FormattedMessage id='app.login.sign.in' />
-              </Button>
-              <Link to="/user/sendmailbox" style={styles.tips}>
-                <FormattedMessage id='app.login.register.now' />
-              </Link>
-            </div>
+          </IceFormBinderWrapper>
+        </div>
+        <div style={styles.right}>
+          <div style={styles.box}>
+            <IceImg
+              src={require('../../../../assets/img/login/tel.png')}
+            />
+            <p> <FormattedMessage id='app.login.Tel.consult' /></p>
+            <a>000-1111-2222</a>
           </div>
-        </IceFormBinderWrapper>
+          <div style={styles.box}>
+            <IceImg
+              src={require('../../../../assets/img/login/email.png')}
+            />
+            <p><FormattedMessage id='app.login.Mail.box' /></p>
+            <a>YanYue@3FunPlus.com</a>
+          </div>
+        </div>
       </div>
     );
   }
@@ -200,10 +185,20 @@ class UserLogin extends Component {
 
 const styles = {
   container: {
-    width: '400px',
+    width: '700px',
     padding: '40px',
     background: '#fff',
     borderRadius: '6px',
+    marginTop: '-60px',
+    border: '#cccccc 1px solid',
+    display: 'flex',
+  },
+  left: {
+    float: 'left',
+    // width: '350px',
+    paddingRight: '30px',
+    borderRight: '#ccc 1px solid',
+    flexGrow: '1',
   },
   title: {
     margin: '0 0 40px',
@@ -235,6 +230,16 @@ const styles = {
     marginTop: '20px',
     display: 'block',
     textAlign: 'center',
+  },
+  right: {
+    float: 'left',
+    // width: '250px',
+    flexGrow: '1',
+  },
+  box: {
+    textAlign: 'center',
+    marginTop: '20px',
+    cursor: 'pointer',
   },
 };
 

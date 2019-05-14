@@ -6,12 +6,14 @@ export default class Logo extends PureComponent {
   render() {
     return (
       <div >
-        <IceImg
-          width={100}
-          height={40}
-          src={require('../../../../../../assets/img/index/logo.jpg')}
-          style={{ ...styles.logoStyle, ...this.props.style }}
-        />
+        <Link to="/">
+          <IceImg
+            width={120}
+            height={40}
+            src={require('../../../../../../assets/img/index/ailogo.png')}
+            style={{ ...styles.logoStyle }}
+          />
+        </Link>
       </div>
 
     );
@@ -29,6 +31,5 @@ const styles = {
     fontSize: '28px',
     fontWeight: 'bold',
     textDecoration: 'none',
-    background: 'red',
   },
 };

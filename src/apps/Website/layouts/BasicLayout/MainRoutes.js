@@ -25,7 +25,7 @@ class MainRoutes extends Component {
         {routerData.map(this.renderNormalRoute)}
 
         {/* 根路由默认重定向到 /manage/company */}
-        <Redirect from="/" to="/manage/company" />
+        <Redirect from="/" to="/website/index" />
 
         {/* 未匹配到的路由重定向到 NotFound */}
         <Route component={NotFound} />

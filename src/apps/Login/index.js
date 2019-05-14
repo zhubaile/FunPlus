@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
 } from 'react-router-dom';
 import Store from './store/index';
 import router from './router';

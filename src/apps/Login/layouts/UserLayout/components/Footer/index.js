@@ -1,21 +1,53 @@
 import React from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import IceImg from '@icedesign/img';
+import './footer.css';
+
 
 export default () => {
   return (
     <div style={styles.footer}>
-      <div style={styles.links}>
-        <a href="#" style={styles.link}>
-          帮助
-        </a>
-        <a href="#" style={styles.link}>
-          隐私
-        </a>
-        <a href="#" style={{ ...styles.link, marginRight: '0' }}>
-          <FormattedMessage id="app.zbl.tiaokuan" />
-        </a>
+      <div style={styles.left}>
+      Copyright ©2015 - 20193funplus.com.cn
+        <FormattedMessage id='app.main.footer' />All Rights Reserved
       </div>
-      <div style={styles.copyright}>阿里巴巴集团 © 2018 版权所有</div>
+      <div style={styles.right}>
+        <div className='image'>
+          <IceImg
+            height={24}
+            width={24}
+            src={require('../../../../../../assets/img/shouye/wx.png')}
+          />
+        </div>
+        <div className='image'>
+          <IceImg
+            height={24}
+            width={24}
+            src={require('../../../../../../assets/img/shouye/wb.png')}
+          />
+        </div>
+        <div className='image'>
+          <IceImg
+            height={24}
+            width={24}
+            src={require('../../../../../../assets/img/shouye/face.png')}
+          />
+        </div>
+        <div className='image'>
+          <IceImg
+            height={24}
+            width={24}
+            src={require('../../../../../../assets/img/shouye/twittter.png')}
+          />
+        </div>
+        <div className='image'>
+          <IceImg
+            height={24}
+            width={24}
+            src={require('../../../../../../assets/img/shouye/in.png')}
+          />
+        </div>
+      </div>
     </div>
   );
 };
@@ -23,26 +55,23 @@ export default () => {
 const styles = {
   footer: {
     display: 'flex',
-    flexDirection: 'column',
+    color: '#000',
+    height: '60px',
+    background: '#fff',
+  },
+  left: {
+    display: 'flex',
+    fontSize: '16px',
+    flexGrow: '1',
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'fixed',
-    left: '0',
-    right: '0',
-    bottom: '20px',
+    opacity: '0.6',
   },
-  links: {
-    marginBottom: '8px',
-  },
-  link: {
-    fontSize: '13px',
-    marginRight: '40px',
-    color: '#fff',
-  },
-  copyright: {
-    fontSize: '13px',
-    color: '#fff',
-    lineHeight: 1.5,
-    textAlign: 'right',
+  right: {
+    display: 'flex',
+    flexGrow: '1',
+    // flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 };

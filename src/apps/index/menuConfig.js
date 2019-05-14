@@ -23,12 +23,12 @@ const asideMenuConfig = [
   {
     name: 'monitor',
     path: '/userdata', // 用户数据信息
-    icon: 'yonghu',
+    icon: 'home',
   },
   {
     name: 'pay',
     path: '/pay', // 支付场景
-    icon: 'yonghu',
+    icon: 'redpacket',
     children: [
       {
         name: 'crossborder',
@@ -44,6 +44,46 @@ const asideMenuConfig = [
         path: '/pay/submerchants',
       },
     ],
+  },
+  {
+    name: 'basics',
+    path: '/basics', // 基础
+    icon: 'chart',
+    children: [
+      {
+        name: 'application',
+        path: '/basics/application',
+      },
+      {
+        name: 'apply',
+        path: '/basics/apply',
+      },
+    ],
+  },
+  {
+    name: 'AccountInformation',
+    path: '/accounts', // 账户信息
+    icon: 'ul-list',
+  },
+  {
+    name: 'RolePermissions',
+    path: '/rolepermissions', // 角色权限
+    icon: 'yonghu',
+  },
+  {
+    name: 'MemberManagement',
+    path: '/membermanagement', // 成员管理
+    icon: 'fans',
+  },
+  {
+    name: 'OperationLog',
+    path: '/operationlog', // 操作日志
+    icon: 'content',
+  },
+  {
+    name: 'WorkOrder',
+    path: '/workorder', // 客服工单
+    icon: 'publish',
   },
   {
     name: '表格页',

@@ -230,6 +230,7 @@ class SettingsForm extends Component {
               >
                 <Switch name="notice" />
               </FormItem>
+
               {/* 联系人信息 */}
               {/* 联系人姓名 */}
               <FormItem

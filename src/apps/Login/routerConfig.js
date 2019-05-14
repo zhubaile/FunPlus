@@ -2,6 +2,7 @@
 import Login from './pages/UserLogin';
 import Register from './pages/UserRegister';
 import SendMailbox from './pages/SendMailbox';
+// import routerConfig from "../Website/routerConfig";
 
 // ========系统首页============ //
 const login = [
@@ -20,8 +21,8 @@ const login = [
   },
 ];
 
-
-export default [].concat(login, [{
+export default login;
+/* export default [].concat(login, [{
   path: '*',
   component: Login,
-}]);
+}]); */

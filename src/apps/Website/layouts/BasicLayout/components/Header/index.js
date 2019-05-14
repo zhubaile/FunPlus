@@ -7,7 +7,10 @@ import { headerMenuConfig } from '../../../../menuConfig';
 import Logo from '../Logo';
 import './index.scss';
 import Aside from '../Aside';
+import SelectLang from '../../../../../Internationalization/SelectLang';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
+@injectIntl
 @withRouter
 export default class Header extends Component {
   render() {
@@ -15,11 +18,11 @@ export default class Header extends Component {
     const { pathname } = location;
     return (
       <div className="header-container">
-        <div className="header-nav">
+        <div className="header-nav" id='linktop'>
           <Aside />
         </div>
         <div className="header-navbar">
-          <Nav
+          {/* <Nav
             className="header-navbar-menu"
             selectedKeys={[pathname]}
             defaultSelectedKeys={[pathname]}
@@ -107,20 +110,21 @@ export default class Header extends Component {
                   </Nav.Item>
                 );
               })}
-          </Nav>
+          </Nav> */}
           <div className="ice-design-header-userpannel">
             <ul>
               <li className="user-profile-menu-item">
-                <a href="login.html" style={{ color: '#666' }}>
+                {/* <Link to='/user/login'>
                   登录
-                  {/*
-                  <FoundationSymbol type="person" size="small" />
-                  <FormattedMessage id="app.header.user.logout" />
-                  */}
+                </Link> */}
+                <a href="login.html" style={{ color: '#666' }}>
+                  {/* <FoundationSymbol type="person" size="small" /> */}
+                   <FormattedMessage id="app.login.sign.in" />
                 </a>
               </li>
             </ul>
           </div>
+          <SelectLang />
         </div>
       </div>
     );

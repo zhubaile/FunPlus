@@ -2,7 +2,7 @@ import React from 'react';
 import { getRouterData } from './utils/utils';
 import { asideMenuConfig } from './menuConfig';
 // 这样有一个弊端 没有按需加载，后期可以引入按需加载
-//  import Home from './pages/home';
+// import Home from '../Website/index';
 // import User from './pages/user';
 // import I18n from './pages/i18n';
 // import Fail from './pages/Fail';
@@ -29,6 +29,9 @@ const Setting = React.lazy(() => import('./pages/Setting'));
 const Crossborder = React.lazy(() => import('./pages/Pay/Crossborder'));
 const Enterprise = React.lazy(() => import('./pages/Pay/Enterprise'));
 const Submerchants = React.lazy(() => import('./pages/Pay/Submerchants'));
+const Accoounts = React.lazy(() => import('./pages/AccountInformation'));
+// const Website = React.lazy(() => import('../Website/index'));
+// const Login = React.lazy(() => import('../Login/index'));
 // ========系统首页============ //
 const routerConfig = [
   {
@@ -37,6 +40,10 @@ const routerConfig = [
   },
   {
     path: '/userdata', // 用户数据信息
+    component: UserData,
+  },
+  {
+    path: '/user/index.html', // 用户数据信息(用户后台首页)
     component: UserData,
   },
   {
@@ -50,6 +57,10 @@ const routerConfig = [
   {
     path: '/pay/submerchants',
     component: Submerchants,
+  },
+  {
+    path: '/accounts', // 账户信息
+    component: Accoounts,
   },
   {
     path: '/list/basic', // 列表页
@@ -98,10 +109,6 @@ const routerConfig = [
   {
     path: '/exception/404',
     component: NotFound,
-  },
-  {
-    path: '/setting',
-    component: Setting,
   },
 ];
 

@@ -2,9 +2,12 @@ import React, { Component, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Grid } from '@alifd/next';
 import Footer from './components/Footer';
+import Header from './components/Header';
 import Intro from './components/Intro';
 import routerData from '../../routerConfig';
 // import PageLoading from '../../components/PageLoading';
+import MainRoutes from './MainRoutes';
+import IceImg from '@icedesign/img';
 
 const { Row, Col } = Grid;
 
@@ -12,10 +15,11 @@ export default class UserLayout extends Component {
   render() {
     return (
       <div style={styles.container}>
+        <Header />
+        <IceImg
+          src={require('../../../../assets/img/login/zbg.png')}
+        />
         <Row wrap style={styles.row}>
-          <Col l="12">
-            <Intro />
-          </Col>
           <Col l="12">
             <div style={styles.form}>
               <Suspense>
@@ -30,7 +34,8 @@ export default class UserLayout extends Component {
                       />
                     ) : null;
                   })}
-                  <Redirect exact from="/" to="/user/login" />
+                  {/* <Redirect exact from="/" to="/user/login" /> */}
+                  <MainRoutes />
                 </Switch>
               </Suspense>
             </div>
@@ -48,17 +53,18 @@ const styles = {
     width: '100wh',
     minWidth: '1200px',
     height: '100vh',
-    backgroundImage:
-      'url(https://img.alicdn.com/tfs/TB1Dc9.zFYqK1RjSZLeXXbXppXa-2704-1790.png)',
-    backgroundSize: 'cover',
+
     display: 'flex',
     flexDirection: 'column',
   },
   row: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
     flex: '1',
+    marginTop: '-30px;',
+
+    // background:'#fff',
   },
   form: {
     display: 'flex',

@@ -7,7 +7,14 @@ import chart from './chart';
 import table from './table';
 import list from './list';
 import menu from './menu';
-import login from './Login/login';
+
+import login from './Login/login'; // 登录界面翻译
+import website from './Website/index'; // 官网导航翻译
+import wshouwy from './Website/shouye'; // 官网首页翻译
+import wchanpin from './Website/chanpin'; // 官网产品翻译
+import whelp from './Website/help'; // 官网帮助中心翻译
+import wjiejue from './Website/jiejue'; // 官网解决方案翻译
+import wdemo from './Website/demo'; // 官网demo翻译
 
 export default {
   'app.btn.edit': '编辑',
@@ -26,4 +33,10 @@ export default {
   ...profile,
   ...list,
   ...login,
+  ...website,
+  ...wshouwy,
+  ...wchanpin,
+  ...whelp,
+  ...wjiejue,
+  ...wdemo,
 };

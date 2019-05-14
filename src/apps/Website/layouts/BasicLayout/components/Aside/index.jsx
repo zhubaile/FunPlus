@@ -2,13 +2,14 @@
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import FoundationSymbol from '@icedesign/foundation-symbol';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import Layout from '@icedesign/layout';
 import { Nav } from '@alifd/next';
 import React, { Component } from 'react';
 import { asideMenuConfig } from '../../../../menuConfig';
 import Logo from '../Logo';
 import './index.scss';
-
+@injectIntl
 @withRouter
 export default class Aside extends Component {
   constructor(props) {
@@ -45,14 +46,17 @@ export default class Aside extends Component {
         }
       });
     }
-
     return openKeys;
   };
-
+  getLocaleKey = (item) => {
+    return `app${item.replace(/\//g, '.')}`;
+  };
   render() {
+    const {
+      intl: { formatMessage },
+    } = this.props;
     const { location } = this.props;
     const { pathname } = location;
-
     return (
       <Layout.Aside className="custom-aside">
         <div className="aside-logo">
@@ -72,6 +76,7 @@ export default class Aside extends Component {
           {Array.isArray(asideMenuConfig) &&
             asideMenuConfig.length > 0 &&
             asideMenuConfig.map((nav, index) => {
+              const navname = formatMessage({ id: this.getLocaleKey(nav.path) });
               if (nav.children && nav.children.length > 0) {
                 return (
                   <Nav.SubNav
@@ -86,7 +91,7 @@ export default class Aside extends Component {
                           />
                         ) : null}
                         <span className="ice-menu-collapse-hide">
-                          {nav.name}
+                          {navname}
                         </span>
                       </span>
                     }
@@ -101,9 +106,10 @@ export default class Aside extends Component {
                       } else {
                         linkProps.to = item.path;
                       }
+                      const itemname = formatMessage({ id: this.getLocaleKey(item.path) });
                       return (
                         <Nav.Item key={item.path}>
-                          <Link {...linkProps}>{item.name}</Link>
+                          <Link {...linkProps}>{itemname}</Link>
                         </Nav.Item>
                       );
                     })}
@@ -130,7 +136,7 @@ export default class Aside extends Component {
                           type={nav.icon}
                         />
                       ) : null}
-                      <span className="ice-menu-collapse-hide">{nav.name}</span>
+                      <span className="ice-menu-collapse-hide">{navname}</span>
                     </span>
                   </Link>
                 </Nav.Item>

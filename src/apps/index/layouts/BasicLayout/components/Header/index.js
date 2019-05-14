@@ -19,7 +19,9 @@ export default class Header extends Component {
   handleSetting = () => {
     this.props.history.push('/setting');
   };
-
+  /*  handleLogout = () => {
+    this.props.history.push('/website');
+  }; */
   getLocaleKey = (item) => {
     return `app.header.${item.name}`;
   };
@@ -120,15 +122,20 @@ export default class Header extends Component {
                 <FoundationSymbol type="repair" size="small" />
                 <FormattedMessage id="app.header.user.setting" />
               </li>
+              {/* <li
+                className="user-profile-menu-item"
+                onClick={this.handleLogout}
+              >
+                <FoundationSymbol type="person" size="small" />
+                <FormattedMessage id="app.header.user.logout" />
+              </li> */}
               <li
                 className="user-profile-menu-item"
-               /* onClick={this.props.handleLogout} */
               >
                 <a href="website.html" style={{ color: '#666' }}>
                   <FoundationSymbol type="person" size="small" />
                   <FormattedMessage id="app.header.user.logout" />
                 </a>
-
               </li>
             </ul>
           </Balloon>
