@@ -10,6 +10,7 @@ import {
 import IceIcon from '@icedesign/icon';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { registerUser } from '../../api';
+
 import IceImg from '@icedesign/img';
 
 @injectIntl

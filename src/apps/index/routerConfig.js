@@ -1,98 +1,127 @@
 import React from 'react';
 import { getRouterData } from './utils/utils';
 import { asideMenuConfig } from './menuConfig';
-// 这样有一个弊端 没有按需加载，后期可以引入按需加载
-// import Home from '../Website/index';
-// import User from './pages/user';
-// import I18n from './pages/i18n';
-// import Fail from './pages/Fail';
-// const Dashboard = React.lazy(() => import('./pages/Dashboard'));
-// const Charts = React.lazy(() => import('./pages/Charts'));  //基础图表
-// const BasicCharts = React.lazy(() => import('./pages/BasicCharts'));  // 通用图表
-const Terms = React.lazy(() => import('./pages/Terms'));
-const Result = React.lazy(() => import('./pages/Result'));
-const BasicList = React.lazy(() => import('./pages/BasicList'));
-const ProjectList = React.lazy(() => import('./pages/ProjectList'));
-const BasicTable = React.lazy(() => import('./pages/BasicTable'));
-const GeneralTable = React.lazy(() => import('./pages/GeneralTable'));
-const Profile = React.lazy(() => import('./pages/Profile'));
-const Fail = React.lazy(() => import('./pages/Fail'));
+
+/* 错误的信息 */
 const Empty = React.lazy(() => import('./pages/Exception/Empty'));
 const Forbidden = React.lazy(() => import('./pages/Exception/Forbidden'));
 const NotFound = React.lazy(() => import('./pages/Exception/NotFound'));
 const ServerError = React.lazy(() => import('./pages/Exception/ServerError'));
 
+// 最新的 个人账户
+const Accountinformation = React.lazy(() => import('./pages/Personal/Accountinformation'));
+const Enterprisecertification = React.lazy(() => import('./pages/Personal/Enterprisecertification'));
+const Costcenter = React.lazy(() => import('./pages/Personal/Costcenter'));
+const Controloverinvoices = React.lazy(() => import('./pages/Personal/Controloverinvoices'));
+const Operationlog = React.lazy(() => import('./pages/Personal/Operationlog'));
 
-const UserData = React.lazy(() => import('./pages/UserData'));
-const Setting = React.lazy(() => import('./pages/Setting'));
-// const Pay = React.lazy(() => import('./pages/Pay'));
-const Crossborder = React.lazy(() => import('./pages/Pay/Crossborder'));
-const Enterprise = React.lazy(() => import('./pages/Pay/Enterprise'));
-const Submerchants = React.lazy(() => import('./pages/Pay/Submerchants'));
-const Accoounts = React.lazy(() => import('./pages/AccountInformation'));
-// const Website = React.lazy(() => import('../Website/index'));
-// const Login = React.lazy(() => import('../Login/index'));
+const HelpCenteraddition = React.lazy(() => import('./pages/Personal/Accountinformation/HelpCenteraddition'));
+const Accesstoinformationaddition = React.lazy(() => import('./pages/Personal/Accountinformation/Accesstoinformationaddition'));
+// 收入
+const Income = React.lazy(() => import('./pages/Income'));
+// 支出
+const Orderrefund = React.lazy(() => import('./pages/Expenditure/Orderrefund')); // 订单退款
+const Batchrefund = React.lazy(() => import('./pages/Expenditure/Batchrefund')); // 批量退款
+const Enterprisepaymentapi = React.lazy(() => import('./pages/Expenditure/Enterprisepaymentapi')); // 企业付款api
+const BusinessPaymentBatch = React.lazy(() => import('./pages/Expenditure/BusinessPaymentBatch')); //  企业付款批量
+const Auditofpayment = React.lazy(() => import('./pages/Expenditure/Auditofpayment')); // 出款审核
+// 对账
+const Selfsummarization = React.lazy(() => import('./pages/Reconciliation/Selfsummarization')); // 自定汇总
+const Channelreconciliation = React.lazy(() => import('./pages/Reconciliation/Channelreconciliation')); // 渠道对账功能
+const ErrorTrading = React.lazy(() => import('./pages/Reconciliation/ErrorTrading')); // 差错交易
+const Daysummary = React.lazy(() => import('./pages/Reconciliation/Daysummary')); // 当日汇总
+const Transactionreport = React.lazy(() => import('./pages/Reconciliation/Transactionreport')); // 交易报表
+// 应用设置
+const Applicationparameters = React.lazy(() => import('./pages/Applicationsettings/Applicationparameters')); // 应用参数
+const Paymentchannel = React.lazy(() => import('./pages/Applicationsettings/Paymentchannel')); // 应用参数
+const Routingrules = React.lazy(() => import('./pages/Applicationsettings/Routingrules')); // 应用参数
 // ========系统首页============ //
 const routerConfig = [
   {
-    path: '/setting', // 个人信息设置
-    component: Setting,
+    path: '/personal/accountinformation', // 账户信息
+    component: Accountinformation,
   },
   {
-    path: '/userdata', // 用户数据信息
-    component: UserData,
+    path: '/personal/enterprisecertification', // 企业认证
+    component: Enterprisecertification,
   },
   {
-    path: '/user/index.html', // 用户数据信息(用户后台首页)
-    component: UserData,
+    path: '/personal/costcenter', // 费用中心
+    component: Costcenter,
   },
   {
-    path: '/pay/crossborder', // 三个支付场景
-    component: Crossborder,
+    path: '/personal/controloverinvoices', // 发票管理
+    component: Controloverinvoices,
   },
   {
-    path: '/pay/enterprise',
-    component: Enterprise,
+    path: '/personal/operationlog', // 操作日志
+    component: Operationlog,
   },
   {
-    path: '/pay/submerchants',
-    component: Submerchants,
+    path: '/personal/helpcenteraddition', // 运维帮助中心
+    component: HelpCenteraddition,
   },
   {
-    path: '/accounts', // 账户信息
-    component: Accoounts,
+    path: '/personal/accesstoinformationaddition', // 查阅更多信息
+    component: Accesstoinformationaddition,
+  },
+
+
+  {
+    path: '/income', // 收入
+    component: Income,
   },
   {
-    path: '/list/basic', // 列表页
-    component: BasicList,
+    path: '/expenditure/orderrefund',
+    component: Orderrefund,
   },
   {
-    path: '/list/general',
-    component: ProjectList,
+    path: '/expenditure/batchrefund',
+    component: Batchrefund,
   },
   {
-    path: '/result/success',
-    component: Result,
+    path: '/expenditure/enterprisepaymentapi',
+    component: Enterprisepaymentapi,
   },
   {
-    path: '/result/fail',
-    component: Fail,
+    path: '/expenditure/businessPaymentBatch',
+    component: BusinessPaymentBatch,
   },
   {
-    path: '/table/general', // 表格页
-    component: GeneralTable,
+    path: '/expenditure/auditofpayment',
+    component: Auditofpayment,
   },
   {
-    path: '/table/basic',
-    component: BasicTable,
+    path: '/reconciliation/selfsummarization',
+    component: Selfsummarization,
   },
   {
-    path: '/profile/basic',
-    component: Profile,
+    path: '/reconciliation/channelreconciliation',
+    component: Channelreconciliation,
   },
   {
-    path: '/profile/general',
-    component: Terms,
+    path: '/reconciliation/errorTrading',
+    component: ErrorTrading,
+  },
+  {
+    path: '/reconciliation/daysummary',
+    component: Daysummary,
+  },
+  {
+    path: '/reconciliation/transactionreport',
+    component: Transactionreport,
+  },
+  {
+    path: '/applicationsettings/applicationparameters',
+    component: Applicationparameters,
+  },
+  {
+    path: '/applicationsettings/paymentchannel',
+    component: Paymentchannel,
+  },
+  {
+    path: '/applicationsettings/routingrules',
+    component: Routingrules,
   },
   {
     path: '/exception/500',

@@ -3,14 +3,16 @@ import { FormattedMessage, injectIntl } from 'react-intl'; // 国际化
 
 import {Slider } from '@alifd/next';
 import Footers from '../../../layouts/BasicLayout/components/Footer/Footers';
+import Zfbpaypopup from './Zfbpaypopup';
 import '../../index.css';
 
 
-export default class Demoexperience extends Component {
+export default class Demopay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open:false
+      open:false,
+      content:null,
     };
   }
   close(){
@@ -26,6 +28,9 @@ export default class Demoexperience extends Component {
     })
     this.confirmCallBack = confirm
   }
+  ceshi(){
+    this.Zfbpaypopup.open();
+  }
   render() {
     const settings = {
       autoplay: true,
@@ -40,6 +45,7 @@ export default class Demoexperience extends Component {
     if(!this.state.open) return null
     return (
       <div className='demopay'>
+        <Zfbpaypopup ref={(node)=>this.Zfbpaypopup=node} />
         <div className="hxj-popup-overlay">
               {/*半透明覆盖层*/}
         </div>
@@ -71,7 +77,7 @@ export default class Demoexperience extends Component {
                    <p><strong> <FormattedMessage id='app.website.demopay.mainleft.strong' /></strong>&nbsp;&nbsp; &nbsp; <FormattedMessage id='app.website.demopay.mainleft.p2' /></p>
                  </div>
                  <div className='pay-right'>
-                     <p><FormattedMessage id='app.website.demopay.mainright.p1' /> <strong><FormattedMessage id='app.website.demopay.mainright.strong' /></strong><FormattedMessage id='app.website.demoexper.maintopright.con2' /></p>
+                     <p><FormattedMessage id='app.website.demopay.mainright.p1' /> <strong>{this.state.content}</strong><FormattedMessage id='app.website.demoexper.maintopright.con2' /></p>
                      <button><FormattedMessage id='app.website.demopay.mainright.button' /></button>
                  </div>
                </div>
@@ -80,7 +86,7 @@ export default class Demoexperience extends Component {
                  <div className='footer-bottom-left'>
                    <div className='footer-bottom-left-main'>
                      <p><FormattedMessage id='app.website.demopay.mainbottomleft.p1' /></p>
-                     <strong><FormattedMessage id='app.website.demopay.mainbottomleft.strong' /></strong>
+                     <strong>￥{this.state.content}</strong>
                      <div className='qrcode'>
                        <div className='qrcode-top'>
                          <img src={require('../../../../../assets/img/demopay/zf4.png')} style={{ width: '100%;' }} alt="" />
@@ -110,7 +116,7 @@ export default class Demoexperience extends Component {
                  </div>
                  <div className='footer-bottom-right'>
                    <img src={require('../../../../../assets/img/demopay/zf3.png')} style={{ width: '90%;' }} alt="" />
-                   <button className='btn top'><FormattedMessage id='app.website.demopay.mainbottomright.button1' /></button>
+                   <button className='btn top' onClick={this.ceshi.bind(this)}><FormattedMessage id='app.website.demopay.mainbottomright.button1' /></button>
                    <button className='btn bottom' onClick={this.close.bind(this)}><FormattedMessage id='app.website.demopay.mainbottomright.button2' /></button>
                  </div>
                  <div style={{ clear: 'both' }} />

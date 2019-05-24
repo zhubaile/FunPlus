@@ -14,7 +14,6 @@ export default {
   'app.login.forget.password': '忘记密码',
   'app.login.Tel.consult': '咨询电话',
   'app.login.Mail.box': '电子邮箱',
-
   // 发送注册界面
   'app.register.register': '注册',
   'app.sendregister.send': '发送',

@@ -46,6 +46,7 @@ export default {
   'app.menu.pay.crossborder': '跨境支付',
   'app.menu.pay.enterprise': '企业打款',
   'app.menu.pay.submerchants': '子商户',
+
   'app.menu.accounts': '账户信息',
   'app.menu.basics': '基础',
   'app.menu.basics.application': '支付应用',
