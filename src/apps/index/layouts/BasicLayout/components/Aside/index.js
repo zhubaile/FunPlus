@@ -6,13 +6,11 @@ import { withRouter } from 'react-router';
 import { Nav } from '@alifd/next';
 import { FormattedMessage } from 'react-intl';
 
-import Logo from '../Logo';
 import { asideMenuConfig } from '../../../../menuConfig';
+import '../Header/index.scss'; // icon 样式
 import './index.scss';
 
-const SubNav = Nav.SubNav;
-const NavItem = Nav.Item;
-
+const { Item, SubNav } = Nav;
 @withRouter
 export default class Aside extends Component {
   static propTypes = {};
@@ -22,148 +20,10 @@ export default class Aside extends Component {
   constructor(props) {
     super(props);
 
-    const openKeys = this.getDefaultOpenKeys();
     this.state = {
-      collapse: false,
-      openDrawer: false,
-      openKeys,
+
     };
-
-    this.openKeysCache = openKeys;
   }
-
-  /**
-   * 响应式通过抽屉形式切换菜单
-   */
-  toggleMenu = () => {
-    const { openDrawer } = this.state;
-    this.setState({
-      openDrawer: !openDrawer,
-    });
-  };
-
-  /**
-   * 折叠搜索切换
-   */
-  toggleCollapse = () => {
-    const { collapse } = this.state;
-    this.setState({
-      collapse: !collapse,
-    });
-  };
-
-  /**
-   * 左侧菜单收缩切换
-   */
-  onSelect = () => {
-    this.toggleMenu();
-  };
-
-  /**
-   * 获取默认展开菜单项
-   */
-  getDefaultOpenKeys = () => {
-    const { location = {} } = this.props;
-    const { pathname } = location;
-    const menus = this.getNavMenuItems(asideMenuConfig);
-
-    let openKeys = [];
-    if (Array.isArray(menus)) {
-      asideMenuConfig.forEach((item, index) => {
-        if (pathname.startsWith(item.path)) {
-          openKeys = [`${index}`];
-        }
-      });
-    }
-
-    return openKeys;
-  };
-
-  /**
-   * 当前展开的菜单项
-   */
-  onOpenChange = (openKeys) => {
-    this.setState({
-      openKeys,
-      openDrawer: false,
-    });
-    this.openKeysCache = openKeys;
-  };
-
-  /**
-   * 获取菜单项数据
-   */
-  getNavMenuItems = (menusData) => {
-    if (!menusData) {
-      return [];
-    }
-
-    return menusData
-      .filter(item => item.name && !item.hideInMenu)
-      .map((item, index) => {
-        const ItemDom = this.getSubMenuOrItem(item, index);
-        return this.checkPermissionItem(item.authority, ItemDom);
-      })
-      .filter(item => item);
-  };
-
-  /**
-   * menuConfig.js 的 name 属性和 locals/menu.js 的 key 进行对应
-   * 在这里进行转换 path: '/chart/basic' => 'app.menu.chart.basic'
-   */
-  getLocaleKey = (item) => {
-    return `app.menu${item.path.replace(/\//g, '.')}`;
-  };
-
-  /**
-   * 二级导航
-   */
-  getSubMenuOrItem = (item, index) => {
-    if (item.children && item.children.some(child => child.name)) {
-      const childrenItems = this.getNavMenuItems(item.children);
-
-      if (childrenItems && childrenItems.length > 0) {
-        return (
-          <SubNav
-            key={index}
-            icon={
-              item.icon ? (
-                <FoundationSymbol size="small" type={item.icon} />
-              ) : null
-            }
-            label={
-              <span className="ice-menu-collapse-hide">
-                <FormattedMessage id={this.getLocaleKey(item)} />
-              </span>
-            }
-          >
-            {childrenItems}
-          </SubNav>
-        );
-      }
-      return null;
-    }
-    return (
-      <NavItem key={item.path}>
-        <Link to={item.path}>
-          <FoundationSymbol size="small" type={item.icon} />
-          <FormattedMessage id={this.getLocaleKey(item)} />
-        </Link>
-      </NavItem>
-    );
-  };
-
-  /**
-   * 权限检查
-   */
-  checkPermissionItem = (authority, ItemDom) => {
-    // if (Authorized.check) {
-    //   const { check } = Authorized;
-    //   return check(authority, ItemDom);
-    // }
-
-    return ItemDom;
-  };
 
   render() {
     const {
@@ -174,44 +34,241 @@ export default class Aside extends Component {
     const { openDrawer, collapse } = this.state;
 
     return (
-      <div
-        className={cx('ice-design-layout-aside', {
-          'open-drawer': openDrawer,
-        })}
-      >
-        {isMobile && <Logo />}
-
-        {isMobile && !openDrawer && (
-        <a className="menu-btn" onClick={this.toggleMenu}>
-          <FoundationSymbol type="menu" size="small" />
-        </a>
-      )}
-
-        {!isMobile && (
-          <a className="collapse-btn" onClick={this.toggleCollapse}>
-            <FoundationSymbol
-              key={collapse}
-              type={collapse ? 'transfer-right' : 'transfer-left'}
-              size="large"
-            />
-          </a>
-        )}
-
-        <Nav
-          className="aaa"
-          style={{ width: collapse ? 60 : 200 }}
-          mode={collapse ? 'popup' : 'inline'}
-          iconOnly={collapse}
-          hasArrow={!collapse}
-          activeDirection={null}
-          selectedKeys={[pathname]}
-          openKeys={this.state.openKeys}
-          defaultSelectedKeys={[pathname]}
-          onOpen={this.onOpenChange}
-          onSelect={this.onSelect}
-        >
-          {this.getNavMenuItems(asideMenuConfig)}
-        </Nav>
+      <div className="menu-w selected-menu-color-light menu-activated-on-hover menu-has-selected-link color-scheme-light color-style-transparent sub-menu-color-bright menu-position-side menu-side-left menu-layout-full sub-menu-style-over">
+        {/* <Nav style={{ height: 400, width: 240 }} mode="popup" popupAlign='follow' defaultOpenKeys={['sub-nav-2']} triggerType='hover'>
+          <span>交易</span>
+          <Item><i className="os-icon os-icon-layout" />收入</Item>
+          <SubNav key="sub-nav-2" label="支出" icon=''>
+            <i className="os-icon os-icon-layout" />
+            <Item key="1">
+              <i className="os-icon os-icon-layout"></i>
+              企业付款
+            </Item>
+            <Item key="2">订单退款</Item>
+            <Item key="3">出款审核</Item>
+          </SubNav>
+          <SubNav key="sub-nav-3" label="对账">
+            <Item key="1">财务汇总</Item>
+            <Item key="2">渠道对账功能</Item>
+            <Item key="3">差错交易</Item>
+            <Item key="3">交易报表</Item>
+          </SubNav>
+        </Nav> */}
+        <ul className="main-menu">
+          <li className="sub-header">
+            <span>交易</span>
+          </li>
+          <li className="selected has-sub-menu">
+            <Link to='/income'>
+              <div className="icon-w">
+                <div className="os-icon os-icon-coins-4" />
+              </div>
+              <span>收入</span>
+            </Link>
+          </li>
+          <li className="selected has-sub-menu">
+            <a href="#">
+              <div className="icon-w">
+                <div className="os-icon os-icon-wallet-loaded" />
+              </div>
+              <span>支出</span>
+            </a>
+            <div className="sub-menu-w">
+              {/* <div className="sub-menu-header">
+                支出
+              </div> */}
+              {/* <div className="sub-menu-icon">
+                <i className="os-icon os-icon-layout" />
+              </div> */}
+              <div className="sub-menu-i">
+                <ul className="sub-menu">
+                  <li>
+                    <Link to='/expenditure/orderrefund'>
+                      订单退款
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/expenditure/batchrefund'>
+                      批量退款
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/expenditure/enterprisepaymentapi'>
+                      企业付款api
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/expenditure/businessPaymentBatch'>
+                      企业付款批量
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/expenditure/auditofpayment'>
+                      出款审核
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li className="selected has-sub-menu">
+            <a href="#">
+              <div className="icon-w">
+                <div className="os-icon os-icon-ui-55" />
+              </div>
+              <span>对账</span>
+            </a>
+            <div className="sub-menu-w">
+              <div className="sub-menu-i">
+                <ul className="sub-menu">
+                  <li>
+                    <Link to='/reconciliation/selfsummarization'>
+                      财务汇总
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/reconciliation/channelreconciliation'>
+                      渠道对账功能
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/reconciliation/errorTrading'>
+                      差错交易
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/reconciliation/daysummary'>
+                      当日汇总
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/reconciliation/transactionreport'>
+                      交易报表
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li className="sub-header">
+            <span>应用</span>
+          </li>
+          <li className="selected has-sub-menu">
+            <a href="#">
+              <div className="icon-w">
+                <div className="os-icon os-icon-layout" />
+              </div>
+              <span>应用设置</span>
+            </a>
+            <div className="sub-menu-w">
+              <div className="sub-menu-i">
+                <ul className="sub-menu">
+                  <li>
+                    <Link to='/applicationsettings/applicationparameters'>应用参数</Link>
+                  </li>
+                  <li>
+                    <Link to='/applicationsettings/paymentchannel'>支付渠道<strong className="badge badge-danger">Hot</strong></Link>
+                  </li>
+                  <li>
+                    <Link to='/applicationsettings/routingrules'>路由规则</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li className="selected has-sub-menu">
+            <a href="#">
+              <div className="icon-w">
+                <div className="os-icon os-icon-layout" />
+              </div>
+              <span>设备管理</span>
+            </a>
+            <div className="sub-menu-w">
+              {/* <div className="sub-menu-header">
+                设备管理
+              </div> */}
+              {/* <div className="sub-menu-icon">
+                <i className="os-icon os-icon-layout" />
+              </div> */}
+              <div className="sub-menu-i">
+                <ul className="sub-menu">
+                  <li>
+                    <a href="#">设备列表</a>
+                  </li>
+                  <li>
+                    <a href="#">设备分组</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li className="selected has-sub-menu">
+            <a href="#">
+              <div className="icon-w">
+                <div className="os-icon os-icon-fingerprint" />
+              </div>
+              <span>权限管理</span>
+            </a>
+            <div className="sub-menu-w">
+              {/* <div className="sub-menu-header">
+                权限管理
+              </div> */}
+              {/* <div className="sub-menu-icon">
+                <i className="os-icon os-icon-layout" />
+              </div> */}
+              <div className="sub-menu-i">
+                <ul className="sub-menu">
+                  <li>
+                    <a href="#">成员权限</a>
+                  </li>
+                  <li>
+                    <a href="#">高级权限开关</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li className="selected has-sub-menu">
+            <a href="#">
+              <div className="icon-w">
+                <div className="os-icon os-icon-delivery-box-2" />
+              </div>
+              <span>辅助工具</span>
+            </a>
+            <div className="sub-menu-w">
+              {/* <div className="sub-menu-header">
+                辅助工具
+              </div> */}
+              {/* <div className="sub-menu-icon">
+                <i className="os-icon os-icon-layout" />
+              </div> */}
+              <div className="sub-menu-i">
+                <ul className="sub-menu">
+                  <li>
+                    <a href="#">联调工具</a>
+                  </li>
+                  <li>
+                    <a href="#">webhooks</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li className="sub-header">
+            <span>接口版本：0.12  <br /> 后台版本：0.11 beta <br /> 对接模式：平台发起|直连|间连</span>
+          </li>
+        </ul>
+        <div className="side-menu-magic">
+          <h4>
+            3FunPlus企业版
+          </h4>
+          <p>
+            高性能支持
+          </p>
+          <div className="btn-w">
+            <a className="btn btn-white btn-rounded" href="" target="_blank">立刻升级</a>
+          </div>
+        </div>
       </div>
     );
   }

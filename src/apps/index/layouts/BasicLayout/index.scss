@@ -3,8 +3,10 @@ body {
 }
 
 .ice-design-layout-dark.ice-design-layout {
-  background-image: url(https://img.alicdn.com/tfs/TB1_YvwXTtYBeNjy1XdXXXXyVXa-1680-370.png);
-  background-color: #2e323f;
+  min-width: 1440px;
+  // background-image: url(https://img.alicdn.com/tfs/TB1_YvwXTtYBeNjy1XdXXXXyVXa-1680-370.png);
+  // background-color: #2e323f;
+  // background-color: #FFF;
 }
 
 .ice-design-layout-dark {
@@ -18,15 +20,15 @@ body {
   .ice-layout {
     width: 100%;
     min-height: 100vh;
-    padding: 0 20px;
+    // padding: 0 20px;
     background: transparent;
   }
 
   .ice-layout-main {
-    padding: 0 0 0 20px;
+    // padding: 0 0 0 10px;
+    // background: #E6F1FC 100%;
   }
 
   .ice-layout-section {
-    margin: 20px 0 0;
   }
 }
