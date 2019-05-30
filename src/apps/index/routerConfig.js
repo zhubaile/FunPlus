@@ -56,7 +56,7 @@ const Requestlog = React.lazy(() => import('./pages/Auxiliarytools/Requestlog'))
 const routerConfig = [
   {
     // path: '/personal/accountinformation/:appid?', // 账户信息
-    path: '/personal/accountinformation ',
+    path: '/personal/accountinformation',
     component: Accountinformation,
   },
   {
