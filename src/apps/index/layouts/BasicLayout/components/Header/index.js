@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 // import { Balloon, Nav } from '@alifd/next';
 // import IceImg from '@icedesign/img';
 import Layout from '@icedesign/layout';
-// import FoundationSymbol from '@icedesign/foundation-symbol';
 import cx from 'classnames';
 import { Link, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
