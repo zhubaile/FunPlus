@@ -94,18 +94,28 @@ class UserRegister extends Component {
       const { intl } = this.props;
       // 注册的ajax请求
       registerUser({
-        name: 'values.name',
-        tel: 'values.tel',
-        email: 'values.email',
-        passwd: 'values.passwd',
-        rePasswd: 'values.rePasswd',
-        sign: 's',
+        username: values.name,
+        phone: values.tel,
+        email: values.email,
+        password: values.passwd,
+        passwordTwo: values.rePasswd,
+        sign: values.sign,
       }).then(
         ({ status, data }) => {
-          console.log(values);
-          Message.success(intl.formatMessage({ id: 'app.register.success' }));
+          debugger;
+          if (data.errCoder == 0) {
+            Message.success(intl.formatMessage({ id: 'app.register.success' }));
+            // Message.success('注册成功');
+            return (
+              this.props.history.push('/user/login')
+            );
+          } 
+          Message.success(data.message);
+          
+          // console.log(values);
+          // Message.success(intl.formatMessage({ id: 'app.register.success' }));
           // Message.success('注册成功');
-          this.props.history.push('/user/login');
+          // this.props.history.push('/user/login');
         }
       ).catch(
         ({ status, data }) => {

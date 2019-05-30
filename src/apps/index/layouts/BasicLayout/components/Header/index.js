@@ -14,8 +14,9 @@ import Information from './components/Information';
 import Personnel from './components/Personnel';
 import Administration from './components/Administration';
 
-// import './main.css';
 import './index.scss';
+
+const Cookies = require('js-cookie');
 
 @injectIntl
 @withRouter
@@ -25,6 +26,9 @@ export default class Header extends Component {
 
     this.state = {
     };
+  }
+  componentDidMount(){
+    Cookies.set('appid', '1996bcb081df11e9a7b30fe17b28f380');
   }
   handleSetting = () => {
     this.props.history.push('/setting');

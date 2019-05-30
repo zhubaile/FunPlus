@@ -4,6 +4,7 @@ import { Grid, DatePicker, Select, Input, Button } from '@alifd/next';
 import moment from 'moment';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import { getLocale } from '../../../../../Internationalization/locale';
+import { incomeList } from '../../../../api';
 
 const locale = getLocale();
 
@@ -13,13 +14,15 @@ moment.locale(locale);
 export default class Filter extends Component {
   state = {
     value: {
-      selectiontime: '创建时间',
+      dateType: '创建时间',
       startdate: '',
-      paymentstatus: '全部',
-      refundstatus: '全部',
-      paymentchannelone: '全部',
-      paymentchanneltwo: '全部 显示设备号可多选',
-      ordernumber: '',
+      status: '全部',
+      refundStatus: '全部',
+      payChannel: '全部',
+      groupid: '全部 显示设备号可多选',
+      outTradeNo: '',
+      page: '1',
+      pageSize: '15',
     },
   };
 
@@ -29,36 +32,61 @@ export default class Filter extends Component {
   handleReset() {
     this.setState({
       value: {
-        selectiontime: '创建时间',
+        dateType: '创建时间',
         startdate: '',
-        paymentstatus: '全部',
-        refundstatus: '全部',
-        paymentchannelone: '全部',
-        paymentchanneltwo: '全部 显示设备号可多选',
-        ordernumber: '',
+        status: '全部',
+        refundStatus: '全部',
+        payChannel: '全部',
+        groupid: '全部 显示设备号可多选',
+        outTradeNo: '',
       },
+    });
+  }
+  search(e) {
+    const { validateFields } = this.refs.form;
+    validateFields((errors,values)=>{
+      console.log(values.startdate[0]._d);
+      const startdatestart = values.startdate[0]._d;
+      const startdateend = values.startdate[1]._d;
+      const startdates = [];
+      startdates.push(startdatestart);
+      startdates.push(startdateend);
+      debugger;
+      incomeList({
+        dateType: values.dateType,
+        startdate: startdates,
+        status: values.status,
+        refundStatus: values.refundStatus,
+        payChannel: values.payChannel,
+        groupid: values.groupid,
+        outTradeNo: values.outTradeNo,
+        page: values.page,
+        pageSize: values.pageSize,
+      });
+    /*
+    *  arrivalDate（时间区间）, groupid（设备） */
     });
   }
   render() {
     const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
     const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
-    const selectiontime = [
+    const dateType = [
       { value: '创建时间', label: '创建时间' },
       { value: '支付时间', label: '支付时间' },
     ];
 
-    const paymentstatus = [
+    const status = [
       { value: '全部', label: '全部' },
       { value: '支付完成', label: '支付完成' },
       { value: '未支付', label: '未支付' },
       { value: '撤销', label: '撤销' },
     ];
-    const refundstatus = [
+    const refundStatus = [
       { value: '全部', label: '全部' },
       { value: '有退款', label: '有退款' },
       { value: '无退款', label: '无退款' },
     ];
-    const paymentchannelone = [
+    const payChannel = [
       { value: '全部', label: '全部' },
       { value: '支付宝wap', label: '支付宝wap' },
       { value: '微信扫一扫', label: '微信扫一扫' },
@@ -66,7 +94,7 @@ export default class Filter extends Component {
       { value: '微信APP', label: '微信APP' },
       { value: '支付宝手机跳转', label: '支付宝手机跳转' },
     ];
-    const paymentchanneltwo = [
+    const groupid = [
       { value: '全部 显示设备号可多选', label: '全部 显示设备号可多选' },
       { value: '设备3', label: '设备3' },
       { value: '微信扫一扫', label: '微信扫一扫' },
@@ -85,23 +113,23 @@ export default class Filter extends Component {
           <Col l="24">
             <div style={styles.formItem}>
               <span style={styles.formLabel}>选择时间</span>
-              <FormBinder name="selectiontime"
+              <FormBinder name="dateType"
                 required
                 message="请输入正确的名称"
                 autoWidth={false}
               >
-                <Select style={styles.formSelect} dataSource={selectiontime} />
+                <Select style={styles.formSelect} dataSource={dateType} />
               </FormBinder>
               <FormBinder name='startdate'>
                 <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
               </FormBinder>
               <span style={styles.formLabel}>支付状态</span>
-              <FormBinder name='paymentstatus'>
-                <Select style={styles.formSelect} dataSource={paymentstatus} />
+              <FormBinder name='status'>
+                <Select style={styles.formSelect} dataSource={status} />
               </FormBinder>
               <span style={styles.formLabel}>退款状态</span>
-              <FormBinder name='refundstatus'>
-                <Select style={styles.formSelect} dataSource={refundstatus} />
+              <FormBinder name='refundStatus'>
+                <Select style={styles.formSelect} dataSource={refundStatus} />
               </FormBinder>
             </div>
           </Col>
@@ -109,17 +137,17 @@ export default class Filter extends Component {
           <Col l="24">
             <div style={styles.formItem}>
               <span style={styles.formLabel}>支付渠道</span>
-              <FormBinder name='paymentchannelone'>
-                <Select style={styles.formSelect} dataSource={paymentchannelone} />
+              <FormBinder name='payChannel'>
+                <Select style={styles.formSelect} dataSource={payChannel} />
               </FormBinder>
-              <FormBinder name="paymentchanneltwo" required message="请输入正确的名称" >
-                <Select style={{ width: '200px' }} defaultValue={{ value: '全部 显示设备号可多选', label: '全部 显示设备号可多选' }} dataSource={paymentchanneltwo} />
+              <FormBinder name="groupid" required message="请输入正确的名称" >
+                <Select style={{ width: '200px' }} defaultValue={{ value: '全部 显示设备号可多选', label: '全部 显示设备号可多选' }} dataSource={groupid} />
               </FormBinder>
               <span style={styles.formLabel}>订单号</span>
-              <FormBinder name='ordernumber'>
+              <FormBinder name='outTradeNo'>
                 <Input placeholder='输入订单号' hasClear />
               </FormBinder>
-              <Button className='bg' size="large" type="secondary">搜索</Button>
+              <Button className='bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
               <Button className='bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
             </div>
           </Col>

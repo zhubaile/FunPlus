@@ -177,12 +177,12 @@ export default class Aside extends Component {
             </div>
           </li>
           <li className="selected has-sub-menu">
-            <a href="#">
+            <Link to='/devicemanagement/devicemanagement'>
               <div className="icon-w">
                 <div className="os-icon os-icon-layout" />
               </div>
               <span>设备管理</span>
-            </a>
+            </Link>
             <div className="sub-menu-w">
               {/* <div className="sub-menu-header">
                 设备管理
@@ -219,7 +219,9 @@ export default class Aside extends Component {
               <div className="sub-menu-i">
                 <ul className="sub-menu">
                   <li>
-                    <a href="#">成员权限</a>
+                    <Link to='/privilegemanagement/applicationmember'>
+                      应用成员
+                    </Link>
                   </li>
                   <li>
                     <a href="#">高级权限开关</a>
@@ -245,10 +247,24 @@ export default class Aside extends Component {
               <div className="sub-menu-i">
                 <ul className="sub-menu">
                   <li>
-                    <a href="#">联调工具</a>
+                    <Link to='/auxiliarytools/webhooksr'>
+                    Webhooksr
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">webhooks</a>
+                    <Link to='/auxiliarytools/serversidecharge'>
+                      服务端Charge
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/auxiliarytools/payexperience'>
+                      体验支付
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/auxiliarytools/requestlog'>
+                      请求log查看
+                    </Link>
                   </li>
                 </ul>
               </div>

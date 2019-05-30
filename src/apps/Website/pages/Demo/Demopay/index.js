@@ -11,41 +11,41 @@ export default class Demopay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open:false,
+      zfbopen:false,
       content:null,
     };
   }
-  close(){
+  zfbclose(){
     this.setState({
-      open: false,
+      zfbopen: false,
       content: null
     })
   }
-  open(content,confirm){
+  zfbopen(content,confirm){
     this.setState({
-      open:true,
+      zfbopen:true,
       content: content
     })
     this.confirmCallBack = confirm
   }
   ceshi(){
-    this.Zfbpaypopup.open();
+    this.Zfbpaypopup.zfboveropen();
   }
   render() {
-    const settings = {
+    const setting = {
       autoplay: true,
       autoplaySpeed: 2000,
       arrows: false,
       dots:false,
       speed:500,
       slidesToShow:1,
-      // slideDirection:'ver',
+      slideDirection:'ver',
       adaptiveHeight:true,
     };
-    if(!this.state.open) return null
+    if(!this.state.zfbopen) return null
     return (
       <div className='demopay'>
-        <Zfbpaypopup ref={(node)=>this.Zfbpaypopup=node} />
+        <Zfbpaypopup ref={(node)=>this.Zfbpaypopup=node} zfbclose={this.zfbclose.bind(this)} />
         <div className="hxj-popup-overlay">
               {/*半透明覆盖层*/}
         </div>
@@ -107,9 +107,9 @@ export default class Demopay extends Component {
                    </div>
 
                    <div className='footer-bottom-left-img'>
-                     <Slider {...settings}>
-                       <div style={{ width: '100%' }}><img src={require('../../../../../assets/img/demopay/zf1.png')}  alt="" /></div>
-                       <div style={{ width: '100%' }}><img src={require('../../../../../assets/img/demopay/zf2.png')}  alt="" /></div>
+                     <Slider {...setting}>
+                       <div><img src={require('../../../../../assets/img/demopay/zf1.png')}  alt="" /></div>
+                       <div><img src={require('../../../../../assets/img/demopay/zf2.png')}  alt="" /></div>
                      </Slider>
                    </div>
 
@@ -117,7 +117,7 @@ export default class Demopay extends Component {
                  <div className='footer-bottom-right'>
                    <img src={require('../../../../../assets/img/demopay/zf3.png')} style={{ width: '90%;' }} alt="" />
                    <button className='btn top' onClick={this.ceshi.bind(this)}><FormattedMessage id='app.website.demopay.mainbottomright.button1' /></button>
-                   <button className='btn bottom' onClick={this.close.bind(this)}><FormattedMessage id='app.website.demopay.mainbottomright.button2' /></button>
+                   <button className='btn bottom' onClick={this.zfbclose.bind(this)}><FormattedMessage id='app.website.demopay.mainbottomright.button2' /></button>
                  </div>
                  <div style={{ clear: 'both' }} />
                </div>

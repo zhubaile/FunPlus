@@ -31,6 +31,7 @@ export async function loginUser(params) {
 }
 // 注册接口
 export async function registerUser(params) {
+  debugger;
   return ajaxAmd.post({
     url: '/user/register',
     data: params ,

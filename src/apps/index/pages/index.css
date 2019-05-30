@@ -138,25 +138,28 @@ a:active{ text-decoration: none; }
 /* 企业认证 */
 .personalenter{ width: 100%;}
 .personalenter .personalenter-left{ width: 63%; float: left; padding: 30px; border-right: 2px solid #DBD9D9;}
+.personalenter-left-step{ margin-bottom: 10px}
+.personalenter-left-step .next-step-arrow{ border-radius: 20px;}
 .personalenter .personalenter-right{ width: 36%;float: left;}
 .personalenter-right-box{width: 300px;color: rgba(16, 16, 16, 0.8);font-size: 16px;text-align: left;margin-left: 25px; margin-top: 50px;}
 .personalenter-right-box h2{ font-weight: 500; font-size: 20px;}
-.next-select .next-select-inner{ width: 150px; margin-right: 10px;}
 /* 费用中心 */
 .costcenter{ display: flex; justify-content: center; flex-direction: column; align-items: center;}
 .costcenter .costcenter-top,.costcenter .costcenter-conter{ width: 95%; border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-top: 20px; display: flex; align-items: center;}
 .costcenter-top>span{ margin-right: 10px;}
 .costcenter-top .twospan{ margin: 0 10px 0 30px;}
-.costcenter-conter .costcenter-conter-onecentent{width: 35%; padding: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; border-right: 1px solid rgba(187, 187, 187, 1); color: #6C757D;}
-.costcenter-conter-onecentent div,.costcenter-conter-twocentent div{ border-bottom: 1px solid rgba(219, 217, 217, 1); padding-bottom: 10px;}
-.costcenter-conter-onecentent div img{ width: 43px; height: 46px; }
+.costcenter-conter .costcenter-conter-onecentent{width: 33%; padding: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; border-right: 1px solid rgba(187, 187, 187, 1); color: #6C757D;}
+.costcenter-conter-onecentent>div,.costcenter-conter-twocentent>div{ border-bottom: 1px solid rgba(219, 217, 217, 1); padding-bottom: 10px; display: flex; align-items: center; justify-content: center;}
+.costcenter-conter-onecentent .next-btn.next-medium.next-btn-primary{ background: #225AE1 90%;}
+.costcenter-conter-onecentent div img{ width: 43px; height: 46px; margin-right: 30px;}
 .costcenter-conter-onecentent div strong{ font-size: 18px; font-weight: 400; margin-left: 20px;}
 .costcenter-conter-onecentent p strong{ color: rgba(34, 90, 225, 0.9);font-size: 14px;}
 .costcenter-conter .costcenter-conter-twocentent{ width: 35%; padding: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: #6C757D;}
-.costcenter-conter-twocentent div img{ width: 50px; height: 41px; }
+.costcenter-conter-twocentent div img{ width: 50px; height: 41px; margin-right: 30px;}
 .costcenter-conter-twocentent div strong{ font-size: 18px; font-weight: 400; margin-left: 20px;}
 .costcenter-conter-twocentent p strong{ color: rgba(34, 90, 225, 0.9);font-size: 14px;}
+.costcenter-conter-twocentent .next-btn.next-medium.next-btn-primary{background: #225AE1 90%;}
 .costcenter .costcenter-bottom{ width: 95%; border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-top: 20px;}
 /* 费用中心的点击充值弹框 */
@@ -172,18 +175,33 @@ a:active{ text-decoration: none; }
 .Recharge-bottom .paymode{ margin-top: 50px; display: flex; align-items: center;}
 .Recharge-bottom .paymode .paymode-main{ width: 90%; float: right;height: 150px;line-height: 20px;background-color: rgba(255, 255, 255, 0);color: rgba(16, 16, 16, 1);font-size: 14px;border: 1px solid rgba(219, 217, 217, 1); margin-left: 20px;}
 .Recharge-bottom .paymode .paymode-main p{color: rgba(16, 16, 16, 1);font-size: 14px;text-align: left; margin: 8px;}
+.Recharge-bottom .paymode .paymode-main  .next-radio-button-large label img{ width: 90%; margin-top: 3%;}
+
 .next-radio-button-large label{ width: 120px; height: 40px; margin-left: 30px; margin-top: 10px; border-radius: 2px 2px 2px 2px;background-color: rgba(239, 241, 245, 1);border: 1px solid rgba(206, 219, 222, 1);}
 .next-radio-button-large > label:first-child{ margin-left: 30px;}
 .next-radio-button-large label img{ float: left; margin-right: 5px;}
 .next-radio-button-large label p{ line-height: 20px;}
 .Recharge-spanbtn{ display: flex; flex-direction: column;  margin-left: 150px; margin-top: 30px;}
 /* 微信弹框 */
-.wxpaypopup{ position: fixed; width: 330px; height: 350px; top: 50%; left: 50%; margin-top: -175px; margin-left: -165px; text-align: center; z-index: 8888;
-  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
+.wxpaypopup{ position: fixed; width: 330px; height: 500px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px; text-align: center; z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; display: flex; align-items: center; flex-direction: column;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
-.wxpaypopup-top{ padding: 20px; margin-bottom: 20px; border-bottom: 1px solid #BBBBBB; }
+.wxpaypopup-top{ width: 100%; padding: 20px; border-bottom: 1px solid #BBBBBB; }
 .wxpaypopup-top a{position: absolute; right: 10px; top: 10px; font-size: 28px; color: #000; }
 .wxpaypopup-top a:active{ text-decoration: none;}
+
+.wxpaypopup-main{  width: 300px; margin-top: 10px;
+  height: 400px;
+  line-height: 20px;
+  background-color: rgba(239, 241, 245, 1);
+  text-align: center;
+  border: 1px solid rgba(187, 187, 187, 1);}
+.wxpaypopup-main .wxpaypopup-main-top{ position: relative; padding: 5px;}
+.wxpaypopup-main .wxpaypopup-main-top p{ font-size: 14px; }
+.wxpaypopup-main .wxpaypopup-main-top img{ width: 80%; }
+.wxpaypopup-main .wxpaypopup-main-bottom{ position: relative; }
+.wxpaypopup-main .wxpaypopup-main-bottom img{ float: left; margin-left: 32px; margin-top: 5px; }
+.wxpaypopup-main .wxpaypopup-main-bottom div{ float: right; margin-right: 32px; margin-top: -15px;}
 /* 发票管理 */
 .controloverinvoices{ display: flex; justify-content: center; flex-direction: column; align-items: center;}
 .controloverinvoices .controloverinvoices-top{ width: 95%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
@@ -263,3 +281,56 @@ a:active{ text-decoration: none; }
   vertical-align: middle;font-size: 1.08rem;cursor: pointer;-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
 .Customerservice i{ font-size: 20px; margin-right: 8px;}
 .Customerservice a:hover{ color: black;}
+
+
+/* 成员管理 */
+.membermanagement{ width: 100%; }
+.membermanagement-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
+.membermanagement-top .addmemberbtn{position: absolute; top: 15px; right: 20px;width: 95px;height: 40px;line-height: 20px;border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1);}
+.membermanagement-bottom{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
+.membermanagement-bottom-top{ border-bottom: 1px solid rgba(187, 187, 187, 0.45); padding-bottom: 10px; margin-bottom: 10px;}
+
+.addmenber{ position: fixed; width: 330px; height: 500px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px;  z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 20px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
+.addmenber>span{ margin-top: 10px; width: 90%;}
+.addmenber>span input{ display: block; width: 90%;}
+.next-overlay-wrapper .next-overlay-inner{ z-index: 8889;}
+
+.membermanagements-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
+.Newrole{width: 95px;height: 40px;line-height: 20px;border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1);color: rgba(25, 137, 250, 1);}
+
+/* 设备管理 */
+.devicemanagement{ width: 100%;}
+.devicemanagement .devicemanagement-top{position: relative;padding-bottom: 10px; border-bottom: 1px solid #bbbbbb; font-size: 20px;}
+.devicemanagement .devicemanagement-top .devicemanagement-top-bottombor{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -12px;}
+.devicemanagement .devicemanagement-top .devicemanagement-top-btn{ position: absolute; right: 20px;bottom: 1px;}
+.devicemanagement .devicemanagement-top .devicemanagement-top-btn button{width: 130px;height: 41px;line-height: 20px;color: rgba(16, 16, 16, 1);font-size: 14px;text-align: center;margin: 0 10px;}
+.devicemanagement-main{ position: relative; margin-top: 20px;}
+.devicemanagement-main .devicemanagement-main-top{ display: flex; align-items: center;}
+.devicemanagement-main .devicemanagement-main-top button{width: 95px;height: 40px;line-height: 20px;border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);color: rgba(16, 16, 16, 1);font-size: 14px;text-align: center;border: 1px solid rgba(163, 208, 253, 1);}
+.devicemanagement-main .devicemanagement-main-top .next-message.next-message-notice.next-inline.next-medium.next-only-content{width: 271px;height: 40px;line-height: 20px;
+  border-radius: 4px;background-color: rgba(230, 247, 255, 1);text-align: center;border: 1px solid rgba(145, 213, 255, 1); margin-left: 20px;}
+/* 设备管理 添加分组弹框*/
+.addgrouping{  position: fixed; width: 330px; height: 300px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px; z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
+.addgrouping .addgrouping-btn{ text-align: right;}
+.addgrouping .addgrouping-btn button{width: 65px;height: 30px;line-height: 20px;border-radius: 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1); margin: 0 5px;}
+/* 添加设备-官方参数 */
+.official{  position: fixed; width: 450px; height: 700px; top: 50%; left: 50%; margin-top: -350px; margin-left: -175px; z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
+.official .next-form.next-medium.offocoal-main{ }
+.official .next-form.next-medium.offocoal-main .next-form-item.next-left.next-medium{ margin: 0;}
+.official .next-form.next-medium.offocoal-main .officialleft{ float: left;}
+.official .next-form.next-medium.offocoal-main .officialright{ float: left; margin-left: 20px;}
+.official .officialbtn{clear: both; position: relative; padding-top: 10px;}
+.official .officialbtn>button{width: 173px;height: 40px;line-height: 20px; /*opacity: 0.5;*/border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1);}
+.official .officialbtn .officialbtn-right{ position: absolute; right: 10px; top: 15px;}
+.official .officialbtn .officialbtn-right button{ width: 65px;height: 30px;line-height: 20px;border-radius: 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1); margin: 0 5px;}
+/* 自定义 */
+.official .next-form.next-medium.offocoal-main .custom-preID{width: 180px;height: 35px;line-height: 35px;border-radius: 5px 5px 5px 5px;text-align: center; margin-top: 10px;border: 1px solid rgba(26, 173, 25, 1);}

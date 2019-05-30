@@ -2,7 +2,6 @@
 *{ font-family: "Microsoft YaHei"; }
 .shouye , .prodect{padding: 0; margin: 0;}
 h1{ font-size: 36px;}
-p{ font-size: 20px;}
 img{ background-size: 100% 100%;}
 
 /* 首页的咨询 */
@@ -140,15 +139,18 @@ img{ background-size: 100% 100%;}
 .helpmember .helpmember-account{width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;}
 .helpmember .helpmember-account .helpmember-account-top{ text-align: center; font-size: 26px;}
 .helpmember .helpmember-account .helpmember-account-top strong{ font-size: 36px;}
+
 .helpmember .helpmember-account .helpmember-account-bottom{width: 80%; height: 500px;display: flex; justify-content: center; align-items: center; position: relative;}
 .helpmember .helpmember-account .helpmember-account-bottom .next-slick-container.next-slick-initialized{ width: 800px; height: 350px; display: flex; justify-content: center; align-items: center; position: relative;}
-.next-slick-slide.next-slick-active{height: 300px; margin-left: 20px; opacity: 0.8;transition: all 300ms ease;}
-.center .next-slick-slide.next-slick-active.next-slick-center{color: #e67e22;opacity: 1;transform: scale(1.08);}
+.helpmember .helpmember-account .helpmember-account-bottom .next-slick-slide.next-slick-active{position:relative; height: 300px; margin-left: 20px; opacity: 0.8;transition: all 300ms ease;}
+.helpmember .helpmember-account .helpmember-account-bottom .center .next-slick-slide.next-slick-active.next-slick-center{color: #e67e22;opacity: 1;transform: scale(1.08);}
+/*.helpmember-account-bottom .next-slick-container.next-slick-initialized div{ background: black; width: 300px; height: 350px;}*/
 .helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel{font-size: 36px;margin: 10px;position: relative; height: 340px;display:flex;justify-content: center; align-items: center;  flex-direction: column;background-size: 100% 100%;  background-image: url('../../../assets/img/helpcenter/member/hy-bg2.png');}
 .helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel img{ position: absolute; left: 50%; margin-left: -25px; top: 20px;}
 .next-slick-container.next-slick-initialized div .Carousel button{ width: 150px; height: 24px; border-radius: 12px; background: rgba(162,162,162,1); font-size: 12px; line-height: 24px;font-weight: 300; }
 .helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel p{color:rgba(102,102,102,1);line-height:22px;font-size: 14px;width: 80%; text-align: center;}
 .helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel a{position: absolute; left: 20px; bottom: 40px;font-weight:300;color:rgba(0,162,246,1);line-height:20px; font-size: 12px;}
+
 /* 锚点的位置 */
 .next-slick-dots.hoz.dots-cusst{ top: -40px;}
 .dots-cusst .next-slick-dots-item span a{ color: #000; padding: 10px 20px; opacity: 0.7;}
@@ -236,15 +238,22 @@ img{ background-size: 100% 100%;}
 .footer-bottom-left .footer-bottom-left-main .qrcode .qrcode-bottom div{ float: right; margin-right: 15px; margin-top: -5px;}
 /* demopay里面的图片轮播 */
 .footer-bottom-left .footer-bottom-left-img{ position: absolute; top: 100px; right: 100px;width: 175px; height: 150px;}
-.next-slick img {margin: 0 10px;color: #fff;line-height: 150px;text-align: center;}
-.next-slick-slide.next-slick-active{ margin-left: 0;}
+.footer-bottom-left-img .next-slick img {margin: 0 10px;color: #fff;line-height: 150px;text-align: center;}
+/*.footer-bottom-left-img .next-slick-slide.next-slick-active{ margin-left: 0;}*/
+.footer-bottom-left-img .next-slick.next-slick-inner.next-slick-ver{ overflow: hidden;}
+/*.footer-bottom-left-img .next-slick.next-slick-inner.next-slick-ver .next-slick-container.next-slick-initialized .next-slick-list .next-slick-track{width: 175px; height: 568px;}*/
+/*.footer-bottom-left-img .next-slick.next-slick-inner.next-slick-ver .next-slick-container.next-slick-initialized .next-slick-list{ background: red;}
+.footer-bottom-left-img .next-slick.next-slick-inner.next-slick-ver .next-slick-container.next-slick-initialized .next-slick-list>div{ background: blue; height: 568px;}*/
 .demopay-main-footer-bottom .footer-bottom-right{ width: 20%; height: 510px; float: left; position: relative;}
 .demopay-main-footer-bottom .footer-bottom-right img{ width: 85px; height:81px; position:absolute; top:50%; left:50%;transform: translate(-42px, -125px);}
 .demopay-main-footer-bottom .footer-bottom-right .btn{ width: 105px; height: 30px; background:rgba(0,162,246,1); border-radius:4px; font-size: 12px;color: #fff;position:absolute; top:50%; left:50%;transform: translate(-52px, 0);}
 .demopay-main-footer-bottom .footer-bottom-right .btn.bottom{ transform: translate(-52px, 50px);}
 
 /* 支付完成的弹框 */
-.zfbpaypopup{ position: fixed; width: 330px; height: 350px; top: 50%; left: 50%; margin-top: -175px; margin-left: -165px; text-align: center; z-index: 8988;
+.zfbpaypopup{ position: fixed; width: 350px; height: 249px; top: 50%; left: 50%; margin-top: -124px; margin-left: -175px; text-align: center; z-index: 8988;
   border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
 .zfbpaypopup-top{ padding: 20px; margin-bottom: 20px; border-bottom: 1px solid #BBBBBB; }
+.zfbpaypopup-bottom{ padding: 5px;}
+.zfbpaypopup-bottom p strong{ color:rgba(0,162,246,1) }
+.zfbpaypopup-bottom button{ margin: 5px 10px;}

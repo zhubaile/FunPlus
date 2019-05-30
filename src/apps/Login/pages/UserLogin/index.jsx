@@ -59,6 +59,7 @@ class UserLogin extends Component {
           if (data.errCode == 0) {
             console.log(values);
             Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
+            // this.props.history.push('/income');
             window.location.href = "index.html";
           } else {
             Message.success(data.message);
@@ -147,6 +148,8 @@ class UserLogin extends Component {
               </div>
 
               <div style={styles.footer}>
+                <a href="index.html">aaaa</a>
+                <a href="website.html">bbbb</a>
                 <Button
                   type="primary"
                   size="large"

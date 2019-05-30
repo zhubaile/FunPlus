@@ -7,6 +7,7 @@ proxy['/web/beta/v1.0/uploadPhoto'] = {
   changeOrigin: true,
 };
 // http://192.168.1.105:3000/web/beta/v1.0/uploadPhoto
+// http://192.168.1.122:3002/web/beta/v1.0/incomeList
 module.exports = {
   // 如果需要代理请解开下面注释   regex e("abc")
   devServer: {

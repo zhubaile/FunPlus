@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import IceContainer from '@icedesign/container';
-import { Input, Radio, Select , Button, Grid, Form, DatePicker,Table,Pagination } from '@alifd/next';
+import { Input, Radio, Tab , Button, Grid, Form, DatePicker,Table,Pagination } from '@alifd/next';
 import Customerservice from "../components/Customerservice";
 import Recharge from './Recharge';
 import '../../index.css';
@@ -20,6 +20,7 @@ const getData = (length = 10) => {
       level: ['2019-02-22 12:26:33'],
       rule: ['￥1799.00'],
       oper: ['成功'],
+      qudao: ['支付宝'],
     };
   });
 };
@@ -95,47 +96,75 @@ class Costcenter extends Component {
           <div className='personal-top-border' />
         </div>
         <div className="costcenter">
-          <div className='costcenter-top'>
+          {/* <div className='costcenter-top'>
             <span>时间：</span>
             <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
             <span className='twospan'>总金额：<strong>￥0.00</strong></span>
-          </div>
+          </div> */}
           <div className='costcenter-conter'>
             <div className='costcenter-conter-onecentent'>
               <div>
                 <img src={require('../../../../../assets/img/houtai/personal/008.png')} alt="" />
-                <strong>0.00元</strong>
+                <div>
+                  <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>账户余额</p>
+                  <strong>0.00元</strong>
+                </div>
               </div>
-              <p><strong>账户余额</strong>(可用于支付待申请服务费用等)</p>
+              <p style={{ fontSize: '16px' }}>可用于支付待申请服务费用等</p>
               <Button type='primary' onClick={this.balancerecharge.bind(this)}>点击充值</Button>
             </div>
             <div className='costcenter-conter-twocentent'>
               <div>
                 <img src={require('../../../../../assets/img/houtai/personal/009.png')} alt="" />
-                <strong>0.00元</strong>
+                <div>
+                  <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>累计扣费</p>
+                  <strong>0.00元</strong>
+                </div>
               </div>
-              <p><strong>抵用券余额</strong>(用于3FunPlus平台消费抵扣)</p>
-              <p>（添加与查看记录请至抵用券目录）</p>
+              <p style={{ fontSize: '16px' }}>默认显示所有消费总额</p>
+              <Button type='primary' onClick={this.balancerecharge.bind(this)}>查询明细</Button>
             </div>
           </div>
           <div className='costcenter-bottom'>
-            <span style={{ fontSize: '20px', color: '#6C757D' }}>消费记录</span>
+            {/* <span style={{ fontSize: '20px', color: '#6C757D' }}>消费记录</span>
             <Input hasClear placeholder='输入订单号' aria-label="please input" ref={node=>this.applicationID = node} style={{ marginLeft: '100px', width: '300px' }} />
-            <Button className='bg' size="large" type="primary">查询</Button>
-            <Table loading={isLoading} dataSource={data} hasBorder={false}>
-              <Table.Column title="产品" dataIndex="name" />
-              <Table.Column title="交易时间" dataIndex="level" />
-              <Table.Column title="金额" dataIndex="rule" />
-              <Table.Column
-                title="支付状态"
-                dataIndex="oper"
-              />
-            </Table>
-            <Pagination
-              style={{ marginTop: '20px', textAlign: 'right' }}
-              current={current}
-              onChange={this.handlePaginationChange}
-            />
+            <Button className='bg' size="large" type="primary">查询</Button> */}
+            <Tab shape='pure' className='costcenter-bottom-tab'>
+              <Tab.Item title="充值记录">
+                <Table loading={isLoading} dataSource={data} hasBorder={false}>
+                  <Table.Column title="产品" dataIndex="name" />
+                  <Table.Column title="交易时间" dataIndex="level" />
+                  <Table.Column title="金额" dataIndex="rule" />
+                  <Table.Column
+                    title="支付状态"
+                    dataIndex="oper"
+                  />
+                  <Table.Column title="支付渠道" dataIndex="qudao" />
+                </Table>
+                <Pagination
+                  style={{ marginTop: '20px', textAlign: 'right' }}
+                  current={current}
+                  onChange={this.handlePaginationChange}
+                />
+              </Tab.Item>
+              <Tab.Item title="扣费记录">
+                <Table loading={isLoading} dataSource={data} hasBorder={false}>
+                  <Table.Column title="产品" dataIndex="name" />
+                  <Table.Column title="交易时间" dataIndex="level" />
+                  <Table.Column title="金额" dataIndex="rule" />
+                  <Table.Column
+                    title="支付状态"
+                    dataIndex="oper"
+                  />
+                  <Table.Column title="支付渠道" dataIndex="qudao" />
+                </Table>
+                <Pagination
+                  style={{ marginTop: '20px', textAlign: 'right' }}
+                  current={current}
+                  onChange={this.handlePaginationChange}
+                />
+              </Tab.Item>
+            </Tab>
           </div>
           <Customerservice />
         </div>

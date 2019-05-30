@@ -4,6 +4,7 @@ import { Input,Button , Grid, DatePicker , Icon,Form } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
 import Circularchart from './Circularchart';
 import Customerservice from '../components/Customerservice';
+import { getMenu } from '../../../api';
 import '../../index.css';
 
 const FormItem = Form.Item;
@@ -25,6 +26,14 @@ export default class Accountinformation extends Component {
     // console.log(this.input.value,this);
     // ;
     this.props.editor(this.input.getInputNode().value);
+  }
+  btn() {
+    // const { params } = this.props.match;
+    // params.appid,
+    debugger;
+    getMenu({
+
+    });
   }
   render() {
     return (
@@ -53,7 +62,7 @@ export default class Accountinformation extends Component {
               </div>
             </div>
             <div className='accountinformation-top-right'>
-              <button> <Icon type="account" size='xs' style={{ marginRight: '6px' }} />编辑个人资料</button>
+              <button onClick={this.btn.bind(this)}> <Icon type="account" size='xs' style={{ marginRight: '6px' }} />编辑个人资料</button>
             </div>
           </div>
           <div className='accountinformation-center'>

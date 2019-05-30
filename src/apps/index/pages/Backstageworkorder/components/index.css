@@ -1,0 +1,98 @@
+.backstageworkorder{ display: flex; width: 100%; justify-items: center; margin-top: -20px; margin-left: -20px;}
+/*
+.leftheader{ width: 100px; height: 100%; background: #1A55E2;}
+.leftheader .header-logo{ width: 100px; padding: 20px; background: #173FA4;}
+.leftheader .header-logo:hover .logo-element{  -webkit-transform: translateX(5px);transform: translateX(5px);}
+.leftheader .header-logo:hover .logo-element:after{-webkit-transform: translateX(-10px);transform: translateX(-10px);}
+.leftheader .header-logo .logo-element {content: "";width: 30px;height: 30px;border-radius: 15px;position: relative;background-color: #98c9fd;display: inline-block;vertical-align: middle;margin-right: 20px;-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
+.leftheader .header-logo .logo-element:after {content: "";width: 30px;height: 30px;background-color: #fff;border-radius: 15px;right: -20px;position: absolute;-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}*/
+
+.leftnav{ width: 300px; background: #F2F4F8; border-right: 1px solid rgba(0, 0, 0, 0.05);}
+.leftnav-navtop{white-space: nowrap;margin-right: 0;}
+.navtop1-box{ width: 300px; background: #F2F4F8;}
+.chat-search{   padding: 15px 10px;border-bottom: 1px solid rgba(0, 0, 0, 0.05);}
+.element-search{  position: relative;}
+.element-search input {border: none;-webkit-box-shadow: none;box-shadow: none;background-color: #fff;border-radius: 30px;padding: 10px 15px 10px 40px;display: block;width: 100%;outline: none;color: black;}
+.element-search:before {font-family: 'osfont' !important;speak: none;font-style: normal;font-weight: normal;font-variant: normal;text-transform: none;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;
+  position: absolute;left: 14px;top: 48%;-webkit-transform: translateY(-50%);transform: translateY(-50%);font-size: 20px;content: "\e92c";color: rgba(0, 0, 0, 0.2);}
+/* 客服工单样式 */
+.next-tabs.next-medium .next-tabs-tab-inner{  width: 140px; text-align: center;}
+.leftnav-navtop .tab-title i{ font-size: 24px;}
+/* nav样式 */
+/* ***** 客服界面 */
+.user-list .user-w {display: -webkit-box;display: -ms-flexbox;display: flex;padding: 20px 30px;-webkit-box-align: center;-ms-flex-align: center;align-items: center;border-bottom: 1px solid rgba(0, 0, 0, 0.05);-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
+.user-list .user-w .avatar {margin-right: 20px;-webkit-box-flex: 0;-ms-flex: 0 0 50px;flex: 0 0 50px;}
+.user-list .user-w .avatar img {width: 50px;height: auto;border-radius: 50px;display: block;}
+.user-list .user-w .user-info {-webkit-box-flex: 1;-ms-flex: 1 1 auto;flex: 1 1 auto;}
+.user-list .user-w .user-name {font-weight: 500;font-size: 0.99rem;-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
+.user-list .user-w .last-message {color: rgba(0, 0, 0, 0.4);font-size: 0.81rem;-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
+.user-list .user-w .user-date {float: right;padding: 2px 7px;background-color: #fff;border-radius: 12px;font-size: 0.72rem;color: rgba(0, 0, 0, 0.3);-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
+.user-list .user-w:hover {background-color: #047bf8;cursor: pointer;}
+.user-list .user-w:hover .user-name {color: #fff;}
+.user-list .user-w:hover .last-message {color: rgba(255, 255, 255, 0.5);}
+.user-list .user-w:hover .user-date {background-color: #046fdf;color: rgba(255, 255, 255, 0.3);}
+
+/* 客服界面 */
+.kefu{ width: 100%; display: flex; justify-items: center;}
+.kefu-main{ width: 100%; text-align: center; border-right: 1px solid rgba(187, 187, 187, 1);}
+.kefu-main .kefu-main-head{ position: relative; line-height: 50px; width: 100%; font-size: 20px;border-bottom: 1px solid rgba(187, 187, 187, 1);}
+.kefu-main-head .os-icon.os-icon-mail-07.left{ position: absolute; font-size: 30px; left: 10px; top: 10px; color: #047bf8;}
+.kefu-main-head .os-icon.os-icon-phone-15.right{ position: absolute; font-size: 30px; right: 10px; top: 10px;color: #047bf8;}
+/* 对方 */
+.kefu .kefu-main-chatcontent{-webkit-box-flex: 1;-ms-flex: 1 1 auto;flex: 1 1 auto;background-color: #fff;  height: 600px;overflow-y: scroll;position: relative;}
+.kefu-main-chatcontent .chat-content {padding: 50px;min-height: 600px;}
+.kefu-main-chatcontent .chat-content .chat-message {text-align: left;margin-bottom: 20px;}
+.kefu-main-chatcontent .chat-content .chat-message .chat-message-content {padding: 15px 35px;background-color: #fff9f0;color: #594939;max-width: 400px;display: inline-block; margin-top: 20px;margin-left: 20px;border-radius: 20px;text-align: left;}
+.kefu-main-chatcontent .chat-content .chat-message .chat-message-avatar {display: inline-block;vertical-align: bottom;position: relative;}
+.kefu-main-chatcontent .chat-content .chat-message .chat-message-avatar img {width: 40px;height: auto;border-radius: 30px;display: inline-block;-webkit-box-shadow: 0px 0px 0px 10px #fff;box-shadow: 0px 0px 0px 10px #fff;}
+.kefu-main-chatcontent .chat-content .chat-message .chat-message-avatar div{ float: right; margin-left: 20px; margin-top: -15px;}
+.kefu-main-chatcontent .chat-content .chat-message .chat-message-date {display: inline-block;vertical-align: bottom;margin-left: 10px;margin-right: 10px;font-size: 0.72rem;color: rgba(0, 0, 0, 0.3);}
+/* 本人 */
+.kefu-main-chatcontent .chat-content .chat-message.self {text-align: right;}
+.kefu-main-chatcontent .chat-content .chat-message.self .chat-message-avatar div{ float: left; margin-right: 20px; margin-top: -15px;}
+.kefu-main-chatcontent .chat-content .chat-message.self .chat-message-content {background-color: #f0f9ff;color: #2A4E7F;margin-right: 20px;margin-left: 0px;}
+/* 分割线 */
+.kefu-main-chatcontent .chat-date-separator {text-align: center;color: rgba(0, 0, 0, 0.3);font-size: 0.81rem;position: relative;margin: 40px 0px;}
+.kefu-main-chatcontent .chat-date-separator:before {content: "";background-color: rgba(0, 0, 0, 0.1);height: 1px;width: 100%;position: absolute;top: 50%;left: 0px;right: 0px;}
+/* 输入内容 */
+.chat-controls {padding: 20px;padding-top: 0px;border-top: 1px solid rgba(0, 0, 0, 0.1);}
+.chat-controls .chat-input .next-input.next-input-textarea{padding: 20px 20px 20px 0px; border: none;display: block;width: 100%;outline: none; height: 100px;}
+.chat-controls .chat-input .next-input.next-input-textarea textarea{ height: 100px;}
+.chat-input-extra {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;-webkit-box-align: center;-ms-flex-align: center;align-items: center; margin-top: 20px;}
+.chat-input-extra .chat-extra-actions a {margin-right: 10px;display: inline-block;}
+.kefu-right{ width: 25%; display: flex; justify-items: center; align-items: center; flex-direction: column; margin-top: 40px;}
+
+/* 全部工单 */
+.wodegongdan{ width: 100%; display: flex; justify-items: center; flex-direction: column; padding: 20px;}
+.wodegongdan .wodegongdan-top{ border-bottom: 1px solid rgba(187, 187, 187, 1); font-size: 20px;}
+.wodegongdan .wodegongdan-top .wodegongdan-top-border{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -2px;}
+
+.wodegongdan-conter {line-height: 20px;border-radius: 10px 10px 10px 10px;box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px; padding: 20px;}
+.wodegongdan-conter-main>span{ margin-left: 20px;}
+.wodegongdan-footer{ border-radius: 10px 10px 10px 10px;box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px; padding: 20px;}
+/* 工单详情 */
+.wodegongdan{ background: #F2F4F8;}
+.wodegongdan-step{ margin-top: 30px;}
+.wodegongdan-step .next-step-arrow{ border-radius: 20px;}
+.wodegongdan-table{ margin-top: 20px;}
+.wodegongdan-message{ width: 100%; margin-top: 20px; padding: 10px; border-radius: 10px 10px 10px 10px;box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0);
+display: flex; align-items: center; }
+.wodegongdan-message a{ display: block; width: 30px; height: 30px; border-radius: 5px; margin-right: 10px;}
+.wodegongdan-message a i{ color: #fff; font-size: 25px; padding:2px;}
+.wodegongdan-pingjia{ width: 100%; padding: 20px 15px; border-radius: 10px 10px 10px 10px;box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0); display: flex;flex-direction: column;}
+.wodegongdan-pingjia div{ margin-top: 20px;}
+.wodegongdan-pingjia .fankui span{ float: left;}
+.wodegongdan-pingjia .fankui span.next-input.next-input-textarea{ width: 60%;}
+.wodegongdan-pingjia .fankui Button{ margin-left: 5px; margin-top: 140px; border-radius: 5px;}
+/* 提交工单 */
+.submissionworkorder{ width: 100%; padding-left: 20px; background: #F2F4F8;}
+.submissionworkorder-top{  border-bottom: 1px solid rgba(187, 187, 187, 1); font-size: 20px;}
+.submissionworkorder-top .submissionworkorder-top-border{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -2px;}
+.submissionworkorder-main{ width: 100%; display: flex; justify-content: center;}
+.submissionworkorder-left{ width: 70%; margin-top: 20px;}
+.submissionworkorder-left-step{ margin-bottom: 20px;}
+.submissionworkorder-left-step .next-step-arrow{ border-radius: 20px;}
+.submissionworkorder-left-subbtn{ margin-left: 100px;}
+.submissionworkorder-left-subbtn .next-btn.next-medium.next-btn-primary{ margin-left: 20px; width: 80px; background:#E6F1FC; color: #1989FA; border-radius: 5px;}
+
+.submissionworkorder-right{ width: 25%; border-left: 1px solid #AAAAAA;}
