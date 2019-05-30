@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import Customerservice from "../components/Customerservice";
-import { Input, Radio, Select , Upload, Grid, Form } from '@alifd/next';
+import { Input, Radio, Select , Upload, Grid, Form ,Step} from '@alifd/next';
 import '../../index.css';
 
 const { Row, Col } = Grid;
@@ -113,6 +113,13 @@ class Enterprisecertification extends Component {
        </div>
        <div className="personalenter">
          <div className='personalenter-left'>
+           <div className='personalenter-left-step'>
+             <Step current={1} shape="arrow" animation>
+               <Step.Item title="1 提交资料" />
+               <Step.Item title="2 待审核" />
+               <Step.Item title="3审核通过" />
+             </Step>
+           </div>
            <Form value={this.state.value} onChange={this.formChange} ref="form">
              <div style={styles.formContent}>
                {/* 企业名称 */}
@@ -164,8 +171,8 @@ class Enterprisecertification extends Component {
                    id: 'app.setting.name.message',
                  })}
                >
-                 <Select size='large' name='homedirectory' placeholder="主类目" dataSource={provinceData} value={province} onChange={this.handleProvinceChange} />
-                 <Select name='subdirectory' placeholder="子类目" dataSource={data} value={city} onChange={this.handleCityChange} disabled={disabled} />
+                 <Select size='large' name='homedirectory' placeholder="主类目" dataSource={provinceData} value={province} onChange={this.handleProvinceChange} style={{ width: '150px'}} />
+                 <Select name='subdirectory' placeholder="子类目" dataSource={data} value={city} onChange={this.handleCityChange} disabled={disabled} style={{ width: '150px'}} />
                </FormItem>
                {/* 营业执照上传 */}
                <FormItem

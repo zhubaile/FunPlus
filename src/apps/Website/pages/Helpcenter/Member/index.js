@@ -26,13 +26,15 @@ export default class Member extends Component {
   render() {
     const settings = {
       className: 'custom-slide center',
-      autoplay: true,
+      // autoplay: true,
       autoplaySpeed: '4000',
       lazyLoad: true,
       slidesToShow: 3,
+      adaptiveHeight: true,
       centerMode: true,
       infinite: true,
       dots: true,
+      slideDirection: 'hoz',
       centerPadding: '60px',
       speed: 500,
       arrowSize: "large",

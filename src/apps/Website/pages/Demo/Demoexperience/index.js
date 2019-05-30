@@ -21,7 +21,7 @@ export default class Demoexperience extends Component {
     };
   }
   zfbpay() {
-    this.Demopay.open();
+    this.Demopay.zfbopen();
   }
   render() {
     return (

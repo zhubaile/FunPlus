@@ -1,47 +1,88 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Input,Button , Grid, DatePicker , Tab } from '@alifd/next';
-import { actions, reducers, connect } from '@indexStore';
-
 import IceContainer from '@icedesign/container';
+import { Step, Button } from '@alifd/next';
 
-const { Row, Col } = Grid;
-export default class Enterprise extends Component {
+const { Item: StepItem } = Step;
+const { Group: ButtonGroup } = Button;
+
+export default class SimpleStep extends Component {
+  static displayName = 'SimpleStep';
+
+  static propTypes = {};
+
+  static defaultProps = {};
+
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      currentStep: 3,
+    };
   }
-  btnClick() {
-    // console.log(this.input.value,this);
-    // ;
-    this.props.editor(this.input.getInputNode().value);
-  }
-  render() {
-    return (
-      <IceContainer>
-        <h2 style={styles.containerTitle}>企业打款</h2>
-        <Tab>
-          <Tab.Item title="企业打款">
-            企业打款企业打款
 
-          </Tab.Item>
-          <Tab.Item title="333">
-            xinxi
-          </Tab.Item>
-          <Tab.Item title="444">
-            xinxi
-          </Tab.Item>
-        </Tab>
+  next = () => {
+    const s = this.state.currentStep + 1;
+
+    this.setState({
+      currentStep: s > 6 ? 6 : s,
+    });
+  };
+
+  prev = () => {
+    const s = this.state.currentStep - 1;
+
+    this.setState({
+      currentStep: s < 0 ? 0 : s,
+    });
+  };
+
+  onClick = (currentStep) => {
+    console.log(currentStep);
+
+    this.setState({
+      currentStep,
+    });
+  };
+
+  render() {
+    const { currentStep } = this.state;
+
+    return (
+      <IceContainer title="步骤条">
+        <Step current={currentStep}>
+          <StepItem title="步骤1" onClick={this.onClick} />
+          <StepItem title="步骤2" onClick={this.onClick} />
+          <StepItem title="步骤3" onClick={this.onClick} />
+          <StepItem title="步骤4" onClick={this.onClick} />
+          <StepItem title="步骤5" onClick={this.onClick} />
+          <StepItem title="步骤6" onClick={this.onClick} />
+        </Step>
+        <div style={styles.buttonGroup}>
+          <ButtonGroup>
+            <Button
+              onClick={this.prev}
+              type="primary"
+              disabled={currentStep === 0}
+            >
+              上一步
+            </Button>
+            <Button
+              onClick={this.next}
+              type="primary"
+              disabled={currentStep === 5}
+            >
+              下一步
+            </Button>
+          </ButtonGroup>
+        </div>
       </IceContainer>
     );
   }
 }
-const styles = {
-  containerTitle: {
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    color: 'rgba(0, 0, 0, 0.85)',
-    fontWeight: '500',
-  },
 
+const styles = {
+  buttonGroup: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '40px 0 20px',
+  },
 };

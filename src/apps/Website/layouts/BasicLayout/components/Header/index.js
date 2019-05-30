@@ -13,6 +13,10 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 @injectIntl
 @withRouter
 export default class Header extends Component {
+  zzzzz() {
+    this.props.history.push('/user/login');
+  }
+
   render() {
     const { location = {} } = this.props;
     const { pathname } = location;
@@ -117,10 +121,14 @@ export default class Header extends Component {
                 {/* <Link to='/user/login'>
                   登录
                 </Link> */}
+                {/* <Link to='/user/login' style={{ color: '#666' }}>
+                  <FormattedMessage id="app.login.sign.in" />
+                </Link> */}
                 <a href="login.html" style={{ color: '#666' }}>
                   {/* <FoundationSymbol type="person" size="small" /> */}
-                   <FormattedMessage id="app.login.sign.in" />
+                  <FormattedMessage id="app.login.sign.in" />
                 </a>
+                <a href="javascript:;" onClick={this.zzzzz.bind(this)}>111111</a>
               </li>
             </ul>
           </div>

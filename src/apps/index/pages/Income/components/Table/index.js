@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import IceContainer from '@icedesign/container';
 import FilterTag from '../FilterTag';
 import FilterForm from '../FilterForm';
+// import {incomeList} from '../../../../api';
 
 // Random Numbers
 const random = (min, max) => {
@@ -72,7 +73,8 @@ export default class GoodsTable extends Component {
     );
   };
 
-  handleFilterChange = () => { // gengxin 5条新数据
+  handleFilterChange = (value) => { // gengxin 5条新数据
+
     this.fetchData(5);
   };
 

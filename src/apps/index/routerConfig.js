@@ -2,6 +2,7 @@ import React from 'react';
 import { getRouterData } from './utils/utils';
 import { asideMenuConfig } from './menuConfig';
 
+
 /* 错误的信息 */
 const Empty = React.lazy(() => import('./pages/Exception/Empty'));
 const Forbidden = React.lazy(() => import('./pages/Exception/Forbidden'));
@@ -14,9 +15,17 @@ const Enterprisecertification = React.lazy(() => import('./pages/Personal/Enterp
 const Costcenter = React.lazy(() => import('./pages/Personal/Costcenter'));
 const Controloverinvoices = React.lazy(() => import('./pages/Personal/Controloverinvoices'));
 const Operationlog = React.lazy(() => import('./pages/Personal/Operationlog'));
+const Membermanagement = React.lazy(() => import('./pages/Personal/Membermanagement'));
+
 
 const HelpCenteraddition = React.lazy(() => import('./pages/Personal/Accountinformation/HelpCenteraddition'));
 const Accesstoinformationaddition = React.lazy(() => import('./pages/Personal/Accountinformation/Accesstoinformationaddition'));
+
+const Customerservice = React.lazy(() => import('./pages/Backstageworkorder/Customerservice')); // 客服
+const Allworkorders = React.lazy(() => import('./pages/Backstageworkorder/Allworkorders')); // 工单
+const Workorderdetails = React.lazy(() => import('./pages/Backstageworkorder/Workorderdetails')); // 工单详情
+const Submissionworkorder = React.lazy(() => import('./pages/Backstageworkorder/Submissionworkorder')); // 提交工单
+
 // 收入
 const Income = React.lazy(() => import('./pages/Income'));
 // 支出
@@ -35,10 +44,19 @@ const Transactionreport = React.lazy(() => import('./pages/Reconciliation/Transa
 const Applicationparameters = React.lazy(() => import('./pages/Applicationsettings/Applicationparameters')); // 应用参数
 const Paymentchannel = React.lazy(() => import('./pages/Applicationsettings/Paymentchannel')); // 应用参数
 const Routingrules = React.lazy(() => import('./pages/Applicationsettings/Routingrules')); // 应用参数
+const Devicemanagement = React.lazy(() => import('./pages/Devicemanagement/Devicemanagement')); // 设备管理
+const Applicationmember = React.lazy(() => import('./pages/Privilegemanagement/Applicationmember')); // 权限管理-成员管理
+// 辅助工具
+// import aa from "./pages/Auxiliarytools/Requestlog";
+const Webhooks = React.lazy(() => import('./pages/Auxiliarytools/Webhooks')); // 辅助工具-Webhooks
+const Serversidecharge = React.lazy(() => import('./pages/Auxiliarytools/Serversidecharge')); // 辅助工具-服务端
+const Payexperience = React.lazy(() => import('./pages/Auxiliarytools/Payexperience')); // 辅助工具-体验支付
+const Requestlog = React.lazy(() => import('./pages/Auxiliarytools/Requestlog')); // 辅助工具-请求log查看
 // ========系统首页============ //
 const routerConfig = [
   {
-    path: '/personal/accountinformation', // 账户信息
+    // path: '/personal/accountinformation/:appid?', // 账户信息
+    path: '/personal/accountinformation',
     component: Accountinformation,
   },
   {
@@ -54,6 +72,10 @@ const routerConfig = [
     component: Controloverinvoices,
   },
   {
+    path: '/personal/membermanagement', // 发票管理
+    component: Membermanagement,
+  },
+  {
     path: '/personal/operationlog', // 操作日志
     component: Operationlog,
   },
@@ -65,8 +87,22 @@ const routerConfig = [
     path: '/personal/accesstoinformationaddition', // 查阅更多信息
     component: Accesstoinformationaddition,
   },
-
-
+  {
+    path: '/backstageworkorder/Customerservice', // 客服
+    component: Customerservice,
+  },
+  {
+    path: '/backstageworkorder/Allworkorders', // 全部工单
+    component: Allworkorders,
+  },
+  {
+    path: '/backstageworkorder/Workorderdetails', // 工单详情
+    component: Workorderdetails,
+  },
+  {
+    path: '/backstageworkorder/Submissionworkorder', // 工单详情
+    component: Submissionworkorder,
+  },
   {
     path: '/income', // 收入
     component: Income,
@@ -122,6 +158,31 @@ const routerConfig = [
   {
     path: '/applicationsettings/routingrules',
     component: Routingrules,
+  },
+  {
+    path: '/devicemanagement/devicemanagement', // 设备管理
+    component: Devicemanagement,
+  },
+  {
+    path: '/privilegemanagement/applicationmember', // 权限管理-成员管理
+    component: Applicationmember,
+  },
+  // 辅助工具
+  {
+    path: '/auxiliarytools/webhooksr', // 辅助工具
+    component: Webhooks,
+  },
+  {
+    path: '/auxiliarytools/serversidecharge', // 辅助工具
+    component: Serversidecharge,
+  },
+  {
+    path: '/auxiliarytools/payexperience', // 辅助工具
+    component: Payexperience,
+  },
+  {
+    path: '/auxiliarytools/requestlog', // 辅助工具
+    component: Requestlog,
   },
   {
     path: '/exception/500',
