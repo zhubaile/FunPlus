@@ -5,7 +5,7 @@ import { actions, reducers, connect } from '@indexStore';
 import Addgrouping from './Addgrouping';
 import Official from './Adddevice/official';
 import Custom from './Adddevice/custom';
-// import IceContainer from '@icedesign/container';
+import { deviceGroup } from '../../../api';
 import '../../index.css';
 
 const { Item } = MenuButton;
@@ -73,6 +73,7 @@ export default class Devicemanagement extends Component {
   };
   // 添加分组
   groupingopen() {
+
     this.Addgrouping.addgroupingopen();
   }
   // 添加设备

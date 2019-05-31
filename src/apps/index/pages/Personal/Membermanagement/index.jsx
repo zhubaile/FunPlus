@@ -21,7 +21,8 @@ const getData = (length = 10) => {
       rule: ['￥1799.00'],
       oper: ['成功'],
       qudao: ['支付宝'],
-      zhuangtai: ['false','asd'],
+      zhuangtai: [false,'asd'],
+      caozuo: ['lalal'],
     };
   });
 };
@@ -37,8 +38,8 @@ class Membermanagement extends Component {
     super(props);
     this.state = {
       value: {
-        quanbuyingyong: '全部应用',
-        jiaose: '角色',
+        quanbuyingyong: '0',
+        jiaose: '0',
         haoma: '',
       },
       current: 1,
@@ -84,9 +85,12 @@ class Membermanagement extends Component {
       }
     );
   };
-
-  addmemberbtn(){
+  // 添加成员弹出框
+  addmemberbtn() {
     this.Addmenber.open();
+  }
+  formChange=(value)=>{
+    debugger;
   }
   // 状态的值
   renderOper = (datas) => {
@@ -105,12 +109,12 @@ class Membermanagement extends Component {
     } = this.props;
 
     const quanbuyingyong = [
-      { value: '全部应用 ', label: '全部应用' },
-      { value: '部分', label: '部分' },
+      { value: '0', label: '全部应用' },
+      { value: '1', label: '部分' },
     ];
     const jiaose = [
-      { value: '角色', label: '角色' },
-      { value: '人', label: '人' },
+      { value: '0', label: '角色' },
+      { value: '1', label: '人' },
     ];
     return (
       <div className='membermanagement'>
@@ -123,18 +127,14 @@ class Membermanagement extends Component {
                 onChange={this.formChange}
                 ref="form"
               >
-
-                <FormBinder name="quanbuyingyong"
-                  autoWidth={false}
-                >
-                  <Select dataSource={quanbuyingyong} defaultValue='全部应用' />
+                <FormBinder name="quanbuyingyong" >
+                  <Select dataSource={quanbuyingyong} style={styles.forminput} />
                 </FormBinder>
-
                 <FormBinder name='jiaose' >
-                  <Select dataSource={jiaose} defaultValue='角色' />
+                  <Select dataSource={jiaose} style={styles.forminput} />
                 </FormBinder>
-                <FormBinder name='haoma'>
-                  <Input hasClear placeholder='输入号' />
+                <FormBinder name='haoma' >
+                  <Input hasClear placeholder='输入号' style={styles.forminput} />
                 </FormBinder>
                 <Button className='bg' size="large" type="primary">搜索</Button>
                 <button className='addmemberbtn' onClick={this.addmemberbtn.bind(this)}>添加成员</button>
@@ -220,6 +220,10 @@ const styles = {
     margin: '0 0 20px',
     paddingBottom: '10px',
     borderBottom: '1px solid #eee',
+  },
+  forminput: {
+    width: '200px',
+    marginLeft: '20px',
   },
 };
 

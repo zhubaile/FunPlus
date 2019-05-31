@@ -102,7 +102,9 @@ export default class Applicationparameters extends Component {
     Message.success('复制成功');
   }
   handleSubmit=()=> {
-    alert(this.Mtextinput.getInputNode().value)
+    const z=this.Mtextinput.getInputNode().value;
+    alert(z)
+    debugger;
   }
 
   render() {
@@ -127,15 +129,15 @@ export default class Applicationparameters extends Component {
                   <strong> MD5秘钥或者公私钥证书任选一种方式</strong>
                   都可通过聚合支付平台API发起交易
                 </Message>
-                <Form style={{ width: '60%' , marginTop: '20px' }} {...formItemLayout}>
+                <Form style={{ width: '80%' , marginTop: '20px' }} {...formItemLayout}>
                   <Form.Item label="应用ID:">
                     <Input.Group addonAfter={copybtn}>
-                      <Input hasClear defaultValue='请输入您的ID' style={{ width: '100%' }} aria-label="please input" ref={node=>this.applicationID = node} />
+                      <Input hasClear placeholder='请输入您的ID' style={{ width: '100%' }} aria-label="please input" ref={node=>this.applicationID = node} name='username' />
                     </Input.Group>
                   </Form.Item>
                   <Form.Item label="MD5密钥:">
                     <Input.Group addonAfter={phonebtn}>
-                      <Input hasClear htmlType="password" defaultValue="asdfghhkklgdf" style={{ width: '100%' }} aria-label="please input" />
+                      <Input hasClear htmlType="password" placeholder="asdfghhkklgdf" style={{ width: '100%' }} aria-label="please input" name='userid' />
                     </Input.Group>
                   </Form.Item>
                   <Form.Item label="平台公钥">
