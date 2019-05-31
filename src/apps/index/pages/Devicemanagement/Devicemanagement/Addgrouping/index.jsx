@@ -4,6 +4,7 @@ import { Input,Button , Grid, DatePicker , Tab,Message ,Table,Pagination,Select,
 import { actions, reducers, connect } from '@indexStore';
 import IceContainer from '@icedesign/container';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
+import { deviceGroupaddparmas,deviceGroupadd } from "../../../../api";
 import '../../../index.css';
 
 const { Row, Col } = Grid;
@@ -14,12 +15,12 @@ export default class Addgrouping extends Component {
       open: false,
       value: {
         NewRuleName: '',
-        ApplicationChannel: '选择对应支付渠道',
-        Shebei: '设备类型',
+        ApplicationChannel: '0',
+        Shebei: '0',
       },
     };
   }
-  addgroupingclose() {
+  addgroupingclose=()=> {
     this.setState({
       open: false,
       content: null,
@@ -37,21 +38,60 @@ export default class Addgrouping extends Component {
       value,
     });
   };
-  addgrouping(){
-    console.log(this.state.value);
-    debugger;
+  componentDidMount() {
+    deviceGroupaddparmas().then(
+      ({ status, data }) => {
+        debugger;
+        if (data.errCoder == 0) {
+
+        }
+      }
+    ).catch(
+      ({ status, data }) => {
+      }
+    );
+  }
+  // deviceGroupaddparmas
+  addgrouping() {
+    this.refs.form.validateAll((errors, values) => {
+      if (errors) {
+        return;
+      }
+      deviceGroupadd({
+        dGroupName: values.NewRuleName,
+        dClassify: values.Shebei,
+        payChannelId: values.ApplicationChannel,
+      }).then(
+        ({ status, data }) => {
+          debugger;
+          if (data.errCoder == 0) {
+            // Message.success(intl.formatMessage({ id: 'app.register.success' }));
+            Message.success('添加分组成功');
+            this.addgroupingclose();
+          }
+          Message.success(data.message);
+          // console.log(values);
+          // Message.success(intl.formatMessage({ id: 'app.register.success' }));
+          // Message.success('注册成功');
+          // this.props.history.push('/user/login');
+        }
+      ).catch(
+        ({ status, data }) => {
+        }
+      );
+    });
   }
   render() {
     const ApplicationChannel = [
-      { value: '选择对应支付渠道', label: '选择对应支付渠道' },
-      { value: '支付宝扫码', label: '支付宝扫码' },
-      { value: '微信扫码', label: '微信扫码' },
-      { value: '支付宝wap', label: '支付宝wap' },
+      { value: '0', label: '选择对应支付渠道' },
+      { value: '1', label: '支付宝扫码' },
+      { value: '2', label: '微信扫码' },
+      { value: '3', label: '支付宝wap' },
     ];
     const Shebei = [
-      { value: '设备类型', label: '设备类型' },
-      { value: '官方参数', label: '官方参数' },
-      { value: '自有参数设置', label: '自有参数设置' },
+      { value: '0', label: '设备类型' },
+      { value: '1', label: '官方参数' },
+      { value: '2', label: '自有参数设置' },
     ];
 
     if (!this.state.open) return null;
@@ -63,18 +103,21 @@ export default class Addgrouping extends Component {
           onChange={this.formChange}
           ref="form"
         >
-          <FormBinder name='NewRuleName'>
+          <FormBinder name='NewRuleName' required message='输入错误'>
             <Input style={styles.formbinderbox} placeholder='输入分组名' hasClear />
           </FormBinder>
-          <FormBinder name="ApplicationChannel" required message="请输入正确的名称" >
-            <Select style={styles.formbinderbox} defaultValue={{ value: '选择对应支付渠道', label: '选择对应支付渠道' }} dataSource={ApplicationChannel} />
+          <FormError name="NewRuleName" />
+          <FormBinder name="ApplicationChannel" required message=" " >
+            <Select style={styles.formbinderbox} dataSource={ApplicationChannel} />
           </FormBinder>
-          <FormBinder name="Shebei" required message="请输入正确的名称" >
-            <Select style={styles.formbinderbox} defaultValue={{ value: '选择对应支付渠道', label: '选择对应支付渠道' }} dataSource={Shebei} />
+          <FormError name="ApplicationChannel" />
+          <FormBinder name="Shebei" required message=" " >
+            <Select style={styles.formbinderbox} dataSource={Shebei} />
           </FormBinder>
+          <FormError name="Shebei" />
         </FormBinderWrapper>
         <div className='addgrouping-btn'>
-          <button onClick={this.addgroupingclose.bind(this)}>取消</button>
+          <button onClick={this.addgroupingclose}>取消</button>
           <button onClick={this.addgrouping.bind(this)}>添加</button>
         </div>
       </div>

@@ -11,8 +11,22 @@ export async function getMenu(params) {
   //   console.log(status);
   //   console.log(data);
   //   ;
-  // });
+  // });deviceGroup
 }
+// 获取设备组内容
+export async function deviceGroupaddparmas() {
+  return ajaxAmd.get({
+    url: '/deviceGroup/add/parmas',
+  });
+}
+// 设备组接口
+export async function deviceGroupadd(params) {
+  return ajaxAmd.post({
+    url: '/deviceGroup/add ',
+    data: params,
+  });
+}
+
 export async function currentUser() {
   return ajaxAmd.post({
     url: 'getUserAccount',

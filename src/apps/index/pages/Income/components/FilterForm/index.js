@@ -27,6 +27,7 @@ export default class Filter extends Component {
   };
 
   formChange = (value) => {
+    debugger;
     this.props.onChange(value);
   };
   handleReset() {
@@ -63,8 +64,6 @@ export default class Filter extends Component {
         page: values.page,
         pageSize: values.pageSize,
       });
-    /*
-    *  arrivalDate（时间区间）, groupid（设备） */
     });
   }
   render() {
@@ -74,7 +73,6 @@ export default class Filter extends Component {
       { value: '创建时间', label: '创建时间' },
       { value: '支付时间', label: '支付时间' },
     ];
-
     const status = [
       { value: '全部', label: '全部' },
       { value: '支付完成', label: '支付完成' },

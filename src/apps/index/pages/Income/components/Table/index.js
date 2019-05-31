@@ -22,7 +22,7 @@ const getData = (length = 10) => {
       regdate: `2018-12-1${random(1, 9)}`,
       birthday: `1992-10-1${random(1, 9)}`,
       store: ['余杭盒马店', '滨江盒马店', '西湖盒马店'][random(0, 2)],
-      z: ['支付宝'],
+      z: ['支付宝','爱穷游','好吧'][random(0, 2)],
     };
   });
 };
@@ -73,29 +73,31 @@ export default class GoodsTable extends Component {
     );
   };
 
-  handleFilterChange = (value) => { // gengxin 5条新数据
-
-    this.fetchData(5);
+  handleFilterChange = (value) => { // 展示 5条新数据
+    debugger;
+    this.fetchData(value.pageSize);
   };
 
-  handleDelete = () => {
+  handleDelete(record,index) {
+    debugger;
     Dialog.confirm({
       title: '提示',
       content: '确认删除吗',
       onOk: () => {
         this.fetchData(10);
+        // 用不用重新获取一下数据
       },
     });
-  };
+  }
 
-  handleDetail = () => {
+  handleDetail = (index) => {
     Dialog.confirm({
       title: '提示',
       content: '暂不支持查看详情',
     });
   };
-
-  renderOper = () => {
+  // value:空，index：索引，record：行内容
+  renderOper = (value,index,record) => {
     return (
       <div>
         <Button
@@ -105,16 +107,14 @@ export default class GoodsTable extends Component {
         >
           <FormattedMessage id="app.btn.detail" />
         </Button>
-        <Button type="normal" warning onClick={this.handleDelete}>
+        <Button type="normal" warning onClick={()=>this.handleDelete(record,index)}>
           <FormattedMessage id="app.btn.delete" />
         </Button>
       </div>
     );
   };
-
   render() {
     const { isLoading, data, current } = this.state;
-
     return (
       <div style={styles.container}>
         <IceContainer>

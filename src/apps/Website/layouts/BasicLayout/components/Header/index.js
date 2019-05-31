@@ -128,6 +128,9 @@ export default class Header extends Component {
                   {/* <FoundationSymbol type="person" size="small" /> */}
                   <FormattedMessage id="app.login.sign.in" />
                 </a>
+                <Link to='/user/login'>
+                  222
+                </Link>
                 <a href="javascript:;" onClick={this.zzzzz.bind(this)}>111111</a>
               </li>
             </ul>
