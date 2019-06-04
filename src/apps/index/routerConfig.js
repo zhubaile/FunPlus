@@ -13,7 +13,9 @@ const ServerError = React.lazy(() => import('./pages/Exception/ServerError'));
 const Accountinformation = React.lazy(() => import('./pages/Personal/Accountinformation'));
 const Enterprisecertification = React.lazy(() => import('./pages/Personal/Enterprisecertification'));
 const Costcenter = React.lazy(() => import('./pages/Personal/Costcenter'));
+const Detailsofdeduction = React.lazy(() => import('./pages/Personal/Costcenter/Detailsofdeduction')); // 扣费明细
 const Controloverinvoices = React.lazy(() => import('./pages/Personal/Controloverinvoices'));
+const Applyforaticket = React.lazy(() => import('./pages/Personal/Controloverinvoices/Applyforaticket')); // 申请开票
 const Operationlog = React.lazy(() => import('./pages/Personal/Operationlog'));
 const Membermanagement = React.lazy(() => import('./pages/Personal/Membermanagement'));
 
@@ -55,149 +57,161 @@ const Requestlog = React.lazy(() => import('./pages/Auxiliarytools/Requestlog'))
 // ========系统首页============ //
 const routerConfig = [
   {
-    // path: '/personal/accountinformation/:appid?', // 账户信息
-    path: '/personal/accountinformation',
+    // path: '/admin/personal/accountinformation/:appid?', // 账户信息
+    path: '/admin/personal/accountinformation',
     component: Accountinformation,
   },
   {
-    path: '/personal/enterprisecertification', // 企业认证
+    path: '/admin/personal/enterprisecertification', // 企业认证
     component: Enterprisecertification,
   },
   {
-    path: '/personal/costcenter', // 费用中心
+    path: '/admin/personal/costcenter', // 费用中心
     component: Costcenter,
   },
   {
-    path: '/personal/controloverinvoices', // 发票管理
+    path: '/admin/personal/detailsofdeduction', // 费用中心
+    component: Detailsofdeduction,
+  },
+  {
+    path: '/admin/personal/controloverinvoices', // 发票管理
     component: Controloverinvoices,
   },
   {
-    path: '/personal/membermanagement', // 发票管理
+    path: '/admin/personal/applyforaticket', // 申请发票
+    component: Applyforaticket,
+  },
+  {
+    path: '/admin/personal/membermanagement', // 发票管理
     component: Membermanagement,
   },
   {
-    path: '/personal/operationlog', // 操作日志
+    path: '/admin/personal/operationlog', // 操作日志
     component: Operationlog,
   },
   {
-    path: '/personal/helpcenteraddition', // 运维帮助中心
+    path: '/admin/personal/helpcenteraddition', // 运维帮助中心
     component: HelpCenteraddition,
   },
   {
-    path: '/personal/accesstoinformationaddition', // 查阅更多信息
+    path: '/admin/personal/accesstoinformationaddition', // 查阅更多信息
     component: Accesstoinformationaddition,
   },
   {
-    path: '/backstageworkorder/Customerservice', // 客服
+    path: '/admin/backstageworkorder/Customerservice', // 客服
     component: Customerservice,
   },
   {
-    path: '/backstageworkorder/Allworkorders', // 全部工单
+    path: '/admin/backstageworkorder/Allworkorders', // 全部工单
     component: Allworkorders,
   },
   {
-    path: '/backstageworkorder/Workorderdetails', // 工单详情
+    path: '/admin/backstageworkorder/Workorderdetails', // 工单详情
     component: Workorderdetails,
   },
   {
-    path: '/backstageworkorder/Submissionworkorder', // 工单详情
+    path: '/admin/backstageworkorder/Submissionworkorder', // 工单详情
     component: Submissionworkorder,
   },
   {
-    path: '/income', // 收入
+    path: '/admin/income', // 收入
     component: Income,
   },
   {
-    path: '/expenditure/orderrefund',
+    path: '/admin/expenditure/orderrefund',
     component: Orderrefund,
   },
   {
-    path: '/expenditure/batchrefund',
+    path: '/admin/expenditure/batchrefund',
     component: Batchrefund,
   },
   {
-    path: '/expenditure/enterprisepaymentapi',
+    path: '/admin/expenditure/enterprisepaymentapi',
     component: Enterprisepaymentapi,
   },
   {
-    path: '/expenditure/businessPaymentBatch',
+    path: '/admin/expenditure/businessPaymentBatch',
     component: BusinessPaymentBatch,
   },
   {
-    path: '/expenditure/auditofpayment',
+    path: '/admin/expenditure/auditofpayment',
     component: Auditofpayment,
   },
   {
-    path: '/reconciliation/selfsummarization',
+    path: '/admin/reconciliation/selfsummarization',
     component: Selfsummarization,
   },
   {
-    path: '/reconciliation/channelreconciliation',
+    path: '/admin/reconciliation/channelreconciliation',
     component: Channelreconciliation,
   },
   {
-    path: '/reconciliation/errorTrading',
+    path: '/admin/reconciliation/errorTrading',
     component: ErrorTrading,
   },
   {
-    path: '/reconciliation/daysummary',
+    path: '/admin/reconciliation/daysummary',
     component: Daysummary,
   },
   {
-    path: '/reconciliation/transactionreport',
+    path: '/admin/reconciliation/transactionreport',
     component: Transactionreport,
   },
   {
-    path: '/applicationsettings/applicationparameters',
+    path: '/admin/applicationsettings/applicationparameters',
     component: Applicationparameters,
   },
   {
-    path: '/applicationsettings/paymentchannel',
+    path: '/admin/applicationsettings/paymentchannel',
     component: Paymentchannel,
   },
   {
-    path: '/applicationsettings/routingrules',
+    path: '/admin/applicationsettings/routingrules',
     component: Routingrules,
   },
   {
-    path: '/devicemanagement/devicemanagement', // 设备管理
+    path: '/admin/devicemanagement/devicemanagement', // 设备管理
     component: Devicemanagement,
   },
   {
-    path: '/privilegemanagement/applicationmember', // 权限管理-成员管理
+    path: '/admin/privilegemanagement/applicationmember', // 权限管理-成员管理
     component: Applicationmember,
   },
   // 辅助工具
   {
-    path: '/auxiliarytools/webhooksr', // 辅助工具
+    path: '/admin/auxiliarytools/webhooksr', // 辅助工具
     component: Webhooks,
   },
   {
-    path: '/auxiliarytools/serversidecharge', // 辅助工具
+    path: '/admin/auxiliarytools/serversidecharge', // 辅助工具
     component: Serversidecharge,
   },
   {
-    path: '/auxiliarytools/payexperience', // 辅助工具
+    path: '/admin/auxiliarytools/payexperience', // 辅助工具
     component: Payexperience,
   },
   {
-    path: '/auxiliarytools/requestlog', // 辅助工具
+    path: '/admin/auxiliarytools/requestlog', // 辅助工具
     component: Requestlog,
   },
   {
-    path: '/exception/500',
+    path: '/admin/exception/500',
     component: ServerError,
   },
   {
-    path: '/exception/403',
+    path: '/admin/exception/403',
     component: Forbidden,
   },
   {
-    path: '/exception/204',
+    path: '/admin/exception/204',
     component: Empty,
   },
   {
-    path: '/exception/404',
+    path: '/admin/exception/404',
+    component: NotFound,
+  },
+  {
+    path: '/admin/*',
     component: NotFound,
   },
 ];

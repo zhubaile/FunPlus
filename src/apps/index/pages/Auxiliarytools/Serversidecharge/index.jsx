@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button , Tab, Message ,Switch,Pagination,Table,Dropdown, Menu,MenuButton  } from '@alifd/next';
+import { Button , Tab, Message ,Switch,Pagination,Table,Dropdown, Menu,MenuButton, Select, Input, Icon } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
 import Paymentfooter from '../components/Paymentfooter';
 // import IceContainer from '@icedesign/container';
+import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import '../../index.css';
-
+import Customerservice from "../../Personal/components/Customerservice";
 const { Item } = MenuButton;
 const getData = (length = 10) => {
   return Array.from({ length }).map(() => {
@@ -24,6 +25,15 @@ export default class Paymentchannel extends Component {
       current: 1,
       isLoading: false,
       data: [],
+      value: {
+        yourhttps: 'https://',
+        yoururl: '',
+        luyouguize: '指定路由规则',
+        shebei: '输入指定设备',
+        yibudizhi: '',
+        tongbudizhi: '',
+        dingdanbeizhu: '',
+      },
     };
   }
   btnClick() {
@@ -72,12 +82,12 @@ export default class Paymentchannel extends Component {
   renderRule = () => {
     return (
       <div>
-        <select className='table-select'>
+        {/* <select className='table-select'>
           <option value="volvo">默认规则</option>
           <option value="saab">自定义规则</option>
           <option value="opel">自定义规则</option>
           <option value="audi">新增规则</option>
-        </select>
+        </select> */}
       </div>
     );
   };
@@ -91,88 +101,57 @@ export default class Paymentchannel extends Component {
 
   render() {
     const { isLoading, data, current } = this.state;
-    const copybtn = (<Button>复制</Button>);
-    const phonebtn = (<Button>手机/邮箱验证查看</Button>);
+    const yourhttps = [
+      { value: 'https:// ', label: 'https://' },
+      { value: 'http:// ', label: 'http://' },
+    ];
+
     return (
       <div className='paymentchannel'>
         <Tab shape='pure' className='backstage-tab'>
-          <Tab.Item title="应用直连渠道">
+          <Tab.Item title="服务端Charge格式验证">
             <div className='tab-contentone' >
               <div className='tab-contentone-left'>
                 <Message type='notice' className='tab-contentone-left-message'>
-                  应用直连：使用您直接申请的渠道支付参数或我们代为您申请的渠道参数进行交易，所有资金有微信，支付宝，银联，持牌方清算
+                  模拟你的客户端向你的服务端发起订单支付请求。正常情况下，你的服务端应该向你的客户端返回正确的订单对象（charge 对象），之后你的客户端应该使用
+                  这个订单对象调用客户端SDK调起支付页面（控件支付或者网页支付）或将订单对象上的地址显示二维码（扫码支付）阅读文档
                 </Message>
                 <div>
-                  <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                    <Table.Column title="支付渠道" dataIndex="name" />
-                    <Table.Column title="使用场景" dataIndex="level" />
-                    <Table.Column title="路由规则" dataIndex="rule" cell={this.renderRule} />
-                    <Table.Column
-                      title="操作"
-                      width={200}
-                      dataIndex="oper"
-                      cell={this.renderOper}
-                    />
-                  </Table>
-                  <Pagination
-                    style={{ marginTop: '20px', textAlign: 'right' }}
-                    current={current}
-                    onChange={this.handlePaginationChange}
-                  />
-                </div>
-              </div>
-              <div className='tab-contentone-right'>
-                <div>
-                  <p>启用状况</p>
-                  <p> 关闭需要超管短信或邮箱验证，关闭后所有API操作都被拒绝</p>
-                </div>
-                <div>
-                  <p>路由规则</p>
-                  <p>默认规则：金额无上限，无风控，使用自主申请的主秘钥参数，无路由规则限制，如需自定义规则需要新添加</p>
+                  <p>填入你的服务URL，我们将向这个URL发送POST请求：</p>
+                  <FormBinderWrapper
+                    value={this.state.value}
+                    onChange={this.formChange}
+                    ref="form"
+                  >
+                    <FormBinder name="yourhttps"
+                      autoWidth={false}
+                    >
+                      <Select className='member-role' dataSource={yourhttps} defaultValue='https://' />
+                    </FormBinder>
+                    <FormBinder name='yoururl'>
+                      <Input hasClear placeholder='您的url地址' />
+                    </FormBinder>
+
+                  </FormBinderWrapper>
+                  <p>选择application/json或者application/x-www-form-urlencoded,并输入相应的发送内容</p>
+                  <Tab shape="capsule">
+                    <Tab.Item title="json"><Input type='text' placeholder='格式如下：' style={{ width: '350px', height: '250px' }} /></Tab.Item>
+
+                    <Tab.Item title="from"><Input type='text' placeholder='格式如下：' style={{ width: '350px', height: '250px' }} /></Tab.Item>
+                  </Tab>
+                  <Button type='primary'>提交</Button>
+
+                  <p>返回结果</p>
+
                 </div>
               </div>
             </div>
+{/*            <Button type="primary" size="large" iconSize="large"><Icon type="atm" />在线客服</Button>*/}
           </Tab.Item>
 
-          <Tab.Item title="平台渠道">
-            <div className='tab-contentone' >
-              <div className='tab-contentone-left'>
-                <Message type='notice' className='tab-contentone-left-message'>
-                  平台渠道：平台渠道：平台作为技术服务商发起支付api，商户申请后开箱即用，资金由微信，支付宝，银联等持牌机构清算。
-                </Message>
-                <div>
-                  <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                    <Table.Column title="支付渠道" dataIndex="name" />
-                    <Table.Column title="使用场景" dataIndex="level" />
-                    <Table.Column title="路由规则" dataIndex="rule" cell={this.renderRule} />
-                    <Table.Column
-                      title="操作"
-                      width={200}
-                      dataIndex="oper"
-                      cell={this.renderOper}
-                    />
-                  </Table>
-                  <Pagination
-                    style={{ marginTop: '20px', textAlign: 'right' }}
-                    current={current}
-                    onChange={this.handlePaginationChange}
-                  />
-                </div>
-              </div>
-              <div className='tab-contentone-right'>
-                <div>
-                  <p>启用状况</p>
-                  <p> 关闭需要超管短信或邮箱验证，关闭后所有API操作都被拒绝</p>
-                </div>
-                <div>
-                  <p>路由规则</p>
-                  <p>平台渠道的路由规则禁用设备分组及设备模式</p>
-                </div>
-              </div>
-            </div>
-          </Tab.Item>
         </Tab>
-        <Paymentfooter />
+
+        <Customerservice />
       </div>
     );
   }

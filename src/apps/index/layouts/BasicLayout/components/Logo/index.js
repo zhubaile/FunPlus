@@ -11,7 +11,7 @@ export default class Logo extends PureComponent {
           <IceImg
             height={40}
             width={100}
-            src={require('../../../../../../assets/img/index/logo.jpg')}
+            src={require('@img/index/logo.jpg')}
             style={{ ...styles.logoStyle }}
           />
         </Link>

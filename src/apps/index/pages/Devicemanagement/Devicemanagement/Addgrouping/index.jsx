@@ -4,7 +4,7 @@ import { Input,Button , Grid, DatePicker , Tab,Message ,Table,Pagination,Select,
 import { actions, reducers, connect } from '@indexStore';
 import IceContainer from '@icedesign/container';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
-import { deviceGroupaddparmas,deviceGroupadd } from "../../../../api";
+import { deviceGroupaddparmas,deviceGroupadd } from "@indexApi";
 import '../../../index.css';
 
 const { Row, Col } = Grid;
@@ -15,8 +15,10 @@ export default class Addgrouping extends Component {
       open: false,
       value: {
         NewRuleName: '',
-        ApplicationChannel: '0',
-        Shebei: '0',
+        ApplicationChannel: '请选择渠道',
+        Shebei: '请选择参数',
+        channels: [],
+        dClassify: [],
       },
     };
   }
@@ -41,9 +43,35 @@ export default class Addgrouping extends Component {
   componentDidMount() {
     deviceGroupaddparmas().then(
       ({ status, data }) => {
-        debugger;
-        if (data.errCoder == 0) {
-
+        const channels = data.data.channels; // 选择渠道
+        const dClassify = data.data.dClassify; // 选择参数
+        // 修改后端传过来数据的字段名称
+        // 两种方法 一
+        const channelss = channels.map(item=>({ value: item._id,label: item.des }));
+        const dClassifys = dClassify.map(item=>({ value: item.value,label: item.name }));
+        // 二
+        /* const channelss = function (arr) {
+          const newArr = [];
+          for (let i = 0; i < arr.length; i++) {
+            newArr.push({ value: arr[i]._id,label: arr[i].des });
+          }
+          return newArr;
+        };
+        const dClassifys = function (arr) {
+          const newArr = [];
+          for (let i = 0; i < arr.length; i++) {
+            newArr.push({ value: arr[i].value,label: arr[i].name });
+          }
+          return newArr;
+        };
+        // 重新定义
+        const newdClassifys = dClassifys(dClassify);
+        const newdchannelss = channelss(channels); */
+        if (data.errCode == 0) {
+          this.setState({
+            channels: channelss,
+            dClassify: dClassifys,
+          });
         }
       }
     ).catch(
@@ -60,40 +88,36 @@ export default class Addgrouping extends Component {
       deviceGroupadd({
         dGroupName: values.NewRuleName,
         dClassify: values.Shebei,
-        payChannelId: values.ApplicationChannel,
+        channelId: values.ApplicationChannel,
       }).then(
         ({ status, data }) => {
-          debugger;
-          if (data.errCoder == 0) {
+          const that = this;
+          if (data.errCode == 0) {
             // Message.success(intl.formatMessage({ id: 'app.register.success' }));
-            Message.success('添加分组成功');
+            // Message.success('添加分组成功');
+            this.setState({
+              NewRuleName: '',
+            });
+            debugger;
+            Message.success(data.message);
             this.addgroupingclose();
           }
           Message.success(data.message);
-          // console.log(values);
-          // Message.success(intl.formatMessage({ id: 'app.register.success' }));
-          // Message.success('注册成功');
-          // this.props.history.push('/user/login');
         }
       ).catch(
         ({ status, data }) => {
+          Message.success(data.message);
         }
       );
     });
   }
   render() {
-    const ApplicationChannel = [
+    /* const ApplicationChannel = [
       { value: '0', label: '选择对应支付渠道' },
       { value: '1', label: '支付宝扫码' },
       { value: '2', label: '微信扫码' },
       { value: '3', label: '支付宝wap' },
-    ];
-    const Shebei = [
-      { value: '0', label: '设备类型' },
-      { value: '1', label: '官方参数' },
-      { value: '2', label: '自有参数设置' },
-    ];
-
+    ]; */
     if (!this.state.open) return null;
     return (
       <div className='addgrouping'>
@@ -108,11 +132,11 @@ export default class Addgrouping extends Component {
           </FormBinder>
           <FormError name="NewRuleName" />
           <FormBinder name="ApplicationChannel" required message=" " >
-            <Select style={styles.formbinderbox} dataSource={ApplicationChannel} />
+            <Select style={styles.formbinderbox} dataSource={this.state.channels} />
           </FormBinder>
           <FormError name="ApplicationChannel" />
           <FormBinder name="Shebei" required message=" " >
-            <Select style={styles.formbinderbox} dataSource={Shebei} />
+            <Select style={styles.formbinderbox} dataSource={this.state.dClassify} />
           </FormBinder>
           <FormError name="Shebei" />
         </FormBinderWrapper>

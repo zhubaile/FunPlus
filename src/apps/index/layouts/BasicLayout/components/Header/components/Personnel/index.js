@@ -62,7 +62,7 @@ export default class Header extends Component {
               </a>
             </li>
             <li>
-              <Link to='/backstageworkorder/Customerservice'>
+              <Link to='/admin/backstageworkorder/Customerservice'>
                 <div className="user-avatar-w">
                   <img alt="" src={require('../../../../../../../../assets/img/img/avatar2.jpg')} />
                 </div>
@@ -92,7 +92,7 @@ export default class Header extends Component {
               </a>
             </li>
             <li>
-              <Link to='/personal/helpcenteraddition'>
+              <Link to='/admin/personal/helpcenteraddition'>
                 <div className="user-avatar-w">
                   <img alt="" src={require('../../../../../../../../assets/img/img/avatar4.jpg')} />
                 </div>

@@ -6,8 +6,8 @@ import {
 import Store from './store/index';
 import router from './router';
 import UserLayout from './layouts/UserLayout';
-import LanguageProvider from '../Internationalization/LocaleProvider';
-import { getLocale } from '../Internationalization/locale';
+import LanguageProvider from '../../assets/Internationalization/LocaleProvider';
+import { getLocale } from '../../assets/Internationalization/locale';
 
 import {
   Provider,

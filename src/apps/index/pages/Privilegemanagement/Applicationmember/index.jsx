@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button , Tab, Message ,Switch,Pagination,Table,Dropdown, Menu,MenuButton  } from '@alifd/next';
+import { Button , Tab, Message ,Switch,Pagination,Table,Select , Menu,MenuButton, Radio, Input } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
 // import IceContainer from '@icedesign/container';
+import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import '../../index.css';
+// import SelectLang from "../../../../Internationalization/SelectLang/SelectLang";
 
 const { Item } = MenuButton;
 const getData = (length = 10) => {
   return Array.from({ length }).map(() => {
     return {
-      name: ['淘小宝', '淘二宝'],
-      level: ['普通会员'],
-      rule: ['余杭盒马店'],
+      name: ['肖悦'],
+      email: ['123456789@qq.com'],
+      tel: ['12345678'],
+      remark: ['111'],
+      role: [' - a-'],
+      status: [false,'haode'],
+      oper: ['aaa'],
     };
   });
 };
@@ -23,13 +29,18 @@ export default class Applicationmember extends Component {
       current: 1,
       isLoading: false,
       data: [],
+      value: {
+        jiaose: '角色',
+        haoma: '',
+      },
     };
   }
-  btnClick() {
-    this.props.editor(this.input.getInputNode().value);
-  }
+  /*  btnClick() {
+      this.props.editor(this.input.getInputNode().value);
+    } */
 
   componentDidMount() {
+    debugger;
     this.fetchData();
   }
 
@@ -37,6 +48,7 @@ export default class Applicationmember extends Component {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
+        debugger;
       }, 600);
     });
   };
@@ -48,6 +60,7 @@ export default class Applicationmember extends Component {
       },
       () => {
         this.mockApi(len).then((data) => { // data 里面为数据
+          debugger;
           this.setState({
             data,
             isLoading: false,
@@ -68,18 +81,27 @@ export default class Applicationmember extends Component {
     );
   };
 
-  renderRule = () => {
+
+  renderStatus = (datas) => {
+    debugger;
+    const z = datas[0];
     return (
       <div>
-        <select className='table-select'>
-          <option value="volvo">默认规则</option>
-          <option value="saab">自定义规则</option>
-          <option value="opel">自定义规则</option>
-          <option value="audi">新增规则</option>
-        </select>
+        <Radio id="shiduide" value="shiduide" checked={z} >{datas[1]}</Radio>
+        {/* <Radio id="shiduide" value="shiduide" checked={false}>--</Radio> */}
       </div>
     );
   };
+
+
+  /*  renderOper = () => {
+      return (
+        <div>
+          <Switch className='div-switch' />
+        </div>
+      );
+    }; */
+
   renderOper = () => {
     return (
       <div>
@@ -87,63 +109,56 @@ export default class Applicationmember extends Component {
       </div>
     );
   };
-
+  formChange=(value)=>{
+    debugger;
+  }
   render() {
     const { isLoading, data, current } = this.state;
-    const copybtn = (<Button>复制</Button>);
-    const phonebtn = (<Button>手机/邮箱验证查看</Button>);
+
+
+    const jiaose = [
+      { value: '角色 ', label: '角色' },
+      { value: '我', label: '我' },
+    ];
+
+
     return (
-      <div className='paymentchannel'>
+      <div className='applicationmember'>
         <Tab shape='pure' className='backstage-tab'>
-          <Tab.Item title="应用直连渠道">
-            <div className='tab-contentone' >
-              <div className='tab-contentone-left'>
-                <Message type='notice' className='tab-contentone-left-message'>
-                  应用直连：使用您直接申请的渠道支付参数或我们代为您申请的渠道参数进行交易，所有资金有微信，支付宝，银联，持牌方清算
-                </Message>
-                <div>
-                  <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                    <Table.Column title="支付渠道" dataIndex="name" />
-                    <Table.Column title="使用场景" dataIndex="level" />
-                    <Table.Column title="路由规则" dataIndex="rule" cell={this.renderRule} />
-                    <Table.Column
-                      title="操作"
-                      width={200}
-                      dataIndex="oper"
-                      cell={this.renderOper}
-                    />
-                  </Table>
-                  <Pagination
-                    style={{ marginTop: '20px', textAlign: 'right' }}
-                    current={current}
-                    onChange={this.handlePaginationChange}
-                  />
-                </div>
-              </div>
-              <div className='tab-contentone-right'>
-                <div>
-                  <p>启用状况</p>
-                  <p> 关闭需要超管短信或邮箱验证，关闭后所有API操作都被拒绝</p>
-                </div>
-                <div>
-                  <p>路由规则</p>
-                  <p>默认规则：金额无上限，无风控，使用自主申请的主秘钥参数，无路由规则限制，如需自定义规则需要新添加</p>
-                </div>
+          <Tab.Item title="应用成员">
+            <div className='member-main-top'>
+              <div className='membermanagement-top'>
+                <FormBinderWrapper
+                  value={this.state.value}
+                  onChange={this.formChange}
+                  ref="form"
+                >
+                  <FormBinder name='haoma'>
+                    <Input hasClear placeholder='输入姓名/邮箱/手机号' />
+                  </FormBinder>
+                  <FormBinder name="jiaose"
+                    autoWidth={false}
+                  >
+                    <Select className='member-role' dataSource={jiaose} defaultValue='角色' />
+                  </FormBinder>
+                  <Button className='bg' size="large" type="primary">搜索</Button>
+                  {/* <button className='addmemberbtn' onClick={this.addmemberbtn.bind(this)}>添加成员</button> */}
+                </FormBinderWrapper>
               </div>
             </div>
-          </Tab.Item>
-
-          <Tab.Item title="平台渠道">
-            <div className='tab-contentone' >
-              <div className='tab-contentone-left'>
-                <Message type='notice' className='tab-contentone-left-message'>
-                  平台渠道：平台渠道：平台作为技术服务商发起支付api，商户申请后开箱即用，资金由微信，支付宝，银联等持牌机构清算。
-                </Message>
-                <div>
+            <p className='addmember-notice'>
+              新增成员请在：右上角头像----角色权限----添加成员内进行激活----添加成员时选择此应用
+            </p>
+            <div className='member-panel' >
+              <div className='tab-bg'>
+                <div className='tab-panel'>
                   <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                    <Table.Column title="支付渠道" dataIndex="name" />
-                    <Table.Column title="使用场景" dataIndex="level" />
-                    <Table.Column title="路由规则" dataIndex="rule" cell={this.renderRule} />
+                    <Table.Column title="姓名" dataIndex="name" />
+                    <Table.Column title="邮箱" dataIndex="email" />
+                    <Table.Column title="手机号" dataIndex="tel" />
+                    <Table.Column title="备注" dataIndex="remark" />
+                    <Table.Column title="角色" dataIndex="role" />
+                    <Table.Column title="状态" dataIndex="status" cell={this.renderStatus} />
                     <Table.Column
                       title="操作"
                       width={200}
@@ -156,16 +171,6 @@ export default class Applicationmember extends Component {
                     current={current}
                     onChange={this.handlePaginationChange}
                   />
-                </div>
-              </div>
-              <div className='tab-contentone-right'>
-                <div>
-                  <p>启用状况</p>
-                  <p> 关闭需要超管短信或邮箱验证，关闭后所有API操作都被拒绝</p>
-                </div>
-                <div>
-                  <p>路由规则</p>
-                  <p>平台渠道的路由规则禁用设备分组及设备模式</p>
                 </div>
               </div>
             </div>
@@ -175,3 +180,4 @@ export default class Applicationmember extends Component {
     );
   }
 }
+

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SelectLang from '../../../../../Internationalization/SelectLang';
+import SelectLang from '../../../../../../assets/Internationalization/SelectLang';
 import IceImg from '@icedesign/img';
 
 export default class Home extends Component {

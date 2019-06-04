@@ -16,35 +16,35 @@ export default () => {
           <IceImg
             height={24}
             width={24}
-            src={require('../../../../../../assets/img/shouye/wx.png')}
+            src={require('@img/shouye/wx.png')}
           />
         </div>
         <div className='image'>
           <IceImg
             height={24}
             width={24}
-            src={require('../../../../../../assets/img/shouye/wb.png')}
+            src={require('@img/shouye/wb.png')}
           />
         </div>
         <div className='image'>
           <IceImg
             height={24}
             width={24}
-            src={require('../../../../../../assets/img/shouye/face.png')}
+            src={require('@img/shouye/face.png')}
           />
         </div>
         <div className='image'>
           <IceImg
             height={24}
             width={24}
-            src={require('../../../../../../assets/img/shouye/twittter.png')}
+            src={require('@img/shouye/twittter.png')}
           />
         </div>
         <div className='image'>
           <IceImg
             height={24}
             width={24}
-            src={require('../../../../../../assets/img/shouye/in.png')}
+            src={require('@img/shouye/in.png')}
           />
         </div>
       </div>

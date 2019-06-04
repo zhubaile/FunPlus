@@ -31,7 +31,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
-    backgroundImage: `url(${require("../../../../../../assets/img/helpcenter/develop/ks-bg1.png")})`,
+    backgroundImage: `url(${require("@img/helpcenter/develop/ks-bg1.png")})`,
     backgroundSize: '100% 100%',
   },
   left: {

@@ -5,7 +5,9 @@ import qs from 'qs';
 const ajaxConfig = {
   timeout: 30000,
   withCredentials: true,
-  urlPrefix: 'http://192.168.1.118:3000/web/beta/v1.0',
+  urlPrefix: '/web/beta/v1.0', // 请求本地的/web/beta/v1.0，通过代理访问服务器的/web/beta/v1.0
+  // 此处错误
+  // urlPrefix: 'http://192.168.1.118:3000/web/beta/v1.0', // 这样写就成跨域了，
   // urlPrefix: 'http://funplus.yue-net.com/web/beta/v1.0',
 };
 // urlPrefix: 'http://192.168.1.118:3000/web/beta/v1.0',fog本地的

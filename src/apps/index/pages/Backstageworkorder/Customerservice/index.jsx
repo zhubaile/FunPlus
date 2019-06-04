@@ -30,7 +30,7 @@ export default class Customerservice extends Component {
         return (
           <div className="chat-message self">
             <div className="chat-message-avatar">
-              <img alt="" src={require('../../../../../assets/img/img/avatar1.jpg')} />
+              <img alt="" src={require('@img/img/avatar1.jpg')} />
               <div>
                 <p>客服</p>
                 <span>chat- 9:12am-date</span>
@@ -62,7 +62,7 @@ export default class Customerservice extends Component {
 
                 <div className="chat-message">
                   <div className="chat-message-avatar">
-                    <img alt="" src={require('../../../../../assets/img/img/avatar1.jpg')} />
+                    <img alt="" src={require('@img/img/avatar1.jpg')} />
                     <div>
                       <p>客服</p>
                       <span>chat- 9:12am-date</span>
@@ -81,7 +81,7 @@ export default class Customerservice extends Component {
 
                 <div className="chat-message self">
                   <div className="chat-message-avatar">
-                    <img alt="" src={require('../../../../../assets/img/img/avatar1.jpg')} />
+                    <img alt="" src={require('@img/img/avatar1.jpg')} />
                     <div>
                       <p>客服</p>
                       <span>chat- 9:12am-date</span>
@@ -96,7 +96,7 @@ export default class Customerservice extends Component {
 
                 <div className="chat-message">
                   <div className="chat-message-avatar">
-                    <img alt="" src={require('../../../../../assets/img/img/avatar1.jpg')} />
+                    <img alt="" src={require('@img/img/avatar1.jpg')} />
                     <div>
                       <p>客服</p>
                       <span>chat- 9:12am-date</span>

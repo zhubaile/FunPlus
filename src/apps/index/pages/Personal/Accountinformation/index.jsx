@@ -46,7 +46,7 @@ export default class Accountinformation extends Component {
           <div className='accountinformation-top'>
             <div className='accountinformation-top-left'>
               <div>
-                <img src={require('../../../../../assets/img/demoience/zfb.png')} alt="" />
+                <img src={require('@img/demoience/zfb.png')} alt="" />
               </div>
               <div className='boxcentent'>
                 <h2>玛丽个牙买四</h2>

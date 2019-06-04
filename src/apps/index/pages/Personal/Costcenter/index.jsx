@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import IceContainer from '@icedesign/container';
+import { withRouter, Link } from 'react-router-dom';
 import { Input, Radio, Tab , Button, Grid, Form, DatePicker,Table,Pagination } from '@alifd/next';
 import Customerservice from "../components/Customerservice";
 import Recharge from './Recharge';
@@ -24,7 +25,7 @@ const getData = (length = 10) => {
     };
   });
 };
-
+@withRouter
 class Costcenter extends Component {
   static displayName = 'Costcenter';
 
@@ -81,6 +82,9 @@ class Costcenter extends Component {
   balancerecharge() {
     this.Recharge.open();
   }
+  detailsdeduction(){
+    this.props.history.push('/admin/personal/detailsofdeduction');
+  };
   render() {
     const { isLoading, data, current } = this.state;
     const {
@@ -104,7 +108,7 @@ class Costcenter extends Component {
           <div className='costcenter-conter'>
             <div className='costcenter-conter-onecentent'>
               <div>
-                <img src={require('../../../../../assets/img/houtai/personal/008.png')} alt="" />
+                <img src={require('@img/houtai/personal/008.png')} alt="" />
                 <div>
                   <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>账户余额</p>
                   <strong>0.00元</strong>
@@ -115,14 +119,14 @@ class Costcenter extends Component {
             </div>
             <div className='costcenter-conter-twocentent'>
               <div>
-                <img src={require('../../../../../assets/img/houtai/personal/009.png')} alt="" />
+                <img src={require('@img/houtai/personal/009.png')} alt="" />
                 <div>
                   <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>累计扣费</p>
                   <strong>0.00元</strong>
                 </div>
               </div>
               <p style={{ fontSize: '16px' }}>默认显示所有消费总额</p>
-              <Button type='primary' onClick={this.balancerecharge.bind(this)}>查询明细</Button>
+              <Button type='primary' onClick={this.detailsdeduction.bind(this)}>查询明细</Button>
             </div>
           </div>
           <div className='costcenter-bottom'>

@@ -103,7 +103,7 @@ export default class Allworkorders extends Component {
     });
   };
   see() {
-    this.props.history.push('/backstageworkorder/Workorderdetails');
+    this.props.history.push('/admin/backstageworkorder/Workorderdetails');
   }
   renderOper = () => {
     return (

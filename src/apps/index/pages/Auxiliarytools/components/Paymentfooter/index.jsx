@@ -16,7 +16,7 @@ export default class Panmentfooter extends Component {
         <div className='paymentfooter-box'>
           1.设备管理 > 添加 > 自定义分组 > 分组类型选 > 此支付渠道
         </div>
-          <Icon type='arrow-right' className='box-icon' />
+        <Icon type='arrow-right' className='box-icon' />
         <div>
           2.向步骤1中的 自定义分组 > 添加此设备
         </div>

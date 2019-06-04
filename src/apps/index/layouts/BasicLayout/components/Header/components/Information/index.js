@@ -23,7 +23,7 @@ export default class Header extends Component {
     });
   }
   acinformion() {
-    this.props.history.push('/personal/accesstoinformationaddition');
+    this.props.history.push('/admin/personal/accesstoinformationaddition');
   }
   render() {
     const {

@@ -21,8 +21,8 @@ const login = [
   },
 ];
 
-export default login;
-/* export default [].concat(login, [{
-  path: '*',
+// export default login;
+export default [].concat(login, [{
+  path: '/user/*',
   component: Login,
-}]); */
+}]);
