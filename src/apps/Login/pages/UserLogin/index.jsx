@@ -9,7 +9,7 @@ import {
 } from '@icedesign/form-binder';
 import IceIcon from '@icedesign/icon';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { loginUser } from '../../api';
+import { loginUser } from '@loginApi';
 import IceImg from '@icedesign/img';
 
 @withRouter
@@ -59,8 +59,8 @@ class UserLogin extends Component {
           if (data.errCode == 0) {
             console.log(values);
             Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
-            // this.props.history.push('/income');
-            window.location.href = "index.html";
+            this.props.history.push('/admin/income');
+            window.location.href = "";
           } else {
             Message.success(data.message);
           }
@@ -148,8 +148,6 @@ class UserLogin extends Component {
               </div>
 
               <div style={styles.footer}>
-                <a href="index.html">aaaa</a>
-                <a href="website.html">bbbb</a>
                 <Button
                   type="primary"
                   size="large"
@@ -168,14 +166,14 @@ class UserLogin extends Component {
         <div style={styles.right}>
           <div style={styles.box}>
             <IceImg
-              src={require('../../../../assets/img/login/tel.png')}
+              src={require('@img/login/tel.png')}
             />
             <p> <FormattedMessage id='app.login.Tel.consult' /></p>
             <a>000-1111-2222</a>
           </div>
           <div style={styles.box}>
             <IceImg
-              src={require('../../../../assets/img/login/email.png')}
+              src={require('@img/login/email.png')}
             />
             <p><FormattedMessage id='app.login.Mail.box' /></p>
             <a>YanYue@3FunPlus.com</a>

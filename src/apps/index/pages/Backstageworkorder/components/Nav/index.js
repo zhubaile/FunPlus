@@ -14,7 +14,7 @@ export default class Nav extends Component {
   render() {
     const navtop1 = (
       <div className="tab-title">
-        <Link to='/backstageworkorder/Customerservice'>
+        <Link to='/admin/backstageworkorder/Customerservice'>
           <i className="os-icon os-icon-mail-14"></i>
           <div>客服</div>
         </Link>
@@ -22,7 +22,7 @@ export default class Nav extends Component {
     );
     const navtop2 = (
       <div className="tab-title">
-        <Link to='/backstageworkorder/Allworkorders'>
+        <Link to='/admin/backstageworkorder/Allworkorders'>
           <i className="os-icon os-icon-mail-14"></i>
           <div>工单</div>
         </Link>
@@ -41,7 +41,7 @@ export default class Nav extends Component {
              <div className='user-list'>
                <div className="user-w">
                  <div className="avatar with-status status-green">
-                   <img alt="" src={require('../../../../../../assets/img/img/avatar1.jpg')} />
+                   <img alt="" src={require('@img/img/avatar1.jpg')} />
                  </div>
                  <div className="user-info">
                    <div className="user-date">
@@ -68,13 +68,13 @@ export default class Nav extends Component {
               </div>
               <div>
                 <div>
-                  <Link to='/backstageworkorder/Allworkorders'>
+                  <Link to='/admin/backstageworkorder/Allworkorders'>
                     <i className="os-icon os-icon-mail-14"></i>
                     <span>我的工单</span>
                   </Link>
                 </div>
                 <div>
-                  <Link to='/backstageworkorder/Submissionworkorder'>
+                  <Link to='/admin/backstageworkorder/Submissionworkorder'>
                     <i className="os-icon os-icon-mail-14"></i>
                     <span>提交工单</span>
                   </Link>

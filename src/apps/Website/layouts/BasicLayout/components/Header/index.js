@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Balloon, Icon, Nav } from '@alifd/next';
-import FoundationSymbol from '@icedesign/foundation-symbol';
-import IceImg from '@icedesign/img';
-import { headerMenuConfig } from '../../../../menuConfig';
-import Logo from '../Logo';
 import './index.scss';
 import Aside from '../Aside';
-import SelectLang from '../../../../../Internationalization/SelectLang';
+import SelectLang from '../../../../../../assets/Internationalization/SelectLang';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 @injectIntl
 @withRouter
 export default class Header extends Component {
-  zzzzz() {
+  signin() {
     this.props.history.push('/user/login');
   }
 
@@ -124,14 +119,10 @@ export default class Header extends Component {
                 {/* <Link to='/user/login' style={{ color: '#666' }}>
                   <FormattedMessage id="app.login.sign.in" />
                 </Link> */}
-                <a href="login.html" style={{ color: '#666' }}>
+                <a href="" style={{ color: '#666' }} onClick={this.signin.bind(this)}>
                   {/* <FoundationSymbol type="person" size="small" /> */}
                   <FormattedMessage id="app.login.sign.in" />
                 </a>
-                <Link to='/user/login'>
-                  222
-                </Link>
-                <a href="javascript:;" onClick={this.zzzzz.bind(this)}>111111</a>
               </li>
             </ul>
           </div>

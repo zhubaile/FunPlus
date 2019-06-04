@@ -40,7 +40,7 @@ export default class Channelreconciliation extends Component {
             <div className='reconcilichannel-tab-right'>
               <span>支付宝、微信、银联支持对账的支付方式</span>
               <div className='reconcilichannel-tab-right-top'>
-                <img src={require('../../../../../assets/img/demoience/zfb.png')} alt="" />
+                <img src={require('@img/demoience/zfb.png')} alt="" />
                 <ul>
                   <li>支付宝APP支付</li>
                   <li>支付宝条码支付</li>
@@ -53,7 +53,7 @@ export default class Channelreconciliation extends Component {
                 </ul>
               </div>
               <div className='reconcilichannel-tab-right-top'>
-                <img  src={require('../../../../../assets/img/demoience/d.wx.png')} alt="" />
+                <img src={require('@img/demoience/d.wx.png')} alt="" />
                 <ul>
                   <li>支付宝APP支付</li>
                   <li>支付宝条码支付</li>
@@ -66,7 +66,7 @@ export default class Channelreconciliation extends Component {
                 </ul>
               </div>
               <div className='reconcilichannel-tab-right-top'>
-                <img  src={require('../../../../../assets/img/demoience/yl.png')} alt="" />
+                <img src={require('@img/demoience/yl.png')} alt="" />
                 <ul>
                   <li>支付宝APP支付</li>
                   <li>支付宝条码支付</li>

@@ -17,7 +17,7 @@ export default class UserLayout extends Component {
       <div style={styles.container}>
         <Header />
         <IceImg
-          src={require('../../../../assets/img/login/zbg.png')}
+          src={require('@img/login/zbg.png')}
         />
         <Row wrap style={styles.row}>
           <Col l="12">

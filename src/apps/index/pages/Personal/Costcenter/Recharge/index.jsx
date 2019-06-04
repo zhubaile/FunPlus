@@ -73,10 +73,10 @@ export default class Recharges extends Component {
               <p>平台支付</p>
               <RadioGroup shape="button" size="large" value={this.state.payvalue} onChange={this.onNestChange.bind(this)}>
                 <Radio id="zfb" value="zfb">
-                  <img src={require('../../../../../../assets/img/demopay/zlogo.png')} style={{ }} alt="" />
+                  <img src={require('@img/demopay/zlogo.png')} style={{ }} alt="" />
                 </Radio>
                 <Radio id="wx" value="wx">
-                  <img src={require('../../../../../../assets/img/demopay/wx.png')} style={{ }} alt="" />
+                  <img src={require('@img/demopay/wx.png')} style={{ }} alt="" />
                 </Radio>
               </RadioGroup>
             </div>

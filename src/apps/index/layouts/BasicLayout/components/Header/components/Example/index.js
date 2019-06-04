@@ -34,7 +34,7 @@ export default class Header extends Component {
         <div className={this.state.open ? "fancy-selector-w opened" : "fancy-selector-w"} >
           <div className="fancy-selector-current">
             <div className="fs-img">
-              <img alt="" src={require('../../../../../../../../assets/img/img/card1.png')} />
+              <img alt="" src={require('@img/img/card1.png')} />
             </div>
             <div className="fs-main-info">
               <div className="fs-name">
@@ -54,7 +54,7 @@ export default class Header extends Component {
           <div className="fancy-selector-options">
             <div className="fancy-selector-option">
               <div className="fs-img">
-                <img alt="" src={require('../../../../../../../../assets/img/img/card2.png')} />
+                <img alt="" src={require('@img/img/card2.png')} />
               </div>
               <div className="fs-main-info">
                 <div className="fs-name">
@@ -70,7 +70,7 @@ export default class Header extends Component {
             </div>
             <div className="fancy-selector-option active">
               <div className="fs-img">
-                <img alt="" src={require('../../../../../../../../assets/img/img/card1.png')} />
+                <img alt="" src={require('@img/img/card1.png')} />
               </div>
               <div className="fs-main-info">
                 <div className="fs-name">
@@ -86,7 +86,7 @@ export default class Header extends Component {
             </div>
             <div className="fancy-selector-option">
               <div className="fs-img">
-                <img alt="" src={require('../../../../../../../../assets/img/img/card3.png')} />
+                <img alt="" src={require('@img/img/card3.png')} />
               </div>
               <div className="fs-main-info">
                 <div className="fs-name">

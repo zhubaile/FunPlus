@@ -59,7 +59,7 @@ export default class Aside extends Component {
             <span>交易</span>
           </li>
           <li className="selected has-sub-menu">
-            <Link to='/income'>
+            <Link to='/admin/income'>
               <div className="icon-w">
                 <div className="os-icon os-icon-coins-4" />
               </div>
@@ -83,27 +83,27 @@ export default class Aside extends Component {
               <div className="sub-menu-i">
                 <ul className="sub-menu">
                   <li>
-                    <Link to='/expenditure/orderrefund'>
+                    <Link to='/admin/expenditure/orderrefund'>
                       订单退款
                     </Link>
                   </li>
                   <li>
-                    <Link to='/expenditure/batchrefund'>
+                    <Link to='/admin/expenditure/batchrefund'>
                       批量退款
                     </Link>
                   </li>
                   <li>
-                    <Link to='/expenditure/enterprisepaymentapi'>
+                    <Link to='/admin/expenditure/enterprisepaymentapi'>
                       企业付款api
                     </Link>
                   </li>
                   <li>
-                    <Link to='/expenditure/businessPaymentBatch'>
+                    <Link to='/admin/expenditure/businessPaymentBatch'>
                       企业付款批量
                     </Link>
                   </li>
                   <li>
-                    <Link to='/expenditure/auditofpayment'>
+                    <Link to='/admin/expenditure/auditofpayment'>
                       出款审核
                     </Link>
                   </li>
@@ -122,27 +122,27 @@ export default class Aside extends Component {
               <div className="sub-menu-i">
                 <ul className="sub-menu">
                   <li>
-                    <Link to='/reconciliation/selfsummarization'>
+                    <Link to='/admin/reconciliation/selfsummarization'>
                       财务汇总
                     </Link>
                   </li>
                   <li>
-                    <Link to='/reconciliation/channelreconciliation'>
+                    <Link to='/admin/reconciliation/channelreconciliation'>
                       渠道对账功能
                     </Link>
                   </li>
                   <li>
-                    <Link to='/reconciliation/errorTrading'>
+                    <Link to='/admin/reconciliation/errorTrading'>
                       差错交易
                     </Link>
                   </li>
                   <li>
-                    <Link to='/reconciliation/daysummary'>
+                    <Link to='/admin/reconciliation/daysummary'>
                       当日汇总
                     </Link>
                   </li>
                   <li>
-                    <Link to='/reconciliation/transactionreport'>
+                    <Link to='/admin/reconciliation/transactionreport'>
                       交易报表
                     </Link>
                   </li>
@@ -164,20 +164,20 @@ export default class Aside extends Component {
               <div className="sub-menu-i">
                 <ul className="sub-menu">
                   <li>
-                    <Link to='/applicationsettings/applicationparameters'>应用参数</Link>
+                    <Link to='/admin/applicationsettings/applicationparameters'>应用参数</Link>
                   </li>
                   <li>
-                    <Link to='/applicationsettings/paymentchannel'>支付渠道<strong className="badge badge-danger">Hot</strong></Link>
+                    <Link to='/admin/applicationsettings/paymentchannel'>支付渠道<strong className="badge badge-danger">Hot</strong></Link>
                   </li>
                   <li>
-                    <Link to='/applicationsettings/routingrules'>路由规则</Link>
+                    <Link to='/admin/applicationsettings/routingrules'>路由规则</Link>
                   </li>
                 </ul>
               </div>
             </div>
           </li>
           <li className="selected has-sub-menu">
-            <Link to='/devicemanagement/devicemanagement'>
+            <Link to='/admin/devicemanagement/devicemanagement'>
               <div className="icon-w">
                 <div className="os-icon os-icon-layout" />
               </div>
@@ -219,7 +219,7 @@ export default class Aside extends Component {
               <div className="sub-menu-i">
                 <ul className="sub-menu">
                   <li>
-                    <Link to='/privilegemanagement/applicationmember'>
+                    <Link to='/admin/privilegemanagement/applicationmember'>
                       应用成员
                     </Link>
                   </li>
@@ -247,22 +247,22 @@ export default class Aside extends Component {
               <div className="sub-menu-i">
                 <ul className="sub-menu">
                   <li>
-                    <Link to='/auxiliarytools/webhooksr'>
-                    Webhooksr
+                    <Link to='/admin/auxiliarytools/webhooksr'>
+                      Webhooksr
                     </Link>
                   </li>
                   <li>
-                    <Link to='/auxiliarytools/serversidecharge'>
+                    <Link to='/admin/auxiliarytools/serversidecharge'>
                       服务端Charge
                     </Link>
                   </li>
                   <li>
-                    <Link to='/auxiliarytools/payexperience'>
+                    <Link to='/admin/auxiliarytools/payexperience'>
                       体验支付
                     </Link>
                   </li>
                   <li>
-                    <Link to='/auxiliarytools/requestlog'>
+                    <Link to='/admin/auxiliarytools/requestlog'>
                       请求log查看
                     </Link>
                   </li>

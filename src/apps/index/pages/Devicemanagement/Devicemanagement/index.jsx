@@ -5,7 +5,7 @@ import { actions, reducers, connect } from '@indexStore';
 import Addgrouping from './Addgrouping';
 import Official from './Adddevice/official';
 import Custom from './Adddevice/custom';
-import { deviceGroup } from '../../../api';
+import { deviceGroup } from '@indexApi';
 import '../../index.css';
 
 const { Item } = MenuButton;

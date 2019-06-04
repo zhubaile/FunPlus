@@ -9,7 +9,7 @@ import {
 } from '@icedesign/form-binder';
 import IceIcon from '@icedesign/icon';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { registerUser } from '../../api';
+import { registerUser } from '@loginApi';
 
 import IceImg from '@icedesign/img';
 
@@ -109,9 +109,9 @@ class UserRegister extends Component {
             return (
               this.props.history.push('/user/login')
             );
-          } 
+          }
           Message.success(data.message);
-          
+
           // console.log(values);
           // Message.success(intl.formatMessage({ id: 'app.register.success' }));
           // Message.success('注册成功');
@@ -244,14 +244,14 @@ class UserRegister extends Component {
         <div style={styles.right}>
           <div style={styles.box}>
             <IceImg
-              src={require('../../../../assets/img/login/tel.png')}
+              src={require('@img/login/tel.png')}
             />
             <p><FormattedMessage id='app.login.Tel.consult' /></p>
             <a>000-1111-2222</a>
           </div>
           <div style={styles.box}>
             <IceImg
-              src={require('../../../../assets/img/login/email.png')}
+              src={require('@img/login/email.png')}
             />
             <p><FormattedMessage id='app.login.Mail.box' /></p>
             <a>YanYue@3FunPlus.com</a>

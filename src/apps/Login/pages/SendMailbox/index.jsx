@@ -9,7 +9,7 @@ import {
 } from '@icedesign/form-binder';
 import IceIcon from '@icedesign/icon';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { sendMailbox } from '../../api';
+import { sendMailbox } from '@loginApi';
 
 @injectIntl
 @withRouter

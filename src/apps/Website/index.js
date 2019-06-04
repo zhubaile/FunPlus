@@ -9,8 +9,8 @@ import {
   Provider,
 } from 'react-redux';
 // 引入默认全局样式
-import LanguageProvider from '../Internationalization/LocaleProvider';
-import { getLocale } from '../Internationalization/locale';
+import LanguageProvider from '../../assets/Internationalization/LocaleProvider';
+import { getLocale } from '../../assets/Internationalization/locale';
 import BasicLayout from './layouts/BasicLayout'; // 中后台界面布局
 import router from './router';
 import Store from "../index/store";

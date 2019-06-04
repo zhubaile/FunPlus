@@ -7,7 +7,7 @@ import cx from 'classnames';
 import { Link, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 // import { headerMenuConfig } from '../../../../menuConfig';
-import SelectLang from '../../../../../Internationalization/SelectLang';
+import SelectLang from '../../../../../../assets/Internationalization/SelectLang';
 import Example from './components/Example';
 import Information from './components/Information';
 import Personnel from './components/Personnel';
@@ -27,7 +27,7 @@ export default class Header extends Component {
     };
   }
   componentDidMount(){
-    Cookies.set('appid', '1996bcb081df11e9a7b30fe17b28f380');
+    Cookies.set('applicationId', 'f9d61ca0837211e99467c3c360ea292a');
   }
   handleSetting = () => {
     this.props.history.push('/setting');

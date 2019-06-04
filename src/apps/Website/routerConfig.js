@@ -77,4 +77,8 @@ const routerConfig = [
   },
 ];
 
-export default routerConfig;
+// export default routerConfig;
+export default [].concat(routerConfig, [{
+  path: '/website/*',
+  component: Index,
+}]);

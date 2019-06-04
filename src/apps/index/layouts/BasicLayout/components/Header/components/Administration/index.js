@@ -12,7 +12,9 @@ export default class Administration extends Component {
     this.state = {
     };
   }
-
+  signout() {
+    this.props.history.push('/website');
+  }
   render() {
     const {
       intl: { formatMessage },
@@ -46,37 +48,37 @@ export default class Administration extends Component {
             <ul>
               <li>
                 {/* <Link to={`/personal/accountinformation${zzz}`}> */}
-                <Link to='/personal/accountinformation'>
+                <Link to='/admin/personal/accountinformation'>
                   <i className="os-icon os-icon-user-male-circle2" /><span>账户信息</span>
                 </Link>
               </li>
               <li>
-                <Link to='/personal/enterprisecertification'>
+                <Link to='/admin/personal/enterprisecertification'>
                   <i className="os-icon os-icon-coins-4" /><span>企业认证</span>
                 </Link>
               </li>
               <li>
-                <Link to='/personal/costcenter'>
+                <Link to='/admin/personal/costcenter'>
                   <i className="os-icon os-icon-others-43" /><span>费用中心</span>
                 </Link>
               </li>
               <li>
-                <Link to='/personal/membermanagement'>
+                <Link to='/admin/personal/membermanagement'>
                   <i className="os-icon os-icon-others-43" /><span>成员管理</span>
                 </Link>
               </li>
               <li>
-                <Link to='/personal/controloverinvoices'>
+                <Link to='/admin/personal/controloverinvoices'>
                   <i className="os-icon os-icon-others-43" /><span>发票管理</span>
                 </Link>
               </li>
               <li>
-                <Link to='/personal/operationlog'>
+                <Link to='/admin/personal/operationlog'>
                   <i className="os-icon os-icon-others-43" /><span>操作日志</span>
                 </Link>
               </li>
               <li>
-                <a href="website.html"><i className="os-icon os-icon-signs-11" /><span>退出</span></a>
+                 <a href="" onClick={this.signout.bind(this)}><i className="os-icon os-icon-signs-11" /><span>退出</span></a>
               </li>
             </ul>
           </div>

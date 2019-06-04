@@ -6,11 +6,11 @@ export default class Logo extends PureComponent {
   render() {
     return (
       <div >
-        <Link to="/">
+        <Link to="/website/index">
           <IceImg
             width={120}
             height={40}
-            src={require('../../../../../../assets/img/index/ailogo.png')}
+            src={require('@img/index/ailogo.png')}
             style={{ ...styles.logoStyle }}
           />
         </Link>

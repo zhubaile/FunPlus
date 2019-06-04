@@ -1,8 +1,9 @@
 /* eslint  react/no-string-refs: 0 */
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Input, Radio, Select , Grid, Form ,Button,Pagination,Table } from '@alifd/next';
+import { Input, Radio, Select , Grid, Form ,Button,Pagination,Table, Dialog } from '@alifd/next';
 import Customerservice from "../components/Customerservice";
+import { withRouter, Link } from 'react-router-dom';
 // import Qrcode, { Panel } from '@icedesign/qrcode'; // 二维码
 import '../../index.css';
 
@@ -20,10 +21,13 @@ const formItemLayout = {
 const getData = (length = 10) => {
   return Array.from({ length }).map(() => {
     return {
-      name: ['BS200'],
-      level: ['5'],
-      rule: ['￥1799.00'],
-      oper: ['￥1799.00'],
+      invoiceid: ['CZ1558581363296'],
+      applicationdate: ['2019-05-16 12:36:32'],
+      trackingnumber: ['13612345678'],
+      invoice: ['上海'],
+      invoiceamount: ['￥1799.00'],
+      invoicestatus: ['已出票'],
+      oper: [''],
     };
   });
 };
@@ -83,6 +87,44 @@ class Controloverinvoices extends Component {
     );
   };
 
+  /*balancerecharge() {
+    this.Recharge.open();
+  }*/
+
+  handleDelete = () => {
+    Dialog.confirm({
+      title: '提示',
+      content: '确认删除吗',
+      onOk: () => {
+        this.fetchData(10);
+      },
+    });
+  };
+
+  handleDetail = () => {
+    Dialog.confirm({
+      title: '提示',
+      content: '暂不支持查看详情',
+    });
+  };
+
+  renderOper = () => {
+    return (
+      <div>
+        <Button
+          type="primary"
+          style={{ marginRight: '5px' }}
+          onClick={this.handleDetail}
+        >
+          <FormattedMessage id="app.btn.detail" />
+        </Button>
+        <Button type="normal" warning onClick={this.handleDelete}>
+          <FormattedMessage id="app.btn.delete" />
+        </Button>
+      </div>
+    );
+  };
+
   render() {
     const {
       intl: { formatMessage },
@@ -96,7 +138,46 @@ class Controloverinvoices extends Component {
         </div>
         <div className="controloverinvoices">
           <div className='controloverinvoices-top'>
-            <div className='controloverinvoices-top-left'>
+
+            <div className='controloverinvoices-top-onecontent'>
+              <div>
+                <img src={require('../../../../../assets/img/houtai/personal/008.png')} alt="" />
+                <div>
+                  <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>可开票金额</p>
+                  <strong>0.00元</strong>
+                </div>
+              </div>
+              {/* <p style={{ fontSize: '16px' }}>可用于支付待申请服务费用等</p> */}
+              <span>
+                <p>已经开票金额</p>
+                <p>0.00元</p>
+              </span>
+
+              <Button type='primary'><Link to='/admin/personal/applyforaticket'>申请开票</Link></Button>
+            </div>
+            <div className='controloverinvoices-top-twocontent'>
+              <div>
+                {/*    <img src={require('../../../../../assets/img/houtai/personal/009.png')} alt="" /> */}
+                <div className='controloverinvoices-topright-content'>
+                  <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>开票信息</p>
+                  {/* <strong>0.00元</strong> */}
+                  <span>
+                    <p>公司名称：与认证公司绑定</p>
+                    <p>开户行：</p>
+                    <p>开户账号：</p>
+                    <p>税号：与认证公司绑定</p>
+                  </span>
+                  <span className='topright-inner'>
+                    <p>收件联系人：xiaoxx</p>
+                    <p>地址：</p>
+                    <p>联系方式：</p>
+                  </span>
+                </div>
+              </div>
+              {/* <p style={{ fontSize: '16px' }}>默认显示所有消费总额</p> */}
+              <Button type='primary'>修改开票信息</Button>
+            </div>
+            {/*            <div className='controloverinvoices-top-left'>
               <div style={{ width: '30px', height: '30px' ,borderRadius: '50%', background: 'rgba(161,222,238,1)' }} />
               <h2>你好，朱柏乐</h2>
               <p>请在下面找到最近完成的工作成本细目，请尽快付款，如有任何问题，请随时与我联系</p>
@@ -130,8 +211,10 @@ class Controloverinvoices extends Component {
                 </FormItem>
               </Form>
               <img src={require('../../../../../assets/img/houtai/personal/008.png')} style={{ width: '100px' , height: '100px' }} alt="" />
-              {/* <Panel value="https://www.taobao.com" text="使用手机淘宝扫码查看" /> */}
-            </div>
+               <Panel value="https://www.taobao.com" text="使用手机淘宝扫码查看" />
+            </div> */}
+
+
             {/* 通过绝对定位控制二维码 */}
             {/* <div>
             <img src={require('../../../../../assets/img/houtai/personal/008.png')} style={{ width: '100px' , height: '100px'}} alt="" />
@@ -139,12 +222,16 @@ class Controloverinvoices extends Component {
           </div>
           <div className='controloverinvoices-bottom'>
             <Table loading={isLoading} dataSource={data} hasBorder={false}>
-              <Table.Column title="项目" dataIndex="name" />
-              <Table.Column title="数量" dataIndex="level" />
-              <Table.Column title="成本单位" dataIndex="rule" />
+              <Table.Column title="发票ID" dataIndex="invoiceid" />
+              <Table.Column title="申请日期" dataIndex="applicationdate" />
+              <Table.Column title="快递单号" dataIndex="trackingnumber" />
+              <Table.Column title="发票抬头" dataIndex="invoice" />
+              <Table.Column title="开票金额" dataIndex="invoiceamount" />
+              <Table.Column title="发票状态" dataIndex="invoicestatus" />
               <Table.Column
-                title="总计"
+                title="操作"
                 dataIndex="oper"
+                cell={this.renderOper}
               />
             </Table>
             <Pagination

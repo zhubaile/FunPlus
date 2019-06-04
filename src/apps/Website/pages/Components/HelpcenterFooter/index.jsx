@@ -28,7 +28,7 @@ const styles = {
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundImage: `url(${require("../../../../../assets/img/helpcenter/develop/ks-bg3.png")})`,
+    backgroundImage: `url(${require("@img/helpcenter/develop/ks-bg3.png")})`,
     backgroundSize: '100% 100%',
   },
   left: {

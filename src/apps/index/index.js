@@ -10,8 +10,8 @@ import {
 } from 'react-redux';
 // 引入默认全局样式
 import '@alifd/next/reset.scss';
-import LanguageProvider from '../Internationalization/LocaleProvider';
-import { getLocale } from '../Internationalization/locale';
+import LanguageProvider from '../../assets/Internationalization/LocaleProvider';
+import { getLocale } from '../../assets/Internationalization/locale';
 import { BrowserRouter as Router } from 'react-router-dom';
 import BasicLayout from './layouts/BasicLayout';
 import router from "./router";

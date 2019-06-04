@@ -46,10 +46,10 @@ export default class Wxpaypopup extends Component {
           <div className='wxpaypopup-main-top'>
             <p>实付金额 <strong>{this.state.content}元</strong></p>
             <span>请在5分钟内完成支付</span>
-            <img src={require('../../../../../../../assets/img/demopay/zf4.png')} style={{ width: '100%;' }} alt="" />
+            <img src={require('@img/demopay/zf4.png')} style={{ width: '100%;' }} alt="" />
           </div>
           <div className='wxpaypopup-main-bottom'>
-            <img src={require('../../../../../../../assets/img/demopay/er.png')} alt="" />
+            <img src={require('@img/demopay/er.png')} alt="" />
             <div>
               <p>
                   请使用微信扫描

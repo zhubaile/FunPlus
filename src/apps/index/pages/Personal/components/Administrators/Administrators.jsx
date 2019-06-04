@@ -13,12 +13,12 @@ export default class Administrators extends Component {
   render() {
     return (
       <div className='administrators'>
-        <img src={require('../../../../../../assets/img/img/avatar1.jpg')} alt="" />
+        <img src={require('@img/img/avatar1.jpg')} alt="" />
         <h2>阿萨德问问阿</h2>
         <p>超级管理员</p>
         <div>
-          <img src={require('../../../../../../assets/img/shouye/twittter.png')} style={{ width: '25px', height: '25px' }} alt="" />
-          <img src={require('../../../../../../assets/img/shouye/face.png')} style={{ width: '25px', height: '25px' }} alt="" />
+          <img src={require('@img/shouye/twittter.png')} style={{ width: '25px', height: '25px' }} alt="" />
+          <img src={require('@img/shouye/face.png')} style={{ width: '25px', height: '25px' }} alt="" />
         </div>
       </div>
     );

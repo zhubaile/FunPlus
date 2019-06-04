@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Grid, DatePicker, Select, Input, Button } from '@alifd/next';
 import moment from 'moment';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
-import { getLocale } from '../../../../../Internationalization/locale';
+import { getLocale } from '../../../../../../assets/Internationalization/locale';
 import { incomeList } from '../../../../api';
 
 const locale = getLocale();
