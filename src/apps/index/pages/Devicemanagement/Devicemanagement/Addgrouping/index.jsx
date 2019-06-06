@@ -49,6 +49,8 @@ export default class Addgrouping extends Component {
         // 两种方法 一
         const channelss = channels.map(item=>({ value: item._id,label: item.des }));
         const dClassifys = dClassify.map(item=>({ value: item.value,label: item.name }));
+        // console.log(channelss[0].value);
+        // this.props.gaibianid(channelss[0].value);
         // 二
         /* const channelss = function (arr) {
           const newArr = [];
@@ -91,16 +93,15 @@ export default class Addgrouping extends Component {
         channelId: values.ApplicationChannel,
       }).then(
         ({ status, data }) => {
-          const that = this;
           if (data.errCode == 0) {
             // Message.success(intl.formatMessage({ id: 'app.register.success' }));
             // Message.success('添加分组成功');
-            this.setState({
+            /*   this.setState({
               NewRuleName: '',
-            });
-            debugger;
+            }); */
             Message.success(data.message);
             this.addgroupingclose();
+            this.props.Toupdatelist();
           }
           Message.success(data.message);
         }

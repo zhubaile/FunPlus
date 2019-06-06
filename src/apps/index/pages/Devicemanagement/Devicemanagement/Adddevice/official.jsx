@@ -2,129 +2,198 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Input,Button , Grid, DatePicker , Tab,Message ,Table,Pagination,Select,Radio,Form } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
+import { deviceadd } from '@indexApi';
 import IceContainer from '@icedesign/container';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import '../../../index.css';
 
 const FormItem = Form.Item;
 const { Row, Col } = Grid;
+
+// 将要发送的数据的值清空
+function filterForm(obj) {
+  const temp = obj instanceof Array ? [] : {};
+  for (const key in obj) {
+    if (obj[key] instanceof Object) {
+      for (const keyTwo in obj[key]) {
+        if (obj[key][keyTwo] instanceof Object) {
+          temp[key] = {};
+        } else {
+          temp[key] = '';
+        }
+      }
+    }
+  }
+  return temp;
+}
+
 export default class Official extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-      value: {
-        NewRuleName: '',
-        ApplicationChannel: '支付宝渠道',
-        equipmentgroup: '支付宝专用设备组3',
-        Guanfangcanshu: '官方参数',
-        hezuohuoban: '',
-        feilv: '',
-        RSAss: 'RSA(SHA1)',
-        description: '',
-        descriptions: '',
-        shouxufei: '是',
-        shuzi: '',
-        shijian: '分',
-      },
+      open: false, // 界面开关
+      content: [], // 原始数据
+      value: [], // 更新要发送的数据
+      dGroupID: '', // 设备ID
     };
+    this.handelChange = this.handelChange.bind(this);
   }
+  componentDidMount() {}
+
+  // 关闭弹框
   officialclose() {
     this.setState({
       open: false,
-      content: null,
+      value: null,
     });
   }
+  // 打开弹框
   officialopen(content,confirm) {
+    debugger;
+    const value = filterForm(content.form);
     this.setState({
       open: true,
       content,
+      value,
+      dGroupId: confirm,
     });
     this.confirmCallBack = confirm;
   }
-  formChange = (value) => {
-    this.setState({
-      value,
-    });
-  };
+  // 表单监听
+  /* formChange = (value,item) => {
+      debugger;
+      // 说明：
+      //  1. 表单是双向通行的，所有表单的响应数据都会同步更新 value
+      //  2. 这里 setState 只是为了实时展示当前表单数据的演示使用
+      this.setState({ value });
+    }; */
+  // 添加设备的点击事件
+  handleSubmit() {
+    const values = this.state.value; // 输入框的值
+    const dGroupId = this.state.dGroupId; // 设备ID
+    deviceadd({
+      ...values,
+      dGroupId,
+    }).then(
+      ({ status,data })=>{
+        debugger;
+        if (data.errCode == 0) {
+          this.officialclose();
+          Message.success(data.message);
+        }
+        Message.success(data.message);
+      }
+    );
+  }
+
+  // 动态加载类型的判断
+  switchItem(key, item) {
+    const tag = item.tag;
+    if (key === 'channelName' || key === 'paramsType') { // 样式特别处理
+      return (
+        <div>
+          <FormItem required requiredMessage={item.errDesc}>
+            {/* <Input htmlType={item.type} style={styles.formbinderbox} value={item.label} readOnly={item.readOnly} name={key} onChange={this.handelChange} /> */}
+            <input type={item.type} style={styles.formbinderbox} value={item.label} min={item.min} name={key} readOnly={item.readonly} onChange={this.handelChange} />
+          </FormItem >
+          {/*  <FormError style={styles.formItemError} name={key} /> */}
+        </div>
+      );
+    }
+    switch (tag) {
+      case 'input':
+        return (
+          <FormItem required requiredMessage={item.errDesc}>
+            {/* <Input htmlType={item.type} style={styles.formbinderbox} placeholder={item.placeholder} readOnly={item.readOnly} min={item.min} name={key} onChange={this.handelChange} /> */}
+            <input type={item.type} style={styles.formbinderbox} placeholder={item.placeholder} min={item.min} name={key} onChange={this.handelChange} />
+          </FormItem>
+        );
+        break;
+      case 'textarea':
+        return (
+          <FormItem required requiredMessage={item.errDesc}>
+            {/* <Input.TextArea style={styles.formbinderbox} placeholder={item.placeholder} name={key} onChange={this.handelChange} /> */}
+            <textarea name={key} cols="30" rows="10" placeholder={item.placeholder} onChange={this.handelChange} />
+          </FormItem>
+        );
+        break;
+      case 'select':
+        return (
+          <FormItem required requiredMessage={item.errDesc}>
+            {/* <span>{item.label}</span> */}
+            <select style={styles.officialrightsele} name={key} onChange={this.handelChange}>
+              {
+                item.value.map((option, index) => {
+                  return (<option key={index} value={option.value}>{option.label}</option>);
+                })
+              }
+            </select>
+            {/* <Select style={styles.officialrightsele} dataSource={item.value} name={key} onChange={this.handelChanges.bind(this)} /> */}
+          </FormItem>
+        );
+        break;
+      default:
+        break;
+    }
+  }
+  // 动态加载数据
+  renderForm() {
+    const items = [];
+    const formDatas = this.state.content;
+    const formData = formDatas.form;
+    console.log(formData);
+    for (const key in formData) {
+      if (key === 'channelParams') {
+        for (const keyTwo in formData[key]) {
+          items.push(<div key={key + keyTwo}><label>{ formData[key][keyTwo].label } </label> { this.switchItem(`${key}.${keyTwo}`, formData[key][keyTwo]) }</div>);
+        }
+      }
+      items.push(<div key={key}><label>{ formData[key].label } </label> { this.switchItem(key, formData[key]) }</div>);
+    }
+    return items;
+  }
+  // 数据框onChange输入事件
+  handelChange(e) {
+    const value = e.target.value;
+    let keys = e.target.name;
+    debugger;
+    keys = keys.split('.');
+    const form = this.state.value;
+    if (keys.length === 2) {
+      debugger;
+      // form[keys[0]] = {}
+      form[keys[0]][keys[1]] = value;
+      this.setState({
+        value: form,
+      });
+    } else if (keys.length === 1) {
+      form[keys[0]] = value;
+      this.setState({
+        value: form,
+      });
+    }
+  }
+
   render() {
-    const ApplicationChannel = [
-      { value: '支付宝渠道', label: '支付宝渠道' },
-      { value: '支付宝手机APP', label: '支付宝手机APP' },
-      { value: '微信扫码', label: '微信扫码' },
-    ];
-    const equipmentgroup = [
-      { value: '支付宝专用设备组3', label: '支付宝专用设备组3' },
-      { value: '微信设备组', label: '微信设备组' },
-      { value: '银联设备组', label: '银联设备组' },
-    ];
-    const Guanfangcanshu = [
-      { value: '官方参数', label: '官方参数' },
-      { value: '微信设备组', label: '微信设备组' },
-      { value: '银联设备组', label: '银联设备组' },
-    ];
-    const RSAss = [
-      { value: 'RSA(SHA1)', label: 'RSA(SHA1)' },
-      { value: '微信设备组', label: '微信设备组' },
-      { value: '银联设备组', label: '银联设备组' },
-    ];
-    const shouxufei = [
-      { value: '是', label: '是' },
-      { value: '否', label: '否' },
-    ];
-    const shijian = [
-      { value: '分', label: '分' },
-      { value: '秒', label: '秒' },
-    ];
+    console.log(this.state.content);
     if (!this.state.open) return null;
     return (
       <div className='official'>
-        <h2>添加设备-官方参数</h2>
+        {/* onChange={this.formChange} */}
         <Form value={this.state.value} onChange={this.formChange} ref="form" className='offocoal-main'>
-          <FormItem >
-            <Input style={styles.formbinderbox} name='NewRuleName' placeholder='输入自定义名称备注' hasClear />
-          </FormItem>
-          <p>设置前置属性-无法修改</p>
-          <FormItem>
-            <Select style={{ width: '150px'}} defaultValue={{ value: '支付宝渠道', label: '支付宝渠道' }} name="ApplicationChannel" dataSource={ApplicationChannel} />
-            <Select style={{ width: '150px'}} defaultValue={{ value: '官方参数', label: '官方参数' }} name="Guanfangcanshu" dataSource={Guanfangcanshu} />
-          </FormItem>
-          <p>分组应用渠道为：支付宝扫码，分组类型：官方参数 ，请填写关键参数</p>
-          <FormItem >
-            <Input style={styles.formbinderbox} name='feilv' placeholder='费率' hasClear />
-          </FormItem>
-          <FormItem >
-            <Input style={styles.formbinderbox} name='hezuohuoban' placeholder='合作伙伴身份' hasClear />
-          </FormItem>
-          <FormItem >
-            <Input.TextArea style={styles.formbinderbox} placeholder="支付宝公钥..." name="description" />
-          </FormItem>
-          <p>RSA公钥类型</p>
-          <FormItem>
-            <Select style={{ width: '150px'}} defaultValue={{ value: 'RSA(SHA1)', label: 'RSA(SHA1)' }} name="RSAss" dataSource={RSAss} />
-          </FormItem>
-          <FormItem >
-            <Input.TextArea style={styles.formbinderbox} placeholder="应用秘钥..." name="descriptions" />
-          </FormItem>
-          <FormItem >
-            <div className='officialleft'>
-              <p>退款时是否退还手续费</p>
-              <Select style={styles.officialleftsele} defaultValue={{ value: '是', label: '是' }} name="shouxufei" dataSource={shouxufei} />
+          <h2>添加设备-官方参数</h2>
+          {this.renderForm()}
+          <div className='officialbtn'>
+            <button style={styles.bottombtn}>查看填写参数</button>
+            <div className='officialbtn-right'>
+              {/* <Button onClick={this.handleSubmit.bind(this)}>tianjia</Button> */}
+              <FormItem label=" ">
+                <Form.Submit validate onClick={this.handleSubmit.bind(this)}>添加</Form.Submit>
+                <Form.Reset onClick={this.officialclose.bind(this)}>取消</Form.Reset>
+              </FormItem>
             </div>
-            <div className='officialright'>
-              <p>订单有效时间</p>
-              <Input style={styles.officialrightsele} name='shuzi' placeholder='5' />
-              <Select style={styles.officialrightsele} defaultValue={{ value: '分', label: '分' }} name="shijian" dataSource={shijian} />
-            </div>
-          </FormItem>
-        </Form>
-        <div className='officialbtn'>
-          <button>查看填写参数</button>
-          <div className='officialbtn-right'>
-            <button onClick={this.officialclose.bind(this)}>取消</button>
-            <button>添加</button>
           </div>
-        </div>
+        </Form>
       </div>
     );
   }
@@ -132,6 +201,7 @@ export default class Official extends Component {
 const styles = {
   formbinderbox: {
     width: '200px',
+    height: '30px',
     margin: '5px',
     borderRadius: '5px',
     zIndex: '8889',
@@ -140,6 +210,10 @@ const styles = {
     width: '50px',
   },
   officialrightsele: {
-    width: '30px',
+    width: '50px',
+    marginLeft: '5px',
+  },
+  bottombtn: {
+    marginTop: '10px',
   },
 };

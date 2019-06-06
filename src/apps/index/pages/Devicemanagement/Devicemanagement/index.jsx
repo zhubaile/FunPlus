@@ -5,7 +5,7 @@ import { actions, reducers, connect } from '@indexStore';
 import Addgrouping from './Addgrouping';
 import Official from './Adddevice/official';
 import Custom from './Adddevice/custom';
-import { deviceGroup } from '@indexApi';
+import { deviceGrouplist,deviceparams } from '@indexApi';
 import '../../index.css';
 
 const { Item } = MenuButton;
@@ -27,6 +27,11 @@ export default class Devicemanagement extends Component {
       isLoading: false,
       data: [],
       listValue: '状态/全部',
+      toplist: false,
+      grouplistdata: [
+        { dGroupName: '' },
+      ],
+      // datas: [],
     };
   }
   btnClick() {
@@ -34,9 +39,21 @@ export default class Devicemanagement extends Component {
   }
 
   componentDidMount() {
+    this.Toupdatelist();
     this.fetchData();
   }
-
+  Toupdatelist=()=>{
+    deviceGrouplist().then(
+      ({ status, data }) => {
+        if (data.errCode == 0) {
+          this.setState({
+            grouplistdata: data.data,
+          });
+        }
+        Message.success(data.message);
+      }
+    );
+  };
   mockApi = (len) => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -73,12 +90,37 @@ export default class Devicemanagement extends Component {
   };
   // 添加分组
   groupingopen() {
-
     this.Addgrouping.addgroupingopen();
   }
-  // 添加设备
-  deviceopen() {
-    this.Custom.customopen();
+  // 获取分组列表
+  grouplist() {
+    this.setState({
+      toplist: true,
+    });
+  }
+  // 获取设备参数
+  deviceopen(id) {
+    // const dd = this.state.ApplicationChannel;
+    console.log(id);
+    deviceparams({
+      dGroupId: id,
+    }).then(
+      ({ status, data }) => {
+        debugger;
+        if (data.errCode == 0) {
+          this.closetoplist();
+          console.log(id);
+          debugger;
+          this.Official.officialopen(data.data,id);
+          /* this.setState({
+            datas: data.data,
+          });
+          debugger; */
+          // this.Custom.customopen();
+        }
+        Message.success(data.message);
+      }
+    );
   }
   renderRule = () => {
     return (
@@ -100,11 +142,16 @@ export default class Devicemanagement extends Component {
     );
   };
   zbl=(value)=>{
-    debugger;
     this.setState({
       listValue: value,
     });
     // ajax 方法
+  }
+  // 关闭列表
+  closetoplist() {
+    this.setState({
+      toplist: false,
+    });
   }
   render() {
     const { isLoading, data, current } = this.state;
@@ -117,17 +164,38 @@ export default class Devicemanagement extends Component {
       <Select onChange={this.zbl} style={{ width: '150px' }} placeholder={this.state.listValue} dataSource={Allstart} />
     );
     const phonebtn = (<Button>手机/邮箱验证查看</Button>);
+
+    const grouplistdata = this.state.grouplistdata;
+    const equipmentlist = (
+      <ul className="event-list">
+        {
+          grouplistdata.map((item,key)=>{
+              return (
+                <li key={key}>
+                  <p>{item.dGroupName}</p>
+                  <button onClick={()=>this.deviceopen(item._id)}>添加设备</button>
+                </li>
+              );
+            })
+          }
+      </ul>
+    );
+    console.log(this.state.datas);
     return (
       <div className='devicemanagement'>
-        <Addgrouping ref={(node=>this.Addgrouping = node)} />
+        <Addgrouping ref={(node=>this.Addgrouping = node)} Toupdatelist={this.Toupdatelist} />
         <Official ref={(node=>this.Official = node)} />
         <Custom ref={(node=>this.Custom = node)} />
         <div className='devicemanagement-top'>
           设备列表
           <div className='devicemanagement-top-bottombor' />
           <div className='devicemanagement-top-btn'>
-            <button>分组列表</button>
+            <button onClick={this.grouplist.bind(this)}>分组列表</button>
             <button onClick={this.groupingopen.bind(this)}>+添加分组</button>
+            <div className={this.state.toplist ? ('devicemanagement-top-list opicty') : ('devicemanagement-top-list')} >
+              {equipmentlist}
+              {/* <button className='devicemanagement-top-list-btn' onClick={this.closetoplist.bind(this)}>关闭列表</button> */}
+            </div>
           </div>
         </div>
         <div className='devicemanagement-main'>
