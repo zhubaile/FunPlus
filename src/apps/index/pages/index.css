@@ -309,6 +309,15 @@ a:active{ text-decoration: none; }
 .devicemanagement .devicemanagement-top .devicemanagement-top-bottombor{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -12px;}
 .devicemanagement .devicemanagement-top .devicemanagement-top-btn{ position: absolute; right: 20px;bottom: 1px;}
 .devicemanagement .devicemanagement-top .devicemanagement-top-btn button{width: 130px;height: 41px;line-height: 20px;color: rgba(16, 16, 16, 1);font-size: 14px;text-align: center;margin: 0 10px;}
+.devicemanagement .devicemanagement-top .devicemanagement-top-list{ position: absolute; width: 300px; height: 300px; top: 41px; left: -160px; z-index: 999;overflow:auto;white-space:nowrap;display: none;
+  border-radius: 10px;background-color: rgba(255, 255, 255, 1);box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
+.devicemanagement .devicemanagement-top .devicemanagement-top-list ul.event-list{  }
+.devicemanagement .devicemanagement-top .devicemanagement-top-list ul.event-list li{ height: 50px; margin-top: 5px;display: flex; align-items: center; justify-content: center;}
+.devicemanagement .devicemanagement-top .devicemanagement-top-list ul.event-list li p{width: 50%; text-align: center;}
+.devicemanagement .devicemanagement-top .devicemanagement-top-list ul.event-list li button{ width: 50%; text-align: center; width: 80px; height: 30px;}
+.devicemanagement .devicemanagement-top .devicemanagement-top-list.opicty{ display: block;}
+.devicemanagement .devicemanagement-top .devicemanagement-top-list.opicty .devicemanagement-top-list-btn{ position: absolute; bottom: 0; right: 0; width: 80px; height: 30px; background: red;}
+
 .devicemanagement-main{ position: relative; margin-top: 20px;}
 .devicemanagement-main .devicemanagement-main-top{ display: flex; align-items: center;}
 .devicemanagement-main .devicemanagement-main-top button{width: 95px;height: 40px;line-height: 20px;border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);color: rgba(16, 16, 16, 1);font-size: 14px;text-align: center;border: 1px solid rgba(163, 208, 253, 1);}
@@ -323,14 +332,14 @@ a:active{ text-decoration: none; }
 /* 添加设备-官方参数 */
 .official{  position: fixed; width: 450px; height: 700px; top: 50%; left: 50%; margin-top: -350px; margin-left: -175px; z-index: 8888;
   border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
-  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb; overflow: auto;}
 .official .next-form.next-medium.offocoal-main{ }
 .official .next-form.next-medium.offocoal-main .next-form-item.next-left.next-medium{ margin: 0;}
 .official .next-form.next-medium.offocoal-main .officialleft{ float: left;}
 .official .next-form.next-medium.offocoal-main .officialright{ float: left; margin-left: 20px;}
-.official .officialbtn{clear: both; position: relative; padding-top: 10px;}
+.official .officialbtn{clear: both; padding-top: 10px; width: 400px;}
 .official .officialbtn>button{width: 173px;height: 40px;line-height: 20px; /*opacity: 0.5;*/border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1);}
-.official .officialbtn .officialbtn-right{ position: absolute; right: 10px; top: 15px;}
+.official .officialbtn .officialbtn-right{ float: right;}
 .official .officialbtn .officialbtn-right button{ width: 65px;height: 30px;line-height: 20px;border-radius: 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1); margin: 0 5px;}
 /* 自定义 */
 .official .next-form.next-medium.offocoal-main .custom-preID{width: 180px;height: 35px;line-height: 35px;border-radius: 5px 5px 5px 5px;text-align: center; margin-top: 10px;border: 1px solid rgba(26, 173, 25, 1);}
