@@ -107,7 +107,7 @@ export default class Addgrouping extends Component {
         }
       ).catch(
         ({ status, data }) => {
-          Message.success(data.message);
+          Message.success('添加失败');
         }
       );
     });

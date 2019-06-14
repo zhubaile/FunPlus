@@ -17,7 +17,8 @@ const ajaxBase = (param) => {
   const axiosParam = Object.assign({
     // dataType: 'json',
     // urlencoded: true,
-    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    //  headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    headers: { 'content-type': 'application/json' },
     timeout: ajaxConfig.timeout,
   }, param, {
     url: ajaxConfig.urlPrefix + param.url,

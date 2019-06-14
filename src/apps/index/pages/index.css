@@ -16,6 +16,20 @@ a:active{ text-decoration: none; }
 .applicationters .tab-contenttwo{ display: flex; align-content: center; justify-content: center;}
 .applicationters .tab-contenttwo .tab-contenttwo-left{ width: 54%; border-right: 1px solid rgba(187, 187, 187, 0.5); padding-bottom: 50px;}
 .tab-contenttwo-left .next-message.tab-contenttwo-left-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 20px 0;}
+
+/* 新增IP */
+.ippopup{
+  position: fixed; width: 500px; height:220px;  top: 50%; left: 50%; margin-top: -250px; margin-left: -110px; z-index: 8888; background-color: #FFF; border-radius: 5px; font-size: 16px;
+  -webkit-box-shadow: 1px 1px 3px #666; -moz-box-shadow: 1px 1px 3px #666; box-shadow: 1px 1px 3px #666; overflow: auto;line-height: 20px;border: 1px solid rgba(187, 187, 187, 1); padding: 10px 20px;
+}
+.ippopup .ippopup-top h2{float: left;}
+.ippopup .ippopup-top strong{ float: right; font-size: 25px; font-weight: 500; margin-top: 15px; cursor: pointer;}
+.ippopup-content{ clear: both;}
+.ippopup-content span{ }
+.ippopup-content input{ margin-left: 10px;width: 350px;height: 30px;line-height: 20px;border-radius: 4px;background-color: rgba(230, 247, 255, 1); padding-left:15px;border: 1px solid rgba(145, 213, 255, 1); margin-top: 20px;}
+.ippopup .ippopup-btn{ text-align: center;}
+.ippopup .ippopup-btn button{ text-align: center;width: 80px;height: 30px;border-radius: 4px;background-color: rgba(26, 85, 226, 1);color: rgba(255, 255, 255, 1);font-size: 14px;border: 1px solid rgba(255, 255, 255, 0); margin: 30px 10px;}
+.ippopup .ippopup-btn button:first-child{ background-color: #E6F1FC;border-radius: 4px;background-color: rgba(230, 241, 252, 1);color: rgba(26, 85, 226, 1);font-size: 14px;text-align: center;border: 1px solid rgba(206, 219, 222, 1);}
 /* 左边内容 */
 .tab-contenttwo-left .tab-contenttwo-left-btn{margin: 10px 20px;}
 .tab-contenttwo-left .tab-contenttwo-left-btn Button{border-radius: 8px;}
@@ -118,9 +132,18 @@ a:active{ text-decoration: none; }
 
 
 /* 创建路由的弹窗 */
-.routingPopup{ position: absolute;width: 60%; left: 20%; top: 50px; z-index: 999; background-color: #FFF; border-radius: 5px;min-width: 1440px;
-  -webkit-box-shadow: 1px 1px 3px #666; -moz-box-shadow: 1px 1px 3px #666; box-shadow: 1px 1px 3px #666;}
-
+.routingPopup{ position: fixed; width: 70%;left: 14%; top: 50px; bottom: 50px; z-index: 8888; background-color: #FFF; border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 3px #666; -moz-box-shadow: 1px 1px 3px #666; box-shadow: 1px 1px 3px #666; overflow: auto;}
+.daypopup{  position: fixed; width: 400px; height: 300px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px; z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
+.daypopup .daypopup-btn,.weektimepopup .daypopup-btn{ text-align: center; margin-top: 20px;}
+.daypopup .daypopup-btn button,.weektimepopup .daypopup-btn button{ width: 65px;height: 30px;line-height: 20px;border-radius: 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1); margin: 0 5px;}
+.weektimepopup{
+  position: fixed; width: 500px; height: 600px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px; z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;
+}
 
 @charset "utf-8";
 .clearfix:before, .clearfix:after,.row:before, .row:after,.ui-row:before, .ui-row:after,.ui-group:before, .ui-group:after{ content:""; display:table; line-height:0; }
