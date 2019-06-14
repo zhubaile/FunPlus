@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Input,Button , Grid, DatePicker , Tab,Message ,Table,Pagination } from '@alifd/next';
+import { Input,Button , Grid, Switch , Tab,Message ,Table,Pagination } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
 import Paymentfooter from '../components/Paymentfooter';
 import RoutingPopup from './RoutingPopup';
 import IceContainer from '@icedesign/container';
+import { routerRulelist } from '@indexApi';
 import '../../index.css';
 
 const getData = (length = 10) => {
@@ -21,6 +22,7 @@ export default class Routingrules extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      total: 0,
       current: 1,
       isLoading: false,
       data: [],
@@ -30,13 +32,13 @@ export default class Routingrules extends Component {
     this.fetchData();
   }
 
-  mockApi = (len) => {
+  /* mockApi = (len) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
       }, 600);
     });
-  };
+  }; */
 
   fetchData = (len) => {
     this.setState(
@@ -44,10 +46,22 @@ export default class Routingrules extends Component {
         isLoading: true,
       },
       () => {
-        this.mockApi(len).then((data) => { // data 里面为数据
+        /* this.mockApi(len).then((data) => { // data 里面为数据
           this.setState({
             data,
             isLoading: false,
+          });
+        }); */
+        const current = this.state.current;
+        routerRulelist({
+          page: current,
+          limit: '10',
+        }).then(({ status,data })=>{
+          debugger;
+          this.setState({
+            data: data.data,
+            isLoading: false,
+            total: data.total,
           });
         });
       }
@@ -66,26 +80,38 @@ export default class Routingrules extends Component {
   };
   btnClick() {
     // console.log(this.input.value,this);
-    // ;
     this.props.editor(this.input.getInputNode().value);
   }
-  renderRule = () => {
+  /*  renderRule = (rules) => {
+    debugger;
     return (
       <div>
         <select className='table-select'>
-          <option value="volvo">默认规则</option>
-          <option value="saab">自定义规则</option>
-          <option value="opel">自定义规则</option>
-          <option value="audi">新增规则</option>
+          {
+          rules.map((item,index)=>{
+            debugger;
+            return <option value="volvo">{item.ruleName}</option>;
+          })
+        }
         </select>
+      </div>
+    );
+  }; */
+  renderOper = (rule) => {
+    debugger;
+    return (
+      <div>
+        <Switch className='div-switch' checked={rule} />
       </div>
     );
   };
   consultationpopup() {
-    this.RoutingPopup.open();
+    this.RoutingPopup.Routingopen();
   }
   render() {
-    const { isLoading, data, current } = this.state;
+    console.log(this.state.total);
+    const { isLoading, data, current, total } = this.state;
+    console.log(this.state.total);
     return (
       <IceContainer className='routingrules'>
         <RoutingPopup ref={ node => this.RoutingPopup = node } />
@@ -99,19 +125,24 @@ export default class Routingrules extends Component {
             </div>
             <div>
               <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                <Table.Column title="规则名称" dataIndex="name" />
-                <Table.Column title="使用渠道" dataIndex="level" />
-                <Table.Column title="路由规则" dataIndex="rule" cell={this.renderRule} />
+                <Table.Column title="规则名称" dataIndex="ruleName" />
+                <Table.Column title="使用渠道" dataIndex="channelName" />
+                {/* <Table.Column title="路由规则" dataIndex="rules" cell={this.renderRule} /> */}
                 <Table.Column
                   title="状态"
                   width={200}
-                  dataIndex="oper"
+                  dataIndex="ruleSwitch"
+                  cell={this.renderOper}
                 />
               </Table>
+              {/* <Pagination style={{ marginTop: '20px', textAlign: 'right' }} pageSizeSelector="dropdown" total='1' pageSizePosition="start" onChange={this.handlePaginationChange} /> */}
               <Pagination
                 style={{ marginTop: '20px', textAlign: 'right' }}
                 current={current}
                 onChange={this.handlePaginationChange}
+                pageSize={10}
+                total={total} // 一共多少条数据
+                // totalRender={total => `Total: ${total}`}
               />
             </div>
           </Tab.Item>

@@ -44,8 +44,11 @@ const Daysummary = React.lazy(() => import('./pages/Reconciliation/Daysummary'))
 const Transactionreport = React.lazy(() => import('./pages/Reconciliation/Transactionreport')); // 交易报表
 // 应用设置
 const Applicationparameters = React.lazy(() => import('./pages/Applicationsettings/Applicationparameters')); // 应用参数
-const Paymentchannel = React.lazy(() => import('./pages/Applicationsettings/Paymentchannel')); // 应用参数
-const Routingrules = React.lazy(() => import('./pages/Applicationsettings/Routingrules')); // 应用参数
+const IpNamelist = React.lazy(() => import('./pages/Applicationsettings/IpNamelist')); // IP白名单
+const Paymentchannel = React.lazy(() => import('./pages/Applicationsettings/Paymentchannel')); // 渠道支付
+const Platformchannel = React.lazy(() => import('./pages/Applicationsettings/Platformchannel')); // 平台渠道
+const Routingrules = React.lazy(() => import('./pages/Applicationsettings/Routingrules')); // 路由管理
+
 const Devicemanagement = React.lazy(() => import('./pages/Devicemanagement/Devicemanagement')); // 设备管理
 const Applicationmember = React.lazy(() => import('./pages/Privilegemanagement/Applicationmember')); // 权限管理-成员管理
 // 辅助工具
@@ -162,8 +165,16 @@ const routerConfig = [
     component: Applicationparameters,
   },
   {
+    path: '/admin/applicationsettings/ipnamelist',
+    component: IpNamelist,
+  },
+  {
     path: '/admin/applicationsettings/paymentchannel',
     component: Paymentchannel,
+  },
+  {
+    path: '/admin/applicationsettings/platformchannel',
+    component: Platformchannel,
   },
   {
     path: '/admin/applicationsettings/routingrules',

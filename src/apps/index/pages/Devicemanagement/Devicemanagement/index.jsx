@@ -50,7 +50,7 @@ export default class Devicemanagement extends Component {
             grouplistdata: data.data,
           });
         }
-        Message.success(data.message);
+        // Message.success(data.message);
       }
     );
   };

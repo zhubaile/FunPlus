@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Input,Button , Grid, DatePicker , Tab,Message ,Table,Pagination,Select,Radio,Form } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
-import { deviceadd } from '@indexApi';
+import { device } from '@indexApi';
 import IceContainer from '@icedesign/container';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import '../../../index.css';
@@ -15,9 +15,15 @@ function filterForm(obj) {
   const temp = obj instanceof Array ? [] : {};
   for (const key in obj) {
     if (obj[key] instanceof Object) {
+      temp[key] = {};
       for (const keyTwo in obj[key]) {
         if (obj[key][keyTwo] instanceof Object) {
-          temp[key] = {};
+          const tempTwo = obj[key][keyTwo];
+          if (tempTwo.tag === 'select') {
+            temp[key][keyTwo] = tempTwo.value[0];
+          } else {
+            temp[key][keyTwo] = '';
+          }
         } else {
           temp[key] = '';
         }
@@ -71,7 +77,8 @@ export default class Official extends Component {
   handleSubmit() {
     const values = this.state.value; // 输入框的值
     const dGroupId = this.state.dGroupId; // 设备ID
-    deviceadd({
+    debugger;
+    device({
       ...values,
       dGroupId,
     }).then(
@@ -124,7 +131,7 @@ export default class Official extends Component {
             <select style={styles.officialrightsele} name={key} onChange={this.handelChange}>
               {
                 item.value.map((option, index) => {
-                  return (<option key={index} value={option.value}>{option.label}</option>);
+                  return (<option key={index} value={option.value} selected={option.value}>{option.label}</option>);
                 })
               }
             </select>
@@ -154,9 +161,17 @@ export default class Official extends Component {
   }
   // 数据框onChange输入事件
   handelChange(e) {
-    const value = e.target.value;
+    var value = e.target.value;
     let keys = e.target.name;
-    debugger;
+    try {
+      if (value.toString() === 'true') {
+        value = true;
+      } else if (value.toString() === 'false') {
+        value = false;
+      }
+    } catch (error) {
+
+    }
     keys = keys.split('.');
     const form = this.state.value;
     if (keys.length === 2) {
@@ -173,7 +188,17 @@ export default class Official extends Component {
       });
     }
   }
+  /*
+* try{
+      if(value.toString() === 'true'){
+        value = true
+      } else if (value.toString() === 'true'){
+        value = false
+      }
+    }catch (error){
 
+    }
+* */
   render() {
     console.log(this.state.content);
     if (!this.state.open) return null;
@@ -210,7 +235,7 @@ const styles = {
     width: '50px',
   },
   officialrightsele: {
-    width: '50px',
+    width: '100px',
     marginLeft: '5px',
   },
   bottombtn: {
