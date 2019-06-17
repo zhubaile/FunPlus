@@ -6,6 +6,9 @@ import { Input, Radio, Tab , Button, Grid, Form, DatePicker,Table,Pagination,Sel
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import Customerservice from "../components/Customerservice";
 import Addmenber from "./addmember";
+import Newrole from "./newrole";
+import Editingrole from "./editingrole";
+
 import '../../index.css';
 
 const { RangePicker } = DatePicker;
@@ -16,13 +19,13 @@ const FormItem = Form.Item;
 const getData = (length = 10) => {
   return Array.from({ length }).map(() => {
     return {
-      name: ['BS200'],
-      level: ['2019-02-22 12:26:33'],
-      rule: ['￥1799.00'],
-      oper: ['成功'],
-      qudao: ['支付宝'],
-      zhuangtai: [false,'asd'],
-      caozuo: ['lalal'],
+      name: ['肖悦'],
+      level: ['12345678@qq.com'],
+      rule: ['136123456'],
+      oper: ['撒打发斯蒂芬'],
+      role: ['系统管理员'],
+      zhuangtai: [false,'已激活'],
+      description: ['在应用中拥有所有操作权限'],
     };
   });
 };
@@ -86,9 +89,18 @@ class Membermanagement extends Component {
     );
   };
   // 添加成员弹出框
-  addmemberbtn() {
+  addmemberbtnopen() {
     this.Addmenber.open();
   }
+
+  newrolebtnopen() {
+    this.Newrole.open();
+  }
+
+  editingrolebtnopen() {
+    this.Editingrole.open();
+  }
+
   formChange=(value)=>{
     debugger;
   }
@@ -102,6 +114,37 @@ class Membermanagement extends Component {
       </div>
     );
   };
+
+  renderOper = (value,index,record) => {
+    return (
+      <div>
+        <a
+          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px', borderRight: '2px solid #999999' }}
+/*          onClick={this.handleDetail}*/
+          onClick={this.editingrolebtnopen.bind(this)}
+        >
+          <FormattedMessage id="app.btn.detail" />
+        </a>
+        <a
+          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
+          onClick={this.handleDelete}
+        >
+          <FormattedMessage id="app.btn.delete" />
+        </a>
+{/*        <Button
+          type="primary"
+          style={{ marginRight: '5px' }}
+          onClick={this.handleDetail}
+        >
+          <FormattedMessage id="app.btn.detail" />
+        </Button>
+        <Button type="normal" warning onClick={()=>this.handleDelete(record,index)}>
+          <FormattedMessage id="app.btn.delete" />
+        </Button>*/}
+      </div>
+    );
+  };
+
   render() {
     const { isLoading, data, current } = this.state;
     const {
@@ -119,6 +162,8 @@ class Membermanagement extends Component {
     return (
       <div className='membermanagement'>
         <Addmenber ref={node=>this.Addmenber = node} />
+        <Newrole ref={node=>this.Newrole = node} />
+        <Editingrole ref={node=>this.Editingrole = node} />
         <Tab shape='pure'>
           <Tab.Item title="成员管理">
             <div className='membermanagement-top'>
@@ -137,7 +182,7 @@ class Membermanagement extends Component {
                   <Input hasClear placeholder='输入号' style={styles.forminput} />
                 </FormBinder>
                 <Button className='bg' size="large" type="primary">搜索</Button>
-                <button className='addmemberbtn' onClick={this.addmemberbtn.bind(this)}>添加成员</button>
+                <button className='addmemberbtn' onClick={this.addmemberbtnopen.bind(this)}>添加成员</button>
               </FormBinderWrapper>
             </div>
             <div className='membermanagement-bottom'>
@@ -155,13 +200,20 @@ class Membermanagement extends Component {
                   title="备注"
                   dataIndex="oper"
                 />
-                <Table.Column title="角色" dataIndex="qudao" />
+                <Table.Column title="角色" dataIndex="role" />
                 <Table.Column
                   title="状态"
                   dataIndex="zhuangtai"
+                />
+{/*                <Table.Column title="操作" dataIndex="caozuo" />*/}
+
+                <Table.Column
+                  title="操作"
+                  width={200}
+                  dataIndex="oper"
                   cell={this.renderOper}
                 />
-                <Table.Column title="操作" dataIndex="caozuo" />
+
               </Table>
               <Pagination
                 style={{ marginTop: '20px', textAlign: 'right' }}
@@ -175,20 +227,26 @@ class Membermanagement extends Component {
           <Tab.Item title="角色权限">
             <div className='membermanagements-top'>
               <div className='membermanagement-bottom-top'>
-                <button className='Newrole'>新增角色</button>
+                <button className='Newrole' onClick={this.newrolebtnopen.bind(this)}>新增角色</button>
               </div>
               <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                <Table.Column title="角色" dataIndex="name" />
+                <Table.Column title="角色" dataIndex="role" />
                 <Table.Column
                   title="说明"
-                  dataIndex="oper"
+                  dataIndex="description"
                 />
                 <Table.Column
                   title="状态"
                   dataIndex="zhuangtai"
+
+                />
+{/*                <Table.Column title="操作" dataIndex="caozuo" />*/}
+                <Table.Column
+                  title="操作"
+                  width={200}
+                  dataIndex="oper"
                   cell={this.renderOper}
                 />
-                <Table.Column title="操作" dataIndex="caozuo" />
               </Table>
               <Pagination
                 style={{ marginTop: '20px', textAlign: 'right' }}

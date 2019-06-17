@@ -21,7 +21,7 @@ export default class Addmenber extends Component {
         pass: '',
         password: '',
         beizhu: '',
-        yingyong: '全部应用',
+        yingyong: '选择应用',
         jiaose: '选择角色',
       },
       open: false,
@@ -64,7 +64,7 @@ export default class Addmenber extends Component {
   }
   render() {
     const yingyong = [
-      { value: '全部应用 ', label: '全部应用' },
+      { value: '选择应用 ', label: '选择应用' },
       { value: '待分配', label: '待分配' },
     ];
     const jiaose = [
@@ -96,7 +96,7 @@ export default class Addmenber extends Component {
             <Input hasClear placeholder='密码' htmlType="password" />
           </FormBinder>
           <FormBinder name='passwprd'>
-            <Input hasClear placeholder='密码' htmlType="password" />
+            <Input hasClear placeholder='重复密码' htmlType="password" />
           </FormBinder>
           <FormBinder name='beizhu'>
             <Input hasClear placeholder='备注' htmlType="password" />

@@ -86,7 +86,8 @@ display: flex; align-items: center; }
 .wodegongdan-pingjia .fankui Button{ margin-left: 5px; margin-top: 140px; border-radius: 5px;}
 /* 提交工单 */
 .submissionworkorder{ width: 100%; padding-left: 20px; background: #F2F4F8;}
-.submissionworkorder-top{  border-bottom: 1px solid rgba(187, 187, 187, 1); font-size: 20px;}
+/*.submissionworkorder-top{  border-bottom: 1px solid rgba(187, 187, 187, 1); font-size: 20px;}*/
+.submissionworkorder-top{  border-bottom: 1px solid rgba(187, 187, 187, 1); font-size: 20px; margin-top: 20px;}/*modify*/
 .submissionworkorder-top .submissionworkorder-top-border{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -2px;}
 .submissionworkorder-main{ width: 100%; display: flex; justify-content: center;}
 .submissionworkorder-left{ width: 70%; margin-top: 20px;}
@@ -95,4 +96,18 @@ display: flex; align-items: center; }
 .submissionworkorder-left-subbtn{ margin-left: 100px;}
 .submissionworkorder-left-subbtn .next-btn.next-medium.next-btn-primary{ margin-left: 20px; width: 80px; background:#E6F1FC; color: #1989FA; border-radius: 5px;}
 
-.submissionworkorder-right{ width: 25%; border-left: 1px solid #AAAAAA;}
+/*.submissionworkorder-right{ width: 25%; border-left: 1px solid #AAAAAA;}*/
+.submissionworkorder-right{ width: 25%; border-left: 1px solid #AAAAAA; padding-left: 15px;}/*modify*/
+.submissionworkorder-right ul li{line-height: 21px; padding: 10px 0px;}/*modify*/
+
+/*工单次导航栏样式----starting*/
+.sidebar-navone i,.sidebar-navtwo i{ padding: 0px 10px; text-align: center;}
+.sidebar-navone{ width: 100%; padding: 15px 0px; text-align: center; font-size: 14px; color: #666666; border-top: 1px solid #eeeeee;}
+.sidebar-navtwo{ width: 100%; padding: 15px 0px; text-align: center; font-size: 14px; color: #666666; border-top: 1px solid #eeeeee; border-bottom: 1px solid #eeeeee;}
+a:hover .sidebar-navone,a:hover .sidebar-navtwo{ background:#037cf8; color: #FFFFFF; font-size: 14px; text-align: center;}
+
+/*.sidebar-navone{ width: 100%; padding: 15px 0px; text-align: center; font-size: 14px; color: #666666; border-top: 1px solid #eeeeee; border-bottom: 1px solid #eeeeee; border-left: 5px solid #eeeeee;}
+.sidebar-navtwo{ width: 100%; padding: 15px 0px; text-align: center; font-size: 14px; color: #666666; border-top: 1px solid #eeeeee; border-bottom: 1px solid #eeeeee; border-left: 5px solid #eeeeee;}
+a:hover .sidebar-navone,a:hover .sidebar-navtwo{ border-left: 5px solid #037cf8; color: #666666; background:#FFFFFF; font-size: 14px; text-align: center; color: #037cf8;}*/
+
+/*工单侧导航栏样式----ending*/

@@ -174,7 +174,7 @@ class Submissionworkorder extends Component {
                     />
                     <span>
                     温馨提示：您所提交的工单问题服务时间为周一至周五9:00-18:00（节假日除外 ）我们会在两个工作日内处理，请您耐心等待。
-                  </span>
+                    </span>
                   </FormItem>
                   <FormItem
                     // label={formatMessage({ id: 'app.setting.name' })}
@@ -276,7 +276,8 @@ class Submissionworkorder extends Component {
                 </div>
               </Form>
             </div>
-            <div className='submissionworkorder-right'>
+
+            {/*            <div className='submissionworkorder-right'>
               <div className='personalenter-right-box'>
                 <h2>提交工单注意事项：</h2>
                 <span>请尽量描述清楚您的问题，建议留下与问题相关的网站网址或网站后台账号、密码，以方便高效解决您的问题；</span>
@@ -290,7 +291,18 @@ class Submissionworkorder extends Component {
               <div className='personalenter-right-box'>
                 <span>公司基本信息将用于认证账户，会完全保密，信息提交后2个工作日内完成审核。</span>
               </div>
+            </div> */}
+
+            <div className='submissionworkorder-right'>
+              <h2>提交工单注意事项：</h2>
+              <ul>
+                <li>请尽量描述清楚您的问题，建议留下与问题相关的网站网址或网站后台账号、密码，以方便高效解决您的问题；</li>
+                <li>建议留下您的手机或座机等联系方式，以便需要时可以及时联系到您；</li>
+                <li>请选择与您问题匹配的工单类型，以便您的问题直接分配给相关领域的专家，答复更快更精准；</li>
+                <li>公司基本信息将用于认证账户，会完全保密，信息提交后2个工作日内完成审核。</li>
+              </ul>
             </div>
+
           </div>
         </div>
       </div>

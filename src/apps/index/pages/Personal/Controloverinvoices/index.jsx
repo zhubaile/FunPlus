@@ -87,9 +87,9 @@ class Controloverinvoices extends Component {
     );
   };
 
-  /*balancerecharge() {
+  /* balancerecharge() {
     this.Recharge.open();
-  }*/
+  } */
 
   handleDelete = () => {
     Dialog.confirm({
@@ -111,7 +111,20 @@ class Controloverinvoices extends Component {
   renderOper = () => {
     return (
       <div>
-        <Button
+        <a
+          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px', borderRight: '2px solid #999999' }}
+          onClick={this.handleDetail}
+        >
+          <FormattedMessage id="app.btn.detail" />
+        </a>
+        <a
+          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
+          onClick={this.handleDelete}
+        >
+          <FormattedMessage id="app.btn.delete" />
+        </a>
+
+        {/*        <Button
           type="primary"
           style={{ marginRight: '5px' }}
           onClick={this.handleDetail}
@@ -120,7 +133,7 @@ class Controloverinvoices extends Component {
         </Button>
         <Button type="normal" warning onClick={this.handleDelete}>
           <FormattedMessage id="app.btn.delete" />
-        </Button>
+        </Button> */}
       </div>
     );
   };
