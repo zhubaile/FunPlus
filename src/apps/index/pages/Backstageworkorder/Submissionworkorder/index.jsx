@@ -212,6 +212,23 @@ class Submissionworkorder extends Component {
                       id: 'app.setting.avatar.message',
                     })}
                   >
+                    <Upload
+                      action="https://www.easy-mock.com/mock/5b713974309d0d7d107a74a3/alifd/upload"
+                      beforeUpload={beforeUpload}
+                      onChange={onChange}
+                      onSuccess={onSuccess}
+                      multiple
+                      defaultValue={[{
+                        name: 'IMG.png',
+                        state: 'done',
+                        size: 1024,
+                        downloadURL: 'https://img.alicdn.com/tps/TB19O79MVXXXXcZXVXXXXXXXXXX-1024-1024.jpg',
+                        fileURL: 'https://img.alicdn.com/tps/TB19O79MVXXXXcZXVXXXXXXXXXX-1024-1024.jpg',
+                        imgURL: 'https://img.alicdn.com/tps/TB19O79MVXXXXcZXVXXXXXXXXXX-1024-1024.jpg',
+                      }]}
+                    >
+                      <Button type="primary" style={{ margin: '0 0 10px' }}>上传</Button>
+                    </Upload>
                     {/* action 为代理的模式，在.webpackrc.js中设置 */}
                     <Upload.Card
                       action="/web/beta/v1.0/uploadPhoto"

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Input,Button , Grid, Form, DatePicker , Tab,Message ,Table,Pagination,Select,Radio,Switch, Checkbox } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
-import IceContainer from '@icedesign/container';
+import { openInvoice,changeInvoiceInfo } from '@indexApi';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import '../../../../index.css';
 
@@ -14,12 +14,13 @@ const formItemLayout = {
   labelCol: { xxs: 8, s: 6, l: 5 },
   wrapperCol: { s: 12, l: 10 },
 };
-
 export default class BillingInformation extends Component {
   constructor(props) {
     super(props);
     this.state = {
       open: false,
+      content: null,
+      confirm: null,
       value: {
         companyname: '',
         invoicetype: '',
@@ -41,6 +42,7 @@ export default class BillingInformation extends Component {
     this.setState({
       open: true,
       content,
+      confirm,
     });
     this.confirmCallBack = confirm;
   }
@@ -50,13 +52,28 @@ export default class BillingInformation extends Component {
     });
   };
 
-
+  SubInvoiceinfo(r,v) {
+    changeInvoiceInfo({
+      ...r,
+    }).then(({ status,data })=>{
+      if (data.errCode == 0) {
+        Message.success(data.message);
+        this.billinginformationclose();
+        this.props.fetchData();
+      }
+    });
+    debugger;
+    /* this.refs.form.validateAll((errors, values) => {
+      debugger;
+    }) */
+  }
   render() {
+    const { content, confirm } = this.state;
     const fptype = [
-      { value: '企业增值税专用发票', label: '企业增值税专用发票' },
-      { value: '企业增值税普通发票', label: '企业增值税普通发票' },
-      { value: '组织增值税普通发票', label: '组织增值税普通发票' },
-      { value: '个人增值税普通发票', label: '个人增值税普通发票' },
+      { value: '0', label: '企业增值税专用发票' },
+      { value: '1', label: '企业增值税普通发票' },
+      { value: '2', label: '组织增值税普通发票' },
+      { value: '3', label: '个人增值税普通发票' },
     ];
     if (!this.state.open) return null;
     return (
@@ -70,20 +87,20 @@ export default class BillingInformation extends Component {
             label='公司名称'
             {...formItemLayout}
           >
-            <Input name='companyname' placeholder='请填写有效的名称' />
+            <Input name='company' placeholder='请填写有效的名称' defaultValue={content.company} />
           </FormItem>
           <FormItem
             label='发票类型'
             {...formItemLayout}
           >
-            <Select name='invoicetype' dataSource={fptype} placeholder='企业增值税专用发票' />
+            <Select name='invoiceType' style={{ width: '100%' }} dataSource={confirm} defaultValue={content.invoiceType} />
           </FormItem>
           <FormItem
             label='发票抬头'
             {...formItemLayout}
             asterisk
           >
-            <Input name="invoice" placeholder="请填写有效的发票抬头" />
+            <Input name="invoiceTitle" placeholder="请填写有效的发票抬头" defaultValue={content.invoiceTitle} />
             <p style={{ color: '#999999', fontSize: '2px' }}>
               温馨提示：若发票抬头为公司名称，请申请企业增值税普通发票或企业增值税专用发票，并填写 纳税人识别号
               等相关信息，以免影响发票后续的正常使用。若您有疑问，建议联系贵司财务确认后再申请开票。
@@ -94,24 +111,28 @@ export default class BillingInformation extends Component {
             label='开户行'
             {...formItemLayout}
           >
-            <Input name="bank" placeholder='请填写有效的开户行' />
+            <Input name="bank" placeholder='请填写有效的开户行' defaultValue={content.bank} />
           </FormItem>
 
           <FormItem
             label='开户账号'
             {...formItemLayout}
           >
-            <Input name="accountopening" placeholder="请填写有效的开户账户" />
+            <Input name="bankNumber" placeholder="请填写有效的开户账户" defaultValue={content.bankNumber} />
           </FormItem>
 
           <FormItem
             label='税号'
             {...formItemLayout}
           >
-            <Input name="taxnumber" placeholder="请填写有效的税号" />
+            <Input name="taxNumber" placeholder="请填写有效的税号" defaultValue={content.taxNumber} />
           </FormItem>
-          <Button type='secondary'style={styles.cancelbtn} siza='large' onClick={this.billinginformationclose.bind(this)}>取消</Button>
-          <Button type='primary'style={styles.submitbtn} siza='large'>提交</Button>
+          <FormItem wrapperCol={{ offset: 6 }} >
+            <Form.Reset style={styles.cancelbtn} onClick={this.billinginformationclose.bind(this)}>取消</Form.Reset>
+            <Form.Submit style={styles.submitbtn} validate type="primary" onClick={(v, e) => this.SubInvoiceinfo(v,e)}>提交</Form.Submit>
+          </FormItem>
+          {/* <Button type='secondary'style={styles.cancelbtn} siza='large' onClick={this.billinginformationclose.bind(this)}>取消</Button> */}
+          {/* <Button type='primary'style={styles.submitbtn} siza='large' onClick={this.SubInvoiceinfo.bind(this)}>提交</Button> */}
         </Form>
 
       </div>

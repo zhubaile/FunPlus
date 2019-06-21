@@ -1,13 +1,14 @@
 /* eslint  react/no-string-refs: 0 */
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import IceContainer from '@icedesign/container';
+import { withRouter, Link } from 'react-router-dom';
 import { Input, Radio, Tab , Button, Grid, Form, DatePicker,Table,Pagination,Select } from '@alifd/next';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import Customerservice from "../components/Customerservice";
 import Addmenber from "./addmember";
-import Newrole from "./newrole";
-import Editingrole from "./editingrole";
+/* import Newrole from "./NewRole";
+import Editingrole from "./EditingRole"; */
+import { searchUserList, userDelete } from '@indexApi';
 
 import '../../index.css';
 
@@ -29,7 +30,7 @@ const getData = (length = 10) => {
     };
   });
 };
-
+@withRouter
 class Membermanagement extends Component {
   static displayName = 'Membermanagement';
 
@@ -45,22 +46,26 @@ class Membermanagement extends Component {
         jiaose: '0',
         haoma: '',
       },
-      current: 1,
+      total: 0, // 总数据
+      pageSize: 10, // 一页条数
+      current: 1, // 页码
       isLoading: false,
-      data: [],
+      datas: [],
+      roless: [],
+      search: [],
     };
   }
   componentDidMount() {
     this.fetchData();
   }
 
-  mockApi = (len) => {
+  /* mockApi = (len) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
       }, 600);
     });
-  };
+  }; */
 
   fetchData = (len) => {
     this.setState(
@@ -68,16 +73,34 @@ class Membermanagement extends Component {
         isLoading: true,
       },
       () => {
-        this.mockApi(len).then((data) => { // data 里面为数据
+        /* this.mockApi(len).then((data) => { // data 里面为数据
           this.setState({
             data,
             isLoading: false,
           });
+        }); */
+        const pages = this.state.current;
+        const pageSize = this.state.pageSize;
+        searchUserList({
+          page: pages,
+          pageSize,
+        }).then(({ status,data })=>{
+          if (data.errCode == 0) {
+            const roless = data.data.role; // 选择渠道
+            const searchrole = roless.map(item=>({ value: item.roleName,label: item.description }));
+            //  const zzz = Object.assign({},this.state.search,{ role: datas });
+            this.setState({
+              datas: data.data.result,
+              search: searchrole,
+              isLoading: false,
+              total: data.data.totalCount,
+            });
+          }
         });
       }
     );
   };
-
+  // 翻页
   handlePaginationChange = (current) => {
     this.setState(
       {
@@ -85,68 +108,107 @@ class Membermanagement extends Component {
       },
       () => {
         this.fetchData();
+        /* const pages = this.state.current;
+        const pageSize = this.state.pageSize;
+        debugger;
+        searchUserList({
+          page: pages,
+          pageSize,
+        }).then((status,data)=>{
+          debugger;
+
+        }); */
+        // this.fetchData();
       }
     );
   };
   // 添加成员弹出框
   addmemberbtnopen() {
-    this.Addmenber.open();
+    const searchs = this.state.search;
+    this.Addmenber.addmemberopen(searchs);
   }
-
-  newrolebtnopen() {
-    this.Newrole.open();
-  }
-
-  editingrolebtnopen() {
-    this.Editingrole.open();
-  }
-
   formChange=(value)=>{
-    debugger;
+
+  }
+  // 搜索框
+  searchbtn() {
+    this.refs.form.validateAll((errors, values) => {
+      const pages = this.state.current;
+      const pageSizes = this.state.pageSize;
+      searchUserList({
+        quanbuyingyong: values.quanbuyingyong,
+        roles: values.roles,
+        keyword: values.keyword,
+        page: pages,
+        pageSize: pageSizes,
+      }).then(({ status,data })=>{
+        debugger;
+        if (data.errCode == 0) {
+          this.setState({
+            datas: data.data.result,
+          });
+        }
+      });
+    });
   }
   // 状态的值
-  renderOper = (datas) => {
+  /*  renderOper = (datas) => {
     const z = datas[0];
     return (
       <div>
         <Radio id="shiduide" value="shiduide" checked={z} >{datas[1]}</Radio>
-        {/* <Radio id="shiduide" value="shiduide" checked={false}>--</Radio> */}
+        {/!* <Radio id="shiduide" value="shiduide" checked={false}>--</Radio> *!/}
       </div>
     );
-  };
+  }; */
 
+   renderStatus = (datas) => {
+     return (
+       <div>
+         <Radio id="enabled" value="enabled" checked={datas.enabled} >{datas.enabledName}</Radio>
+       </div>
+     );
+   };
+  onRemove = (id) => {
+    const { datas } = this.state;
+    userDelete({
+      _id: id,
+    }).then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        let index = -1;
+        datas.forEach((item, i) => {
+          if (item._id === id) {
+            index = i;
+          }
+        });
+        if (index !== -1) {
+          datas.splice(index, 1);
+          this.setState({
+            datas,
+          });
+        }
+      }
+    });
+    // 写一个删除的请求
+  };
   renderOper = (value,index,record) => {
     return (
       <div>
         <a
-          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px', borderRight: '2px solid #999999' }}
-/*          onClick={this.handleDetail}*/
-          onClick={this.editingrolebtnopen.bind(this)}
-        >
-          <FormattedMessage id="app.btn.detail" />
-        </a>
-        <a
           style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
-          onClick={this.handleDelete}
+          onClick={this.onRemove.bind(this,record._id)}
         >
           <FormattedMessage id="app.btn.delete" />
         </a>
-{/*        <Button
-          type="primary"
-          style={{ marginRight: '5px' }}
-          onClick={this.handleDetail}
-        >
-          <FormattedMessage id="app.btn.detail" />
-        </Button>
-        <Button type="normal" warning onClick={()=>this.handleDelete(record,index)}>
-          <FormattedMessage id="app.btn.delete" />
-        </Button>*/}
       </div>
     );
   };
-
+  btn() {
+    this.props.history.push('/admin/personal/rolepermissions');
+  }
   render() {
-    const { isLoading, data, current } = this.state;
+    const { isLoading, datas, current, search, total, pageSize } = this.state;
     const {
       intl: { formatMessage },
     } = this.props;
@@ -155,33 +217,31 @@ class Membermanagement extends Component {
       { value: '0', label: '全部应用' },
       { value: '1', label: '部分' },
     ];
-    const jiaose = [
-      { value: '0', label: '角色' },
-      { value: '1', label: '人' },
-    ];
+    const jiaose = search;
     return (
       <div className='membermanagement'>
-        <Addmenber ref={node=>this.Addmenber = node} />
-        <Newrole ref={node=>this.Newrole = node} />
-        <Editingrole ref={node=>this.Editingrole = node} />
+        <Addmenber ref={node=>this.Addmenber = node} fetchData={this.fetchData.bind(this)} />
+        {/*  <Newrole ref={node=>this.Newrole = node} />
+        <Editingrole ref={node=>this.Editingrole = node} /> */}
         <Tab shape='pure'>
           <Tab.Item title="成员管理">
             <div className='membermanagement-top'>
               <FormBinderWrapper
-                value={this.state.value}
+                // value={this.state.value}
+                value={search}
                 onChange={this.formChange}
                 ref="form"
               >
                 <FormBinder name="quanbuyingyong" >
-                  <Select dataSource={quanbuyingyong} style={styles.forminput} />
+                  <Select dataSource={quanbuyingyong} style={styles.forminput} placeholder='全部应用' />
                 </FormBinder>
-                <FormBinder name='jiaose' >
-                  <Select dataSource={jiaose} style={styles.forminput} />
+                <FormBinder name='roles' >
+                  <Select dataSource={jiaose} style={styles.forminput} placeholder='角色' />
                 </FormBinder>
-                <FormBinder name='haoma' >
-                  <Input hasClear placeholder='输入号' style={styles.forminput} />
+                <FormBinder name='keyword' >
+                  <Input hasClear placeholder='支持姓名邮箱手机号' style={styles.forminput} />
                 </FormBinder>
-                <Button className='bg' size="large" type="primary">搜索</Button>
+                <Button className='bg' size="large" type="primary" onClick={this.searchbtn.bind(this)}>搜索</Button>
                 <button className='addmemberbtn' onClick={this.addmemberbtnopen.bind(this)}>添加成员</button>
               </FormBinderWrapper>
             </div>
@@ -192,20 +252,21 @@ class Membermanagement extends Component {
                   <Radio id="lbza" value="lbza">邀请已发送至手机或邮箱</Radio>
                 </RadioGroup>
               </div>
-              <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                <Table.Column title="姓名" dataIndex="name" />
-                <Table.Column title="邮箱" dataIndex="level" />
-                <Table.Column title="手机号" dataIndex="rule" />
+              <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+                <Table.Column title="姓名" dataIndex="username" />
+                <Table.Column title="邮箱" dataIndex="email" />
+                <Table.Column title="手机号" dataIndex="phone" />
                 <Table.Column
                   title="备注"
-                  dataIndex="oper"
+                  dataIndex="notes"
                 />
-                <Table.Column title="角色" dataIndex="role" />
+                <Table.Column title="角色" dataIndex="roleName" />
                 <Table.Column
                   title="状态"
-                  dataIndex="zhuangtai"
+                  dataIndex="enabled"
+                  cell={this.renderStatus}
                 />
-{/*                <Table.Column title="操作" dataIndex="caozuo" />*/}
+                {/*                <Table.Column title="操作" dataIndex="caozuo" /> */}
 
                 <Table.Column
                   title="操作"
@@ -219,41 +280,15 @@ class Membermanagement extends Component {
                 style={{ marginTop: '20px', textAlign: 'right' }}
                 current={current}
                 onChange={this.handlePaginationChange}
+                pageSize={pageSize} // 界面展示多少条数据
+                total={total} // 一共多少条数据
               />
             </div>
           </Tab.Item>
 
 
-          <Tab.Item title="角色权限">
-            <div className='membermanagements-top'>
-              <div className='membermanagement-bottom-top'>
-                <button className='Newrole' onClick={this.newrolebtnopen.bind(this)}>新增角色</button>
-              </div>
-              <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                <Table.Column title="角色" dataIndex="role" />
-                <Table.Column
-                  title="说明"
-                  dataIndex="description"
-                />
-                <Table.Column
-                  title="状态"
-                  dataIndex="zhuangtai"
+          <Tab.Item title="角色权限" onClick={this.btn.bind(this)}>
 
-                />
-{/*                <Table.Column title="操作" dataIndex="caozuo" />*/}
-                <Table.Column
-                  title="操作"
-                  width={200}
-                  dataIndex="oper"
-                  cell={this.renderOper}
-                />
-              </Table>
-              <Pagination
-                style={{ marginTop: '20px', textAlign: 'right' }}
-                current={current}
-                onChange={this.handlePaginationChange}
-              />
-            </div>
           </Tab.Item>
         </Tab>
         <Customerservice />

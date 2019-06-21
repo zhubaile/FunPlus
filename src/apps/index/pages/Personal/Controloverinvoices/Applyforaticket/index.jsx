@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Radio , Button, Grid, Form, Message, Tab, Table, DatePicker, Pagination, Select, Step, Icon } from '@alifd/next';
-import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
+import { invoiceDataInfo,openInvoice } from '@indexApi';
 import '../../../index.css';
 import ApplyBilling from './ApplyBilling';
 import BillingInformation from './BillingInformation';
@@ -11,7 +11,7 @@ import Customerservice from "../../../Personal/components/Customerservice";
 import IceContainer from '@icedesign/container';
 
 const { RangePicker } = DatePicker;
-import moment from "moment/moment";
+// import moment from "moment/moment";
 
 const { Item: StepItem } = Step;
 const { Group: RadioGroup } = Radio;
@@ -40,6 +40,11 @@ export default class Applyforaticket extends Component {
       current: 1,
       isLoading: false,
       data: [],
+      InvoiceInfo: [], // 开票信息
+      MailAddress: [], // 地址信息
+      InvoiceType: [], // 多选框
+      TotalAmount: '', // 可开票总金额
+      City: [], // 城市数据
       value: {
         selectiontime: '全部交易类型',
         paymentchannel: '全部扣费类型',
@@ -56,13 +61,13 @@ export default class Applyforaticket extends Component {
     this.fetchData();
   }
 
-  mockApi = (len) => {
+  /* mockApi = (len) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
       }, 600);
     });
-  };
+  }; */
 
   fetchData = (len) => {
     this.setState(
@@ -70,12 +75,24 @@ export default class Applyforaticket extends Component {
         isLoading: true,
       },
       () => {
-        this.mockApi(len).then((data) => { // data 里面为数据
+        invoiceDataInfo().then(({ status,data })=>{
+          debugger;
+          if (data.errCode == 0) {
+            this.setState({
+              InvoiceInfo: data.data.invoiceInfo,
+              MailAddress: data.data.mailAddress,
+              InvoiceType: data.data.invoiceType,
+              TotalAmount: data.data.totalAmount,
+              City: data.data.city,
+            });
+          }
+        });
+        /* this.mockApi(len).then((data) => { // data 里面为数据
           this.setState({
             data,
             isLoading: false,
           });
-        });
+        }); */
       }
     );
   };
@@ -91,34 +108,32 @@ export default class Applyforaticket extends Component {
     );
   };
   applyforacticketopen() {
-    this.ApplyBilling.applybillingopen();
+    const TotalAmounts = this.state.TotalAmount;
+    this.ApplyBilling.applybillingopen(TotalAmounts);
   }
   applyforacticketopenone() {
-    this.BillingInformation.billinginformationopen();
+    const InvoiceInfos = this.state.InvoiceInfo;
+    const InvoiceTypes = this.state.InvoiceType;
+    this.BillingInformation.billinginformationopen(InvoiceInfos,InvoiceTypes);
   }
+  // 添加地址
   applyforacticketopentwo() {
-    this.AddAddress.addaddressopen();
+    const MailAddresss = this.state.MailAddress;
+    const City = this.state.City;
+    const messageaddress = 'Addto';
+    this.AddAddress.addaddressopen(MailAddresss,City,messageaddress);
   }
 
 
   render() {
-    const { isLoading, data, current } = this.state;
+    const { isLoading, data, current, InvoiceInfo, MailAddress, TotalAmount } = this.state;
     const { currentStep } = this.state;
-    /*    const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
-    const endValue = moment('2019-05-08', 'YYYY-MM-DD', true);
-
-    const selectiontime = [
-      { value: '全部交易类型', label: '全部交易类型' },
-    ];
-    const paymentchannel = [
-      { value: '全部扣费类型', label: '全部扣费类型' },
-    ]; */
 
     return (
       <div className='apply-billing'>
         <ApplyBilling ref={ node => this.ApplyBilling = node } />
-        <BillingInformation ref={ node => this.BillingInformation = node } />
-        <AddAddress ref={ node => this.AddAddress = node } />
+        <BillingInformation ref={ node => this.BillingInformation = node } fetchData={this.fetchData.bind(this)} />
+        <AddAddress ref={ node => this.AddAddress = node } fetchData={this.fetchData.bind(this)} />
         <Tab shape='pure' className='apply-billing-topcontent'>
           <Tab.Item title='申请开票'>
             <div className='deduction-details-topcontent'>
@@ -126,98 +141,37 @@ export default class Applyforaticket extends Component {
                 <ol>
                   <li>1.目前只支持纸质发票，暂不支持电子发票。在您提交开票申请后，我们将在5个工作日内为您开发票并用顺丰快递邮寄给您（不包括快递运输时间），请您耐心等待。</li>
                   <li>2.预付费，后付费，续费订单都可开票，开具的发票内容为信息技术服务云服务费。</li>
-{/*                  <li>你可能还想了解： <span>发票税点及类目</span> <span>如何选择发票类型</span> <span>不可开发票的费用有哪些</span></li>*/}
                 </ol>
-{/*                <p>1.目前只支持纸质发票，暂不支持电子发票。在您提交开票申请后，我们将在5个工作日内为您开发票并用顺丰快递邮寄给您（不包括快递运输时间），请您耐心等待。</p>
-                <p>2.预付费，后付费，续费订单都可开票，开具的发票内容为信息技术服务云服务费。</p>
-                <p>你可能还想了解： <span>发票税点及类目</span> <span>如何选择发票类型</span> <span>不可开发票的费用有哪些</span></p>*/}
               </Message>
-              {/* <FormBinderWrapper
-                value={this.state.value}
-                onChange={this.formChange}
-                ref="form"
-              >
-                <FormBinder name='startdate'>
-                  <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
-                </FormBinder>
-
-                <FormBinder name="selectiontime"
-                  required
-                  message="请输入正确的名称"
-                  autoWidth={false}
-                >
-                  <Select style={styles.formSelect} dataSource={selectiontime} />
-                </FormBinder>
-                <FormBinder name='paymentchannel'>
-                  <Select style={styles.formSelect} dataSource={paymentchannel} />
-                </FormBinder>
-              </FormBinderWrapper> */}
             </div>
-            {/*            <div className='apply-billing-middlecontent'>
-              <IceContainer title="纸质发票开票流程：">
-                <Step current={currentStep}>
-                  <StepItem title="申请开票" onClick={this.onClick} />
-                  <StepItem title="财务开票" onClick={this.onClick} />
-                  <StepItem title="寄出发票" onClick={this.onClick} />
-                  <StepItem title="线下签收" onClick={this.onClick} />
-                </Step>
-              </IceContainer>
-            </div> */}
             <div className='apply-billing-bottomcontent'>
               <div className='innerone'>
                 <ul>
                   <li>按消费可开票金额</li>
-                  <li>0.00元</li>
+                  <li>{TotalAmount}元</li>
                 </ul>
-
-                <Button className='apply-billing-btn' size="medium" type="secondary" onClick={this.applyforacticketopen.bind(this)}>申请开票</Button>
+                <div>
+                  {!InvoiceInfo || InvoiceInfo.length == 0 || !MailAddress || MailAddress.length == 0 ? (
+                    <Button className='apply-billing-btn' size="medium" type="secondary" style={{ background: '#E5E5E5', marginTop: '-15px' }}>申请开票</Button>
+                  ) : (
+                    <Button className='apply-billing-btn' size="medium" type="secondary" style={{ background: '#1A55E2', marginTop: '-15px' }} onClick={this.applyforacticketopen.bind(this)}>申请开票</Button>
+                    )}
+                </div>
               </div>
 
               <div className='innertwo'>
-                <p><Icon type='edit' size='large' style={{ paddingRight: '5px' }} />您还未填写开票信息   <a onClick={this.applyforacticketopenone.bind(this)}><span>现在填写</span></a></p>
+                <p><Icon type='edit' size='large' style={{ paddingRight: '5px' }} />
+                  {!InvoiceInfo || InvoiceInfo.length == 0 ? (<a onClick={this.applyforacticketopenone.bind(this)}>您还未填写开票信息<span>现在填写</span></a>) : (<a onClick={this.applyforacticketopenone.bind(this)}><span>修改开票信息</span></a>)}
+                </p>
               </div>
 
               <div className='innerthree'>
-                <p><Icon type='edit' size='large' style={{ paddingRight: '5px' }} />您还未添加邮寄信息  <a onClick={this.applyforacticketopentwo.bind(this)}><span>现在添加</span></a></p>
+                <p><Icon type='edit' size='large' style={{ paddingRight: '5px' }} />
+                  {!MailAddress || MailAddress.length == 0 ? (<a onClick={this.applyforacticketopentwo.bind(this)}>您还未添加邮寄信息 <span>现在添加</span></a>) : (<a onClick={this.applyforacticketopentwo.bind(this)}><span>添加邮寄信息</span></a>)}
+                </p>
               </div>
 
             </div>
-
-{/*            <div className='apply-billing-footercontent'>
-              <div className='footer-innerone'>
-                <ul>
-                  <li>按消费可开票金额</li>
-                  <li>0.00元</li>
-                </ul>
-                <p>按消费可开票金额</p>
-                <p>0.00元</p>
-                <Button className='footer-apply-billing-btn' size="medium" type="secondary" onClick={this.applyforacticketopen.bind(this)}>申请开票</Button>
-              </div>
-
-              <div className='footer-innertwo'>
-                <p><Icon type='edit' size='large' /><a onClick={this.applyforacticketopenone.bind(this)}><span>修改开票信息</span></a></p>
-              </div>
-
-              <div className='footer-innerthree'>
-                <p><Icon type='edit' size='large' /><a onClick={this.applyforacticketopentwo.bind(this)}><span>修改邮寄信息</span></a></p>
-              </div>
-
-            </div>*/}
-
-            {/*    <div className='deduction-details-bottomcontent'>
-              <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                <Table.Column title="订单号" dataIndex="requesttime" />
-                <Table.Column title="交易时间" dataIndex="requestaddress" />
-                <Table.Column title="金额" dataIndex="responsestatuscode" />
-                <Table.Column title="支付状态" dataIndex="requestip" />
-                <Table.Column title="支付渠道" dataIndex="requestmethod" />
-              </Table>
-              <Pagination
-                style={{ marginTop: '20px', textAlign: 'right' }}
-                current={current}
-                onChange={this.handlePaginationChange}
-              />
-            </div> */}
 
           </Tab.Item>
         </Tab>

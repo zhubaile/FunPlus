@@ -16,9 +16,12 @@ export default class ApplyBilling extends Component {
     super(props);
     this.state = {
       open: false,
-      value: {
-        kaipiaojine: '',
-      },
+      content: null,
+      confirm: null,
+      InvoiceTypes: null,
+      TotalAmounts: '', // 总金额
+      Invoiceamount: '', // 输入框得值
+      Checkboxstatus: false, // 复选框状态
     };
   }
 
@@ -26,13 +29,14 @@ export default class ApplyBilling extends Component {
     this.setState({
       open: false,
       content: null,
+      Invoiceamount: '',
     });
   }
 
-  applybillingopen(content,confirm) {
+  applybillingopen(TotalAmounts) {
     this.setState({
       open: true,
-      content,
+      TotalAmounts,
     });
     this.confirmCallBack = confirm;
   }
@@ -41,57 +45,78 @@ export default class ApplyBilling extends Component {
       value,
     });
   };
-
+  // 下一步的界面
   applybillingbtnopen() {
-    this.ApplyBillingNext.applybillingnextopen();
+    const TotalAmount = this.state.TotalAmounts; // 可开票总金额
+    const Invoiceamount = this.state.Invoiceamount; // 本次开票金额
+    // const InvoiceInfos = this.state.content;
+    // const MailAddresss = this.state.confirm;
+    // const InvoiceType = this.state.InvoiceTypes;
+    if (!Invoiceamount) {
+      return (Message.success('开票金额不能为空'));
+    } else if (Invoiceamount > TotalAmount) {
+      return (Message.success('本次开票金额不足'));
+    }else if (Invoiceamount < 0) {
+      return (Message.success('开票金额不能为负数'));
+    }
+    this.ApplyBillingNext.applybillingnextopen(Invoiceamount);
   }
-
+  // 输入框
+  invoiceamountinput(v,e) {
+    this.setState({
+      Invoiceamount: v,
+    });
+  }
+  // 复选框状态
+  Whether(v,e) {
+    const TotalAmount = this.state.TotalAmounts;
+    this.setState({
+      Checkboxstatus: v,
+    });
+    if (v == true) {
+      debugger;
+      this.setState({
+        Invoiceamount: TotalAmount,
+      });
+    }
+  }
   render() {
+    const { TotalAmounts,Checkboxstatus,Invoiceamount } = this.state;
     if (!this.state.open) return null;
     return (
       <div className='apply-billing-bulletbox'>
         <ApplyBillingNext ref={ node => this.ApplyBillingNext = node } />
         <h2>申请开票</h2>
         <span className='x-span' onClick={this.applybillingclose.bind(this)}>x</span>
-        <FormBinderWrapper
-          value={this.state.value}
-          onChange={this.formChange}
-          ref="form"
-        >
-          <div>
-            <Message type='notice' className='message'>
-              <ul>
-                <li>1.目前只支持纸质发票，暂不支持电子发票。在您提交开票申请后，我们将在5个工作日内为您开发票并用顺丰快递邮寄给您（不包括快递运输时间），请您耐心等待。</li>
-                <li>2.预付费，后付费，续费订单都可开票，开具的发票内容为信息技术服务云服务费。</li>
-                {/*                  <li>你可能还想了解： <span>发票税点及类目</span> <span>如何选择发票类型</span> <span>不可开发票的费用有哪些</span></li> */}
-              </ul>
-              {/*              <p>1.目前只支持纸质发票，暂不支持电子发票。在您提交开票申请后，我们将在5个工作日内为您开发票并用顺丰快递邮寄给您（不包括快递运输时间），请您耐心等待。</p>
-              <p>2.预付费，后付费，续费订单都可开票，开具的发票内容为信息技术服务云服务费。</p> */}
-            </Message>
-          </div>
-          <p>可开票金额：0.00元</p>
-          <span>本次开票金额</span>
-          <FormBinder name='kaipiaojine'>
-            <Input style={styles.inputsize} placeholder='' hasClear />
-          </FormBinder>
-          <span>元</span>
-          <Checkbox style={styles.checkbox} defaultChecked label='将可开票金额全部开票' />
-          <Button style={styles.nextbtn} type='primary' size='large' onClick={this.applybillingbtnopen.bind(this)}>下一步</Button>
-        </FormBinderWrapper>
+
+        <div>
+          <Message type='notice' className='message'>
+            <ul>
+              <li>1.目前只支持纸质发票，暂不支持电子发票。在您提交开票申请后，我们将在5个工作日内为您开发票并用顺丰快递邮寄给您（不包括快递运输时间），请您耐心等待。</li>
+              <li>2.预付费，后付费，续费订单都可开票，开具的发票内容为信息技术服务云服务费。</li>
+            </ul>
+          </Message>
+        </div>
+        <p style={{ marginLeft: '15px'}}>可开票金额：{TotalAmounts}元</p>
+        <span>本次开票金额：</span>
+        <Input name='Invoiceamount' htmlType='number' onChange={this.invoiceamountinput.bind(this)} style={styles.inputsize} value={Invoiceamount} hasClear />
+        <span>元</span>
+        <Checkbox style={styles.checkbox} label='将可开票金额全部开票' defaultChecked={Checkboxstatus} onChange={this.Whether.bind(this)} />
+        <Button style={styles.nextbtn} type='primary' size='large' onClick={this.applybillingbtnopen.bind(this)}>下一步</Button>
       </div>
     );
   }
 }
 const styles = {
   inputsize: {
-    width: '80px',
+    width: '130px',
     height: '30px',
     margin: '0px 10px',
     /*    borderLeft: 'none', */
   },
   checkbox: {
     display: 'block',
-    margin: '15px 90px',
+    margin: '15px 100px',
   },
   nextbtn: {
     display: 'block',

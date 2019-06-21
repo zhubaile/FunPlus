@@ -137,11 +137,148 @@ export function functionUser() {
     url: 'function/user',
   });
 }
+
+// 删除成员管理按钮
+export function userDelete(params) {
+  return ajaxAmd.post({
+    url: '/userDelete',
+    data: params,
+  });
+}
+// 成员管理
+export function searchUserList(params) {
+  return ajaxAmd.post({
+    url: '/searchUserList',
+    data: params,
+  });
+}
+// 添加成员
+export function createUser(params) {
+  return ajaxAmd.post({
+    url: '/createUser',
+    data: params,
+  });
+}
+
+// 角色权限列表
+export function roleList(params) {
+  return ajaxAmd.get({
+    url: '/roleList',
+    params,
+  });
+}
+// 添加角色权限
+export function addRolePms(params) {
+  return ajaxAmd.post({
+    url: '/addRolePms',
+    data: params,
+  });
+}
+
+// 修改角色权限
+export function changeRolePms(params) {
+  return ajaxAmd.post({
+    url: '/changeRolePms',
+    data: params,
+  });
+}
+// 删除角色权限
+export function deleteRolePms(params) {
+  return ajaxAmd.post({
+    url: '/deleteRolePms',
+    data: params,
+  });
+}
+
+// 发票列表
+export function invoiceList(params) {
+  return ajaxAmd.get({
+    url: '/invoiceList',
+    params,
+  });
+}
+// 申请开票界面内容加载
+export function invoiceDataInfo(params) {
+  return ajaxAmd.get({
+    url: '/invoiceDataInfo',
+    params,
+  });
+}
+// 申请开票
+export function openInvoice(params) {
+  return ajaxAmd.post({
+    url: '/openInvoice',
+    data: params,
+  });
+}
+// 删除发票信息
+export function invoiceDelete(params) {
+  return ajaxAmd.post({
+    url: '/invoiceDelete',
+    data: params,
+  });
+}
+// 修改发票
+export function changeInvoiceInfo(params) {
+  return ajaxAmd.post({
+    url: '/changeInvoiceInfo',
+    data: params,
+  });
+}
+// 修改默认地址
+export function changeDefaultValue(params) {
+  return ajaxAmd.post({
+    url: '/changeDefaultValue',
+    data: params,
+  });
+}
+// 填写邮寄地址
+export function createMailAddress(params) {
+  return ajaxAmd.post({
+    url: '/createMailAddress',
+    data: params,
+  });
+}
+// 修改邮寄地址
+export function changeMailAddress(params) {
+  return ajaxAmd.post({
+    url: '/changeMailAddress',
+    data: params,
+  });
+}
+// 删除邮寄地址
+export function mailAddressDelete(params) {
+  return ajaxAmd.post({
+    url: '/mailAddressDelete',
+    data: params,
+  });
+}
+
+// 费用中心充值列表
+export function rechargeList(params) {
+  return ajaxAmd.get({
+    url: '/rechargeList',
+    params,
+  });
+}
+// 充值
+export function recharge(params) {
+  return ajaxAmd.post({
+    url: '/recharge',
+    data: params,
+  });
+}
 // 收入
 export function incomeList(params) {
-  debugger;
   return ajaxAmd.post({
     url: '/incomeList',
+    data: params,
+  });
+}
+// 搜索--获取对应的渠道
+export function getDevice(params) {
+  return ajaxAmd.post({
+    url: '/getDevice',
     data: params,
   });
 }

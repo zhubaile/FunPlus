@@ -8,13 +8,13 @@ let proxy = {};
 };*/
 proxy['/web/beta/v1.0/**'] = {
   // 代理测试环境地址 如下，代理就是把请求本地的url接到配置好的url上。
-  target: "http://192.168.1.118:3000",
+  target: "http://192.168.1.123:3000",
   changeOrigin: true,
 };
-debugger;
 console.log('---------111112222333456---------')
-// http://192.168.1.105:3000/web/beta/v1.0/uploadPhoto
-// http://192.168.1.122:3002/web/beta/v1.0/incomeList
+// http://192.168.1.118:3000  fog的
+// 192.168.1.123 dengyan的
+// 192.168.1.105  黄明亮的
 module.exports = {
   // 如果需要代理请解开下面注释   regex e("abc")
   devServer: {

@@ -4,8 +4,10 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Radio, Select , Grid, Form ,Button,Pagination,Table, Dialog } from '@alifd/next';
 import Customerservice from "../components/Customerservice";
 import { withRouter, Link } from 'react-router-dom';
+import { invoiceList,invoiceDelete } from '@indexApi';
 // import Qrcode, { Panel } from '@icedesign/qrcode'; // 二维码
 import '../../index.css';
+import moment from 'moment';
 
 const { Row, Col } = Grid;
 const { Group: RadioGroup } = Radio;
@@ -42,9 +44,16 @@ class Controloverinvoices extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 1,
+      total: 0, // 总数据
+      pageSize: 10, // 一页条数
+      current: 1, // 页码
       isLoading: false,
-      data: [],
+      datas: [], // 列表数据
+      InvoiceInfo: [], // 开票信息
+      MailAddress: [], // 地址信息
+      TotalAmount: '', // 总金额
+      ConsumptionAmount: '', // 已开票金额
+
     };
   }
   /* 设置定时器用 */
@@ -52,13 +61,13 @@ class Controloverinvoices extends Component {
     this.fetchData();
   }
 
-  mockApi = (len) => {
+  /*  mockApi = (len) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
       }, 600);
     });
-  };
+  }; */
 
   fetchData = (len) => {
     this.setState(
@@ -66,12 +75,31 @@ class Controloverinvoices extends Component {
         isLoading: true,
       },
       () => {
-        this.mockApi(len).then((data) => { // data 里面为数据
+        const pages = this.state.current;
+        const pageSize = this.state.pageSize;
+        invoiceList({
+          page: pages,
+          pageSize,
+        }).then(({ status,data })=>{
+          debugger;
+          if (data.errCode == 0) {
+            this.setState({
+              datas: data.data.result,
+              InvoiceInfo: data.data.invoiceInfo,
+              MailAddress: data.data.mailAddress,
+              TotalAmount: data.data.totalAmount,
+              ConsumptionAmount: data.data.consumptionAmount,
+              isLoading: false,
+              total: data.data.totalCount,
+            });
+          }
+        });
+        /* this.mockApi(len).then((data) => { // data 里面为数据
           this.setState({
             data,
             isLoading: false,
           });
-        });
+        }); */
       }
     );
   };
@@ -91,13 +119,35 @@ class Controloverinvoices extends Component {
     this.Recharge.open();
   } */
 
-  handleDelete = () => {
-    Dialog.confirm({
+  handleDelete = (id) => {
+    /* Dialog.confirm({
       title: '提示',
       content: '确认删除吗',
       onOk: () => {
         this.fetchData(10);
       },
+    }); */
+    debugger;
+    const { datas } = this.state;
+    invoiceDelete({
+      _id: id,
+    }).then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        let index = -1;
+        datas.forEach((item, i) => {
+          debugger;
+          if (item._id === id) {
+            index = i;
+          }
+        });
+        if (index !== -1) {
+          datas.splice(index, 1);
+          this.setState({
+            datas,
+          });
+        }
+      }
     });
   };
 
@@ -108,7 +158,13 @@ class Controloverinvoices extends Component {
     });
   };
 
-  renderOper = () => {
+  datatime=(e)=>{
+    const updatedAt = moment(e).format('YYYY-MM-DD HH:mm:ss');
+    return (
+      <p>{updatedAt}</p>
+    );
+  }
+  renderOper = (value, index, record) => {
     return (
       <div>
         <a
@@ -119,21 +175,10 @@ class Controloverinvoices extends Component {
         </a>
         <a
           style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
-          onClick={this.handleDelete}
+          onClick={this.handleDelete.bind(this,record._id)}
         >
           <FormattedMessage id="app.btn.delete" />
         </a>
-
-        {/*        <Button
-          type="primary"
-          style={{ marginRight: '5px' }}
-          onClick={this.handleDetail}
-        >
-          <FormattedMessage id="app.btn.detail" />
-        </Button>
-        <Button type="normal" warning onClick={this.handleDelete}>
-          <FormattedMessage id="app.btn.delete" />
-        </Button> */}
       </div>
     );
   };
@@ -142,7 +187,7 @@ class Controloverinvoices extends Component {
     const {
       intl: { formatMessage },
     } = this.props;
-    const { isLoading, data, current } = this.state;
+    const { isLoading, datas, current,total,pageSize, MailAddress, InvoiceInfo, TotalAmount, ConsumptionAmount } = this.state;
     return (
       <div>
         <div className='personal-top'>
@@ -157,16 +202,16 @@ class Controloverinvoices extends Component {
                 <img src={require('../../../../../assets/img/houtai/personal/008.png')} alt="" />
                 <div>
                   <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>可开票金额</p>
-                  <strong>0.00元</strong>
+                  <strong>{TotalAmount}元</strong>
                 </div>
               </div>
               {/* <p style={{ fontSize: '16px' }}>可用于支付待申请服务费用等</p> */}
               <span>
                 <p>已经开票金额</p>
-                <p>0.00元</p>
+                <p>{ConsumptionAmount}元</p>
               </span>
 
-              <Button type='primary'><Link to='/admin/personal/applyforaticket'>申请开票</Link></Button>
+              <Button type='primary' style={{ borderRadius: '5px' }}><Link to='/admin/personal/applyforaticket' style={{ color: '#fff' }}>申请开票</Link></Button>
             </div>
             <div className='controloverinvoices-top-twocontent'>
               <div>
@@ -175,72 +220,28 @@ class Controloverinvoices extends Component {
                   <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>开票信息</p>
                   {/* <strong>0.00元</strong> */}
                   <span>
-                    <p>公司名称：与认证公司绑定</p>
-                    <p>开户行：</p>
-                    <p>开户账号：</p>
-                    <p>税号：与认证公司绑定</p>
+                    <p>公司名称：{InvoiceInfo.company}</p>
+                    <p>开户行：{InvoiceInfo.bank}</p>
+                    <p>开户账号：{InvoiceInfo.userId}</p>
+                    <p>税号：{InvoiceInfo.taxNumber}</p>
                   </span>
                   <span className='topright-inner'>
-                    <p>收件联系人：xiaoxx</p>
-                    <p>地址：</p>
-                    <p>联系方式：</p>
+                    <p>收件联系人：{MailAddress.contacts}</p>
+                    <p>地址：{MailAddress.mailAddress}</p>
+                    <p>联系方式：{MailAddress.phone}</p>
                   </span>
                 </div>
               </div>
-              {/* <p style={{ fontSize: '16px' }}>默认显示所有消费总额</p> */}
-              <Button type='primary'>修改开票信息</Button>
             </div>
-            {/*            <div className='controloverinvoices-top-left'>
-              <div style={{ width: '30px', height: '30px' ,borderRadius: '50%', background: 'rgba(161,222,238,1)' }} />
-              <h2>你好，朱柏乐</h2>
-              <p>请在下面找到最近完成的工作成本细目，请尽快付款，如有任何问题，请随时与我联系</p>
-              <div className='controloverinvoices-top-left-bottom'>
-                <div className='box'>
-                  <h2>账单地址</h2>
-                  <p>asdddddddddddddddddddd</p>
-                  <p>asdddddddddddddddddddd</p>
-                  <p>asdddddddddddddddddddd</p>
-                  <p>asdddddddddddddddddddd</p>
-                </div>
-                <div className='box'>
-                  <h2>收件地址</h2>
-                  <p>asdddddddddddddddddddd</p>
-                  <p>asdddddddddddddddddddd</p>
-                  <p>asdddddddddddddddddddd</p>
-                  <p>asdddddddddddddddddddd</p>
-                </div>
-              </div>
-            </div>
-            <div className='controloverinvoices-top-right'>
-              <Form style={{ }} {...formItemLayout}>
-                <FormItem label="订单日期：">
-                  <p>2016年5月16日</p>
-                </FormItem>
-                <FormItem label="订单状态：">
-                  <Button>付费</Button>
-                </FormItem>
-                <FormItem label="订单编号：">
-                  <p>#123456</p>
-                </FormItem>
-              </Form>
-              <img src={require('../../../../../assets/img/houtai/personal/008.png')} style={{ width: '100px' , height: '100px' }} alt="" />
-               <Panel value="https://www.taobao.com" text="使用手机淘宝扫码查看" />
-            </div> */}
-
-
-            {/* 通过绝对定位控制二维码 */}
-            {/* <div>
-            <img src={require('../../../../../assets/img/houtai/personal/008.png')} style={{ width: '100px' , height: '100px'}} alt="" />
-          </div> */}
           </div>
           <div className='controloverinvoices-bottom'>
-            <Table loading={isLoading} dataSource={data} hasBorder={false}>
-              <Table.Column title="发票ID" dataIndex="invoiceid" />
-              <Table.Column title="申请日期" dataIndex="applicationdate" />
-              <Table.Column title="快递单号" dataIndex="trackingnumber" />
-              <Table.Column title="发票抬头" dataIndex="invoice" />
-              <Table.Column title="开票金额" dataIndex="invoiceamount" />
-              <Table.Column title="发票状态" dataIndex="invoicestatus" />
+            <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+              <Table.Column title="发票ID" dataIndex="invoiceNumber" />
+              <Table.Column title="申请日期" dataIndex="updatedAt" cell={this.datatime} />
+              <Table.Column title="快递单号" dataIndex="userId" />
+              <Table.Column title="发票抬头" dataIndex="invoiceTitle" />
+              <Table.Column title="开票金额" dataIndex="totalFee" />
+              <Table.Column title="发票状态" dataIndex="invoiceStatus" />
               <Table.Column
                 title="操作"
                 dataIndex="oper"
@@ -251,6 +252,8 @@ class Controloverinvoices extends Component {
               style={{ marginTop: '20px', textAlign: 'right' }}
               current={current}
               onChange={this.handlePaginationChange}
+              pageSize={10} // 界面展示多少条数据
+              total={total} // 一共多少条数据
             />
             <h2>笔记：</h2>
             <div className='controloverinvoices-bottom-left'>

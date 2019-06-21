@@ -144,12 +144,12 @@ export default class Paymentchannel extends Component {
   renderOper = (value,index,record) => {
     // record 是所有数据
     const asd = this.state.shuzi;
-    const dsa = record.rules[asd].ruleSwitch;
-    debugger;
+    // const ifchecked = record.rules[asd].ruleSwitch;
+    const ifchecked = true;
     // 对应显示的开关不匹配
     return (
       <div>
-        <Switch className='div-switch' checked={dsa} onClick={()=>this.changeswitch(record,index)} />
+        <Switch className='div-switch' checked={ifchecked} onClick={()=>this.changeswitch(record,index)} />
       </div>
     );
   };

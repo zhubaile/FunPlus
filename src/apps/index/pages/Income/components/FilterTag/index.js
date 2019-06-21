@@ -19,9 +19,9 @@ export default class FilterTag extends Component {
           <Tab.Item title="收入订单">
             <div>
               <div className='income-tabs leftbtn'>
-                <Button size="large">总交易金额：</Button>
-                <Button size="large">已支付金额：</Button>
-                <Button size="large">支付成功率：</Button>
+                <Button size="large">总交易金额：{this.props.Filtertag.totalAmount}</Button>
+                <Button size="large">已支付金额：{this.props.Filtertag.payAmount}</Button>
+                <Button size="large">支付成功率：{this.props.Filtertag.successRate}</Button>
               </div>
               <div className='income-tabs rightbtn'>
                 <Button className='bg' size="large" type="secondary" disabled style={{ opacity: 0.5 }}>表格列过滤</Button>

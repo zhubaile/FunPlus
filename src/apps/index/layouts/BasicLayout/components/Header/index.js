@@ -27,8 +27,9 @@ export default class Header extends Component {
     };
   }
   componentDidMount(){
-    Cookies.set('applicationId', 'f9d61ca0837211e99467c3c360ea292a');
+    Cookies.set('applicationId', '0a1cc81090cb11e992cd4b62d0c37a7c');
   }
+  // f9d61ca0837211e99467c3c360ea292a  fog , cc69f68090a911e98213ff9af1378bfa
   handleSetting = () => {
     this.props.history.push('/setting');
   };
