@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import Customerservice from "../components/Customerservice";
-import { Input, Radio, Select , Upload, Grid, Form ,Step} from '@alifd/next';
+import { Input, Radio, Select , Upload, Grid, Form ,Step } from '@alifd/next';
 import '../../index.css';
 
 const { Row, Col } = Grid;
@@ -85,6 +85,7 @@ class Enterprisecertification extends Component {
   };
 
   formChange = (value) => {
+    debugger;
     console.log('value', value);
     this.setState({
       value,

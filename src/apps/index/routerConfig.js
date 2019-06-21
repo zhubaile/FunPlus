@@ -18,7 +18,7 @@ const Controloverinvoices = React.lazy(() => import('./pages/Personal/Controlove
 const Applyforaticket = React.lazy(() => import('./pages/Personal/Controloverinvoices/Applyforaticket')); // 申请开票
 const Operationlog = React.lazy(() => import('./pages/Personal/Operationlog'));
 const Membermanagement = React.lazy(() => import('./pages/Personal/Membermanagement'));
-
+const Rolepermissions = React.lazy(() => import('./pages/Personal/Rolepermissions'));
 
 const HelpCenteraddition = React.lazy(() => import('./pages/Personal/Accountinformation/HelpCenteraddition'));
 const Accesstoinformationaddition = React.lazy(() => import('./pages/Personal/Accountinformation/Accesstoinformationaddition'));
@@ -85,8 +85,12 @@ const routerConfig = [
     component: Applyforaticket,
   },
   {
-    path: '/admin/personal/membermanagement', // 发票管理
+    path: '/admin/personal/membermanagement', // 成员管理
     component: Membermanagement,
+  },
+  {
+    path: '/admin/personal/rolepermissions', // 角色权限
+    component: Rolepermissions,
   },
   {
     path: '/admin/personal/operationlog', // 操作日志

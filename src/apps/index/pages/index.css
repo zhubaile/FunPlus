@@ -326,6 +326,27 @@ a:active{ text-decoration: none; }
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
 .Newrole{width: 95px;height: 40px;line-height: 20px;border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1);color: rgba(25, 137, 250, 1);}
 
+.membermanagement-top .member-role{ margin-left: 30px;}
+
+/*成员管理----新增角色--starting*/
+.newrole{ position: fixed; width: 330px; height: 500px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px;  z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 20px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
+.newrole div{ margin: 15px auto;}
+.newrole label{ margin-right: 10px;}
+
+
+/*成员管理----新增角色--ending*/
+
+/*成员管理----编辑角色--starting*/
+.editingrole{ position: fixed; width: 330px; height: 500px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px;  z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 20px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
+.editingrole div{ margin: 15px auto;}
+.editingrole label{ margin-right: 10px;}
+/*成员管理----编辑角色--ending*/
+
+
 /* 设备管理 */
 .devicemanagement{ width: 100%;}
 .devicemanagement .devicemanagement-top{position: relative;padding-bottom: 10px; border-bottom: 1px solid #bbbbbb; font-size: 20px;}
@@ -367,6 +388,63 @@ a:active{ text-decoration: none; }
 /* 自定义 */
 .official .next-form.next-medium.offocoal-main .custom-preID{width: 180px;height: 35px;line-height: 35px;border-radius: 5px 5px 5px 5px;text-align: center; margin-top: 10px;border: 1px solid rgba(26, 173, 25, 1);}
 
+/*辅助工具----starting*/
+  /*webhooks-starting*/
+.webhooks .btn-bg{ margin: 20px;}
+.next-btn.next-large.next-btn-secondary.btn-bg{ background:#E6F1FC; color: #1989FA; border-radius: 5px;}
+
+.webhooks .tab-contenttwo{ display: flex; align-content: center; justify-content: center;}
+.webhooks .tab-contenttwo .tab-contenttwo-left{ width: 100%; padding-bottom: 50px;}
+.webhooks .tab-contenttwo .tab-contenttwo-left .next-message.tab-contenttwo-left-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 20px 0;}
+.webhooks .tab-contenttwo .webhooks-inner-top div{ margin: 15px;}
+.webhooks .tab-contenttwo .webhooks-inner-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 10px 20px; margin-bottom: 20px;}
+  /*webhooks-ending*/
+
+  /*服务端charge--starting*/
+.serversidecharge .tab-contentone .tab-contentone-left{ width: 100%; padding:15px 0px;}
+.serversidecharge .tab-contentone .tab-contentone-middle{ background: rgba(255, 255, 255, 1); border-radius: 5px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); padding: 15px 10px 30px;}
+.serversidecharge .tab-contentone .tab-contentone-middle .inner-box{ margin: 15px;}
+.serversidecharge .tab-contentone .tab-contentone-middle .inner-box p{ padding: 10px 0px;}
+.serversidecharge .tab-contentone .tab-contentone-bottom{ background: rgba(255, 255, 255, 1); box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin-top: 15px;}
+.serversidecharge .tab-contentone .tab-contentone-bottom p{ font-size: 16px; padding-bottom: 200px;}
+
+       /*返回结果弹框---starting*/
+.returnresult{ position: fixed; width: 85%; height: 200px; top: 100%; left: 25%; margin-top: -210px; margin-left: -200px; z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);}
+       /*返回结果弹框---starting*/
+
+  /*服务端charge--ending*/
+
+  /*支付体验--starting*/
+/*.payexperience {width: 100%; height: 100%;}*/
+.payexperience .tab-content .tab-content-top{ width: 100%; margin: 15px;}
+.payexperience .tab-content .tab-content-middle{ background: rgba(255, 255, 255, 1); border-radius: 5px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 15px; padding: 15px 10px 50px;}
+  /*支付体验--ending*/
+
+  /*请求log查看--starting*/
+.requestlog .requestlog-tab .requestlog-tab-top{ width: 98%; background: rgba(255, 255, 255, 1); border-radius: 5px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 10px 0px 15px; padding: 10px 15px;}
+.requestlog .requestlog-tab .requestlog-tab-top ul li{ list-style: disc; padding: 5px 0px;}
+.requestlog .requestlog-tab .requestlog-tab-top ul{ margin: 15px;}
+.requestlog .requestlog-tab .requestlog-tab-middle{ width: 98%; background: rgba(255, 255, 255, 1); border-radius: 5px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 10px 0px 15px; padding: 10px 15px;}
+
+/*日志详情--starting*/
+.logdetails{ position: fixed; width: 85%; top: 100%; left: 25%; margin-top: -600px; margin-left: -200px; z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);}
+
+.logdetails .logdetails-top{ width: 100%; height: 50px; background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin-bottom: 15px;position: relative; text-align: center;}
+.logdetails .logdetails-top span{ position: absolute; left: 15px; top: 10px; cursor: pointer;}
+
+.logdetails .logdetails-middle{ width: 100%; background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);}
+/*日志详情--ending*/
+
+  /*请求log查看--ending*/
+/*辅助工具----ending*/
+
 /*发票管理修改后样式----starting*/
 .controloverinvoices-top .controloverinvoices-top-onecontent{width: 33%; padding: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; border-right: 1px solid rgba(187, 187, 187, 1); color: #6C757D;}
 .controloverinvoices-top-onecontent>div{ border-bottom: 1px solid rgba(219, 217, 217, 1); padding-bottom: 10px; display: flex; align-items: center; justify-content: center;}
@@ -374,8 +452,110 @@ a:active{ text-decoration: none; }
 .controloverinvoices-top-onecontent div img{ width: 43px; height: 46px; margin-right: 30px;}
 .controloverinvoices-top-onecontent div strong{ font-size: 18px; font-weight: 400; margin-left: 20px;}
 .controloverinvoices-top-onecontent p strong{ color: rgba(34, 90, 225, 0.9);font-size: 14px;}
-.controloverinvoices-top .controloverinvoices-top-twocontent{ width: 35%; padding: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: #6C757D;}
+.controloverinvoices-top .controloverinvoices-top-twocontent{ width: 65%; padding: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: #6C757D;}
 .controloverinvoices-top-twocontent .next-btn.next-medium.next-btn-primary{background: #225AE1 90%;}
 .controloverinvoices-top span p{ color: #8d8e8e; font-size: 14px;}
 .controloverinvoices-top-twocontent .controloverinvoices-topright-content span{ display: inline-block;}
 .controloverinvoices-top-twocontent .controloverinvoices-topright-content .topright-inner{ margin-left: 100px; float: right;}
+
+/*发票管理修改后样式----ending*/
+
+/*扣费明细样式----starting*/
+.deduction-details{ height: 100%;}
+.deduction-details .deduction-details-topcontent{ width: 96%; margin: 20px auto;}
+.deduction-details .deduction-details-middlecontent{ width: 96%; margin: 20px auto; background-color: #FFFFFF; padding: 20px 10px; border-radius: 10px;}
+.deduction-details .deduction-details-middlecontent p{ font-size: 14px; color: #101010;}
+.deduction-details .deduction-details-middlecontent span{ color: #999999;}
+.deduction-details .deduction-details-bottomcontent{ width: 96%; margin: 20px auto; background-color: #FFFFFF; padding: 20px 10px; border-radius: 10px;}
+/*扣费明细样式----ending*/
+
+/*申请开票样式----starting*/
+.apply-billing{ height: 100%;}
+.apply-billing-topcontent .deduction-details-topcontent{ margin: 20px auto;}
+.apply-billing-topcontent .apply-billing-middlecontent{ margin: 20px auto;}
+.apply-billing-topcontent .apply-billing-bottomcontent{ width: 98%; background-color: #FFFFFF; border-radius: 10px; padding: 20px 10px; margin: 20px auto;}
+.apply-billing-topcontent .apply-billing-bottomcontent div{ display: inline-flex; width: 33.3%; height: 100px; padding: 20px 60px;}
+.apply-billing-topcontent .apply-billing-bottomcontent .innertwo{ border-left: 1px solid #999999; border-right: 1px solid #999999;}
+.deduction-details-topcontent .tab-contenttwo-left-message ol li{ padding: 5px 0px;}
+.apply-billing-topcontent .apply-billing-bottomcontent div p span{ color: blue; padding-left: 5px;}
+.apply-billing-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 0px; padding-bottom: 10px;}
+/*按钮style*/
+.next-btn.next-large.next-btn-secondary.apply-billing-btn{ background: rgba(187, 187, 187, 1); color: rgba(255, 255, 255, 1); border-radius: 5px; margin-left: 20px; border: none;}
+.next-btn.next-medium.next-btn-secondary.apply-billing-btn{ background: rgba(187, 187, 187, 1); color: rgba(255, 255, 255, 1); border-radius: 5px; margin-left: 20px; border: none;}
+.next-btn.next-small.next-btn-secondary.apply-billing-btn{ background: rgba(187, 187, 187, 1); color: rgba(255, 255, 255, 1); border-radius: 5px; margin-left: 20px; border: none;}
+
+.apply-billing-topcontent .apply-billing-footercontent{ width: 98%; background-color: #FFFFFF; border-radius: 10px; padding: 20px 10px; margin: 20px auto;}
+.apply-billing-topcontent .apply-billing-footercontent div{ display: inline-flex; width: 33.3%; height: 100px; padding: 20px 60px;}
+.apply-billing-topcontent .apply-billing-footercontent .footer-innertwo{ border-left: 1px solid #999999; border-right: 1px solid #999999;}
+.apply-billing-topcontent .apply-billing-footercontent div p span{ color: blue; padding-left: 5px;}
+/*按钮style*/
+.next-btn.next-large.next-btn-secondary.footer-apply-billing-btn{ background: rgba(26, 85, 226, 0.95); color: rgba(255, 255, 255, 1); border-radius: 5px; margin-left: 20px; border: none;}
+.next-btn.next-medium.next-btn-secondary.footer-apply-billing-btn{ background: rgba(26, 85, 226, 0.95); color: rgba(255, 255, 255, 1); border-radius: 5px; margin-left: 20px; border: none;}
+.next-btn.next-small.next-btn-secondary.footer-apply-billing-btn{ background: rgba(26, 85, 226, 0.95); color: rgba(255, 255, 255, 1); border-radius: 5px; margin-left: 20px; border: none;}
+
+/*申请开票样式----ending*/
+
+/*申请开票弹框样式----starting*/
+.apply-billing-bulletbox{  position: fixed; width: 700px; height: 600px; top: 50%; left: 50%; margin-top: -300px; margin-left: -350px; z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
+.apply-billing-bulletbox h2{ display: inline-block;}
+.apply-billing-bulletbox .x-span{ margin-left: 500px; font-size: 28px; color: #666666; cursor: pointer;}
+.apply-billing-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px;}
+.apply-billing-bulletbox .message ul li{ padding-bottom: 5px;}
+/*申请开票弹框样式----ending*/
+
+/*申请开票弹框next样式----starting*/
+.apply-billing-next-bulletbox{ position: fixed; width: 700px; height: 600px; top: 50%; left: 50%; margin-top: -300px; margin-left: -350px; z-index: 8888;
+  border-radius: 10px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; padding: 10px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
+  border: 1px solid #BBBBBB; overflow: auto;}
+.apply-billing-next-box { width: 100%; border: 1px solid #BBBBBB; padding: 0 0 5px 5px;}
+.name-p{ display: inline-block; margin-left: 10px;}
+.apply-billing-next-box .x-span{ margin-left: 500px; font-size: 28px; color: #666666; cursor: pointer;}
+.apply-billing-next-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px;}
+.apply-billing-next-bulletbox .message ul li{ padding-bottom: 5px;}
+.apply-billing-next-bulletbox ul li{ padding: 5px 0px;}
+/* 发票抬头样式 */
+.apply-billing-next-bulletbox .Invoicepayable{ width: 100%; border: 1px solid #BBBBBB; padding: 0 0 5px 5px;}
+.apply-billing-next-bulletbox .Invoicepayable ul{ float: left;}
+.apply-billing-next-bulletbox .Invoicepayable ul li{ line-height: 30px;}
+/*申请开票弹框next样式----ending*/
+
+/*开票信息弹框样式----starting*/
+.billing-information-bulletbox{ position: fixed; width: 600px; height: 600px; top: 50%; left: 50%; margin-top: -290px; margin-left: -300px; z-index: 8888;
+  border-radius: 10px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; padding: 10px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
+  border: 1px solid #BBBBBB;}
+
+.billing-information-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 0px; padding-bottom: 10px;}
+/*开票信息弹框样式----ending*/
+
+/*添加地址弹框样式----starting*/
+.add-address-bulletbox{ position: fixed; width: 600px; height: 600px; top: 50%; left: 50%; margin-top: -290px; margin-left: -300px; z-index: 8888;
+  border-radius: 10px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; padding: 10px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
+  border: 1px solid #BBBBBB;}
+.add-address-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 0px; padding-bottom: 10px;}
+.add-address-bulletbox p{ color: #999999; font-size: 6px;}
+/*添加地址弹框样式----ending*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+.addgrouping{  position: fixed; width: 330px; height: 300px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px; z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
+.addgrouping .addgrouping-btn{ text-align: right;}
+.addgrouping .addgrouping-btn button{width: 65px;height: 30px;line-height: 20px;border-radius: 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1); margin: 0 5px;}
+*/

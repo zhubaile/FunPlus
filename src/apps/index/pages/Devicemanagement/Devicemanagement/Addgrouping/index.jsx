@@ -43,6 +43,7 @@ export default class Addgrouping extends Component {
   componentDidMount() {
     deviceGroupaddparmas().then(
       ({ status, data }) => {
+        debugger;
         const channels = data.data.channels; // 选择渠道
         const dClassify = data.data.dClassify; // 选择参数
         // 修改后端传过来数据的字段名称

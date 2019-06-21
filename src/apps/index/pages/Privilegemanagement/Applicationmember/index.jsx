@@ -82,16 +82,16 @@ export default class Applicationmember extends Component {
   };
 
 
-  renderStatus = (datas) => {
+/*  renderStatus = (datas) => {
     debugger;
-    const z = datas[0];
+    // const z = datas[0];
     return (
       <div>
         <Radio id="shiduide" value="shiduide" checked={z} >{datas[1]}</Radio>
-        {/* <Radio id="shiduide" value="shiduide" checked={false}>--</Radio> */}
+        {/!* <Radio id="shiduide" value="shiduide" checked={false}>--</Radio> *!/}
       </div>
     );
-  };
+  };*/
 
 
   /*  renderOper = () => {

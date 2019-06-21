@@ -17,7 +17,7 @@ const getData = (length = 10) => {
       tel: ['Transfering'],
       remark: ['11-03-2017'],
       role: [' - a-'],
-    /*  status: [false,'haode'], */
+      /*  status: [false,'haode'], */
       caozuo: ['91894-8699'],
       oper: ['aaa'],
 
@@ -25,7 +25,7 @@ const getData = (length = 10) => {
   });
 };
 
-export default class Applicationparameters extends Component {
+export default class Webhooks extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,10 +34,10 @@ export default class Applicationparameters extends Component {
       data: [],
       value: {
         selectiontime: '支付成功',
-/*        startdate: '',*/
+        /*        startdate: '', */
         paymentchannel: '支付成功',
         refundstatus: '商户订单号',
-/*        ordernumber: '',*/
+        /*        ordernumber: '', */
       },
     };
   }
@@ -103,14 +103,14 @@ export default class Applicationparameters extends Component {
   };
 
   render() {
-   /* const formItemLayout = {
+    /* const formItemLayout = {
       labelCol: {
         fixedSpan: 5,
       },
       wrapperCol: {
         span: 14,
       },
-    };*/
+    }; */
 
     const selectiontime = [
       { value: '支付成功', label: '支付成功' },
@@ -126,10 +126,10 @@ export default class Applicationparameters extends Component {
     const { isLoading, data, current } = this.state;
 
     return (
-      <div className='applicationters'>
+      <div className='webhooks'>
         <Tab shape='pure' className='backstage-tab'>
           <Tab.Item title="webhooks">
-            <Button className='bg' size="large" type="secondary">添加事件</Button>
+            <Button className='btn-bg' size="large" type="secondary">添加事件</Button>
             <div className='member-panel' >
               <div className='tab-bg'>
                 <div className='tab-panel'>
@@ -141,18 +141,18 @@ export default class Applicationparameters extends Component {
                     <Table.Column title="操作" dataIndex="caozuo" />
                     {/* <Table.Column title="角色" dataIndex="role" />
                     <Table.Column title="状态" dataIndex="status" cell={this.renderStatus} /> */}
-                   {/*<Table.Column
+                    {/* <Table.Column
                       title="操作"
                       width={200}
                       dataIndex="oper"
                       cell={this.renderOper}
-                    />*/}
+                    /> */}
                   </Table>
                 </div>
               </div>
 
             </div>
-          {/*  <Button type="primary" size="large" iconSize="large"><Icon type="atm" />在线客服</Button>*/}
+            {/*  <Button type="primary" size="large" iconSize="large"><Icon type="atm" />在线客服</Button> */}
           </Tab.Item>
 
           <Tab.Item title="webhooks通知查询工具">
@@ -161,47 +161,47 @@ export default class Applicationparameters extends Component {
                 <Message type='notice' className='tab-contenttwo-left-message'>
                     建议调试Webhooks通知时，增加 Webhooks 通知延迟以及重发情况的处理逻辑。请参考》帮助中心链接。暂时只支持查询上月1号至今发送记录。
                 </Message>
-                <div className='membermanagement-top'>
+                <div className='webhooks-inner-top'>
                   <FormBinderWrapper
                     value={this.state.value}
                     onChange={this.formChange}
                     ref="form"
                   >
 
-                    <Row wrap gutter="20" style={styles.formRow}>
-                      <Col l="24">
-                        <div style={styles.formItem}>
-                          <span style={styles.formLabel}>查询事件</span>
-                          <FormBinder name="selectiontime"
-                            required
-                            message="请输入正确的名称"
-                            autoWidth={false}
-                          >
-                            <Select style={styles.formSelect} dataSource={selectiontime} />
-                          </FormBinder>
+                    <div>
+                      <span style={styles.formLabel}>查询事件</span>
+                      <FormBinder
+                        name="selectiontime"
+                        required
+                        message="请输入正确的名称"
+                        autoWidth={false}
+                      >
+                        <Select style={styles.formSelect} dataSource={selectiontime} />
+                      </FormBinder>
+                    </div>
 
-                          <span style={styles.formLabel}>webhooks url</span>
-                          <FormBinder name='paymentchannel'>
-                            <Select style={styles.formSelect} dataSource={paymentchannel} />
-                          </FormBinder>
-                        </div>
-                      </Col>
-                      <Col l="24">
-                        <div style={styles.formItem}>
-                          <span style={styles.formLabel}>查询条件</span>
-                          <FormBinder name='refundstatus'>
-                            <Select style={styles.formSelect} dataSource={refundstatus} />
-                          </FormBinder>
+                    <div>
+                      <span style={styles.formLabel}>webhooks url</span>
+                      <FormBinder name='paymentchannel'>
+                        <Select style={styles.formSelect} dataSource={paymentchannel} />
+                      </FormBinder>
+                    </div>
 
-                          <FormBinder name='ordernumber'>
-                            <Input placeholder='输入订单号' hasClear />
-                          </FormBinder>
-                          <Button className='bg' size="large" type="secondary">搜索</Button>
+                    <div>
+                      <span style={styles.formLabel}>查询条件</span>
+                      <FormBinder name='refundstatus'>
+                        <Select style={styles.formSelect} dataSource={refundstatus} />
+                      </FormBinder>
+
+                      <FormBinder name='ordernumber'>
+                        <Input placeholder='输入订单号' hasClear />
+                      </FormBinder>
+                    </div>
+                    <div>
+                      <Button className='bg' size="large" type="secondary">搜索</Button>
+                    </div>
 
 
-                        </div>
-                      </Col>
-                    </Row>
                   </FormBinderWrapper>
                 </div>
 
@@ -212,7 +212,7 @@ export default class Applicationparameters extends Component {
                     <Table.Column title="状态" dataIndex="tel" />
                     <Table.Column title="你的服务器返回状态码" dataIndex="remark" />
                     <Table.Column title="状态" dataIndex="role" />
-                    {/*<Table.Column title="状态" dataIndex="status" cell={this.renderStatus} /> */}
+                    {/* <Table.Column title="状态" dataIndex="status" cell={this.renderStatus} /> */}
                     <Table.Column
                       title="操作"
                       width={200}
@@ -224,7 +224,7 @@ export default class Applicationparameters extends Component {
                 </div>
               </div>
             </div>
-   {/*         <Button type="primary" size="large" iconSize="large"><Icon type="atm" />在线客服</Button>*/}
+            {/*         <Button type="primary" size="large" iconSize="large"><Icon type="atm" />在线客服</Button> */}
           </Tab.Item>
 
         </Tab>

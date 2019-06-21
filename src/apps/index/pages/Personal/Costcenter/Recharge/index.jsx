@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Radio , Button, Grid, Form, Message } from '@alifd/next';
-import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
+// import { Link,withRouter } from 'react-router-dom';
+import { recharge } from '@indexApi';
 import Demopay from '../../../../../Website/pages/Demo/Demopay';
 import Wxpaypopup from './Wxpaypopup';
 import '../../../index.css';
@@ -10,6 +11,7 @@ import '../../../index.css';
 const { Group: RadioGroup } = Radio;
 const FormItem = Form.Item;
 
+// @withRouter
 export default class Recharges extends Component {
   constructor(props) {
     super(props);
@@ -17,6 +19,7 @@ export default class Recharges extends Component {
       open: false,
       content: null,
       payvalue: '',
+      // lianjie: 'http://www.baidu.com',
     };
   }
   close() {
@@ -39,25 +42,41 @@ export default class Recharges extends Component {
     });
   }
   paybtn() {
-    const payinputvalue = this.payinputvalue.value;
-    const payvalues = this.state.payvalue;
+    const payinputvalue = this.payinputvalue.value; // 充值的金额
+    const payvalues = this.state.payvalue; // 判断是支付宝还是微信
     const reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+    debugger;
     if (!reg.test(payinputvalue) || !payinputvalue) {
-      alert('请输入充值金额');
+      Message.success('请输入充值金额');
     } else if (payvalues == 'zfb') {
-      this.Demopay.zfbopen(payinputvalue);
+      recharge({
+        payChannel: payvalues,
+        totalFee: payinputvalue,
+      }).then(({ status,data })=>{
+        debugger;
+        if (data.errCode = 0) {
+          this.setState({
+            // lianjie: data.data,
+          });
+        }
+        // parent.location.href = data.data;
+        // this.props.history.push(data.data);
+      });
+      // this.Demopay.zfbopen(payinputvalue);
     } else if (payvalues == 'wx') {
       this.Wxpaypopup.open(payinputvalue);
     } else {
-      alert('请选择支付方式');
+      Message.success('请选择支付方式');
     }
   }
   render() {
     if (!this.state.open) return null;
+    console.log(this.state.lianjie);
     return (
       <div className="Recharge">
         <Demopay ref={node=>this.Demopay = node} />
         <Wxpaypopup ref={node=>this.Wxpaypopup = node} />
+        {/* <iframe src={this.state.lianjie} frameBorder="0" style={{ position: 'fixed', width: '200px', height: '200px', top: '50%', left: '50%', marginTop: '-290px', marginLeft: '-300px', zIndex: '8899' }} /> */}
         <div className='Recharge-top'>
           账户余额充值
           <a href='javascript:;' onClick={this.close.bind(this)}>×</a>
@@ -65,7 +84,7 @@ export default class Recharges extends Component {
         <div className='Recharge-bottom'>
           <div className='Recharge-bottom-top'>
             <span>充值金额</span>
-            <input type="text" placeholder='输入金额' ref={node=>this.payinputvalue = node} />元
+            <input type="number" placeholder='输入金额' ref={node=>this.payinputvalue = node} />元
           </div>
           <div className='paymode'>
             <span>充值渠道</span>

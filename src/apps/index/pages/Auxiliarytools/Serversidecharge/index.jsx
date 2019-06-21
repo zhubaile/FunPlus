@@ -7,6 +7,9 @@ import Paymentfooter from '../components/Paymentfooter';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import '../../index.css';
 import Customerservice from "../../Personal/components/Customerservice";
+import Returnresult from "./Returnresult/index";
+
+
 const { Item } = MenuButton;
 const getData = (length = 10) => {
   return Array.from({ length }).map(() => {
@@ -18,7 +21,7 @@ const getData = (length = 10) => {
   });
 };
 
-export default class Paymentchannel extends Component {
+export default class Serversidecharge extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -81,14 +84,7 @@ export default class Paymentchannel extends Component {
 
   renderRule = () => {
     return (
-      <div>
-        {/* <select className='table-select'>
-          <option value="volvo">默认规则</option>
-          <option value="saab">自定义规则</option>
-          <option value="opel">自定义规则</option>
-          <option value="audi">新增规则</option>
-        </select> */}
-      </div>
+      <div />
     );
   };
   renderOper = () => {
@@ -99,6 +95,11 @@ export default class Paymentchannel extends Component {
     );
   };
 
+  serversidechargeOpen() {
+    this.Returnresult.returnresultopen();
+  }
+
+
   render() {
     const { isLoading, data, current } = this.state;
     const yourhttps = [
@@ -107,8 +108,11 @@ export default class Paymentchannel extends Component {
     ];
 
     return (
-      <div className='paymentchannel'>
-        <Tab shape='pure' className='backstage-tab'>
+      <div className='serversidecharge'>
+
+        <Returnresult ref={ node => this.Returnresult = node } />
+
+        <Tab shape='pure' className=''>
           <Tab.Item title="服务端Charge格式验证">
             <div className='tab-contentone' >
               <div className='tab-contentone-left'>
@@ -116,7 +120,9 @@ export default class Paymentchannel extends Component {
                   模拟你的客户端向你的服务端发起订单支付请求。正常情况下，你的服务端应该向你的客户端返回正确的订单对象（charge 对象），之后你的客户端应该使用
                   这个订单对象调用客户端SDK调起支付页面（控件支付或者网页支付）或将订单对象上的地址显示二维码（扫码支付）阅读文档
                 </Message>
-                <div>
+              </div>
+              <div className='tab-contentone-middle'>
+                <div className='inner-box'>
                   <p>填入你的服务URL，我们将向这个URL发送POST请求：</p>
                   <FormBinderWrapper
                     value={this.state.value}
@@ -129,24 +135,32 @@ export default class Paymentchannel extends Component {
                       <Select className='member-role' dataSource={yourhttps} defaultValue='https://' />
                     </FormBinder>
                     <FormBinder name='yoururl'>
-                      <Input hasClear placeholder='您的url地址' />
+                      <Input style={{ marginLeft: '30px' }} hasClear placeholder='您的url地址' />
                     </FormBinder>
-
                   </FormBinderWrapper>
+                </div>
+                <div className='inner-box'>
                   <p>选择application/json或者application/x-www-form-urlencoded,并输入相应的发送内容</p>
                   <Tab shape="capsule">
                     <Tab.Item title="json"><Input type='text' placeholder='格式如下：' style={{ width: '350px', height: '250px' }} /></Tab.Item>
-
                     <Tab.Item title="from"><Input type='text' placeholder='格式如下：' style={{ width: '350px', height: '250px' }} /></Tab.Item>
                   </Tab>
-                  <Button type='primary'>提交</Button>
-
-                  <p>返回结果</p>
-
                 </div>
+                <div className='inner-box'>
+                  <Button onClick={this.serversidechargeOpen.bind(this)} type='primary' size='large' style={{ borderRadius: '4px', width: '80px', height: '30px', left: '270px' }}>提交</Button>
+                </div>
+
+
               </div>
+              {/*
+              <div className='tab-contentone-bottom'>
+                <p>返回结果</p>
+              </div>
+*/}
+
+
             </div>
-{/*            <Button type="primary" size="large" iconSize="large"><Icon type="atm" />在线客服</Button>*/}
+            {/*            <Button type="primary" size="large" iconSize="large"><Icon type="atm" />在线客服</Button> */}
           </Tab.Item>
 
         </Tab>
@@ -156,3 +170,8 @@ export default class Paymentchannel extends Component {
     );
   }
 }
+
+
+const styles = {
+
+};

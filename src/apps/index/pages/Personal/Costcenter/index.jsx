@@ -5,7 +5,8 @@ import IceContainer from '@icedesign/container';
 import { withRouter, Link } from 'react-router-dom';
 import { Input, Radio, Tab , Button, Grid, Form, DatePicker,Table,Pagination } from '@alifd/next';
 import Customerservice from "../components/Customerservice";
-import Recharge from './Recharge';
+import { rechargeList } from '@indexApi';
+import Recharges from './Recharge';
 import '../../index.css';
 import moment from "moment/moment";
 
@@ -38,20 +39,20 @@ class Costcenter extends Component {
     this.state = {
       current: 1,
       isLoading: false,
-      data: [],
+      datas: [],
     };
   }
   componentDidMount() {
     this.fetchData();
   }
 
-  mockApi = (len) => {
+  /*  mockApi = (len) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
       }, 600);
     });
-  };
+  }; */
 
   fetchData = (len) => {
     this.setState(
@@ -59,12 +60,19 @@ class Costcenter extends Component {
         isLoading: true,
       },
       () => {
-        this.mockApi(len).then((data) => { // data 里面为数据
+        rechargeList().then(({ status,data })=>{
+          debugger;
+          this.setState({
+            datas: data.data.result,
+            isLoading: false,
+          });
+        });
+        /* this.mockApi(len).then((data) => { // data 里面为数据
           this.setState({
             data,
             isLoading: false,
           });
-        });
+        }); */
       }
     );
   };
@@ -80,13 +88,20 @@ class Costcenter extends Component {
     );
   };
   balancerecharge() {
-    this.Recharge.open();
+    this.Recharges.open();
   }
-  detailsdeduction(){
+  detailsdeduction() {
     this.props.history.push('/admin/personal/detailsofdeduction');
-  };
+  }
+  // 时间转换
+  datatime=(e)=>{
+    const updatedAt = moment(e).format('YYYY-MM-DD HH:mm:ss');
+    return (
+      <p>{updatedAt}</p>
+    );
+  }
   render() {
-    const { isLoading, data, current } = this.state;
+    const { isLoading, datas, current } = this.state;
     const {
       intl: { formatMessage },
     } = this.props;
@@ -94,7 +109,7 @@ class Costcenter extends Component {
     const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
     return (
       <div>
-        <Recharge ref={ node => this.Recharge = node } />
+        <Recharges ref={ node => this.Recharges = node } />
         <div className='personal-top'>
           <span>费用中心</span>
           <div className='personal-top-border' />
@@ -135,15 +150,15 @@ class Costcenter extends Component {
             <Button className='bg' size="large" type="primary">查询</Button> */}
             <Tab shape='pure' className='costcenter-bottom-tab'>
               <Tab.Item title="充值记录">
-                <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                  <Table.Column title="产品" dataIndex="name" />
-                  <Table.Column title="交易时间" dataIndex="level" />
-                  <Table.Column title="金额" dataIndex="rule" />
+                <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+                  <Table.Column title="订单号" dataIndex="orderNumber" />
+                  <Table.Column title="交易时间" dataIndex="createdAt" cell={this.datatime} />
+                  <Table.Column title="金额" dataIndex="totalFee" />
                   <Table.Column
                     title="支付状态"
-                    dataIndex="oper"
+                    dataIndex="rechargeStatus"
                   />
-                  <Table.Column title="支付渠道" dataIndex="qudao" />
+                  <Table.Column title="支付渠道" dataIndex="payChannel" />
                 </Table>
                 <Pagination
                   style={{ marginTop: '20px', textAlign: 'right' }}
@@ -152,7 +167,7 @@ class Costcenter extends Component {
                 />
               </Tab.Item>
               <Tab.Item title="扣费记录">
-                <Table loading={isLoading} dataSource={data} hasBorder={false}>
+                <Table loading={isLoading} dataSource={datas} hasBorder={false}>
                   <Table.Column title="产品" dataIndex="name" />
                   <Table.Column title="交易时间" dataIndex="level" />
                   <Table.Column title="金额" dataIndex="rule" />
