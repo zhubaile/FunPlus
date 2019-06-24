@@ -22,7 +22,7 @@ export default class Channelreconciliation extends Component {
       <IceContainer className='reconcilichannel'>
         <Tab shape='pure' className='reconcilichannel-tab'>
           <Tab.Item title="渠道对账">
-            <Message type='notice' className='reconcilichannel-tab-message'>
+            <Message type='notice' className='message-all reconcilichannel-tab-message'>
               管理平台提供的对账功能，帮助对接了3FunPlus聚合支付接口的客户，确认通过聚合支付发起的交易金额，与支付渠道的结算资金是否一致。
             </Message>
             <div className='reconcilichannel-tab-left'>

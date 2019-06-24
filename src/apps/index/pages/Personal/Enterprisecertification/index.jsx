@@ -292,7 +292,7 @@ class Enterprisecertification extends Component {
                  <Col offset="3">
                    <Form.Submit
                      type="primary"
-                     style={{ width: 100 }}
+                     style={{ width: 100, borderRadius: 6 }}
                      validate
                      onClick={this.validateAllFormField}
                    >

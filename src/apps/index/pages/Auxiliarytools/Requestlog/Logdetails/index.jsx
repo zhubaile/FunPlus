@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import '../../../index.css';
 
 export default class Logdetails extends Component {
+  constructor(props) {
+    super (props);
+    this.state = {
+      open: true,
+    };
+  }
   logdetailsclose() {
     this.setState({
       open: false,
@@ -15,13 +21,13 @@ export default class Logdetails extends Component {
   }
 
   render() {
+    if (!this.state.open) return null;
     return (
       <div className='logdetails'>
         <div className='logdetails-top'>
           <span onClick={this.logdetailsclose.bind(this)}>返回</span>
-          <h1 style={{}}>日志详情</h1>
+          <h2>日志详情</h2>
         </div>
-
         <div className='logdetails-middle'>
           <p>日志批次ID</p>
           <p>请求时间</p>

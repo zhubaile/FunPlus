@@ -103,10 +103,10 @@ export default class Enterprise extends Component {
                   </FormBinder>
                   <span style={styles.formLabel}>订单号</span>
                   <FormBinder name='ordernumber'>
-                    <Input placeholder='输入订单号' hasClear />
+                    <Input className='input-bg' placeholder='输入订单号' hasClear />
                   </FormBinder>
-                  <Button className='bg' size="large" type="secondary">搜索</Button>
-                  <Button className='bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
+                  <Button className='btn-all bg' size="large" type="secondary">搜索</Button>
+                  <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
                 </div>
               </Col>
             </Row>
@@ -135,7 +135,7 @@ export default class Enterprise extends Component {
             onChange={this.handlePaginationChange}
           />
         </IceContainer>
-        <Button className='orderposab'>批量企业付款</Button>
+{/*        <Button className='btn-all orderposab' size='large' type='secondary'>批量企业付款</Button>*/}
       </div>
     );
   }

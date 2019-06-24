@@ -126,7 +126,7 @@ export default class Payexperience extends Component {
                     <Select style={styles.selectstyle} dataSource={zhifuqudao} defaultValue='支付渠道' />
                   </FormBinder>
                   <FormBinder name='jine'>
-                    <Input style={styles.inputstyle} hasClear placeholder='金额（单位：分）' />
+                    <Input className='input-bg' style={styles.inputstyle} hasClear placeholder='金额（单位：分）' />
                   </FormBinder>
                   <p style={{ paddingBottom: '10px' }}>以下非必填</p>
                   <FormBinder name="luyouguize"
@@ -140,13 +140,13 @@ export default class Payexperience extends Component {
                     <Select style={styles.selectstyle} dataSource={shebei} defaultValue='输入指定设备' />
                   </FormBinder>
                   <FormBinder name='yibudizhi'>
-                    <Input style={styles.inputstyle} hasClear placeholder='异步通知地址' />
+                    <Input className='input-bg' style={styles.inputstyle} hasClear placeholder='异步通知地址' />
                   </FormBinder>
                   <FormBinder name='tongbudizhi'>
-                    <Input style={styles.inputstyle} hasClear placeholder='同步地址' />
+                    <Input className='input-bg' style={styles.inputstyle} hasClear placeholder='同步地址' />
                   </FormBinder>
                   <FormBinder name='dingdanbeizhu'>
-                    <Input style={styles.inputstyle} hasClear placeholder='订单备注' />
+                    <Input className='input-bg' style={styles.inputstyle} hasClear placeholder='订单备注' />
                   </FormBinder>
                   <Button type="primary" style={styles.bg}>去测试</Button>
                 </FormBinderWrapper>
@@ -189,7 +189,7 @@ const styles = {
   },
   bg: {
     background: 'rgba(26, 85, 226, 1)',
-    borderRadius: '5px',
+    borderRadius: '6px',
     marginLeft: '350px',
     marginTop: '15px',
   },

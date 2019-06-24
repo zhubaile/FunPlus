@@ -138,10 +138,9 @@ export default class Orderrefund extends Component {
       <div>
         <a
           type="primary"
-          style={{ marginRight: '5px' }}
           onClick={this.handleDetail}
         >
-          详情
+          <span style={{ color: '#2A91FA', cursor: 'pointer' }}>详情</span>
         </a>
       </div>
     );
@@ -208,11 +207,11 @@ export default class Orderrefund extends Component {
                       </FormBinder>
                       <span style={styles.formLabel}>订单号</span>
                       <FormBinder name='ordernumber'>
-                        <Input placeholder='输入订单号' hasClear />
+                        <Input className='input-bg' placeholder='输入订单号' hasClear />
                       </FormBinder>
-                      <Button className='bg' size="large" type="secondary">搜索</Button>
-                      <Button className='bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
-                      <Button className='bg right' size="large" type="secondary">导出表格</Button>
+                      <Button className='btn-all bg' size="large" type="secondary">搜索</Button>
+                      <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
+                      <Button className='btn-all bg right' size="large" type="secondary">导出表格</Button>
                     </div>
                   </Col>
                 </Row>
@@ -220,7 +219,6 @@ export default class Orderrefund extends Component {
             </div>
             <span>本次搜索付款总额：5555</span>
             <div className='expendordbat-tabs-border' />
-
             <IceContainer>
               <Table loading={isLoading} dataSource={data} hasBorder={false}>
                 <Table.Column title="创建时间、完成时间" dataIndex="name" />
@@ -242,7 +240,7 @@ export default class Orderrefund extends Component {
                 onChange={this.handlePaginationChange}
               />
             </IceContainer>
-            <Button className='orderposab'>主动退款</Button>
+            <Button className='btn-all orderposab' size='large' type='secondary'>主动退款</Button>
           </Tab.Item>
 
           <Tab.Item title="批量退款">

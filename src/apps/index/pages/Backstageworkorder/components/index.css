@@ -1,3 +1,7 @@
+/*Btn全局樣式Starting*/
+.next-btn.next-large.next-btn-secondary.btn-all{ height: 28px; background-color: #E2EDFF; border-color: #A3D0FD; color: #1989FA; border-radius: 6px;}
+.next-btn.next-large.next-btn-secondary.btn-all:hover{ background-color: #225AE1; color: #FFFFFF;}
+/*Btn全局樣式Ending*/
 .backstageworkorder{ display: flex; width: 100%; justify-items: center; margin-top: -20px; margin-left: -20px;}
 /*
 .leftheader{ width: 100px; height: 100%; background: #1A55E2;}
@@ -111,3 +115,14 @@ a:hover .sidebar-navone,a:hover .sidebar-navtwo{ background:#037cf8; color: #FFF
 a:hover .sidebar-navone,a:hover .sidebar-navtwo{ border-left: 5px solid #037cf8; color: #666666; background:#FFFFFF; font-size: 14px; text-align: center; color: #037cf8;}*/
 
 /*工单侧导航栏样式----ending*/
+
+
+/*  */
+.dealwith-workorder{ width: 100%; padding:15px 15px 40px 15px; border-radius: 10px; box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81); border: 1px solid rgba(255, 255, 255, 0);}
+.dealwith-workorder img{ width: 50px; height: 50px; border-radius: 100px;}
+.dealwith-workorder ul{ display: inline-block;}
+.dealwith-workorder ul li{ line-height: 24px; padding-left: 10px;}
+.dealwith-workorder hr{ border-color: #dddddd;}
+.dealwith-workorder .next-input.next-input-textarea{ width: 100%; height: 120px; border-radius: 6px;}
+.submit-btn{ text-align: right; margin: 20px 0px;}
+.submit-btn .next-btn.next-large.next-btn-primary{ border-radius: 6px;}

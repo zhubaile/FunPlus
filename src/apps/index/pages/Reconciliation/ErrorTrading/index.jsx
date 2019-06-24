@@ -62,6 +62,7 @@ export default class SimpleStep extends Component {
               onClick={this.prev}
               type="primary"
               disabled={currentStep === 0}
+              style={styles.btnRadius}
             >
               上一步
             </Button>
@@ -69,6 +70,7 @@ export default class SimpleStep extends Component {
               onClick={this.next}
               type="primary"
               disabled={currentStep === 5}
+              style={styles.btnRadius}
             >
               下一步
             </Button>
@@ -84,5 +86,8 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     margin: '40px 0 20px',
+  },
+  btnRadius: {
+    borderRadius: '6px',
   },
 };

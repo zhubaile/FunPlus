@@ -135,19 +135,19 @@ export default class Serversidecharge extends Component {
                       <Select className='member-role' dataSource={yourhttps} defaultValue='https://' />
                     </FormBinder>
                     <FormBinder name='yoururl'>
-                      <Input style={{ marginLeft: '30px' }} hasClear placeholder='您的url地址' />
+                      <Input className='input-bg' style={{ marginLeft: '30px' }} hasClear placeholder='您的url地址' />
                     </FormBinder>
                   </FormBinderWrapper>
                 </div>
                 <div className='inner-box'>
                   <p>选择application/json或者application/x-www-form-urlencoded,并输入相应的发送内容</p>
                   <Tab shape="capsule">
-                    <Tab.Item title="json"><Input type='text' placeholder='格式如下：' style={{ width: '350px', height: '250px' }} /></Tab.Item>
-                    <Tab.Item title="from"><Input type='text' placeholder='格式如下：' style={{ width: '350px', height: '250px' }} /></Tab.Item>
+                    <Tab.Item title="json"><Input className='input-bg' type='text' placeholder='格式如下：' style={{ width: '350px', height: '250px' }} /></Tab.Item>
+                    <Tab.Item title="from"><Input className='input-bg' type='text' placeholder='格式如下：' style={{ width: '350px', height: '250px' }} /></Tab.Item>
                   </Tab>
                 </div>
                 <div className='inner-box'>
-                  <Button onClick={this.serversidechargeOpen.bind(this)} type='primary' size='large' style={{ borderRadius: '4px', width: '80px', height: '30px', left: '270px' }}>提交</Button>
+                  <Button onClick={this.serversidechargeOpen.bind(this)} type='primary' size='large' style={{ borderRadius: '6px', height: '28px', left: '288px' }}>提交</Button>
                 </div>
 
 
@@ -157,10 +157,7 @@ export default class Serversidecharge extends Component {
                 <p>返回结果</p>
               </div>
 */}
-
-
             </div>
-            {/*            <Button type="primary" size="large" iconSize="large"><Icon type="atm" />在线客服</Button> */}
           </Tab.Item>
 
         </Tab>
