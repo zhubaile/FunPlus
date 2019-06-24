@@ -37,14 +37,14 @@ export default class Allworkorders extends Component {
     this.state = {
       current: 1,
       isLoading: false,
-      data: [],
+      datas: this.props.location.state.datas,
     };
   }
   formChange = (value) => {
     debugger;
   };
   componentDidMount() {
-    this.fetchData();
+    // this.fetchData();
   }
 
   mockApi = (len) => {
@@ -109,10 +109,18 @@ export default class Allworkorders extends Component {
       </div>
     );
   };
+  time=(e)=>{
+    const updatedAt = moment(e).format('YYYY-MM-DD HH:mm:ss');
+    return (
+      <p>{updatedAt}</p>
+    );
+  }
   render() {
-    const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
-    const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
-    const { isLoading, data, current } = this.state;
+    console.log(this.props.location.state.datas);
+    // const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
+    // const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
+    const { isLoading, datas, current } = this.state;
+
     return (
       <div className='backstageworkorder'>
         <Nav defaultActiveKey='2' />
@@ -122,13 +130,13 @@ export default class Allworkorders extends Component {
             <div className='wodegongdan-top-border' />
           </div>
           <div className='wodegongdan-table'>
-            <Table loading={isLoading} dataSource={data} hasBorder={false}>
-              <Table.Column title="工单编号" dataIndex="name" />
-              <Table.Column title="描述" dataIndex="level" />
-              <Table.Column title="优先级" dataIndex="balance" />
-              <Table.Column title="提交账号" dataIndex="accumulative" />
-              <Table.Column title="提交时间" dataIndex="regdate" />
-              <Table.Column title="状态" dataIndex="birthday" />
+            <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+              <Table.Column title="工单编号" dataIndex="_id" />
+              <Table.Column title="描述" dataIndex="description" />
+              <Table.Column title="优先级" dataIndex="level" />
+              <Table.Column title="提交账号" dataIndex="account" />
+              <Table.Column title="提交时间" dataIndex="createdAt" cell={this.time}/>
+              <Table.Column title="状态" dataIndex="status" />
               <Table.Column
                 title="操作"
                 width={200}
@@ -137,15 +145,15 @@ export default class Allworkorders extends Component {
               />
             </Table>
           </div>
-          <div className='wodegongdan-step'>
+          {/* <div className='wodegongdan-step'>
             <Step current={2} shape="arrow" animation>
               <Step.Item title="已受理" />
               <Step.Item title="已处理" />
               <Step.Item title="已确认" />
               <Step.Item title="待评价" />
             </Step>
-          </div>
-          <div className='wodegongdan-message'>
+          </div> */}
+          {/* <div className='wodegongdan-message'>
             <a href="javascript:;" style={{ background: '#F09919' }}>
               <i className="os-icon os-icon-ui-93" />
             </a>
@@ -162,7 +170,7 @@ export default class Allworkorders extends Component {
               <i className="os-icon os-icon-mail-07" />
             </a>
             公开回复（0）
-          </div>
+          </div> */}
           <p>待评价</p>
           <div className='wodegongdan-pingjia'>
             <FormBinderWrapper
@@ -170,31 +178,31 @@ export default class Allworkorders extends Component {
               onChange={this.formChange}
               ref="form"
             >
-                  <div>
-                    <span>整体评价：</span>
-                    <FormBinder name='rating'>
-                      <Rating defaultValue={3.2} allowHalf count='3' size='large' />
-                    </FormBinder>
-                  </div>
-                  <div>
-                    <span>问题是否解决：</span>
-                    <FormBinder name='radio'>
-                      <RadioGroup>
-                        <Radio id="yijiejue" value="yes">已解决</Radio>
-                        <Radio id="weijiejue" value="no">未解决</Radio>
-                      </RadioGroup>
-                    </FormBinder>
-                  </div>
-                  <div className='fankui'>
-                    <span>我要反馈：</span>
-                    <FormBinder name='messages'>
-                      <Input.TextArea
-                        placeholder="Type your message here..."
-                        rows='10'
-                      />
-                    </FormBinder>
-                    <Button type='primary'>提交</Button>
-                  </div>
+              <div>
+                <span>整体评价：</span>
+                <FormBinder name='rating'>
+                  <Rating defaultValue={3.2} allowHalf count='3' size='large' />
+                </FormBinder>
+              </div>
+              <div>
+                <span>问题是否解决：</span>
+                <FormBinder name='radio'>
+                  <RadioGroup>
+                    <Radio id="yijiejue" value="yes">已解决</Radio>
+                    <Radio id="weijiejue" value="no">未解决</Radio>
+                  </RadioGroup>
+                </FormBinder>
+              </div>
+              <div className='fankui'>
+                <span>我要反馈：</span>
+                <FormBinder name='messages'>
+                  <Input.TextArea
+                    placeholder="Type your message here..."
+                    rows='10'
+                  />
+                </FormBinder>
+                <Button type='primary'>提交</Button>
+              </div>
             </FormBinderWrapper>
           </div>
         </div>

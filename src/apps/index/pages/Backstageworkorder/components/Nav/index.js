@@ -69,21 +69,21 @@ export default class Nav extends Component {
 
               <div style={{ marginTop: '30px' }}>
                 <div>
-                  <a href='/admin/backstageworkorder/Allworkorders'>
+                  <Link to='/admin/backstageworkorder/Allworkorders'>
                     <div className='sidebar-navone'>
                       <i className="os-icon os-icon-mail-14" />
                       <span>我的工单</span>
                     </div>
-                  </a>
+                  </Link>
                 </div>
 
                 <div>
-                  <a href='/admin/backstageworkorder/Submissionworkorder'>
+                  <Link to='/admin/backstageworkorder/Submissionworkorder'>
                     <div className='sidebar-navtwo'>
                       <i className="os-icon os-icon-mail-14" />
                       <span>提交工单</span>
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </div>
 

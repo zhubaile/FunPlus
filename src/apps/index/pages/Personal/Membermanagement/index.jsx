@@ -85,6 +85,7 @@ class Membermanagement extends Component {
           page: pages,
           pageSize,
         }).then(({ status,data })=>{
+          debugger;
           if (data.errCode == 0) {
             const roless = data.data.role; // 选择渠道
             const searchrole = roless.map(item=>({ value: item.roleName,label: item.description }));

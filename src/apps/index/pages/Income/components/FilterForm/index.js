@@ -57,6 +57,7 @@ export default class FilterForm extends Component {
         arrivalDate.push(startdatestart);
         arrivalDate.push(startdateend);
       }
+      debugger;
       this.props.onChange(values,arrivalDate);
     });
   }

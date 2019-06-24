@@ -219,7 +219,7 @@ class Controloverinvoices extends Component {
                 <div className='controloverinvoices-topright-content'>
                   <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>开票信息</p>
                   {/* <strong>0.00元</strong> */}
-                  <span>
+                 {/* <span>
                     <p>公司名称：{InvoiceInfo.company}</p>
                     <p>开户行：{InvoiceInfo.bank}</p>
                     <p>开户账号：{InvoiceInfo.userId}</p>
@@ -229,7 +229,7 @@ class Controloverinvoices extends Component {
                     <p>收件联系人：{MailAddress.contacts}</p>
                     <p>地址：{MailAddress.mailAddress}</p>
                     <p>联系方式：{MailAddress.phone}</p>
-                  </span>
+                  </span>*/}
                 </div>
               </div>
             </div>
