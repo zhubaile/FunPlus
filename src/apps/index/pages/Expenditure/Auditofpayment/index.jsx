@@ -136,13 +136,14 @@ export default class Orderrefund extends Component {
   renderOper = () => {
     return (
       <div>
-        <a
+        <Button
+          style={styles.tBtn}
+          size='large'
           type="primary"
-          style={{ marginRight: '5px' }}
           onClick={this.handleDetail}
         >
-          详情
-        </a>
+          通过
+        </Button>
       </div>
     );
   };
@@ -151,7 +152,17 @@ export default class Orderrefund extends Component {
     return (
       <div className='auditofpayment'>
         <Tab shape='pure' className='auditofpayment-tab'>
-          <Tab.Item title="订单退款">
+          <Tab.Item title="出款审核">
+            <div style={{ position: 'absolute', right: 15, top: 100 }}>
+              <div style={styles.divRadius}>今日总收￥1232323</div>
+              <div style={styles.divRadius}>今日付款￥234234</div>
+              <div style={styles.divRadius}>今日退款￥234232</div>
+
+              {/*              <Button style={styles.btnRadius}>今日总收￥1232323</Button>
+              <Button style={styles.btnRadius}>今日付款￥234234</Button>
+              <Button style={styles.btnRadius}>今日退款￥234232</Button> */}
+            </div>
+
             <div className='message'>
               <Message title="title" closeable type='error' className='message-e'>
                 付款累计金额大于今日总收，请联系超级管理员，开启允许超额付款权限！
@@ -168,7 +179,6 @@ export default class Orderrefund extends Component {
             </div>
             <span>本次搜索付款总额：5555</span>
             <div className='expendordbat-tabs-border' />
-
             <IceContainer>
               <Table loading={isLoading} dataSource={data} hasBorder={false}>
                 <Table.Column title="创建时间、完成时间" dataIndex="name" />
@@ -190,15 +200,36 @@ export default class Orderrefund extends Component {
                 onChange={this.handlePaginationChange}
               />
             </IceContainer>
-            <Button className='orderposab'>主动退款</Button>
+
           </Tab.Item>
         </Tab>
       </div>
     );
   }
 }
+
 const styles = {
-  containerTitle: {
+  divRadius: {
+    display: 'inline-block',
+    padding: '6px',
+    borderRadius: '6px',
+    marginRight: '15px',
+    border: ' 1px solid #A3D0FD',
+    backgroundColor: '#E2EDFF',
+    color: '#419DFA',
+  },
+  btnRadius: {
+    borderRadius: '6px',
+    marginRight: '15px',
+    borderColor: '#A3D0FD',
+    backgroundColor: '#E2EDFF',
+    color: '#419DFA',
+  },
+  tBtn: {
+    borderRadius: '6px',
+    height: '28px',
+  },
+  /*  containerTitle: {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     color: 'rgba(0, 0, 0, 0.85)',
@@ -217,7 +248,7 @@ const styles = {
   formSelect: {
     width: '200px',
     margin: '0 10px',
-  },
+  }, */
   pagination: {
     marginTop: '20px',
     textAlign: 'right',

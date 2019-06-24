@@ -6,6 +6,7 @@ import Administrators from '../../Personal/components/Administrators/Administrat
 import '../../../layouts/BasicLayout/components/Header/index.scss';
 import '../components/index.css';
 
+
 export default class Customerservice extends Component {
   static displayName = 'Setting';
 
@@ -13,16 +14,10 @@ export default class Customerservice extends Component {
     super(props);
     this.state = {
       messagelist: [],
+      array: [],
     };
   }
-  /* sendcharmessage() {
-    const zzz = this.charmessageself.getInputNode().value;
-    console.log(zzz);
-    this.state.messagelist.push(zzz);
-    this.setState({
-      messagelist:messagelist;
-    });
-  } */
+
   render() {
     const zbla = (
       this.state.messagelist.map((item) => {

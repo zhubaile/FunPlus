@@ -54,8 +54,8 @@ export default class Submerchants extends Component {
     ];
     const { isLoading, data, current } = this.state;
     return (
-      <div>
-        <Message type='notice' className='expendbatchre-message'>
+      <div className='expendbatchre'>
+        <Message type='notice' className='message-all expendbatchre-message'>
             应用直连：使用您直接申请的渠道支付参数或我们代为您申请的渠道参数进行交易，所有资金有微信，支付宝，银联，持牌方清算
         </Message>
         <FormBinderWrapper
@@ -75,9 +75,9 @@ export default class Submerchants extends Component {
             <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
           </FormBinder>
         </FormBinderWrapper>
-        <Button className='bg' size="large" type="secondary">搜索</Button>
-        <Button className='bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
-        <Button className='orderposab'>批量退款</Button>
+        <Button className='btn-all bg' size="large" type="secondary">搜索</Button>
+        <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
+        <Button className='btn-all orderposab' size='large' type='secondary'>批量退款</Button>
         <div className='expendordbat-tabs-border' />
 
         <IceContainer>

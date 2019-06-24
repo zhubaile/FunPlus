@@ -24,8 +24,8 @@ export default class FilterTag extends Component {
                 <Button size="large">支付成功率：{this.props.Filtertag.successRate}</Button>
               </div>
               <div className='income-tabs rightbtn'>
-                <Button className='bg' size="large" type="secondary" disabled style={{ opacity: 0.5 }}>表格列过滤</Button>
-                <Button className='bg' size="large" type="secondary">导出结果为表格</Button>
+                <Button className='btn-all bg' size="large" type="secondary" disabled style={{ opacity: 0.5 }}>表格列过滤</Button>
+                <Button className='btn-all bg' size="large" type="secondary">导出结果为表格</Button>
               </div>
             </div>
             <div className='income-tabs-border' />
@@ -35,3 +35,19 @@ export default class FilterTag extends Component {
     );
   }
 }
+
+
+/*const styles = {
+  sixRadius: {
+    borderRadius: '6px',
+  },
+  btnBackground: {
+    backgroundColor: '#E2EDFF',
+  },
+  btnBordercolor: {
+    borderColor: '#A3D0FD',
+  },
+  selectedBackground: {
+    backgroundColor: '#225AE1',
+  },
+};*/

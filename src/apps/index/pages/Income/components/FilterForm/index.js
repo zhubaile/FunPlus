@@ -121,11 +121,11 @@ export default class FilterForm extends Component {
                 <Select style={{ width: '200px' }} dataSource={device} />
               </FormBinder>
               <span style={styles.formLabel}>订单号</span>
-              <FormBinder name='out_trade_no'>
-                <Input placeholder='输入订单号' hasClear />
+              <FormBinder name='outTradeNo'>
+                <Input className='input-bg' placeholder='输入订单号' />
               </FormBinder>
-              <Button className='bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
-              <Button className='bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
+              <Button className='btn-all bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
+              <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
             </div>
           </Col>
         </Row>

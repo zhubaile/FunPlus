@@ -134,7 +134,7 @@ export default class Transactionreport extends Component {
             />
           </div>
         </div>
-        <Button className='bg' size="large" type="secondary">下载本月报表</Button>
+        <Button className='btn-all bg' size="large" type="secondary">下载本月报表</Button>
       </div>
     );
   }

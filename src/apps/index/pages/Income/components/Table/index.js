@@ -143,15 +143,22 @@ export default class GoodsTable extends Component {
   renderOper = (value,index,record) => {
     return (
       <div>
-        <Button
+        {/*        <Button
           type="primary"
-          style={{ marginRight: '5px' }}
+          style={{ marginRight: '5px', borderRadius: '6px' }}
           onClick={this.handleDetail}
         >
           <FormattedMessage id="app.btn.detail" />
         </Button>
-        <Button type="normal" warning onClick={()=>this.handleDelete(record,index)}>
+        <Button style={{ borderRadius: '6px' }} type="normal" warning onClick={()=>this.handleDelete(record,index)}>
           <FormattedMessage id="app.btn.delete" />
+        </Button> */}
+        <Button
+          className='btn-all tablebtn'
+          type="secondary"
+          size='large'
+        >
+          <span>人工处理</span>
         </Button>
       </div>
     );

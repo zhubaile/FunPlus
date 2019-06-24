@@ -134,14 +134,14 @@ export default class Applicationmember extends Component {
                   ref="form"
                 >
                   <FormBinder name='haoma'>
-                    <Input hasClear placeholder='输入姓名/邮箱/手机号' />
+                    <Input className='input-bg' hasClear placeholder='输入姓名/邮箱/手机号' />
                   </FormBinder>
                   <FormBinder name="jiaose"
                     autoWidth={false}
                   >
                     <Select className='member-role' dataSource={jiaose} defaultValue='角色' />
                   </FormBinder>
-                  <Button className='bg' size="large" type="primary">搜索</Button>
+                  <Button className='btn-all' style={{ marginLeft: '20px' }} size="large" type="secondary">搜索</Button>
                   {/* <button className='addmemberbtn' onClick={this.addmemberbtn.bind(this)}>添加成员</button> */}
                 </FormBinderWrapper>
               </div>

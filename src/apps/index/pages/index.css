@@ -3,6 +3,8 @@ a:active{ text-decoration: none; }
 .applicationters{ width: 100%;}
 .applicationters .backstage-tab{ margin-top: 10px;}
 .next-tabs-pure > .next-tabs-bar .next-tabs-nav-container .next-tabs-tab:first-child{ border-right: 2px solid rgba(187, 187, 187, 0.5);}
+.next-btn.next-btn-normal.button{ border-radius: 6px;}
+.next-btn.next-btn-normal.button:hover{ background-color: #225AE1; color: #FFFFFF; border-color: #225AE1; }
 /* 左边内容 */
 .applicationters .tab-contentone{ display: flex; align-content: center; justify-content: center;}
 .applicationters .tab-contentone .tab-contentone-left{ width: 54%; border-right: 1px solid rgba(187, 187, 187, 0.5); padding-bottom: 50px;}
@@ -52,7 +54,7 @@ a:active{ text-decoration: none; }
 .routingrules{ width: 100%;}
 .routingrules-tab{}
 .routingrules-tab-top{width: 100%; display: flex;}
-
+/*.next-btn.next-large.next-btn-secondary.bg{ margin: 20px 0px 0px 20px;}*/
   /* 支付渠道的公共组件footer */
 .paymentfooter{ width: 80%; display: flex; align-content: center; justify-content: center; margin-top: 50px;}
 .paymentfooter div{ width: 130px; height: 100px;display: flex; justify-content: center; align-items: center; padding: 10px;color: rgba(16, 16, 16, 1);border: 1px solid rgba(187, 187, 187, 1);font-size: 14px;}
@@ -62,24 +64,31 @@ a:active{ text-decoration: none; }
 .incomepage{ width: 100%;}
 .incomepage .income-tab{ }
 .incomepage .income-tab .income-tabs{ }
-.incomepage .income-tab .income-tabs Button{ float: left; margin: 15px 10px;}
-.incomepage .income-tab .income-tabs.rightbtn{ float: right;}
-.incomepage .income-tab .income-tabs-border{ clear: both; border-bottom: 2px solid rgba(187, 187, 187, 1);}
+.incomepage .income-tab .income-tabs Button{ float: left; margin: 15px 10px; border-radius: 6px;}
+.incomepage .income-tab .income-tabs .rightbtn{ background-color: #E2EDFF; border-color: #A3D0FD;}
+.incomepage .income-tab .income-tabs.rightbtn{ float: right; }
+.incomepage .income-tab .income-tabs-border{ clear: both; border-bottom: 2px solid #dddddd;}
 /* Button */
-.next-btn.next-large.next-btn-secondary.bg{ background:#E6F1FC; color: #1989FA; border-radius: 5px; margin-left: 20px;}
-.next-btn.next-large.next-btn-secondary.bg.right{position: absolute; right: 20px; background:#E6F1FC; color: #1989FA; border-radius: 5px;}
-.next-btn.next-large.next-btn-primary.bg{ background:#5677FC 100%; color: #fff; border-radius: 5px; margin-left: 20px;}
+/*.next-btn.next-large.next-btn-secondary.bg{ background:#E6F1FC; color: #1989FA; border-radius: 6px; margin-left: 20px;}*/
+/*.next-btn.next-large.next-btn-secondary.bg.right{position: absolute; right: 20px; background:#E6F1FC; color: #1989FA; border-radius: 6px;}*/
+.next-btn.next-large.next-btn-primary.bg{ background:#5677FC 100%; color: #fff; border-radius: 6px; margin-left: 20px;}
+
+.next-btn.next-large.next-btn-secondary.bg.right{position: absolute; right: 20px;}
+.next-btn.next-large.next-btn-secondary.bg{ margin-left: 20px;}
+.next-btn.next-large.next-btn-secondary.tablebtn{ margin-right: 5px;}
+
 /* 支付 */
 .expendordbat .expendordbat-tab{ margin-top: 20px;}
-.expendordbat-tab  .expendordbat-tabs-border{clear: both; border-bottom: 2px solid rgba(187, 187, 187, 1); margin-top: 20px;}
+.expendordbat-tab  .expendordbat-tabs-border{clear: both; border-bottom: 2px solid #dddddd; margin-top: 20px;}
 .expendordbat-tab { position: relative;}
-.expendordbat-tab .orderposab{ position: absolute; top: 0; right: 20px; background:#E6F1FC; color: #1989FA; border-radius: 5px;}
-.expendordbat-tab .next-tabs-content .expendbatchre-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 20px 25px; width: 80%;}
-.next-message.next-message-notice.expendbatchre-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 20px 25px; width: 80%;}
+.expendordbat-tab .orderposab{ position: absolute; top: 0; right: 20px; background:#E2EDFF; color: #1989FA; border-radius: 6px; border-color: #A3D0FD;}
+/*.expendordbat-tab .orderposab{ position: absolute; top: 0; right: 20px; background:#E6F1FC; color: #1989FA; border-radius: 5px;}*/
 
-
+.expendordbat-tab .next-tabs-content .expendbatchre-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 20px 25px; width: 80%;}
+.next-message.next-message-notice.expendbatchre-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 20px 25px; width: 80%;}
 .auditofpayment .auditofpayment-tab .message{ width: 70%;}
 .auditofpayment .auditofpayment-tab .message .message-e{ margin: 10px;}
+.auditofpayment-tab  .expendordbat-tabs-border{clear: both; border-bottom: 2px solid #dddddd; margin-top: 20px;}
 
 /* 自定汇总 */
 .selfsumm-exhibition{ width: 100%; display: flex; margin-top: 20px;}
@@ -310,7 +319,7 @@ a:active{ text-decoration: none; }
 .membermanagement{ width: 100%; }
 .membermanagement-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
-.membermanagement-top .addmemberbtn{position: absolute; top: 15px; right: 20px;width: 95px;height: 40px;line-height: 20px;border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1);}
+.membermanagement-top .addmemberbtn{position: absolute; top: 15px; right: 20px;border-radius: 6px; background-color: #E2EDFF; border: 1px solid #A3D0FD; color: #1989FA; cursor: pointer;}
 .membermanagement-bottom{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
 .membermanagement-bottom-top{ border-bottom: 1px solid rgba(187, 187, 187, 0.45); padding-bottom: 10px; margin-bottom: 10px;}
@@ -323,8 +332,8 @@ a:active{ text-decoration: none; }
 .next-overlay-wrapper .next-overlay-inner{ z-index: 8889;}
 
 .membermanagements-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
-  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
-.Newrole{width: 95px;height: 40px;line-height: 20px;border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1);color: rgba(25, 137, 250, 1);}
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
+.Newrole{ border-radius: 6px; background-color: #E2EDFF; border: 1px solid #A3D0FD; color: #1989FA; cursor: pointer;}
 
 .membermanagement-top .member-role{ margin-left: 30px;}
 
@@ -334,8 +343,6 @@ a:active{ text-decoration: none; }
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
 .newrole div{ margin: 15px auto;}
 .newrole label{ margin-right: 10px;}
-
-
 /*成员管理----新增角色--ending*/
 
 /*成员管理----编辑角色--starting*/
@@ -382,20 +389,20 @@ a:active{ text-decoration: none; }
 .official .next-form.next-medium.offocoal-main .officialleft{ float: left;}
 .official .next-form.next-medium.offocoal-main .officialright{ float: left; margin-left: 20px;}
 .official .officialbtn{clear: both; padding-top: 10px; width: 400px;}
-.official .officialbtn>button{width: 173px;height: 40px;line-height: 20px; /*opacity: 0.5;*/border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1);}
+.official .officialbtn>button{width: 173px;height: 40px;line-height: 20px; /*opacity: 0.5;*/border-radius: 6px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1);}
 .official .officialbtn .officialbtn-right{ float: right;}
-.official .officialbtn .officialbtn-right button{ width: 65px;height: 30px;line-height: 20px;border-radius: 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1); margin: 0 5px;}
+.official .officialbtn .officialbtn-right button{ width: 65px;height: 30px;line-height: 20px;border-radius: 6px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1); margin: 0 5px;}
 /* 自定义 */
-.official .next-form.next-medium.offocoal-main .custom-preID{width: 180px;height: 35px;line-height: 35px;border-radius: 5px 5px 5px 5px;text-align: center; margin-top: 10px;border: 1px solid rgba(26, 173, 25, 1);}
+.official .next-form.next-medium.offocoal-main .custom-preID{width: 180px;height: 35px;line-height: 35px;border-radius: 6px;text-align: center; margin-top: 10px;border: 1px solid rgba(26, 173, 25, 1);}
 
 /*辅助工具----starting*/
   /*webhooks-starting*/
 .webhooks .btn-bg{ margin: 20px;}
-.next-btn.next-large.next-btn-secondary.btn-bg{ background:#E6F1FC; color: #1989FA; border-radius: 5px;}
+.next-btn.next-large.next-btn-secondary.btn-bg{ background:#E6F1FC; color: #1989FA; border-radius: 6px;}
 
 .webhooks .tab-contenttwo{ display: flex; align-content: center; justify-content: center;}
 .webhooks .tab-contenttwo .tab-contenttwo-left{ width: 100%; padding-bottom: 50px;}
-.webhooks .tab-contenttwo .tab-contenttwo-left .next-message.tab-contenttwo-left-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 20px 0;}
+.webhooks .tab-contenttwo .tab-contenttwo-left .next-message.tab-contenttwo-left-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 20px 0;}
 .webhooks .tab-contenttwo .webhooks-inner-top div{ margin: 15px;}
 .webhooks .tab-contenttwo .webhooks-inner-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 10px 20px; margin-bottom: 20px;}
@@ -403,7 +410,7 @@ a:active{ text-decoration: none; }
 
   /*服务端charge--starting*/
 .serversidecharge .tab-contentone .tab-contentone-left{ width: 100%; padding:15px 0px;}
-.serversidecharge .tab-contentone .tab-contentone-middle{ background: rgba(255, 255, 255, 1); border-radius: 5px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); padding: 15px 10px 30px;}
+.serversidecharge .tab-contentone .tab-contentone-middle{ background: rgba(255, 255, 255, 1); border-radius: 6px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); padding: 15px 10px 30px;}
 .serversidecharge .tab-contentone .tab-contentone-middle .inner-box{ margin: 15px;}
 .serversidecharge .tab-contentone .tab-contentone-middle .inner-box p{ padding: 10px 0px;}
 .serversidecharge .tab-contentone .tab-contentone-bottom{ background: rgba(255, 255, 255, 1); box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin-top: 15px;}
@@ -411,7 +418,7 @@ a:active{ text-decoration: none; }
 
        /*返回结果弹框---starting*/
 .returnresult{ position: fixed; width: 85%; height: 200px; top: 100%; left: 25%; margin-top: -210px; margin-left: -200px; z-index: 8888;
-  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
+  border-radius: 6px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);}
        /*返回结果弹框---starting*/
 
@@ -420,23 +427,23 @@ a:active{ text-decoration: none; }
   /*支付体验--starting*/
 /*.payexperience {width: 100%; height: 100%;}*/
 .payexperience .tab-content .tab-content-top{ width: 100%; margin: 15px;}
-.payexperience .tab-content .tab-content-middle{ background: rgba(255, 255, 255, 1); border-radius: 5px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 15px; padding: 15px 10px 50px;}
+.payexperience .tab-content .tab-content-middle{ background: rgba(255, 255, 255, 1); border-radius: 6px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 15px; padding: 15px 10px 50px;}
   /*支付体验--ending*/
 
   /*请求log查看--starting*/
-.requestlog .requestlog-tab .requestlog-tab-top{ width: 98%; background: rgba(255, 255, 255, 1); border-radius: 5px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 10px 0px 15px; padding: 10px 15px;}
+.requestlog .requestlog-tab .requestlog-tab-top{ width: 98%; background: rgba(255, 255, 255, 1); border-radius: 6px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 10px 0px 15px; padding: 10px 15px;}
 .requestlog .requestlog-tab .requestlog-tab-top ul li{ list-style: disc; padding: 5px 0px;}
 .requestlog .requestlog-tab .requestlog-tab-top ul{ margin: 15px;}
-.requestlog .requestlog-tab .requestlog-tab-middle{ width: 98%; background: rgba(255, 255, 255, 1); border-radius: 5px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 10px 0px 15px; padding: 10px 15px;}
+.requestlog .requestlog-tab .requestlog-tab-middle{ width: 98%; background: rgba(255, 255, 255, 1); border-radius: 6px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 10px 0px 15px; padding: 10px 15px;}
 
 /*日志详情--starting*/
 .logdetails{ position: fixed; width: 85%; top: 100%; left: 25%; margin-top: -600px; margin-left: -200px; z-index: 8888;
-  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
+  border-radius: 6px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);}
 
 .logdetails .logdetails-top{ width: 100%; height: 50px; background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
-  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin-bottom: 15px;position: relative; text-align: center;}
-.logdetails .logdetails-top span{ position: absolute; left: 15px; top: 10px; cursor: pointer;}
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin-bottom: 15px;position: relative; text-align: center; padding-top: 5px;}
+.logdetails .logdetails-top span{ position: absolute; left: 15px; top: 25px; cursor: pointer;}
 
 .logdetails .logdetails-middle{ width: 100%; background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);}
@@ -463,45 +470,47 @@ a:active{ text-decoration: none; }
 /*扣费明细样式----starting*/
 .deduction-details{ height: 100%;}
 .deduction-details .deduction-details-topcontent{ width: 96%; margin: 20px auto;}
-.deduction-details .deduction-details-middlecontent{ width: 96%; margin: 20px auto; background-color: #FFFFFF; padding: 20px 10px; border-radius: 10px;}
+.deduction-details .deduction-details-middlecontent{ width: 96%; margin: 20px auto; background-color: #FFFFFF; padding: 20px 10px; border-radius: 6px;}
 .deduction-details .deduction-details-middlecontent p{ font-size: 14px; color: #101010;}
 .deduction-details .deduction-details-middlecontent span{ color: #999999;}
-.deduction-details .deduction-details-bottomcontent{ width: 96%; margin: 20px auto; background-color: #FFFFFF; padding: 20px 10px; border-radius: 10px;}
+.deduction-details .deduction-details-bottomcontent{ width: 96%; margin: 20px auto; background-color: #FFFFFF; padding: 20px 10px; border-radius: 6px;}
 /*扣费明细样式----ending*/
 
 /*申请开票样式----starting*/
 .apply-billing{ height: 100%;}
 .apply-billing-topcontent .deduction-details-topcontent{ margin: 20px auto;}
 .apply-billing-topcontent .apply-billing-middlecontent{ margin: 20px auto;}
-.apply-billing-topcontent .apply-billing-bottomcontent{ width: 98%; background-color: #FFFFFF; border-radius: 10px; padding: 20px 10px; margin: 20px auto;}
+.apply-billing-topcontent .apply-billing-bottomcontent{ width: 98%; background-color: #FFFFFF; border-radius: 6px; padding: 20px 10px; margin: 20px auto;}
 .apply-billing-topcontent .apply-billing-bottomcontent div{ display: inline-flex; width: 33.3%; height: 100px; padding: 20px 60px;}
 .apply-billing-topcontent .apply-billing-bottomcontent .innertwo{ border-left: 1px solid #999999; border-right: 1px solid #999999;}
 .deduction-details-topcontent .tab-contenttwo-left-message ol li{ padding: 5px 0px;}
 .apply-billing-topcontent .apply-billing-bottomcontent div p span{ color: blue; padding-left: 5px;}
-.apply-billing-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 0px; padding-bottom: 10px;}
+.apply-billing-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 0px; padding-bottom: 10px;}
 /*按钮style*/
-.next-btn.next-large.next-btn-secondary.apply-billing-btn{ background: rgba(187, 187, 187, 1); color: rgba(255, 255, 255, 1); border-radius: 5px; margin-left: 20px; border: none;}
-.next-btn.next-medium.next-btn-secondary.apply-billing-btn{ background: rgba(187, 187, 187, 1); color: rgba(255, 255, 255, 1); border-radius: 5px; margin-left: 20px; border: none;}
-.next-btn.next-small.next-btn-secondary.apply-billing-btn{ background: rgba(187, 187, 187, 1); color: rgba(255, 255, 255, 1); border-radius: 5px; margin-left: 20px; border: none;}
+.next-btn.next-large.next-btn-secondary.apply-billing-btn{ background: rgba(187, 187, 187, 1); color: rgba(255, 255, 255, 1); border-radius: 6px; margin-left: 20px; border: none;}
+.next-btn.next-medium.next-btn-secondary.apply-billing-btn{ background: rgba(187, 187, 187, 1); color: rgba(255, 255, 255, 1); border-radius: 6px; margin-left: 20px; border: none;}
+.next-btn.next-small.next-btn-secondary.apply-billing-btn{ background: rgba(187, 187, 187, 1); color: rgba(255, 255, 255, 1); border-radius: 6px; margin-left: 20px; border: none;}
 
 .apply-billing-topcontent .apply-billing-footercontent{ width: 98%; background-color: #FFFFFF; border-radius: 10px; padding: 20px 10px; margin: 20px auto;}
 .apply-billing-topcontent .apply-billing-footercontent div{ display: inline-flex; width: 33.3%; height: 100px; padding: 20px 60px;}
 .apply-billing-topcontent .apply-billing-footercontent .footer-innertwo{ border-left: 1px solid #999999; border-right: 1px solid #999999;}
 .apply-billing-topcontent .apply-billing-footercontent div p span{ color: blue; padding-left: 5px;}
 /*按钮style*/
-.next-btn.next-large.next-btn-secondary.footer-apply-billing-btn{ background: rgba(26, 85, 226, 0.95); color: rgba(255, 255, 255, 1); border-radius: 5px; margin-left: 20px; border: none;}
-.next-btn.next-medium.next-btn-secondary.footer-apply-billing-btn{ background: rgba(26, 85, 226, 0.95); color: rgba(255, 255, 255, 1); border-radius: 5px; margin-left: 20px; border: none;}
-.next-btn.next-small.next-btn-secondary.footer-apply-billing-btn{ background: rgba(26, 85, 226, 0.95); color: rgba(255, 255, 255, 1); border-radius: 5px; margin-left: 20px; border: none;}
+.next-btn.next-large.next-btn-secondary.footer-apply-billing-btn{ background: rgba(26, 85, 226, 0.95); color: rgba(255, 255, 255, 1); border-radius: 6px; margin-left: 20px; border: none;}
+.next-btn.next-medium.next-btn-secondary.footer-apply-billing-btn{ background: rgba(26, 85, 226, 0.95); color: rgba(255, 255, 255, 1); border-radius: 6px; margin-left: 20px; border: none;}
+.next-btn.next-small.next-btn-secondary.footer-apply-billing-btn{ background: rgba(26, 85, 226, 0.95); color: rgba(255, 255, 255, 1); border-radius: 6px; margin-left: 20px; border: none;}
 
 /*申请开票样式----ending*/
 
 /*申请开票弹框样式----starting*/
 .apply-billing-bulletbox{  position: fixed; width: 700px; height: 600px; top: 50%; left: 50%; margin-top: -300px; margin-left: -350px; z-index: 8888;
   border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
+.apply-billing-bulletbox{  position: fixed; width: 600px; height: 600px; top: 50%; left: 50%; margin-top: -280px; margin-left: -180px; z-index: 8888;
+  border-radius: 6px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
 .apply-billing-bulletbox h2{ display: inline-block;}
 .apply-billing-bulletbox .x-span{ margin-left: 500px; font-size: 28px; color: #666666; cursor: pointer;}
-.apply-billing-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px;}
+.apply-billing-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px;}
 .apply-billing-bulletbox .message ul li{ padding-bottom: 5px;}
 /*申请开票弹框样式----ending*/
 
@@ -525,37 +534,93 @@ a:active{ text-decoration: none; }
 .billing-information-bulletbox{ position: fixed; width: 600px; height: 600px; top: 50%; left: 50%; margin-top: -290px; margin-left: -300px; z-index: 8888;
   border-radius: 10px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; padding: 10px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
   border: 1px solid #BBBBBB;}
-
-.billing-information-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 0px; padding-bottom: 10px;}
+.billing-information-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 0px; padding-bottom: 10px;}
 /*开票信息弹框样式----ending*/
 
 /*添加地址弹框样式----starting*/
 .add-address-bulletbox{ position: fixed; width: 600px; height: 600px; top: 50%; left: 50%; margin-top: -290px; margin-left: -300px; z-index: 8888;
   border-radius: 10px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; padding: 10px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
   border: 1px solid #BBBBBB;}
-.add-address-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 0px; padding-bottom: 10px;}
+.add-address-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 0px; padding-bottom: 10px;}
 .add-address-bulletbox p{ color: #999999; font-size: 6px;}
 /*添加地址弹框样式----ending*/
 
+/*删除应用弹框Starting*/
+.deleteapp{ position: fixed; width: 600px; height: 200px; top: 70%; left: 20%; z-index: 8888;
+  border-radius: 6px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
+  border: 1px solid #BBBBBB; text-align: center;}
+.deleteapp .deleteapp-top p{ display: inline-block; font-size: 16px;}
+.deleteapp span{display: inline-block; position: absolute; right: 15px; font-size: 30px; color: #666666; cursor: pointer;}
+.deleteapp .deleteapp-middle{ margin: 25px 0px;}
+.deleteapp .deleteapp-bottom{ margin-top: 20px;}
+.deleteapp .deleteapp-bottom .next-btn.next-large.next-btn-secondary{ height: 28px; border-radius: 6px; background-color: #E2EDFF; border-color: #A3D0FD; margin-right: 15px;}
+.deleteapp .deleteapp-bottom .next-btn.next-large.next-btn-primary{ height: 28px; border-radius: 6px; margin-left: 15px;}
+.deleteapp .deleteapp-bottom .next-btn.next-large.next-btn-secondary:hover{ background-color: #225AE1; color: #FFFFFF;}
+/*删除应用弹框Ending*/
 
+/*账户信息Starting*/
+.personal-account-left{ width: 30%;  margin-top: 20px; display: inline-block; float: left; margin-left: 1%;}
+.personal-account-right{ width: 66%; margin-top: 20px; display: inline-block; margin-left: 1%; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); padding: 15px;}
+.personal-account-left .content-top{ width: 100%; background: #4775E7; border-radius: 6px; padding: 15px 100px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);}
+.personal-account-left .content-top ul{ color: #FFFFFF; display: inline-block; line-height: 24px;}
+.personal-account-left .content-top ul li{ text-align: center;}
+.personal-account-left .content-top ul>li{ padding-top: 16px;}
+.personal-account-left .content-bottom{ width: 100%; border-radius: 6px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); padding: 20px;}
+.personal-account-left .content-bottom ul{ margin: 20px 0px; color: #999999;}
+.personal-account-left .content-bottom ul li{ line-height: 36px;}
+.personal-account-left .content-bottom ul li span{ font-weight: bold;}
+.personal-account-right h3{ margin: 0px;}
+.login-method p{ padding-right: 40px; }
+/*账户信息Ending*/
 
+/*编辑个人资料弹框Starting*/
+.editprofile-bulletbox{ position: fixed; width: 300px; height: 450px; top: 50%; left: 50%; margin-top: -280px; margin-left: -180px; z-index: 8888;
+  border-radius: 10px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; padding: 10px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
+  border: 1px solid #BBBBBB; text-align: center;}
+.editprofile-bulletbox .form span.next-input.next-medium{ width: 200px;}
+/*编辑个人资料弹框Ending*/
 
+/*编辑头像弹框Starting*/
+.editavatar-bulletbox{ position: fixed; width: 300px; height: 450px; top: 50%; left: 50%; margin-top: -280px; margin-left: -180px; z-index: 8888;
+  border-radius: 10px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; padding: 10px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
+  border: 1px solid #BBBBBB;}
+/*编辑头像弹框Ending*/
 
+/*身份验证弹框Starting*/
+.authentication-bulletbox{ position: fixed; width: 300px; height: 450px; top: 50%; left: 50%; margin-top: -280px; margin-left: -180px; z-index: 8888;
+  border-radius: 10px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; padding: 10px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
+  border: 1px solid #BBBBBB;}
+/*身份验证弹框Ending*/
 
+/*账号关联弹框Starting*/
+.accountassociation-bulletbox{ position: fixed; width: 300px; height: 450px; top: 50%; left: 50%; margin-top: -280px; margin-left: -180px; z-index: 8888;
+  border-radius: 10px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; padding: 10px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
+  border: 1px solid #BBBBBB;}
+/*账号关联弹框Ending*/
 
+/*删除数据弹窗Starting*/
+.deletedata{ position: fixed; width: 600px; height: 200px; top: 50%; left: 50%; z-index: 8888;
+  border-radius: 6px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
+  border: 1px solid #BBBBBB; text-align: center;}
+.deletedata .deletedata-top p{ display: inline-block; font-size: 16px;}
+.deletedata span{display: inline-block; position: absolute; right: 15px; font-size: 30px; color: #666666; cursor: pointer;}
+.deletedata .deletedata-middle{ margin: 25px 0px;}
+.deletedata .deletedata-bottom{ margin-top: 20px;}
+.deletedata .deletedata-bottom .next-btn.next-large.next-btn-secondary{ height: 28px; border-radius: 6px; background-color: #E2EDFF; border-color: #A3D0FD; margin-right: 15px;}
+.deletedata .deletedata-bottom .next-btn.next-large.next-btn-primary{ height: 28px; border-radius: 6px; margin-left: 15px;}
+.deletedata .deletedata-bottom .next-btn.next-large.next-btn-secondary:hover{ background-color: #225AE1; color: #FFFFFF;}
+/*删除数据弹窗Ending*/
 
+/*结单弹窗Starting*/
+.check{ position: fixed; width: 600px; height: 200px; top: 50%; left: 50%; z-index: 8888;
+  border-radius: 6px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
+  border: 1px solid #BBBBBB; text-align: center;}
+.check .check-top p{ display: inline-block; font-size: 16px;}
+.check span{display: inline-block; position: absolute; right: 15px; font-size: 30px; color: #666666; cursor: pointer;}
+.check .check-middle{ margin: 25px 10px;}
+.check .check-bottom{ margin-top: 20px;}
+.check .check-bottom .next-btn.next-large.next-btn-secondary{ height: 28px; border-radius: 6px; background-color: #E2EDFF; border-color: #A3D0FD; margin-left: 15px;}
+.check .check-bottom .next-btn.next-large.next-btn-primary{ height: 28px; border-radius: 6px; margin-right: 15px;}
+.check .check-bottom .next-btn.next-large.next-btn-secondary:hover{ background-color: #225AE1; color: #FFFFFF;}
 
-
-
-
-
-
-
-
-/*
-.addgrouping{  position: fixed; width: 330px; height: 300px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px; z-index: 8888;
-  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
-  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
-.addgrouping .addgrouping-btn{ text-align: right;}
-.addgrouping .addgrouping-btn button{width: 65px;height: 30px;line-height: 20px;border-radius: 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1); margin: 0 5px;}
-*/
+/*结单弹窗Ending*/
