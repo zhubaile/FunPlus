@@ -87,6 +87,8 @@ export default class Webhooks extends Component {
     return (
       <div>
         <Button
+          className='btn-all'
+          size='large'
           type="primary"
           style={{ marginRight: '5px' }}
           onClick={this.handleDetail}
@@ -94,7 +96,12 @@ export default class Webhooks extends Component {
           详情
           {/* <FormattedMessage id="app.btn.detail" /> */}
         </Button>
-        <Button type="normal" onClick={this.handleDelete}>
+        <Button
+          className='btn-all'
+          size='large'
+          type="normal"
+          onClick={this.handleDelete}
+        >
           重新发送
           {/* <FormattedMessage id="app.btn.delete" /> */}
         </Button>
@@ -129,7 +136,7 @@ export default class Webhooks extends Component {
       <div className='webhooks'>
         <Tab shape='pure' className='backstage-tab'>
           <Tab.Item title="webhooks">
-            <Button className='btn-bg' size="large" type="secondary">添加事件</Button>
+            <Button className='btn-all btn-bg' size="large" type="secondary">添加事件</Button>
             <div className='member-panel' >
               <div className='tab-bg'>
                 <div className='tab-panel'>
@@ -194,11 +201,11 @@ export default class Webhooks extends Component {
                       </FormBinder>
 
                       <FormBinder name='ordernumber'>
-                        <Input placeholder='输入订单号' hasClear />
+                        <Input className='input-bg' placeholder='输入订单号' hasClear />
                       </FormBinder>
                     </div>
                     <div>
-                      <Button className='bg' size="large" type="secondary">搜索</Button>
+                      <Button className='btn-all bg' size="large" type="secondary">搜索</Button>
                     </div>
 
 
@@ -224,7 +231,6 @@ export default class Webhooks extends Component {
                 </div>
               </div>
             </div>
-            {/*         <Button type="primary" size="large" iconSize="large"><Icon type="atm" />在线客服</Button> */}
           </Tab.Item>
 
         </Tab>

@@ -5,6 +5,7 @@ import { actions, reducers, connect } from '@indexStore';
 // import Ippopup from './ippopup';
 import { ObtainsettingwhiteIps,deletesettingwhiteIps,addwhiteListSwitch } from '@indexApi';
 import '../../index.css';
+import Deleteapp from './deleteApp';
 
 const { Row, Col } = Grid;
 @withRouter
@@ -136,6 +137,11 @@ export default class Applicationparameters extends Component {
       }
     });
   } */
+
+  applicationparametersOpen() {
+    this.Deleteapp.deleteappopen();
+  }
+
   render() {
     const formItemLayout = {
       labelCol: {
@@ -146,12 +152,14 @@ export default class Applicationparameters extends Component {
       },
     };
     const { isLoading, data, current } = this.state;
-    const copybtn = (<Button onClick={this.copybtn.bind(this)}>复制</Button>);
-    const phonebtn = (<Button>手机/邮箱验证查看</Button>);
+    const copybtn = (<Button className='button' onClick={this.copybtn.bind(this)}>复制</Button>);
+    const phonebtn = (<Button className='button'>手机/邮箱验证查看</Button>);
     return (
       <div className='applicationters'>
+        <Deleteapp ref={ node => this.Deleteapp = node } />
         <Tab shape='pure' className='backstage-tab'>
           <Tab.Item title="应用参数">
+            <Button style={styles.deleteAppbtn} onClick={this.applicationparametersOpen.bind(this)}>删除应用</Button>
             <div className='tab-contentone' >
               <div className='tab-contentone-left'>
                 <Message type='notice' className='tab-contentone-left-message'>
@@ -161,12 +169,12 @@ export default class Applicationparameters extends Component {
                 <Form style={{ width: '80%' , marginTop: '20px' }} {...formItemLayout}>
                   <Form.Item label="应用ID:">
                     <Input.Group addonAfter={copybtn}>
-                      <Input hasClear placeholder='请输入您的ID' style={{ width: '100%' }} aria-label="please input" ref={node=>this.applicationID = node} name='username' />
+                      <Input className='input-bg' hasClear placeholder='请输入您的ID' style={{ width: '100%' }} aria-label="please input" ref={node=>this.applicationID = node} name='username' />
                     </Input.Group>
                   </Form.Item>
                   <Form.Item label="MD5密钥:">
                     <Input.Group addonAfter={phonebtn}>
-                      <Input hasClear htmlType="password" placeholder="asdfghhkklgdf" style={{ width: '100%' }} aria-label="please input" name='userid' />
+                      <Input className='input-bg' hasClear htmlType="password" placeholder="******" style={{ width: '100%' }} aria-label="please input" name='userid' />
                     </Input.Group>
                   </Form.Item>
                   <Form.Item label="平台公钥">
@@ -178,7 +186,7 @@ export default class Applicationparameters extends Component {
                     />
                   </Form.Item>
                   <Form.Item label="商户RSA公钥">
-                    <Form.Submit onClick={this.handleSubmit}>立刻配置公钥</Form.Submit>
+                    <Form.Submit className='button' onClick={this.handleSubmit}>立刻配置公钥</Form.Submit>
                   </Form.Item>
                 </Form>
               </div>
@@ -210,3 +218,14 @@ export default class Applicationparameters extends Component {
     );
   }
 }
+const styles = {
+  deleteAppbtn: {
+    position: 'absolute',
+    top: '100px',
+    right: '30px',
+    borderRadius: '6px',
+    backgroundColor: '#E2EDFF',
+    borderColor: '#A3D0FD',
+    color: '#419DFA',
+  },
+};

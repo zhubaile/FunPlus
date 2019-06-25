@@ -208,11 +208,11 @@ export default class Orderrefund extends Component {
                       </FormBinder>
                       <span style={styles.formLabel}>订单号</span>
                       <FormBinder name='ordernumber'>
-                        <Input placeholder='输入订单号' hasClear />
+                        <Input className='input-bg' placeholder='输入订单号' hasClear />
                       </FormBinder>
-                      <Button className='bg' size="large" type="secondary">搜索</Button>
-                      <Button className='bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
-                      <Button className='bg right' size="large" type="secondary">导出表格</Button>
+                      <Button className='btn-all bg' size="large" type="secondary">搜索</Button>
+                      <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
+                      <Button className='btn-all bg right' size="large" type="secondary">导出表格</Button>
                     </div>
                   </Col>
                 </Row>
@@ -242,7 +242,7 @@ export default class Orderrefund extends Component {
                 onChange={this.handlePaginationChange}
               />
             </IceContainer>
-            <Button className='orderposab'>发起单笔付款</Button>
+            <Button className='btn-all orderposab' size='large' type='secondary'>发起单笔付款</Button>
           </Tab.Item>
 
           <Tab.Item title="企业批量退款">

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Table,Button,Input,Grid ,DatePicker,Pagination } from '@alifd/next';
+import { Table,Button,Input,Grid ,DatePicker,Pagination,Dialog } from '@alifd/next';
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Administrators from '../../Personal/components/Administrators/Administrators';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import '../../../layouts/BasicLayout/components/Header/index.scss';
+import { workOrderworkList,workOrderdeleteWork,workOrderworkDetails } from '@indexApi';
 import '../components/index.css';
 import moment from "moment/moment";
-import { Dialog } from "@alifd/next/lib/index";
+// import { Dialog } from "@alifd/next/lib/index";
 
 const { RangePicker } = DatePicker;
 const { Row, Col } = Grid;
@@ -35,25 +36,30 @@ export default class Allworkorders extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 1,
+      total: 0, // 总数据
+      pageSize: 10, // 一页条数
+      current: 1, // 页码
       isLoading: false,
-      data: [],
+      datas: [],
+      value: {
+        operationtime: [],
+      },
     };
   }
-  formChange = (value) => {
+  /* formChange = (value) => {
     this.props.onChange(value);
-  };
+  }; */
   componentDidMount() {
     this.fetchData();
   }
 
-  mockApi = (len) => {
+  /* mockApi = (len) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据
       }, 600);
     });
-  };
+  }; */
 
   fetchData = (len) => {
     this.setState(
@@ -61,12 +67,27 @@ export default class Allworkorders extends Component {
         isLoading: true,
       },
       () => {
-        this.mockApi(len).then((data) => { // data 里面为数据
+        const pages = this.state.current;
+        const pageSize = this.state.pageSize;
+        const operationtime = this.state.value.operationtime;
+        debugger;
+        workOrderworkList({
+          page: pages,
+          pageSize,
+          beginTime: operationtime,
+        }).then(({ status,data })=>{
+          debugger;
+          this.setState({
+            datas: data.data,
+            isLoading: false,
+          });
+        });
+        /* this.mockApi(len).then((data) => { // data 里面为数据
           this.setState({
             data,
             isLoading: false,
           });
-        });
+        }); */
       }
     );
   };
@@ -85,15 +106,36 @@ export default class Allworkorders extends Component {
   handleFilterChange = () => { // gengxin 5条新数据
     this.fetchData(5);
   };
-
-  handleDelete = () => {
-    Dialog.confirm({
+  // 删除
+  handleDelete = (id) => {
+    debugger;
+    const { datas } = this.state;
+    workOrderdeleteWork({
+      _id: id,
+    }).then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        let index = -1;
+        datas.forEach((item, i) => {
+          if (item._id === id) {
+            index = i;
+          }
+        });
+        if (index !== -1) {
+          datas.splice(index, 1);
+          this.setState({
+            datas,
+          });
+        }
+      }
+    });
+    /* Dialog.confirm({
       title: '提示',
       content: '确认删除吗',
       onOk: () => {
         this.fetchData(10);
       },
-    });
+    }); */
   };
 
   handleDetail = () => {
@@ -102,15 +144,54 @@ export default class Allworkorders extends Component {
       content: '暂不支持查看详情',
     });
   };
-  see() {
-    this.props.history.push('/admin/backstageworkorder/Workorderdetails');
+  // 详情
+  see=(id)=> {
+    workOrderworkDetails({
+      _id: id,
+    }).then(({ status,data })=>{
+      debugger;
+      const datas = data.data;
+      if (data.errCode == 0) {
+        this.props.history.push({ pathname: "/admin/backstageworkorder/Workorderdetails", state: { datas } });
+      }
+    });
+    // this.props.history.push('/admin/backstageworkorder/Workorderdetails');
   }
-  renderOper = () => {
+  // 搜索框
+  searchbtn() {
+    this.refs.form.validateAll((errors, values) => {
+      const arrivalDate = [];
+      if (values.operationtime.length == 2) {
+        const startdatestart = moment(values.operationtime[0]._d).valueOf();
+        const startdateend = moment(values.operationtime[1]._d).valueOf();
+        arrivalDate.push(startdatestart);
+        arrivalDate.push(startdateend);
+      }
+      const pages = this.state.current;
+      const pageSizes = this.state.pageSize;
+      debugger;
+      workOrderworkList({
+        page: pages,
+        pageSize: pageSizes,
+        _id: values.worknumber,
+        descriptions: values.relatedcharacters,
+        beginTime: arrivalDate,
+      }).then(({ status,data })=>{
+        debugger;
+        if (data.errCode == 0) {
+          this.setState({
+            datas: data.data,
+          });
+        }
+      });
+    });
+  }
+  renderOper = (value,index,record) => {
     return (
       <div>
-        <a href="javascript:;" style={{ marginRight: '3px' }} onClick={this.see.bind(this)}>查看</a>
+        <a href="javascript:;" style={{ marginRight: '3px' }} onClick={this.see.bind(this,record._id)}>查看</a>
         <span>|</span>
-        <a href="javascript:;" style={{ marginLeft: '3px' }}>删除</a>
+        <a href="javascript:;" style={{ marginLeft: '3px' }} onClick={this.handleDelete.bind(this,record._id)} >删除</a>
         {/* <Button
           type="primary"
           style={{ marginRight: '5px' }}
@@ -125,10 +206,17 @@ export default class Allworkorders extends Component {
       </div>
     );
   };
+  // 时间转换
+  time=(e)=>{
+    const updatedAt = moment(e).format('YYYY-MM-DD HH:mm:ss');
+    return (
+      <p>{updatedAt}</p>
+    );
+  }
   render() {
-    const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
-    const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
-    const { isLoading, data, current } = this.state;
+    // const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
+    // const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
+    const { isLoading, datas, current, total, pageSize } = this.state;
     return (
       <div className='backstageworkorder'>
         <Nav defaultActiveKey='2' />
@@ -152,26 +240,28 @@ export default class Allworkorders extends Component {
                     </FormBinder>
                     <span>操作时间：</span>
                     <FormBinder name='operationtime'>
-                      <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
+                      {/* <DatePicker /> */}
+                      <RangePicker />
+                      {/* <RangePicker showTime resetTime defaultValue={[startValue,endValue]} /> defaultValue={startValue}  */}
                     </FormBinder>
                     <span>关键字：</span>
                     <FormBinder name='relatedcharacters'>
                       <Input hsaClear />
                     </FormBinder>
-                    <Button className='bg' size="large" type="secondary">搜索</Button>
+                    <Button className='bg' size="large" type="secondary" onClick={this.searchbtn.bind(this)}>搜索</Button>
                   </div>
                 </Col>
               </Row>
             </FormBinderWrapper>
           </div>
           <div className='wodegongdan-footer'>
-            <Table loading={isLoading} dataSource={data} hasBorder={false}>
-              <Table.Column title="工单编号" dataIndex="name" />
-              <Table.Column title="描述" dataIndex="level" />
-              <Table.Column title="优先级" dataIndex="balance" />
-              <Table.Column title="提交账号" dataIndex="accumulative" />
-              <Table.Column title="提交时间" dataIndex="regdate" />
-              <Table.Column title="状态" dataIndex="birthday" />
+            <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+              <Table.Column title="工单编号" dataIndex="_id" />
+              <Table.Column title="描述" dataIndex="description" />
+              <Table.Column title="优先级" dataIndex="level" />
+              <Table.Column title="提交账号" dataIndex="account" />
+              <Table.Column title="提交时间" dataIndex="createdAt" cell={this.time} />
+              <Table.Column title="状态" dataIndex="status" />
               <Table.Column
                 title="操作"
                 width={200}
@@ -183,6 +273,8 @@ export default class Allworkorders extends Component {
               style={styles.pagination}
               current={current}
               onChange={this.handlePaginationChange}
+              pageSize={pageSize} // 界面展示多少条数据
+              total={total} // 一共多少条数据
             />
           </div>
         </div>

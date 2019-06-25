@@ -142,26 +142,20 @@ const styles = {
   cancelbtn: {
     display: 'inline-block',
     margin: '10px 20px 20px 40px',
-/*    position: 'absolute',
-    left: '100px',
-    bottom: '15px',*/
     width: '80px',
-    height: '30px',
+    height: '28px',
     backgroundColor: 'rgba(255, 159, 159, 1)',
     color: 'rgba(255, 255, 255, 1)',
     border: 'none',
-    borderRadius: '5px',
+    borderRadius: '6px',
   },
   submitbtn: {
     display: 'inline-block',
     margin: '10px 20px 20px 40px',
-/*    position: 'absolute',
-    right: '40px',
-    bottom: '15px',*/
     width: '80px',
-    height: '30px',
+    height: '28px',
     backgroundColor: 'rgba(86, 119, 252, 1)',
     border: 'none',
-    borderRadius: '5px',
+    borderRadius: '6px',
   },
 };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button , Tab, Message ,Switch,Pagination,Table,Select, Menu,MenuButton } from '@alifd/next';
+import { Button , Tab, Message ,Pagination,Table,Select, Menu,MenuButton,Switch } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
 import Addgrouping from './Addgrouping';
 import Official from './Adddevice/official';

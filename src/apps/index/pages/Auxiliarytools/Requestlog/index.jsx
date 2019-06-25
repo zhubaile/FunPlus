@@ -101,7 +101,7 @@ export default class Requestlog extends Component {
       <div>
         <Button
           type="primary"
-          style={{ width: '58px', height: '24px', marginRight: '5px', borderRadius: '4px' }}
+          style={{ height: '28px', marginRight: '5px', borderRadius: '6px' }}
           onClick={this.handleDetail}
         >
           详情
@@ -183,8 +183,8 @@ export default class Requestlog extends Component {
 const styles = {
   inquirebtn: {
     width: '80px',
-    height: '30px',
-    borderRadius: '4px',
+    height: '28px',
+    borderRadius: '6px',
     color: 'rgba(255, 255, 255, 1)',
     border: '1px solid rgba(255, 255, 255, 0)',
     left: '20px',

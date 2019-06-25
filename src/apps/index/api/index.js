@@ -282,3 +282,39 @@ export function getDevice(params) {
     data: params,
   });
 }
+
+// 用户工单查询
+export function workOrderworkList(params) {
+  return ajaxAmd.post({
+    url: '/workOrder/workList',
+    data: params,
+  });
+}
+// 工单详情
+export function workOrderworkDetails(params) {
+  return ajaxAmd.post({
+    url: '/workOrder/workDetails',
+    data: params,
+  });
+}
+// 提交工单
+export function workOrderworkOrderInsert(params) {
+  return ajaxAmd.post({
+    url: '/workOrder/workOrderInsert',
+    data: params,
+  });
+}
+// 工单删除
+export function workOrderdeleteWork(params) {
+  return ajaxAmd.post({
+    url: '/workOrder/deleteWork',
+    data: params,
+  });
+}
+// 工单评价
+/* export function workOrderdeleteWork(params) {
+  return ajaxAmd.post({
+    url: '/workOrder/deleteWork',
+    data: params,
+  });
+} */

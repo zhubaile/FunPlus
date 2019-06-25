@@ -122,8 +122,8 @@ const styles = {
     display: 'block',
     margin: '15px 90px',
     width: '80px',
-    height: '30px',
-    borderRadius: '5px',
+    height: '28px',
+    borderRadius: '6px',
     backgroundColor: 'rgba(86, 119, 252, 1)',
   },
 };

@@ -1,8 +1,9 @@
 /* eslint  react/no-string-refs: 0 */
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Input, Radio, Select , Upload, Grid, Form, Step,Button } from '@alifd/next';
+import { Input, Radio, Select , Upload, Grid, Form, Step,Button,Message } from '@alifd/next';
 import Nav from '../components/Nav';
+import { workOrderworkOrderInsert } from '@indexApi';
 import '../components/index.css';
 
 const { Row, Col } = Grid;
@@ -48,18 +49,12 @@ class Submissionworkorder extends Component {
     super(props);
     this.state = {
       value: {
-        enterprisename: '',
-        businesslicense: '',
-        contactaddress: '',
-        homedirectory: '',
-        subdirectory: '',
-        businesslicenseimg: [],
-        legalpersonimg: [],
-        username: '',
-        useremail: '',
-        userqq: '',
-        jiamixinxi: '',
-        selectiontime: '标准',
+        // enterprisename: '',
+        title: '',
+        description: '',
+        encryptMessage: '',
+        level: '标准',
+        avatar: [],
       },
       data: [],
       disabled: true,
@@ -93,18 +88,28 @@ class Submissionworkorder extends Component {
     });
   };
 
+  // 提交
   validateAllFormField = (values, errors) => {
-    console.log('error', errors, 'value', values);
-    if (!errors) {
-      // 提交当前填写的数据
-    } else {
-      // 处理表单报错
+    const images = values.avatar[0].response.names;
+    if (errors) {
+      return null;
     }
+    workOrderworkOrderInsert({
+      type: '1',
+      image: images,
+      ...values,
+    }).then(({ status,data })=>{
+      if (data.errCode == 0) {
+        Message.success(data.message);
+        this.props.history.push('/admin/backstageworkorder/Allworkorders');
+      }
+      Message.success(data.message);
+    });
   };
 
   render() {
     const { data, disabled, province, city } = this.state;
-    const selectiontime = [
+    const level = [
       { value: '标准', label: '标准' },
       { value: '紧急', label: '紧急' },
     ];
@@ -121,18 +126,18 @@ class Submissionworkorder extends Component {
           </div>
           <div className='submissionworkorder-main'>
             <div className='submissionworkorder-left'>
-              <div className='submissionworkorder-left-step'>
-                <Step current={2} shape="arrow" animation>
+              {/* <div className='submissionworkorder-left-step'>
+                <Step current={0} shape="arrow" animation>
                   <Step.Item title="新建工单" />
                   <Step.Item title="处理工单" />
                   <Step.Item title="待评价" />
                   <Step.Item title="完成" />
                 </Step>
-              </div>
+              </div> */}
               <Form value={this.state.value} onChange={this.formChange} ref="form">
                 <div style={styles.formContent}>
                   {/* 企业名称 */}
-                  <FormItem
+                  {/* <FormItem
                     // label={formatMessage({ id: 'app.setting.name' })}
                     label='工单类型：'
                     {...formItemLayout}
@@ -143,7 +148,7 @@ class Submissionworkorder extends Component {
                     })}
                   >
                     <Input name="enterprisename" placeholder="请输入您的工单类型" />
-                  </FormItem>
+                  </FormItem> */}
                   {/* 企业营业执照号码 */}
                   <FormItem
                     // label={formatMessage({ id: 'app.setting.name' })}
@@ -155,7 +160,7 @@ class Submissionworkorder extends Component {
                       id: 'app.setting.name.message',
                     })}
                   >
-                    <Input name="businesslicense" placeholder="工单标题" />
+                    <Input name="title" placeholder="工单标题" />
                   </FormItem>
                   {/* 企业联系地址 */}
                   <FormItem
@@ -169,6 +174,7 @@ class Submissionworkorder extends Component {
                     })}
                   >
                     <Input.TextArea
+                      name='description'
                       placeholder="Type your message here..."
                       rows='10'
                     />
@@ -186,11 +192,11 @@ class Submissionworkorder extends Component {
                       id: 'app.setting.name.message',
                     })}
                   >
-                    <Input name="jiamixinxi" placeholder="工单标题" />
+                    <Input name="encryptMessage" placeholder="选填" />
                     <span>请在此填写账号、密码和加密信息，我们会在后台为您处理，确保信息安全。</span>
                   </FormItem>
                   <FormItem
-                    name='selectiontime'
+                    // name='selectiontime'
                     // label={formatMessage({ id: 'app.setting.name' })}
                     label='紧急程度：'
                     {...formItemLayout}
@@ -200,7 +206,7 @@ class Submissionworkorder extends Component {
                       id: 'app.setting.name.message',
                     })}
                   >
-                    <Select style={styles.formSelect} dataSource={selectiontime} defaultValue="标准" />
+                    <Select name='level' style={styles.formSelect} dataSource={level} defaultValue="标准" />
                   </FormItem>
                   {/* 上传附件 */}
                   <FormItem
@@ -212,7 +218,7 @@ class Submissionworkorder extends Component {
                       id: 'app.setting.avatar.message',
                     })}
                   >
-                    <Upload
+                    {/* <Upload
                       action="https://www.easy-mock.com/mock/5b713974309d0d7d107a74a3/alifd/upload"
                       beforeUpload={beforeUpload}
                       onChange={onChange}
@@ -228,11 +234,11 @@ class Submissionworkorder extends Component {
                       }]}
                     >
                       <Button type="primary" style={{ margin: '0 0 10px' }}>上传</Button>
-                    </Upload>
+                    </Upload> */}
                     {/* action 为代理的模式，在.webpackrc.js中设置 */}
                     <Upload.Card
-                      action="/web/beta/v1.0/uploadPhoto"
-                      name="businesslicenseimg"
+                      action="/web/beta/v1.0/upload/uploadPhoto"
+                      name="avatar"
                       limit={1}
                       accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
                       beforeUpload={beforeUpload}
@@ -240,12 +246,14 @@ class Submissionworkorder extends Component {
                       onSuccess={onSuccess}
                       onError={onError}
                       formatter={(res, file) => {
+                        debugger;
                         // (上传图片)函数里面根据当前服务器返回的响应数据
                         // 重新拼装符合组件要求的数据格式   res为后端返回的数据
                         // success: res.errCode === 200 ,200没有引号,这个坑踩了三个小时
                         return {
                           success: res.errCode === 0 ,
                           url: res.data.downloadURL,
+                          names: res.data.name,
                         };
                       }}
                     />
@@ -262,8 +270,8 @@ class Submissionworkorder extends Component {
                     })}
                   >
                     <Input
-                      name="username"
-                      placeholder="联系人真实姓名"
+                      name="linkPhone"
+                      placeholder="联系人真实手机号"
                     />
                   </FormItem>
                   {/* 联系人常用邮箱 */}
@@ -276,7 +284,7 @@ class Submissionworkorder extends Component {
                       id: 'app.setting.email.message',
                     })}
                   >
-                    <Input htmlType="email" name="useremail" placeholder="联系人邮箱" />
+                    <Input htmlType="email" name="linkEmail" placeholder="联系人邮箱" />
                   </FormItem>
                   {/* 联系人qq */}
 

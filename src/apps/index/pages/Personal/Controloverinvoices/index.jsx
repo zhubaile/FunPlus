@@ -255,7 +255,7 @@ class Controloverinvoices extends Component {
               pageSize={10} // 界面展示多少条数据
               total={total} // 一共多少条数据
             />
-            <h2>笔记：</h2>
+            {/*            <h2>笔记：</h2>
             <div className='controloverinvoices-bottom-left'>
               <p>所有账户将在收到发票7天内支付。通过支票或信用卡支付或在线直接支付</p>
               <p>如果在7天内未支付账户。则作为确认工作提供的详细信息将按上述商定的报价收取</p>
@@ -263,7 +263,7 @@ class Controloverinvoices extends Component {
             <div className='controloverinvoices-bottom-right'>
               <p>小计： <strong>￥4142.00</strong></p>
               <p>增值税（12.5）：<strong>￥515.00</strong></p>
-            </div>
+            </div> */}
           </div>
           <Customerservice />
         </div>

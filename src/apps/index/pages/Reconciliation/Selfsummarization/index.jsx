@@ -69,7 +69,7 @@ export default class Selfsummarization extends Component {
               <FormBinder name='startdate'>
                 <RangePicker style={{ margin: '0 10px' }} showTime resetTime defaultValue={[startValue,endValue]} />
               </FormBinder>
-              <Button className='bg' size="large" type="primary">搜索</Button>
+              <Button className='btn-all bg' size="large" type="primary">搜索</Button>
             </div>
           </Col>
         </Row>

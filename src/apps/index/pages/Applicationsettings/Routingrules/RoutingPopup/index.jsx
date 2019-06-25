@@ -290,7 +290,7 @@ export default class RoutingPopup extends Component {
           <h1 style={{ float: 'left' }}>创建新规则弹窗</h1>
           <div style={{ float: 'right', marginTop: '20px' }}>
             <span style={{ marginRight: '10px' }}>此为高级功能</span>
-            <Button type='secondary' style={{ background: '#E6F1FC',color: '#1989FA', borderRadius: '5px', marginLeft: '20px' }}>规则可视化配置</Button>
+            <Button className='btn-all' size='large' type='secondary' style={{ marginLeft: '20px' }}>规则可视化配置</Button>
           </div>
           <div className='clearfix' />
         </div>
@@ -320,8 +320,8 @@ export default class RoutingPopup extends Component {
           {this.Fixedcontent()}
           <div style={{ marginBottom: '30px' }} />
           <div style={styles.posbtn}>
-            <Button style={styles.posbtna} onClick={this.Routingclose.bind(this)}>取消</Button>
-            <Button style={styles.posbtna} onClick={this.Establish.bind(this)}>创建</Button>
+            <Button className='btn-all' size='large' type='secondary' style={styles.posbtna} onClick={this.Routingclose.bind(this)}>取消</Button>
+            <Button className='btn-all' size='large' type='secondary' style={styles.posbtna} onClick={this.Establish.bind(this)}>创建</Button>
           </div>
         </FormBinderWrapper>
       </IceContainer>
@@ -348,7 +348,7 @@ const styles = {
   allborder: { width: '100%', borderBottom: '2px solid #BBBBBB', margin: '10px 0' },
   mainmainbox: { marginLeft: '20px' },
   posbtn: { position: 'absolute', right: '20px' },
-  posbtna: { bottom: '15px', right: '10px', background: '#E6F1FC', color: '#1989FA', borderRadius: '5px', marginLeft: '20px' },
+  posbtna: { bottom: '15px', right: '10px', borderRadius: '5px', marginLeft: '20px' },
   containerTitle: {
     overflow: 'hidden',
     whiteSpace: 'nowrap',

@@ -219,7 +219,7 @@ export default class ApplyBillingNext extends Component {
         <ApplyBilling ref={ node => this.ApplyBilling = node } />
         <BillingInformation ref={ node => this.BillingInformation = node } fetchData={this.fetchData.bind(this)} />
         <h2>申请开票</h2>
-        <span className='x-span' onClick={this.applybillingnextclose.bind(this)}>x</span>
+        <span className='x-span' onClick={this.applybillingnextclose.bind(this)}>×</span>
         <FormBinderWrapper
           // value={this.state.value}
           onChange={this.formChange}
@@ -277,13 +277,13 @@ export default class ApplyBillingNext extends Component {
 
 const styles = {
   defaultbtn: {
-    borderRadius: '5px',
+    borderRadius: '6px',
     backgroundColor: 'rgba(86, 119, 252, 1)',
     marginLeft: '190px',
     display: 'inline-block',
   },
   modifybtn: {
-    borderRadius: '5px',
+    borderRadius: '6px',
     backgroundColor: 'rgba(230, 241, 252, 1)',
     color: 'rgba(78, 126, 232, 1)',
     borderColor: 'rgba(193, 241, 248, 1)',
@@ -291,7 +291,7 @@ const styles = {
     margin: '10px 15px 0px 70px',
   },
   deletebtn: {
-    borderRadius: '5px',
+    borderRadius: '6px',
     backgroundColor: 'rgba(86, 119, 252, 1)',
     display: 'inline-block',
     margin: '10px 0px 0px 15px',

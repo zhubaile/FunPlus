@@ -61,8 +61,8 @@ export default class Daysummary extends Component {
               <FormBinder name="paymentchanneltwo" required message="请输入正确的名称" >
                 <Select style={{ width: '200px' }} defaultValue={{ value: '全部 显示设备号可多选', label: '全部 显示设备号可多选' }} dataSource={paymentchanneltwo} />
               </FormBinder>
-              <Button className='bg' size="large" type="primary">搜索</Button>
-              <Button className='bg' size="large" type="primary">对比其他时间</Button>
+              <Button className='btn-all bg' size="large" type="primary">搜索</Button>
+              <Button className='btn-all bg' size="large" type="primary" style={{ opacity: 0.5 }}>对比其他时间</Button>
             </div>
           </Col>
         </Row>
