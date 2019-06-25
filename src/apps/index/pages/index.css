@@ -504,8 +504,6 @@ a:active{ text-decoration: none; }
 
 /*申请开票弹框样式----starting*/
 .apply-billing-bulletbox{  position: fixed; width: 700px; height: 600px; top: 50%; left: 50%; margin-top: -300px; margin-left: -350px; z-index: 8888;
-  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
-.apply-billing-bulletbox{  position: fixed; width: 600px; height: 600px; top: 50%; left: 50%; margin-top: -280px; margin-left: -180px; z-index: 8888;
   border-radius: 6px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
 .apply-billing-bulletbox h2{ display: inline-block;}

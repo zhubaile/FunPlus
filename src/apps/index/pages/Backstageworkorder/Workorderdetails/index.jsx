@@ -16,9 +16,9 @@ const { Row, Col } = Grid;
 const StepItem = Step.Item;
 const ButtonGroup = Button.Group;
 
-const random = (min, max) => {
+/* const random = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
-};
+}; */
 const getData = (length = 1) => {
   return Array.from({ length }).map(() => {
     return {
@@ -51,13 +51,13 @@ export default class Allworkorders extends Component {
     // this.fetchData();
   }
 
-  mockApi = (len) => {
+  /*  mockApi = (len) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据
       }, 600);
     });
-  };
+  }; */
 
   fetchData = (len) => {
     this.setState(
@@ -65,12 +65,12 @@ export default class Allworkorders extends Component {
         isLoading: true,
       },
       () => {
-        this.mockApi(len).then((data) => { // data 里面为数据
+        /* this.mockApi(len).then((data) => { // data 里面为数据
           this.setState({
             data,
             isLoading: false,
           });
-        });
+        }); */
       }
     );
   };
@@ -148,7 +148,7 @@ export default class Allworkorders extends Component {
               <Table.Column title="描述" dataIndex="description" />
               <Table.Column title="优先级" dataIndex="level" />
               <Table.Column title="提交账号" dataIndex="account" />
-              <Table.Column title="提交时间" dataIndex="createdAt" cell={this.time}/>
+              <Table.Column title="提交时间" dataIndex="createdAt" cell={this.time} />
               <Table.Column title="状态" dataIndex="status" />
               <Table.Column
                 title="操作"
@@ -184,7 +184,7 @@ export default class Allworkorders extends Component {
             </a>
             公开回复（0）
           </div> */}
-          <p>沟通记录<span style={{ borderLeft: '2px solid blue', marginLeft: '5px' }}></span></p>
+          <p style={{ borderLeft: '2px solid blue', marginLeft: '5px' }}>沟通记录</p>
           <div className='dealwith-workorder'>
             <div style={{ height: '50%' }}>
               <img src={require('@img/img/avatar1.jpg')} alt="" />
@@ -207,7 +207,7 @@ export default class Allworkorders extends Component {
               <Button type='primary' size='large'>提交回复</Button>
             </div>
           </div>
-          <p>待评价<span style={{ borderLeft: '2px solid blue', marginLeft: '5px' }}></span></p>
+          <p style={{ borderLeft: '2px solid blue', marginLeft: '5px' }}>待评价</p>
           <div className='wodegongdan-pingjia'>
             <FormBinderWrapper
               value={this.state.value}

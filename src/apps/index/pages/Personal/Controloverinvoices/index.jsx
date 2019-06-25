@@ -219,7 +219,7 @@ class Controloverinvoices extends Component {
                 <div className='controloverinvoices-topright-content'>
                   <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>开票信息</p>
                   {/* <strong>0.00元</strong> */}
-                 {/* <span>
+                  <span>
                     <p>公司名称：{InvoiceInfo.company}</p>
                     <p>开户行：{InvoiceInfo.bank}</p>
                     <p>开户账号：{InvoiceInfo.userId}</p>
@@ -229,7 +229,7 @@ class Controloverinvoices extends Component {
                     <p>收件联系人：{MailAddress.contacts}</p>
                     <p>地址：{MailAddress.mailAddress}</p>
                     <p>联系方式：{MailAddress.phone}</p>
-                  </span>*/}
+                  </span>
                 </div>
               </div>
             </div>
@@ -255,7 +255,7 @@ class Controloverinvoices extends Component {
               pageSize={10} // 界面展示多少条数据
               total={total} // 一共多少条数据
             />
-{/*            <h2>笔记：</h2>
+            {/*            <h2>笔记：</h2>
             <div className='controloverinvoices-bottom-left'>
               <p>所有账户将在收到发票7天内支付。通过支票或信用卡支付或在线直接支付</p>
               <p>如果在7天内未支付账户。则作为确认工作提供的详细信息将按上述商定的报价收取</p>
@@ -263,7 +263,7 @@ class Controloverinvoices extends Component {
             <div className='controloverinvoices-bottom-right'>
               <p>小计： <strong>￥4142.00</strong></p>
               <p>增值税（12.5）：<strong>￥515.00</strong></p>
-            </div>*/}
+            </div> */}
           </div>
           <Customerservice />
         </div>
