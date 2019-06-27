@@ -17,6 +17,8 @@ const formItemLayout = {
   labelCol: { span: 3 },
   wrapperCol: { span: 17 },
 };
+
+
 export default class Allworkorders extends Component {
   static displayName = 'Setting';
 
@@ -312,7 +314,6 @@ export default class Allworkorders extends Component {
             )}
 
           </div>
-
         </div>
       </div>
     );

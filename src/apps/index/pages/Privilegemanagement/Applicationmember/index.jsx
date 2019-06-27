@@ -105,7 +105,7 @@ export default class Applicationmember extends Component {
   renderOper = () => {
     return (
       <div>
-        <Switch className='div-switch' defaultChecked={false} />
+        <Switch size='small' className='div-switch' defaultChecked={false} />
       </div>
     );
   };

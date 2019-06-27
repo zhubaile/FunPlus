@@ -17,18 +17,20 @@ const formItemLayout = {
   labelCol: { s: 6 },
   wrapperCol: { s: 14 },
 };
-
-
 function beforeUpload(info) {
-  console.log('beforeUpload : ', info);
+  console.log('beforeUpload callback : ', info);
 }
 
 function onChange(info) {
-  console.log('onChange : ', info);
+  console.log('onChane callback : ', info);
 }
 
-function onSuccess(info) {
-  console.log('onSuccess : ', info);
+function onSuccess(data, file) {
+  console.log('onSuccess callback : ', file);
+}
+
+function onError(file) {
+  console.log('onError callback : ', file);
 }
 
 export default class Editavatar extends Component {
@@ -66,34 +68,31 @@ export default class Editavatar extends Component {
     return (
       <div className='editavatar-bulletbox'>
         <h2>编辑头像</h2>
-        {/*        <Message type='notice' className='message'>
-          提示：因税务新政要求，申请开具企业增值普通发票的用户开票时必须提供“纳税人识别号”信息。
-        </Message> */}
         <div>
-          <Upload
-            action="https://www.easy-mock.com/mock/5b713974309d0d7d107a74a3/alifd/upload"
+          <Upload.Card
+            action="/web/beta/v1.0/uploadPhoto"
+            name="businesslicenseimg"
+            limit={1}
+            accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
             beforeUpload={beforeUpload}
             onChange={onChange}
             onSuccess={onSuccess}
-            multiple
-            defaultValue={[{
-              name: 'IMG.png',
-              state: 'done',
-              size: 1024,
-              downloadURL: 'https://img.alicdn.com/tps/TB19O79MVXXXXcZXVXXXXXXXXXX-1024-1024.jpg',
-              fileURL: 'https://img.alicdn.com/tps/TB19O79MVXXXXcZXVXXXXXXXXXX-1024-1024.jpg',
-              imgURL: 'https://img.alicdn.com/tps/TB19O79MVXXXXcZXVXXXXXXXXXX-1024-1024.jpg',
-            }]}
-          >
-            <Button type="primary" style={{ margin: '0 0 10px' }}>Upload File</Button>
-          </Upload>
+            onError={onError}
+            formatter={(res, file) => {
+              return {
+                success: res.errCode === 0 ,
+                url: res.data.downloadURL,
+              };
+            }}
+          />
           <p>支持jpg、png格式，大小不超过3M</p>
         </div>
 
+        <div style={{ marginTop: '20%' }}>
+          <Button type='secondary'style={styles.cancelbtn} siza='large' onClick={this.editavatarclose.bind(this)}>取消</Button>
+          <Button type='primary'style={styles.submitbtn} siza='large'>保存</Button>
+        </div>
 
-        <Button type='secondary' size='large'>重新选择</Button>
-        <Button type='secondary'style={styles.cancelbtn} siza='large' onClick={this.editavatarclose.bind(this)}>取消</Button>
-        <Button type='primary'style={styles.submitbtn} siza='large'>保存</Button>
       </div>
     );
   }
@@ -102,7 +101,6 @@ export default class Editavatar extends Component {
 const styles = {
   cancelbtn: {
     display: 'inline-block',
-/*    margin: '0px 60px 0px 130px',*/
     width: '80px',
     height: '28px',
     backgroundColor: 'rgba(230, 241, 252, 1)',
@@ -112,6 +110,7 @@ const styles = {
   },
   submitbtn: {
     display: 'inline-block',
+    marginLeft: '15%',
     width: '80px',
     height: '28px',
     backgroundColor: 'rgba(86, 119, 252, 1)',

@@ -10,6 +10,7 @@ import Addmenber from "./addmember";
 import Editingrole from "./EditingRole"; */
 import { searchUserList, userDelete } from '@indexApi';
 
+
 import '../../index.css';
 
 const { RangePicker } = DatePicker;
@@ -243,7 +244,7 @@ class Membermanagement extends Component {
                   <Input hasClear placeholder='支持姓名邮箱手机号' style={styles.forminput} />
                 </FormBinder>
                 <Button className='btn-all' style={{ marginLeft: '20px' }} size="large" type="primary" onClick={this.searchbtn.bind(this)}>搜索</Button>
-                <button className='btn-all addmemberbtn' onClick={this.addmemberbtnopen.bind(this)}>添加成员</button>
+                <button className='mybtn addmemberbtn' onClick={this.addmemberbtnopen.bind(this)}>添加成员</button>
               </FormBinderWrapper>
             </div>
             <div className='membermanagement-bottom'>
