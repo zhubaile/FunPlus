@@ -312,9 +312,45 @@ export function workOrderdeleteWork(params) {
   });
 }
 // 工单评价
-/* export function workOrderdeleteWork(params) {
+export function workOrderremainEvaluated(params) {
   return ajaxAmd.post({
-    url: '/workOrder/deleteWork',
+    url: '/workOrder/remainEvaluated',
     data: params,
   });
-} */
+}
+// 客服回复
+export function workOrdercustomerWork(params) {
+  return ajaxAmd.post({
+    url: '/workOrder/customerWork',
+    data: params,
+  });
+}
+// 结单接口
+export function workOrderisStatement(params) {
+  return ajaxAmd.post({
+    url: '/workOrder/isStatement',
+    data: params,
+  });
+}
+// 企业认证初始数据
+export function companydustyInfo(params) {
+  return ajaxAmd.get({
+    url: '/company/dustyInfo',
+    params,
+  });
+}
+// 企业认证数据提交
+export function companycompanyInsert(params) {
+  return ajaxAmd.post({
+    url: '/company/companyInsert',
+    data: params,
+  });
+}
+// 账户信息
+export function companyaccountInfo(params) {
+  return ajaxAmd.get({
+    url: '/company/accountInfo',
+    params,
+  });
+}
+
