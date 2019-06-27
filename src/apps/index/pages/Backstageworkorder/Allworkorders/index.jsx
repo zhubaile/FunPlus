@@ -248,7 +248,7 @@ export default class Allworkorders extends Component {
                     <FormBinder name='relatedcharacters'>
                       <Input hsaClear />
                     </FormBinder>
-                    <Button className='bg' size="large" type="secondary" onClick={this.searchbtn.bind(this)}>搜索</Button>
+                    <Button className='btn-all bg' size="large" type="secondary" onClick={this.searchbtn.bind(this)}>搜索</Button>
                   </div>
                 </Col>
               </Row>

@@ -1,4 +1,25 @@
 a:active{ text-decoration: none; }
+/*下拉框、输入框全局样式*/
+.next-select .next-select-inner{ border-radius: 6px;}
+.next-range-picker.next-medium .next-range-picker-trigger, .next-range-picker.next-medium .next-range-picker-panel-input{ border-radius: 6px;}
+.next-input.next-medium{ border-radius: 6px;}
+.next-input.next-medium input{ border-radius: 6px;}
+/*Btn全局样式*/
+.next-btn.next-large.next-btn-secondary.btn-all{ height: 28px; background-color: #E2EDFF; border-color: #A3D0FD; color: #1989FA; border-radius: 6px;}
+.next-btn.next-large.next-btn-secondary.btn-all:hover{ background-color: #225AE1; color: #FFFFFF;}
+.next-btn.next-large.next-btn-primary{ height: 28px; background-color: #0076FF; border-color: #60A9FF; color: #FFFFFF; border-radius: 6px;}
+.next-btn.next-large.next-btn-primary:hover{ background-color: #225AE1; color: #FFFFFF;}
+.next-btn.next-large.next-btn-normal{ height: 28px; background-color: #FFFFFF; border-color: #60A9FF; color: #0F7DFF; border-radius: 6px;}
+.next-btn.next-large.next-btn-normal:hover{ background-color: #225AE1; color: #FFFFFF;}
+.mybtn{ width: 100px; height: 40px; background-color: #E2EDFF; border-color: #A3D0FD; color: #1989FA; border-radius: 6px;}
+.mybtn:hover{ background-color: #225AE1; color: #FFFFFF;}
+/*开关组件全局样式*/
+.next-switch-on{ background-color: #01E266;}
+.next-switch-on:focus, .next-switch-on:hover{ background-color: #01E266;}
+.next-switch-small{ border-radius: 10px;}
+.next-switch-small:after{ border-radius: 100px;}
+/*message全局样式*/
+.next-message.next-message-notice.next-inline{ background-color: #E6F7FF; border-color: #C6EAFF; border-radius: 6px;}
 /* 应用参数 */
 .applicationters{ width: 100%;}
 .applicationters .backstage-tab{ margin-top: 10px;}
@@ -308,18 +329,18 @@ a:active{ text-decoration: none; }
 .administrators h2{ color: #1A55E2;}
 .administrators div img{ margin: 5px;}
 /* 在线客服 */
-.Customerservice{z-index: 9999;position: fixed;bottom: 10px;right: 10px;background: #097CFF;-webkit-box-shadow: 0 2px 20px 0 rgba(46, 130, 255, 0.75);box-shadow: 0 2px 20px 0 rgba(46, 130, 255, 0.75);border-radius: 75px;
+/*.Customerservice{z-index: 9999;position: fixed;bottom: 10px;right: 10px;background: #097CFF;-webkit-box-shadow: 0 2px 20px 0 rgba(46, 130, 255, 0.75);box-shadow: 0 2px 20px 0 rgba(46, 130, 255, 0.75);border-radius: 75px;
   color: #fff;padding: 12px 20px;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;
   vertical-align: middle;font-size: 1.08rem;cursor: pointer;-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
 .Customerservice i{ font-size: 20px; margin-right: 8px;}
-.Customerservice a:hover{ color: black;}
+.Customerservice a:hover{ color: black;}*/
 
 
 /* 成员管理 */
 .membermanagement{ width: 100%; }
 .membermanagement-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
-.membermanagement-top .addmemberbtn{position: absolute; top: 15px; right: 20px;border-radius: 6px; background-color: #E2EDFF; border: 1px solid #A3D0FD; color: #1989FA; cursor: pointer;}
+.addmemberbtn{position: absolute; top: 15px; right: 20px;border-radius: 6px; background-color: #E2EDFF; border: 1px solid #A3D0FD; color: #1989FA; cursor: pointer;}
 .membermanagement-bottom{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
 .membermanagement-bottom-top{ border-bottom: 1px solid rgba(187, 187, 187, 0.45); padding-bottom: 10px; margin-bottom: 10px;}
@@ -425,7 +446,6 @@ a:active{ text-decoration: none; }
   /*服务端charge--ending*/
 
   /*支付体验--starting*/
-/*.payexperience {width: 100%; height: 100%;}*/
 .payexperience .tab-content .tab-content-top{ width: 100%; margin: 15px;}
 .payexperience .tab-content .tab-content-middle{ background: rgba(255, 255, 255, 1); border-radius: 6px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 15px; padding: 15px 10px 50px;}
   /*支付体验--ending*/
@@ -484,7 +504,7 @@ a:active{ text-decoration: none; }
 .apply-billing-topcontent .apply-billing-bottomcontent div{ display: inline-flex; width: 33.3%; height: 100px; padding: 20px 60px;}
 .apply-billing-topcontent .apply-billing-bottomcontent .innertwo{ border-left: 1px solid #999999; border-right: 1px solid #999999;}
 .deduction-details-topcontent .tab-contenttwo-left-message ol li{ padding: 5px 0px;}
-.apply-billing-topcontent .apply-billing-bottomcontent div p span{ color: blue; padding-left: 5px;}
+.apply-billing-topcontent .apply-billing-bottomcontent div p span{ color: blue; padding-left: 5px; cursor: pointer;}
 .apply-billing-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 0px; padding-bottom: 10px;}
 /*按钮style*/
 .next-btn.next-large.next-btn-secondary.apply-billing-btn{ background: rgba(187, 187, 187, 1); color: rgba(255, 255, 255, 1); border-radius: 6px; margin-left: 20px; border: none;}
@@ -579,7 +599,7 @@ a:active{ text-decoration: none; }
 /*编辑个人资料弹框Ending*/
 
 /*编辑头像弹框Starting*/
-.editavatar-bulletbox{ position: fixed; width: 300px; height: 450px; top: 50%; left: 50%; margin-top: -280px; margin-left: -180px; z-index: 8888;
+.editavatar-bulletbox{ position: fixed; width: 300px; height: 300px; top: 50%; left: 50%; margin-top: -280px; margin-left: -180px; z-index: 8888;
   border-radius: 10px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; padding: 10px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
   border: 1px solid #BBBBBB;}
 /*编辑头像弹框Ending*/
@@ -620,5 +640,225 @@ a:active{ text-decoration: none; }
 .check .check-bottom .next-btn.next-large.next-btn-secondary{ height: 28px; border-radius: 6px; background-color: #E2EDFF; border-color: #A3D0FD; margin-left: 15px;}
 .check .check-bottom .next-btn.next-large.next-btn-primary{ height: 28px; border-radius: 6px; margin-right: 15px;}
 .check .check-bottom .next-btn.next-large.next-btn-secondary:hover{ background-color: #225AE1; color: #FFFFFF;}
-
 /*结单弹窗Ending*/
+
+/*----------*/
+.Customerservice .floated-chat-btn{z-index: 9999;position: fixed;bottom: 10px;right: 10px;background: #097CFF;-webkit-box-shadow: 0 2px 20px 0 rgba(46, 130, 255, 0.75);box-shadow: 0 2px 20px 0 rgba(46, 130, 255, 0.75);border-radius: 75px;
+  color: #fff;padding: 12px 20px;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;
+  vertical-align: middle;font-size: 1.08rem;cursor: pointer;-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
+.Customerservice .floated-chat-btn i{ font-size: 20px; margin-right: 8px;}
+.Customerservice .floated-chat-btn a:hover{ color: black;}
+
+
+/*客服弹窗*/
+.Customerservice .onlineservice {
+  z-index: 9999;
+  position: fixed;
+  bottom: 70px;
+  right: 10px;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.Customerservice .onlineservice.active {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+}
+
+.Customerservice .onlineservice .floated-chat-i {
+  background-color: #fff;
+  /* Rectangle: */
+  -webkit-box-shadow: 0 2px 40px 0 rgba(43, 132, 210, 0.41);
+  box-shadow: 0 2px 40px 0 rgba(43, 132, 210, 0.41);
+  border-radius: 10px;
+  width: 320px;
+  position: relative;
+}
+
+.Customerservice .onlineservice .floated-chat-i .chat-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 10px;
+  cursor: pointer;
+}
+.Customerservice .onlineservice .chat-head {
+  padding: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.Customerservice .onlineservice .chat-head .user-w {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.Customerservice .onlineservice .chat-head .user-w .user-avatar-w {
+  width: 50px;
+}
+
+.Customerservice .onlineservice .chat-head .user-w .user-avatar-w .user-avatar {
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.Customerservice .onlineservice .chat-head .user-w .user-avatar-w .user-avatar img {
+  max-width: 100%;
+  height: auto;
+}
+
+.Customerservice .onlineservice .chat-head .user-w.with-status .user-avatar-w {
+  position: relative;
+}
+
+.Customerservice .onlineservice .chat-head .user-w.with-status .user-avatar-w:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 0px 3px #fff;
+  box-shadow: 0px 0px 0px 3px #fff;
+}
+
+.Customerservice .onlineservice .chat-head .user-w.with-status.status-green .user-avatar-w:before {
+  background-color: #24b314;
+}
+
+.Customerservice .onlineservice .chat-head .user-w.with-status.status-red .user-avatar-w:before {
+  background-color: #e65252;
+}
+
+.Customerservice .onlineservice .chat-head .user-w .user-name {
+  padding-left: 20px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.Customerservice .onlineservice .chat-head .user-w .user-title {
+  margin-bottom: 2px;
+  color: #047bf8;
+}
+
+.Customerservice .onlineservice .chat-head .user-w .user-role {
+  font-weight: 500;
+  font-size: 0.81rem;
+}
+
+.Customerservice .onlineservice .chat-head .user-w .user-action {
+  width: 50px;
+  color: #047bf8;
+  font-size: 18px;
+}
+
+.Customerservice .onlineservice .chat-messages {
+  padding: 20px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.Customerservice .onlineservice .chat-messages .message {
+  margin-bottom: 12px;
+}
+
+.Customerservice .onlineservice .chat-messages .message .message-content {
+  color: #594939;
+  padding: 10px 20px;
+  background-color: #fcf6ee;
+  border-radius: 20px 20px 20px 0px;
+  max-width: 80%;
+  display: inline-block;
+  text-align: left;
+}
+
+.Customerservice .onlineservice .chat-messages .message.self {
+  text-align: right;
+}
+
+.Customerservice .onlineservice .chat-messages .message.self .message-content {
+  border-radius: 20px 20px 0px 20px;
+  background-color: #e2efff;
+  color: #2A4E7F;
+}
+
+.Customerservice .onlineservice .chat-messages .date-break {
+  text-align: center;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.Customerservice .onlineservice .chat-controls {
+  padding: 10px;
+  padding-top: 0px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.Customerservice .onlineservice .chat-controls .message-input {
+  border: 1px solid transparent;
+  background-color: #fff;
+  padding: 10px;
+  width: 100%;
+  display: block;
+  border-radius: 0px;
+}
+
+.Customerservice .onlineservice .chat-controls .message-input:focus {
+  outline: none;
+  border-bottom: 1px solid #047bf8;
+}
+
+.Customerservice .onlineservice .chat-controls .chat-extra {
+  text-align: left;
+  padding-left: 0px;
+  padding-top: 10px;
+}
+
+.Customerservice .onlineservice .chat-controls .chat-extra a {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 16px;
+  position: relative;
+}
+
+.Customerservice .onlineservice .chat-controls .chat-extra a .extra-tooltip {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.63rem;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  white-space: nowrap;
+  display: none;
+}
+
+.Customerservice .onlineservice .chat-controls .chat-extra a:hover {
+  text-decoration: none;
+}
+
+.Customerservice .onlineservice .chat-controls .chat-extra a:hover .extra-tooltip {
+  display: block;
+}
+

@@ -33,6 +33,8 @@ const getData = (length = 1) => {
     };
   });
 };
+
+
 export default class Allworkorders extends Component {
   static displayName = 'Setting';
 
@@ -241,7 +243,6 @@ export default class Allworkorders extends Component {
               </div>
             </FormBinderWrapper>
           </div>
-
         </div>
       </div>
     );

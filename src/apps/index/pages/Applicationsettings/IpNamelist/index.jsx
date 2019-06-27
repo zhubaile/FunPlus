@@ -170,7 +170,7 @@ export default class Applicationparameters extends Component {
                   </Button>
                   <div>
                     <span>全限白名单</span>
-                    <Switch className='div-switch' defaultChecked={false} name='whiteListSwitch' onChange={this.addopenSwitch.bind(this)} />
+                    <Switch size='large' className='div-switch' defaultChecked={false} name='whiteListSwitch' onChange={this.addopenSwitch.bind(this)} />
                   </div>
                 </div>
                 <div className='claer' />

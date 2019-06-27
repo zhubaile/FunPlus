@@ -216,7 +216,7 @@ class Membermanagement extends Component {
            <Tab.Item title="角色权限" key='2'>
              <div className='membermanagements-top'>
                <div className='membermanagement-bottom-top'>
-                 <button className='Newrole' onClick={this.newrolebtnopen.bind(this)}>新增角色</button>
+                 <button className='mybtn Newrole' onClick={this.newrolebtnopen.bind(this)}>新增角色</button>
                </div>
                <Table loading={isLoading} dataSource={datas} hasBorder={false}>
                  <Table.Column title="角色" dataIndex="description" />
