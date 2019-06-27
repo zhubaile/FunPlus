@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button } from '@alifd/next';
+import { Button ,Message } from '@alifd/next';
+import { workOrderisStatement } from '@indexApi';
 import '../../../index.css';
 
 export default class Check extends Component {
@@ -7,25 +8,37 @@ export default class Check extends Component {
     super(props);
     this.state = {
       open: false,
+      content: null,
       value: {
 
       },
     };
   }
-
   checkclose=()=> {
     this.setState({
       open: false,
       content: null,
     });
   }
-
   checkopen(content,confirm) {
     this.setState({
       open: true,
       content,
     });
     this.confirmCallBack = confirm;
+  }
+  // 结单按钮
+  checkdan() {
+    const _id = this.state.content;
+    workOrderisStatement({
+      _id,
+    }).then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        Message.success(data.message);
+        this.props.history.push("/admin/backstageworkorder/Allworkorders");
+      }
+    });
   }
 
   render() {
@@ -41,7 +54,7 @@ export default class Check extends Component {
           <p>当您确认工单问题已经得到解决， 您可关闭工单。 关闭工单后如果有新的问题，您可以提交新的工单咨询。</p>
         </div>
         <div className='check-bottom'>
-          <Button size='large' type='primary'>确认</Button>
+          <Button size='large' type='primary' onClick={this.checkdan.bind(this)}>确认</Button>
           <Button size='large' type='secondary' onClick={this.checkclose.bind(this)}>取消</Button>
         </div>
       </div>

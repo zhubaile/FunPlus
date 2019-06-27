@@ -13,7 +13,7 @@ import moment from "moment/moment";
 const { RangePicker } = DatePicker;
 const { Row, Col } = Grid;
 
-const random = (min, max) => {
+/* const random = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 const getData = (length = 10) => {
@@ -29,7 +29,7 @@ const getData = (length = 10) => {
       z: ['支付宝'],
     };
   });
-};
+}; */
 export default class Allworkorders extends Component {
   static displayName = 'Setting';
 
@@ -138,21 +138,24 @@ export default class Allworkorders extends Component {
     }); */
   };
 
-  handleDetail = () => {
+  /* handleDetail = () => {
     Dialog.confirm({
       title: '提示',
       content: '暂不支持查看详情',
     });
-  };
+  }; */
   // 详情
-  see=(id)=> {
+  handleDetail=(id)=> {
     workOrderworkDetails({
       _id: id,
     }).then(({ status,data })=>{
       debugger;
-      const datas = data.data;
+      const work = data.data.work;
+      const workDetail = data.data.workDetail;
+      const workEvaluate = data.data.workEvaluate;
+      debugger;
       if (data.errCode == 0) {
-        this.props.history.push({ pathname: "/admin/backstageworkorder/Workorderdetails", state: { datas } });
+        this.props.history.push({ pathname: "/admin/backstageworkorder/Workorderdetails", state: { work,workDetail,workEvaluate } });
       }
     });
     // this.props.history.push('/admin/backstageworkorder/Workorderdetails');
@@ -189,7 +192,7 @@ export default class Allworkorders extends Component {
   renderOper = (value,index,record) => {
     return (
       <div>
-        <a href="javascript:;" style={{ marginRight: '3px' }} onClick={this.see.bind(this,record._id)}>查看</a>
+        <a href="javascript:;" style={{ marginRight: '3px' }} onClick={this.handleDetail.bind(this,record._id)}>查看</a>
         <span>|</span>
         <a href="javascript:;" style={{ marginLeft: '3px' }} onClick={this.handleDelete.bind(this,record._id)} >删除</a>
         {/* <Button
@@ -212,6 +215,15 @@ export default class Allworkorders extends Component {
     return (
       <p>{updatedAt}</p>
     );
+  }
+  statusoneortwo=(e)=>{
+    if (e == 1) {
+      return ("受理中");
+    } else if (e == 2) {
+      return ("待评价");
+    } else if (e == 3) {
+      return ("已完成");
+    }
   }
   render() {
     // const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
@@ -257,11 +269,12 @@ export default class Allworkorders extends Component {
           <div className='wodegongdan-footer'>
             <Table loading={isLoading} dataSource={datas} hasBorder={false}>
               <Table.Column title="工单编号" dataIndex="_id" />
+              <Table.Column title="工单标题" dataIndex="title" />
               <Table.Column title="描述" dataIndex="description" />
               <Table.Column title="优先级" dataIndex="level" />
               <Table.Column title="提交账号" dataIndex="account" />
               <Table.Column title="提交时间" dataIndex="createdAt" cell={this.time} />
-              <Table.Column title="状态" dataIndex="status" />
+              <Table.Column title="状态" dataIndex="status" cell={this.statusoneortwo} />
               <Table.Column
                 title="操作"
                 width={200}

@@ -168,13 +168,20 @@ a:active{ text-decoration: none; }
 .personal-top .helpcenter-search{ position: absolute; top: 1px; right:20px;}
 .personal-top .helpcenter-search i{ position: absolute;left: 10px;top:48%;-webkit-transform: translateY(-50%);transform: translateY(-50%); font-size: 18px;}
 /* 企业认证 */
-.personalenter{ width: 100%;}
-.personalenter .personalenter-left{ width: 63%; float: left; padding: 30px; border-right: 2px solid #DBD9D9;}
+.personalenter{ width: 100%; position: relative;}
+.personalenter .personalenter-left{ width: 63%; float: left; padding: 30px; border-right: 2px solid #DBD9D9; position: relative;}
 .personalenter-left-step{ margin-bottom: 10px}
 .personalenter-left-step .next-step-arrow{ border-radius: 20px;}
 .personalenter .personalenter-right{ width: 36%;float: left;}
 .personalenter-right-box{width: 300px;color: rgba(16, 16, 16, 0.8);font-size: 16px;text-align: left;margin-left: 25px; margin-top: 50px;}
 .personalenter-right-box h2{ font-weight: 500; font-size: 20px;}
+/* 企业认证第二个界面 */
+.personalenter .personalenter-left .personalentertwo{position: absolute;width: 568px;height: 181px;left: 50%;top: 100px;transform: translateX(-50%);border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);
+  color: rgba(16, 16, 16, 1);font-size: 14px;box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0);display: flex;align-items: center;justify-items: center;justify-content: center;}
+.personalenter .personalenter-left .personalentertwo p{margin-left: 30px;width: 280px;height: 29px;color: rgba(16, 16, 16, 1);font-size: 20px;text-align: left;font-family: SourceHanSansSC-regular;}
+/* 企业认证第三个界面的按钮 */
+.modifyCertified{width: 116px;height: 43px;margin-left: 160px;border-radius: 4px;background-color: rgba(34, 90, 225, 0.9);color: rgba(255, 255, 255, 1);font-size: 14px;text-align: center;border: 1px solid rgba(161, 222, 238, 1);}
+
 /* 费用中心 */
 .costcenter{ display: flex; justify-content: center; flex-direction: column; align-items: center;}
 .costcenter .costcenter-top,.costcenter .costcenter-conter{ width: 95%; border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
@@ -597,7 +604,7 @@ a:active{ text-decoration: none; }
 /*账号关联弹框Ending*/
 
 /*删除数据弹窗Starting*/
-.deletedata{ position: fixed; width: 600px; height: 200px; top: 50%; left: 50%; z-index: 8888;
+.deletedata{ position: fixed; width: 600px; height: 200px; top: 50%; left: 50%; margin-left: -300px; margin-top: -100px; z-index: 8888;
   border-radius: 6px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
   border: 1px solid #BBBBBB; text-align: center;}
 .deletedata .deletedata-top p{ display: inline-block; font-size: 16px;}
@@ -610,7 +617,7 @@ a:active{ text-decoration: none; }
 /*删除数据弹窗Ending*/
 
 /*结单弹窗Starting*/
-.check{ position: fixed; width: 600px; height: 200px; top: 50%; left: 50%; z-index: 8888;
+.check{ position: fixed; width: 600px; height: 200px; top: 50%; left: 50%; margin-left: -300px; margin-top: -100px; z-index: 8888;
   border-radius: 6px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
   border: 1px solid #BBBBBB; text-align: center;}
 .check .check-top p{ display: inline-block; font-size: 16px;}
