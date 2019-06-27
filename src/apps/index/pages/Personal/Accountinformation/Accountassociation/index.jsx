@@ -55,8 +55,6 @@ export default class Accountassociation extends Component {
         <Message type='notice' className='message'>
           请点击 “去授权” 按钮， 在授权页面登录授权后，即可完成账号关联。
         </Message>
-
-
         <div style={{ marginTop: '30px' }}>
           <Button type='secondary'style={styles.cancelbtn} siza='large' onClick={this.accountassociationclose.bind(this)}>取消</Button>
           <Button type='primary'style={styles.submitbtn} siza='large'>去授权</Button>
