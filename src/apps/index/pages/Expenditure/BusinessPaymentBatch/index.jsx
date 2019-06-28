@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Input,Button , Grid, DatePicker , Tab, Select,Table,Pagination ,Message } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
-
+import '../../index.css';
 import IceContainer from '@icedesign/container';
 import moment from "moment/moment";
 
@@ -42,6 +42,9 @@ export default class Enterprise extends Component {
     // ;
     this.props.editor(this.input.getInputNode().value);
   }
+  btn() {
+    this.props.history.push('/admin/expenditure/enterprisepaymentapi');
+  }
   render() {
     const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
     const endValue = moment('2019-05-08', 'YYYY-MM-DD', true);
@@ -68,74 +71,83 @@ export default class Enterprise extends Component {
     ];
     const { isLoading, data, current } = this.state;
     return (
-      <div>
-        <div>
-          <FormBinderWrapper
-            value={this.state.value}
-            onChange={this.formChange}
-            ref="form"
-          >
-            <Row wrap gutter="20" style={styles.formRow}>
-              <Col l="24">
-                <div style={styles.formItem}>
-                  <span style={styles.formLabel}>选择时间</span>
-                  <FormBinder name="selectiontime"
-                    required
-                    message="请输入正确的名称"
-                    autoWidth={false}
-                  >
-                    <Select style={styles.formSelect} dataSource={selectiontime} />
-                  </FormBinder>
-                  <FormBinder name='startdate'>
-                    <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
-                  </FormBinder>
-                  <span style={styles.formLabel}>付款渠道</span>
-                  <FormBinder name='paymentchannel'>
-                    <Select style={styles.formSelect} dataSource={paymentchannel} />
-                  </FormBinder>
-                </div>
-              </Col>
-              <Col l="24">
-                <div style={styles.formItem}>
-                  <span style={styles.formLabel}>退款状态</span>
-                  <FormBinder name='refundstatus'>
-                    <Select style={styles.formSelect} dataSource={refundstatus} />
-                  </FormBinder>
-                  <span style={styles.formLabel}>订单号</span>
-                  <FormBinder name='ordernumber'>
-                    <Input className='input-bg' placeholder='输入订单号' hasClear />
-                  </FormBinder>
-                  <Button className='btn-all bg' size="large" type="secondary">搜索</Button>
-                  <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
-                </div>
-              </Col>
-            </Row>
-          </FormBinderWrapper>
-        </div>
-        <div className='expendordbat-tabs-border' />
+      <div className='expendordbat'>
+        <Tab shape='pure' className='expendordbat-tab' defaultActiveKey='2'>
+          <Tab.Item title="企业付款API" key='1 ' onClick={this.btn.bind(this)} >
 
-        <IceContainer>
-          <Table loading={isLoading} dataSource={data} hasBorder={false}>
-            <Table.Column title="创建时间、完成时间" dataIndex="name" />
-            <Table.Column title="商户订单号平台流水号" dataIndex="level" />
-            <Table.Column title="退款状态" dataIndex="balance" />
-            <Table.Column title="退款金额" dataIndex="accumulative" />
-            <Table.Column title="实付金额" dataIndex="regdate" />
-            <Table.Column title="付款渠道" dataIndex="birthday" />
-            <Table.Column
-              title="操作"
-              width={200}
-              dataIndex="oper"
-              cell={this.renderOper}
-            />
-          </Table>
-          <Pagination
-            style={styles.pagination}
-            current={current}
-            onChange={this.handlePaginationChange}
-          />
-        </IceContainer>
-{/*        <Button className='btn-all orderposab' size='large' type='secondary'>批量企业付款</Button>*/}
+          </Tab.Item>
+
+          <Tab.Item title="企业批量退款" key='2'>
+            <div>
+              <div>
+                <FormBinderWrapper
+                  value={this.state.value}
+                  onChange={this.formChange}
+                  ref="form"
+                >
+                  <Row wrap gutter="20" style={styles.formRow}>
+                    <Col l="24">
+                      <div style={styles.formItem}>
+                        <span style={styles.formLabel}>选择时间</span>
+                        <FormBinder name="selectiontime"
+                          required
+                          message="请输入正确的名称"
+                          autoWidth={false}
+                        >
+                          <Select style={styles.formSelect} dataSource={selectiontime} />
+                        </FormBinder>
+                        <FormBinder name='startdate'>
+                          <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
+                        </FormBinder>
+                        <span style={styles.formLabel}>付款渠道</span>
+                        <FormBinder name='paymentchannel'>
+                          <Select style={styles.formSelect} dataSource={paymentchannel} />
+                        </FormBinder>
+                      </div>
+                    </Col>
+                    <Col l="24">
+                      <div style={styles.formItem}>
+                        <span style={styles.formLabel}>退款状态</span>
+                        <FormBinder name='refundstatus'>
+                          <Select style={styles.formSelect} dataSource={refundstatus} />
+                        </FormBinder>
+                        <span style={styles.formLabel}>订单号</span>
+                        <FormBinder name='ordernumber'>
+                          <Input className='input-bg' placeholder='输入订单号' hasClear />
+                        </FormBinder>
+                        <Button className='btn-all bg' size="large" type="secondary">搜索</Button>
+                        <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
+                      </div>
+                    </Col>
+                  </Row>
+                </FormBinderWrapper>
+              </div>
+              <div className='expendordbat-tabs-border' />
+              <IceContainer>
+                <Table loading={isLoading} dataSource={data} hasBorder={false}>
+                  <Table.Column title="创建时间、完成时间" dataIndex="name" />
+                  <Table.Column title="商户订单号平台流水号" dataIndex="level" />
+                  <Table.Column title="退款状态" dataIndex="balance" />
+                  <Table.Column title="退款金额" dataIndex="accumulative" />
+                  <Table.Column title="实付金额" dataIndex="regdate" />
+                  <Table.Column title="付款渠道" dataIndex="birthday" />
+                  <Table.Column
+                    title="操作"
+                    width={200}
+                    dataIndex="oper"
+                    cell={this.renderOper}
+                  />
+                </Table>
+                <Pagination
+                  style={styles.pagination}
+                  current={current}
+                  onChange={this.handlePaginationChange}
+                />
+              </IceContainer>
+              {/*        <Button className='btn-all orderposab' size='large' type='secondary'>批量企业付款</Button> */}
+            </div>
+          </Tab.Item>
+        </Tab>
       </div>
     );
   }

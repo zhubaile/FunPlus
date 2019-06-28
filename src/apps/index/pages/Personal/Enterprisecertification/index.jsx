@@ -64,7 +64,9 @@ class Enterprisecertification extends Component {
       dustyInfoson: [],// 子类目数据的值
       dustyInfo: [],// 全部类目的数据值
       userCompanyInfo: [],
-      userCompanyStatus: [],
+      userCompanyStatus: {
+        status: '0'
+      },
     };
     this.handleProvinceChange = this.handleProvinceChange.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
@@ -160,6 +162,7 @@ class Enterprisecertification extends Component {
     } else {
       userstatuss;
     }
+    debugger;
     return (
       <div>
         <div className='personal-top'>

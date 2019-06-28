@@ -18,10 +18,9 @@ export default class FilterForm extends Component {
     this.state = {
       device: null,
       value: {
-        timeType: '',
+        timeType: 'createdAt',
         startdate: [],
         orderStatus: '',
-        // refundStatus: '全部',
         payChannel: '',
         device: '',
         out_trade_no: '',
@@ -36,12 +35,11 @@ export default class FilterForm extends Component {
   handleReset() {
     this.setState({
       value: {
-        timeType: '',
+        timeType: 'createdAt',
         startdate: [],
         orderStatus: '',
-        // refundStatus: '',
         payChannel: '',
-        device: null,
+        device: '',
         out_trade_no: '',
       },
     });
@@ -52,8 +50,8 @@ export default class FilterForm extends Component {
     validateFields((errors,values)=>{
       const arrivalDate = [];
       if (values.startdate.length == 2) {
-        const startdatestart = moment(values.startdate[0]._d).format('YYYY-MM-DD HH:mm:ss');
-        const startdateend = moment(values.startdate[1]._d).format('YYYY-MM-DD HH:mm:ss');
+        const startdatestart = moment(values.startdate[0]._d).valueOf();
+        const startdateend = moment(values.startdate[1]._d).valueOf();
         arrivalDate.push(startdatestart);
         arrivalDate.push(startdateend);
       }
@@ -95,7 +93,7 @@ export default class FilterForm extends Component {
               <FormBinder name="timeType"
                 autoWidth={false}
               >
-                <Select style={styles.formSelect} dataSource={timeType} />
+                <Select style={styles.formSelect} dataSource={timeType} defaultValue='createdAt' />
               </FormBinder>
               <FormBinder name='startdate'>
                 <RangePicker showTime resetTime />
@@ -121,7 +119,7 @@ export default class FilterForm extends Component {
                 <Select style={{ width: '200px' }} dataSource={device} />
               </FormBinder>
               <span style={styles.formLabel}>订单号</span>
-              <FormBinder name='outTradeNo'>
+              <FormBinder name='out_trade_no'>
                 <Input className='input-bg' placeholder='输入订单号' />
               </FormBinder>
               <Button className='btn-all bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>

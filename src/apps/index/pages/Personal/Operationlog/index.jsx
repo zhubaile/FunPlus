@@ -4,6 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import { Input, Radio, Select , Button, Grid, Form, DatePicker,Table,Pagination } from '@alifd/next';
 import Customerservice from "../components/Customerservice";
+import { loglist } from '@indexApi';
 import '../../index.css';
 import moment from "moment/moment";
 
@@ -40,14 +41,17 @@ class Operationlog extends Component {
         Operationtime: '',
         Operator: '全部',
       },
-      current: 1,
+      total: 0, // 总数据
+      pageSize: 10, // 一页条数
+      current: 1, // 页码
       isLoading: false,
-      data: [],
+      datas: [],
     };
   }
   formChange = (value) => {
     this.props.onChange(value);
   };
+  // 每次界面进来之后首先执行此方法
   componentDidMount() {
     this.fetchData();
   }
@@ -59,19 +63,47 @@ class Operationlog extends Component {
       }, 600);
     });
   };
-
+  // 搜索按钮
+  search(e) {
+    const { validateFields } = this.refs.form;
+    validateFields((errors,values)=>{
+      const arrivalDate = [];
+      if (values.startdate.length == 2) {
+        const startdatestart = moment(values.startdate[0]._d).valueOf();
+        const startdateend = moment(values.startdate[1]._d).valueOf();
+        arrivalDate.push(startdatestart);
+        arrivalDate.push(startdateend);
+      }
+      this.fetchData(values,arrivalDate);
+    });
+  }
   fetchData = (len) => {
     this.setState(
       {
         isLoading: true,
       },
       () => {
-        this.mockApi(len).then((data) => { // data 里面为数据
+        const pages = this.state.current;
+        const pageSize = this.state.pageSize;
+        loglist({
+          pages,
+          pageSize,
+        }).then(({ status,data })=>{
+          debugger;
+          if (data.errCode == 0) {
+            this.setState({
+              datas: data.data.result,
+              isLoading: false,
+              total: data.data.totalCount,
+            });
+          }
+        });
+        /* this.mockApi(len).then((data) => { // data 里面为数据
           this.setState({
             data,
             isLoading: false,
           });
-        });
+        }); */
       }
     );
   };
@@ -86,8 +118,14 @@ class Operationlog extends Component {
       }
     );
   };
+  createdAt=(e)=>{
+    const createdAt = moment(e).format('YYYY-MM-DD HH:mm:ss');
+    return (
+      <p>{createdAt}</p>
+    );
+  }
   render() {
-    const { isLoading, data, current } = this.state;
+    const { isLoading, datas, current,pageSize,total } = this.state;
     const {
       intl: { formatMessage },
     } = this.props;
@@ -99,49 +137,51 @@ class Operationlog extends Component {
     const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
     const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
     return (
-    <div>
-      <div className='personal-top'>
-        <span>操作日志</span>
-        <div className='personal-top-border' />
-      </div>
-      <div className="operationlog">
-        <div className='operationlog-top'>
-          <FormBinderWrapper
-            value={this.state.value}
-            onChange={this.formChange}
-            ref="form"
-          >
-            <span>操作时间：</span>
-            <FormBinder name='Operationtime'>
-              <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
-            </FormBinder>
-            <span className='rightspan'>操作人：</span>
-            <FormBinder name='Operator'>
-              <Select style={{ width: '200px' }} defaultValue={{ value: '全部 显示设备号可多选', label: '全部 显示设备号可多选' }} dataSource={Operator} />
-            </FormBinder>
-          </FormBinderWrapper>
-          <Button className='btn-all bg' size="large" type="primary">搜索</Button>
-          <Button className='btn-all' style={{ marginLeft: 20 }} size="large" type="secondary">重置</Button>
+      <div>
+        <div className='personal-top'>
+          <span>操作日志</span>
+          <div className='personal-top-border' />
         </div>
-        <div className='operationlog-bottom'>
-          <Table loading={isLoading} dataSource={data} hasBorder={false}>
-            <Table.Column title="时间" dataIndex="name" />
-            <Table.Column title="账号" dataIndex="level" />
-            <Table.Column title="应用" dataIndex="rule" />
-            <Table.Column title="操作" dataIndex="oper" />
-            <Table.Column title="操作对象" dataIndex="names" />
-            <Table.Column title="备注" dataIndex="levels" />
-            <Table.Column title="IP" dataIndex="rules" />
-          </Table>
-          <Pagination
-            style={{ marginTop: '20px', textAlign: 'right' }}
-            current={current}
-            onChange={this.handlePaginationChange}
-          />
+        <div className="operationlog">
+          <div className='operationlog-top'>
+            <FormBinderWrapper
+              value={this.state.value}
+              onChange={this.formChange}
+              ref="form"
+            >
+              <span>操作时间：</span>
+              <FormBinder name='Operationtime'>
+                <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
+              </FormBinder>
+              <span className='rightspan'>操作人：</span>
+              <FormBinder name='Operator'>
+                <Select style={{ width: '200px' }} defaultValue={{ value: '全部 显示设备号可多选', label: '全部 显示设备号可多选' }} dataSource={Operator} />
+              </FormBinder>
+            </FormBinderWrapper>
+            <Button className='btn-all bg' size="large" type="primary" onClick={this.search.bind(this)}>搜索</Button>
+            <Button className='btn-all' style={{ marginLeft: 20 }} size="large" type="secondary">重置</Button>
+          </div>
+          <div className='operationlog-bottom'>
+            <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+              <Table.Column title="时间" dataIndex="createdAt" cell={this.createdAt} />
+              <Table.Column title="账号" dataIndex="level" />
+              <Table.Column title="应用" dataIndex="rule" />
+              <Table.Column title="操作" dataIndex="oper" />
+              <Table.Column title="操作对象" dataIndex="names" />
+              <Table.Column title="备注" dataIndex="levels" />
+              <Table.Column title="IP" dataIndex="rules" />
+            </Table>
+            <Pagination
+              style={{ marginTop: '20px', textAlign: 'right' }}
+              current={current}
+              onChange={this.handlePaginationChange}
+              pageSize={pageSize} // 界面展示多少条数据
+              total={total} // 一共多少条数据
+            />
+          </div>
+          <Customerservice />
         </div>
-        <Customerservice />
       </div>
-    </div>
     );
   }
 }

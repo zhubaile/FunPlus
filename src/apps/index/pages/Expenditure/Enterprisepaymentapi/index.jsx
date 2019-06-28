@@ -5,6 +5,7 @@ import { actions, reducers, connect } from '@indexStore';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import moment from "moment/moment";
 import IceContainer from '@icedesign/container';
+import { totransferList } from '@indexApi';
 import '../../index.css';
 import { Dialog } from "@alifd/next/lib/index";
 import BusinessPaymentBatch from '../BusinessPaymentBatch';
@@ -37,15 +38,18 @@ export default class Orderrefund extends Component {
     super(props);
     this.state = {
       value: {
-        selectiontime: '创建时间',
-        startdate: '',
-        paymentchannel: '全部',
-        paymentstatus: '全部',
-        ordernumber: '',
+        timeType: 'createdAt',
+        startdate: [],
+        orderStatus: '',
+        payChannel: '',
+        out_trade_no: '',
       },
-      current: 1,
+      total: 0, // 总数据
+      pageSize: 10, // 一页条数
+      current: 1, // 页码
       isLoading: false,
-      data: [],
+      datas: [],
+      results2: [],
     };
   }
   // 表单的值
@@ -59,11 +63,11 @@ export default class Orderrefund extends Component {
   handleReset() {
     this.setState({
       value: {
-        selectiontime: '创建时间',
-        startdate: '',
-        paymentchannel: '全部',
-        paymentstatus: '全部',
-        ordernumber: '',
+        timeType: 'createdAt',
+        startdate: [],
+        orderStatus: '',
+        payChannel: '',
+        out_trade_no: '',
       },
     });
   }
@@ -77,26 +81,60 @@ export default class Orderrefund extends Component {
     this.fetchData();
   }
 
-  mockApi = (len) => {
+  /*  mockApi = (len) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据
       }, 600);
     });
-  };
-
-  fetchData = (len) => {
+  }; */
+  // 搜索按钮
+  search(e) {
+    const { validateFields } = this.refs.form;
+    validateFields((errors,values)=>{
+      const arrivalDate = [];
+      if (values.startdate.length == 2) {
+        const startdatestart = moment(values.startdate[0]._d).valueOf();
+        const startdateend = moment(values.startdate[1]._d).valueOf();
+        arrivalDate.push(startdatestart);
+        arrivalDate.push(startdateend);
+      }
+      this.fetchData(values,arrivalDate);
+    });
+  }
+  fetchData = (values,arrivalDate) => {
     this.setState(
       {
         isLoading: true,
       },
       () => {
-        this.mockApi(len).then((data) => { // data 里面为数据
+        const pages = this.state.current;
+        const pageSize = this.state.pageSize;
+        totransferList({
+          pages,
+          pageSize,
+          ...values,
+          arrivalDate,
+        }).then(({ status,data })=>{
+          debugger;
+          if (data.errCode == 0) {
+            // const channel = data.data.result2.channel; // 复制出来需要改变属性名的属性
+            // const channels = channel.map(item=>({ value: item._id,label: item.payScene })); // 改变成想要的属性名
+            // const Filterforms = Object.assign({},data.data.result2,{ channel: channels }); // 把数据里面的内容改变成更改过的
+            this.setState({
+              datas: data.data.result,
+              results2: data.data.result2,
+              isLoading: false,
+              total: data.data.totalCount,
+            });
+          }
+        });
+        /* this.mockApi(len).then((data) => { // data 里面为数据
           this.setState({
             data,
             isLoading: false,
           });
-        });
+        }); */
       }
     );
   };
@@ -146,6 +184,9 @@ export default class Orderrefund extends Component {
       </div>
     );
   };
+  btn() {
+    this.props.history.push('/admin/expenditure/businessPaymentBatch');
+  }
   render() {
     const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
     const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
@@ -169,7 +210,10 @@ export default class Orderrefund extends Component {
       { value: '拒绝', label: '拒绝' },
       { value: '规则拒绝', label: '规则拒绝' },
     ];
-    const { isLoading, data, current } = this.state;
+    const { isLoading, datas, current,pageSize,total,results2 } = this.state;
+    const dateType = results2.dateType;
+    const channel = results2.channel;
+    const orderStatus = results2.orderStatus;
     return (
       <div className='expendordbat'>
         <Tab shape='pure' className='expendordbat-tab'>
@@ -184,19 +228,19 @@ export default class Orderrefund extends Component {
                   <Col l="24">
                     <div style={styles.formItem}>
                       <span style={styles.formLabel}>选择时间</span>
-                      <FormBinder name="selectiontime"
+                      <FormBinder name="timeType"
                         required
                         message="请输入正确的名称"
                         autoWidth={false}
                       >
-                        <Select style={styles.formSelect} dataSource={selectiontime} />
+                        <Select style={styles.formSelect} dataSource={dateType} defaultValue='createdAt' />
                       </FormBinder>
                       <FormBinder name='startdate'>
                         <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
                       </FormBinder>
                       <span style={styles.formLabel}>付款渠道</span>
-                      <FormBinder name='paymentchannel'>
-                        <Select style={styles.formSelect} dataSource={paymentchannel} />
+                      <FormBinder name='payChannel'>
+                        <Select style={styles.formSelect} dataSource={channel} />
                       </FormBinder>
                     </div>
                   </Col>
@@ -207,10 +251,10 @@ export default class Orderrefund extends Component {
                         <Select style={styles.formSelect} dataSource={paymentstatus} />
                       </FormBinder>
                       <span style={styles.formLabel}>订单号</span>
-                      <FormBinder name='ordernumber'>
+                      <FormBinder name='out_trade_no'>
                         <Input className='input-bg' placeholder='输入订单号' hasClear />
                       </FormBinder>
-                      <Button className='btn-all bg' size="large" type="secondary">搜索</Button>
+                      <Button className='btn-all bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
                       <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
                       <Button className='btn-all bg right' size="large" type="secondary">导出表格</Button>
                     </div>
@@ -222,13 +266,15 @@ export default class Orderrefund extends Component {
             <div className='expendordbat-tabs-border' />
 
             <IceContainer>
-              <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                <Table.Column title="创建时间、完成时间" dataIndex="name" />
-                <Table.Column title="商户订单号平台流水号" dataIndex="level" />
+              <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+                <Table.Column title="创建时间" dataIndex="createdAt" />
+                <Table.Column title="完成时间" dataIndex="updatedAt" />
+                <Table.Column title="商户订单号" dataIndex="out_trade_no" />
+                <Table.Column title="平台流水号" dataIndex="outBizNo" />
                 <Table.Column title="付款状态" dataIndex="balance" />
-                <Table.Column title="付款金额" dataIndex="accumulative" />
+                <Table.Column title="付款金额" dataIndex="amount" />
                 <Table.Column title="批次号" dataIndex="regdate" />
-                <Table.Column title="付款渠道" dataIndex="birthday" />
+                <Table.Column title="付款渠道" dataIndex="channelName" />
                 <Table.Column
                   title="操作"
                   width={200}
@@ -240,13 +286,15 @@ export default class Orderrefund extends Component {
                 style={styles.pagination}
                 current={current}
                 onChange={this.handlePaginationChange}
+                pageSize={pageSize} // 界面展示多少条数据
+                total={total} // 一共多少条数据
               />
             </IceContainer>
             <Button className='btn-all orderposab' size='large' type='secondary'>发起单笔付款</Button>
           </Tab.Item>
 
-          <Tab.Item title="企业批量退款">
-            <BusinessPaymentBatch />
+          <Tab.Item title="企业批量退款" onClick={this.btn.bind(this)}>
+            {/* <BusinessPaymentBatch /> */}
           </Tab.Item>
         </Tab>
       </div>

@@ -23,9 +23,10 @@ export default class Editprofile extends Component {
     super(props);
     this.state = {
       open: false,
+      content: null,
       value: {
-        fullname: '',
-        mobilephone: '',
+        username: '',
+        phone: '',
         email: '',
         location: '',
       },
@@ -55,6 +56,7 @@ export default class Editprofile extends Component {
   }
 
   render() {
+    const { content } = this.state;
     if (!this.state.open) return null;
     return (
       <div className='editprofile-bulletbox'>
@@ -73,21 +75,21 @@ export default class Editprofile extends Component {
             label='全名'
             {...formItemLayout}
           >
-            <Input name='fullname' placeholder='马里亚戈麦斯' />
+            <Input name='username' defaultValue={content.username} />
           </FormItem>
 
           <FormItem
             label='手机'
             {...formItemLayout}
           >
-            <Input name="mobilephone" placeholder='（+86）010 1234 567' />
+            <Input name="phone" defaultValue={content.phone} />
           </FormItem>
 
           <FormItem
             label='电子邮箱'
             {...formItemLayout}
           >
-            <Input name="email" placeholder="coderthemes@gmail.com" />
+            <Input name="email" defaultValue={content.email} />
           </FormItem>
 
           <FormItem

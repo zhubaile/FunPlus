@@ -95,8 +95,9 @@ export default class ApplyBillingNext extends Component {
       if (data.errCode == 0) {
         Message.success(data.message);
         location.reload();
+      }else{
+        Message.success(data.message);
       }
-      Message.success(data.message);
     });
   }
   formChange = (value) => {

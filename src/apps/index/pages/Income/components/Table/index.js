@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Table, Pagination, Button, Dialog } from '@alifd/next';
+import { Table, Pagination, Button, Dialog,Message } from '@alifd/next';
 import { FormattedMessage } from 'react-intl';
 import IceContainer from '@icedesign/container';
 import FilterTag from '../FilterTag';
 import FilterForm from '../FilterForm';
-import { incomeList } from '@indexApi';
+import { incomeList,refund } from '@indexApi';
 import moment from "moment/moment";
 // Random Numbers
-const random = (min, max) => {
+/* const random = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
@@ -25,7 +25,7 @@ const getData = (length = 10) => {
       z: ['支付宝','爱穷游','好吧'][random(0, 2)],
     };
   });
-};
+}; */
 
 export default class GoodsTable extends Component {
   state = {
@@ -62,9 +62,6 @@ export default class GoodsTable extends Component {
       () => {
         // const pages = this.state.current;
         // const pageSize = this.state.pageSize;
-        console.log(value);
-        console.log(pageSize);
-        console.log(arrivalDate);
         incomeList({
           page,
           pageSize,
@@ -139,26 +136,29 @@ export default class GoodsTable extends Component {
       content: '暂不支持查看详情',
     });
   };
-  // value:空，index：索引，record：行内容
+  // 退款按钮
+  refunds=(id)=>{
+    refund({
+      _id: id,
+    }).then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        Message.success(data.message);
+      }else{
+        Message.success(data.message);
+      }
+    });
+  }
   renderOper = (value,index,record) => {
     return (
       <div>
-        {/*        <Button
-          type="primary"
-          style={{ marginRight: '5px', borderRadius: '6px' }}
-          onClick={this.handleDetail}
-        >
-          <FormattedMessage id="app.btn.detail" />
-        </Button>
-        <Button style={{ borderRadius: '6px' }} type="normal" warning onClick={()=>this.handleDelete(record,index)}>
-          <FormattedMessage id="app.btn.delete" />
-        </Button> */}
         <Button
           className='btn-all tablebtn'
           type="secondary"
           size='large'
+          onClick={this.refunds.bind(this,record._id)}
         >
-          <span>人工处理</span>
+          <span>退款</span>
         </Button>
       </div>
     );
