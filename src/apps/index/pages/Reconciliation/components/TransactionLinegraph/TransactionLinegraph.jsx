@@ -17,9 +17,9 @@ export default class TransactionLinegraph extends Component {
     // 参考：https://alibaba.github.io/BizCharts/
     // 数据源
     const data = [
-      { month: 'Jan', city: 'Tokyo', temperature: 70 },
-      { month: 'Jan', city: 'London', temperature: 3.9 },
-      { month: 'Jan', city: 'Zbl', temperature: 4 },
+      { month: '一月', city: 'Tokyo', temperature: 70 },
+      { month: '一月', city: 'London', temperature: 3.9 },
+      { month: '一月', city: 'Zbl', temperature: 4 },
       { month: 'Feb', city: 'Tokyo', temperature: -30 },
       { month: 'Feb', city: 'London', temperature: 4.2 },
       { month: 'Feb', city: 'Zbl', temperature: 4 },

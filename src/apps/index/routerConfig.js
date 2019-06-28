@@ -2,7 +2,6 @@ import React from 'react';
 import { getRouterData } from './utils/utils';
 import { asideMenuConfig } from './menuConfig';
 
-
 /* 错误的信息 */
 const Empty = React.lazy(() => import('./pages/Exception/Empty'));
 const Forbidden = React.lazy(() => import('./pages/Exception/Forbidden'));
@@ -57,8 +56,14 @@ const Webhooks = React.lazy(() => import('./pages/Auxiliarytools/Webhooks')); //
 const Serversidecharge = React.lazy(() => import('./pages/Auxiliarytools/Serversidecharge')); // 辅助工具-服务端
 const Payexperience = React.lazy(() => import('./pages/Auxiliarytools/Payexperience')); // 辅助工具-体验支付
 const Requestlog = React.lazy(() => import('./pages/Auxiliarytools/Requestlog')); // 辅助工具-请求log查看
+// 测试的界面
+const Testinterface = React.lazy(() => import('./pages/Z-Testinterface/ceshideIcescripts')); // 辅助工具-请求log查看
 // ========系统首页============ //
 const routerConfig = [
+  {
+    path: '/admin/z-testinterface/ceshideIcescripts',
+    component: Testinterface,
+  },
   {
     // path: '/admin/personal/accountinformation/:appid?', // 账户信息
     path: '/admin/personal/accountinformation',

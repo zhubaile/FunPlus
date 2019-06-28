@@ -26,10 +26,10 @@ export default class Header extends Component {
     this.state = {
     };
   }
-  componentDidMount(){
-    Cookies.set('applicationId', '5d1023eb8e0d1931a86af94f');
+  componentDidMount() {
+    Cookies.set('applicationId', 'f9d61ca0837211e99467c3c360ea292a');
   }
-  // f9d61ca0837211e99467c3c360ea292a  fog ,0a1cc81090cb11e992cd4b62d0c37a7c
+  // f9d61ca0837211e99467c3c360ea292a  ,0a1cc81090cb11e992cd4b62d0c37a7c,5d1023eb8e0d1931a86af94f
   handleSetting = () => {
     this.props.history.push('/setting');
   };

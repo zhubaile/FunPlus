@@ -36,8 +36,9 @@ export default class Deletedata extends Component {
         Message.success(data.message);
         this.deletedataopen();
         this.props.history.push("/admin/backstageworkorder/Allworkorders");
+      }else{
+        Message.success(data.message);
       }
-      Message.success(data.message);
     });
   }
   render() {

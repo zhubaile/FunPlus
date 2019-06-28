@@ -103,8 +103,9 @@ export default class Addgrouping extends Component {
             Message.success(data.message);
             this.addgroupingclose();
             this.props.Toupdatelist();
+          }else{
+            Message.success(data.message);
           }
-          Message.success(data.message);
         }
       ).catch(
         ({ status, data }) => {

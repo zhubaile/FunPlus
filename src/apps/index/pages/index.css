@@ -103,7 +103,6 @@ a:active{ text-decoration: none; }
 .expendordbat-tab  .expendordbat-tabs-border{clear: both; border-bottom: 2px solid #dddddd; margin-top: 20px;}
 .expendordbat-tab { position: relative;}
 .expendordbat-tab .orderposab{ position: absolute; top: 0; right: 20px; background:#E2EDFF; color: #1989FA; border-radius: 6px; border-color: #A3D0FD;}
-/*.expendordbat-tab .orderposab{ position: absolute; top: 0; right: 20px; background:#E6F1FC; color: #1989FA; border-radius: 5px;}*/
 
 .expendordbat-tab .next-tabs-content .expendbatchre-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 20px 25px; width: 80%;}
 .next-message.next-message-notice.expendbatchre-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 20px 25px; width: 80%;}

@@ -107,13 +107,13 @@ export default class Allworkorders extends Component {
       }).then(({ status,data })=>{
         debugger;
         if (data.errCode == 0) {
-          Message.success(data.message);
           this.setState({
             workDetail: data.data,
             Probleminput: '',
           });
+        } else {
+          Message.success(data.message);
         }
-        Message.success(data.message);
       });
     }
   // 删除工单

@@ -45,8 +45,7 @@ export default class Ippopup extends Component {
         this.ippopupclose();
         Message.success(data.message);
         location.reload(); // 待优化
-      }
-      Message.success(data.message);
+      } else { Message.success(data.message); }
     });
   }
   /*  adddaypopup() {

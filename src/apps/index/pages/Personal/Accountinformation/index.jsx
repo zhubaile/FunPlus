@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { Input,Button , Grid, DatePicker , Icon,Form, Tab, Select, Switch } from '@alifd/next';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import { actions, reducers, connect } from '@indexStore';
-import Circularchart from './Circularchart';
-import Customerservice from '../components/Customerservice';
-import { getMenu } from '../../../api';
-import '../../index.css';
+import { companyaccountInfo } from '@indexApi';
 import Editprofile from './Editprofile';
 import Authentication from './Authentication';
 import Accountassociation from './Accountassociation';
+import Circularchart from './Circularchart';
+import Customerservice from '../components/Customerservice';
+import '../../index.css';
 
 const FormItem = Form.Item;
 const formItemLayout = {
@@ -22,21 +22,31 @@ const formItemLayout = {
 };
 const { Row, Col } = Grid;
 
-/* function onChange(checked) {
-  console.log(`switch to ${checked}`);
-} */
-
 export default class Accountinformation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      industry: '互联网',
-      hangye: '1',
+      // industry: '互联网',
+      // hangye: '1',
       checked: false,
+      datas: [], // 用户所有数据
     };
     this.onChange = this.onChange.bind(this);
   }
-
+  componentDidMount() {
+    companyaccountInfo().then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        this.setState({
+          datas: data.data,
+        });
+      }
+    });
+  }
+  // 去认证
+  goauthentication() {
+    this.props.history.push('/admin/personal/enterprisecertification');
+  }
   onChange(checked) {
     this.setState({ checked });
   }
@@ -49,14 +59,16 @@ export default class Accountinformation extends Component {
   btn() {
     // const { params } = this.props.match;
     // params.appid,
-    debugger;
+    /* debugger;
     getMenu({
 
-    });
+    }); */
   }
 
+  // 编辑个人资料
   accountinformationOpen() {
-    this.Editprofile.editprofileopen();
+    const datas = this.state.datas;
+    this.Editprofile.editprofileopen(datas);
   }
 
   accountinformationOpenone() {
@@ -68,13 +80,13 @@ export default class Accountinformation extends Component {
   }
 
   render() {
-    const Industry = [
+    /* const Industry = [
       { value: '互联网', label: '互联网' },
     ];
     const Hangye = [
       { value: '1', label: '1' },
-    ];
-
+    ]; */
+    const { datas } = this.state;
     return (
       <div className='personal-account'>
         <Editprofile ref={ node => this.Editprofile = node } />
@@ -89,10 +101,10 @@ export default class Accountinformation extends Component {
             <div className='content-top'>
               <img style={{ borderRadius: '100%', width: '100px', height: '100px' }} alt="" src={require('@img/img/avatar1.jpg')} />
               <ul>
-                <li>mr.qiutang@qq.com</li>
+                <li>{datas.email}</li>
                 <li>超级管理员</li>
-                <li style={{ display: 'inline-block', marginRight: '5px' }}>￥5476<br />交易金额</li>
-                <li style={{ display: 'inline-block', marginLeft: '5px' }}>45笔<br />交易数量</li>
+                <li style={{ display: 'inline-block', marginRight: '5px' }}>￥{datas.tradeMoney}<br />交易金额</li>
+                <li style={{ display: 'inline-block', marginLeft: '5px' }}>{datas.tradeCount}笔<br />交易数量</li>
               </ul>
             </div>
             <div style={{ height: '15px', width: '100%' }} />
@@ -103,16 +115,10 @@ export default class Accountinformation extends Component {
               </div>
               <hr />
               <ul>
-                <li><span>全名：</span>马里亚戈麦斯</li>
-                <li><span>手机：</span>（+86）010 1234 567</li>
-                <li><span>电子邮件：</span>coderthemes@gmail.com</li>
+                <li><span>全名：</span>{datas.username}</li>
+                <li><span>手机：</span>{datas.phone}</li>
+                <li><span>电子邮件：</span>{datas.email}</li>
                 <li><span>地区：</span>中国</li>
-               {/* <li><span>语言：</span>汉语、 英语、 西班牙语</li>
-                <li><span>其他地方：</span>
-                  <img style={styles.myImg} src={require('@img/img/003.png')} />
-                  <img style={styles.myImg} src={require('@img/img/001.png')} />
-                  <img style={styles.myImg} src={require('@img/img/002.png')} />
-                </li>*/}
               </ul>
             </div>
           </div>
@@ -120,31 +126,25 @@ export default class Accountinformation extends Component {
           <div className='personal-account-right'>
             <div>
               <h3>企业认证</h3>
-              <p>认证状态： <span style={styles.mySpan}>未认证</span> <span style={styles.mySpan}>去认证</span></p>
+              <p>认证状态： {datas.companyStatus == 2 ? (<span style={styles.mySpan}>已认证</span>) : (<span style={styles.mySpan} onClick={this.goauthentication.bind(this)}>未认证</span>)}</p>
             </div>
             <hr />
-            <FormBinderWrapper
-              value={this.state.value}
-              onChange={this.formChange}
-              ref="form"
-            >
+            <Form >
               <div>
                 <h3>行业信息</h3>
                 <span>所属行业：</span>
-                <FormBinder name="industry">
-                  <Select placeholder='互联网' dataSource={Industry} />
-                </FormBinder>
-                <FormBinder name="hangye">
-                  <Select style={{ marginLeft: '15px' }} placeholder='1' dataSource={Hangye} />
-                </FormBinder>
+                <FormItem style={{ marginTop: '10px' }}>
+                  <Select name="pmsName" value={datas.pmsName} />
+                  <Select name="sonName" style={{ marginLeft: '15px' }} value={datas.sonName} />
+                </FormItem>
               </div>
-            </FormBinderWrapper>
+            </Form>
             <hr />
             <div className='login-method'>
               <h3>登录方式</h3>
               <p style={{ display: 'inline-block' }}>QQ: 无 <span style={styles.mySpan} onClick={this.accountinformationOpentwo.bind(this)}>关联</span></p>
               <p style={{ display: 'inline-block' }}>微信（注册方式）：xxx</p>
-              <p style={{ display: 'inline-block' }}>邮箱： 无 <span style={styles.mySpan} onClick={this.accountinformationOpentwo.bind(this)}>关联</span></p>
+              <p style={{ display: 'inline-block' }}>邮箱：{datas.email}{datas.emailStatus == 1 ? (<span style={styles.mySpan}>已关联</span>) : (<span style={styles.mySpan} onClick={this.accountinformationOpentwo.bind(this)}>未关联</span>)}</p>
             </div>
             <hr />
             <div>

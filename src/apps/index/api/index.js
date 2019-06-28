@@ -268,10 +268,45 @@ export function recharge(params) {
     data: params,
   });
 }
+// 操作日志
+export function loglist(params) {
+  return ajaxAmd.post({
+    url: '/loglist',
+    data: params,
+  });
+}
 // 收入
 export function incomeList(params) {
   return ajaxAmd.post({
     url: '/incomeList',
+    data: params,
+  });
+}
+// 订单退款
+export function refund(params) {
+  return ajaxAmd.post({
+    url: '/refund',
+    data: params,
+  });
+}
+// 订单退款列表
+export function orderRefundList(params) {
+  return ajaxAmd.post({
+    url: '/orderRefundList',
+    data: params,
+  });
+}
+// 批量退款列表
+export function batchRefundList(params) {
+  return ajaxAmd.post({
+    url: '/batchRefundList',
+    data: params,
+  });
+}
+// 企业付款列表
+export function totransferList(params) {
+  return ajaxAmd.post({
+    url: '/totransferList',
     data: params,
   });
 }
