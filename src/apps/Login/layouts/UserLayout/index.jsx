@@ -16,9 +16,7 @@ export default class UserLayout extends Component {
     return (
       <div style={styles.container}>
         <Header />
-        <IceImg
-          src={require('@img/login/zbg.png')}
-        />
+        <img src={require('@img/login/zbg.png')} />
         <Row wrap style={styles.row}>
           <Col l="12">
             <div style={styles.form}>

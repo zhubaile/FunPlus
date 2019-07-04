@@ -67,6 +67,7 @@ class UserRegister extends Component {
     const { intl } = this.props;
     return (
       <div style={styles.container}>
+        <p style={styles.prompt}>请在此填写你的信息和联系方式</p>
         <h4 style={styles.title}>
           <FormattedMessage id='app.register.register' />
         </h4>
@@ -160,6 +161,14 @@ const styles = {
     lineHeight: '30px',
     margin: '8px 0 20px 0',
     textIndent: '2em',
+  },
+  prompt: {
+    fontSize: '14px',
+    fontFamily: 'MicrosoftYaHei',
+    fontWeight: '400',
+    color: 'rgba(102,102,102,1)',
+    lineHeight: '22px',
+    paddingBottom: '15px',
   },
 };
 

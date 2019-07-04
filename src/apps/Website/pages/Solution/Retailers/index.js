@@ -74,7 +74,7 @@ export default class Retailers extends Component {
               </div>
             </div>
             <div className='scene-conter-xxl'>
-              <img src={require('../../../../../assets/img/solution/retailers/ds3.png')} style={{ width: '100%' }} alt="" />
+              <img src={require('../../../../../assets/img/solution/retailers/fn-ds.png')} style={{ width: '100%' }} alt="" />
             </div>
           </div>
         </div>

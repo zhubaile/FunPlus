@@ -84,7 +84,8 @@ a:active{ text-decoration: none; }
 /* 收入 */
 .incomepage{ width: 100%;}
 .incomepage .income-tab{ }
-.incomepage .income-tab .income-tabs{ }
+.incomepage .income-tab .income-tabs{display: inline-block;}
+.incomepage .income-tab .income-tabs div{display: inline-block; padding: 5px 10px; border-radius: 6px; border: 1px solid #A3D0FD; background-color: #E2EDFF; color: #419DFA; margin: 15px; }
 .incomepage .income-tab .income-tabs Button{ float: left; margin: 15px 10px; border-radius: 6px;}
 .incomepage .income-tab .income-tabs .rightbtn{ background-color: #E2EDFF; border-color: #A3D0FD;}
 .incomepage .income-tab .income-tabs.rightbtn{ float: right; }
@@ -431,6 +432,7 @@ a:active{ text-decoration: none; }
 .webhooks .tab-contenttwo .tab-contenttwo-left{ width: 100%; padding-bottom: 50px;}
 .webhooks .tab-contenttwo .tab-contenttwo-left .next-message.tab-contenttwo-left-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 20px 0;}
 .webhooks .tab-contenttwo .webhooks-inner-top div{ margin: 15px;}
+.webhooks .tab-contenttwo .webhooks-inner-top .myspan{display: inline-block; text-align: right; width: 90px;}
 .webhooks .tab-contenttwo .webhooks-inner-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 10px 20px; margin-bottom: 20px;}
   /*webhooks-ending*/
@@ -648,7 +650,7 @@ a:active{ text-decoration: none; }
 .check .check-bottom .next-btn.next-large.next-btn-secondary:hover{ background-color: #225AE1; color: #FFFFFF;}
 /*结单弹窗Ending*/
 
-/*----------*/
+/*在线客服按钮*/
 .Customerservice .floated-chat-btn{z-index: 9999;position: fixed;bottom: 10px;right: 10px;background: #097CFF;-webkit-box-shadow: 0 2px 20px 0 rgba(46, 130, 255, 0.75);box-shadow: 0 2px 20px 0 rgba(46, 130, 255, 0.75);border-radius: 75px;
   color: #fff;padding: 12px 20px;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;
   vertical-align: middle;font-size: 1.08rem;cursor: pointer;-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
@@ -867,4 +869,5 @@ a:active{ text-decoration: none; }
 .Customerservice .onlineservice .chat-controls .chat-extra a:hover .extra-tooltip {
   display: block;
 }
+
 

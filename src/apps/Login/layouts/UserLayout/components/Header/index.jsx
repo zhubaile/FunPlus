@@ -32,8 +32,7 @@ const styles = {
     display: 'flex',
     width: '100%',
     height: '60px',
-    background: '#e5d2fe',
-    opacity: '0.6',
+    background: '#e5d2fe'
   },
   left: {
     display: 'flex',

@@ -42,9 +42,10 @@ export default class Ceshi extends Component {
             </div>
             <div className='rely-conter-right'>
               <img
-                style={{ width: '100%' }}
-                src={require('../../../../assets/img/shouye/sy01.png')}
+                style={{ width: '55%', heght: '55%' }}
+                src={require('../../../../assets/img/shouye/pic01.png')}
               />
+              <p style={{ fontSize: '16px' }}>依托蓝牙和NFC技术 支持多种移动硬件</p>
             </div>
           </div>
         </div>
@@ -104,19 +105,20 @@ export default class Ceshi extends Component {
             </div>
             <div className='rely-conter-right'>
               <p style={{ width: '50%' }}><FormattedMessage id='app.website.shouye.rely2p' /></p>
+              <img className='myimg' src={require('@img/shouye/sy08.png')} />
             </div>
           </div>
         </div>
         {/*  */}
         <div className='rely'>
-          <div className='rely-conter'>
-            <div className='rely-conter-left'>
+          <div className='rely-conter-special'>
+            <div className='rely-conter-left-special'>
               <h1>平滑</h1>
               <h2 style={{ textIndent: '2em' }}><FormattedMessage id='app.website.shouye.rely3h2' /></h2>
               <p style={{ marginTop: '20px' }}><FormattedMessage id='app.website.shouye.rely3p' />
               </p>
             </div>
-            <div className='rely-conter-right'>
+            <div className='rely-conter-right-special'>
               <img
                 src={require('../../../../assets/img/shouye/b.png')}
                 style={{ backgroundSize: '100% 100%' , width: '100%', height: '100%' }}
@@ -129,9 +131,11 @@ export default class Ceshi extends Component {
           <div className='son-conter'>
             <div className='son-conter-left'>
               <img
-                style={{ backgroundSize: '100% 100%', width: '100%' }}
-                src={require('../../../../assets/img/shouye/sy02.png')}
+                style={{ backgroundSize: '100% 100%', width: '50%' }}
+                src={require('../../../../assets/img/shouye/pic2.png')}
               />
+              {/* <img src={require('@img/shouye/pic2.png')} /> */}
+              {/* <p style={styles.promptMessage}>提供便捷、稳定和安全的技术服务</p> */}
             </div>
             <div className='son-conter-right'>
               <div>
@@ -188,3 +192,9 @@ export default class Ceshi extends Component {
     );
   }
 }
+const styles = {
+  promptMessage: {
+    fontSize: '16px',
+    color: 'rgba(51, 51, 51, 1)',
+  },
+};

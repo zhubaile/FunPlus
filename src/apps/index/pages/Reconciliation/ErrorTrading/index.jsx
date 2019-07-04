@@ -89,5 +89,6 @@ const styles = {
   },
   btnRadius: {
     borderRadius: '6px',
+    marginLeft: '15px',
   },
 };

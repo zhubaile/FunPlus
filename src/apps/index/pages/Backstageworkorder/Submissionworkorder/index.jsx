@@ -289,8 +289,9 @@ class Submissionworkorder extends Component {
                   {/* 联系人qq */}
 
                   <div className='submissionworkorder-left-subbtn'>
-                    <Button type="primary">保存</Button>
+                    <Button style={{ borderColor: '#A3D0FD' }} type="primary">保存</Button>
                     <Form.Submit
+                      style={{ backgroundColor: '#245CE3', color: '#ffffff' }}
                       type="primary"
                       validate
                       onClick={this.validateAllFormField}
