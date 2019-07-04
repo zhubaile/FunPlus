@@ -13,6 +13,13 @@ export async function getMenu(params) {
   //   ;
   // });deviceGroup
 }
+// 设备管理列表
+export async function devicelist(params) {
+  return ajaxAmd.get({
+    url: '/device/list',
+    params,
+  });
+}
 // 获取分组列表
 export async function deviceGrouplist(params) {
   return ajaxAmd.get({
@@ -97,6 +104,20 @@ export async function routerRuleadd(params) {
     data: params,
   });
 }
+// 获取应用参数
+export async function settingget(params) {
+  return ajaxAmd.get({
+    url: '/setting',
+    params,
+  });
+}// 修改应用参数
+export async function settingpost(params) {
+  return ajaxAmd.post({
+    url: '/setting',
+    data: params,
+  });
+}
+
 // 获取IP
 export async function ObtainsettingwhiteIps(params) {
   return ajaxAmd.get({
@@ -310,6 +331,20 @@ export function totransferList(params) {
     data: params,
   });
 }
+// 出款审核列表
+export function payOutExamineList(params) {
+  return ajaxAmd.post({
+    url: '/payOutExamineList',
+    data: params,
+  });
+}
+// 出款审核
+export function payOutExamine(params) {
+  return ajaxAmd.post({
+    url: '/payOutExamine',
+    data: params,
+  });
+}
 // 搜索--获取对应的渠道
 export function getDevice(params) {
   return ajaxAmd.post({
@@ -317,7 +352,6 @@ export function getDevice(params) {
     data: params,
   });
 }
-
 // 用户工单查询
 export function workOrderworkList(params) {
   return ajaxAmd.post({
@@ -388,4 +422,31 @@ export function companyaccountInfo(params) {
     params,
   });
 }
-
+// 对账 财务汇总
+export function verifybillsummary(params) {
+  return ajaxAmd.get({
+    url: '/verifybill/summary',
+    params,
+  });
+}
+// 财务汇总 获取下拉框
+export function verifybillparams(params) {
+  return ajaxAmd.get({
+    url: '/verifybill/params',
+    params,
+  });
+}
+// 图标
+export function verifybill(params) {
+  return ajaxAmd.get({
+    url: '/verifybill',
+    params,
+  });
+}
+// 导出excle
+export function exportExcel(params) {
+  return ajaxAmd.get({
+    url: '/exportExcel',
+    params,
+  });
+}

@@ -54,7 +54,7 @@ export default class Member extends Component {
         <HelpcenterHeader HHcontent={this.state.HHcontent} HPcontent={this.state.HPcontent} />
         {/* 导航下面的展示内容 */}
         <div className="helpmember-topcontent">
-          <h2 style={{ fontSize: '26px' }}><FormattedMessage id='app.website.helpmember.topcontent.h2' /></h2>
+          <h2><FormattedMessage id='app.website.helpmember.topcontent.h2' /></h2>
           <p><FormattedMessage id='app.website.helpmember.topcontent.p' />
           </p>
         </div>

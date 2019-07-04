@@ -176,7 +176,7 @@ class Submissionworkorder extends Component {
                     <Input.TextArea
                       name='description'
                       placeholder="Type your message here..."
-                      rows='10'
+                      rows={10}
                     />
                     <span>
                     温馨提示：您所提交的工单问题服务时间为周一至周五9:00-18:00（节假日除外 ）我们会在两个工作日内处理，请您耐心等待。
@@ -289,8 +289,9 @@ class Submissionworkorder extends Component {
                   {/* 联系人qq */}
 
                   <div className='submissionworkorder-left-subbtn'>
-                    <Button type="primary">保存</Button>
+                    <Button style={{ borderColor: '#A3D0FD' }} type="primary">保存</Button>
                     <Form.Submit
+                      style={{ backgroundColor: '#245CE3', color: '#ffffff' }}
                       type="primary"
                       validate
                       onClick={this.validateAllFormField}

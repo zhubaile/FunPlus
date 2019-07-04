@@ -187,6 +187,18 @@ export default class Orderrefund extends Component {
   btn() {
     this.props.history.push('/admin/expenditure/businessPaymentBatch');
   }
+  createdAt=(e)=>{
+    const createdAt = moment(e).format('YYYY-MM-DD HH:mm:ss');
+    return (
+      <p>{createdAt}</p>
+    );
+  }
+  updatedAt=(e)=>{
+    const updatedAt = moment(e).format('YYYY-MM-DD HH:mm:ss');
+    return (
+      <p>{updatedAt}</p>
+    );
+  }
   render() {
     const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
     const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
@@ -267,8 +279,8 @@ export default class Orderrefund extends Component {
 
             <IceContainer>
               <Table loading={isLoading} dataSource={datas} hasBorder={false}>
-                <Table.Column title="创建时间" dataIndex="createdAt" />
-                <Table.Column title="完成时间" dataIndex="updatedAt" />
+                <Table.Column title="创建时间" dataIndex="createdAt" cell={this.createdAt} />
+                <Table.Column title="完成时间" dataIndex="updatedAt" cell={this.updatedAt} />
                 <Table.Column title="商户订单号" dataIndex="out_trade_no" />
                 <Table.Column title="平台流水号" dataIndex="outBizNo" />
                 <Table.Column title="付款状态" dataIndex="balance" />

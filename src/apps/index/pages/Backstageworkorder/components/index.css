@@ -14,7 +14,7 @@
 .leftnav{ width: 300px; background: #F2F4F8; border-right: 1px solid rgba(0, 0, 0, 0.05);}
 .leftnav-navtop{white-space: nowrap;margin-right: 0;}
 .navtop1-box{ width: 300px; background: #F2F4F8;}
-.chat-search{   padding: 15px 10px;border-bottom: 1px solid rgba(0, 0, 0, 0.05);}
+.chat-search{ padding: 15px 10px; border-bottom: 1px solid rgba(0, 0, 0, 0.05);}
 .element-search{  position: relative;}
 .element-search input {border: none;-webkit-box-shadow: none;box-shadow: none;background-color: #fff;border-radius: 30px;padding: 10px 15px 10px 40px;display: block;width: 100%;outline: none;color: black;}
 .element-search:before {font-family: 'osfont' !important;speak: none;font-style: normal;font-weight: normal;font-variant: normal;text-transform: none;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;
@@ -100,8 +100,8 @@ display: flex; align-items: center; }
 .submissionworkorder-left{ width: 70%; margin-top: 20px;}
 .submissionworkorder-left-step{ margin-bottom: 20px;}
 .submissionworkorder-left-step .next-step-arrow{ border-radius: 20px;}
-.submissionworkorder-left-subbtn{ margin-left: 100px;}
-.submissionworkorder-left-subbtn .next-btn.next-medium.next-btn-primary{ margin-left: 20px; width: 80px; background:#E6F1FC; color: #1989FA; border-radius: 5px;}
+.submissionworkorder-left-subbtn{ text-align: center;}
+.submissionworkorder-left-subbtn .next-btn.next-medium.next-btn-primary{ margin-left: 30px; width: 80px; background:#E6F1FC; color: #1989FA; border-radius: 6px;}
 
 /*.submissionworkorder-right{ width: 25%; border-left: 1px solid #AAAAAA;}*/
 .submissionworkorder-right{ width: 25%; border-left: 1px solid #AAAAAA; padding-left: 15px;}/*modify*/
@@ -112,18 +112,13 @@ display: flex; align-items: center; }
 .sidebar-navone{ width: 100%; padding: 15px 0px; text-align: center; font-size: 14px; color: #666666; border-top: 1px solid #eeeeee;}
 .sidebar-navtwo{ width: 100%; padding: 15px 0px; text-align: center; font-size: 14px; color: #666666; border-top: 1px solid #eeeeee; border-bottom: 1px solid #eeeeee;}
 a:hover .sidebar-navone,a:hover .sidebar-navtwo{ background:#037cf8; color: #FFFFFF; font-size: 14px; text-align: center;}
-
-/*.sidebar-navone{ width: 100%; padding: 15px 0px; text-align: center; font-size: 14px; color: #666666; border-top: 1px solid #eeeeee; border-bottom: 1px solid #eeeeee; border-left: 5px solid #eeeeee;}
-.sidebar-navtwo{ width: 100%; padding: 15px 0px; text-align: center; font-size: 14px; color: #666666; border-top: 1px solid #eeeeee; border-bottom: 1px solid #eeeeee; border-left: 5px solid #eeeeee;}
-a:hover .sidebar-navone,a:hover .sidebar-navtwo{ border-left: 5px solid #037cf8; color: #666666; background:#FFFFFF; font-size: 14px; text-align: center; color: #037cf8;}*/
-
 /*工单侧导航栏样式----ending*/
 
 
 /*  */
-.dealwith-workorder{ width: 100%; height: 550px; padding:15px 15px 40px 15px; border-radius: 10px; box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81); border: 1px solid rgba(255, 255, 255, 0);}
-.dealwith-workorder.record{ width: 100%; height: 360px; padding:15px 15px 40px 15px; border-radius: 10px; box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81); border: 1px solid rgba(255, 255, 255, 0);}
-.dealwith-workorder .communicationrecord{ width: 100%; padding: 20px; height: 350px; overflow: auto;}
+.dealwith-workorder{ width: 100%; height: 550px; padding:15px 15px 40px 15px; border-radius: 10px; box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81); border: 1px solid rgba(255, 255, 255, 0); background: #fff;}
+.dealwith-workorder.record{ width: 100%; height: 360px; padding:15px 15px 40px 15px; border-radius: 10px; box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81); border: 1px solid rgba(255, 255, 255, 0); background: #fff;}
+.dealwith-workorder .communicationrecord{ width: 100%; padding: 20px; height: 350px; overflow-y: scroll;}
 .communicationrecord .communicate{ padding: 10px 5px; border-bottom: 1px solid #f5f5f5}
 .communicationrecord .communicate img{ width: 50px; height: 50px; border-radius: 100px;}
 .communicationrecord .communicate img{ width: 50px; height: 50px; border-radius: 100px;}
@@ -134,3 +129,4 @@ a:hover .sidebar-navone,a:hover .sidebar-navtwo{ border-left: 5px solid #037cf8;
 .dealwith-workorder .next-input.next-input-textarea textarea{ height: 120px;}
 .dealwith-workorder .submit-btn{ text-align: right; margin: 20px 0px;}
 .dealwith-workorder .submit-btn .next-btn.next-large.next-btn-primary{ border-radius: 6px;}
+

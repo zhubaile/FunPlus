@@ -252,7 +252,7 @@ class Controloverinvoices extends Component {
               style={{ marginTop: '20px', textAlign: 'right' }}
               current={current}
               onChange={this.handlePaginationChange}
-              pageSize={10} // 界面展示多少条数据
+              pageSize={pageSize} // 界面展示多少条数据
               total={total} // 一共多少条数据
             />
             {/*            <h2>笔记：</h2>

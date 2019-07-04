@@ -5,6 +5,7 @@ import { actions, reducers, connect } from '@indexStore';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import moment from "moment/moment";
 import IceContainer from '@icedesign/container';
+import { payOutExamineList,payOutExamine } from '@indexApi';
 import '../../index.css';
 import { Dialog } from "@alifd/next/lib/index";
 import Batchrefund from '../Batchrefund';
@@ -43,9 +44,11 @@ export default class Orderrefund extends Component {
         refundstatus: '全部',
         ordernumber: '',
       },
-      current: 1,
+      total: 0, // 总数据
+      pageSize: 10, // 一页条数
+      current: 1, // 页码
       isLoading: false,
-      data: [],
+      datas: [],
     };
   }
   // 表单的值
@@ -77,13 +80,13 @@ export default class Orderrefund extends Component {
     this.fetchData();
   }
 
-  mockApi = (len) => {
+  /* mockApi = (len) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据
       }, 600);
     });
-  };
+  }; */
 
   fetchData = (len) => {
     this.setState(
@@ -91,12 +94,24 @@ export default class Orderrefund extends Component {
         isLoading: true,
       },
       () => {
-        this.mockApi(len).then((data) => { // data 里面为数据
+        const page = this.state.current;
+        const pageSize = this.state.pageSize;
+        payOutExamineList({
+          page,
+          pageSize,
+        }).then(({status,data})=>{
+          debugger;
+          this.setState({
+            datas: data.data,
+            isLoading: false,
+          });
+        });
+        /* this.mockApi(len).then((data) => { // data 里面为数据
           this.setState({
             data,
             isLoading: false,
           });
-        });
+        }); */
       }
     );
   };
@@ -147,8 +162,20 @@ export default class Orderrefund extends Component {
       </div>
     );
   };
+  createdAt=(e)=>{
+    const createdAt = moment(e).format('YYYY-MM-DD HH:mm:ss');
+    return (
+      <p>{createdAt}</p>
+    );
+  }
+  updatedAt=(e)=>{
+    const updatedAt = moment(e).format('YYYY-MM-DD HH:mm:ss');
+    return (
+      <p>{updatedAt}</p>
+    );
+  }
   render() {
-    const { isLoading, data, current } = this.state;
+    const { isLoading, datas, current,pageSize,total } = this.state;
     return (
       <div className='auditofpayment'>
         <Tab shape='pure' className='auditofpayment-tab'>
@@ -180,11 +207,13 @@ export default class Orderrefund extends Component {
             <span>本次搜索付款总额：5555</span>
             <div className='expendordbat-tabs-border' />
             <IceContainer>
-              <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                <Table.Column title="创建时间、完成时间" dataIndex="name" />
-                <Table.Column title="商户订单号平台流水号" dataIndex="level" />
-                <Table.Column title="付款状态" dataIndex="balance" />
-                <Table.Column title="付款金额" dataIndex="accumulative" />
+              <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+                <Table.Column title="创建时间" dataIndex="createdAt" cell={this.createdAt} />
+                <Table.Column title="完成时间" dataIndex="updatedAt" cell={this.updatedAt} />
+                <Table.Column title="商户订单号" dataIndex="outBizNo" />
+                <Table.Column title="平台流水号" dataIndex="outBizNo" />
+                <Table.Column title="付款状态" dataIndex="orderStatusName" />
+                <Table.Column title="付款金额" dataIndex="amount" />
                 <Table.Column title="批次号" dataIndex="regdate" />
                 <Table.Column title="付款渠道" dataIndex="birthday" />
                 <Table.Column
@@ -198,6 +227,8 @@ export default class Orderrefund extends Component {
                 style={styles.pagination}
                 current={current}
                 onChange={this.handlePaginationChange}
+                pageSize={pageSize} // 界面展示多少条数据
+                total={total} // 一共多少条数据
               />
             </IceContainer>
 

@@ -38,7 +38,7 @@ export default class Ceshi extends Component {
             <div className='service-conter-top'>
               <div>
                 <h1 style={{ textAlign: 'center' }}> <FormattedMessage id='app.website.chanpinadmin.service1h1' /></h1>
-                <p style={{ fontSize: '20px' , opacity: '0.8' }}> <FormattedMessage id='app.website.chanpinadmin.service1p' /></p>
+                <p style={{ fontSize: '20px' , color: 'rgba(102,102,102,1)', fontWeight: '400' }}> <FormattedMessage id='app.website.chanpinadmin.service1p' /></p>
               </div>
             </div>
           </div>
@@ -123,7 +123,7 @@ export default class Ceshi extends Component {
               </ul>
             </div>
             <div className='scene-botton-right'>
-              <img src={require('../../../../../assets/img/prodect/administration/sy3.png')} style={{ width: '100%' }} alt="" />
+              <img src={require('../../../../../assets/img/prodect/administration/pic03.png')} alt="" />
             </div>
           </div>
         </div>
@@ -140,22 +140,22 @@ export default class Ceshi extends Component {
             <div className='service-conter-botton'>
               <ul>
                 <li className='service-conter-botton-son'>
-                  <img src={require('../../../../../assets/img/prodect/administration/cp1.png')} alt="" />
+                  <span className='bgshadow'><img src={require('../../../../../assets/img/prodect/administration/cp1.png')} alt="" /></span>
                   <p><FormattedMessage id='app.website.chanpinadmin.service2bottom.p1' />
                   </p>
                 </li>
                 <li className='service-conter-botton-son'>
-                  <img src={require('../../../../../assets/img/prodect/administration/cp2.png')} alt="" />
+                  <span className='bgshadow'><img src={require('../../../../../assets/img/prodect/administration/cp2.png')} alt="" /></span>
                   <p><FormattedMessage id='app.website.chanpinadmin.service2bottom.p2' />
                   </p>
                 </li>
                 <li className='service-conter-botton-son'>
-                  <img src={require('../../../../../assets/img/prodect/administration/cp3.png')} alt="" />
+                  <span className='bgshadow'><img src={require('../../../../../assets/img/prodect/administration/cp3.png')} alt="" /></span>
                   <p><FormattedMessage id='app.website.chanpinadmin.service2bottom.p3' />
                   </p>
                 </li>
                 <li className='service-conter-botton-son'>
-                  <img src={require('../../../../../assets/img/prodect/administration/cp4.png')} alt="" />
+                  <span className='bgshadow'><img src={require('../../../../../assets/img/prodect/administration/cp4.png')} alt="" /></span>
                   <p><FormattedMessage id='app.website.chanpinadmin.service2bottom.p4' />
                   </p>
                 </li>

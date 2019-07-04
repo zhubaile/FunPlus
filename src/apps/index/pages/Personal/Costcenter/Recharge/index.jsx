@@ -4,8 +4,10 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Radio , Button, Grid, Form, Message } from '@alifd/next';
 // import { Link,withRouter } from 'react-router-dom';
 import { recharge } from '@indexApi';
-import Demopay from '../../../../../Website/pages/Demo/Demopay';
+// import Demopay from '../../../../../Website/pages/Demo/Demopay';
+import Demopayendpopup from '../../../../../Website/pages/Demo/Demopay/Demopayendpopup';
 import Wxpaypopup from './Wxpaypopup';
+// import Zfbpaypopup from './Zfbpaypopup';
 import '../../../index.css';
 
 const { Group: RadioGroup } = Radio;
@@ -53,11 +55,13 @@ export default class Recharges extends Component {
         payChannel: payvalues,
         totalFee: payinputvalue,
       }).then(({ status,data })=>{
-        debugger;
-        if (data.errCode = 0) {
-          this.setState({
+        if (data.errCode == 0) {
+          this.Demopayendpopup.zfboveropen();
+          window.open(data.data);
+          // this.Zfbpaypopup.open(data.data);
+          /* this.setState({
             // lianjie: data.data,
-          });
+          }); */
         }
         // parent.location.href = data.data;
         // this.props.history.push(data.data);
@@ -74,9 +78,11 @@ export default class Recharges extends Component {
     console.log(this.state.lianjie);
     return (
       <div className="Recharge">
-        <Demopay ref={node=>this.Demopay = node} />
+        {/* <Demopay ref={node=>this.Demopay = node} /> */}
+        <Demopayendpopup ref={node=>this.Demopayendpopup = node} />
         <Wxpaypopup ref={node=>this.Wxpaypopup = node} />
-        {/* <iframe src={this.state.lianjie} frameBorder="0" style={{ position: 'fixed', width: '200px', height: '200px', top: '50%', left: '50%', marginTop: '-290px', marginLeft: '-300px', zIndex: '8899' }} /> */}
+        {/* <Zfbpaypopup ref={node=>this.Zfbpaypopup = node} /> */}
+        {/* <iframe src={this.state.lianjie} frameBorder="0" style={{ position: 'fixed', width: '1000px', height: '800px', top: '50%', left: '50%', marginTop: '-400px', marginLeft: '-500px', zIndex: '8899', border: '2px solid red' }} /> */}
         <div className='Recharge-top'>
           账户余额充值
           <a href='javascript:;' onClick={this.close.bind(this)}>×</a>

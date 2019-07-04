@@ -106,8 +106,8 @@ export default class Recharges extends Component {
         <Tab shape='pure' className=''>
           <Tab.Item title='扣费明细'>
             <div className='deduction-details-topcontent'>
-              <Button className='bg' size="large" type="secondary">本月</Button>
-              <Button className='bg' size="large" type="secondary">上月</Button>
+              <Button className='btn-all bg' size="large" type="secondary">本月</Button>
+              <Button className='btn-all bg' size="large" type="secondary">上月</Button>
               <FormBinderWrapper
                 value={this.state.value}
                 onChange={this.formChange}

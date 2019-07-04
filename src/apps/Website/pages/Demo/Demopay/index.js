@@ -3,7 +3,7 @@ import { FormattedMessage, injectIntl } from 'react-intl'; // 国际化
 
 import {Slider } from '@alifd/next';
 import Footers from '../../../layouts/BasicLayout/components/Footer/Footers';
-import Zfbpaypopup from './Zfbpaypopup';
+import Demopayendpopup from './Demopayendpopup';
 import '../../index.css';
 
 
@@ -29,7 +29,7 @@ export default class Demopay extends Component {
     this.confirmCallBack = confirm
   }
   ceshi(){
-    this.Zfbpaypopup.zfboveropen();
+    this.Demopayendpopup.zfboveropen();
   }
   render() {
     const setting = {
@@ -45,7 +45,7 @@ export default class Demopay extends Component {
     if(!this.state.zfbopen) return null
     return (
       <div className='demopay'>
-        <Zfbpaypopup ref={(node)=>this.Zfbpaypopup=node} zfbclose={this.zfbclose.bind(this)} />
+        <Demopayendpopup ref={(node)=>this.Demopayendpopup=node} zfbclose={this.zfbclose.bind(this)} />
         <div className="hxj-popup-overlay">
               {/*半透明覆盖层*/}
         </div>

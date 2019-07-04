@@ -60,8 +60,8 @@ export default class Logistics extends Component {
             </div>
             <div className='service-conter-botton'>
               <img src={require('../../../../../assets/img/solution/logistics/wl4.png')} style={{ width: '100%' }} alt="" />
-              <p><FormattedMessage id='app.website.jjlogistics.service2.bottomp1' /></p>
-              <p><FormattedMessage id='app.website.jjlogistics.service2.bottomp2' /></p>
+              <p className="myp"><FormattedMessage id='app.website.jjlogistics.service2.bottomp1' /></p>
+              <p className='myp'><FormattedMessage id='app.website.jjlogistics.service2.bottomp2' /></p>
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@ export default class Logistics extends Component {
               </div>
             </div>
             <div className='scene-conter-xxl'>
-              <img src={require('../../../../../assets/img/solution/logistics/wl5.png')} style={{ width: '100%' }} alt="" />
+              <img src={require('../../../../../assets/img/solution/logistics/fn-wl.png')} style={{ width: '100%' }} alt="" />
             </div>
           </div>
         </div>

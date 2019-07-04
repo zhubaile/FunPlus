@@ -12,9 +12,10 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { loginUser } from '@loginApi';
 import IceImg from '@icedesign/img';
 
+
 @withRouter
   @injectIntl
-class UserLogin extends Component {
+class RetrievePassword extends Component {
   static displayName = 'UserLogin';
 
   static propTypes = {};
@@ -93,9 +94,18 @@ class UserLogin extends Component {
       <div style={styles.container}>
         <div style={styles.left}>
           <p style={styles.prompt}>请在此填写你的信息和联系方式</p>
+          <div style={styles.icon}>
+            <img src={require('@img/login/suo.png')} />
+          </div>
+
           <h4 style={styles.title}>
-            <FormattedMessage id='app.login.sign.in' />
+            密码找回
+            {/* <FormattedMessage id='app.login.sign.in' /> */}
           </h4>
+          <ul style={styles.promptMessage}>
+            <li>我们发送了一条短信到<span style={{ color: 'rgba(0,162,251,1)' }}>136-0000-0000</span></li>
+            <li>请输入短信中的验证码</li>
+          </ul>
           <IceFormBinderWrapper
             value={this.state.value}
             onChange={this.formChange}
@@ -103,15 +113,16 @@ class UserLogin extends Component {
           >
             <div style={styles.formItems}>
               <div style={styles.formItem}>
-                <IceIcon type="person" size="small" style={styles.inputIcon} />
+                {/*                <IceIcon type="person" size="small" style={styles.inputIcon} /> */}
                 <FormattedMessage id='app.login.user.errormessage'>
                   {txt => (
-                    <IceFormBinder name="username" required message={txt}>
+                    <IceFormBinder name="username" required message="验证码输入错误">
                       <Input
+                        addonTextAfter="重新获取"
                         hasClear
                         size="large"
-                        maxLength={20}
-                        placeholder={ intl.formatMessage({ id: 'app.login.username' }) }
+/*                        maxLength={20} */
+                        placeholder='验证码'
                         style={styles.inputCol}
                       />
                     </IceFormBinder>
@@ -120,7 +131,7 @@ class UserLogin extends Component {
                 <IceFormError name="username" />
               </div>
 
-              <div style={styles.formItem}>
+              {/*              <div style={styles.formItem}>
                 <IceIcon type="lock" size="small" style={styles.inputIcon} />
                 <FormattedMessage id='app.login.pass.errormessage'>
                   {txt => (
@@ -135,9 +146,9 @@ class UserLogin extends Component {
                   )}
                 </FormattedMessage>
                 <IceFormError name="password" />
-              </div>
+              </div> */}
 
-              <div style={styles.formItem}>
+              {/* <div style={styles.formItem}>
                 <IceFormBinder name="checkbox">
                   <Checkbox style={styles.checkbox}>
                     <FormattedMessage id='app.login.storage.number' />
@@ -146,20 +157,23 @@ class UserLogin extends Component {
                 <a style={{ float: 'right', cursor: 'pointer' }}>
                   <FormattedMessage id='app.login.forget.password' />
                 </a>
-              </div>
+              </div> */}
 
               <div style={styles.footer}>
-                <Button
-                  type="primary"
-                  size="large"
-                  onClick={this.handleSubmit}
-                  style={styles.submitBtn}
-                >
-                  <FormattedMessage id='app.login.sign.in' />
-                </Button>
-                <Link to="/user/sendmailbox" style={styles.tips}>
-                  <FormattedMessage id='app.login.register.now' />
+                <Link to="/user/setnewpassword">
+                  <Button
+                    type="primary"
+                    size="large"
+/*                  onClick={this.handleSubmit} */
+                    style={styles.submitBtn}
+                  >
+                  下一步
+                    {/* <FormattedMessage id='app.login.sign.in' /> */}
+                  </Button>
                 </Link>
+                {/*                <Link to="/user/sendmailbox" style={styles.tips}>
+                  <FormattedMessage id='app.login.register.now' />
+                </Link> */}
               </div>
             </div>
           </IceFormBinderWrapper>
@@ -203,25 +217,29 @@ const styles = {
     flexGrow: '1',
   },
   title: {
-    margin: '0 0 40px',
-    color: 'rgba(0, 0, 0, 0.8)',
-    fontSize: '28px',
-    fontWeight: '500',
+    /*    margin: '0 0 40px', */
+    color: 'rgba(0,162,251,1)',
+    fontSize: '18px',
+    fontWeight: '400',
+    fontFamily: 'MicrosoftYaHei',
     textAlign: 'center',
+    marginBlockStart: '0.8em',
+    marginBlockEnd: '0.8em',
   },
   formItem: {
     position: 'relative',
     marginBottom: '20px',
   },
-  inputIcon: {
+  /*  inputIcon: {
     position: 'absolute',
     left: '10px',
     top: '12px',
     color: '#666',
-  },
+  }, */
   inputCol: {
     width: '100%',
-    paddingLeft: '20px',
+    borderRadius: '10px',
+    /*    paddingLeft: '20px', */
   },
   submitBtn: {
     width: '100%',
@@ -251,6 +269,18 @@ const styles = {
     lineHeight: '22px',
     paddingBottom: '15px',
   },
+  promptMessage: {
+    textAlign: 'center',
+    fontSize: '14px',
+    fontFamily: 'MicrosoftYaHei',
+    fontWeight: '400',
+    color: 'rgba(102,102,102,1)',
+    lineHeight: '22px',
+    paddingBottom: '15px',
+  },
+  icon: {
+    textAlign: 'center',
+  },
 };
 
-export default UserLogin;
+export default RetrievePassword;

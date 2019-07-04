@@ -133,6 +133,7 @@ class UserRegister extends Component {
     return (
       <div style={styles.container}>
         <div style={styles.left}>
+          <p style={styles.prompt}>请在此填写你的信息和联系方式</p>
           <h4 style={styles.title}>
             <FormattedMessage id="app.register.register" />
           </h4>
@@ -324,6 +325,14 @@ const styles = {
     cursor: 'pointer',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  prompt: {
+    fontSize: '14px',
+    fontFamily: 'MicrosoftYaHei',
+    fontWeight: '400',
+    color: 'rgba(102,102,102,1)',
+    lineHeight: '22px',
+    paddingBottom: '15px',
   },
 };
 

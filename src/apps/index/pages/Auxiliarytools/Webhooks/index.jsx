@@ -110,15 +110,6 @@ export default class Webhooks extends Component {
   };
 
   render() {
-    /* const formItemLayout = {
-      labelCol: {
-        fixedSpan: 5,
-      },
-      wrapperCol: {
-        span: 14,
-      },
-    }; */
-
     const selectiontime = [
       { value: '支付成功', label: '支付成功' },
     ];
@@ -129,9 +120,7 @@ export default class Webhooks extends Component {
       { value: '商户订单号', label: '商户订单号' },
       { value: '平台订单号', label: '平台订单号' },
     ];
-
     const { isLoading, data, current } = this.state;
-
     return (
       <div className='webhooks'>
         <Tab shape='pure' className='backstage-tab'>
@@ -159,7 +148,6 @@ export default class Webhooks extends Component {
               </div>
 
             </div>
-            {/*  <Button type="primary" size="large" iconSize="large"><Icon type="atm" />在线客服</Button> */}
           </Tab.Item>
 
           <Tab.Item title="webhooks通知查询工具">
@@ -176,7 +164,7 @@ export default class Webhooks extends Component {
                   >
 
                     <div>
-                      <span style={styles.formLabel}>查询事件</span>
+                      <span className='myspan'>查询事件</span>
                       <FormBinder
                         name="selectiontime"
                         required
@@ -188,14 +176,14 @@ export default class Webhooks extends Component {
                     </div>
 
                     <div>
-                      <span style={styles.formLabel}>webhooks url</span>
+                      <span className='myspan'>webhooks url</span>
                       <FormBinder name='paymentchannel'>
                         <Select style={styles.formSelect} dataSource={paymentchannel} />
                       </FormBinder>
                     </div>
 
                     <div>
-                      <span style={styles.formLabel}>查询条件</span>
+                      <span className='myspan'>查询条件</span>
                       <FormBinder name='refundstatus'>
                         <Select style={styles.formSelect} dataSource={refundstatus} />
                       </FormBinder>
@@ -204,11 +192,9 @@ export default class Webhooks extends Component {
                         <Input className='input-bg' placeholder='输入订单号' hasClear />
                       </FormBinder>
                     </div>
-                    <div>
-                      <Button className='btn-all bg' size="large" type="secondary">搜索</Button>
+                    <div style={{ margin: '0px 115px' }}>
+                      <Button className='btn-all' size="large" type="secondary">搜索</Button>
                     </div>
-
-
                   </FormBinderWrapper>
                 </div>
 
@@ -241,7 +227,7 @@ export default class Webhooks extends Component {
 }
 
 const styles = {
-  containerTitle: {
+/*  containerTitle: {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     color: 'rgba(0, 0, 0, 0.85)',
@@ -256,14 +242,14 @@ const styles = {
     minWidth: '80px',
     marginLeft: '10px',
     textAlign: 'center',
-  },
+  },*/
   formSelect: {
     width: '200px',
     margin: '0 10px',
   },
-  pagination: {
+/*  pagination: {
     marginTop: '20px',
     textAlign: 'right',
-  },
+  },*/
 };
 

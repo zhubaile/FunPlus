@@ -73,7 +73,7 @@ export default class Traffic extends Component {
               </div>
             </div>
             <div className='scene-conter-xxl'>
-              <img src={require('../../../../../assets/img/solution/traffic/jt3.png')} style={{ width: '100%' }} alt="" />
+              <img src={require('../../../../../assets/img/solution/traffic/fn-jt.png')} style={{ width: '100%' }} alt="" />
             </div>
           </div>
         </div>

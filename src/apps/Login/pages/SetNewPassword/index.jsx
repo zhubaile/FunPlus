@@ -14,7 +14,7 @@ import IceImg from '@icedesign/img';
 
 @withRouter
   @injectIntl
-class UserLogin extends Component {
+class SetNewPassword extends Component {
   static displayName = 'UserLogin';
 
   static propTypes = {};
@@ -93,8 +93,12 @@ class UserLogin extends Component {
       <div style={styles.container}>
         <div style={styles.left}>
           <p style={styles.prompt}>请在此填写你的信息和联系方式</p>
+          <div style={styles.icon}>
+            <img src={require('@img/login/suo.png')} />
+          </div>
           <h4 style={styles.title}>
-            <FormattedMessage id='app.login.sign.in' />
+            密码找回
+             {/*<FormattedMessage id='app.login.sign.in' />*/}
           </h4>
           <IceFormBinderWrapper
             value={this.state.value}
@@ -103,15 +107,15 @@ class UserLogin extends Component {
           >
             <div style={styles.formItems}>
               <div style={styles.formItem}>
-                <IceIcon type="person" size="small" style={styles.inputIcon} />
-                <FormattedMessage id='app.login.user.errormessage'>
+                <FormattedMessage id='app.login.pass.errormessage'>
                   {txt => (
                     <IceFormBinder name="username" required message={txt}>
                       <Input
                         hasClear
+                        htmlType={this.state.type}
                         size="large"
                         maxLength={20}
-                        placeholder={ intl.formatMessage({ id: 'app.login.username' }) }
+                        placeholder='新密码'
                         style={styles.inputCol}
                       />
                     </IceFormBinder>
@@ -121,14 +125,13 @@ class UserLogin extends Component {
               </div>
 
               <div style={styles.formItem}>
-                <IceIcon type="lock" size="small" style={styles.inputIcon} />
                 <FormattedMessage id='app.login.pass.errormessage'>
                   {txt => (
                     <IceFormBinder name="password" required message={txt}>
                       <Input
                         size="large"
                         htmlType={this.state.type}
-                        placeholder={ intl.formatMessage({ id: 'app.login.password' }) }
+                        placeholder='确认密码'
                         style={styles.inputCol}
                       />
                     </IceFormBinder>
@@ -136,18 +139,6 @@ class UserLogin extends Component {
                 </FormattedMessage>
                 <IceFormError name="password" />
               </div>
-
-              <div style={styles.formItem}>
-                <IceFormBinder name="checkbox">
-                  <Checkbox style={styles.checkbox}>
-                    <FormattedMessage id='app.login.storage.number' />
-                  </Checkbox>
-                </IceFormBinder>
-                <a style={{ float: 'right', cursor: 'pointer' }}>
-                  <FormattedMessage id='app.login.forget.password' />
-                </a>
-              </div>
-
               <div style={styles.footer}>
                 <Button
                   type="primary"
@@ -155,11 +146,9 @@ class UserLogin extends Component {
                   onClick={this.handleSubmit}
                   style={styles.submitBtn}
                 >
-                  <FormattedMessage id='app.login.sign.in' />
+                  提交
+                   {/*<FormattedMessage id='app.login.sign.in' />*/}
                 </Button>
-                <Link to="/user/sendmailbox" style={styles.tips}>
-                  <FormattedMessage id='app.login.register.now' />
-                </Link>
               </div>
             </div>
           </IceFormBinderWrapper>
@@ -203,11 +192,14 @@ const styles = {
     flexGrow: '1',
   },
   title: {
-    margin: '0 0 40px',
-    color: 'rgba(0, 0, 0, 0.8)',
-    fontSize: '28px',
-    fontWeight: '500',
+/*    margin: '0 0 40px',*/
+    color: 'rgba(0,162,251,1)',
+    fontSize: '18px',
+    fontWeight: '400',
+    fontFamily: 'MicrosoftYaHei',
     textAlign: 'center',
+    marginBlockStart: '0.8em',
+    marginBlockEnd: '0.8em',
   },
   formItem: {
     position: 'relative',
@@ -221,7 +213,8 @@ const styles = {
   },
   inputCol: {
     width: '100%',
-    paddingLeft: '20px',
+    borderRadius: '10px',
+    /*    paddingLeft: '20px', */
   },
   submitBtn: {
     width: '100%',
@@ -251,6 +244,9 @@ const styles = {
     lineHeight: '22px',
     paddingBottom: '15px',
   },
+  icon: {
+    textAlign: 'center',
+  },
 };
 
-export default UserLogin;
+export default SetNewPassword;
