@@ -3,25 +3,13 @@ import { withRouter, Link } from 'react-router-dom';
 import { Input,Button , Grid, DatePicker , Tab, Message,Form ,Switch,Pagination,Table } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
 // import Ippopup from './ippopup';
-import { ObtainsettingwhiteIps,deletesettingwhiteIps,addwhiteListSwitch } from '@indexApi';
+import { settingget,settingpost } from '@indexApi';
 import '../../index.css';
 import Deleteapp from './deleteApp';
 
+const FormItem = Form.Item;
 const { Row, Col } = Grid;
 @withRouter
-/* const getData = (length = 10) => {
-  return Array.from({ length }).map(() => {
-    return {
-      name: ['淘小宝', '淘二宝'],
-      level: ['普通会员', '白银会员', '黄金会员', 'VIP 会员'],
-      balance: (10000, 100000),
-      accumulative: (50000, 100000),
-      regdate: `2018-12-1`,
-      birthday: `1992-10-1`,
-      store: ['余杭盒马店', '滨江盒马店', '西湖盒马店'],
-    };
-  });
-}; */
 
 export default class Applicationparameters extends Component {
   constructor(props) {
@@ -29,119 +17,88 @@ export default class Applicationparameters extends Component {
     this.state = {
       // current: 1,
       // isLoading: false,
-      // data: [],
+      datas: {
+        // md5Cipher: 'asd',
+      },
     };
   }
   btnClick() {
     this.props.editor(this.input.getInputNode().value);
   }
 
-  /* componentDidMount() {
+  componentDidMount() {
     this.fetchData();
-  } */
-
-  /*  mockApi = (len) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
-      }, 600);
-    });
-  }; */
-  // 获取所有ip的数据
-  /* fetchData = (len) => {
-    this.setState(
-      {
-        isLoading: true,
-      },
-      () => {
-        ObtainsettingwhiteIps().then(({ status,data })=>{
-          this.setState({
-            isLoading: false,
-            data: data.data,
-          });
+  }
+  /* componentWillMount() {
+    settingget().then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        this.setState({
+          datas: data.data,
         });
-        /!* this.mockApi(len).then((data) => { // data 里面为数据
-          this.setState({
-            data,
-            isLoading: false,
-          });
-        }); *!/
       }
-    );
-  }; */
-
-  /*  handlePaginationChange = (current) => {
-    this.setState(
-      {
-        current,
-      },
-      () => {
-        this.fetchData();
-      }
-    );
-  };
-  deleteip(record,index) {
-    deletesettingwhiteIps({
-      ip: record.ip,
     });
   } */
-  /*  renderOper = (value,index,record) => {
-    return (
-      <div>
-        <Button
-          type="primary"
-          style={{ marginRight: '5px' }}
-          onClick={this.handleDetail}
-        >
-          详情
-          {/!* <FormattedMessage id="app.btn.detail" /> *!/}
-        </Button>
-        <Button type="normal" warning onClick={()=>this.deleteip(record,index)}>
-          删除
-          {/!* <FormattedMessage id="app.btn.delete" /> *!/}
-        </Button>
-      </div>
-    );
-  }; */
+  // 获取所有ip的数据
+   fetchData = (len) => {
+     settingget().then(({ status,data })=>{
+       if (data.errCode == 0) {
+         this.setState({
+           datas: data.data,
+         });
+       }
+     });
+   };
+
   // 复制按钮功能
-  copybtn() {
-    const applicationID = this.applicationID.getInputNode(); // Input 获取demo节点用getInputNode()方法
-    applicationID.select();
-    if (!applicationID.value) {
-      Message.success('复制内容为空');
-      return;
-    }
-    document.execCommand('copy');
-    Message.success('复制成功');
-  }
+   copybtn() {
+     const applicationID = this.applicationID.getInputNode(); // Input 获取demo节点用getInputNode()方法
+     applicationID.select();
+     if (!applicationID.value) {
+       Message.success('复制内容为空');
+       return;
+     }
+     document.execCommand('copy');
+     Message.success('复制成功');
+   }
+   // 配置
   handleSubmit=()=> {
-    const z = this.Mtextinput.getInputNode().value;
-    alert(z);
+    const appId = this.applicationID.getInputNode();
+    const md5Cipher = this.md5Cipher.getInputNode().value;
+    const sitePublickKey = this.Mtextinput.getInputNode().value;
     debugger;
   }
-  btn() {
-    this.props.history.push('/admin/applicationsettings/ipnamelist');
-  }
-  /* // 添加ip
-  addIP() {
-    this.Ippopup.ippopupopen();
-  }
-  // 白名单开关
-  addopenSwitch(e) {
-    debugger;
-    addwhiteListSwitch({
-      whiteListSwitch: e,
+  // 确定
+  determine=()=>{
+    const appId = this.applicationID.getInputNode().value;
+    const md5Cipher = this.md5Cipher.getInputNode().value;
+    const sitePublickKey = this.Mtextinput.getInputNode().value;
+    const mchRsaPubKey = this.state.datas.mchRsaPubKey;
+    settingpost({
+      appId,
+      md5Cipher,
+      sitePublickKey,
+      mchRsaPubKey,
     }).then(({ status,data })=>{
       if (data.errCode == 0) {
         Message.success(data.message);
       }
     });
-  } */
+  }
+  btn() {
+    this.props.history.push('/admin/applicationsettings/ipnamelist');
+  }
 
   applicationparametersOpen() {
     this.Deleteapp.deleteappopen();
   }
-
+  mdCipherbtn(e) {
+    debugger;
+    const data = Object.assign({},this.state.datas,{ md5Cipher: e });
+    this.setState({
+      datas: data,
+    });
+  }
   render() {
     const formItemLayout = {
       labelCol: {
@@ -151,7 +108,7 @@ export default class Applicationparameters extends Component {
         span: 14,
       },
     };
-    const { isLoading, data, current } = this.state;
+    const { isLoading, datas, current } = this.state;
     const copybtn = (<Button className='button' onClick={this.copybtn.bind(this)}>复制</Button>);
     const phonebtn = (<Button className='button'>手机/邮箱验证查看</Button>);
     return (
@@ -169,24 +126,27 @@ export default class Applicationparameters extends Component {
                 <Form style={{ width: '80%' , marginTop: '20px' }} {...formItemLayout}>
                   <Form.Item label="应用ID:">
                     <Input.Group addonAfter={copybtn}>
-                      <Input className='input-bg' hasClear placeholder='请输入您的ID' style={{ width: '100%' }} aria-label="please input" ref={node=>this.applicationID = node} name='username' />
+                      <Input className='input-bg' hasClear value={datas.appId} readOnly style={{ width: '100%' }} aria-label="please input" ref={node=>this.applicationID = node} name='username' />
                     </Input.Group>
                   </Form.Item>
                   <Form.Item label="MD5密钥:">
                     <Input.Group addonAfter={phonebtn}>
-                      <Input className='input-bg' hasClear htmlType="password" placeholder="******" style={{ width: '100%' }} aria-label="please input" name='userid' />
+                      {/* htmlType="password" */}
+                      <Input style={{ width: '100%' }} hasClear className='input-bg' value={datas.md5Cipher} onChange={this.mdCipherbtn.bind(this)} aria-label="please input" name='userid' ref={node=>this.md5Cipher = node} />
                     </Input.Group>
                   </Form.Item>
                   <Form.Item label="平台公钥">
                     <Input.TextArea
-                      placeholder="something"
+                      value={datas.sitePublickKey}
+                      readOnly
                       // name="remark"
-                      rows='10'
+                      rows={10}
                       ref={node => this.Mtextinput = node}
                     />
                   </Form.Item>
-                  <Form.Item label="商户RSA公钥">
+                  <Form.Item label={datas.mchRsaPubKey}>
                     <Form.Submit className='button' onClick={this.handleSubmit}>立刻配置公钥</Form.Submit>
+                    <Form.Submit className='button' onClick={this.determine}>确定</Form.Submit>
                   </Form.Item>
                 </Form>
               </div>

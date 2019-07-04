@@ -7,66 +7,46 @@ import moment from 'moment';
 
 
 const currentDate = moment();
+const year = currentDate.year();
+const month = currentDate.month();
 const localeData = currentDate.clone().localeData(); // clone()克隆  localeData 语言设置
-const monthLocale = localeData.monthsShort(); // 获取语言数据
+const monthLocale = localeData.monthsShort(); // 返回月份的缩写
 const { RangePicker } = DatePicker;
 const { Row, Col } = Grid;
 
 export default class Transactionreport extends Component {
-  state = {};
-
-  formChange = (value) => {
-    this.props.onChange(value);
-  };
-  // 日份
-  dateCellRender(date) {
-    const dateNum = date.date();
-    console.log(dateNum);
-    const datas = [
+  state = {
+    Particularyear: year,
+    Month: month,
+    datas: [
       { type: 'kexiazai', content: '28' },
       { type: 'kexiazai', content: '1' },
       { type: 'kexiazai', content: '3' },
       { type: 'duizhangwanbi', content: '15' },
       { type: 'youchacuo', content: '13' },
-    ];
-    if (currentDate.month() !== date.month()) {
+    ],
+  };
+
+  formChange = (value) => {
+    this.props.onChange(value);
+  };
+  // 选择日期值
+  onMonthCellRender(value) {
+    const years = value.year();
+    const months = value.month();
+    this.setState({
+      Particularyear: years,
+      Month: months,
+    });
+  }
+  // 日份
+  dateCellRender(date) {
+    const dateNum = date.date();
+    console.log(dateNum);
+    const datas = this.state.datas;
+    if (this.state.Month !== date.month()) {
       return dateNum;
     }
-    /* switch (dateNum) {
-      case 3:
-        eventList = [
-          { type: 'weishengcheng', content: '3' },
-        ];
-        break;
-      case 10:
-        eventList = [
-          { type: 'weishengcheng', content: '10' },
-        ];
-        break;
-      case 11:
-        eventList = [
-          { type: 'wujiaoyi', content: '11' },
-        ];
-        break;
-      case 13:
-        eventList = [
-          { type: 'youchacuo', content: '13' },
-        ];
-        break;
-      case 15:
-        eventList = [
-          { type: 'duizhangwanbi', content: '15' },
-        ];
-        break;
-      case 18:
-        eventList = [
-          { type: 'wujiaoyi', content: '18' },
-        ];
-        break;
-      default:
-        eventList = [];
-    } */
-
     return (<div className="custom-calendar-cell">
       <div className="custom-calendar-cell-value">{dateNum}</div>
       <div className="custom-calendar-cell-content">
@@ -84,10 +64,10 @@ export default class Transactionreport extends Component {
   // 月份
   monthCellRender(date) {
     debugger;
-    if (currentDate.month() === date.month()) {
+    if (this.state.Month === date.month()) {
       debugger;
-      return (<div>
-        <div>{monthLocale[date.month()]}</div>
+      return (<div style={{ color: 'red' }}>
+        <div>{monthLocale[this.state.Month]}</div>
         <div>Events</div>
       </div>);
     }
@@ -129,6 +109,7 @@ export default class Transactionreport extends Component {
           <div className='transactionreport-content-calendar'>
             <Calendar style={{ width: '900px', padding: '12px', border: '1px solid #C4C6CF', borderRadius: '3px' }}
               shape="fullscreen"
+              onVisibleMonthChange={this.onMonthCellRender.bind(this)}
               dateCellRender={this.dateCellRender.bind(this)}
               monthCellRender={this.monthCellRender.bind(this)}
             />

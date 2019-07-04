@@ -74,8 +74,8 @@ export default class FilterForm extends Component {
     });
   }
   render() {
-    // const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
-    // const endValue = moment('2017-12-15', 'YYYY-MM-DD', true); defaultValue={[startValue,endValue]}
+    const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
+    const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
     const orderStatus = this.props.Filterform.orderStatus; // 支付状态
     const payChannel = this.props.Filterform.channel; // 支付渠道
     const timeType = this.props.Filterform.dateType; // 支付时间
@@ -96,7 +96,7 @@ export default class FilterForm extends Component {
                 <Select style={styles.formSelect} dataSource={timeType} defaultValue='createdAt' />
               </FormBinder>
               <FormBinder name='startdate'>
-                <RangePicker showTime resetTime />
+                <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
               </FormBinder>
               <span style={styles.formLabel}>支付状态</span>
               <FormBinder name='orderStatus'>

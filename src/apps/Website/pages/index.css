@@ -280,10 +280,10 @@ img{ background-size: 100% 100%;}
 .demopay-main-footer-bottom .footer-bottom-right .btn.bottom{ transform: translate(-52px, 50px);}
 
 /* 支付完成的弹框 */
-.zfbpaypopup{ position: fixed; width: 350px; height: 249px; top: 50%; left: 50%; margin-top: -124px; margin-left: -175px; text-align: center; z-index: 8988;
+.demopayendpopup{ position: fixed; width: 350px; height: 249px; top: 50%; left: 50%; margin-top: -124px; margin-left: -175px; text-align: center; z-index: 8988;
   border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
-.zfbpaypopup-top{ padding: 20px; margin-bottom: 20px; border-bottom: 1px solid #BBBBBB; }
-.zfbpaypopup-bottom{ padding: 5px;}
-.zfbpaypopup-bottom p strong{ color:rgba(0,162,246,1) }
-.zfbpaypopup-bottom button{ margin: 5px 10px;}
+.demopayendpopup-top{ padding: 20px; margin-bottom: 20px; border-bottom: 1px solid #BBBBBB; }
+.demopayendpopup-bottom{ padding: 5px;}
+.demopayendpopup-bottom p strong{ color:rgba(0,162,246,1) }
+.demopayendpopup-bottom button{ margin: 5px 10px;}

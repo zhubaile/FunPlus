@@ -37,6 +37,8 @@ class Costcenter extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      pageSize: 10,
+      total: 0,
       current: 1,
       isLoading: false,
       datas: [],
@@ -60,11 +62,17 @@ class Costcenter extends Component {
         isLoading: true,
       },
       () => {
-        rechargeList().then(({ status,data })=>{
+        const page = this.state.current;
+        const pageSize = this.state.pageSize;
+        rechargeList({
+          page,
+          pageSize,
+        }).then(({ status,data })=>{
           debugger;
           this.setState({
             datas: data.data.result,
             isLoading: false,
+            total: data.data.totalCount,
           });
         });
         /* this.mockApi(len).then((data) => { // data 里面为数据
@@ -101,7 +109,7 @@ class Costcenter extends Component {
     );
   }
   render() {
-    const { isLoading, datas, current } = this.state;
+    const { isLoading, datas, current,pageSize ,total } = this.state;
     const {
       intl: { formatMessage },
     } = this.props;
@@ -181,6 +189,9 @@ class Costcenter extends Component {
                   style={{ marginTop: '20px', textAlign: 'right' }}
                   current={current}
                   onChange={this.handlePaginationChange}
+                  pageSize={pageSize} // 界面展示多少条数据
+                  total={total} // 一共多少条数据
+
                 />
               </Tab.Item>
             </Tab>

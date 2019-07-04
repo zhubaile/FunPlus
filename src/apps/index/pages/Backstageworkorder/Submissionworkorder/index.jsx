@@ -176,7 +176,7 @@ class Submissionworkorder extends Component {
                     <Input.TextArea
                       name='description'
                       placeholder="Type your message here..."
-                      rows='10'
+                      rows={10}
                     />
                     <span>
                     温馨提示：您所提交的工单问题服务时间为周一至周五9:00-18:00（节假日除外 ）我们会在两个工作日内处理，请您耐心等待。

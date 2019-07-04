@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { findDomNode } from 'react-dom';
 import { Table,Input,Radio ,Dialog ,DatePicker,Rating,Message,Button, Select , Form } from '@alifd/next';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
-import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import moment from "moment/moment";
 // import { Dialog,Message } from "@alifd/next/lib/index";
 import { workOrdercustomerWork,workOrderremainEvaluated } from '@indexApi';
@@ -19,7 +19,7 @@ const formItemLayout = {
 };
 
 
-export default class Allworkorders extends Component {
+export default class Workorderdetails extends Component {
   static displayName = 'Setting';
 
   constructor(props) {
@@ -29,41 +29,22 @@ export default class Allworkorders extends Component {
       Probleminput: '',
       // isBottom: true,
       isLoading: false,
-      work: this.props.location.state.work,
-      workDetail: this.props.location.state.workDetail,
-      workEvaluate: this.props.location.state.workEvaluate,
+      work: this.props.location.state.work, // 工单详情
+      workDetail: this.props.location.state.workDetail, // 聊天记录
+      workEvaluate: this.props.location.state.workEvaluate, // 评价内容
     };
+    this.onScrollHandle = this.onScrollHandle.bind(this);
   }
   formChange = (value) => {
     debugger;
   };
-  /* componentDidMount() {
-    // this.fetchData();
-  } */
-
-  /*  mockApi = (len) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据
-      }, 600);
-    });
-  }; */
-
-  fetchData = (len) => {
-    this.setState(
-      {
-        isLoading: true,
-      },
-      () => {
-        /* this.mockApi(len).then((data) => { // data 里面为数据
-          this.setState({
-            data,
-            isLoading: false,
-          });
-        }); */
-      }
-    );
-  };
+  onScrollHandle(event) {
+    const clientHeight = event.clientHeight;
+    const scrollHeight = event.scrollHeight;
+    const scrollTop = (scrollHeight - clientHeight);
+    this.messagesEnd.scrollTop = scrollTop;
+    console.log(scrollTop);
+  }
 
   handleDelete = () => {
     Dialog.confirm({
@@ -81,7 +62,7 @@ export default class Allworkorders extends Component {
       content: '暂不支持查看详情',
     });
   };
-  // 输入框时间
+  // 输入框事件
   probleminput(v,e) {
     this.setState({
       Probleminput: v,
@@ -97,6 +78,7 @@ export default class Allworkorders extends Component {
       const contents = this.state.Probleminput;
       const _id = this.state.workDetail[0]._id;
       const byReplyId = this.state.workDetail[0].userId;
+      debugger;
       if (!contents) {
         return Message.success('输入问题不能为空');
       }
@@ -110,6 +92,8 @@ export default class Allworkorders extends Component {
           this.setState({
             workDetail: data.data,
             Probleminput: '',
+          },()=>{
+            this.onScrollHandle(this.messagesEnd);
           });
         } else {
           Message.success(data.message);
@@ -153,30 +137,6 @@ export default class Allworkorders extends Component {
     }
   }
 
-  /*  onScrollHandle() {
-    const clientHeight = event.target.clientHeight;
-    const scrollHeight = event.target.scrollHeight;
-    const scrollTop = event.target.scrollTop;
-    const isBottom = (clientHeight + scrollTop === scrollHeight);
-    // $messages_w.scrollTop($messages_w.prop("scrollHeight"));
-    debugger;
-  }
-
-  componentDidMount() {
-    if (this.messagesEnd) {
-      this.messagesEnd.scrollTop(this.messagesEnd.scrollHeight);
-      // this.messagesEnd.scrollTop(this.messagesEnd.scrollHeight);
-      // this.messagesEnd.addEventListener('scroll', this.onScrollHandle.bind(this));
-    }
-  }
-  componentWillUnmount(nextProps, nextState) {
-    debugger;
-    if (this.messagesEnd) {
-      this.messagesEnd.scrollTop(this.messagesEnd.prop('scrollHeight'));
-      // debugger;
-      // this.messagesEnd.removeEventListener('scroll', this.onScrollHandle.bind(this));
-    }
-  } */
   // 工单评价
   remainEvaluated = (values, errors) => {
     if (!errors) {
@@ -232,7 +192,7 @@ export default class Allworkorders extends Component {
           </div>
           <p style={{ borderLeft: '2px solid blue', marginLeft: '5px' }}>沟通记录</p>
           <div className={isStatement == 1 ? 'dealwith-workorder record' : 'dealwith-workorder'}>
-            <div className='communicationrecord' ref={(el) => { this.messagesEnd = el; }} >
+            <div className='communicationrecord' ref={(node) => { this.messagesEnd = node; }} >
               {/* <div className='communicate'> */}
               {
                 workDetail.map((item)=>{
@@ -302,7 +262,7 @@ export default class Allworkorders extends Component {
                     <Input.TextArea
                       name='messages'
                       placeholder="Type your message here..."
-                      rows='10'
+                      rows={10}
                     />
                   </FormItem >
                   <FormItem label=" ">

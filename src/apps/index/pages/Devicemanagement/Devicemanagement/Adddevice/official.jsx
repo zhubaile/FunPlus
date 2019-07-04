@@ -120,7 +120,7 @@ export default class Official extends Component {
         return (
           <FormItem required requiredMessage={item.errDesc}>
             {/* <Input.TextArea style={styles.formbinderbox} placeholder={item.placeholder} name={key} onChange={this.handelChange} /> */}
-            <textarea name={key} cols="30" rows="10" placeholder={item.placeholder} onChange={this.handelChange} />
+            <textarea name={key} cols={30} rows={10} placeholder={item.placeholder} onChange={this.handelChange} />
           </FormItem>
         );
         break;

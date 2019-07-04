@@ -5,19 +5,90 @@ import Nav from '../components/Nav';
 import Administrators from '../../Personal/components/Administrators/Administrators';
 import '../../../layouts/BasicLayout/components/Header/index.scss';
 import '../components/index.css';
+import { Message } from "@alifd/next/lib/index";
 
-
+const listss = [];
 export default class Customerservice extends Component {
   static displayName = 'Setting';
 
   constructor(props) {
     super(props);
     this.state = {
+      Probleminput: '', // 输入框内容
       messagelist: [],
       array: [],
     };
+    this.onScrollHandle = this.onScrollHandle.bind(this);
   }
-
+  // 输入框事件
+  probleminput(v,e) {
+    this.setState({
+      Probleminput: v,
+    });
+  }
+  onprobleminputKey = (e) => {
+    if (e.keyCode == 13) {
+      this.subreply();
+    }
+  }
+  // 提交
+  subreply() {
+    const contents = this.state.Probleminput; // 输入框的值
+    // const _id = this.state.workDetail[0]._id;
+    // const byReplyId = this.state.workDetail[0].userId;
+    if (!contents) {
+      return Message.success('输入问题不能为空');
+    }
+    listss.push(contents);
+    console.log(listss);
+    debugger;
+    this.setState({
+      messagelist: listss,
+      Probleminput: '',
+    },()=>{
+      this.onScrollHandle(this.messagesEnd);
+      // this.messagesEnd.addEventListener('scroll', this.onScrollHandle.bind(this));
+    });
+    /* workOrdercustomerWork({
+      byReplyId,
+      customerContent: contents,
+      _id,
+    }).then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        this.setState({
+          workDetail: data.data,
+          Probleminput: '',
+        });
+      } else {
+        Message.success(data.message);
+      }
+    }); */
+  }
+  onScrollHandle(event) {
+    const clientHeight = event.clientHeight;
+    const scrollHeight = event.scrollHeight;
+    const scrollTop = (scrollHeight - clientHeight);
+    this.messagesEnd.scrollTop = scrollTop;
+    console.log(scrollTop);
+    // const isBottom = (clientHeight + scrollTop === scrollHeight);
+  }
+  /* componentDidMount() {
+    if (this.messagesEnd) {
+      debugger;
+      // this.messagesEnd.scrollTop(this.messagesEnd.scrollHeight);
+      // this.messagesEnd.scrollTop(this.messagesEnd.scrollHeight);
+      this.messagesEnd.addEventListener('scroll', this.onScrollHandle.bind(this));
+    }
+  }
+  componentWillUnmount(nextProps, nextState) {
+    console.log(this.messagesEnd);
+    debugger;
+    if (this.messagesEnd) {
+      debugger;
+      this.messagesEnd.removeEventListener('scroll', this.onScrollHandle.bind(this));
+    }
+  } */
   render() {
     const zbla = (
       this.state.messagelist.map((item) => {
@@ -52,7 +123,7 @@ export default class Customerservice extends Component {
               </div>
               <i className="os-icon os-icon-phone-15 right" />
             </div>
-            <div className="kefu-main-chatcontent">
+            <div className="kefu-main-chatcontent" ref={(node) => { this.messagesEnd = node; }} >
               <div className="chat-content">
 
                 <div className="chat-message">
@@ -111,8 +182,11 @@ export default class Customerservice extends Component {
               <div className="chat-input">
                 <Input.TextArea
                   placeholder="Type your message here..."
-                  rows='10'
-                  ref={node => this.charmessageself = node}
+                  rows={10}
+                  value={this.state.Probleminput}
+                  onChange={this.probleminput.bind(this)}
+                  onKeyDown={this.onprobleminputKey}
+                  // ref={node => this.charmessageself = node}
                 />
                 {/* <input placeholder="Type your message here..." type="text" /> */}
               </div>
@@ -121,7 +195,7 @@ export default class Customerservice extends Component {
                   <a href="#"><i className="os-icon os-icon-mail-07" /></a><a href="#"><i className="os-icon os-icon-phone-18" /></a><a href="#"><i className="os-icon os-icon-phone-15" /></a>
                 </div>
                 <div className="chat-btn">
-                  <Button type='primary' size='large' >发送</Button>
+                  <Button type='primary' size='large' onClick={this.subreply.bind(this)} >发送</Button>
                 </div>
               </div>
             </div>

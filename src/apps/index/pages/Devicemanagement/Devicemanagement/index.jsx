@@ -5,11 +5,11 @@ import { actions, reducers, connect } from '@indexStore';
 import Addgrouping from './Addgrouping';
 import Official from './Adddevice/official';
 import Custom from './Adddevice/custom';
-import { deviceGrouplist,deviceparams } from '@indexApi';
+import { deviceGrouplist,deviceparams,devicelist } from '@indexApi';
 import '../../index.css';
 
 const { Item } = MenuButton;
-const getData = (length = 10) => {
+/* const getData = (length = 10) => {
   return Array.from({ length }).map(() => {
     return {
       name: ['淘小宝', '淘二宝'],
@@ -17,15 +17,17 @@ const getData = (length = 10) => {
       rule: ['余杭盒马店'],
     };
   });
-};
+}; */
 
 export default class Devicemanagement extends Component {
   constructor(props) {
     super(props);
     this.state = {
       current: 1,
+      pageSize: 10,
+      total: 0,
       isLoading: false,
-      data: [],
+      datas: [],
       listValue: '状态/全部',
       toplist: false,
       grouplistdata: [
@@ -42,6 +44,7 @@ export default class Devicemanagement extends Component {
     this.Toupdatelist();
     this.fetchData();
   }
+  // 获取分组列表
   Toupdatelist=()=>{
     deviceGrouplist().then(
       ({ status, data }) => {
@@ -54,25 +57,27 @@ export default class Devicemanagement extends Component {
       }
     );
   };
-  mockApi = (len) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
-      }, 600);
-    });
-  };
-
+  // 设备组列表
   fetchData = (len) => {
     this.setState(
       {
         isLoading: true,
       },
       () => {
-        this.mockApi(len).then((data) => { // data 里面为数据
-          this.setState({
-            data,
-            isLoading: false,
-          });
+        const page = this.state.current;
+        const limit = this.state.pageSize;
+        devicelist({
+          page,
+          limit,
+        }).then(({ status,data })=>{
+          debugger;
+          if (data.errCode == 0) {
+            this.setState({
+              datas: data.data.list,
+              total: data.data.total,
+              isLoading: false,
+            });
+          }
         });
       }
     );
@@ -95,7 +100,7 @@ export default class Devicemanagement extends Component {
   // 获取分组列表
   grouplist() {
     this.setState({
-      toplist: true,
+      toplist: !this.state.toplist,
     });
   }
   // 获取设备参数
@@ -106,11 +111,8 @@ export default class Devicemanagement extends Component {
       dGroupId: id,
     }).then(
       ({ status, data }) => {
-        debugger;
         if (data.errCode == 0) {
-          this.closetoplist();
-          console.log(id);
-          debugger;
+          this.grouplist();
           this.Official.officialopen(data.data,id);
           /* this.setState({
             datas: data.data,
@@ -118,7 +120,6 @@ export default class Devicemanagement extends Component {
           debugger; */
           // this.Custom.customopen();
         }
-        Message.success(data.message);
       }
     );
   }
@@ -147,14 +148,8 @@ export default class Devicemanagement extends Component {
     });
     // ajax 方法
   }
-  // 关闭列表
-  closetoplist() {
-    this.setState({
-      toplist: false,
-    });
-  }
   render() {
-    const { isLoading, data, current } = this.state;
+    const { isLoading, datas, current,total,pageSize } = this.state;
     const Allstart = [
       { value: '状态/全部', label: '状态/全部' },
       { value: '可使用', label: '可使用' },
@@ -206,13 +201,13 @@ export default class Devicemanagement extends Component {
             </Message>
           </div>
           <div className='devicemanagement-main-content'>
-            <Table loading={isLoading} dataSource={data} hasBorder={false}>
-              <Table.Column title="设备ID" dataIndex="name" />
-              <Table.Column title="今日流水/笔" dataIndex="level" />
-              <Table.Column title="昨日流水/笔" dataIndex="rule" />
-              <Table.Column title="累计流水/笔" dataIndex="1" />
+            <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+              <Table.Column title="设备ID" dataIndex="_id" />
+              <Table.Column title="今日流水/笔" dataIndex="todayFlow" />
+              <Table.Column title="昨日流水/笔" dataIndex="yeTodayFlow" />
+              <Table.Column title="累计流水/笔" dataIndex="totalFlow" />
               <Table.Column title={copybtn} dataIndex="2" cell={this.renderRule} />
-              <Table.Column title="类型" dataIndex="3" />
+              <Table.Column title="类型" dataIndex="classify" />
               <Table.Column
                 title="操作"
                 width={200}
@@ -224,6 +219,8 @@ export default class Devicemanagement extends Component {
               style={{ marginTop: '20px', textAlign: 'right' }}
               current={current}
               onChange={this.handlePaginationChange}
+              pageSize={pageSize} // 界面展示多少条数据
+              total={total} // 一共多少条数据
             />
           </div>
         </div>
