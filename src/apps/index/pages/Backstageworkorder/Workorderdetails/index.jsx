@@ -5,7 +5,7 @@ import { Table,Input,Radio ,Dialog ,DatePicker,Rating,Message,Button, Select , F
 import Nav from '../components/Nav';
 import moment from "moment/moment";
 // import { Dialog,Message } from "@alifd/next/lib/index";
-import { workOrdercustomerWork,workOrderremainEvaluated } from '@indexApi';
+import { workOrdercustomerWork,workOrderremainEvaluated,workOrderworkDetails } from '@indexApi';
 import '../../../layouts/BasicLayout/components/Header/index.scss';
 import '../components/index.css';
 import Deletedata from './Deletedata';
@@ -28,15 +28,50 @@ export default class Workorderdetails extends Component {
       // ChatRecord: [],
       Probleminput: '',
       // isBottom: true,
+      id: this.props.location.state.id,
       isLoading: false,
-      work: this.props.location.state.work, // 工单详情
-      workDetail: this.props.location.state.workDetail, // 聊天记录
-      workEvaluate: this.props.location.state.workEvaluate, // 评价内容
+      work: [
+        { status: 0, isStatement: 0 },
+      ], // 工单详情
+      workDetail: [], // 聊天记录
+      workEvaluate: [], // 评价内容
+      // work: this.props.location.state.work, // 工单详情
+      // workDetail: this.props.location.state.workDetail, // 聊天记录
+      // workEvaluate: this.props.location.state.workEvaluate, // 评价内容
     };
     this.onScrollHandle = this.onScrollHandle.bind(this);
   }
-  formChange = (value) => {
+  componentDidMount() {
+    this.fetchData();
+  }
+  componentWillReceiveProps(nextProps){
     debugger;
+  }
+  fetchData = (len) => {
+    const id = this.state.id;
+    workOrderworkDetails({
+      _id: id,
+    }).then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        this.setState({
+          work: data.data.work,
+          workDetail: data.data.workDetail,
+          workEvaluate: data.data.workEvaluate,
+        });
+      }
+      // const work = data.data.work;
+      // const workDetail = data.data.workDetail;
+      // const workEvaluate = data.data.workEvaluate;
+      // debugger;
+      // if (data.errCode == 0) {
+      //   this.props.history.push({ pathname: "/admin/backstageworkorder/Workorderdetails", state: { work,workDetail,workEvaluate } });
+      // }
+    });
+  };
+
+  formChange = (value) => {
+
   };
   onScrollHandle(event) {
     const clientHeight = event.clientHeight;
@@ -76,9 +111,8 @@ export default class Workorderdetails extends Component {
   // 提交按钮事件
     subreply() {
       const contents = this.state.Probleminput;
-      const _id = this.state.workDetail[0]._id;
+      const _id = this.state.work[0]._id;
       const byReplyId = this.state.workDetail[0].userId;
-      debugger;
       if (!contents) {
         return Message.success('输入问题不能为空');
       }
@@ -159,12 +193,11 @@ export default class Workorderdetails extends Component {
     const { isLoading, work, workDetail,workEvaluate } = this.state;
     const status = work[0].status;
     const isStatement = work[0].isStatement;
-    debugger;
     return (
       <div className='backstageworkorder'>
         <Deletedata ref={ node => this.Deletedata = node } history={this.props.history} />
         <Check ref={ node => this.Check = node } history={this.props.history} />
-        <Nav defaultActiveKey='2' />
+        <Nav defaultActiveKey='2' history={this.props.history} />
         <div className='wodegongdan'>
           <div className='wodegongdan-top'>
             <span>工单详情</span>

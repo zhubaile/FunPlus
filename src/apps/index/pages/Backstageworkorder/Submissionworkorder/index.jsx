@@ -118,7 +118,7 @@ class Submissionworkorder extends Component {
     } = this.props;
     return (
       <div className='backstageworkorder'>
-        <Nav defaultActiveKey='2' />
+        <Nav defaultActiveKey='2' history={this.props.history} />
         <div className='submissionworkorder'>
           <div className='submissionworkorder-top'>
             <span>全部工单</span>

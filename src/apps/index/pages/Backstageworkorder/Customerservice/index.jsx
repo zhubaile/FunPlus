@@ -5,9 +5,30 @@ import Nav from '../components/Nav';
 import Administrators from '../../Personal/components/Administrators/Administrators';
 import '../../../layouts/BasicLayout/components/Header/index.scss';
 import '../components/index.css';
+import { workOrderuserRecord } from '@indexApi';
 import { Message } from "@alifd/next/lib/index";
+import io from 'socket.io-client';
+
+const Cookies = require('js-cookie');
 
 const listss = [];
+
+// const fs = require('../../../../../../node_modules/fs');
+// const server = require('http').createServer();
+// const io = require('../../../../../../node_modules/socket.io')(server);
+
+// const socket = require('socket.io-client')('http://192.168.1.105:8081/');
+
+
+/* const socket = io("http://localhost:21144",{
+  path: '/',
+  transports: ['websocket', 'polling']
+}); */
+/* const socket = io('http://192.168.1.105:3000', { // 指定后台的url地址
+  path: '/web/beta/v1.0/', // 如果需要的话添加 path 路径以及其他可选项
+}); */
+const socket = io("ws://192.168.1.105:3000");
+
 export default class Customerservice extends Component {
   static displayName = 'Setting';
 
@@ -15,80 +36,83 @@ export default class Customerservice extends Component {
     super(props);
     this.state = {
       Probleminput: '', // 输入框内容
-      messagelist: [],
+      datas: [], // 之前的聊天记录
+      messagelist: [], // 此刻聊天的记录
       array: [],
+      byReplyId: '',
+      userId: '',
     };
     this.onScrollHandle = this.onScrollHandle.bind(this);
   }
+  /* socket.on('getMsg',()=>{
+
+}) */
   // 输入框事件
   probleminput(v,e) {
     this.setState({
       Probleminput: v,
     });
   }
+  // 回车事件
   onprobleminputKey = (e) => {
     if (e.keyCode == 13) {
       this.subreply();
     }
   }
+  // 获取客服的id
+  customerserviceid(e) {
+    debugger;
+    const userid = Cookies.get('applicationId'); // 用户的id
+    workOrderuserRecord({
+      userId: userid,
+      byReplyId: e,
+    }).then(({ status,data })=>{
+      if (data.errCode == 0) {
+        this.setState({
+          datas: data.data, // 获取之前的聊天记录
+          byReplyId: e,
+          userId: userid,
+        });
+      }
+    });
+    /* this.setState({
+      serviceid: e,
+    }); */
+  }
   // 提交
   subreply() {
+    const byReplyId = this.state.byReplyId; // 客服id
+    const userId = this.state.userId; // 用户的id
+    debugger;
+    const messagelist = this.state.messagelist; // 此刻聊天的内容
     const contents = this.state.Probleminput; // 输入框的值
-    // const _id = this.state.workDetail[0]._id;
-    // const byReplyId = this.state.workDetail[0].userId;
     if (!contents) {
       return Message.success('输入问题不能为空');
     }
-    listss.push(contents);
-    console.log(listss);
-    debugger;
-    this.setState({
-      messagelist: listss,
-      Probleminput: '',
-    },()=>{
-      this.onScrollHandle(this.messagesEnd);
-      // this.messagesEnd.addEventListener('scroll', this.onScrollHandle.bind(this));
-    });
-    /* workOrdercustomerWork({
-      byReplyId,
-      customerContent: contents,
-      _id,
-    }).then(({ status,data })=>{
+    socket.emit('send', { contents,byReplyId,userId },(ref)=>{
+      debugger; // 2019-7-5遗留问题,信息发送成功未收到返回，未设置监听服务端传回来的信息
+      messagelist.push({ contents });
+      this.setState({
+        messagelist,
+      });
+    }
+    );
+    console.log(111);
+  /*  socket.on("getMsg", (name,ref)=>{
       debugger;
-      if (data.errCode == 0) {
-        this.setState({
-          workDetail: data.data,
-          Probleminput: '',
-        });
-      } else {
-        Message.success(data.message);
-      }
+      console.log(name);
+      console.log(ref);
     }); */
+
+    // const _id = this.state.workDetail[0]._id;
+    // const byReplyId = this.state.workDetail[0].userId;
   }
   onScrollHandle(event) {
     const clientHeight = event.clientHeight;
     const scrollHeight = event.scrollHeight;
     const scrollTop = (scrollHeight - clientHeight);
     this.messagesEnd.scrollTop = scrollTop;
-    console.log(scrollTop);
-    // const isBottom = (clientHeight + scrollTop === scrollHeight);
   }
-  /* componentDidMount() {
-    if (this.messagesEnd) {
-      debugger;
-      // this.messagesEnd.scrollTop(this.messagesEnd.scrollHeight);
-      // this.messagesEnd.scrollTop(this.messagesEnd.scrollHeight);
-      this.messagesEnd.addEventListener('scroll', this.onScrollHandle.bind(this));
-    }
-  }
-  componentWillUnmount(nextProps, nextState) {
-    console.log(this.messagesEnd);
-    debugger;
-    if (this.messagesEnd) {
-      debugger;
-      this.messagesEnd.removeEventListener('scroll', this.onScrollHandle.bind(this));
-    }
-  } */
   render() {
     const zbla = (
       this.state.messagelist.map((item) => {
@@ -111,9 +135,13 @@ export default class Customerservice extends Component {
         );
       })
     );
+    const { datas, messagelist } = this.state;
     return (
       <div className='backstageworkorder'>
-        <Nav defaultActiveKey='1' />
+        <Nav defaultActiveKey='1' history={this.props.history} customerserviceid={this.customerserviceid.bind(this)} />
+        {/* {
+          !datas?null:()
+        } */}
         <div className='kefu'>
           <div className="kefu-main">
             <div className="kefu-main-head">

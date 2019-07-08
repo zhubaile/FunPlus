@@ -146,7 +146,8 @@ export default class Allworkorders extends Component {
   }; */
   // 详情
   handleDetail=(id)=> {
-    workOrderworkDetails({
+    this.props.history.push({ pathname: "/admin/backstageworkorder/Workorderdetails", state: { id } });
+  /*  workOrderworkDetails({
       _id: id,
     }).then(({ status,data })=>{
       debugger;
@@ -157,7 +158,7 @@ export default class Allworkorders extends Component {
       if (data.errCode == 0) {
         this.props.history.push({ pathname: "/admin/backstageworkorder/Workorderdetails", state: { work,workDetail,workEvaluate } });
       }
-    });
+    }); */
     // this.props.history.push('/admin/backstageworkorder/Workorderdetails');
   }
   // 搜索框
@@ -231,7 +232,7 @@ export default class Allworkorders extends Component {
     const { isLoading, datas, current, total, pageSize } = this.state;
     return (
       <div className='backstageworkorder'>
-        <Nav defaultActiveKey='2' />
+        <Nav defaultActiveKey='2' history={this.props.history} />
         <div className='wodegongdan'>
           <div className='wodegongdan-top'>
             <span>全部工单</span>

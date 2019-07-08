@@ -39,10 +39,12 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "@icedesign/icon": "^0.1.1",
+    "@icedesign/styled-menu": "^1.0.6",
     "babel-eslint": "^8.0.3",
     "eslint": "^4.13.1",
     "eslint-config-airbnb": "^16.1.0",
@@ -67,7 +69,8 @@
     "entry": {
       "index": "./src/apps/index/index.js",
       "login": "./src/apps/Login/index.js",
-      "website": "./src/apps/Website/index.js"
+      "website": "./src/apps/Website/index.js",
+      "backadmin": "./src/apps/Backadmin/index.js"
     },
     "localization": false
   },
