@@ -1,0 +1,37 @@
+/*管理后台*/
+/*实时数据-收入*/
+.realtimedataincome{ width: 100%;}
+.realtimedataincome .income-tabs{display: inline-block;}
+.realtimedataincome .income-tabs div{display: inline-block; padding: 5px 10px; border-radius: 4px; border: 1px solid #A3D0FD; background-color: #E2EDFF; color: #419DFA; margin: 0px 15px; }
+.realtimedataincome .income-tabs Button{ float: left; border-radius: 4px;}
+.realtimedataincome .income-tabs .rightbtn{ background-color: #E2EDFF; border-color: #A3D0FD;}
+.realtimedataincome .income-tabs.rightbtn{ float: right; }
+.realtimedataincome .income-tabs-border{ clear: both; border-bottom: 1px solid #dddddd;}
+.realtimedataincome-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
+.realtimedataincome-panel .tab-panel{ padding-bottom: 20px; }
+/*支出概况-支出*/
+.outlay{ width: 100%;}
+.outlay .outlay-tabs{display: inline-block;}
+.outlay .outlay-tabs div{display: inline-block; padding: 5px 10px; border-radius: 4px; border: 1px solid #A3D0FD; background-color: #E2EDFF; color: #419DFA; margin: 0px 15px; }
+.outlay .outlay-tabs Button{ float: left; border-radius: 4px;}
+.outlay .outlay-tabs .rightbtn{ background-color: #E2EDFF; border-color: #A3D0FD;}
+.outlay .outlay-tabs.rightbtn{ float: right; }
+.outlay .outlay-tabs-border{ clear: both; border-bottom: 1px solid #dddddd;}
+.outlay-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
+.outlay-panel .tab-panel{ padding-bottom: 20px; }
+/*支出概况-出款审核*/
+.paymentreview{ width: 100%;}
+.paymentreview .paymentreview-tabs{display: inline-block;}
+.paymentreview-text p{ display: inline-block; margin-left: 20px; font-size: 16px; color: rgba(48,49,51,0.7);}
+.paymentreview .paymentreview-tabs div{display: inline-block; padding: 5px 10px; border-radius: 4px; border: 1px solid #A3D0FD; background-color: #E2EDFF; color: #419DFA; margin: 0px 15px; }
+.paymentreview-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
+.paymentreview-panel .tab-panel{ padding-bottom: 20px; }
+/*对账-渠道对账*/
+.channelreconciliation{ width: 100%;}
+.channelreconciliation .income-tabs{display: inline-block;}
+.channelreconciliation-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
+.channelreconciliation-panel .tab-panel{ padding-bottom: 20px; }

@@ -129,13 +129,20 @@ export default class Ceshi extends Component {
         {/*  */}
         <div className='son'>
           <div className='son-conter'>
-            <div className='son-conter-left'>
+            <div className='son-conter-left' style={{ position: 'relative' }}>
+
+              <div style={{ width: '4px', height: '100%', background: 'rgba(109,166,252,1)', position: 'absolute', left: '30%', borderRadius: '2px' }} />
+              <div style={{ width: '100%', height: '4px', background: 'rgba(109,166,252,1)', borderRadius: '2px' }} />
               <img
-                style={{ backgroundSize: '100% 100%', width: '50%' }}
-                src={require('../../../../assets/img/shouye/pic2.png')}
+                style={{ backgroundSize: '100% 100%', width: '100%' }}
+                src={require('../../../../assets/img/shouye/pic02.png')}
               />
-              {/* <img src={require('@img/shouye/pic2.png')} /> */}
-              {/* <p style={styles.promptMessage}>提供便捷、稳定和安全的技术服务</p> */}
+
+              {/*              <img
+                style={{ backgroundSize: '100% 100%', width: '100%' }}
+                src={require('../../../../assets/img/shouye/pic2.png')}
+              /> */}
+{/*               <p style={styles.promptMessage}>提供便捷、稳定和安全的技术服务</p>*/}
             </div>
             <div className='son-conter-right'>
               <div>

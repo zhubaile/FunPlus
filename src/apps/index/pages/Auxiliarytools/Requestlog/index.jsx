@@ -132,6 +132,7 @@ export default class Requestlog extends Component {
                 <li>工具简介：您可以根据时间段查询对应的日志信息便于调试。</li>
                 <li>查询范围：查询到的结果包含此账号下当前应用所有的日志信息。</li>
               </ul>
+              <div className='inner-div'>
               <FormBinderWrapper
                 value={this.state.value}
                 onChange={this.formChange}
@@ -142,6 +143,7 @@ export default class Requestlog extends Component {
                 </FormBinder>
                 <Button style={styles.inquirebtn} type="primary" size='large'>查询</Button>
               </FormBinderWrapper>
+              </div>
             </div>
             {/*              <p>工具简介：您可以根据时间段查询对应的日志信息便于调试。</p>
               <p>查询范围：查询到的结果包含此账号下当前应用所有的日志信息。</p> */}

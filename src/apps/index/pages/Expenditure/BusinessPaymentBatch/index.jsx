@@ -106,7 +106,7 @@ export default class Enterprise extends Component {
                       </div>
                     </Col>
                     <Col l="24">
-                      <div style={styles.formItem}>
+                      <div style={styles.formItemTwo}>
                         <span style={styles.formLabel}>退款状态</span>
                         <FormBinder name='refundstatus'>
                           <Select style={styles.formSelect} dataSource={refundstatus} />
@@ -162,7 +162,11 @@ const styles = {
   formItem: {
     display: 'flex',
     alignItems: 'center',
-    margin: '10px 0',
+  },
+  formItemTwo: {
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: '15px',
   },
   formLabel: {
     minWidth: '80px',

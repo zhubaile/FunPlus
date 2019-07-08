@@ -40,7 +40,7 @@ export default class Retailers extends Component {
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
               <img
-                src={require('../../../../../assets/img/solution/retailers/ds1.png')}
+                src={require('../../../../../assets/img/solution/retailers/ds_2.png')}
               />
             </div>
             <div className='commonly-conter-right'>

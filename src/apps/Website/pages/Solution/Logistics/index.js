@@ -40,7 +40,7 @@ export default class Logistics extends Component {
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
               <img
-                src={require('../../../../../assets/img/solution/logistics/wl0.png')}
+                src={require('../../../../../assets/img/solution/logistics/wl_1.png')}
               />
             </div>
             <div className='commonly-conter-right'>

@@ -53,7 +53,7 @@ export default class Ceshi extends Component {
             </div>
             <div className='commonly-conter-right'>
               <img
-                src={require('../../../../../assets/img/prodect/mode/sm.png')}
+                src={require('../../../../../assets/img/prodect/mode/pic_1.png')}
               />
             </div>
           </div>
@@ -63,7 +63,7 @@ export default class Ceshi extends Component {
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
               <img
-                src={require('../../../../../assets/img/prodect/mode/PC.png')}
+                src={require('../../../../../assets/img/prodect/mode/pic_2.png')}
               />
             </div>
             <div className='commonly-conter-right'>
@@ -86,7 +86,7 @@ export default class Ceshi extends Component {
             </div>
             <div className='commonly-conter-right'>
               <img
-                src={require('../../../../../assets/img/prodect/mode/APP.png')}
+                src={require('../../../../../assets/img/prodect/mode/pic_3.png')}
               />
             </div>
           </div>
@@ -96,7 +96,7 @@ export default class Ceshi extends Component {
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
               <img
-                src={require('../../../../../assets/img/prodect/mode/gz.png')}
+                src={require('../../../../../assets/img/prodect/mode/pic_4.png')}
               />
             </div>
             <div className='commonly-conter-right'>

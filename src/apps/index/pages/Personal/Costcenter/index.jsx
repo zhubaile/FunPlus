@@ -138,7 +138,7 @@ class Costcenter extends Component {
                 </div>
               </div>
               <p style={{ fontSize: '16px' }}>可用于支付待申请服务费用等</p>
-              <Button type='primary' onClick={this.balancerecharge.bind(this)}>点击充值</Button>
+              <Button type='primary' style={styles.btnRadius} onClick={this.balancerecharge.bind(this)}>点击充值</Button>
             </div>
             <div className='costcenter-conter-twocentent'>
               <div>
@@ -149,7 +149,7 @@ class Costcenter extends Component {
                 </div>
               </div>
               <p style={{ fontSize: '16px' }}>默认显示所有消费总额</p>
-              <Button type='primary' onClick={this.detailsdeduction.bind(this)}>查询明细</Button>
+              <Button type='primary' style={styles.btnRadius} onClick={this.detailsdeduction.bind(this)}>查询明细</Button>
             </div>
           </div>
           <div className='costcenter-bottom'>
@@ -204,6 +204,9 @@ class Costcenter extends Component {
 }
 
 const styles = {
+  btnRadius: {
+    borderRadius: '4px',
+  },
   label: {
     textAlign: 'right',
   },

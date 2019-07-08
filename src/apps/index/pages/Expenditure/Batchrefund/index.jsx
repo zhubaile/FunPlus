@@ -130,27 +130,30 @@ export default class Submerchants extends Component {
               <Message type='notice' className='message-all expendbatchre-message'>
                 应用直连：使用您直接申请的渠道支付参数或我们代为您申请的渠道参数进行交易，所有资金有微信，支付宝，银联，持牌方清算
               </Message>
-              <FormBinderWrapper
-                value={this.state.value}
-                onChange={this.formChange}
-                ref="form"
-              >
-                <span style={styles.formLabel}>选择时间</span>
-                <FormBinder name="dateType"
-                  required
-                  message="请输入正确的名称"
-                  autoWidth={false}
+              <div style={{ marginBottom: '20px' }}>
+                <FormBinderWrapper
+                  value={this.state.value}
+                  onChange={this.formChange}
+                  ref="form"
                 >
-                  <Select style={styles.formSelect} dataSource={dateType} />
-                </FormBinder>
-                <FormBinder name='startdate'>
-                  <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
-                </FormBinder>
-              </FormBinderWrapper>
-              <Button className='btn-all bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
-              <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
-              <Button className='btn-all orderposab' size='large' type='secondary' >批量退款</Button>
-              <div className='expendordbat-tabs-border' />
+                  <span style={styles.formLabel}>选择时间</span>
+                  <FormBinder name="dateType"
+                    required
+                    message="请输入正确的名称"
+                    autoWidth={false}
+                  >
+                    <Select style={styles.formSelect} dataSource={dateType} />
+                  </FormBinder>
+                  <FormBinder name='startdate'>
+                    <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
+                  </FormBinder>
+                </FormBinderWrapper>
+                <Button className='btn-all bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
+                <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
+                <Button className='btn-all orderposab' size='large' type='secondary' >批量退款</Button>
+              </div>
+              {/* <div className='expendordbat-tabs-border' /> */}
+              <hr />
 
               <IceContainer>
                 <Table loading={isLoading} dataSource={datas} hasBorder={false}>

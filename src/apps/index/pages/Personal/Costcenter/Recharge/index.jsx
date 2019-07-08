@@ -90,7 +90,7 @@ export default class Recharges extends Component {
         <div className='Recharge-bottom'>
           <div className='Recharge-bottom-top'>
             <span>充值金额</span>
-            <input type="number" placeholder='输入金额' ref={node=>this.payinputvalue = node} />元
+            <Input style={styles.myInput} type="number" placeholder='输入金额' ref={node=>this.payinputvalue = node} />元
           </div>
           <div className='paymode'>
             <span>充值渠道</span>
@@ -107,12 +107,37 @@ export default class Recharges extends Component {
             </div>
           </div>
           <div className='Recharge-spanbtn'>
-            <span>账户充值属于预消费，不可退款，请确认后操作</span>
-            <Button size="large" type="primary" style={{ width: '100px', marginTop: '50px', borderRadius: '5px' }} onClick={this.paybtn.bind(this)}>立即支付</Button>
-            <span>请在1小时内完成支付，超出1小时再支付可能导致充值失败，需重新充值。</span>
+            <span style={styles.promptInformation}>账户充值属于预消费，不可退款，请确认后操作</span>
+            <div>
+              <Button size="large" type="primary" style={styles.btnRadius} onClick={this.paybtn.bind(this)}>立即支付</Button>
+              <span style={styles.alertInformation}>请在1小时内完成支付，超出1小时再支付可能导致充值失败，需重新充值。</span>
+              {/* <Message className='warningInfo' type='warning'>请在1小时内完成支付，超出1小时再支付可能导致充值失败，需重新充值。</Message> */}
+            </div>
           </div>
         </div>
       </div>
     );
   }
 }
+const styles = {
+  btnRadius: {
+    width: '100px',
+    borderRadius: '4px',
+    margin: '20px 0px',
+  },
+  promptInformation: {
+    fontSize: '12px',
+    color: 'rgba(108, 117, 125, 0.7)',
+    fontFamily: 'SourceHanSansSC-regular',
+  },
+  alertInformation: {
+    fontSize: '12px',
+    color: 'rgba(16, 16, 16, 1)',
+    fontFamily: 'SourceHanSansSC-regular',
+    marginLeft: '20px',
+  },
+  myInput: {
+    margin: '0px 20px',
+  },
+};
+

@@ -47,7 +47,7 @@ export default class Border extends Component {
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
               <img
-                src={require('../../../../../assets/img/solution/border/kj1.png')}
+                src={require('../../../../../assets/img/solution/border/kj_1.png')}
               />
             </div>
             <div className='commonly-conter-right'>

@@ -132,8 +132,8 @@ export default class Accountinformation extends Component {
             <Form >
               <div>
                 <h3>行业信息</h3>
-                <span>所属行业：</span>
                 <FormItem style={{ marginTop: '10px' }}>
+                  <span>所属行业：</span>
                   <Select name="pmsName" value={datas.pmsName} />
                   <Select name="sonName" style={{ marginLeft: '15px' }} value={datas.sonName} />
                 </FormItem>
@@ -147,7 +147,7 @@ export default class Accountinformation extends Component {
               <p style={{ display: 'inline-block' }}>邮箱：{datas.email}{datas.emailStatus == 1 ? (<span style={styles.mySpan}>已关联</span>) : (<span style={styles.mySpan} onClick={this.accountinformationOpentwo.bind(this)}>未关联</span>)}</p>
             </div>
             <hr />
-            <div>
+            <div className='switchSty'>
               <h3>异地登录</h3>
               <span>异地登录校验：</span>
               <Switch size='small' checked={this.state.checked} onChange={this.onChange} style={{ marginBottom: '-6px' }} />

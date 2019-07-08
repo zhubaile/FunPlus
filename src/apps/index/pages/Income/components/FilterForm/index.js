@@ -81,6 +81,7 @@ export default class FilterForm extends Component {
     const timeType = this.props.Filterform.dateType; // 支付时间
     const device = this.state.device;
     return (
+      <div className='filterform'>
       <FormBinderWrapper
         value={this.state.value}
         onChange={this.formChange}
@@ -110,7 +111,7 @@ export default class FilterForm extends Component {
           </Col>
 
           <Col l="24">
-            <div style={styles.formItem}>
+            <div style={styles.formItemTwo}>
               <span style={styles.formLabel}>支付渠道</span>
               <FormBinder name='payChannel'>
                 <Select style={styles.formSelect} dataSource={payChannel} onChange={this.Accesschannels.bind(this)} />
@@ -128,6 +129,7 @@ export default class FilterForm extends Component {
           </Col>
         </Row>
       </FormBinderWrapper>
+      </div>
     );
   }
 }
@@ -136,7 +138,11 @@ const styles = {
   formItem: {
     display: 'flex',
     alignItems: 'center',
-    margin: '10px 0',
+  },
+  formItemTwo: {
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: '15px',
   },
   formLabel: {
     minWidth: '80px',

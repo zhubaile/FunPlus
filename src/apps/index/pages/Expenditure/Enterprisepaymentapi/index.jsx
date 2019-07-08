@@ -257,7 +257,7 @@ export default class Orderrefund extends Component {
                     </div>
                   </Col>
                   <Col l="24">
-                    <div style={styles.formItem}>
+                    <div style={styles.formItemTwo}>
                       <span style={styles.formLabel}>付款状态</span>
                       <FormBinder name='paymentstatus'>
                         <Select style={styles.formSelect} dataSource={paymentstatus} />
@@ -274,8 +274,9 @@ export default class Orderrefund extends Component {
                 </Row>
               </FormBinderWrapper>
             </div>
-            <span>本次搜索付款总额：5555</span>
-            <div className='expendordbat-tabs-border' />
+            <span className='all_span'>本次搜索付款总额：5555</span>
+            <hr />
+            {/*<div className='expendordbat-tabs-border' />*/}
 
             <IceContainer>
               <Table loading={isLoading} dataSource={datas} hasBorder={false}>
@@ -323,7 +324,11 @@ const styles = {
   formItem: {
     display: 'flex',
     alignItems: 'center',
-    margin: '10px 0',
+  },
+  formItemTwo: {
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: '15px',
   },
   formLabel: {
     minWidth: '80px',

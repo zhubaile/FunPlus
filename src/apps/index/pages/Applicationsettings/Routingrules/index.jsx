@@ -118,7 +118,7 @@ export default class Routingrules extends Component {
         <Tab className='routingrules-tab'>
           <Tab.Item title="路由规则">
             <div className='routingrules-tab-top'>
-              <Message type='notice' style={styles.message}>
+              <Message type='notice'>
                每条路由规则对应一个支付渠道
               </Message>
               <Button className='btn-all' style={styles.bg} size='large' type='secondary' onClick={this.consultationpopup.bind(this)}>创建新规则</Button>
@@ -159,19 +159,9 @@ const styles = {
     color: 'rgba(0, 0, 0, 0.85)',
     fontWeight: '500',
   },
-  message: {
-    background: '#E6F7FF',
-    border: '1px solid #91D5FF',
-    borderradius: '6px',
-    margin: '10px 20px 25px',
-    width: '50%',
-    float: 'left',
-  },
   bg: {
-    /*    background: '#E6F1FC',
-    color: '#1989FA', */
-    borderRadius: '6px',
-    marginLeft: '20px',
-    marginTop: '20px',
+    borderRadius: '4px',
+    marginLeft: '30%',
+    marginTop: '30px',
   },
 };

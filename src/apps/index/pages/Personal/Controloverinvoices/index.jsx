@@ -217,8 +217,7 @@ class Controloverinvoices extends Component {
               <div>
                 {/*    <img src={require('../../../../../assets/img/houtai/personal/009.png')} alt="" /> */}
                 <div className='controloverinvoices-topright-content'>
-                  <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>开票信息</p>
-                  {/* <strong>0.00元</strong> */}
+                  <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' }}>开票信息</p>
                   <span>
                     <p>公司名称：{InvoiceInfo.company}</p>
                     <p>开户行：{InvoiceInfo.bank}</p>
@@ -232,6 +231,8 @@ class Controloverinvoices extends Component {
                   </span>
                 </div>
               </div>
+
+
             </div>
           </div>
           <div className='controloverinvoices-bottom'>

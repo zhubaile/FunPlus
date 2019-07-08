@@ -39,7 +39,7 @@ export default class Traffic extends Component {
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
               <img
-                src={require('../../../../../assets/img/solution/traffic/jt1.png')}
+                src={require('../../../../../assets/img/solution/traffic/jt_1.png')}
               />
             </div>
             <div className='commonly-conter-right'>

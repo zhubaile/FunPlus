@@ -160,14 +160,14 @@ export default class Applyforaticket extends Component {
               </div>
 
               <div className='innertwo'>
-                <p><Icon type='edit' size='large' style={{ paddingRight: '5px' }} />
-                  {!InvoiceInfo || InvoiceInfo.length == 0 ? (<a onClick={this.applyforacticketopenone.bind(this)}>您还未填写开票信息<span>现在填写</span></a>) : (<a onClick={this.applyforacticketopenone.bind(this)}><span>修改开票信息</span></a>)}
+                <p><Icon type='edit' size='large' style={{ paddingRight: '5px' }} />您还未填写开票信息
+                  {!InvoiceInfo || InvoiceInfo.length == 0 ? (<a onClick={this.applyforacticketopenone.bind(this)}><span>现在填写</span></a>) : (<a onClick={this.applyforacticketopenone.bind(this)}><span>修改开票信息</span></a>)}
                 </p>
               </div>
 
               <div className='innerthree'>
-                <p><Icon type='edit' size='large' style={{ paddingRight: '5px' }} />
-                  {!MailAddress || MailAddress.length == 0 ? (<a onClick={this.applyforacticketopentwo.bind(this)}>您还未添加邮寄信息 <span>现在添加</span></a>) : (<a onClick={this.applyforacticketopentwo.bind(this)}><span>添加邮寄信息</span></a>)}
+                <p><Icon type='edit' size='large' style={{ paddingRight: '5px' }} />您还未添加邮寄信息
+                  {!MailAddress || MailAddress.length == 0 ? (<a onClick={this.applyforacticketopentwo.bind(this)}><span>现在添加</span></a>) : (<a onClick={this.applyforacticketopentwo.bind(this)}><span>添加邮寄信息</span></a>)}
                 </p>
               </div>
 

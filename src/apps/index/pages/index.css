@@ -1,26 +1,28 @@
 a:active{ text-decoration: none; }
 /*下拉框、输入框全局样式*/
-.next-select .next-select-inner{ border-radius: 6px;}
-.next-range-picker.next-medium .next-range-picker-trigger, .next-range-picker.next-medium .next-range-picker-panel-input{ border-radius: 6px;}
-.next-input.next-medium{ border-radius: 6px;}
-.next-input.next-medium input{ border-radius: 6px;}
-/*Btn全局样式*/
-.next-btn.next-large.next-btn-secondary.btn-all{ height: 28px; background-color: #E2EDFF; border-color: #A3D0FD; color: #1989FA; border-radius: 6px;}
+.next-range-picker.next-medium{ height: 30px; line-height: 30px;}
+.next-range-picker.next-medium .next-range-picker-trigger{ border-radius: 4px;}
+.next-input.next-medium{ height: 30px;}
+.next-pagination-pages{ margin-right: 20px; }/*分页*/
+.next-table.only-bottom-border{ margin-right: 20px; }
+.next-input.next-medium .next-input-text-field{ height: 30px; }
+.next-select .next-select-inner{ height: 30px; border-radius: 4px;}
+.next-input.next-medium{ border-radius: 4px;}
+.next-btn.next-medium{ height: 30px; line-height: 30px;}
+  /*Btn全局样式*/
+.next-btn.next-large.next-btn-secondary.btn-all{ height: 30px; background-color: #E2EDFF; border-color: #A3D0FD; color: #1989FA; border-radius: 4px;}
 .next-btn.next-large.next-btn-secondary.btn-all:hover{ background-color: #225AE1; color: #FFFFFF;}
-.next-btn.next-large.next-btn-secondary.btn-all:hover a{ background-color: #225AE1; color: #FFFFFF;}
-.next-btn.next-large.next-btn-primary{ height: 28px; background-color: #0076FF; border-color: #60A9FF; color: #FFFFFF; border-radius: 6px;}
+.next-btn.next-large.next-btn-primary{ height: 30px; background-color: #0076FF; border-color: #60A9FF; color: #FFFFFF; border-radius: 4px;}
 .next-btn.next-large.next-btn-primary:hover{ background-color: #225AE1; color: #FFFFFF;}
-.next-btn.next-large.next-btn-normal{ height: 28px; background-color: #FFFFFF; border-color: #60A9FF; color: #0F7DFF; border-radius: 6px;}
+.next-btn.next-large.next-btn-normal{ height: 30px; background-color: #FFFFFF; border-color: #60A9FF; color: #0F7DFF; border-radius: 4px;}
 .next-btn.next-large.next-btn-normal:hover{ background-color: #225AE1; color: #FFFFFF;}
-.mybtn{ width: 100px; height: 40px; background-color: #E2EDFF; border-color: #A3D0FD; color: #1989FA; border-radius: 6px;}
+.mybtn{ width: 100px; height: 40px; background-color: #E2EDFF; border-color: #A3D0FD; color: #1989FA; border-radius: 4px;}
 .mybtn:hover{ background-color: #225AE1; color: #FFFFFF;}
-/*开关组件全局样式*/
-.next-switch-on{ background-color: #01E266;}
-.next-switch-on:focus, .next-switch-on:hover{ background-color: #01E266;}
-.next-switch-small{ border-radius: 10px;}
-.next-switch-small:after{ border-radius: 100px;}
-/*message全局样式*/
-.next-message.next-message-notice.next-inline{ background-color: #E6F7FF; border-color: #C6EAFF; border-radius: 6px;}
+/*开关组件样式*/
+.switchSty .next-switch-on{ background-color: #01E266;}
+.switchSty .next-switch-on:focus, .next-switch-on:hover{ background-color: #01E266;}
+.switchSty .next-switch-small{ border-radius: 10px;}
+.switchSty .next-switch-small:after{ border-radius: 100px;}
 /* 应用参数 */
 .applicationters{ width: 100%;}
 .applicationters .backstage-tab{ margin-top: 10px;}
@@ -30,7 +32,7 @@ a:active{ text-decoration: none; }
 /* 左边内容 */
 .applicationters .tab-contentone{ display: flex; align-content: center; justify-content: center;}
 .applicationters .tab-contentone .tab-contentone-left{ width: 54%; border-right: 1px solid rgba(187, 187, 187, 0.5); padding-bottom: 50px;}
-.tab-contentone-left .next-message.tab-contentone-left-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 20px 0;}
+.tab-contentone-left .next-message.tab-contentone-left-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 4px; margin: 20px 20px 20px 0px;}
 .tab-contentone-left .tab-contentone-left-message strong{color: rgba(227, 26, 26, 0.65);font-size: 14px;}
 /* 右边内容 */
 .applicationters .tab-contentone .tab-contentone-right{ width: 45%; padding-left: 20px;}
@@ -39,7 +41,7 @@ a:active{ text-decoration: none; }
 /* IP白名单 */
 .applicationters .tab-contenttwo{ display: flex; align-content: center; justify-content: center;}
 .applicationters .tab-contenttwo .tab-contenttwo-left{ width: 54%; border-right: 1px solid rgba(187, 187, 187, 0.5); padding-bottom: 50px;}
-.tab-contenttwo-left .next-message.tab-contenttwo-left-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 20px 0;}
+.tab-contenttwo-left .next-message.tab-contenttwo-left-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 4px; margin: 20px 20px 20px 0px;}
 
 /* 新增IP */
 .ippopup{
@@ -55,8 +57,8 @@ a:active{ text-decoration: none; }
 .ippopup .ippopup-btn button{ text-align: center;width: 80px;height: 30px;border-radius: 4px;background-color: rgba(26, 85, 226, 1);color: rgba(255, 255, 255, 1);font-size: 14px;border: 1px solid rgba(255, 255, 255, 0); margin: 30px 10px;}
 .ippopup .ippopup-btn button:first-child{ background-color: #E6F1FC;border-radius: 4px;background-color: rgba(230, 241, 252, 1);color: rgba(26, 85, 226, 1);font-size: 14px;text-align: center;border: 1px solid rgba(206, 219, 222, 1);}
 /* 左边内容 */
-.tab-contenttwo-left .tab-contenttwo-left-btn{margin: 10px 20px;}
-.tab-contenttwo-left .tab-contenttwo-left-btn Button{border-radius: 8px;}
+.tab-contenttwo-left .tab-contenttwo-left-btn{margin: 0px 20px 20px 0px;}
+.tab-contenttwo-left .tab-contenttwo-left-btn Button{border-radius: 4px;}
 .tab-contenttwo-left .tab-contenttwo-left-btn Button i{ margin: 0 5px;}
 .tab-contenttwo-left .tab-contenttwo-left-btn div{float: right;}
 .tab-contenttwo-left .tab-contenttwo-left-btn div span{ line-height: 30px; margin-right: 10px;}
@@ -73,6 +75,7 @@ a:active{ text-decoration: none; }
 .paymentchannel .tab-contentone .tab-contentone-left div Table .table-select{ border-radius: 8px; height: 30px; line-height: 30px; opacity: 0.5;}
 .paymentchannel .tab-contentone .tab-contentone-right div{margin-top: 50px;}
 /* 路由规则 */
+.routingrules .next-message.next-message-notice.next-inline{ width: 30%; background-color: #E6F7FF; border-color: #C6EAFF; border-radius: 4px; margin: 20px 0px 20px 0px;}
 .routingrules{ width: 100%;}
 .routingrules-tab{}
 .routingrules-tab-top{width: 100%; display: flex;}
@@ -83,14 +86,16 @@ a:active{ text-decoration: none; }
 .paymentfooter .box-icon{ line-height: 100px;}
 
 /* 收入 */
+.all_span{ margin: 0px 0px 20px 20px;}
+.filterform .next-row.next-row-wrap{ margin: 20px 0px 0px 0px;}
 .incomepage{ width: 100%;}
 .incomepage .income-tab{ }
 .incomepage .income-tab .income-tabs{display: inline-block;}
-.incomepage .income-tab .income-tabs div{display: inline-block; padding: 5px 10px; border-radius: 6px; border: 1px solid #A3D0FD; background-color: #E2EDFF; color: #419DFA; margin: 15px; }
-.incomepage .income-tab .income-tabs Button{ float: left; margin: 15px 10px; border-radius: 6px;}
+.incomepage .income-tab .income-tabs div{display: inline-block; padding: 5px 10px; border-radius: 4px; border: 1px solid #A3D0FD; background-color: #E2EDFF; color: #419DFA; margin: 0px 15px; }
+.incomepage .income-tab .income-tabs Button{ float: left; border-radius: 4px;}
 .incomepage .income-tab .income-tabs .rightbtn{ background-color: #E2EDFF; border-color: #A3D0FD;}
 .incomepage .income-tab .income-tabs.rightbtn{ float: right; }
-.incomepage .income-tab .income-tabs-border{ clear: both; border-bottom: 2px solid #dddddd;}
+.incomepage .income-tab .income-tabs-border{ clear: both; border-bottom: 1px solid #dddddd;}
 /* Button */
 /*.next-btn.next-large.next-btn-secondary.bg{ background:#E6F1FC; color: #1989FA; border-radius: 6px; margin-left: 20px;}*/
 /*.next-btn.next-large.next-btn-secondary.bg.right{position: absolute; right: 20px; background:#E6F1FC; color: #1989FA; border-radius: 6px;}*/
@@ -101,16 +106,18 @@ a:active{ text-decoration: none; }
 .next-btn.next-large.next-btn-secondary.tablebtn{ margin-right: 5px;}
 
 /* 支付 */
+/*ALL------Starting*/
+.expendbatchre .container-block,.expendordbat .container-block,.auditofpayment .container-block{ margin: 20px 0px 0px 0px;}
+.expendordbat .next-row.next-row-wrap{ margin: 20px 0px 20px 0px;}
+/*ALL------Ending*/
 .expendordbat .expendordbat-tab{ margin-top: 20px;}
-.expendordbat-tab  .expendordbat-tabs-border{clear: both; border-bottom: 2px solid #dddddd; margin-top: 20px;}
+.expendordbat-tab  .expendordbat-tabs-border{clear: both; border-bottom: 1px solid #dddddd;}
 .expendordbat-tab { position: relative;}
-.expendordbat-tab .orderposab{ position: absolute; top: 0; right: 20px; background:#E2EDFF; color: #1989FA; border-radius: 6px; border-color: #A3D0FD;}
-
-.expendordbat-tab .next-tabs-content .expendbatchre-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 20px 25px; width: 80%;}
-.next-message.next-message-notice.expendbatchre-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 20px 25px; width: 80%;}
-.auditofpayment .auditofpayment-tab .message{ width: 70%;}
-.auditofpayment .auditofpayment-tab .message .message-e{ margin: 10px;}
-.auditofpayment-tab  .expendordbat-tabs-border{clear: both; border-bottom: 2px solid #dddddd; margin-top: 20px;}
+.expendordbat-tab .orderposab{ position: absolute; top: 0; right: 20px; background:#E2EDFF; color: #1989FA; border-radius: 4px; border-color: #A3D0FD;}
+.expendordbat-tab .next-tabs-content .expendbatchre-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 4px; margin: 20px 0px; width: 80%;}
+.auditofpayment .auditofpayment-tab .message{ width: 70%; margin: 20px 0px;}
+.auditofpayment .auditofpayment-tab .message .message-e{ margin: 10px 0px; border-radius: 4px;}
+.auditofpayment-tab  .expendordbat-tabs-border{clear: both; border-bottom: 1px solid #dddddd;}
 
 /* 自定汇总 */
 .selfsumm-exhibition{ width: 100%; display: flex; margin-top: 20px;}
@@ -120,13 +127,14 @@ a:active{ text-decoration: none; }
 
 
 /* 渠道对账 */
+.reconcilichannel .next-tabs-tabpane{ margin: 20px 0px;}
 .reconcilichannel{ width: 100%;}
 .reconcilichannel-tab{ }
-.reconcilichannel-tab .next-tabs-content .reconcilichannel-tab-message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 20px 25px; width: 80%;}
-.reconcilichannel-tab .reconcilichannel-tab-message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 20px 25px; width: 80%;}
+/*.reconcilichannel-tab .next-tabs-content.reconcilichannel-tab-message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 20px 25px; width: 80%;}*/
+.reconcilichannel-tab .reconcilichannel-tab-message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 4px; width: 80%;}
 
-.reconcilichannel-tab-left{ width: 49%; float: left; color: rgba(16, 16, 16, 1);font-size: 14px; line-height: 25px; padding: 10px 20px;}
-.reconcilichannel-tab-right{ width: 49%; float: right;}
+.reconcilichannel-tab-left{ width: 49%; float: left; color: rgba(16, 16, 16, 1);font-size: 14px; line-height: 25px; margin-top: 20px;}
+.reconcilichannel-tab-right{ width: 49%; float: right; margin-top: 20px;}
 
 .reconcilichannel-tab-right-top{ display: flex; align-items: center; margin-top: 30px; justify-content: center;}
 .reconcilichannel-tab-right-top img{ width: 70px; height: 56px;}
@@ -302,7 +310,6 @@ a:active{ text-decoration: none; }
   box-shadow: 0px 3px 8px 0px rgba(219, 217, 217, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-right: 4%;}
 .accountinformation-bottom .accountinformation-bottom-right{ width: 50%; float: right; border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);
   box-shadow: 0px 3px 8px 0px rgba(219, 217, 217, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px;}
-
 /* 运维帮助中心 */
 .helpcenteraddition{ width: 95%; display: flex; justify-content: center;}
 .helpcenteraddition .helpcenteraddition-left{ width: 78%;}
@@ -363,7 +370,7 @@ a:active{ text-decoration: none; }
 .Newrole{ border-radius: 6px; background-color: #E2EDFF; border: 1px solid #A3D0FD; color: #1989FA; cursor: pointer;}
 
 .membermanagement-top .member-role{ margin-left: 30px;}
-
+.member-panel .tab-panel{ padding-bottom: 20px; }
 /*成员管理----新增角色--starting*/
 .newrole{ position: fixed; width: 330px; height: 500px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px;  z-index: 8888;
   border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 20px;
@@ -396,11 +403,10 @@ a:active{ text-decoration: none; }
 .devicemanagement .devicemanagement-top .devicemanagement-top-list.opicty{ display: block;}
 .devicemanagement .devicemanagement-top .devicemanagement-top-list.opicty .devicemanagement-top-list-btn{ position: absolute; bottom: 0; right: 0; width: 80px; height: 30px; background: red;}
 
-.devicemanagement-main{ position: relative; margin-top: 20px;}
-.devicemanagement-main .devicemanagement-main-top{ display: flex; align-items: center;}
+.devicemanagement-main{ position: relative;}
+.devicemanagement-main .devicemanagement-main-top{ display: flex; align-items: center; margin: 20px 0px;}
 .devicemanagement-main .devicemanagement-main-top button{width: 95px;height: 40px;line-height: 20px;border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);color: rgba(16, 16, 16, 1);font-size: 14px;text-align: center;border: 1px solid rgba(163, 208, 253, 1);}
-.devicemanagement-main .devicemanagement-main-top .next-message.next-message-notice.next-inline.next-medium.next-only-content{width: 271px;height: 40px;line-height: 20px;
-  border-radius: 4px;background-color: rgba(230, 247, 255, 1);text-align: center;border: 1px solid rgba(145, 213, 255, 1); margin-left: 20px;}
+.devicemanagement-main .devicemanagement-main-top .next-message.next-message-notice.next-inline.next-medium.next-only-content{width: 271px;height: 40px;line-height: 20px; border-radius: 4px;background-color: rgba(230, 247, 255, 1);text-align: center;border: 1px solid rgba(145, 213, 255, 1); margin-left: 20px;}
 /* 设备管理 添加分组弹框*/
 .addgrouping{  position: fixed; width: 330px; height: 300px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px; z-index: 8888;
   border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
@@ -429,16 +435,17 @@ a:active{ text-decoration: none; }
 
 .webhooks .tab-contenttwo{ display: flex; align-content: center; justify-content: center;}
 .webhooks .tab-contenttwo .tab-contenttwo-left{ width: 100%; padding-bottom: 50px;}
-.webhooks .tab-contenttwo .tab-contenttwo-left .next-message.tab-contenttwo-left-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 20px 0;}
+.webhooks .tab-contenttwo .tab-contenttwo-left .next-message.tab-contenttwo-left-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 4px;}
 .webhooks .tab-contenttwo .webhooks-inner-top div{ margin: 15px;}
 .webhooks .tab-contenttwo .webhooks-inner-top .myspan{display: inline-block; text-align: right; width: 90px;}
-.webhooks .tab-contenttwo .webhooks-inner-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
+.webhooks .tab-contenttwo .webhooks-inner-top{ margin-top: 10px;border-radius: 4px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 10px 20px; margin-bottom: 20px;}
+div.tab-panel{ background: #FFFFFF;}
   /*webhooks-ending*/
 
   /*服务端charge--starting*/
-.serversidecharge .tab-contentone .tab-contentone-left{ width: 100%; padding:15px 0px;}
-.serversidecharge .tab-contentone .tab-contentone-middle{ background: rgba(255, 255, 255, 1); border-radius: 6px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); padding: 15px 10px 30px;}
+.serversidecharge .tab-contentone .tab-contentone-left{ width: 100%;}
+.serversidecharge .tab-contentone .tab-contentone-middle{ background: rgba(255, 255, 255, 1); border-radius: 6px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); padding: 0px 10px 30px;}
 .serversidecharge .tab-contentone .tab-contentone-middle .inner-box{ margin: 15px;}
 .serversidecharge .tab-contentone .tab-contentone-middle .inner-box p{ padding: 10px 0px;}
 .serversidecharge .tab-contentone .tab-contentone-bottom{ background: rgba(255, 255, 255, 1); box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin-top: 15px;}
@@ -458,11 +465,11 @@ a:active{ text-decoration: none; }
   /*支付体验--ending*/
 
   /*请求log查看--starting*/
-.requestlog .requestlog-tab .requestlog-tab-top{ width: 98%; background: rgba(255, 255, 255, 1); border-radius: 6px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 10px 0px 15px; padding: 10px 15px;}
+.requestlog .requestlog-tab .requestlog-tab-top{ width: 98%; background: rgba(255, 255, 255, 1); border-radius: 4px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 20px 0px 0px 0px; padding: 0px 0px 20px 15px;}
 .requestlog .requestlog-tab .requestlog-tab-top ul li{ list-style: disc; padding: 5px 0px;}
-.requestlog .requestlog-tab .requestlog-tab-top ul{ margin: 15px;}
-.requestlog .requestlog-tab .requestlog-tab-middle{ width: 98%; background: rgba(255, 255, 255, 1); border-radius: 6px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 10px 0px 15px; padding: 10px 15px;}
-
+.requestlog .requestlog-tab .requestlog-tab-top ul{ margin: 0px 15px;}
+.requestlog .requestlog-tab .requestlog-tab-middle{ width: 98%; background: rgba(255, 255, 255, 1); border-radius: 4px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); margin: 10px 0px 15px; padding: 10px 15px;}
+.inner-div{ margin: 15px 0px 0px 0px;}
 /*日志详情--starting*/
 .logdetails{ position: fixed; width: 85%; top: 100%; left: 25%; margin-top: -600px; margin-left: -200px; z-index: 8888;
   border-radius: 6px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
@@ -486,7 +493,7 @@ a:active{ text-decoration: none; }
 .controloverinvoices-top-onecontent div img{ width: 43px; height: 46px; margin-right: 30px;}
 .controloverinvoices-top-onecontent div strong{ font-size: 18px; font-weight: 400; margin-left: 20px;}
 .controloverinvoices-top-onecontent p strong{ color: rgba(34, 90, 225, 0.9);font-size: 14px;}
-.controloverinvoices-top .controloverinvoices-top-twocontent{ width: 65%; padding: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: #6C757D;}
+.controloverinvoices-top .controloverinvoices-top-twocontent{ width: 30%; padding: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: #6C757D;}
 .controloverinvoices-top-twocontent .next-btn.next-medium.next-btn-primary{background: #225AE1 90%;}
 .controloverinvoices-top span p{ color: #8d8e8e; font-size: 14px;}
 .controloverinvoices-top-twocontent .controloverinvoices-topright-content span{ display: inline-block;}
@@ -510,9 +517,11 @@ a:active{ text-decoration: none; }
 .apply-billing-topcontent .apply-billing-bottomcontent{ width: 98%; background-color: #FFFFFF; border-radius: 6px; padding: 20px 10px; margin: 20px auto;}
 .apply-billing-topcontent .apply-billing-bottomcontent div{ display: inline-flex; width: 33.3%; height: 100px; padding: 20px 60px;}
 .apply-billing-topcontent .apply-billing-bottomcontent .innertwo{ border-left: 1px solid #999999; border-right: 1px solid #999999;}
-.deduction-details-topcontent .tab-contenttwo-left-message ol li{ padding: 5px 0px;}
+.deduction-details-topcontent .tab-contenttwo-left-message ol li{ line-height: 28px; }
+.tab-contenttwo-left-message.next-message.next-medium .next-message-symbol{ padding: 5px 0px;}
 .apply-billing-topcontent .apply-billing-bottomcontent div p span{ color: blue; padding-left: 5px; cursor: pointer;}
-.apply-billing-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px; margin: 10px 0px; padding-bottom: 10px;}
+.apply-billing-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 4px; margin: 10px 0px; padding-bottom: 10px;}
+.tab-contenttwo-left-message.next-message.next-message-notice.next-inline{ background-color: #E6F7FF; border-color: #C6EAFF; border-radius: 4px;}
 /*按钮style*/
 .next-btn.next-large.next-btn-secondary.apply-billing-btn{ background: rgba(187, 187, 187, 1); color: rgba(255, 255, 255, 1); border-radius: 6px; margin-left: 20px; border: none;}
 .next-btn.next-medium.next-btn-secondary.apply-billing-btn{ background: rgba(187, 187, 187, 1); color: rgba(255, 255, 255, 1); border-radius: 6px; margin-left: 20px; border: none;}
@@ -585,12 +594,12 @@ a:active{ text-decoration: none; }
 
 /*账户信息Starting*/
 .personal-account-left{ width: 30%;  margin-top: 20px; display: inline-block; float: left; margin-left: 1%;}
-.personal-account-right{ width: 66%; margin-top: 20px; display: inline-block; margin-left: 1%; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); padding: 15px;}
-.personal-account-left .content-top{ width: 100%; background: #4775E7; border-radius: 6px; padding: 15px 100px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);}
+.personal-account-right{ width: 66%; margin-top: 20px; display: inline-block; margin-left: 1%; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); padding: 15px; border-radius: 4px;}
+.personal-account-left .content-top{ width: 100%; background: #4775E7; border-radius: 4px; padding: 15px 100px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);}
 .personal-account-left .content-top ul{ color: #FFFFFF; display: inline-block; line-height: 24px;}
 .personal-account-left .content-top ul li{ text-align: center;}
 .personal-account-left .content-top ul>li{ padding-top: 16px;}
-.personal-account-left .content-bottom{ width: 100%; border-radius: 6px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); padding: 20px;}
+.personal-account-left .content-bottom{ width: 100%; border-radius: 4px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); padding: 20px;}
 .personal-account-left .content-bottom ul{ margin: 20px 0px; color: #999999;}
 .personal-account-left .content-bottom ul li{ line-height: 36px;}
 .personal-account-left .content-bottom ul li span{ font-weight: bold;}
@@ -868,5 +877,3 @@ a:active{ text-decoration: none; }
 .Customerservice .onlineservice .chat-controls .chat-extra a:hover .extra-tooltip {
   display: block;
 }
-
-

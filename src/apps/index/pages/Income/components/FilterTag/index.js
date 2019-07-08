@@ -79,7 +79,7 @@ export default class FilterTag extends Component {
       <div className='incomepage'>
         <Tab shape='pure' className='income-tab'>
           <Tab.Item title="收入订单">
-            <div>
+            <div style={styles.divMargin}>
               <div className='income-tabs'>
                 <div>总交易金额：{this.props.Filtertag.totalAmount}</div>
                 <div>已支付金额：{this.props.Filtertag.payAmount}</div>
@@ -107,18 +107,9 @@ export default class FilterTag extends Component {
   }
 }
 
+const styles = {
+  divMargin: {
+    margin: '20px 0px',
+  },
+};
 
-/* const styles = {
-  sixRadius: {
-    borderRadius: '6px',
-  },
-  btnBackground: {
-    backgroundColor: '#E2EDFF',
-  },
-  btnBordercolor: {
-    borderColor: '#A3D0FD',
-  },
-  selectedBackground: {
-    backgroundColor: '#225AE1',
-  },
-}; */

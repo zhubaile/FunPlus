@@ -123,7 +123,7 @@ export default class Ceshi extends Component {
               </ul>
             </div>
             <div className='scene-botton-right'>
-              <img src={require('../../../../../assets/img/prodect/administration/pic03.png')} alt="" />
+              <img src={require('../../../../../assets/img/prodect/administration/pic_5.png')} alt="" />
             </div>
           </div>
         </div>

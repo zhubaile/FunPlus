@@ -180,7 +180,7 @@ export default class Orderrefund extends Component {
       <div className='auditofpayment'>
         <Tab shape='pure' className='auditofpayment-tab'>
           <Tab.Item title="出款审核">
-            <div style={{ position: 'absolute', right: 15, top: 100 }}>
+            <div style={{ position: 'absolute', right: 15, top: 95 }}>
               <div style={styles.divRadius}>今日总收￥1232323</div>
               <div style={styles.divRadius}>今日付款￥234234</div>
               <div style={styles.divRadius}>今日退款￥234232</div>
@@ -204,8 +204,9 @@ export default class Orderrefund extends Component {
                 退款金额大于实际付款金额，请联系超级管理员，开启允许超额退款权限！
               </Message>
             </div>
-            <span>本次搜索付款总额：5555</span>
-            <div className='expendordbat-tabs-border' />
+            <span className='all_span'>本次搜索付款总额：5555</span>
+            <hr />
+            {/*<div className='expendordbat-tabs-border' />*/}
             <IceContainer>
               <Table loading={isLoading} dataSource={datas} hasBorder={false}>
                 <Table.Column title="创建时间" dataIndex="createdAt" cell={this.createdAt} />

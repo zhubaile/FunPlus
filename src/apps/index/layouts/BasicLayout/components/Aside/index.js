@@ -193,10 +193,12 @@ export default class Aside extends Component {
               <div className="sub-menu-i">
                 <ul className="sub-menu">
                   <li>
-                    <a href="#">设备列表</a>
+                    <Link to="/admin/Devicemanagement/paymentreview">设备列表</Link>
+                    {/*<a href="#">设备列表</a>*/}
                   </li>
                   <li>
-                    <a href="#">设备分组</a>
+                    <Link to="/admin/Devicemanagement/channelreconciliation">设备分组</Link>
+                    {/*<a href="#">设备分组</a>*/}
                   </li>
                 </ul>
               </div>
@@ -224,7 +226,10 @@ export default class Aside extends Component {
                     </Link>
                   </li>
                   <li>
-                    <a href="#">高级权限开关</a>
+                    <Link to='/admin/privilegemanagement/realtimedataincome'>
+                      高级权限开关
+                    </Link>
+                    {/* <a href="#">高级权限开关</a> */}
                   </li>
                 </ul>
               </div>
