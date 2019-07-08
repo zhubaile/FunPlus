@@ -450,3 +450,25 @@ export function exportExcel(params) {
     params,
   });
 }
+// 会话记录
+export function workOrdersessionList(params) {
+  return ajaxAmd.get({
+    url: '/workOrder/sessionList',
+    params,
+  });
+}
+
+// 客服聊天
+export function workOrderserviceList(params) {
+  return ajaxAmd.get({
+    url: '/workOrder/serviceList',
+    params,
+  });
+}
+// 获取聊天记录
+export function workOrderuserRecord(params) {
+  return ajaxAmd.post({
+    url: '/workOrder/userRecord',
+    data: params,
+  });
+}

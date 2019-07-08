@@ -14,6 +14,12 @@
 .leftnav{ width: 300px; background: #F2F4F8; border-right: 1px solid rgba(0, 0, 0, 0.05);}
 .leftnav-navtop{white-space: nowrap;margin-right: 0;}
 .navtop1-box{ width: 300px; background: #F2F4F8;}
+
+.chat-list{ display: flex; align-items: center; justify-items: center; height: 68px; background: #fff}
+.chat-list .chat-list-box{ width: 50%; display: flex; align-items: center; justify-items: center; text-align: center; justify-content: center; font-size: 14px; cursor: pointer;}
+.chat-list .chat-list-box span{ margin-left: 10px;}
+.chat-list .chat-list-box.color{ color: rgba(26,85,226,0.95);}
+
 .chat-search{ padding: 15px 10px; border-bottom: 1px solid rgba(0, 0, 0, 0.05);}
 .element-search{  position: relative;}
 .element-search input {border: none;-webkit-box-shadow: none;box-shadow: none;background-color: #fff;border-radius: 30px;padding: 10px 15px 10px 40px;display: block;width: 100%;outline: none;color: black;}
@@ -22,18 +28,22 @@
 /* 客服工单样式 */
 .next-tabs.next-medium .next-tabs-tab-inner{  width: 140px; text-align: center;}
 .leftnav-navtop .tab-title i{ font-size: 24px;}
+.leftnav-navtop .tab-title a{ width: 150px; background: red;
+
+}
 /* nav样式 */
 /* ***** 客服界面 */
+.user-list{ border-top: 1px solid rgba(0, 0, 0, 0.05);}
 .user-list .user-w {display: -webkit-box;display: -ms-flexbox;display: flex;padding: 20px 30px;-webkit-box-align: center;-ms-flex-align: center;align-items: center;border-bottom: 1px solid rgba(0, 0, 0, 0.05);-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
 .user-list .user-w .avatar {margin-right: 20px;-webkit-box-flex: 0;-ms-flex: 0 0 50px;flex: 0 0 50px;}
 .user-list .user-w .avatar img {width: 50px;height: auto;border-radius: 50px;display: block;}
 .user-list .user-w .user-info {-webkit-box-flex: 1;-ms-flex: 1 1 auto;flex: 1 1 auto;}
 .user-list .user-w .user-name {font-weight: 500;font-size: 0.99rem;-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
 .user-list .user-w .last-message {color: rgba(0, 0, 0, 0.4);font-size: 0.81rem;-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
-.user-list .user-w .user-date {float: right;padding: 2px 7px;background-color: #fff;border-radius: 12px;font-size: 0.72rem;color: rgba(0, 0, 0, 0.3);-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
+.user-list .user-w .user-date {float: right;padding: 2px 7px;border-radius: 12px;font-size: 0.72rem;color: #1A55E2;-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
 .user-list .user-w:hover {background-color: #047bf8;cursor: pointer;}
 .user-list .user-w:hover .user-name {color: #fff;}
-.user-list .user-w:hover .last-message {color: rgba(255, 255, 255, 0.5);}
+.user-list .user-w:hover .last-message {color: rgba(255, 255, 255, 0.5); margin-top: 5px;}
 .user-list .user-w:hover .user-date {background-color: #046fdf;color: rgba(255, 255, 255, 0.3);}
 
 /* 客服界面 */

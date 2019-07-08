@@ -95,7 +95,7 @@ export default class FilterForm extends Component {
               >
                 <Select style={styles.formSelect} dataSource={timeType} defaultValue='createdAt' />
               </FormBinder>
-              <FormBinder name='startdate'>
+              <FormBinder name='startdate' >
                 <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
               </FormBinder>
               <span style={styles.formLabel}>支付状态</span>
