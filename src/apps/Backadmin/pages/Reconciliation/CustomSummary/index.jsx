@@ -4,6 +4,7 @@ import { Button , Tab, Message ,Switch,Pagination,Table,Select , Menu,MenuButton
 import { actions, reducers, connect } from '@indexStore';
 // import IceContainer from '@icedesign/container';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
+import Linegraph from '../components/Linegraph';
 import '../../index.css';
 // import Check from "../../Backstageworkorder/Workorderdetails/Check/index";
 // import SelectLang from "../../../../Internationalization/SelectLang/SelectLang";
@@ -38,7 +39,7 @@ export default class CustomSummary extends Component {
       value: {
         jiaose: '角色',
         haoma: '',
-        timeType: '创建时间',
+        timeType: '',
         startdate: [],
         orderStatus: '',
         refundStatus: '',
@@ -100,7 +101,7 @@ export default class CustomSummary extends Component {
   renderSelectall = () => {
     return (
       <div>
-        <Checkbox defaultChecked={true} />
+        <Checkbox defaultChecked />
       </div>
     );
   };
@@ -131,12 +132,11 @@ export default class CustomSummary extends Component {
     ];
 
     return (
-      <div className='outlay'>
+      <div className='customsummary'>
         <Tab shape='pure' className='income-tab'>
           <Tab.Item title="自定义汇总">
-            <div className='outlay-tabs-border' />
             <div className=''>
-              <div className='outlay-top'>
+              <div className='customsummary-top'>
                 <FormBinderWrapper
                   value={this.state.value}
                   onChange={this.formChange}
@@ -155,33 +155,50 @@ export default class CustomSummary extends Component {
                         <FormBinder name='orderStatus'>
                           <Select style={styles.formSelect} dataSource={orderStatus} />
                         </FormBinder>
-                      </div>
-                    </Col>
-                    <Col l="24">
-                      <div style={styles.formItemTwo}>
-                        <span style={styles.formLabel}>付款渠道</span>
+                        <span style={styles.formLabel}>支付渠道：</span>
                         <FormBinder name='payChannel'>
                           <Select style={styles.formSelect} dataSource={payChannel} />
                         </FormBinder>
                         <FormBinder name="device" >
                           <Select style={{ width: '200px' }} dataSource={device} />
                         </FormBinder>
-                        <span style={styles.formLabel}>订单号</span>
-                        <FormBinder name='out_trade_no'>
-                          <Input className='input-bg' placeholder='输入订单号' />
-                        </FormBinder>
                         <Button className='btn-all bg' size="large" type="secondary">搜索</Button>
-                        <Button className='btn-all bg' size="large" type="secondary">重置</Button>
                       </div>
                     </Col>
                   </Row>
                 </FormBinderWrapper>
-
               </div>
+              <div className='selfsumm-exhibition'>
+                <div className='exhibition-bor'>
+                  <span>收入</span>
+                  <div>
+                    <strong>￥30000</strong>300/笔
+                  </div>
+                </div>
+                <div className='exhibition-bor'>
+                  <span>成功率</span>
+                  <div>
+                    <strong>100%</strong>
+                  </div>
+                </div>
+                <div className='exhibition-bor'>
+                  <span>退款</span>
+                  <div>
+                    <strong>￥3999</strong>
+                  </div>
+                </div>
+                <div className='exhibition-bor'>
+                  <span>付款</span>
+                  <div>
+                    <strong>￥3999</strong>
+                  </div>
+                </div>
+                <div className='clearfix' />
+              </div>
+              <Linegraph />
             </div>
             <div className='outlay-panel' >
-              <div className=''>
-              </div>
+              <div className='' />
             </div>
           </Tab.Item>
         </Tab>

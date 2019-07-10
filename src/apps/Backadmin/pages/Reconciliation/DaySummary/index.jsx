@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button , Tab, Message ,Switch,Pagination,Table,Select , Menu,MenuButton, Radio, Input, Grid, DatePicker, Checkbox } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
+// import IceContainer from '@icedesign/container';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
+import Linegraph from '../components/Linegraph';
 import '../../index.css';
+// import Check from "../../Backstageworkorder/Workorderdetails/Check/index";
+// import SelectLang from "../../../../Internationalization/SelectLang/SelectLang";
 
 const { Item } = MenuButton;
 const getData = (length = 10) => {
@@ -25,7 +29,7 @@ const getData = (length = 10) => {
 };
 const { RangePicker } = DatePicker;
 const { Row, Col } = Grid;
-export default class RealtimedataIncome extends Component {
+export default class DaySummary extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +39,7 @@ export default class RealtimedataIncome extends Component {
       value: {
         jiaose: '角色',
         haoma: '',
-        timeType: '创建时间',
+        timeType: '',
         startdate: [],
         orderStatus: '',
         refundStatus: '',
@@ -101,8 +105,6 @@ export default class RealtimedataIncome extends Component {
       </div>
     );
   };
-
-
   formChange=(value)=>{
     debugger;
   }
@@ -130,22 +132,11 @@ export default class RealtimedataIncome extends Component {
     ];
 
     return (
-      <div className='realtimedataincome'>
+      <div className='daysummary'>
         <Tab shape='pure' className='income-tab'>
-          <Tab.Item title="收入">
-            <div style={styles.divMargin}>
-              <div className='income-tabs'>
-                <div>总收入金额：xxx</div>
-                <div>支付成功率：90%</div>
-              </div>
-              <div className='income-tabs rightbtn'>
-                <Button className='btn-all bg' size="large" type="secondary" disabled style={{ opacity: 0.5 }}>表格列过滤</Button>
-                <Button className='btn-all bg' size="large" type="secondary">导出结果为表格</Button>
-              </div>
-            </div>
-            <div className='income-tabs-border' />
+          <Tab.Item title="当日汇总">
             <div className=''>
-              <div className='realtimedataincome-top'>
+              <div className='daysummary-top'>
                 <FormBinderWrapper
                   value={this.state.value}
                   onChange={this.formChange}
@@ -154,77 +145,61 @@ export default class RealtimedataIncome extends Component {
                   <Row wrap gutter="20" style={styles.formRow}>
                     <Col l="24">
                       <div style={styles.formItem}>
-                        <span style={styles.formLabel}>选择时间</span>
+                        <span style={styles.formLabel}>商户ID:</span>
                         <FormBinder name="timeType"
                           autoWidth={false}
                         >
-                          <Select style={styles.formSelect} dataSource={timeType} defaultValue='创建时间' />
+                          <Input style={styles.formInput} dataSource={timeType} />
                         </FormBinder>
-                        <FormBinder name='startdate'>
-                          <RangePicker className='showHour' showTime resetTime />
-                        </FormBinder>
-                        <span style={styles.formLabel}>支付状态</span>
+                        <span style={styles.formLabel}>所属行业：</span>
                         <FormBinder name='orderStatus'>
                           <Select style={styles.formSelect} dataSource={orderStatus} />
                         </FormBinder>
-                        <span style={styles.formLabel}>退款状态</span>
-                        <FormBinder name='refundStatus'>
-                          <Select style={styles.formSelect} dataSource={refundStatus} />
-                        </FormBinder>
-                      </div>
-                    </Col>
-                    <Col l="24">
-                      <div style={styles.formItemTwo}>
-                        <span style={styles.formLabel}>支付渠道</span>
+                        <span style={styles.formLabel}>支付渠道：</span>
                         <FormBinder name='payChannel'>
                           <Select style={styles.formSelect} dataSource={payChannel} />
                         </FormBinder>
                         <FormBinder name="device" >
                           <Select style={{ width: '200px' }} dataSource={device} />
                         </FormBinder>
-                        <span style={styles.formLabel}>订单号</span>
-                        <FormBinder name='out_trade_no'>
-                          <Input className='input-bg' placeholder='输入订单号' />
-                        </FormBinder>
+                        <Button className='btn-all bg' size="large" type="secondary">对比其他时间</Button>
                         <Button className='btn-all bg' size="large" type="secondary">搜索</Button>
-                        <Button className='btn-all bg' size="large" type="secondary">重置</Button>
                       </div>
                     </Col>
                   </Row>
                 </FormBinderWrapper>
-
               </div>
-            </div>
-            <div className='realtimedataincome-panel' >
-              <div className=''>
-                <div className='tab-panel'>
-                  <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                    <Table.Column
-                      title=""
-                      width={50}
-                      dataIndex=""
-                      cell={this.renderSelectall}
-                    />
-                    <Table.Column title="商户ID" dataIndex="merchantId" />
-                    <Table.Column title="企业名称" dataIndex="name" />
-                    <Table.Column title="创建时间完成时间" dataIndex="time" />
-                    <Table.Column title="商户订单号平台流水号" dataIndex="order" />
-                    <Table.Column title="商品名称备注" dataIndex="remark" />
-                    <Table.Column title="创建金额实付金额" dataIndex="balance" />
-                    <Table.Column title="支付状态" dataIndex="email" />
-                    <Table.Column title="退款金额退款状态" dataIndex="tel" />
-                    <Table.Column title="分润金额分润状态" dataIndex="role" />
-                    <Table.Column title="渠道设备ID" dataIndex="status" />
-                    <Table.Column title="操作" dataIndex="oper" />
-                  </Table>
-                  <Pagination
-                    style={{ marginTop: '20px', textAlign: 'right' }}
-                    current={current}
-                    onChange={this.handlePaginationChange}
-                  />
-                  <Button className='' size='large' type='primary' style={styles.delbtn}>删除</Button>
+              <div className='selfsumm-exhibition'>
+                <div className='exhibition-bor'>
+                  <span>收入</span>
+                  <div>
+                    <strong>￥30000</strong>300/笔
+                  </div>
                 </div>
+                <div className='exhibition-bor'>
+                  <span>成功率</span>
+                  <div>
+                    <strong>100%</strong>
+                  </div>
+                </div>
+                <div className='exhibition-bor'>
+                  <span>退款</span>
+                  <div>
+                    <strong>￥3999</strong>
+                  </div>
+                </div>
+                <div className='exhibition-bor'>
+                  <span>付款</span>
+                  <div>
+                    <strong>￥3999</strong>
+                  </div>
+                </div>
+                <div className='clearfix' />
               </div>
+              <Linegraph />
+            </div>
+            <div className='outlay-panel' >
+              <div className='' />
             </div>
           </Tab.Item>
         </Tab>
@@ -253,6 +228,9 @@ const styles = {
   },
   formSelect: {
     width: '200px',
+    margin: '0 10px',
+  },
+  formInput: {
     margin: '0 10px',
   },
   delbtn: {

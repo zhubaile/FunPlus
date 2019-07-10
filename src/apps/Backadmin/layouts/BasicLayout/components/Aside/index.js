@@ -56,10 +56,10 @@ export default class Aside extends Component {
                   </span>
                 }
               >
-                <MenuItem key="1">收入</MenuItem>
+                <MenuItem key="1"><Link to="/backadmin/realtimedata/realtimedataIncome">收入</Link></MenuItem>
                 <SubMenu key="sub3" title="支出概况">
-                  <MenuItem key="2">支出</MenuItem>
-                  <MenuItem key="3">出款审核</MenuItem>
+                  <MenuItem key="2"><Link to="/backadmin/Realtimedata/outLay">支出</Link></MenuItem>
+                  <MenuItem key="3"><Link to="/backadmin/Realtimedata/paymentReview">出款审核</Link></MenuItem>
                 </SubMenu>
               </SubMenu>
               <SubMenu
@@ -71,11 +71,11 @@ export default class Aside extends Component {
                   </span>
                 }
               >
-                <MenuItem key="4">自定义汇总</MenuItem>
-                <MenuItem key="5">渠道对账</MenuItem>
-                <MenuItem key="6">差错交易</MenuItem>
-                <MenuItem key="7">当日汇总</MenuItem>
-                <MenuItem key="8">交易报表</MenuItem>
+                <MenuItem key="4"><Link to="/backadmin/reconciliation/customSummary">自定义汇总</Link></MenuItem>
+                <MenuItem key="5"><Link to="/backadmin/reconciliation/channelReconciliation">渠道对账</Link></MenuItem>
+                <MenuItem key="6"><Link to="/backadmin/reconciliation/errortransaction">差错交易</Link></MenuItem>
+                <MenuItem key="7"><Link to='/backadmin/reconciliation/daySummary'>当日汇总</Link></MenuItem>
+                <MenuItem key="8"><Link to="/backadmin/reconciliation/transactionReport">交易报表</Link></MenuItem>
               </SubMenu>
             </StyledMenu>
           ) : null
@@ -98,25 +98,29 @@ export default class Aside extends Component {
                 }
               >
                 <SubMenu key="sub3" title="渠道管理">
-                  <MenuItem key="1">应用渠道</MenuItem>
-                  <MenuItem key="2">平台渠道</MenuItem>
+                  <MenuItem key="1"><Link to="/backadmin/applicationmanagement/applicationChannel">应用渠道</Link></MenuItem>
+                  <MenuItem key="2"><Link to="/backadmin/applicationmanagement/platformChannel">平台渠道</Link></MenuItem>
                 </SubMenu>
-                <MenuItem key="3">设备管理</MenuItem>
+                <MenuItem key="3"><Link to="/backadmin/applicationmanagement/equipmentManagement">设备管理</Link></MenuItem>
                 <SubMenu key="sub4" title="路由规则概况">
-                  <MenuItem key="4">路由规则</MenuItem>
-                  <MenuItem key="5">平台路由覆盖</MenuItem>
+                  <MenuItem key="4"><Link to="/backadmin/Applicationmanagement/routingRules">路由规则</Link></MenuItem>
+                  <MenuItem key="5"><Link to="/backadmin/Applicationmanagement/platformRouting">平台路由覆盖</Link></MenuItem>
                 </SubMenu>
               </SubMenu>
+
               <SubMenu
                 className='cancel'
                 key="sub2"
                 title={
                   <span>
-                    <i className="os-icon os-icon-coins-4" />
-                    <span>商户信息</span>
+                    <Link to="/backadmin/businessinformation">
+                      <i className="os-icon os-icon-coins-4" />
+                      <span>商户信息</span>
+                    </Link>
                   </span>
                 }
               />
+
             </StyledMenu>
           ) : null
         }
@@ -205,8 +209,8 @@ export default class Aside extends Component {
                   </span>
                 }
               >
-                <MenuItem key="4">角色管理</MenuItem>
-                <MenuItem key="5">成员管理</MenuItem>
+                <MenuItem key="4"><Link to="/backadmin/Teamauthority/rolemanagement">角色管理</Link></MenuItem>
+                <MenuItem key="5"><Link to="/backadmin/Teamauthority/membermanagement">成员管理</Link></MenuItem>
                 <MenuItem key="6">管理台操作日志</MenuItem>
               </SubMenu>
               <SubMenu
