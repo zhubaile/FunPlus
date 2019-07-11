@@ -5,7 +5,7 @@ import { enquire } from 'enquire-js';
 import MainRoutes from './MainRoutes';
 import Header from './components/Header';
 import Aside from './components/Aside';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 // import BasicLayoutHoc from './BasicLayoutHoc';
 // import MainRoutes from './MainRoutes';
 import './index.scss';
@@ -81,7 +81,7 @@ export default class BasicLayout extends Component {
               <MainRoutes />
             </Layout.Main>
           </Layout.Section>
-          <Footer />
+          {/* <Footer /> */}
         </Layout>
       </div>
     );

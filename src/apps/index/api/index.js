@@ -472,3 +472,10 @@ export function workOrderuserRecord(params) {
     data: params,
   });
 }
+// 默认展示的聊天记录
+export function workOrderuserRecordOne(params) {
+  return ajaxAmd.post({
+    url: '/workOrder/userRecordOne',
+    data: params,
+  });
+}

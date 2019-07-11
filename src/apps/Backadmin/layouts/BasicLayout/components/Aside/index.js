@@ -28,7 +28,6 @@ export default class Aside extends Component {
 
     };
   }
-
   render() {
     const {
       location: { pathname },
@@ -136,23 +135,27 @@ export default class Aside extends Component {
                 key="sub1"
                 title={
                   <span>
-                    {/* <Icon type="filter" /> */}
-                    <i className="os-icon os-icon-coins-4" />
-                    <span>实时咨询</span>
+                    <Link to='/backadmin/service/realtimetion'>
+                      <i className="os-icon os-icon-coins-4" />
+                      <span>实时咨询</span>
+                    </Link>
                   </span>
                 }
               />
               <SubMenu
+                className='cancel'
                 key="sub2"
                 title={
                   <span>
-                    <i className="os-icon os-icon-coins-4" />
-                    <span>工单</span>
+                    <Link to='/backadmin/service/allworkorders'>
+                      <i className="os-icon os-icon-coins-4" />
+                      <span>工单管理</span>
+                    </Link>
                   </span>
                 }
               >
-                <MenuItem key="1"><Link to='/backadmin/exception/500'>工单管理</Link></MenuItem>
-                <MenuItem key="2">详情</MenuItem>
+                {/*  <MenuItem key="1"><Link to='/backadmin/service/allworkorders'>工单管理</Link></MenuItem>
+                <MenuItem key="2"><Link to='/backadmin/service/workorderdetails'>详情</Link></MenuItem> */}
               </SubMenu>
               <SubMenu
                 className='cancel'
@@ -160,8 +163,10 @@ export default class Aside extends Component {
                 title={
                   <span>
                     {/* <Icon type="filter" /> */}
-                    <i className="os-icon os-icon-coins-4" />
-                    <span>发票</span>
+                    <Link to='/backadmin/service/invoice'>
+                      <i className="os-icon os-icon-coins-4" />
+                      <span>发票</span>
+                    </Link>
                   </span>
                 }
               />
@@ -171,8 +176,10 @@ export default class Aside extends Component {
                 title={
                   <span>
                     {/* <Icon type="filter" /> */}
-                    <i className="os-icon os-icon-coins-4" />
-                    <span>帮助中心</span>
+                    <Link to='/backadmin/service/helpCenter'>
+                      <i className="os-icon os-icon-coins-4" />
+                      <span>帮助中心</span>
+                    </Link>
                   </span>
                 }
               />
@@ -196,9 +203,9 @@ export default class Aside extends Component {
                   </span>
                 }
               >
-                <MenuItem key="1">对外API</MenuItem>
-                <MenuItem key="2">接口文档</MenuItem>
-                <MenuItem key="3">接口访问白名单</MenuItem>
+                <MenuItem key="1"><Link to='/backadmin/interfaceManagement/foreignAPI'>对外API</Link></MenuItem>
+                <MenuItem key="2"><Link to='/backadmin/interfaceManagement/interfaceDocument'>接口文档</Link></MenuItem>
+                <MenuItem key="3"><Link to='/backadmin/interfaceManagement/interfaceaccess'>接口访问白名单</Link></MenuItem>
               </SubMenu>
               <SubMenu
                 key="sub2"

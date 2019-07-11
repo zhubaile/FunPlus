@@ -16,4 +16,5 @@
 
 // 让没有子元素的不显示向下图标
 .headaside .ice-menu .cancel.ice-menu-submenu-inline > .ice-menu-submenu-title:after{content: none;}
+.headaside .ice-menu .cancel .ice-menu-submenu-title span a{ display: block; width: 100%; height: 60px; color: #666;}
 .headaside .ice-menu.ice-menu-inline .ice-menu{ font-size: 14px;}

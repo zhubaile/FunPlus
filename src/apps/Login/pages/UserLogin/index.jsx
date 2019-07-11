@@ -12,6 +12,8 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { loginUser } from '@loginApi';
 import IceImg from '@icedesign/img';
 
+const Cookies = require('js-cookie');
+
 @withRouter
   @injectIntl
 class UserLogin extends Component {
@@ -56,8 +58,9 @@ class UserLogin extends Component {
         password: values.password,
       }).then(
         ({ status, data }) => {
+          debugger;
           if (data.errCode == 0) {
-            console.log(values);
+            Cookies.set('applicationId', data.data._id);
             Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
             this.props.history.push('/admin/income');
             window.location.href = "";

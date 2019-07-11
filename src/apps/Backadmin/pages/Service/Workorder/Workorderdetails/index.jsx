@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { findDomNode } from 'react-dom';
 import { Table,Input,Radio ,Dialog ,DatePicker,Rating,Message,Button, Select , Form } from '@alifd/next';
 // import { Link } from 'react-router-dom';
-import Nav from '../components/Nav';
+// import Nav from '../components/Nav';
 import moment from "moment/moment";
 // import { Dialog,Message } from "@alifd/next/lib/index";
 import { workOrdercustomerWork,workOrderremainEvaluated,workOrderworkDetails } from '@indexApi';
-import '../../../layouts/BasicLayout/components/Header/index.scss';
-import '../components/index.css';
+import '../../../../layouts/BasicLayout/components/Header/index.scss';
+import '../../index.css';
 import Deletedata from './Deletedata';
-import Check from './Check';
+// import Check from './Check';
 
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
@@ -44,7 +44,7 @@ export default class Workorderdetails extends Component {
   componentDidMount() {
     this.fetchData();
   }
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     debugger;
   }
   fetchData = (len) => {
@@ -196,14 +196,11 @@ export default class Workorderdetails extends Component {
     return (
       <div className='backstageworkorder'>
         <Deletedata ref={ node => this.Deletedata = node } history={this.props.history} />
-        <Check ref={ node => this.Check = node } history={this.props.history} />
-        <Nav defaultActiveKey='2' history={this.props.history} />
+        {/* <Check ref={ node => this.Check = node } history={this.props.history} />
+        <Nav defaultActiveKey='2' history={this.props.history} /> */}
         <div className='wodegongdan'>
           <div className='wodegongdan-top'>
             <span>工单详情</span>
-            {isStatement == 1 ? (
-              <Button className='btn-all' style={styles.btns} type='secondary' size='large' onClick={this.reworklist.bind(this)}>返回工单列表</Button>
-            ) : (<Button className='btn-all' style={styles.btn} type='secondary' size='large' onClick={this.workorderdetailsOpenbtn.bind(this)}>结单</Button>)}
             <div className='wodegongdan-top-border' />
           </div>
           <div className='wodegongdan-table'>
@@ -255,7 +252,7 @@ export default class Workorderdetails extends Component {
             )}
           </div>
           <div className={isStatement == 1 ? 'wodegongdan-pingjia' : 'wodegongdan-pingjia nodisplay'}>
-            <p style={{ borderLeft: '2px solid blue', marginLeft: '5px' }}>{status == 3 ? ('您的评价') : ('待评价')}</p>
+           {/* <p style={{ borderLeft: '2px solid blue', marginLeft: '5px' }}>{status == 3 ? ('您的评价') : ('待评价')}</p>*/}
             {status == 3 ? (
               <Form
                 {...formItemLayout}
@@ -273,16 +270,17 @@ export default class Workorderdetails extends Component {
                   {workEvaluate.feedback}
                 </FormItem >
               </Form>
-            ) : (
+            ) : null
+              /* (
               <Form
                 {...formItemLayout}
                  // ref="form"
               >
-                {/* <span>整体评价：</span> */}
+                {/!* <span>整体评价：</span> *!/}
                 <FormItem label='整体评价：'>
                   <Rating name='star' count='5' size='large' />
                 </FormItem >
-                {/* <span>问题是否解决：</span> */}
+                {/!* <span>问题是否解决：</span> *!/}
                 <FormItem label='问题是否解决：'>
                   <RadioGroup name='radio'>
                     <Radio id="1" value="1">已解决</Radio>
@@ -301,10 +299,10 @@ export default class Workorderdetails extends Component {
                   <FormItem label=" ">
                     <Form.Submit style={{ textAlign: 'right' }} type="primary" validate onClick={this.remainEvaluated}>提交</Form.Submit>
                   </FormItem>
-                  {/* <Button type='primary' onClick={this.remainEvaluated.bind(this)}>提交</Button> */}
+                  {/!* <Button type='primary' onClick={this.remainEvaluated.bind(this)}>提交</Button> *!/}
                 </div>
               </Form>
-            )}
+            ) */}
 
           </div>
         </div>
@@ -323,6 +321,8 @@ const styles = {
   btns: {
     position: 'absolute',
     right: '60px',
+    height: '28px',
+    width: '140px;',
     borderRadius: '6px',
   },
   pagination: {

@@ -16,7 +16,6 @@ export async function getMenu(params) {
 }
 // 发送邮件
 export async function sendMailbox(params) {
-  debugger;
   return ajaxAmd.get({
     url: '/sendRegisterMail',
     params,

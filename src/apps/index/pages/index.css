@@ -338,6 +338,7 @@ a:active{ text-decoration: none; }
 .accesstoinformationaddition .accesstoinformationaddition-right{ width: 20%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px;text-align: center;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px;padding-top: 20px; height:260px; margin-left: 30px;}
 /* 成组件了 管理员的信息 */
+.administrators{ display: flex; align-items: center; justify-content: center; flex-direction: column;}
 .administrators img{ width: 100px; height: auto;border-radius: 50%;}
 .administrators h2{ color: #1A55E2;}
 .administrators div img{ margin: 5px;}

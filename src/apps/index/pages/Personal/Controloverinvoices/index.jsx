@@ -49,7 +49,7 @@ class Controloverinvoices extends Component {
       current: 1, // 页码
       isLoading: false,
       datas: [], // 列表数据
-      InvoiceInfo: [], // 开票信息
+      InvoiceInfo: {}, // 开票信息
       MailAddress: [], // 地址信息
       TotalAmount: '', // 总金额
       ConsumptionAmount: '', // 已开票金额
@@ -218,17 +218,39 @@ class Controloverinvoices extends Component {
                 {/*    <img src={require('../../../../../assets/img/houtai/personal/009.png')} alt="" /> */}
                 <div className='controloverinvoices-topright-content'>
                   <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' }}>开票信息</p>
-                  <span>
-                    <p>公司名称：{InvoiceInfo.company}</p>
-                    <p>开户行：{InvoiceInfo.bank}</p>
-                    <p>开户账号：{InvoiceInfo.userId}</p>
-                    <p>税号：{InvoiceInfo.taxNumber}</p>
-                  </span>
-                  <span className='topright-inner'>
-                    <p>收件联系人：{MailAddress.contacts}</p>
-                    <p>地址：{MailAddress.mailAddress}</p>
-                    <p>联系方式：{MailAddress.phone}</p>
-                  </span>
+                  {
+                    !InvoiceInfo ? (
+                      <span>
+                        <p>公司名称：</p>
+                        <p>开户行：</p>
+                        <p>开户账号：</p>
+                        <p>税号：</p>
+                      </span>
+                    ) : (
+                      <span>
+                        <p>公司名称：{InvoiceInfo.company}</p>
+                        <p>开户行：{InvoiceInfo.bank}</p>
+                        <p>开户账号：{InvoiceInfo.userId}</p>
+                        <p>税号：{InvoiceInfo.taxNumber}</p>
+                      </span>
+                    )
+                  }
+                  {
+                    !MailAddress ? (
+                      <span className='topright-inner'>
+                        <p>收件联系人：</p>
+                        <p>地址：</p>
+                        <p>联系方式：</p>
+                      </span>
+                    ) : (
+                      <span className='topright-inner'>
+                        <p>收件联系人：{MailAddress.contacts}</p>
+                        <p>地址：{MailAddress.mailAddress}</p>
+                        <p>联系方式：{MailAddress.phone}</p>
+                      </span>
+                    )
+                  }
+
                 </div>
               </div>
 

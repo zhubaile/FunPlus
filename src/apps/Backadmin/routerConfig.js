@@ -27,6 +27,19 @@ const Businessinformation = React.lazy(() => import('./pages/Businessinformation
 
 const Rolemanagement = React.lazy(() => import('./pages/Teamauthority/Rolemanagement')); // 角色管理
 const Membermanagement = React.lazy(() => import('./pages/Teamauthority/Membermanagement')); // 成员管理
+// 服务
+// 工单
+const Allworkorders = React.lazy(() => import('./pages/Service/Workorder/Allworkorders')); // 工单
+const Workorderdetails = React.lazy(() => import('./pages/Service/Workorder/Workorderdetails')); // 工单详情
+const Realtimetion = React.lazy(() => import('./pages/Service/Realtimetion')); // 实时咨询
+const HelpCenter = React.lazy(() => import('./pages/Service/HelpCenter')); // 帮助中心
+const Invoice = React.lazy(() => import('./pages/Service/Invoice')); // 发票
+// import { asideMenuConfig } from './pages/Service/Invoice';
+// 管控
+// 接口管理
+const ForeignAPI = React.lazy(() => import('./pages/InterfaceManagement/foreignAPI')); // 对外API
+const Interfaceaccess = React.lazy(() => import('./pages/InterfaceManagement/Interfaceaccess')); // 接口访问白名单
+const InterfaceDocument = React.lazy(() => import('./pages/InterfaceManagement/InterfaceDocument')); // 接口文档
 /* 错误的信息 */
 const Empty = React.lazy(() => import('./pages/Exception/Empty'));
 const Forbidden = React.lazy(() => import('./pages/Exception/Forbidden'));
@@ -98,6 +111,38 @@ const routerConfig = [
   {
     path: '/backadmin/Teamauthority/membermanagement',
     component: Membermanagement,
+  },
+  {
+    path: '/backadmin/service/allworkorders',
+    component: Allworkorders,
+  },
+  {
+    path: '/backadmin/service/workorderdetails',
+    component: Workorderdetails,
+  },
+  {
+    path: '/backadmin/service/realtimetion',
+    component: Realtimetion,
+  },
+  {
+    path: '/backadmin/service/invoice',
+    component: Invoice,
+  },
+  {
+    path: '/backadmin/service/helpCenter',
+    component: HelpCenter,
+  },
+  {
+    path: '/backadmin/interfaceManagement/foreignAPI',
+    component: ForeignAPI,
+  },
+  {
+    path: '/backadmin/interfaceManagement/interfaceaccess',
+    component: Interfaceaccess,
+  },
+  {
+    path: '/backadmin/interfaceManagement/interfaceDocument',
+    component: InterfaceDocument,
   },
   {
     path: '/backadmin/exception/500',

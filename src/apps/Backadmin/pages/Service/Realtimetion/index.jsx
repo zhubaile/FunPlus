@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Tab,Button,Input } from '@alifd/next';
 import { Link } from 'react-router-dom';
-import Nav from '../components/Nav';
-import Administrators from '../../Personal/components/Administrators/Administrators';
+// import Nav from '../components/Nav';
+// import Administrators from '../../Personal/components/Administrators/Administrators';
 import '../../../layouts/BasicLayout/components/Header/index.scss';
-import '../components/index.css';
-import { workOrderuserRecord,workOrderuserRecordOne } from '@indexApi';
+import '../index.css';
+import { workOrderuserRecord,workOrderuserRecordOne,workOrderserviceList,workOrdersessionList } from '@indexApi';
 import { Message } from "@alifd/next/lib/index";
 import moment from 'moment';
 import io from 'socket.io-client';
@@ -36,6 +36,9 @@ export default class Customerservice extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      stylecolor: true, //
+      workOrdersessionLists: [], // 会话列表的内容
+      workOrderserviceLists: [], // 列表内容
       Probleminput: '', // 输入框内容
       datas: [], // 之前的聊天记录
       messagelist: [], // 此刻聊天的记录
@@ -47,12 +50,19 @@ export default class Customerservice extends Component {
     this.socket = io.connect(`ws://192.168.1.105:3000`);
     this.onScrollHandle = this.onScrollHandle.bind(this);
   }
-  /* socket.on('getMsg',()=>{
-
-}) */
   componentDidMount() {
+    this.fetchData();
+    /* 联系人的列表 */
+    workOrderserviceList().then(({ status,data })=>{
+      if (data.errCode == 0) {
+        this.setState({
+          workOrderserviceLists: data.data,
+        });
+      }
+    });
     const userId = Cookies.get('applicationId');
     // 初始聊天记录内容
+    debugger;
     workOrderuserRecordOne({
       userId,
     }).then(({ status,data })=>{
@@ -89,6 +99,18 @@ export default class Customerservice extends Component {
       });
     });
   }
+  // 会话的列表
+  fetchData = () => {
+    workOrdersessionList().then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        this.setState({
+          workOrdersessionLists: data.data,
+          // stylecolor: false,
+        });
+      }
+    });
+  };
   // 输入框事件
   probleminput(v,e) {
     this.setState({
@@ -102,36 +124,45 @@ export default class Customerservice extends Component {
     }
   }
   // 获取客服的id
-  customerserviceid(e) {
+/*  customerserviceid(e) {
+    debugger;
     const userid = Cookies.get('applicationId'); // 用户的id
     workOrderuserRecord({
       userId: userid,
       byReplyId: e,
     }).then(({ status,data })=>{
-      debugger;
       if (data.errCode == 0) {
         this.setState({
-          datas: data.data.data, // 获取之前的聊天记录
-          messagelist: [], // 此刻聊天记录清空
-          username: data.data.userInfo.username,
+          datas: data.data, // 获取之前的聊天记录
           byReplyId: e,
           userId: userid,
-        },()=>{
-          this.onScrollHandle(this.messagesEnd);
         });
       }
     });
-    /* this.setState({
+    /!* this.setState({
       serviceid: e,
-    }); */
+    }); *!/
+  }*/
+  // 会话按钮
+  Conversation() {
+    this.setState({
+      stylecolor: true,
+    });
+    this.fetchData();
   }
-  // 提交、发送信息
+  // 列表按钮
+  listbtn() {
+    this.setState({
+      stylecolor: false,
+    });
+  }
+  // 提交
   subreply() {
     const byReplyId = this.state.byReplyId; // 客服id
     const userId = this.state.userId; // 用户的id
     const messagelist = this.state.messagelist; // 此刻聊天的内容
     const customerContent = this.state.Probleminput; // 输入框的值
-    const times = moment().valueOf();
+    const times = moment().format('YYYY-MM-DD HH:mm:ss');
     debugger;
     if (!customerContent) {
       return Message.success('输入问题不能为空');
@@ -152,15 +183,36 @@ export default class Customerservice extends Component {
       this.onScrollHandle(this.messagesEnd);
     });
   }
-  // 自动滑动到底部
   onScrollHandle(event) {
     const clientHeight = event.clientHeight;
     const scrollHeight = event.scrollHeight;
     const scrollTop = (scrollHeight - clientHeight);
     this.messagesEnd.scrollTop = scrollTop;
   }
+  // 切换用户
+  SwitchingUsers(e){
+    const userId = this.state.userId;
+    debugger;
+    workOrderuserRecord({
+      userId,
+      byReplyId: e,
+    }).then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        this.setState({
+          datas: data.data.data, // 获取之前的聊天记录
+          messagelist: [], // 此刻聊天记录清空
+          username: data.data.userInfo.username,
+          byReplyId: e,
+          userId,
+        },()=>{
+          this.onScrollHandle(this.messagesEnd);
+        });
+      }
+    });
+  }
   render() {
-    const { datas, messagelist,username,array } = this.state;
+    const { stylecolor,workOrdersessionLists,workOrderserviceLists, datas, messagelist,username,array } = this.state;
     const zbla = (
       messagelist.map((item) => {
         const times = moment(item.times).format('YYYY-MM-DD HH:mm:ss');
@@ -207,7 +259,65 @@ export default class Customerservice extends Component {
     );
     return (
       <div className='backstageworkorder'>
-        <Nav defaultActiveKey='1' history={this.props.history} customerserviceid={this.customerserviceid.bind(this)} />
+
+        <div className='backstageworkorder-box'>
+          <div className='chat-list'>
+            <div className={stylecolor == true ? 'chat-list-box color' : 'chat-list-box'} onClick={this.Conversation.bind(this)}>
+              <i className="os-icon os-icon-mail-14" />
+              <span>正在会话</span>
+            </div>
+            <div className={stylecolor == false ? 'chat-list-box color' : 'chat-list-box'} onClick={this.listbtn.bind(this)}>
+              <i className="os-icon os-icon-mail-14" />
+              <span>用户列表</span>
+            </div>
+          </div>
+          <div className='user-list'>
+            {
+              stylecolor == true ? (
+                workOrdersessionLists.map((item)=>{
+                  return (
+                    <div className='user-w' onClick={this.SwitchingUsers.bind(this,item.byReplyId)}>
+                      <div className="avatar with-status status-green">
+                        <img alt="" src={require('@img/img/avatar1.jpg')} />
+                      </div>
+                      <div className="user-info">
+                        <div className="user-date">
+                          {moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}
+                        </div>
+                        <div className="user-name">
+                          {item.username}
+                        </div>
+                        <div className="last-message">
+                          {item.customerContent}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                workOrderserviceLists.map((item)=>{
+                  return (
+                    <div className='user-w' onClick={this.SwitchingUsers.bind(this,item._id)}>
+                      <div className="avatar with-status status-green">
+                        <img alt="" src={require('@img/img/avatar1.jpg')} />
+                      </div>
+                      <div className="user-info">
+                        <div className="user-name">
+                          {item.username}
+                        </div>
+                        <div className="last-message">
+                          {item.customerContent}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })
+              )
+            }
+          </div>
+        </div>
+        {/* <Nav defaultActiveKey='1' history={this.props.history} customerserviceid={this.customerserviceid.bind(this)} /> */}
+
         <div className='kefu'>
           <div className="kefu-main">
             <div className="kefu-main-head">
@@ -280,14 +390,22 @@ export default class Customerservice extends Component {
                   <a href="#"><i className="os-icon os-icon-mail-07" /></a><a href="#"><i className="os-icon os-icon-phone-18" /></a><a href="#"><i className="os-icon os-icon-phone-15" /></a>
                 </div>
                 <div className="chat-btn">
-                  <Button type='primary' size='large' onClick={this.subreply.bind(this)} >发送</Button>
+                  <Button type='primary' size='large' onClick={this.subreply.bind(this)} >答复</Button>
                 </div>
               </div>
             </div>
 
           </div>
           <div className='kefu-right'>
-            <Administrators array={array} />
+            <div className='administrators'>
+              <img src={require('@img/img/avatar1.jpg')} alt="" />
+              <h2>戴尔</h2>
+              <p>商户ID：000062</p>
+              <p>企业名称：佑慈善文化</p>
+              <p>联系方式：15617975412</p>
+              <p>联系邮箱：1367050904@qq.com</p>
+              <p>角色名称：运营技术</p>
+            </div>
           </div>
         </div>
       </div>

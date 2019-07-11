@@ -6,7 +6,7 @@ import '../../../../layouts/BasicLayout/components/Header/index.scss';
 import moment from 'moment';
 import '../index.css';
 
-export default class Nav extends Component {
+export default class Navlist extends Component {
   static displayName = 'Nav';
 
   constructor(props) {
@@ -14,14 +14,12 @@ export default class Nav extends Component {
     this.state = {
       workOrdersessionLists: [], // 会话列表的内容
       workOrderserviceLists: [], // 列表内容
-      stylecolor: true,
+      stylecolor: false,
     };
   }
   componentDidMount() {
     this.fetchData();
-    /* 联系人的列表 */
     workOrderserviceList().then(({ status,data })=>{
-      debugger;
       if (data.errCode == 0) {
         this.setState({
           workOrderserviceLists: data.data,
@@ -29,7 +27,7 @@ export default class Nav extends Component {
       }
     });
   }
-  // 会话的列表
+  // 请求会话得到列表
   fetchData = () => {
     workOrdersessionList().then(({ status,data })=>{
       debugger;
@@ -60,9 +58,8 @@ export default class Nav extends Component {
   btngd() {
     this.props.history.push('/admin/backstageworkorder/Allworkorders');
   }
-  // 点击列表某个人获取到id传到聊天界面
+  // jiekou
   jiekou(e){
-    debugger;
     this.props.customerserviceid(e);
   }
   render() {
@@ -109,8 +106,9 @@ export default class Nav extends Component {
                 {
                   stylecolor == true ? (
                       workOrdersessionLists.map((item)=>{
+                      debugger;
                       return (
-                        <div className='user-w' onClick={this.jiekou.bind(this,item.byReplyId)}>
+                        <div className='user-w'>
                           <div className="avatar with-status status-green">
                             <img alt="" src={require('@img/img/avatar1.jpg')} />
                           </div>
@@ -130,6 +128,7 @@ export default class Nav extends Component {
                     })
                   ) : (
                     workOrderserviceLists.map((item)=>{
+                      debugger;
                       return (
                         <div className='user-w' onClick={this.jiekou.bind(this,item._id)}>
                           <div className="avatar with-status status-green">

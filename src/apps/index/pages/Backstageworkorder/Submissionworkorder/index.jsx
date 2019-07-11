@@ -90,10 +90,14 @@ class Submissionworkorder extends Component {
 
   // 提交
   validateAllFormField = (values, errors) => {
-    const images = values.avatar[0].response.names;
     if (errors) {
       return null;
     }
+    let images;
+    if (values.avatar.length == 1) {
+      images = values.avatar[0].response.names;
+    }
+    debugger;
     workOrderworkOrderInsert({
       type: '1',
       image: images,
@@ -126,29 +130,8 @@ class Submissionworkorder extends Component {
           </div>
           <div className='submissionworkorder-main'>
             <div className='submissionworkorder-left'>
-              {/* <div className='submissionworkorder-left-step'>
-                <Step current={0} shape="arrow" animation>
-                  <Step.Item title="新建工单" />
-                  <Step.Item title="处理工单" />
-                  <Step.Item title="待评价" />
-                  <Step.Item title="完成" />
-                </Step>
-              </div> */}
               <Form value={this.state.value} onChange={this.formChange} ref="form">
                 <div style={styles.formContent}>
-                  {/* 企业名称 */}
-                  {/* <FormItem
-                    // label={formatMessage({ id: 'app.setting.name' })}
-                    label='工单类型：'
-                    {...formItemLayout}
-                    required
-                    maxLength={10}
-                    requiredMessage={formatMessage({
-                      id: 'app.setting.name.message',
-                    })}
-                  >
-                    <Input name="enterprisename" placeholder="请输入您的工单类型" />
-                  </FormItem> */}
                   {/* 企业营业执照号码 */}
                   <FormItem
                     // label={formatMessage({ id: 'app.setting.name' })}
@@ -213,29 +196,7 @@ class Submissionworkorder extends Component {
                     // label={formatMessage({ id: 'app.setting.avatar' })}
                     label='上传附件：'
                     {...formItemLayout}
-                    required
-                    requiredMessage={formatMessage({
-                      id: 'app.setting.avatar.message',
-                    })}
                   >
-                    {/* <Upload
-                      action="https://www.easy-mock.com/mock/5b713974309d0d7d107a74a3/alifd/upload"
-                      beforeUpload={beforeUpload}
-                      onChange={onChange}
-                      onSuccess={onSuccess}
-                      multiple
-                      defaultValue={[{
-                        name: 'IMG.png',
-                        state: 'done',
-                        size: 1024,
-                        downloadURL: 'https://img.alicdn.com/tps/TB19O79MVXXXXcZXVXXXXXXXXXX-1024-1024.jpg',
-                        fileURL: 'https://img.alicdn.com/tps/TB19O79MVXXXXcZXVXXXXXXXXXX-1024-1024.jpg',
-                        imgURL: 'https://img.alicdn.com/tps/TB19O79MVXXXXcZXVXXXXXXXXXX-1024-1024.jpg',
-                      }]}
-                    >
-                      <Button type="primary" style={{ margin: '0 0 10px' }}>上传</Button>
-                    </Upload> */}
-                    {/* action 为代理的模式，在.webpackrc.js中设置 */}
                     <Upload.Card
                       action="/web/beta/v1.0/upload/uploadPhoto"
                       name="avatar"

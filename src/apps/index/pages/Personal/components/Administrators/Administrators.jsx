@@ -11,11 +11,12 @@ export default class Administrators extends Component {
     this.state = {};
   }
   render() {
+    const { array } = this.props;
     return (
       <div className='administrators'>
         <img src={require('@img/img/avatar1.jpg')} alt="" />
-        <h2>阿萨德问问阿</h2>
-        <p>超级管理员</p>
+        <h2>{array.username}</h2>
+        <p>{array.premissions}</p>
         <div>
           <img src={require('@img/shouye/twittter.png')} style={{ width: '25px', height: '25px' }} alt="" />
           <img src={require('@img/shouye/face.png')} style={{ width: '25px', height: '25px' }} alt="" />
