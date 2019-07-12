@@ -110,7 +110,7 @@ export default class Workorderdetails extends Component {
     }
   // 提交按钮事件
     subreply() {
-      const contents = this.state.Probleminput;
+      const contents = this.state.Probleminput; // 输入框内容
       const _id = this.state.work[0]._id;
       const byReplyId = this.state.workDetail[0].userId;
       if (!contents) {

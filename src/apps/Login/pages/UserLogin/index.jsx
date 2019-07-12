@@ -60,7 +60,8 @@ class UserLogin extends Component {
         ({ status, data }) => {
           debugger;
           if (data.errCode == 0) {
-            Cookies.set('applicationId', data.data._id);
+            Cookies.set('applicationId', data.appData[0].appId);
+            Cookies.set('userId', data.userData._id);
             Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
             this.props.history.push('/admin/income');
             window.location.href = "";

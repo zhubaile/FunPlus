@@ -59,6 +59,7 @@ const Requestlog = React.lazy(() => import('./pages/Auxiliarytools/Requestlog'))
 // 测试的界面
 const Testinterface = React.lazy(() => import('./pages/Z-Testinterface/ceshideIcescripts')); // 辅助工具-请求log查看
 // ========系统首页============ //
+/* "node ./node_modules/ice-scripts/bin/ice.js dev --port=21144", */
 const routerConfig = [
   {
     path: '/admin/z-testinterface/ceshideIcescripts',

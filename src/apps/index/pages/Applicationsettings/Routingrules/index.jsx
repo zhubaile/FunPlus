@@ -41,6 +41,7 @@ export default class Routingrules extends Component {
   }; */
 
   fetchData = (len) => {
+    debugger;
     this.setState(
       {
         isLoading: true,
@@ -98,7 +99,6 @@ export default class Routingrules extends Component {
     );
   }; */
   renderOper = (rule) => {
-    debugger;
     return (
       <div>
         <Switch className='div-switch' checked={rule} />
@@ -114,7 +114,7 @@ export default class Routingrules extends Component {
     console.log(this.state.total);
     return (
       <IceContainer className='routingrules'>
-        <RoutingPopup ref={ node => this.RoutingPopup = node } />
+        <RoutingPopup ref={ node => this.RoutingPopup = node } fetchData={this.fetchData.bind(this)} />
         <Tab className='routingrules-tab'>
           <Tab.Item title="路由规则">
             <div className='routingrules-tab-top'>

@@ -8,7 +8,7 @@ let proxy = {};
 };*/
 proxy['/web/beta/v1.0/**'] = {
   // 代理测试环境地址 如下，代理就是把请求本地的url接到配置好的url上。
-  target: "http://192.168.1.105:3000",
+  target: "http://192.168.1.124:3000",
   changeOrigin: true,
 };
 console.log('---------111112222333456---------')

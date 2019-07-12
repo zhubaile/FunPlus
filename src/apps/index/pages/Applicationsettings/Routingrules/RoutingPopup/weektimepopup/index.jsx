@@ -17,8 +17,8 @@ export default class Weektimepopup extends Component {
       value: {
         monday: {
           openSwitch: false,
-          timeEnd: '结束时间',
-          timeStart: '开始时间',
+          timeEnd: '3',
+          timeStart: '2',
         },
         tuesday: {
           openSwitch: false,
@@ -128,7 +128,7 @@ export default class Weektimepopup extends Component {
             </FormBinder>
             <FormError name="monday.timeEnd" />
             <FormBinder name="monday.openSwitch">
-              <Switch style={{ marginTop: '20px' }} checkedChildren="on" unCheckedChildren="off" />
+              <Switch style={{ marginTop: '20px' }} checkedChildren="on" unCheckedChildren="off" defaultChecked={this.state.value.monday.openSwitch} />
             </FormBinder>
           </div>
           <div>

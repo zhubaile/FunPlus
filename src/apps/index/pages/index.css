@@ -109,15 +109,21 @@ a:active{ text-decoration: none; }
 /*ALL------Starting*/
 .expendbatchre .container-block,.expendordbat .container-block,.auditofpayment .container-block{ margin: 20px 0px 0px 0px;}
 .expendordbat .next-row.next-row-wrap{ margin: 20px 0px 20px 0px;}
+.auditofpayment{ width: 100%; position: relative;}
+.auditofpayment .auditofpayment-top{border-bottom: 1px solid rgba(187, 187, 187, 1); margin-top: 20px;}
+.auditofpayment .auditofpayment-top span{ font-size: 20px; font-weight: 400;width: 64px;height: 24px;color: rgba(116, 116, 116, 1);font-size: 16px;text-align: left;}
+.auditofpayment .auditofpayment-top span.spanbtn{border-right: 1px solid rgba(187, 187, 187, 1); padding: 0 20px; cursor: pointer;}
+.auditofpayment .auditofpayment-top span.spanbtn.color{color: blue;}
+.auditofpayment .auditofpayment-top-border{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -2px;}
 /*ALL------Ending*/
 .expendordbat .expendordbat-tab{ margin-top: 20px;}
 .expendordbat-tab  .expendordbat-tabs-border{clear: both; border-bottom: 1px solid #dddddd;}
 .expendordbat-tab { position: relative;}
 .expendordbat-tab .orderposab{ position: absolute; top: 0; right: 20px; background:#E2EDFF; color: #1989FA; border-radius: 4px; border-color: #A3D0FD;}
 .expendordbat-tab .next-tabs-content .expendbatchre-message{background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 4px; margin: 20px 0px; width: 80%;}
-.auditofpayment .auditofpayment-tab .message{ width: 70%; margin: 20px 0px;}
-.auditofpayment .auditofpayment-tab .message .message-e{ margin: 10px 0px; border-radius: 4px;}
-.auditofpayment-tab  .expendordbat-tabs-border{clear: both; border-bottom: 1px solid #dddddd;}
+.auditofpayment .message{ width: 70%; margin: 20px 0px;}
+.auditofpayment .message .message-e{ margin: 10px 0px; border-radius: 4px;}
+/*.auditofpayment-tab  .expendordbat-tabs-border{clear: both; border-bottom: 1px solid #dddddd;}*/
 
 /* 自定汇总 */
 .selfsumm-exhibition{ width: 100%; display: flex; margin-top: 20px;}

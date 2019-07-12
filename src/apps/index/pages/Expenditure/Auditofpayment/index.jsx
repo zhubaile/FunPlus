@@ -44,6 +44,7 @@ export default class Orderrefund extends Component {
         refundstatus: '全部',
         ordernumber: '',
       },
+      type: 1, // 选择的那个值
       total: 0, // 总数据
       pageSize: 10, // 一页条数
       current: 1, // 页码
@@ -77,18 +78,12 @@ export default class Orderrefund extends Component {
   }
   // 更新的数据
   componentDidMount() {
-    this.fetchData();
+    const type = this.state.type;
+    this.fetchData(type);
   }
 
-  /* mockApi = (len) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据
-      }, 600);
-    });
-  }; */
-
   fetchData = (len) => {
+    debugger;
     this.setState(
       {
         isLoading: true,
@@ -97,21 +92,17 @@ export default class Orderrefund extends Component {
         const page = this.state.current;
         const pageSize = this.state.pageSize;
         payOutExamineList({
+          type: len,
           page,
           pageSize,
-        }).then(({status,data})=>{
+        }).then(({ status,data })=>{
           debugger;
           this.setState({
             datas: data.data,
             isLoading: false,
+            type: len,
           });
         });
-        /* this.mockApi(len).then((data) => { // data 里面为数据
-          this.setState({
-            data,
-            isLoading: false,
-          });
-        }); */
       }
     );
   };
@@ -174,67 +165,78 @@ export default class Orderrefund extends Component {
       <p>{updatedAt}</p>
     );
   }
+  qiyepay() {
+    this.fetchData(1);
+  }
+  piliangpay() {
+    this.fetchData(2);
+  }
+  dingdannopay() {
+    this.fetchData(3);
+  }
+  qiyenopay() {
+    this.fetchData(4);
+  }
   render() {
-    const { isLoading, datas, current,pageSize,total } = this.state;
+    const { isLoading, datas, current,pageSize,total,type } = this.state;
     return (
       <div className='auditofpayment'>
-        <Tab shape='pure' className='auditofpayment-tab'>
-          <Tab.Item title="出款审核">
-            <div style={{ position: 'absolute', right: 15, top: 95 }}>
-              <div style={styles.divRadius}>今日总收￥1232323</div>
-              <div style={styles.divRadius}>今日付款￥234234</div>
-              <div style={styles.divRadius}>今日退款￥234232</div>
+        <div className='auditofpayment-top'>
+          <span>出款审核-</span>
+          <span className={type == 1 ? 'spanbtn color' : 'spanbtn'} onClick={this.qiyepay.bind(this)}>企业付款 </span>
+          <span className={type == 2 ? 'spanbtn color' : 'spanbtn'} onClick={this.piliangpay.bind(this)}>批量付款 </span>
+          <span className={type == 3 ? 'spanbtn color' : 'spanbtn'} onClick={this.dingdannopay.bind(this)}>订单退款 </span>
+          <span className={type == 4 ? 'spanbtn color' : 'spanbtn'} style={{ border: 'none' }} onClick={this.qiyenopay.bind(this)}>批量退款 </span>
+          <div className='auditofpayment-top-border' />
+        </div>
+        <div style={{ position: 'absolute', right: 15, top: -15 }}>
+          <div style={styles.divRadius}>今日总收￥1232323</div>
+          <div style={styles.divRadius}>今日付款￥234234</div>
+          <div style={styles.divRadius}>今日退款￥234232</div>
+        </div>
 
-              {/*              <Button style={styles.btnRadius}>今日总收￥1232323</Button>
-              <Button style={styles.btnRadius}>今日付款￥234234</Button>
-              <Button style={styles.btnRadius}>今日退款￥234232</Button> */}
-            </div>
-
-            <div className='message'>
-              <Message title="title" closeable type='error' className='message-e'>
+        <div className='message'>
+          <Message title="title" closeable type='error' className='message-e'>
                 付款累计金额大于今日总收，请联系超级管理员，开启允许超额付款权限！
-              </Message>
-              <Message title="title" closeable type='error' className='message-e'>
+          </Message>
+          <Message title="title" closeable type='error' className='message-e'>
                 批量付款累计金额大于今日总收，请联系超级管理员，开启允许超额退款权限！
-              </Message>
-              <Message title="title" closeable type='error' className='message-e'>
+          </Message>
+          <Message title="title" closeable type='error' className='message-e'>
                 批量退款累计金额大于今日总收，请联系超级管理员，开启允许超额退款权限！
-              </Message>
-              <Message title="title" closeable type='error' className='message-e'>
+          </Message>
+          <Message title="title" closeable type='error' className='message-e'>
                 退款金额大于实际付款金额，请联系超级管理员，开启允许超额退款权限！
-              </Message>
-            </div>
-            <span className='all_span'>本次搜索付款总额：5555</span>
-            <hr />
-            {/*<div className='expendordbat-tabs-border' />*/}
-            <IceContainer>
-              <Table loading={isLoading} dataSource={datas} hasBorder={false}>
-                <Table.Column title="创建时间" dataIndex="createdAt" cell={this.createdAt} />
-                <Table.Column title="完成时间" dataIndex="updatedAt" cell={this.updatedAt} />
-                <Table.Column title="商户订单号" dataIndex="outBizNo" />
-                <Table.Column title="平台流水号" dataIndex="outBizNo" />
-                <Table.Column title="付款状态" dataIndex="orderStatusName" />
-                <Table.Column title="付款金额" dataIndex="amount" />
-                <Table.Column title="批次号" dataIndex="regdate" />
-                <Table.Column title="付款渠道" dataIndex="birthday" />
-                <Table.Column
-                  title="操作"
-                  width={200}
-                  dataIndex="oper"
-                  cell={this.renderOper}
-                />
-              </Table>
-              <Pagination
-                style={styles.pagination}
-                current={current}
-                onChange={this.handlePaginationChange}
-                pageSize={pageSize} // 界面展示多少条数据
-                total={total} // 一共多少条数据
-              />
-            </IceContainer>
-
-          </Tab.Item>
-        </Tab>
+          </Message>
+        </div>
+        <span className='all_span'>本次搜索付款总额：5555</span>
+        <hr />
+        {/* <div className='expendordbat-tabs-border' /> */}
+        <IceContainer>
+          <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+            <Table.Column title="创建时间" dataIndex="createdAt" cell={this.createdAt} />
+            <Table.Column title="完成时间" dataIndex="updatedAt" cell={this.updatedAt} />
+            <Table.Column title="商户订单号" dataIndex="outBizNo" />
+            <Table.Column title="平台流水号" dataIndex="outBizNo" />
+            <Table.Column title="付款状态" dataIndex="orderStatusName" />
+            <Table.Column title="付款金额" dataIndex="amount" />
+            <Table.Column title="批次号" dataIndex="regdate" />
+            <Table.Column title="付款渠道" dataIndex="birthday" />
+            <Table.Column
+              title="操作"
+              width={200}
+              dataIndex="oper"
+              cell={this.renderOper}
+            />
+          </Table>
+          <Pagination
+            style={styles.pagination}
+            current={current}
+            onChange={this.handlePaginationChange}
+            pageSize={pageSize} // 界面展示多少条数据
+            total={total}
+          />
+        </IceContainer>
       </div>
     );
   }

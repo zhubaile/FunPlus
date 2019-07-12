@@ -5,7 +5,7 @@ import IceContainer from '@icedesign/container';
 import { withRouter, Link } from 'react-router-dom';
 import { Input, Radio, Tab , Button, Grid, Form, DatePicker,Table,Pagination } from '@alifd/next';
 import Customerservice from "../components/Customerservice";
-import { rechargeList } from '@indexApi';
+import { rechargeList,deductionList } from '@indexApi';
 import Recharges from './Recharge';
 import '../../index.css';
 import moment from "moment/moment";
@@ -42,6 +42,7 @@ class Costcenter extends Component {
       current: 1,
       isLoading: false,
       datas: [],
+      datass: [],
     };
   }
   componentDidMount() {
@@ -108,8 +109,24 @@ class Costcenter extends Component {
       <p>{updatedAt}</p>
     );
   }
+  // 扣费记录信息列表
+  deductionbtn() {
+    const page = this.state.current;
+    const pageSize = this.state.pageSize;
+    deductionList({
+      page,
+      pageSize,
+    }).then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        this.setState({
+          datass: data.data.result
+        });
+      }
+    });
+  }
   render() {
-    const { isLoading, datas, current,pageSize ,total } = this.state;
+    const { isLoading, datas, current,pageSize ,total,datass } = this.state;
     const {
       intl: { formatMessage },
     } = this.props;
@@ -172,18 +189,20 @@ class Costcenter extends Component {
                   style={{ marginTop: '20px', textAlign: 'right' }}
                   current={current}
                   onChange={this.handlePaginationChange}
+                  pageSize={pageSize} // 界面展示多少条数据
+                  total={total} // 一共多少条数据
                 />
               </Tab.Item>
-              <Tab.Item title="扣费记录">
-                <Table loading={isLoading} dataSource={datas} hasBorder={false}>
-                  <Table.Column title="产品" dataIndex="name" />
-                  <Table.Column title="交易时间" dataIndex="level" />
-                  <Table.Column title="金额" dataIndex="rule" />
+              <Tab.Item title="扣费记录" onClick={this.deductionbtn.bind(this)}>
+                <Table loading={isLoading} dataSource={datass} hasBorder={false}>
+                  <Table.Column title="订单号" dataIndex="orderNo" />
+                  <Table.Column title="交易时间" dataIndex="createdAt" />
+                  <Table.Column title="金额" dataIndex="deductionFee" />
                   <Table.Column
                     title="支付状态"
-                    dataIndex="oper"
+                    dataIndex="orderStatusName"
                   />
-                  <Table.Column title="支付渠道" dataIndex="qudao" />
+                  <Table.Column title="支付渠道" dataIndex="channelName" />
                 </Table>
                 <Pagination
                   style={{ marginTop: '20px', textAlign: 'right' }}
@@ -191,7 +210,6 @@ class Costcenter extends Component {
                   onChange={this.handlePaginationChange}
                   pageSize={pageSize} // 界面展示多少条数据
                   total={total} // 一共多少条数据
-
                 />
               </Tab.Item>
             </Tab>

@@ -118,12 +118,12 @@ export default class Orderrefund extends Component {
         }).then(({ status,data })=>{
           debugger;
           if (data.errCode == 0) {
-            // const channel = data.data.result2.channel; // 复制出来需要改变属性名的属性
-            // const channels = channel.map(item=>({ value: item._id,label: item.payScene })); // 改变成想要的属性名
-            // const Filterforms = Object.assign({},data.data.result2,{ channel: channels }); // 把数据里面的内容改变成更改过的
+            const channel = data.data.result2.channel; // 复制出来需要改变属性名的属性
+            const channels = channel.map(item=>({ value: item._id,label: item.payScene })); // 改变成想要的属性名
+            const Filterforms = Object.assign({},data.data.result2,{ channel: channels }); // 把数据里面的内容改变成更改过的
             this.setState({
               datas: data.data.result,
-              results2: data.data.result2,
+              results2: Filterforms,
               isLoading: false,
               total: data.data.totalCount,
             });
@@ -259,8 +259,8 @@ export default class Orderrefund extends Component {
                   <Col l="24">
                     <div style={styles.formItemTwo}>
                       <span style={styles.formLabel}>付款状态</span>
-                      <FormBinder name='paymentstatus'>
-                        <Select style={styles.formSelect} dataSource={paymentstatus} />
+                      <FormBinder name='orderStatus'>
+                        <Select style={styles.formSelect} dataSource={orderStatus} />
                       </FormBinder>
                       <span style={styles.formLabel}>订单号</span>
                       <FormBinder name='out_trade_no'>

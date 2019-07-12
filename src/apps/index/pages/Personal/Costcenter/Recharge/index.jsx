@@ -44,7 +44,7 @@ export default class Recharges extends Component {
     });
   }
   paybtn() {
-    const payinputvalue = this.payinputvalue.value; // 充值的金额
+    const payinputvalue = this.payinputvalue.getInputNode().value; // 充值的金额
     const payvalues = this.state.payvalue; // 判断是支付宝还是微信
     const reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
     debugger;

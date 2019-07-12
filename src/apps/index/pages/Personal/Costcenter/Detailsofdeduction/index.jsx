@@ -9,6 +9,7 @@ import Customerservice from "../../../Personal/components/Customerservice";
 
 const { RangePicker } = DatePicker;
 import moment from "moment/moment";
+import { deductionList } from '@indexApi';
 
 const { Group: RadioGroup } = Radio;
 const FormItem = Form.Item;
@@ -33,9 +34,11 @@ export default class Recharges extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      pageSize: 10,
+      total: 0,
       current: 1,
       isLoading: false,
-      data: [],
+      datass: [],
       value: {
         selectiontime: '全部交易类型',
         paymentchannel: '全部扣费类型',
@@ -52,25 +55,25 @@ export default class Recharges extends Component {
     this.fetchData();
   }
 
-  mockApi = (len) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
-      }, 600);
-    });
-  };
-
   fetchData = (len) => {
     this.setState(
       {
         isLoading: true,
       },
       () => {
-        this.mockApi(len).then((data) => { // data 里面为数据
-          this.setState({
-            data,
-            isLoading: false,
-          });
+        const page = this.state.current;
+        const pageSize = this.state.pageSize;
+        deductionList({
+          page,
+          pageSize,
+        }).then(({ status,data })=>{
+          debugger;
+          if (data.errCode == 0) {
+            this.setState({
+              datass: data.data.result,
+              isLoading: false,
+            });
+          }
         });
       }
     );
@@ -88,7 +91,7 @@ export default class Recharges extends Component {
   };
 
   render() {
-    const { isLoading, data, current } = this.state;
+    const { isLoading, datass, current,pageSize,total } = this.state;
 
     const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
     const endValue = moment('2019-05-08', 'YYYY-MM-DD', true);
@@ -136,23 +139,22 @@ export default class Recharges extends Component {
             </div>
 
             <div className='deduction-details-bottomcontent'>
-              <Table loading={isLoading} dataSource={data} hasBorder={false}>
-                <Table.Column title="订单号" dataIndex="requesttime" />
-                <Table.Column title="交易时间" dataIndex="requestaddress" />
-                <Table.Column title="金额" dataIndex="responsestatuscode" />
-                <Table.Column title="支付状态" dataIndex="requestip" />
-                <Table.Column title="支付渠道" dataIndex="requestmethod" />
-                {/*     <Table.Column
-                  title="操作"
-                  width={200}
-                  dataIndex="oper"
-                  cell={this.renderOper}
-                /> */}
+              <Table loading={isLoading} dataSource={datass} hasBorder={false}>
+                <Table.Column title="订单号" dataIndex="orderNo" />
+                <Table.Column title="交易时间" dataIndex="createdAt" />
+                <Table.Column title="金额" dataIndex="deductionFee" />
+                <Table.Column
+                  title="支付状态"
+                  dataIndex="orderStatusName"
+                />
+                <Table.Column title="支付渠道" dataIndex="channelName" />
               </Table>
               <Pagination
                 style={{ marginTop: '20px', textAlign: 'right' }}
                 current={current}
                 onChange={this.handlePaginationChange}
+                pageSize={pageSize} // 界面展示多少条数据
+                total={total} // 一共多少条数据
               />
             </div>
 

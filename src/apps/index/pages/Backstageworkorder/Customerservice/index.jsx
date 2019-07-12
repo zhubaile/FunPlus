@@ -51,7 +51,7 @@ export default class Customerservice extends Component {
 
 }) */
   componentDidMount() {
-    const userId = Cookies.get('applicationId');
+    const userId = Cookies.get('userId');
     // 初始聊天记录内容
     workOrderuserRecordOne({
       userId,
@@ -70,7 +70,7 @@ export default class Customerservice extends Component {
     });
   }
   componentWillMount() {
-    const userid = Cookies.get('applicationId');
+    const userid = Cookies.get('userId');
     this.socket.on('connect',(...arg)=>{
       console.log("链接成功");
       this.socket.emit('binduser',userid);
@@ -103,7 +103,7 @@ export default class Customerservice extends Component {
   }
   // 获取客服的id
   customerserviceid(e) {
-    const userid = Cookies.get('applicationId'); // 用户的id
+    const userid = Cookies.get('userId'); // 用户的id
     workOrderuserRecord({
       userId: userid,
       byReplyId: e,
