@@ -106,8 +106,9 @@ class Submissionworkorder extends Component {
       if (data.errCode == 0) {
         Message.success(data.message);
         this.props.history.push('/admin/backstageworkorder/Allworkorders');
+      } else {
+        Message.success(data.message);
       }
-      Message.success(data.message);
     });
   };
 

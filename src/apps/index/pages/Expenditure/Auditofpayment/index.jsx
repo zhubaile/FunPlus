@@ -44,7 +44,7 @@ export default class Orderrefund extends Component {
         refundstatus: '全部',
         ordernumber: '',
       },
-      type: 1, // 选择的那个值
+      type: 'pay', // 选择的那个值
       total: 0, // 总数据
       pageSize: 10, // 一页条数
       current: 1, // 页码
@@ -96,12 +96,15 @@ export default class Orderrefund extends Component {
           page,
           pageSize,
         }).then(({ status,data })=>{
-          debugger;
-          this.setState({
-            datas: data.data,
-            isLoading: false,
-            type: len,
-          });
+          if (data.errCode == 0) {
+            this.setState({
+              datas: data.data,
+              isLoading: false,
+              type: len,
+            });
+          } else {
+            Message.success(data.message);
+          }
         });
       }
     );
@@ -166,16 +169,16 @@ export default class Orderrefund extends Component {
     );
   }
   qiyepay() {
-    this.fetchData(1);
+    this.fetchData('pay');
   }
   piliangpay() {
-    this.fetchData(2);
+    this.fetchData('batchPay');
   }
   dingdannopay() {
-    this.fetchData(3);
+    this.fetchData('refund');
   }
   qiyenopay() {
-    this.fetchData(4);
+    this.fetchData('batchRefund');
   }
   render() {
     const { isLoading, datas, current,pageSize,total,type } = this.state;
@@ -183,10 +186,10 @@ export default class Orderrefund extends Component {
       <div className='auditofpayment'>
         <div className='auditofpayment-top'>
           <span>出款审核-</span>
-          <span className={type == 1 ? 'spanbtn color' : 'spanbtn'} onClick={this.qiyepay.bind(this)}>企业付款 </span>
-          <span className={type == 2 ? 'spanbtn color' : 'spanbtn'} onClick={this.piliangpay.bind(this)}>批量付款 </span>
-          <span className={type == 3 ? 'spanbtn color' : 'spanbtn'} onClick={this.dingdannopay.bind(this)}>订单退款 </span>
-          <span className={type == 4 ? 'spanbtn color' : 'spanbtn'} style={{ border: 'none' }} onClick={this.qiyenopay.bind(this)}>批量退款 </span>
+          <span className={type == 'pay' ? 'spanbtn color' : 'spanbtn'} onClick={this.qiyepay.bind(this)}>企业付款 </span>
+          <span className={type == 'batchPay' ? 'spanbtn color' : 'spanbtn'} onClick={this.piliangpay.bind(this)}>批量付款 </span>
+          <span className={type == 'refund' ? 'spanbtn color' : 'spanbtn'} onClick={this.dingdannopay.bind(this)}>订单退款 </span>
+          <span className={type == 'batchRefund' ? 'spanbtn color' : 'spanbtn'} style={{ border: 'none' }} onClick={this.qiyenopay.bind(this)}>批量退款 </span>
           <div className='auditofpayment-top-border' />
         </div>
         <div style={{ position: 'absolute', right: 15, top: -15 }}>

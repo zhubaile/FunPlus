@@ -97,6 +97,13 @@ export async function routerRulelist(params) {
     params,
   });
 }
+// 路由规则
+export async function routerRule(params) {
+  return ajaxAmd.get({
+    url: '/routerRule',
+    params,
+  });
+}
 // 创建新规则
 export async function routerRuleadd(params) {
   return ajaxAmd.post({
@@ -356,13 +363,6 @@ export function payOutExamineList(params) {
 export function payOutExamine(params) {
   return ajaxAmd.post({
     url: '/payOutExamine',
-    data: params,
-  });
-}
-// 搜索--获取对应的渠道
-export function getDevice(params) {
-  return ajaxAmd.post({
-    url: '/getDevice',
     data: params,
   });
 }

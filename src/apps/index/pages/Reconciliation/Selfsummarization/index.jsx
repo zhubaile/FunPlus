@@ -7,6 +7,7 @@ import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binde
 import Linegraph from '../components/Linegraph';
 import { verifybillsummary,verifybillparams } from '@indexApi';
 import '../../index.css';
+import {Message} from "@alifd/next/lib/index";
 
 const { RangePicker } = DatePicker;
 const { Row, Col } = Grid;
@@ -19,7 +20,7 @@ export default class Selfsummarization extends Component {
     },
     Transactionfigures: [],
     Dropdownbox: [],
-    Dropdownboxsono: [],
+    Dropdownboxson: [],
   };
 
     formChange = (value) => {
@@ -42,6 +43,8 @@ export default class Selfsummarization extends Component {
           this.setState({
             Transactionfigures: data.data[0],
           });
+        } else {
+          Message.success(data.message);
         }
       });
       verifybillparams().then(({ status,data })=>{
@@ -54,6 +57,8 @@ export default class Selfsummarization extends Component {
             Dropdownbox: channelss,
             Dropdownboxson: dClassifys,
           });
+        } else {
+          Message.success(data.message);
         }
       });
     }
@@ -65,9 +70,9 @@ export default class Selfsummarization extends Component {
     render() {
       const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
       const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
-      const paymentchannelone = this.state.Dropdownbox;
-      const paymentchanneltwo = this.state.Dropdownboxson;
-      const { Transactionfigures } = this.state;
+      const paymentchannelone = this.state.Dropdownbox; // 父下拉框
+      const paymentchanneltwo = this.state.Dropdownboxson; // 子下拉框
+      const { Transactionfigures } = this.state; // 收入支出的数据量
       return (
         <FormBinderWrapper
           value={this.state.value}

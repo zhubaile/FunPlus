@@ -6,26 +6,6 @@ import FilterTag from '../FilterTag';
 import FilterForm from '../FilterForm';
 import { incomeList,refund } from '@indexApi';
 import moment from "moment/moment";
-// Random Numbers
-/* const random = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
-
-// MOCK 数据，实际业务按需进行替换
-const getData = (length = 10) => {
-  return Array.from({ length }).map(() => {
-    return {
-      name: ['淘小宝', '淘二宝'][random(0, 1)],
-      level: ['普通会员', '白银会员', '黄金会员', 'VIP 会员'][random(0, 3)],
-      balance: random(10000, 100000),
-      accumulative: random(50000, 100000),
-      regdate: `2018-12-1${random(1, 9)}`,
-      birthday: `1992-10-1${random(1, 9)}`,
-      store: ['余杭盒马店', '滨江盒马店', '西湖盒马店'][random(0, 2)],
-      z: ['支付宝','爱穷游','好吧'][random(0, 2)],
-    };
-  });
-}; */
 
 export default class GoodsTable extends Component {
   state = {
@@ -46,14 +26,6 @@ export default class GoodsTable extends Component {
     this.fetchData(current,pageSize);
   }
 
-  /*  mockApi = (len) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据
-      }, 600);
-    });
-  }; */
-
   fetchData = (page,pageSize,value,arrivalDate) => {
     this.setState(
       {
@@ -68,10 +40,12 @@ export default class GoodsTable extends Component {
           ...value,
           arrivalDate,
         }).then(({ status,data })=>{
+          debugger;
           if (data.errCode == 0) {
             const channel = data.data.result2.channel; // 复制出来需要改变属性名的属性
-            const channels = channel.map(item=>({ value: item._id,label: item.payScene })); // 改变成想要的属性名
+            const channels = channel.map(item=>({ value: item._id,label: item.payScene, son: item.children })); // 改变成想要的属性名
             const Filterforms = Object.assign({},data.data.result2,{ channel: channels }); // 把数据里面的内容改变成更改过的
+            debugger;
             this.setState({
               datas: data.data.result,
               isLoading: false,
@@ -79,6 +53,8 @@ export default class GoodsTable extends Component {
               Filtertag: data.data.result1,
               Filterform: Filterforms,
             });
+          }else {
+            Message.success(data.message);
           }
         });
         /* this.mockApi(len).then((data) => { // data 里面为数据
@@ -144,7 +120,7 @@ export default class GoodsTable extends Component {
       debugger;
       if (data.errCode == 0) {
         Message.success(data.message);
-      }else{
+      } else {
         Message.success(data.message);
       }
     });

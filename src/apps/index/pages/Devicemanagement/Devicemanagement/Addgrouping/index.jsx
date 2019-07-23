@@ -43,42 +43,24 @@ export default class Addgrouping extends Component {
   componentDidMount() {
     deviceGroupaddparmas().then(
       ({ status, data }) => {
-        debugger;
-        const channels = data.data.channels; // 选择渠道
-        const dClassify = data.data.dClassify; // 选择参数
-        // 修改后端传过来数据的字段名称
-        // 两种方法 一
-        const channelss = channels.map(item=>({ value: item._id,label: item.des }));
-        const dClassifys = dClassify.map(item=>({ value: item.value,label: item.name }));
-        // console.log(channelss[0].value);
-        // this.props.gaibianid(channelss[0].value);
-        // 二
-        /* const channelss = function (arr) {
-          const newArr = [];
-          for (let i = 0; i < arr.length; i++) {
-            newArr.push({ value: arr[i]._id,label: arr[i].des });
-          }
-          return newArr;
-        };
-        const dClassifys = function (arr) {
-          const newArr = [];
-          for (let i = 0; i < arr.length; i++) {
-            newArr.push({ value: arr[i].value,label: arr[i].name });
-          }
-          return newArr;
-        };
-        // 重新定义
-        const newdClassifys = dClassifys(dClassify);
-        const newdchannelss = channelss(channels); */
         if (data.errCode == 0) {
+          const channels = data.data.channels; // 选择渠道
+          const dClassify = data.data.dClassify; // 选择参数
+          // 修改后端传过来数据的字段名称
+          // 两种方法 一
+          const channelss = channels.map(item=>({ value: item._id,label: item.des }));
+          const dClassifys = dClassify.map(item=>({ value: item.value,label: item.name }));
           this.setState({
             channels: channelss,
             dClassify: dClassifys,
           });
+        } else {
+          Message.success(data.message);
         }
       }
     ).catch(
       ({ status, data }) => {
+        Message.success(data.message);
       }
     );
   }
@@ -103,7 +85,7 @@ export default class Addgrouping extends Component {
             Message.success(data.message);
             this.addgroupingclose();
             this.props.Toupdatelist();
-          }else{
+          } else {
             Message.success(data.message);
           }
         }

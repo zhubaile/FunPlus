@@ -25,6 +25,7 @@ export default class Paymentchannel extends Component {
       waiceng: 0,
       shuzi: 0,
       total: 0,
+      pageSize: 10,
       current: 1,
       isLoading: false,
       datas: [],
@@ -53,16 +54,20 @@ export default class Paymentchannel extends Component {
       },
       () => {
         const current = this.state.current;
+        const limit = this.state.pageSize;
         channel({
           page: current,
-          limit: '10',
+          limit,
         }).then(({ status,data })=>{
-          debugger;
-          this.setState({
-            datas: data.data,
-            isLoading: false,
-            total: data.total,
-          });
+          if (data.errCode == 0) {
+            this.setState({
+              datas: data.data,
+              isLoading: false,
+              total: data.total,
+            });
+          } else {
+            Message.success(data.message);
+          }
         });
       }
     );
@@ -151,7 +156,7 @@ export default class Paymentchannel extends Component {
     });
   }
   render() {
-    const { isLoading, datas, current, total } = this.state;
+    const { isLoading, datas, current, total, pageSize } = this.state;
     console.log(this.state.datas);
     debugger;
     return (
@@ -179,7 +184,7 @@ export default class Paymentchannel extends Component {
                     style={{ marginTop: '20px', textAlign: 'right' }}
                     current={current}
                     onChange={this.handlePaginationChange}
-                    pageSize={10} // 界面展示多少条数据
+                    pageSize={pageSize} // 界面展示多少条数据
                     total={total} // 一共多少条数据
                   />
                 </div>
@@ -196,9 +201,9 @@ export default class Paymentchannel extends Component {
               </div>
             </div>
           </Tab.Item>
-
-          <Tab.Item title="平台渠道" onClick={this.btn.bind(this)}>
-          </Tab.Item>
+          {/* 暂时没有内容，以后直接解开注释就行了 */}
+          {/* <Tab.Item title="平台渠道" onClick={this.btn.bind(this)}>
+          </Tab.Item> */}
         </Tab>
         <Paymentfooter />
       </div>

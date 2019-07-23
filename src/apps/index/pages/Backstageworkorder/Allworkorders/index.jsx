@@ -8,28 +8,12 @@ import '../../../layouts/BasicLayout/components/Header/index.scss';
 import { workOrderworkList,workOrderdeleteWork,workOrderworkDetails } from '@indexApi';
 import '../components/index.css';
 import moment from "moment/moment";
+import { Message } from "@alifd/next/lib/index";
 // import { Dialog } from "@alifd/next/lib/index";
 
 const { RangePicker } = DatePicker;
 const { Row, Col } = Grid;
 
-/* const random = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
-const getData = (length = 10) => {
-  return Array.from({ length }).map(() => {
-    return {
-      name: ['淘小宝', '淘二宝'][random(0, 1)],
-      level: ['普通会员', '白银会员', '黄金会员', 'VIP 会员'][random(0, 3)],
-      balance: random(10000, 100000),
-      accumulative: random(50000, 100000),
-      regdate: `2018-12-1${random(1, 9)}`,
-      birthday: `1992-10-1${random(1, 9)}`,
-      store: ['余杭盒马店', '滨江盒马店', '西湖盒马店'][random(0, 2)],
-      z: ['支付宝'],
-    };
-  });
-}; */
 export default class Allworkorders extends Component {
   static displayName = 'Setting';
 
@@ -77,10 +61,14 @@ export default class Allworkorders extends Component {
           beginTime: operationtime,
         }).then(({ status,data })=>{
           debugger;
-          this.setState({
-            datas: data.data,
-            isLoading: false,
-          });
+          if (data.errCode == 0) {
+            this.setState({
+              datas: data.data,
+              isLoading: false,
+            });
+          } else {
+            Message.success(data.message);
+          }
         });
         /* this.mockApi(len).then((data) => { // data 里面为数据
           this.setState({
@@ -127,6 +115,8 @@ export default class Allworkorders extends Component {
             datas,
           });
         }
+      } else {
+        Message.success(data.message);
       }
     });
     /* Dialog.confirm({
@@ -147,19 +137,6 @@ export default class Allworkorders extends Component {
   // 详情
   handleDetail=(id)=> {
     this.props.history.push({ pathname: "/admin/backstageworkorder/Workorderdetails", state: { id } });
-  /*  workOrderworkDetails({
-      _id: id,
-    }).then(({ status,data })=>{
-      debugger;
-      const work = data.data.work;
-      const workDetail = data.data.workDetail;
-      const workEvaluate = data.data.workEvaluate;
-      debugger;
-      if (data.errCode == 0) {
-        this.props.history.push({ pathname: "/admin/backstageworkorder/Workorderdetails", state: { work,workDetail,workEvaluate } });
-      }
-    }); */
-    // this.props.history.push('/admin/backstageworkorder/Workorderdetails');
   }
   // 搜索框
   searchbtn() {
@@ -224,7 +201,10 @@ export default class Allworkorders extends Component {
       return ("待评价");
     } else if (e == 3) {
       return ("已完成");
+    } else if (e == 4) {
+      return ("已存档");
     }
+    return null;
   }
   render() {
     // const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);

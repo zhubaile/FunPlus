@@ -86,6 +86,7 @@ export default class Official extends Component {
         debugger;
         if (data.errCode == 0) {
           this.officialclose();
+          this.props.fetchData();
           Message.success(data.message);
         }
         Message.success(data.message);

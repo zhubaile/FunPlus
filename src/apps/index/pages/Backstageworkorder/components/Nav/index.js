@@ -5,6 +5,7 @@ import { workOrdersessionList,workOrderserviceList } from '@indexApi';
 import '../../../../layouts/BasicLayout/components/Header/index.scss';
 import moment from 'moment';
 import '../index.css';
+import {Message} from "@alifd/next/lib/index";
 
 export default class Nav extends Component {
   static displayName = 'Nav';
@@ -26,6 +27,8 @@ export default class Nav extends Component {
         this.setState({
           workOrderserviceLists: data.data,
         });
+      } else {
+        Message.success(data.message);
       }
     });
   }
@@ -38,6 +41,8 @@ export default class Nav extends Component {
           workOrdersessionLists: data.data,
           // stylecolor: false,
         });
+      } else {
+        Message.success(data.message);
       }
     });
   };
@@ -112,7 +117,7 @@ export default class Nav extends Component {
                       return (
                         <div className='user-w' onClick={this.jiekou.bind(this,item.byReplyId)}>
                           <div className="avatar with-status status-green">
-                            <img alt="" src={require('@img/img/avatar1.jpg')} />
+                            <img alt="" src={require('@img/img/avatar2.jpg')} />
                           </div>
                           <div className="user-info">
                             <div className="user-date">
@@ -133,7 +138,7 @@ export default class Nav extends Component {
                       return (
                         <div className='user-w' onClick={this.jiekou.bind(this,item._id)}>
                           <div className="avatar with-status status-green">
-                            <img alt="" src={require('@img/img/avatar1.jpg')} />
+                            <img alt="" src={require('@img/img/avatar2.jpg')} />
                           </div>
                           <div className="user-info">
                             <div className="user-name">

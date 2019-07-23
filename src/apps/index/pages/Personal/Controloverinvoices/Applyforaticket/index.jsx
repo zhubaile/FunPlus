@@ -107,20 +107,24 @@ export default class Applyforaticket extends Component {
       }
     );
   };
+  // 申请开票
   applyforacticketopen() {
     const TotalAmounts = this.state.TotalAmount;
     this.ApplyBilling.applybillingopen(TotalAmounts);
   }
+  // 发票抬头
   applyforacticketopenone() {
     const InvoiceInfos = this.state.InvoiceInfo;
     const InvoiceTypes = this.state.InvoiceType;
+    debugger;
     this.BillingInformation.billinginformationopen(InvoiceInfos,InvoiceTypes);
   }
-  // 添加地址
+  // 添加邮寄地址
   applyforacticketopentwo() {
     const MailAddresss = this.state.MailAddress;
     const City = this.state.City;
     const messageaddress = 'Addto';
+    debugger;
     this.AddAddress.addaddressopen(MailAddresss,City,messageaddress);
   }
 
@@ -160,14 +164,14 @@ export default class Applyforaticket extends Component {
               </div>
 
               <div className='innertwo'>
-                <p><Icon type='edit' size='large' style={{ paddingRight: '5px' }} />您还未填写开票信息
-                  {!InvoiceInfo || InvoiceInfo.length == 0 ? (<a onClick={this.applyforacticketopenone.bind(this)}><span>现在填写</span></a>) : (<a onClick={this.applyforacticketopenone.bind(this)}><span>修改开票信息</span></a>)}
+                <p><Icon type='edit' size='large' style={{ paddingRight: '5px' }} />
+                  {!InvoiceInfo || InvoiceInfo.length == 0 ? (<a onClick={this.applyforacticketopenone.bind(this)}><span>您还未填写开票信息,现在填写</span></a>) : (<a onClick={this.applyforacticketopenone.bind(this)}><span>修改开票信息</span></a>)}
                 </p>
               </div>
 
               <div className='innerthree'>
-                <p><Icon type='edit' size='large' style={{ paddingRight: '5px' }} />您还未添加邮寄信息
-                  {!MailAddress || MailAddress.length == 0 ? (<a onClick={this.applyforacticketopentwo.bind(this)}><span>现在添加</span></a>) : (<a onClick={this.applyforacticketopentwo.bind(this)}><span>添加邮寄信息</span></a>)}
+                <p><Icon type='edit' size='large' style={{ paddingRight: '5px' }} />
+                  {!MailAddress || MailAddress.length == 0 ? (<a onClick={this.applyforacticketopentwo.bind(this)}><span>您还未添加邮寄信息,现在添加</span></a>) : (<a onClick={this.applyforacticketopentwo.bind(this)}><span>添加邮寄信息</span></a>)}
                 </p>
               </div>
 

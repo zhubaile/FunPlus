@@ -22,8 +22,8 @@ export default class Addmenber extends Component {
         passwordTwo: '',
         password: '',
         notes: '',
-        yingyong: '选择应用',
-        jiaose: '选择角色',
+        quanbuyingyong: '',
+        roles: [],
       },
       open: false,
       content: null,
@@ -47,16 +47,19 @@ export default class Addmenber extends Component {
   // 添加成员
   addmember = () => {
     this.refs.form.validateAll((errors, values) => {
+      debugger;
       createUser({
         ...values,
       }).then(({ status,data })=>{
+        debugger;
         if (data.errCode == 0) {
           this.addmemberclose();
           Message.success(data.message);
           this.props.fetchData();
           // location.reload();
+        } else {
+          Message.success(data.message);
         }
-        Message.success(data.message);
       });
     });
   }
@@ -100,9 +103,9 @@ export default class Addmenber extends Component {
             <Select dataSource={yingyong} placeholder='选择应用' />
           </FormBinder>
           <FormBinder name='roles'>
-            <Select dataSource={jiaose} placeholder='选择角色' />
+            <Select mode="multiple" dataSource={jiaose} placeholder='选择角色' />
           </FormBinder>
-          <button onClick={this.addmemberclose.bind(this)}>取消</button>
+          <button className='quxiao' onClick={this.addmemberclose.bind(this)}>取消</button>
           <button onClick={this.addmember}>添加</button>
         </FormBinderWrapper>
       </div>

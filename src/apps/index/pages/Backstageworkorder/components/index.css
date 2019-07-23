@@ -100,7 +100,7 @@ display: flex; align-items: center; }
 .wodegongdan-pingjia .fankui span.next-input.next-input-textarea{ width: 60%;}
 .wodegongdan-pingjia .fankui Button{ margin-left: 5px; margin-top: 140px; border-radius: 5px;}
 /* 评分 */
-/*.wodegongdan-pingjia .next-form .next-row .next-col .next-rating .next-rating-base .next-rating-overlay{width: 100%; overflow: visible;}*/
+.wodegongdan-pingjia .next-rating-underlay .next-rating-icon,.wodegongdan-pingjia .next-rating-overlay .next-rating-icon{margin-left: 0;}
 /* 提交工单 */
 .submissionworkorder{ width: 100%; padding-left: 20px; background: #F2F4F8;}
 /*.submissionworkorder-top{  border-bottom: 1px solid rgba(187, 187, 187, 1); font-size: 20px;}*/

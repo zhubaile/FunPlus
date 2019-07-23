@@ -87,11 +87,13 @@ export default class ApplyBillingNext extends Component {
     const vcontent = this.radiosDefalutValue; // 开票地址
     const InvoiceInfo = this.state.InvoiceInfo; // 抬头
     const Invoiceamount = this.state.Invoiceamount; // 金额
+    debugger;
     openInvoice({
       ...vcontent,
       ...InvoiceInfo,
       totalFee: Invoiceamount,
     }).then(({ status,data })=>{
+      debugger;
       if (data.errCode == 0) {
         Message.success(data.message);
         location.reload();

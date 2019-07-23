@@ -102,6 +102,8 @@ class Enterprisecertification extends Component {
           userCompanyInfo: data.data.userCompanyInfo,
           userCompanyStatus: data.data.userCompanyStatus,
         });
+      }else{
+        Message.success(data.message);
       }
     });
   }
@@ -132,8 +134,9 @@ class Enterprisecertification extends Component {
             this.setState({
               userCompanyStatus: userStatus,
             });
+          }else{
+            Message.success(data.message);
           }
-          Message.success(data.message);
         });
       } else {
         debugger;

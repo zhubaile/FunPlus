@@ -77,6 +77,8 @@ export default class Devicemanagement extends Component {
               total: data.data.total,
               isLoading: false,
             });
+          } else {
+            Message.success(data.message);
           }
         });
       }
@@ -119,6 +121,8 @@ export default class Devicemanagement extends Component {
           });
           debugger; */
           // this.Custom.customopen();
+        } else {
+          Message.success(data.message);
         }
       }
     );
@@ -179,7 +183,7 @@ export default class Devicemanagement extends Component {
     return (
       <div className='devicemanagement'>
         <Addgrouping ref={(node=>this.Addgrouping = node)} Toupdatelist={this.Toupdatelist} />
-        <Official ref={(node=>this.Official = node)} />
+        <Official ref={(node=>this.Official = node)} fetchData={this.fetchData.bind(this)}/>
         <Custom ref={(node=>this.Custom = node)} />
         <div className='devicemanagement-top'>
           设备列表

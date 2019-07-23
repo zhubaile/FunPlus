@@ -24,18 +24,19 @@ class UserRegister extends Component {
   constructor(props) {
     super(props);
     console.log(this.props.match); // 获取到详细的路由地址
-    console.log(this.props.match.url);
-    const zbl = this.props.match.url;
-    console.log(zbl);
-    const zzz = "朱柏乐";
+    const query = this.props.location.search; // '?s=1&f=7'
+    const arr = query.split('&');
+    const initialemail = arr[0].substr(7); // 获取邮箱值
+    // const failedCount = arr[1].substr(2) // '7'
+    debugger;
     this.state = {
       value: {
         name: '',
         tel: '',
-        email: zzz,
+        email: initialemail,
         passwd: '',
         rePasswd: '',
-        sign: zbl,
+        sign: initialemail,
       },
     };
   }
@@ -120,7 +121,8 @@ class UserRegister extends Component {
       ).catch(
         ({ status, data }) => {
           console.log(values);
-          Message.success(intl.formatMessage({ id: 'app.register.error' }));
+          Message.success(data.message);
+          // Message.success(intl.formatMessage({ id: 'app.register.error' }));
           // Message.success('注册失败');
           this.props.history.push('/user/register');
         }

@@ -53,10 +53,14 @@ export default class Applicationparameters extends Component {
       },
       () => {
         ObtainsettingwhiteIps().then(({ status,data })=>{
-          this.setState({
-            isLoading: false,
-            data: data.data,
-          });
+          if (data.errCode == 0) {
+            this.setState({
+              isLoading: false,
+              data: data.data,
+            });
+          } else {
+            Message.success(data.message);
+          }
         });
         /* this.mockApi(len).then((data) => { // data 里面为数据
           this.setState({

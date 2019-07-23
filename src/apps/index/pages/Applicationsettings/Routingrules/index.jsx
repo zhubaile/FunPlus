@@ -5,7 +5,7 @@ import { actions, reducers, connect } from '@indexStore';
 import Paymentfooter from '../components/Paymentfooter';
 import RoutingPopup from './RoutingPopup';
 import IceContainer from '@icedesign/container';
-import { routerRulelist } from '@indexApi';
+import { routerRulelist,routerRule } from '@indexApi';
 import '../../index.css';
 
 const getData = (length = 10) => {
@@ -22,6 +22,7 @@ export default class Routingrules extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      values: [],
       total: 0,
       current: 1,
       isLoading: false,
@@ -31,39 +32,26 @@ export default class Routingrules extends Component {
   componentDidMount() {
     this.fetchData();
   }
-
-  /* mockApi = (len) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
-      }, 600);
-    });
-  }; */
-
   fetchData = (len) => {
-    debugger;
     this.setState(
       {
         isLoading: true,
       },
       () => {
-        /* this.mockApi(len).then((data) => { // data 里面为数据
-          this.setState({
-            data,
-            isLoading: false,
-          });
-        }); */
         const current = this.state.current;
         routerRulelist({
           page: current,
           limit: '10',
         }).then(({ status,data })=>{
-          debugger;
-          this.setState({
-            data: data.data,
-            isLoading: false,
-            total: data.total,
-          });
+          if (data.errCode == 0) {
+            this.setState({
+              data: data.data,
+              isLoading: false,
+              total: data.total,
+            });
+          } else {
+            Message.success(data.message);
+          }
         });
       }
     );
@@ -80,7 +68,6 @@ export default class Routingrules extends Component {
     );
   };
   btnClick() {
-    // console.log(this.input.value,this);
     this.props.editor(this.input.getInputNode().value);
   }
   /*  renderRule = (rules) => {
@@ -98,6 +85,26 @@ export default class Routingrules extends Component {
       </div>
     );
   }; */
+  routerRulebtn(record) {
+    debugger;
+    routerRule({
+      ruleId: record.ruleId,
+    }).then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        const datas = data.data;
+        this.RoutingPopup.Routingopen(datas);
+        // const dataVal = datas.map(item=>({ value: item.channelId,label: item.channelName,dGroupData: item.dGroupData })); // 改变成想要的属性名
+        // this.setState({
+        //   values: datas.channelData,
+        // },()=>{
+        //   this.RoutingPopup.Routingopen(datas);
+        // });
+      } else {
+        Message.success(data.message);
+      }
+    });
+  }
   renderOper = (rule) => {
     return (
       <div>
@@ -105,9 +112,22 @@ export default class Routingrules extends Component {
       </div>
     );
   };
-  consultationpopup() {
-    this.RoutingPopup.Routingopen();
-  }
+  caozuo = (value, index, record) => {
+    return (
+      <div>
+        <a
+          type="primary"
+          style={{ cursor: 'pointer', marginLeft: '3px' }}
+          onClick={()=>this.routerRulebtn(record)}
+        >
+          编辑
+        </a>
+      </div>
+    );
+  };
+  // consultationpopup() {
+  //   this.RoutingPopup.Routingopen();
+  // }
   render() {
     console.log(this.state.total);
     const { isLoading, data, current, total } = this.state;
@@ -121,7 +141,7 @@ export default class Routingrules extends Component {
               <Message type='notice'>
                每条路由规则对应一个支付渠道
               </Message>
-              <Button className='btn-all' style={styles.bg} size='large' type='secondary' onClick={this.consultationpopup.bind(this)}>创建新规则</Button>
+              <Button className='btn-all' style={styles.bg} size='large' type='secondary' onClick={this.routerRulebtn.bind(this)}>创建新规则</Button>
             </div>
             <div>
               <Table loading={isLoading} dataSource={data} hasBorder={false}>
@@ -134,6 +154,7 @@ export default class Routingrules extends Component {
                   dataIndex="ruleSwitch"
                   cell={this.renderOper}
                 />
+                <Table.Column title="操作" dataIndex="caozuo" cell={this.caozuo} />
               </Table>
               {/* <Pagination style={{ marginTop: '20px', textAlign: 'right' }} pageSizeSelector="dropdown" total='1' pageSizePosition="start" onChange={this.handlePaginationChange} /> */}
               <Pagination

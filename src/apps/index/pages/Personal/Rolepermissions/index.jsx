@@ -91,6 +91,8 @@ class Membermanagement extends Component {
               isLoading: false,
               total: data.data.totalCount,
             });
+          } else {
+            Message.success(data.message);
           }
         });
       }
@@ -206,7 +208,7 @@ class Membermanagement extends Component {
      return (
        <div className='membermanagement'>
          <Newrole ref={node=>this.Newrole = node} fetchData={this.fetchData.bind(this)} />
-         <Editingrole ref={node=>this.Editingrole = node} />
+         <Editingrole ref={node=>this.Editingrole = node} fetchData={this.fetchData.bind(this)} />
          <Tab shape='pure' defaultActiveKey='2'>
            <Tab.Item title="成员管理" onClick={this.btn.bind(this)} key='1'>
 

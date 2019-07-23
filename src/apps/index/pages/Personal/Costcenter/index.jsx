@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import IceContainer from '@icedesign/container';
 import { withRouter, Link } from 'react-router-dom';
-import { Input, Radio, Tab , Button, Grid, Form, DatePicker,Table,Pagination } from '@alifd/next';
+import { Message, Radio, Tab , Button, Grid, Form, DatePicker,Table,Pagination } from '@alifd/next';
 import Customerservice from "../components/Customerservice";
 import { rechargeList,deductionList } from '@indexApi';
 import Recharges from './Recharge';
@@ -49,14 +49,6 @@ class Costcenter extends Component {
     this.fetchData();
   }
 
-  /*  mockApi = (len) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
-      }, 600);
-    });
-  }; */
-
   fetchData = (len) => {
     this.setState(
       {
@@ -69,19 +61,16 @@ class Costcenter extends Component {
           page,
           pageSize,
         }).then(({ status,data })=>{
-          debugger;
-          this.setState({
-            datas: data.data.result,
-            isLoading: false,
-            total: data.data.totalCount,
-          });
+          if (data.errCode == 0) {
+            this.setState({
+              datas: data.data.result,
+              isLoading: false,
+              total: data.data.totalCount,
+            });
+          } else {
+            Message.success(data.message);
+          }
         });
-        /* this.mockApi(len).then((data) => { // data 里面为数据
-          this.setState({
-            data,
-            isLoading: false,
-          });
-        }); */
       }
     );
   };
@@ -120,7 +109,7 @@ class Costcenter extends Component {
       debugger;
       if (data.errCode == 0) {
         this.setState({
-          datass: data.data.result
+          datass: data.data.result,
         });
       }
     });

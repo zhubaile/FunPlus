@@ -192,6 +192,8 @@ a:active{ text-decoration: none; }
   border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;
 }
+.routingPopup div span.next-select.next-select-trigger.next-select-multiple.next-medium.next-inactive.next-no-search span.next-input.next-medium.next-select-inner{ height: auto}
+
 
 @charset "utf-8";
 .clearfix:before, .clearfix:after,.row:before, .row:after,.ui-row:before, .ui-row:after,.ui-group:before, .ui-group:after{ content:""; display:table; line-height:0; }
@@ -360,6 +362,7 @@ a:active{ text-decoration: none; }
 .membermanagement{ width: 100%; }
 .membermanagement-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
+.membermanagement-top .next-select .next-select-inner{ height: auto;}
 .addmemberbtn{position: absolute; top: 15px; right: 20px;border-radius: 6px; background-color: #E2EDFF; border: 1px solid #A3D0FD; color: #1989FA; cursor: pointer;}
 .membermanagement-bottom{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
@@ -370,6 +373,9 @@ a:active{ text-decoration: none; }
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
 .addmenber>span{ margin-top: 10px; width: 90%;}
 .addmenber>span input{ display: block; width: 90%;}
+.addmenber button{margin: 10px 20px;width: 80px;height: 30px;border-radius: 4px;background-color: rgba(26, 85, 226, 0.95);color: rgba(255, 255, 255, 1);font-size: 14px;text-align: center;border: 1px solid rgba(255, 255, 255, 0);}
+.addmenber button.quxiao{border-radius: 4px;background-color: rgba(230, 241, 252, 1);color: rgba(26, 85, 226, 0.95);font-size: 14px;border: 1px solid rgba(187, 218, 249, 1);}
+.addmenber .next-select .next-select-inner{ height: auto;}
 .next-overlay-wrapper .next-overlay-inner{ z-index: 8889;}
 
 .membermanagements-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;

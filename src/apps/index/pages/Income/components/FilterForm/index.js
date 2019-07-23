@@ -4,7 +4,7 @@ import { Grid, DatePicker, Select, Input, Button } from '@alifd/next';
 import moment from 'moment';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 // import { getLocale } from '../../../../../../assets/Internationalization/locale';
-import { incomeList,getDevice } from '@indexApi';
+import { incomeList } from '@indexApi';
 
 // const locale = getLocale();
 
@@ -16,9 +16,8 @@ export default class FilterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      device: null,
       value: {
-        timeType: 'createdAt',
+        timeType: 'createAt',
         startdate: [],
         orderStatus: '',
         payChannel: '',
@@ -35,7 +34,7 @@ export default class FilterForm extends Component {
   handleReset() {
     this.setState({
       value: {
-        timeType: 'createdAt',
+        timeType: 'createAt',
         startdate: [],
         orderStatus: '',
         payChannel: '',
@@ -59,18 +58,19 @@ export default class FilterForm extends Component {
       this.props.onChange(values,arrivalDate);
     });
   }
-  // 输入支付渠道获取设备
-  Accesschannels(v) {
-    getDevice({
-      _id: v,
-    }).then(({ status,data })=>{
-      if (data.errCode == 0) {
-        const groupid = data.data;
-        const groupids = groupid.map(item=>({ value: item._id,label: item.dName }));
-        this.setState({
-          device: groupids,
-        });
-      }
+  // 输入支付渠道获取设备(级联子元素)
+  Accesschannels(e,v,i) {
+    const values = this.state.value;
+    const value = Object.assign({},values,{ device: '' });
+    this.setState({
+      value,
+    },()=>{
+      const device = i.son;
+      const devices = device.map(item=>({ value: item._id, label: item.dName }));
+      const valueson = Object.assign({},values,{ device: devices });
+      this.setState({
+        value: valueson,
+      });
     });
   }
   render() {
@@ -79,56 +79,57 @@ export default class FilterForm extends Component {
     const orderStatus = this.props.Filterform.orderStatus; // 支付状态
     const payChannel = this.props.Filterform.channel; // 支付渠道
     const timeType = this.props.Filterform.dateType; // 支付时间
-    const device = this.state.device;
+    const device = this.state.value.device;
+    debugger;
     return (
       <div className='filterform'>
-      <FormBinderWrapper
-        value={this.state.value}
-        onChange={this.formChange}
-        ref="form"
-      >
-        <Row wrap gutter="20" style={styles.formRow}>
-          <Col l="24">
-            <div style={styles.formItem}>
-              <span style={styles.formLabel}>选择时间</span>
-              <FormBinder name="timeType"
-                autoWidth={false}
-              >
-                <Select style={styles.formSelect} dataSource={timeType} defaultValue='createdAt' />
-              </FormBinder>
-              <FormBinder name='startdate' >
-                <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
-              </FormBinder>
-              <span style={styles.formLabel}>支付状态</span>
-              <FormBinder name='orderStatus'>
-                <Select style={styles.formSelect} dataSource={orderStatus} />
-              </FormBinder>
-              {/* <span style={styles.formLabel}>退款状态</span>
+        <FormBinderWrapper
+          value={this.state.value}
+          onChange={this.formChange}
+          ref="form"
+        >
+          <Row wrap gutter="20" style={styles.formRow}>
+            <Col l="24">
+              <div style={styles.formItem}>
+                <span style={styles.formLabel}>选择时间</span>
+                <FormBinder name="timeType"
+                  autoWidth={false}
+                >
+                  <Select style={styles.formSelect} dataSource={timeType} defaultValue='createdAt' />
+                </FormBinder>
+                <FormBinder name='startdate' >
+                  <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
+                </FormBinder>
+                <span style={styles.formLabel}>支付状态</span>
+                <FormBinder name='orderStatus'>
+                  <Select style={styles.formSelect} dataSource={orderStatus} />
+                </FormBinder>
+                {/* <span style={styles.formLabel}>退款状态</span>
               <FormBinder name='refundStatus'>
                 <Select style={styles.formSelect} dataSource={refundStatus} />
               </FormBinder> */}
-            </div>
-          </Col>
+              </div>
+            </Col>
 
-          <Col l="24">
-            <div style={styles.formItemTwo}>
-              <span style={styles.formLabel}>支付渠道</span>
-              <FormBinder name='payChannel'>
-                <Select style={styles.formSelect} dataSource={payChannel} onChange={this.Accesschannels.bind(this)} />
-              </FormBinder>
-              <FormBinder name="device" >
-                <Select style={{ width: '200px' }} dataSource={device} />
-              </FormBinder>
-              <span style={styles.formLabel}>订单号</span>
-              <FormBinder name='out_trade_no'>
-                <Input className='input-bg' placeholder='输入订单号' />
-              </FormBinder>
-              <Button className='btn-all bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
-              <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
-            </div>
-          </Col>
-        </Row>
-      </FormBinderWrapper>
+            <Col l="24">
+              <div style={styles.formItemTwo}>
+                <span style={styles.formLabel}>支付渠道</span>
+                <FormBinder name='payChannel'>
+                  <Select style={styles.formSelect} dataSource={payChannel} onChange={this.Accesschannels.bind(this)} />
+                </FormBinder>
+                <FormBinder name="device" >
+                  <Select style={{ width: '200px' }} dataSource={device} />
+                </FormBinder>
+                <span style={styles.formLabel}>订单号</span>
+                <FormBinder name='out_trade_no'>
+                  <Input className='input-bg' placeholder='输入订单号' />
+                </FormBinder>
+                <Button className='btn-all bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
+                <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
+              </div>
+            </Col>
+          </Row>
+        </FormBinderWrapper>
       </div>
     );
   }

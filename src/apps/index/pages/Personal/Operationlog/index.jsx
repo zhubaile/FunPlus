@@ -7,6 +7,7 @@ import Customerservice from "../components/Customerservice";
 import { loglist } from '@indexApi';
 import '../../index.css';
 import moment from "moment/moment";
+import { Message } from "@alifd/next/lib/index";
 
 const { RangePicker } = DatePicker;
 const { Row, Col } = Grid;
@@ -48,9 +49,9 @@ class Operationlog extends Component {
       datas: [],
     };
   }
-  formChange = (value) => {
+  /* formChange = (value) => {
     this.props.onChange(value);
-  };
+  }; */
   // 每次界面进来之后首先执行此方法
   componentDidMount() {
     this.fetchData();
@@ -67,12 +68,30 @@ class Operationlog extends Component {
   search(e) {
     const { validateFields } = this.refs.form;
     validateFields((errors,values)=>{
+      debugger;
       const arrivalDate = [];
-      if (values.startdate.length == 2) {
-        const startdatestart = moment(values.startdate[0]._d).valueOf();
-        const startdateend = moment(values.startdate[1]._d).valueOf();
+      /* if (values.Operationtime.length == 2) {
+        const startdatestart = moment(values.Operationtime[0]._d).valueOf();
+        const startdateend = moment(values.Operationtime[1]._d).valueOf();
         arrivalDate.push(startdatestart);
         arrivalDate.push(startdateend);
+      } */
+      if (values.Operationtime.length == 2) {
+        if (values.Operationtime[0] && values.Operationtime[1]) {
+          const startdatestart = moment(values.Operationtime[0]._d).valueOf();
+          const startdateend = moment(values.Operationtime[1]._d).valueOf();
+          arrivalDate.push(startdatestart,startdateend);
+        } else if (values.Operationtime[0]) {
+          const startdatestart = moment(values.Operationtime[0]._d).valueOf();
+          const startdateend = '';
+          arrivalDate.push(startdatestart,startdateend);
+        } else if (values.Operationtime[1]) {
+          const startdatestart = '';
+          const startdateend = moment(values.Operationtime[1]._d).valueOf();
+          arrivalDate.push(startdatestart,startdateend);
+        } else {
+          return null;
+        }
       }
       this.fetchData(values,arrivalDate);
     });
@@ -96,14 +115,10 @@ class Operationlog extends Component {
               isLoading: false,
               total: data.data.totalCount,
             });
+          } else {
+            Message.success(data.message);
           }
         });
-        /* this.mockApi(len).then((data) => { // data 里面为数据
-          this.setState({
-            data,
-            isLoading: false,
-          });
-        }); */
       }
     );
   };

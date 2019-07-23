@@ -12,6 +12,7 @@ import { searchUserList, userDelete } from '@indexApi';
 
 
 import '../../index.css';
+import { Message } from "@alifd/next/lib/index";
 
 const { RangePicker } = DatePicker;
 const { Row, Col } = Grid;
@@ -97,6 +98,8 @@ class Membermanagement extends Component {
               isLoading: false,
               total: data.data.totalCount,
             });
+          } else {
+            Message.success(data.message);
           }
         });
       }
@@ -238,7 +241,8 @@ class Membermanagement extends Component {
                   <Select dataSource={quanbuyingyong} style={styles.forminput} placeholder='全部应用' />
                 </FormBinder>
                 <FormBinder name='roles' >
-                  <Select dataSource={jiaose} style={styles.forminput} placeholder='角色' />
+                  <Select mode="multiple" style={styles.forminput} dataSource={jiaose} placeholder='选择角色' />
+                  {/* <Select dataSource={jiaose} style={styles.forminput} placeholder='角色' /> */}
                 </FormBinder>
                 <FormBinder name='keyword' >
                   <Input hasClear placeholder='支持姓名邮箱手机号' style={styles.forminput} />

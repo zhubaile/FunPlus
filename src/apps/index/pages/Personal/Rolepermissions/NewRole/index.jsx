@@ -34,6 +34,11 @@ export default class Newrole extends Component {
     this.setState({
       open: false,
       content: null,
+      value: {
+        description: '',
+        notes: '',
+        premissions: [],
+      },
     });
   }
   newroleopen(content,confirm) {
@@ -53,8 +58,9 @@ export default class Newrole extends Component {
           Message.success(data.message);
           this.newroleclose();
           this.props.fetchData();
+        } else {
+          Message.success(data.message);
         }
-        Message.success(data.message);
       });
     });
   }

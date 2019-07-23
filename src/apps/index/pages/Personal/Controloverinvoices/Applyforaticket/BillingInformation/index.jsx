@@ -19,7 +19,14 @@ export default class BillingInformation extends Component {
     super(props);
     this.state = {
       open: false,
-      content: null,
+      content: {
+        company: '',
+        invoiceType: '',
+        invoiceTitle: '',
+        bank: '',
+        bankNumber: '',
+        taxNumber: '',
+      },
       confirm: null,
       value: {
         companyname: '',
@@ -39,6 +46,7 @@ export default class BillingInformation extends Component {
     });
   }
   billinginformationopen(content,confirm) {
+    debugger;
     this.setState({
       open: true,
       content,

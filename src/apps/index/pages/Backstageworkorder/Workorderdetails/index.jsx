@@ -25,6 +25,8 @@ export default class Workorderdetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      ratings: null, // 评分
+      radios: null, // 问题选择解决未解决
       // ChatRecord: [],
       Probleminput: '',
       // isBottom: true,
@@ -44,29 +46,31 @@ export default class Workorderdetails extends Component {
   componentDidMount() {
     this.fetchData();
   }
-  componentWillReceiveProps(nextProps){
+  /*  componentWillReceiveProps(nextProps) {
     debugger;
   }
+  componentWillMount(){
+    debugger;
+  }
+  componentWillUnmount(){
+    clearInterval(this.timerID);
+  } */
   fetchData = (len) => {
     const id = this.state.id;
     workOrderworkDetails({
       _id: id,
     }).then(({ status,data })=>{
-      debugger;
       if (data.errCode == 0) {
         this.setState({
           work: data.data.work,
           workDetail: data.data.workDetail,
           workEvaluate: data.data.workEvaluate,
+        },()=>{
+          this.onScrollHandle(this.messagesEnd);
         });
+      } else {
+        Message.success(data.message);
       }
-      // const work = data.data.work;
-      // const workDetail = data.data.workDetail;
-      // const workEvaluate = data.data.workEvaluate;
-      // debugger;
-      // if (data.errCode == 0) {
-      //   this.props.history.push({ pathname: "/admin/backstageworkorder/Workorderdetails", state: { work,workDetail,workEvaluate } });
-      // }
     });
   };
 
@@ -121,7 +125,6 @@ export default class Workorderdetails extends Component {
         customerContent: contents,
         _id,
       }).then(({ status,data })=>{
-        debugger;
         if (data.errCode == 0) {
           this.setState({
             workDetail: data.data,
@@ -168,19 +171,35 @@ export default class Workorderdetails extends Component {
       return ("待评价");
     } else if (e == 3) {
       return ("已完成");
+    } else if (e == 4) {
+      return ("已存档");
     }
+    return null;
   }
 
+  // ratings评分
+  ratings=(ratings) =>{
+    this.setState({
+      ratings,
+    });
+  }
+  // radios 解决问题
+  radios=(radios)=> {
+    this.setState({
+      radios,
+    });
+  }
   // 工单评价
   remainEvaluated = (values, errors) => {
     if (!errors) {
       const _id = this.state.workEvaluate._id;
-      debugger;
+      const star = this.state.ratings;
+      const isSolve = this.state.radios;
       workOrderremainEvaluated({
         _id,
         feedback: values.messages,
-        star: values.star,
-        isSolve: values.radio,
+        star,
+        isSolve,
       }).then(({ status,data })=>{
         if (data.errCode == 0) {
           Message.success(data.message);
@@ -191,8 +210,10 @@ export default class Workorderdetails extends Component {
   }
   render() {
     const { isLoading, work, workDetail,workEvaluate } = this.state;
-    const status = work[0].status;
-    const isStatement = work[0].isStatement;
+    const status = work[0].status; // 状态，处理中，待评价，已存档，已完成
+    const usernames = work[0].username; // 用户识别
+    const isStatement = work[0].isStatement; // 是否结单
+    debugger;
     return (
       <div className='backstageworkorder'>
         <Deletedata ref={ node => this.Deletedata = node } history={this.props.history} />
@@ -229,9 +250,10 @@ export default class Workorderdetails extends Component {
               {/* <div className='communicate'> */}
               {
                 workDetail.map((item)=>{
+                  debugger;
                     return (
                       <div className='communicate'>
-                        { item.username == '3FunPlus客服' ? (<img src={require('@img/logo/logo1.png')} alt="" />) : (<img src={require('@img/img/avatar1.jpg')} alt="" />)}
+                        { item.username == usernames ? (<img src={require('@img/img/avatar1.jpg')} alt="" />) : (<img src={require('@img/logo/logo1.png')} alt="" />)}
                         <ul>
                           <li>{item.username}</li>
                           <li>{item.description}</li>
@@ -278,17 +300,24 @@ export default class Workorderdetails extends Component {
                 {...formItemLayout}
                  // ref="form"
               >
-                {/* <span>整体评价：</span> */}
-                <FormItem label='整体评价：'>
+                <span>整体评价：</span>
+                <Rating name='star' count='5' size='large'onChange={this.ratings.bind(this)} />
+                {/* <FormItem label='整体评价：'>
                   <Rating name='star' count='5' size='large' />
-                </FormItem >
-                {/* <span>问题是否解决：</span> */}
-                <FormItem label='问题是否解决：'>
+                </FormItem > */}
+                <div style={{ margin: '10px 0' }}>
+                  <span>问题是否解决：</span>
+                  <RadioGroup name='radio' onChange={this.radios.bind(this)}>
+                    <Radio id="1" value="1">已解决</Radio>
+                    <Radio id="2" value="2">未解决</Radio>
+                  </RadioGroup>
+                </div>
+                {/* <FormItem label='问题是否解决：'>
                   <RadioGroup name='radio'>
                     <Radio id="1" value="1">已解决</Radio>
                     <Radio id="2" value="2">未解决</Radio>
                   </RadioGroup>
-                </FormItem >
+                </FormItem > */}
                 <div className='fankui'>
                   <span>我要反馈：</span>
                   <FormItem required requiredMessage="不能为空">

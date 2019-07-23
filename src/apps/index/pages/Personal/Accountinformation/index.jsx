@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Input,Button , Grid, DatePicker , Icon,Form, Tab, Select, Switch } from '@alifd/next';
+import { Input,Button , Grid, Message , Icon,Form, Tab, Select, Switch } from '@alifd/next';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import { actions, reducers, connect } from '@indexStore';
 import { companyaccountInfo } from '@indexApi';
@@ -40,6 +40,8 @@ export default class Accountinformation extends Component {
         this.setState({
           datas: data.data,
         });
+      } else {
+        Message.success(data.message);
       }
     });
   }

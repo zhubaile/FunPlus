@@ -46,6 +46,8 @@ export default class Applicationparameters extends Component {
          this.setState({
            datas: data.data,
          });
+       } else {
+         Message.success(data.message);
        }
      });
    };

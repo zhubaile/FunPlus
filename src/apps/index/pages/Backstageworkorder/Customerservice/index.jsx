@@ -50,12 +50,23 @@ export default class Customerservice extends Component {
   /* socket.on('getMsg',()=>{
 
 }) */
+  // 定时器
+  tick(userId){
+    debugger;
+    this.socket.emit('heartbeat',userId);
+  }
+  // 解除定时器
+  componentWillUnmount(){
+    clearInterval(this.interval);
+  }
   componentDidMount() {
     const userId = Cookies.get('userId');
+    this.interval = setInterval(() => this.tick(userId), 3000);
     // 初始聊天记录内容
     workOrderuserRecordOne({
       userId,
     }).then(({ status,data })=>{
+      debugger;
       if (data.errCode == 0) {
         this.setState({
           datas: data.data.data,
@@ -66,6 +77,8 @@ export default class Customerservice extends Component {
         },()=>{
           this.onScrollHandle(this.messagesEnd);
         });
+      } else {
+        Message.success(data.message);
       }
     });
   }
@@ -103,6 +116,7 @@ export default class Customerservice extends Component {
   }
   // 获取客服的id
   customerserviceid(e) {
+    debugger;
     const userid = Cookies.get('userId'); // 用户的id
     workOrderuserRecord({
       userId: userid,
@@ -113,12 +127,16 @@ export default class Customerservice extends Component {
         this.setState({
           datas: data.data.data, // 获取之前的聊天记录
           messagelist: [], // 此刻聊天记录清空
-          username: data.data.userInfo.username,
+          array: data.data.userInfo,
+          username: data.data.userInfo.byReplyName,
+          // username: data.data.userInfo.username,
           byReplyId: e,
           userId: userid,
         },()=>{
           this.onScrollHandle(this.messagesEnd);
         });
+      } else {
+        Message.success(data.message);
       }
     });
     /* this.setState({
@@ -141,6 +159,7 @@ export default class Customerservice extends Component {
       userId,
       customerContent,
       times,
+      reacordStatus: 1,
     };
     // this.socket.send(myMsg);
     this.socket.emit('sayTo',myMsg);
@@ -172,7 +191,7 @@ export default class Customerservice extends Component {
               item.isStatus == true ? (
                 <div className="chat-message">
                   <div className="chat-message-avatar">
-                    <img alt="" src={require('@img/img/avatar1.jpg')} />
+                    <img alt="" src={require('@img/img/avatar2.jpg')} />
                     <div>
                       <p>{username}</p>
                       <span>{times}</span>
@@ -227,7 +246,7 @@ export default class Customerservice extends Component {
                           item.serviceStatus == 0 ? (
                             <div className="chat-message">
                               <div className="chat-message-avatar">
-                                <img alt="" src={require('@img/img/avatar1.jpg')} />
+                                <img alt="" src={require('@img/img/avatar2.jpg')} />
                                 <div>
                                   <p>{item.username}</p>
                                   <span>{item.createdAt}</span>
