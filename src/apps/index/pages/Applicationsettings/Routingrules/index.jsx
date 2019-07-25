@@ -87,13 +87,14 @@ export default class Routingrules extends Component {
   }; */
   routerRulebtn(record) {
     debugger;
+    const ruleId = record.ruleId;
     routerRule({
-      ruleId: record.ruleId,
+      ruleId,
     }).then(({ status,data })=>{
       debugger;
       if (data.errCode == 0) {
         const datas = data.data;
-        this.RoutingPopup.Routingopen(datas);
+        this.RoutingPopup.Routingopen(datas,ruleId);
         // const dataVal = datas.map(item=>({ value: item.channelId,label: item.channelName,dGroupData: item.dGroupData })); // 改变成想要的属性名
         // this.setState({
         //   values: datas.channelData,

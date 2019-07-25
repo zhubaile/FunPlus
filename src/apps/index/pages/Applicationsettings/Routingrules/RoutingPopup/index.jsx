@@ -5,7 +5,7 @@ import { Input,Button , Grid, DatePicker , Tab,Message ,Table,NumberPicker,Selec
 import { actions, reducers, connect } from '@indexStore';
 import IceContainer from '@icedesign/container';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
-import { channelParams,channeldeviceGroup,deviceGroupruleParams,routerRuleadd,routerRule } from '@indexApi';
+import { channelParams,channeldeviceGroup,deviceGroupruleParams,routerRuleadd,routerRuledit } from '@indexApi';
 import Daypopup from './daypopup';
 import Weektimepopup from './weektimepopup';
 import '../../../index.css';
@@ -26,6 +26,7 @@ export default class RoutingPopup extends Component {
       child: null, // 设备组信息的子数据
 
 
+      confirm: null,
       dGroupData: null, // 设备组的数据信息
       devicesGroup: null, // 全部设备组详细信息
       values: null, // 路由规则的初始数据
@@ -105,37 +106,75 @@ export default class RoutingPopup extends Component {
         open: true,
         values: contentttt,
         value: contentttt,
+        confirm,
       });
     } else {
+      const channelId = contents.channelId;
+      const channelData = contents.channelData;
+      const e = contents.dGroupId;
+      const itemss = channelData[0].dGroupData[0];
+      debugger;
+      const zbaaa = [];
+      zbaaa.push(itemss);
+      const v = 'itclick';
+      debugger;
       // 编辑的时候
       this.setState({
         open: true,
         values: contents,
         value: contents,
+        confirm,
+      },()=>{
+        this.getNodeById(channelId,channelData,e);
+        // this.equipmentgroups(e,v,zbaaa);
       });
     }
-    this.confirmCallBack = confirm;
+    // this.confirmCallBack = confirm;
   }
-  // 暂时没用
-  /* recursion =(node, callback)=> {
-    const result = callback(node);
-    if (result !== false && node.children) {
-      node.children.map((item, index) => {
-        this.recursion(item, callback);
-      });
+  // two 通过channelId查找出对应的数据进行替换
+  recursion =(nodeArr, callback)=> {
+    debugger;
+    if (nodeArr && nodeArr.length) {
+      debugger;
+      for (let index = 0; index < nodeArr.length; index++) {
+        const element = nodeArr[index];
+        const result = callback(element);
+        debugger;
+        if (result) {
+          callback && this.recursion(element, callback);
+        } else {
+          // 跳出，终止for循环
+          break;
+        }
+      }
     }
   }
-  getNodeById= (id)=> {
+  // one 通过channelId查找出对应的数据进行替换
+  // channelId: 编辑情况下选中的通道，channelData：通道的所有数据，e:设备组已选择的id
+  getNodeById= (channelId,channelData,e)=> {
     let matchNode;
-    this.recursion(tt, (node) => {
-      if (node.id == id) {
+    debugger;
+    this.recursion(channelData, (node) => {
+      debugger;
+      if (node.value == channelId) {
         matchNode = node;
         return false;
       }
       return true;
     });
-    return matchNode;
-  } */
+    const dGroupData = matchNode.dGroupData;
+    const dGroupDatas = dGroupData.map(item=>({ value: item.dGroupId,label: item.dGroupName,dUseMode: item.dUseMode,jumpDGroupData: item.jumpDGroupData,rule: item.rule,cashMatchMode: item.cashMatchMode }));
+    const selectDGroupData = dGroupDatas.filter((item)=>{
+      return (e.indexOf(item.value) > -1);
+    });
+    const v = 'itclick';
+    this.setState({
+      dGroupData: dGroupDatas,
+    },()=>{
+      this.equipmentgroups(e,v,selectDGroupData);
+    });
+  }
+
   // 出款审核的层级选择
   handleProvinceChange(value,datas,e) {
     this.setState({
@@ -153,12 +192,14 @@ export default class RoutingPopup extends Component {
     const dGroupDatas = item.dGroupData;
     let val = this.state.value;
     debugger;
+    // 如果已经选择过通道的话，再次选择会清空之前的所有数据
     if (val.channelId) {
       const aaa = Object.assign({},this.state.value,{ devicesGroup: [],channelId: e,dGroupId: [] });
       val = aaa;
     }
     debugger;
     const dGroupData = dGroupDatas.map(items=>({ value: items.dGroupId,label: items.dGroupName,cashMatchMode: items.cashMatchMode,dUseMode: items.dUseMode,jumpDGroupData: items.jumpDGroupData,rule: items.rule })); // 改变成想要的属性名
+    console.log(dGroupData);
     this.setState({
       dGroupData,
       value: val,
@@ -182,8 +223,10 @@ export default class RoutingPopup extends Component {
       }
     }
     id.map((is)=>{
+      debugger;
       return devicesGroup.push(item[is]);
     });
+    // 用于展示设备组详细信息的数组
     const devices = Object.assign({},this.state.value,{ devicesGroup,dGroupId: e });
     this.setState({
       value: devices,
@@ -192,7 +235,6 @@ export default class RoutingPopup extends Component {
   // 内容
   Fixedcontent() {
     const devicesGroup = this.state.value.devicesGroup; // 已选择的设备组的详细信息
-    debugger;
     if (!devicesGroup || devicesGroup.length == 0) {
       return null;
     }
@@ -217,11 +259,12 @@ export default class RoutingPopup extends Component {
     ];
     return (
       id.map((id)=>{
+        debugger;
         const cashMatchMode = devicesGroup[id].cashMatchMode; // 开启，不开启
         const dUseMode = devicesGroup[id].dUseMode; // 随机，id小优先
         const jumpDGroupDatas = devicesGroup[id].jumpDGroupData;
         const jumpDGroupData = jumpDGroupDatas.map(item=>({ value: item.sOverJumpDGroupId,label: item.dGroupName })); // 改变成想要的属性名
-        const title = devicesGroup[id].label;
+        const title = devicesGroup[id].label || devicesGroup[id].dGroupName;
         const rule = devicesGroup[id].rule; // 主要详细数据
         const outChannelDatas = rule.outChannelData; // 级联父数据
         // const title = devicesGroup[id].title;
@@ -242,13 +285,12 @@ export default class RoutingPopup extends Component {
         if (sons.constructor === Array) {
           son = sons.map(item=>({ value: item._id,label: item.dGroupName })); // 改变成想要的属性名
         }
-        debugger;
         return (
           <div>
             <div style={styles.main}>
               <div style={styles.maintop}>
                 <span style={styles.maintopspanleft}>
-                   {title}：路由规则
+                  {title}：路由规则
                 </span>
                 <p style={styles.maintoppright} />
               </div>
@@ -358,7 +400,11 @@ export default class RoutingPopup extends Component {
   // 创建按钮
   Establish() {
     const valueval = this.state.value; // 所有数据（比较杂乱）
+    debugger;
     const devicesGroups = valueval.devicesGroup; // 设备组信息的数据
+    if (!devicesGroups) {
+      return Message.success('信息不能为空');
+    }
     debugger;
     const id = [];
     const devicesGroup = []; // 要传的设备组详细信息
@@ -371,17 +417,33 @@ export default class RoutingPopup extends Component {
     id.map((id)=>{
       const devicesGroupids = devicesGroups[id].rule;
       const dGroupIds = devicesGroups[id].value;
-      const zbl = Object.assign({},devicesGroupids,{ dGroupId: dGroupIds });
+      debugger;
+      const autoOutCashs = devicesGroupids.autoOutCash; // 设备组信息的详细对象
+      const autoOutCash = Object.keys(autoOutCashs); // es6中可以使用obj=Object.keys(obj),然后obj.length
+      let zbl;
+      if (autoOutCash.length == 0 || !autoOutCash) {
+        zbl = Object.assign({},devicesGroupids,{ dGroupId: dGroupIds });
+        delete zbl.autoOutCash;
+        debugger;
+      } else {
+        debugger;
+        zbl = Object.assign({},devicesGroupids,{ dGroupId: dGroupIds });
+      }
+      // const zbl = Object.assign({},devicesGroupids,{ dGroupId: dGroupIds });
+      debugger;
       return devicesGroup.push(zbl);
     });
     console.log(devicesGroup);
-    routerRuleadd({
+    debugger;
+    const ruleid = this.state.confirm; // 判断是创建还是编辑
+    const routerRules = !ruleid ? routerRuleadd : routerRuledit;
+    routerRules({
+      ruleId: ruleid,
       channelId: valueval.channelId, // 通道ID
       ruleName: valueval.ruleName, // 规则名称
       openTimeMode: valueval.openTimeMode, // 规则渠道的时间
       devicesGroup, // 设备组的详细信息
     }).then(({ status,data })=>{
-      debugger;
       if (data.errCode == 0) {
         Message.success(data.message);
         this.Routingclose();
@@ -427,7 +489,6 @@ export default class RoutingPopup extends Component {
     const { values,dGroupData,sons } = this.state;
     console.log(this.state.value);
     console.log(dGroupData);
-    debugger;
     if (!this.state.open) return null;
     // const sss = values.channelData;
     return (

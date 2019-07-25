@@ -5,7 +5,7 @@ import { Input, Radio, Select , Grid, Form ,Button,Pagination,Table, Dialog } fr
 import Customerservice from "../components/Customerservice";
 import { withRouter, Link } from 'react-router-dom';
 import { invoiceList,invoiceDelete } from '@indexApi';
-// import Qrcode, { Panel } from '@icedesign/qrcode'; // 二维码
+import Applyticket from './Applyticket';
 import '../../index.css';
 import moment from 'moment';
 
@@ -70,6 +70,7 @@ class Controloverinvoices extends Component {
   }; */
 
   fetchData = (len) => {
+    this.Applyticket.applyticketopen();
     this.setState(
       {
         isLoading: true,
@@ -150,7 +151,9 @@ class Controloverinvoices extends Component {
       }
     });
   };
-
+  Applyticketbtn(){
+    this.Applyticket.applyticketopen();
+  }
   handleDetail = () => {
     Dialog.confirm({
       title: '提示',
@@ -179,6 +182,12 @@ class Controloverinvoices extends Component {
         >
           <FormattedMessage id="app.btn.delete" />
         </a>
+        <a
+          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
+          onClick={this.Applyticketbtn.bind(this)}
+        >
+          申请开票
+        </a>
       </div>
     );
   };
@@ -190,6 +199,7 @@ class Controloverinvoices extends Component {
     const { isLoading, datas, current,total,pageSize, MailAddress, InvoiceInfo, TotalAmount, ConsumptionAmount } = this.state;
     return (
       <div>
+        <Applyticket ref={ node => this.Applyticket = node } />
         <div className='personal-top'>
           <span>发票管理</span>
           <div className='personal-top-border' />
@@ -261,9 +271,10 @@ class Controloverinvoices extends Component {
             <Table loading={isLoading} dataSource={datas} hasBorder={false}>
               <Table.Column title="发票ID" dataIndex="invoiceNumber" />
               <Table.Column title="申请日期" dataIndex="updatedAt" cell={this.datatime} />
-              <Table.Column title="快递单号" dataIndex="userId" />
               <Table.Column title="发票抬头" dataIndex="invoiceTitle" />
+              <Table.Column title="发票类型" dataIndex="invoiceTitle" />
               <Table.Column title="开票金额" dataIndex="totalFee" />
+              <Table.Column title="订单号" dataIndex="userId" />
               <Table.Column title="发票状态" dataIndex="invoiceStatus" />
               <Table.Column
                 title="操作"

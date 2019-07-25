@@ -26,6 +26,13 @@ export default class Addgrouping extends Component {
     this.setState({
       open: false,
       content: null,
+      value: {
+        NewRuleName: '',
+        ApplicationChannel: '请选择渠道',
+        Shebei: '请选择参数',
+        channels: [],
+        dClassify: [],
+      },
     });
   }
   addgroupingopen(content,confirm) {

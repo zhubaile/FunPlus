@@ -111,6 +111,13 @@ export async function routerRuleadd(params) {
     data: params,
   });
 }
+// 编辑新规则
+export async function routerRuledit(params) {
+  return ajaxAmd.post({
+    url: '/routerRule/edit',
+    data: params,
+  });
+}
 // 获取应用参数
 export async function settingget(params) {
   return ajaxAmd.get({
