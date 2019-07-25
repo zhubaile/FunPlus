@@ -267,13 +267,13 @@ export function changeDefaultValue(params) {
     data: params,
   });
 }
-// 填写邮寄地址
+/* // 填写邮寄地址
 export function createMailAddress(params) {
   return ajaxAmd.post({
     url: '/createMailAddress',
     data: params,
   });
-}
+} */
 // 修改邮寄地址
 export function changeMailAddress(params) {
   return ajaxAmd.post({
@@ -288,7 +288,13 @@ export function mailAddressDelete(params) {
     data: params,
   });
 }
-
+// 申请退票
+export function InvoiceOperation(params) {
+  return ajaxAmd.post({
+    url: '/InvoiceOperation',
+    data: params,
+  });
+}
 // 费用中心充值列表
 export function rechargeList(params) {
   return ajaxAmd.get({

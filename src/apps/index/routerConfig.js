@@ -13,8 +13,9 @@ const Accountinformation = React.lazy(() => import('./pages/Personal/Accountinfo
 const Enterprisecertification = React.lazy(() => import('./pages/Personal/Enterprisecertification'));
 const Costcenter = React.lazy(() => import('./pages/Personal/Costcenter'));
 const Detailsofdeduction = React.lazy(() => import('./pages/Personal/Costcenter/Detailsofdeduction')); // 扣费明细
-const Controloverinvoices = React.lazy(() => import('./pages/Personal/Controloverinvoices'));
+const Controloverinvoices = React.lazy(() => import('./pages/Personal/Controloverinvoices')); // 发票管理
 const Applyforaticket = React.lazy(() => import('./pages/Personal/Controloverinvoices/Applyforaticket')); // 申请开票
+const Invoicedetails = React.lazy(() => import('./pages/Personal/Controloverinvoices/Invoicedetails')); // 发票详情
 const Operationlog = React.lazy(() => import('./pages/Personal/Operationlog'));
 const Membermanagement = React.lazy(() => import('./pages/Personal/Membermanagement'));
 const Rolepermissions = React.lazy(() => import('./pages/Personal/Rolepermissions'));
@@ -89,6 +90,10 @@ const routerConfig = [
   {
     path: '/admin/personal/applyforaticket', // 申请发票
     component: Applyforaticket,
+  },
+  {
+    path: '/admin/personal/invoicedetails', // 发票详情
+    component: Invoicedetails,
   },
   {
     path: '/admin/personal/membermanagement', // 成员管理

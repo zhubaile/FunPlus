@@ -1,4 +1,4 @@
-
+// zbl: 有点小bug，编辑的时候，不触发handleProvinceChange，自动出款的子数据就会没有数据。而且创建和编辑切换父元素的数据时候，子元素也就是this.state.value里面的子元素的值不会清空，太深了，取不出来。
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Input,Button , Grid, DatePicker , Tab,Message ,Table,NumberPicker,Select,Radio,Switch } from '@alifd/next';
@@ -177,6 +177,7 @@ export default class RoutingPopup extends Component {
 
   // 出款审核的层级选择
   handleProvinceChange(value,datas,e) {
+    // 有点小bug，编辑的时候，不触发此事件，自动出款的子数据就会没有数据。而且创建和编辑切换父元素的数据时候，子元素也就是this.state.value里面的子元素的值不会清空，太深了，取不出来。
     this.setState({
       son: '',
     },()=>{
@@ -267,6 +268,7 @@ export default class RoutingPopup extends Component {
         const title = devicesGroup[id].label || devicesGroup[id].dGroupName;
         const rule = devicesGroup[id].rule; // 主要详细数据
         const outChannelDatas = rule.outChannelData; // 级联父数据
+        debugger;
         // const title = devicesGroup[id].title;
         // const SingleOverrunJump = devicesGroup[id].JumpDGroup;
         // const cashMatchMode = devicesGroup[id].cashMatchMode;
@@ -283,7 +285,7 @@ export default class RoutingPopup extends Component {
         console.log(sons);
 
         if (sons.constructor === Array) {
-          son = sons.map(item=>({ value: item._id,label: item.dGroupName })); // 改变成想要的属性名
+          son = sons.map(item=>({ value: item.dGroupId,label: item.dGroupName })); // 改变成想要的属性名
         }
         return (
           <div>
@@ -354,7 +356,7 @@ export default class RoutingPopup extends Component {
                   <span>会覆盖上次限额</span>
                 </div>
               </div>
-              {!outChannelDatas ? null : (
+              {outChannelDatas.length == 0 ? null : (
                 <div style={styles.mainmain}>
                   <div style={styles.mainmainbox}>
                     <p>自动出款</p>

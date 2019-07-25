@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Input,Button , Grid, Form, DatePicker , Tab,Message ,Table,CascaderSelect ,Select,Radio,Switch, Checkbox } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
-import { createMailAddress, changeMailAddress } from '@indexApi';
+import { changeMailAddress } from '@indexApi';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import '../../../../index.css';
 
@@ -66,7 +66,7 @@ export default class AddAddress extends Component {
     const _id = this.state.content._id;
     debugger;
     if (this.state.messageaddress == 'Addto') {
-      createMailAddress({
+      changeMailAddress({
         ressval: val,
         mailAddress: contentss,
         ...v,
@@ -128,7 +128,7 @@ export default class AddAddress extends Component {
             <Input style={styles.forminput} name='postalNumber' placeholder='请填写有效的邮政编码' defaultValue={content.postalNumber} />
           </FormItem>
           <FormItem label='联系人姓名' {...formItemLayout} >
-            <Input style={styles.forminput} name='contacts' placeholder='请填写2 - 25字符以内的有效姓名' defaultValue={content.contacts} />
+            <Input style={styles.forminput} name='name' placeholder='请填写2 - 25字符以内的有效姓名' defaultValue={content.name} />
           </FormItem>
           <FormItem label='联系方式' {...formItemLayout} >
             <Input style={styles.forminput} name='phone' placeholder='请填写有效的手机号' defaultValue={content.phone} />

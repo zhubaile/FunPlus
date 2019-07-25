@@ -91,7 +91,7 @@ export default class ApplyBillingNext extends Component {
     openInvoice({
       ...vcontent,
       ...InvoiceInfo,
-      totalFee: Invoiceamount,
+      fee: Invoiceamount,
     }).then(({ status,data })=>{
       debugger;
       if (data.errCode == 0) {
@@ -137,7 +137,7 @@ export default class ApplyBillingNext extends Component {
       this.radiosDefalutValue = record; // 默认选中的地址
     }
     return (
-      <Radio defaultChecked={value} onChange={this.changeDefaultValues.bind(this, value, index, record)} />
+      <Radio checked={value} onChange={this.changeDefaultValues.bind(this, value, index, record)} />
     );
   }
   changeDefaultValues(value, index, record) {
@@ -255,7 +255,7 @@ export default class ApplyBillingNext extends Component {
           <div className='apply-billing-next-box' style={{ display: 'inline-block' }}>
             <Table dataSource={MailAddress} hasBorder={false}>
               <Table.Column title="" align='center' dataIndex="status" cell={this.radiostatus} style={{ width: '30px' }} />
-              <Table.Column title="收件人" dataIndex="contacts" style={{ width: '130px' }} />
+              <Table.Column title="收件人" dataIndex="name" style={{ width: '130px' }} />
               <Table.Column title="联系方式" dataIndex="phone" style={{ width: '140px' }} />
               <Table.Column title="收件地址" dataIndex="mailAddress" style={{ width: '270px' }} />
               <Table.Column

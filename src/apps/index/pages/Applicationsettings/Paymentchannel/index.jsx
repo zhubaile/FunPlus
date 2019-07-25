@@ -202,7 +202,7 @@ export default class Paymentchannel extends Component {
             </div>
           </Tab.Item>
           {/* 暂时没有内容，以后直接解开注释就行了 */}
-          {/* <Tab.Item title="平台渠道" onClick={this.btn.bind(this)}>
+         {/*  <Tab.Item title="平台渠道" onClick={this.btn.bind(this)}>
           </Tab.Item> */}
         </Tab>
         <Paymentfooter />

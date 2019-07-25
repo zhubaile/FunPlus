@@ -61,28 +61,33 @@ export default class BillingInformation extends Component {
   };
 
   SubInvoiceinfo(r,v) {
+    const _id = this.state.content._id;
     changeInvoiceInfo({
+      _id,
       ...r,
     }).then(({ status,data })=>{
+      debugger;
       if (data.errCode == 0) {
         Message.success(data.message);
         this.billinginformationclose();
         this.props.fetchData();
       }
     });
-    debugger;
     /* this.refs.form.validateAll((errors, values) => {
       debugger;
     }) */
   }
   render() {
     const { content, confirm } = this.state;
-    const fptype = [
-      { value: '0', label: '企业增值税专用发票' },
-      { value: '1', label: '企业增值税普通发票' },
-      { value: '2', label: '组织增值税普通发票' },
-      { value: '3', label: '个人增值税普通发票' },
+    debugger;
+    const zbl = [
+      { label: 'asd',value: 1 },
+      { label: 'qqq',value: 2 },
+      { label: 'www',value: 3 },
+      { label: 'aeeesd',value: 4 },
     ];
+    const asd = confirm;
+    console.log(confirm)
     if (!this.state.open) return null;
     return (
       <div className='billing-information-bulletbox'>
@@ -101,7 +106,7 @@ export default class BillingInformation extends Component {
             label='发票类型'
             {...formItemLayout}
           >
-            <Select name='invoiceType' style={{ width: '100%' }} dataSource={confirm} defaultValue={content.invoiceType} />
+            <Select name='invoiceType' style={{ width: '100%' }} dataSource={asd} defaultValue={content.invoiceType} />
           </FormItem>
           <FormItem
             label='发票抬头'

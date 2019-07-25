@@ -57,6 +57,7 @@ export default class Addgrouping extends Component {
           // 两种方法 一
           const channelss = channels.map(item=>({ value: item._id,label: item.des }));
           const dClassifys = dClassify.map(item=>({ value: item.value,label: item.name }));
+          debugger;
           this.setState({
             channels: channelss,
             dClassify: dClassifys,
@@ -66,8 +67,9 @@ export default class Addgrouping extends Component {
         }
       }
     ).catch(
-      ({ status, data }) => {
-        Message.success(data.message);
+      () => {
+        debugger;
+        Message.success('访问错误');
       }
     );
   }

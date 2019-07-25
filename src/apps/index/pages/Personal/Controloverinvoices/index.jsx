@@ -1,10 +1,10 @@
 /* eslint  react/no-string-refs: 0 */
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Input, Radio, Select , Grid, Form ,Button,Pagination,Table, Dialog } from '@alifd/next';
+import { Input, Radio, Select , Grid, Form ,Button,Pagination,Table, Message } from '@alifd/next';
 import Customerservice from "../components/Customerservice";
 import { withRouter, Link } from 'react-router-dom';
-import { invoiceList,invoiceDelete } from '@indexApi';
+import { invoiceList,invoiceDelete,InvoiceOperation } from '@indexApi';
 import Applyticket from './Applyticket';
 import '../../index.css';
 import moment from 'moment';
@@ -20,20 +20,6 @@ const formItemLayout = {
     span: 14,
   },
 };
-const getData = (length = 10) => {
-  return Array.from({ length }).map(() => {
-    return {
-      invoiceid: ['CZ1558581363296'],
-      applicationdate: ['2019-05-16 12:36:32'],
-      trackingnumber: ['13612345678'],
-      invoice: ['上海'],
-      invoiceamount: ['￥1799.00'],
-      invoicestatus: ['已出票'],
-      oper: [''],
-    };
-  });
-};
-
 class Controloverinvoices extends Component {
   static displayName = 'Controloverinvoices';
 
@@ -53,7 +39,7 @@ class Controloverinvoices extends Component {
       MailAddress: [], // 地址信息
       TotalAmount: '', // 总金额
       ConsumptionAmount: '', // 已开票金额
-
+      retreatTicket: [], // 申请退票的发票错误类型
     };
   }
   /* 设置定时器用 */
@@ -61,16 +47,7 @@ class Controloverinvoices extends Component {
     this.fetchData();
   }
 
-  /*  mockApi = (len) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
-      }, 600);
-    });
-  }; */
-
   fetchData = (len) => {
-    this.Applyticket.applyticketopen();
     this.setState(
       {
         isLoading: true,
@@ -92,15 +69,12 @@ class Controloverinvoices extends Component {
               ConsumptionAmount: data.data.consumptionAmount,
               isLoading: false,
               total: data.data.totalCount,
+              retreatTicket: data.data.retreatTicket,
             });
+          } else {
+            Message.success(data.message);
           }
         });
-        /* this.mockApi(len).then((data) => { // data 里面为数据
-          this.setState({
-            data,
-            isLoading: false,
-          });
-        }); */
       }
     );
   };
@@ -115,19 +89,8 @@ class Controloverinvoices extends Component {
       }
     );
   };
-
-  /* balancerecharge() {
-    this.Recharge.open();
-  } */
-
+  /* // 删除
   handleDelete = (id) => {
-    /* Dialog.confirm({
-      title: '提示',
-      content: '确认删除吗',
-      onOk: () => {
-        this.fetchData(10);
-      },
-    }); */
     debugger;
     const { datas } = this.state;
     invoiceDelete({
@@ -150,44 +113,70 @@ class Controloverinvoices extends Component {
         }
       }
     });
-  };
-  Applyticketbtn(){
-    this.Applyticket.applyticketopen();
+  }; */
+  // 申请退票
+  Applyticketbtn(record) {
+    const retreatTicket = this.state.retreatTicket;
+    this.Applyticket.applyticketopen(record,retreatTicket);
   }
-  handleDetail = () => {
-    Dialog.confirm({
-      title: '提示',
-      content: '暂不支持查看详情',
+  // 申请撤销
+  Applyrevokebtn(id) {
+    InvoiceOperation({
+      _id: id,
+      operation: 2,
+    }).then(({ status,data })=>{
+      debugger;
+      if (data.errCode == 0) {
+        Message.success(data.message);
+      } else {
+        Message.success(data.message);
+      }
     });
-  };
-
+  }
+  // 查看详情的跳转
+  invoicebtn(record) {
+    this.props.history.push({ pathname: '/admin/personal/invoicedetails', state: { record } });
+  }
+  // 时间转换
   datatime=(e)=>{
     const updatedAt = moment(e).format('YYYY-MM-DD HH:mm:ss');
     return (
       <p>{updatedAt}</p>
     );
   }
+  // 操作的数据
   renderOper = (value, index, record) => {
     return (
       <div>
         <a
           style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px', borderRight: '2px solid #999999' }}
-          onClick={this.handleDetail}
+          onClick={this.invoicebtn.bind(this,record)}
         >
           <FormattedMessage id="app.btn.detail" />
         </a>
-        <a
+        {/* 删除的 */}
+        {/* <a
           style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
           onClick={this.handleDelete.bind(this,record._id)}
-        >
+        >InvoiceOperation
           <FormattedMessage id="app.btn.delete" />
-        </a>
-        <a
-          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
-          onClick={this.Applyticketbtn.bind(this)}
-        >
-          申请开票
-        </a>
+        </a> */}
+        {value.includes(2) ? (
+          <a
+            style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
+            onClick={this.Applyrevokebtn.bind(this,record._id)}
+          >
+            申请撤销
+          </a>
+        ) : null}
+        {value.includes(3) ? (
+          <a
+            style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
+            onClick={this.Applyticketbtn.bind(this,record)}
+          >
+            申请退票
+          </a>
+        ) : null}
       </div>
     );
   };
@@ -199,7 +188,7 @@ class Controloverinvoices extends Component {
     const { isLoading, datas, current,total,pageSize, MailAddress, InvoiceInfo, TotalAmount, ConsumptionAmount } = this.state;
     return (
       <div>
-        <Applyticket ref={ node => this.Applyticket = node } />
+        <Applyticket ref={ node => this.Applyticket = node } fetchData={this.fetchData.bind(this)} />
         <div className='personal-top'>
           <span>发票管理</span>
           <div className='personal-top-border' />
@@ -228,38 +217,40 @@ class Controloverinvoices extends Component {
                 {/*    <img src={require('../../../../../assets/img/houtai/personal/009.png')} alt="" /> */}
                 <div className='controloverinvoices-topright-content'>
                   <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' }}>开票信息</p>
-                  {
-                    !InvoiceInfo ? (
-                      <span>
-                        <p>公司名称：</p>
-                        <p>开户行：</p>
-                        <p>开户账号：</p>
-                        <p>税号：</p>
-                      </span>
-                    ) : (
-                      <span>
-                        <p>公司名称：{InvoiceInfo.company}</p>
-                        <p>开户行：{InvoiceInfo.bank}</p>
-                        <p>开户账号：{InvoiceInfo.userId}</p>
-                        <p>税号：{InvoiceInfo.taxNumber}</p>
-                      </span>
-                    )
-                  }
-                  {
-                    !MailAddress ? (
-                      <span className='topright-inner'>
-                        <p>收件联系人：</p>
-                        <p>地址：</p>
-                        <p>联系方式：</p>
-                      </span>
-                    ) : (
-                      <span className='topright-inner'>
-                        <p>收件联系人：{MailAddress.contacts}</p>
-                        <p>地址：{MailAddress.mailAddress}</p>
-                        <p>联系方式：{MailAddress.phone}</p>
-                      </span>
-                    )
-                  }
+                  <div>
+                    {
+                      !InvoiceInfo ? (
+                        <span className='topright-inner'>
+                          <p>公司名称：</p>
+                          <p>开户行：</p>
+                          <p>开户账号：</p>
+                          <p>税号：</p>
+                        </span>
+                      ) : (
+                        <span className='topright-inner'>
+                          <p>公司名称：{InvoiceInfo.company}</p>
+                          <p>开户行：{InvoiceInfo.bank}</p>
+                          <p>开户账号：{InvoiceInfo.userId}</p>
+                          <p>税号：{InvoiceInfo.taxNumber}</p>
+                        </span>
+                      )
+                    }
+                    {
+                      !MailAddress ? (
+                        <span className='topright-inner'>
+                          <p>收件联系人：</p>
+                          <p>地址：</p>
+                          <p>联系方式：</p>
+                        </span>
+                      ) : (
+                        <span className='topright-inner'>
+                          <p>收件联系人：{MailAddress.name}</p>
+                          <p>地址：{MailAddress.mailAddress}</p>
+                          <p>联系方式：{MailAddress.phone}</p>
+                        </span>
+                      )
+                    }
+                  </div>
 
                 </div>
               </div>
@@ -269,16 +260,16 @@ class Controloverinvoices extends Component {
           </div>
           <div className='controloverinvoices-bottom'>
             <Table loading={isLoading} dataSource={datas} hasBorder={false}>
-              <Table.Column title="发票ID" dataIndex="invoiceNumber" />
-              <Table.Column title="申请日期" dataIndex="updatedAt" cell={this.datatime} />
+              <Table.Column title="发票ID" dataIndex="invoiceNo" />
+              <Table.Column title="申请日期" dataIndex="createdAt" cell={this.datatime} />
               <Table.Column title="发票抬头" dataIndex="invoiceTitle" />
-              <Table.Column title="发票类型" dataIndex="invoiceTitle" />
-              <Table.Column title="开票金额" dataIndex="totalFee" />
-              <Table.Column title="订单号" dataIndex="userId" />
-              <Table.Column title="发票状态" dataIndex="invoiceStatus" />
+              <Table.Column title="发票类型" dataIndex="invoiceTypeName" />
+              <Table.Column title="开票金额" dataIndex="fee" />
+              {/* <Table.Column title="订单号" dataIndex="_id" /> */}
+              <Table.Column title="发票状态" dataIndex="invoiceStatusName" />
               <Table.Column
                 title="操作"
-                dataIndex="oper"
+                dataIndex="operation"
                 cell={this.renderOper}
               />
             </Table>
