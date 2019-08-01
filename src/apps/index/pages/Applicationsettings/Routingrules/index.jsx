@@ -8,15 +8,6 @@ import IceContainer from '@icedesign/container';
 import { routerRulelist,routerRule } from '@indexApi';
 import '../../index.css';
 
-const getData = (length = 10) => {
-  return Array.from({ length }).map(() => {
-    return {
-      name: ['淘小宝', '淘二宝'],
-      level: ['普通会员'],
-      oper: ['余杭盒马店'],
-    };
-  });
-};
 const { Row, Col } = Grid;
 export default class Routingrules extends Component {
   constructor(props) {
@@ -24,6 +15,7 @@ export default class Routingrules extends Component {
     this.state = {
       values: [],
       total: 0,
+      pageSize: 10,
       current: 1,
       isLoading: false,
       data: [],
@@ -39,9 +31,10 @@ export default class Routingrules extends Component {
       },
       () => {
         const current = this.state.current;
+        const limit = this.state.pageSize;
         routerRulelist({
           page: current,
-          limit: '10',
+          limit,
         }).then(({ status,data })=>{
           if (data.errCode == 0) {
             this.setState({
@@ -131,7 +124,7 @@ export default class Routingrules extends Component {
   // }
   render() {
     console.log(this.state.total);
-    const { isLoading, data, current, total } = this.state;
+    const { isLoading, data, current, total,pageSize } = this.state;
     console.log(this.state.total);
     return (
       <IceContainer className='routingrules'>
@@ -162,7 +155,7 @@ export default class Routingrules extends Component {
                 style={{ marginTop: '20px', textAlign: 'right' }}
                 current={current}
                 onChange={this.handlePaginationChange}
-                pageSize={10}
+                pageSize={pageSize}
                 total={total} // 一共多少条数据
                 // totalRender={total => `Total: ${total}`}
               />

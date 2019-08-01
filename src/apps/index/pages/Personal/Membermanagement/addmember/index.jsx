@@ -1,7 +1,7 @@
 /* eslint  react/no-string-refs: 0 */
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Input, Radio , Button, Grid, Form, Select } from '@alifd/next';
+import { Input, Radio , Switch, Grid, Form, Select } from '@alifd/next';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import { createUser } from '@indexApi';
 import '../../../index.css';
@@ -17,17 +17,19 @@ export default class Addmenber extends Component {
     this.state = {
       value: {
         username: '',
+        name: '',
         email: '',
         phone: '',
         passwordTwo: '',
         password: '',
         notes: '',
-        quanbuyingyong: '',
+        quanbuyingyong: '选择应用',
         roles: [],
+        status: false,
       },
       open: false,
       content: null,
-      payvalue: '',
+      confirm: null, // 列表原数据
     };
   }
   addmemberclose() {
@@ -38,38 +40,64 @@ export default class Addmenber extends Component {
     });
   }
   addmemberopen(content,confirm) {
-    this.setState({
-      open: true,
-      content,
-    });
+    if (!confirm) {
+      this.setState({
+        open: true,
+        content,
+      });
+    } else {
+      this.setState({
+        open: true,
+        content,
+        confirm,
+        value: confirm,
+      });
+    }
     this.confirmCallBack = confirm;
   }
   // 添加成员
   addmember = () => {
+    // const values = this.state.value;
     this.refs.form.validateAll((errors, values) => {
-      debugger;
+      // debugger;
+      // const confirm = this.state.confirm;
+      // let _id = '';
+      // if (!confirm) {
+      //   debugger;
+      //   _id = null;
+      // } else {
+      //   debugger;
+      //   _id = this.state.confirm._id;
+      // }
       createUser({
         ...values,
       }).then(({ status,data })=>{
         debugger;
         if (data.errCode == 0) {
-          this.addmemberclose();
           Message.success(data.message);
+          this.addmemberclose();
           this.props.fetchData();
-          // location.reload();
         } else {
           Message.success(data.message);
         }
       });
     });
   }
+  /* formChange=(value)=>{
+    debugger;
+    this.setState({
+      value,
+    });
+  } */
   render() {
     const yingyong = [
       { value: '选择应用 ', label: '选择应用' },
       { value: '待分配', label: '待分配' },
     ];
     const jiaose = this.state.content;
+    const { value,confirm } = this.state;
     if (!this.state.open) return null;
+    debugger;
     return (
       <div className="addmenber">
         <h2>添加成员</h2>
@@ -78,7 +106,10 @@ export default class Addmenber extends Component {
           onChange={this.formChange}
           ref="form"
         >
-          <FormBinder name="username"
+          <FormBinder name="username">
+            <Input hasClear placeholder='用户名' />
+          </FormBinder>
+          <FormBinder name="name"
             autoWidth={false}
           >
             <Input hasClear placeholder='姓名' />
@@ -90,12 +121,20 @@ export default class Addmenber extends Component {
           <FormBinder name='phone'>
             <Input hasClear placeholder='手机号' />
           </FormBinder>
-          <FormBinder name='password'>
-            <Input hasClear placeholder='密码' htmlType="password" />
-          </FormBinder>
-          <FormBinder name='passwordTwo'>
-            <Input hasClear placeholder='重复密码' htmlType="password" />
-          </FormBinder>
+          {
+            !confirm ? (
+              <FormBinder name='password'>
+                <Input hasClear placeholder='密码' htmlType="password" />
+              </FormBinder>
+            ) : null
+          }
+          {
+            !confirm ? (
+              <FormBinder name='passwordTwo'>
+                <Input hasClear placeholder='重复密码' htmlType="password" />
+              </FormBinder>
+            ) : null
+          }
           <FormBinder name='notes'>
             <Input hasClear placeholder='备注' htmlType="text" />
           </FormBinder>
@@ -105,8 +144,13 @@ export default class Addmenber extends Component {
           <FormBinder name='roles'>
             <Select mode="multiple" dataSource={jiaose} placeholder='选择角色' />
           </FormBinder>
-          <button className='quxiao' onClick={this.addmemberclose.bind(this)}>取消</button>
-          <button onClick={this.addmember}>添加</button>
+          <FormBinder name="status">
+            <Switch checkedChildren="正常" unCheckedChildren="禁止" defaultChecked={value.status} style={{ marginTop: '10px', width: '100px' }} />
+          </FormBinder>
+          <div>
+            <button className='quxiao' onClick={this.addmemberclose.bind(this)}>取消</button>
+            <button onClick={this.addmember}>添加</button>
+          </div>
         </FormBinderWrapper>
       </div>
     );

@@ -39,14 +39,6 @@ export default class Paymentchannel extends Component {
     this.fetchData();
   }
 
-  /*  mockApi = (len) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
-      }, 600);
-    });
-  }; */
-
   fetchData = (len) => {
     this.setState(
       {

@@ -24,11 +24,19 @@ class UserRegister extends Component {
   constructor(props) {
     super(props);
     console.log(this.props.match); // 获取到详细的路由地址
-    const query = this.props.location.search; // '?s=1&f=7'
-    const arr = query.split('&');
-    const initialemail = arr[0].substr(7); // 获取邮箱值
-    // const failedCount = arr[1].substr(2) // '7'
     debugger;
+    const query = this.props.location.search; // '?s=1&f=7'
+    let arr,
+      initialemail,
+      failedCount;
+    if (query) {
+      arr = query.split('&');
+      initialemail = arr[0].substr(7); // 获取邮箱值
+      failedCount = arr[1].substr(5); // '7'
+    } else {
+      initialemail = '';
+      failedCount = '';
+    }
     this.state = {
       value: {
         name: '',
@@ -36,7 +44,7 @@ class UserRegister extends Component {
         email: initialemail,
         passwd: '',
         rePasswd: '',
-        sign: initialemail,
+        sign: failedCount,
       },
     };
   }
@@ -87,7 +95,6 @@ class UserRegister extends Component {
 
   handleSubmit = () => {
     this.refs.form.validateAll((errors, values) => {
-      debugger;
       if (errors) {
         console.log('errors', errors);
         return;
@@ -103,15 +110,16 @@ class UserRegister extends Component {
         sign: values.sign,
       }).then(
         ({ status, data }) => {
-          debugger;
           if (data.errCoder == 0) {
             Message.success(intl.formatMessage({ id: 'app.register.success' }));
+            this.props.history.push('/user/login');
             // Message.success('注册成功');
-            return (
-              this.props.history.push('/user/login')
-            );
+            // return (
+            //   this.props.history.push('/user/login')
+            // );
+          } else {
+            Message.success(data.message);
           }
-          Message.success(data.message);
 
           // console.log(values);
           // Message.success(intl.formatMessage({ id: 'app.register.success' }));

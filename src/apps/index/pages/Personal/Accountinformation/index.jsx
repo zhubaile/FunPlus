@@ -25,6 +25,9 @@ const { Row, Col } = Grid;
 export default class Accountinformation extends Component {
   constructor(props) {
     super(props);
+    // console.log(this.props.match); // 获取到详细的路由地址
+    // const query = this.props.match.params.appid; // '?s=1&f=7'
+    debugger;
     this.state = {
       // industry: '互联网',
       // hangye: '1',

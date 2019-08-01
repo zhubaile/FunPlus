@@ -28,7 +28,6 @@ export default class Header extends Component {
     const {
       intl: { formatMessage },
     } = this.props;
-    console.log(this.props);
 
     return (
         <div className={this.state.open ? "fancy-selector-w opened" : "fancy-selector-w"} >

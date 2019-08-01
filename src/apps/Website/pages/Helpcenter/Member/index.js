@@ -26,7 +26,7 @@ export default class Member extends Component {
   render() {
     const settings = {
       className: 'custom-slide center',
-      // autoplay: true,
+      autoplay: true,
       autoplaySpeed: '4000',
       lazyLoad: true,
       slidesToShow: 3,

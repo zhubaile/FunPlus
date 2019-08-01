@@ -128,9 +128,9 @@ class Membermanagement extends Component {
     );
   };
   // 添加成员弹出框
-  addmemberbtnopen() {
+  addmemberbtnopen(record) {
     const searchs = this.state.search;
-    this.Addmenber.addmemberopen(searchs);
+    this.Addmenber.addmemberopen(searchs,record);
   }
   formChange=(value)=>{
 
@@ -156,24 +156,6 @@ class Membermanagement extends Component {
       });
     });
   }
-  // 状态的值
-  /*  renderOper = (datas) => {
-    const z = datas[0];
-    return (
-      <div>
-        <Radio id="shiduide" value="shiduide" checked={z} >{datas[1]}</Radio>
-        {/!* <Radio id="shiduide" value="shiduide" checked={false}>--</Radio> *!/}
-      </div>
-    );
-  }; */
-
-   renderStatus = (datas) => {
-     return (
-       <div>
-         <Radio id="enabled" value="enabled" checked={datas.enabled} >{datas.enabledName}</Radio>
-       </div>
-     );
-   };
   onRemove = (id) => {
     const { datas } = this.state;
     userDelete({
@@ -205,6 +187,12 @@ class Membermanagement extends Component {
           onClick={this.onRemove.bind(this,record._id)}
         >
           <FormattedMessage id="app.btn.delete" />
+        </a>
+        <a
+          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
+          onClick={()=>this.addmemberbtnopen(record)}
+        >
+          编辑
         </a>
       </div>
     );
@@ -248,7 +236,7 @@ class Membermanagement extends Component {
                   <Input hasClear placeholder='支持姓名邮箱手机号' style={styles.forminput} />
                 </FormBinder>
                 <Button className='btn-all' style={{ marginLeft: '20px' }} size="large" type="primary" onClick={this.searchbtn.bind(this)}>搜索</Button>
-                <button className='mybtn addmemberbtn' onClick={this.addmemberbtnopen.bind(this)}>添加成员</button>
+                <button className='mybtn addmemberbtn' onClick={()=>this.addmemberbtnopen()}>添加成员</button>
               </FormBinderWrapper>
             </div>
             <div className='membermanagement-bottom'>
@@ -269,8 +257,7 @@ class Membermanagement extends Component {
                 <Table.Column title="角色" dataIndex="roleName" />
                 <Table.Column
                   title="状态"
-                  dataIndex="enabled"
-                  cell={this.renderStatus}
+                  dataIndex="statusName"
                 />
                 {/*                <Table.Column title="操作" dataIndex="caozuo" /> */}
 

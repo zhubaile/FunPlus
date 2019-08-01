@@ -14,19 +14,6 @@ const { Row, Col } = Grid;
 const { Group: RadioGroup } = Radio;
 const FormItem = Form.Item;
 
-const getData = (length = 10) => {
-  return Array.from({ length }).map(() => {
-    return {
-      name: ['2019-02-22 12:26:33'],
-      level: ['123456@qq.com'],
-      rule: ['...'],
-      oper: ['登录'],
-      names: ['管理平台'],
-      levels: ['...'],
-      rules: ['111.119.120.1'],
-    };
-  });
-};
 
 class Operationlog extends Component {
   static displayName = 'Operationlog';
@@ -56,26 +43,12 @@ class Operationlog extends Component {
   componentDidMount() {
     this.fetchData();
   }
-
-  mockApi = (len) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(getData(len)); // Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象 成功以后携带数据  resolve(应该写ajax方法)
-      }, 600);
-    });
-  };
   // 搜索按钮
   search(e) {
     const { validateFields } = this.refs.form;
     validateFields((errors,values)=>{
       debugger;
       const arrivalDate = [];
-      /* if (values.Operationtime.length == 2) {
-        const startdatestart = moment(values.Operationtime[0]._d).valueOf();
-        const startdateend = moment(values.Operationtime[1]._d).valueOf();
-        arrivalDate.push(startdatestart);
-        arrivalDate.push(startdateend);
-      } */
       if (values.Operationtime.length == 2) {
         if (values.Operationtime[0] && values.Operationtime[1]) {
           const startdatestart = moment(values.Operationtime[0]._d).valueOf();
@@ -93,10 +66,11 @@ class Operationlog extends Component {
           return null;
         }
       }
-      this.fetchData(values,arrivalDate);
+      this.fetchData(arrivalDate);
     });
   }
-  fetchData = (len) => {
+  fetchData = (arrivalDate) => {
+    debugger;
     this.setState(
       {
         isLoading: true,
@@ -107,6 +81,7 @@ class Operationlog extends Component {
         loglist({
           pages,
           pageSize,
+          arrivalDate,
         }).then(({ status,data })=>{
           debugger;
           if (data.errCode == 0) {
@@ -144,11 +119,11 @@ class Operationlog extends Component {
     const {
       intl: { formatMessage },
     } = this.props;
-    const Operator = [
+    /* const Operator = [
       { value: '全部', label: '全部' },
       { value: '1364040@qq.com', label: '1364040@qq.com' },
       { value: '136404077@qq.com', label: '136404077@qq.com' },
-    ];
+    ]; */
     const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
     const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
     return (
@@ -168,10 +143,10 @@ class Operationlog extends Component {
               <FormBinder name='Operationtime'>
                 <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
               </FormBinder>
-              <span className='rightspan'>操作人：</span>
+              {/*     <span className='rightspan'>操作人：</span>
               <FormBinder name='Operator'>
                 <Select style={{ width: '200px' }} defaultValue={{ value: '全部 显示设备号可多选', label: '全部 显示设备号可多选' }} dataSource={Operator} />
-              </FormBinder>
+              </FormBinder> */}
             </FormBinderWrapper>
             <Button className='btn-all bg' size="large" type="primary" onClick={this.search.bind(this)}>搜索</Button>
             <Button className='btn-all' style={{ marginLeft: 20 }} size="large" type="secondary">重置</Button>
@@ -179,12 +154,12 @@ class Operationlog extends Component {
           <div className='operationlog-bottom'>
             <Table loading={isLoading} dataSource={datas} hasBorder={false}>
               <Table.Column title="时间" dataIndex="createdAt" cell={this.createdAt} />
-              <Table.Column title="账号" dataIndex="level" />
-              <Table.Column title="应用" dataIndex="rule" />
-              <Table.Column title="操作" dataIndex="oper" />
+              <Table.Column title="账号" dataIndex="username" />
+              <Table.Column title="应用" dataIndex="" />
+              <Table.Column title="操作" dataIndex="urlName" />
               <Table.Column title="操作对象" dataIndex="names" />
-              <Table.Column title="备注" dataIndex="levels" />
-              <Table.Column title="IP" dataIndex="rules" />
+              <Table.Column title="备注" dataIndex="" />
+              <Table.Column title="IP" dataIndex="host" />
             </Table>
             <Pagination
               style={{ marginTop: '20px', textAlign: 'right' }}

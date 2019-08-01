@@ -49,6 +49,11 @@ class UserRegister extends Component {
           debugger;
           if (data.errCode == 0) {
             console.log(values);
+            this.setState({
+              value: {
+                email: '',
+              },
+            });
             Message.success('请注意查收邮件');
           } else {
             Message.success(data.message);

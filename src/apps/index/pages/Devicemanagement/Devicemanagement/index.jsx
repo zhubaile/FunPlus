@@ -5,8 +5,9 @@ import { actions, reducers, connect } from '@indexStore';
 import Addgrouping from './Addgrouping';
 import Official from './Adddevice/official';
 import Custom from './Adddevice/custom';
-import { deviceGrouplist,deviceparams,devicelist } from '@indexApi';
+import { deviceGrouplist,deviceparams,devicelist,deviceget } from '@indexApi';
 import '../../index.css';
+import moment from "moment/moment";
 
 const { Item } = MenuButton;
 /* const getData = (length = 10) => {
@@ -108,7 +109,6 @@ export default class Devicemanagement extends Component {
   // 获取设备参数
   deviceopen(id) {
     // const dd = this.state.ApplicationChannel;
-    console.log(id);
     deviceparams({
       dGroupId: id,
     }).then(
@@ -127,6 +127,18 @@ export default class Devicemanagement extends Component {
       }
     );
   }
+  // 编辑
+  editbtn(record) {
+    deviceget({
+      dId: record._id,
+    }).then(({ status,data })=>{
+      if (data.errCode == 0) {
+        this.Official.officialopen(data.data,record.dGroupId,record._id);
+      } else {
+        Message.success(data.message);
+      }
+    });
+  }
   renderRule = () => {
     return (
       <div>
@@ -139,18 +151,29 @@ export default class Devicemanagement extends Component {
       </div>
     );
   };
-  renderOper = () => {
+  renderOper = (value,index,record) => {
     return (
       <div>
-        <Switch className='div-switch' defaultChecked={false} />
+        <a onClick={this.editbtn.bind(this,record)}>
+          编辑
+        </a>
+        {/* <Switch className='div-switch' defaultChecked={false} /> */}
       </div>
     );
   };
-  zbl=(value)=>{
+  // 状态的切换
+  selectstart=(value)=>{
     this.setState({
       listValue: value,
     });
     // ajax 方法
+  }
+  // 时间转换
+  createdAt=(e)=>{
+    const updatedAt = moment(e).format('YYYY-MM-DD HH:mm:ss');
+    return (
+      <p>{updatedAt}</p>
+    );
   }
   render() {
     const { isLoading, datas, current,total,pageSize } = this.state;
@@ -160,7 +183,7 @@ export default class Devicemanagement extends Component {
       { value: '离线', label: '离线' },
     ];
     const copybtn = (
-      <Select onChange={this.zbl} style={{ width: '150px' }} placeholder={this.state.listValue} dataSource={Allstart} />
+      <Select onChange={this.selectstart} style={{ width: '150px' }} placeholder={this.state.listValue} dataSource={Allstart} />
     );
     const phonebtn = (<Button>手机/邮箱验证查看</Button>);
 
@@ -179,11 +202,10 @@ export default class Devicemanagement extends Component {
           }
       </ul>
     );
-    console.log(this.state.datas);
     return (
       <div className='devicemanagement'>
         <Addgrouping ref={(node=>this.Addgrouping = node)} Toupdatelist={this.Toupdatelist} />
-        <Official ref={(node=>this.Official = node)} fetchData={this.fetchData.bind(this)}/>
+        <Official ref={(node=>this.Official = node)} fetchData={this.fetchData.bind(this)} />
         <Custom ref={(node=>this.Custom = node)} />
         <div className='devicemanagement-top'>
           设备列表
@@ -206,11 +228,15 @@ export default class Devicemanagement extends Component {
           </div>
           <div className='devicemanagement-main-content'>
             <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+              <Table.Column title="创建时间" dataIndex="createdAt" cell={this.createdAt} />
+              <Table.Column title="设备分组" dataIndex="dGroupName" />
+              <Table.Column title="设备名称" dataIndex="dName" />
               <Table.Column title="设备ID" dataIndex="_id" />
               <Table.Column title="今日流水/笔" dataIndex="todayFlow" />
               <Table.Column title="昨日流水/笔" dataIndex="yeTodayFlow" />
               <Table.Column title="累计流水/笔" dataIndex="totalFlow" />
-              <Table.Column title={copybtn} dataIndex="2" cell={this.renderRule} />
+              {/* cell={this.renderRule}  */}
+              <Table.Column title={copybtn} dataIndex="2" />
               <Table.Column title="类型" dataIndex="classify" />
               <Table.Column
                 title="操作"

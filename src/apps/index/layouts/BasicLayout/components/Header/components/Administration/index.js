@@ -19,7 +19,6 @@ export default class Administration extends Component {
     const {
       intl: { formatMessage },
     } = this.props;
-    console.log(this.props);
     // const zzz = '/asdasdasdasd'; // 路由定义的（：appid?）动态路由，用来给路由后面加参数；zzzshi 想要添加的参数
     return (
       <div className="logged-user-w">
@@ -47,7 +46,7 @@ export default class Administration extends Component {
             </div>
             <ul>
               <li>
-                {/* <Link to={`/personal/accountinformation${zzz}`}> */}
+                {/* <Link to={`/admin/personal/accountinformation${zzz}`}> */}
                 <Link to='/admin/personal/accountinformation'>
                   <i className="os-icon os-icon-user-male-circle2" /><span>账户信息</span>
                 </Link>
@@ -78,7 +77,7 @@ export default class Administration extends Component {
                 </Link>
               </li>
               <li>
-                 <a href="" onClick={this.signout.bind(this)}><i className="os-icon os-icon-signs-11" /><span>退出</span></a>
+                <a href="" onClick={this.signout.bind(this)}><i className="os-icon os-icon-signs-11" /><span>退出</span></a>
               </li>
             </ul>
           </div>

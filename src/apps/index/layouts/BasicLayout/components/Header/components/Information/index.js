@@ -29,7 +29,6 @@ export default class Header extends Component {
     const {
       intl: { formatMessage },
     } = this.props;
-    console.log(this.props);
 
     return (
       <div className={this.state.hover1 ? "messages-notifications os-dropdown-trigger over" : "messages-notifications os-dropdown-trigger"}

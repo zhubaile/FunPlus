@@ -112,10 +112,10 @@ export default class RoutingPopup extends Component {
       const channelId = contents.channelId;
       const channelData = contents.channelData;
       const e = contents.dGroupId;
-      const itemss = channelData[0].dGroupData[0];
-      debugger;
-      const zbaaa = [];
-      zbaaa.push(itemss);
+      // const itemss = channelData[0].dGroupData[0];
+      // debugger;
+      // const zbaaa = [];
+      // zbaaa.push(itemss);
       const v = 'itclick';
       debugger;
       // 编辑的时候
@@ -416,7 +416,7 @@ export default class RoutingPopup extends Component {
         id.push(i);
       }
     }
-    id.map((id)=>{
+    /*  id.map((id)=>{
       const devicesGroupids = devicesGroups[id].rule;
       const dGroupIds = devicesGroups[id].value;
       debugger;
@@ -433,6 +433,26 @@ export default class RoutingPopup extends Component {
       }
       // const zbl = Object.assign({},devicesGroupids,{ dGroupId: dGroupIds });
       debugger;
+      return devicesGroup.push(zbl);
+    }); */
+    id.map((id)=>{
+      const devicesGroupids = devicesGroups[id].rule;
+      const dGroupIds = devicesGroups[id].value;
+      debugger;
+      const autoOutCashs = devicesGroupids.autoOutCash; // 设备组信息的详细对象
+      if (autoOutCashs) {
+        debugger;
+        const autoOutCash = Object.keys(autoOutCashs); // es6中可以使用obj=Object.keys(obj),然后obj.length
+        let zbl;
+        if (autoOutCash.length == 0 || !autoOutCash) {
+          zbl = Object.assign({},devicesGroupids,{ dGroupId: dGroupIds });
+          delete zbl.autoOutCash;
+        } else {
+          zbl = Object.assign({},devicesGroupids,{ dGroupId: dGroupIds });
+        }
+        return devicesGroup.push(zbl);
+      }
+      const zbl = Object.assign({},devicesGroupids,{ dGroupId: dGroupIds });
       return devicesGroup.push(zbl);
     });
     console.log(devicesGroup);

@@ -20,6 +20,7 @@ export async function devicelist(params) {
     params,
   });
 }
+
 // 获取分组列表
 export async function deviceGrouplist(params) {
   return ajaxAmd.get({
@@ -50,9 +51,15 @@ export async function deviceparams(params) {
 // 添加设备
 export async function device(params) {
   return ajaxAmd.post({
-    // url: '/device/add',
     url: '/device',
     data: params,
+  });
+}
+// 获取已编辑设备的详情
+export async function deviceget(params) {
+  return ajaxAmd.get({
+    url: '/device',
+    params,
   });
 }
 // 路由里面新规则的初始应用通道
@@ -131,7 +138,6 @@ export async function settingpost(params) {
     data: params,
   });
 }
-
 // 获取IP
 export async function ObtainsettingwhiteIps(params) {
   return ajaxAmd.get({

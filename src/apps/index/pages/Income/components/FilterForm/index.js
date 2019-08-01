@@ -21,7 +21,7 @@ export default class FilterForm extends Component {
         startdate: [],
         orderStatus: '',
         payChannel: '',
-        device: '',
+        device: [],
         out_trade_no: '',
       },
     };
@@ -38,7 +38,7 @@ export default class FilterForm extends Component {
         startdate: [],
         orderStatus: '',
         payChannel: '',
-        device: '',
+        device: [],
         out_trade_no: '',
       },
     });
@@ -61,7 +61,7 @@ export default class FilterForm extends Component {
   // 输入支付渠道获取设备(级联子元素)
   Accesschannels(e,v,i) {
     const values = this.state.value;
-    const value = Object.assign({},values,{ device: '' });
+    const value = Object.assign({},values,{ device: [] });
     this.setState({
       value,
     },()=>{
@@ -79,8 +79,7 @@ export default class FilterForm extends Component {
     const orderStatus = this.props.Filterform.orderStatus; // 支付状态
     const payChannel = this.props.Filterform.channel; // 支付渠道
     const timeType = this.props.Filterform.dateType; // 支付时间
-    const device = this.state.value.device;
-    debugger;
+    const device = this.state.value.device; // 支付渠道 子数据
     return (
       <div className='filterform'>
         <FormBinderWrapper
