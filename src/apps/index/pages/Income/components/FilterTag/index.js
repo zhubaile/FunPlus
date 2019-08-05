@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Input, Tab, Message,Form, Button } from '@alifd/next';
 import { exportExcel } from '@indexApi';
+import moment from 'moment';
 /* import FilterForm from '../FilterForm';
 import Table from '../Table'; */
 
@@ -15,7 +16,7 @@ export default class FilterTag extends Component {
   componentDidMount() {
 
   }
-  loadForm() {
+  /*  loadForm() {
     const form = this.forma;
     // form.action = 'http://192.168.1.123:3000/web/beta/v1.0/exportExcel';
     form.action = 'http://funplus.yue-net.com/web/beta/v1.0/exportExcel';
@@ -24,21 +25,16 @@ export default class FilterTag extends Component {
     body.appendChild(form);
     form.submit();
     form.remove();
-  }
+  } */
   exportexcelbtn() {
-    // debugger;
-    // const formbtn = this.forma;
-    // formbtn.submit();
     exportExcel().then((res)=>{
-      debugger;
-      typeof (res.data);
-      debugger;
-      // return zvbb;
       const blob = new Blob([res.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8' }); // application/vnd.openxmlformats-officedocument.spreadsheetml.sheet这里表示xlsx类型
       const downloadElement = this.btna;
       const href = window.URL.createObjectURL(blob); // 创建下载的链接
+      const datatime = moment().format("YYYY-MM-DD HH:mm:ss"); // 当前时间
       downloadElement.href = href;
-      downloadElement.download = 'xxx.xlsx'; // 下载后文件名
+      // downloadElement.download = 'xxx.xlsx'; // 下载后文件名
+      downloadElement.download = (`${datatime}.xlsx`); // 下载后文件名
       document.body.appendChild(downloadElement);
       downloadElement.click(); // 点击下载
       document.body.removeChild(downloadElement); // 下载完成移除元素
@@ -89,6 +85,7 @@ export default class FilterTag extends Component {
                 {/* <a href='' onClick={this.exportexcel.bind(this)} ref={(node)=>{ this.btna = node; }}>导出结果为表格</a> */}
                 {/* <iframe id="ifile" style={{ display: 'none' }} ref={(node)=>{ this.btna = node; }} /> */}
                 {/* <a href="javascript:;" onClick={this.loadForm.bind(this)}>fog</a> */}
+                {/* <button onClick={this.aaa.bind(this)}>aaa</button> */}
               </div>
             </div>
             <div className='income-tabs-border' />

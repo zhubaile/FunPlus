@@ -30,14 +30,6 @@ function onSuccess(data, file) {
 function onError(file) {
   console.log('onError callback : ', file);
 }
-/* const provinceData = ['电商', '生活', '餐饮', '网络技术', '服务'];
-const cityData = {
-  电商: ['刘雅琪', '刘晓军', '留情啊'],
-  生活: ['朱娇娇', '朱柏乐', '祝票选'],
-  餐饮: ['王力宏', '王晨阳', '王家兴'],
-  网络技术: ['张子琪', '张一一', '张力'],
-  服务: ['Nanjing', 'Suzhou', 'Zhenjiang'],
-}; */
 class Enterprisecertification extends Component {
   static displayName = 'Enterprisecertification';
 
@@ -65,7 +57,7 @@ class Enterprisecertification extends Component {
       dustyInfo: [],// 全部类目的数据值
       userCompanyInfo: [],
       userCompanyStatus: {
-        status: '0'
+        status: 0,
       },
     };
     this.handleProvinceChange = this.handleProvinceChange.bind(this);
@@ -76,7 +68,7 @@ class Enterprisecertification extends Component {
     debugger;
     const dustyInfoson = this.state.dustyInfo[value].son;
     const valuecpory = Object.assign({}, this.state.value, { cpIndustryCategory: e.label });
-    this.setState({ dustyInfoson, value: valuecpory, });
+    this.setState({ dustyInfoson, value: valuecpory });
   }
   // 子数据
   handleCityChange(value,data,e) {
@@ -98,11 +90,11 @@ class Enterprisecertification extends Component {
       debugger;
       if (data.errCode == 0) {
         this.setState({
-          dustyInfo: data.data.dustyInfo,
-          userCompanyInfo: data.data.userCompanyInfo,
+          dustyInfo: data.data.dustyInfo, // 类目选择
+          userCompanyInfo: data.data.userCompanyInfo, // 审核的信息
           userCompanyStatus: data.data.userCompanyStatus,
         });
-      }else{
+      } else {
         Message.success(data.message);
       }
     });
@@ -134,7 +126,7 @@ class Enterprisecertification extends Component {
             this.setState({
               userCompanyStatus: userStatus,
             });
-          }else{
+          } else {
             Message.success(data.message);
           }
         });
@@ -305,9 +297,9 @@ class Enterprisecertification extends Component {
                         onChange={onChange}
                         onSuccess={onSuccess}
                         onError={onError}
-                        defaultValue={[{
-                          url: 'http://192.168.1.105:3000/upload/1cdb684dd77b71c4454355cd67c080f8.png',
-                        }]}
+                        // defaultValue={[{
+                        //   url: 'http://192.168.1.105:3000/upload/1cdb684dd77b71c4454355cd67c080f8.png',
+                        // }]}
                         formatter={(res, file) => {
                           return {
                             success: res.errCode === 0 ,
@@ -395,7 +387,7 @@ class Enterprisecertification extends Component {
                       <Button
                         type="primary"
                         style={{ width: 100, borderRadius: 6 }}
-                        validate
+                        // validate
                         onClick={this.validateAllFormField}
                       >
                         <FormattedMessage id="app.setting.submit" />

@@ -480,6 +480,7 @@ export function verifybill(params) {
 export function exportExcel(params) {
   return ajaxAmd.get({
     url: '/exportExcel',
+    responseType: 'blob',
     params,
   });
 }
@@ -510,5 +511,19 @@ export function workOrderuserRecordOne(params) {
   return ajaxAmd.post({
     url: '/workOrder/userRecordOne',
     data: params,
+  });
+}
+// 添加应用（appId）
+export function appspost(params) {
+  return ajaxAmd.post({
+    url: '/apps',
+    data: params,
+  });
+}
+// 获取应用数据
+export function appsget(params) {
+  return ajaxAmd.get({
+    url: '/apps',
+    params,
   });
 }

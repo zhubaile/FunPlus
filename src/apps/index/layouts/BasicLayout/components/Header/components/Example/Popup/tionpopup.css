@@ -1,0 +1,12 @@
+.ippopup{
+  position: fixed; width: 500px; height:220px;  top: 50%; left: 50%; margin-top: -250px; margin-left: -110px; z-index: 8888; background-color: #FFF; border-radius: 5px; font-size: 16px;
+  -webkit-box-shadow: 1px 1px 3px #666; -moz-box-shadow: 1px 1px 3px #666; box-shadow: 1px 1px 3px #666; overflow: auto;line-height: 20px;border: 1px solid rgba(187, 187, 187, 1); padding: 10px 20px;
+}
+.ippopup .ippopup-top h2{float: left;}
+.ippopup .ippopup-top strong{ float: right; font-size: 25px; font-weight: 500; margin-top: 15px; cursor: pointer;}
+.ippopup-content{ clear: both;}
+.ippopup-content span{ }
+.ippopup-content input{ margin-left: 10px;width: 350px;height: 30px;line-height: 20px;border-radius: 4px;background-color: rgba(230, 247, 255, 1); padding-left:15px;border: 1px solid rgba(145, 213, 255, 1); margin-top: 20px;}
+.ippopup .ippopup-btn{ text-align: center;}
+.ippopup .ippopup-btn button{ text-align: center;width: 80px;height: 30px;border-radius: 4px;background-color: rgba(26, 85, 226, 1);color: rgba(255, 255, 255, 1);font-size: 14px;border: 1px solid rgba(255, 255, 255, 0); margin: 30px 10px;}
+.ippopup .ippopup-btn button:first-child{ background-color: #E6F1FC;border-radius: 4px;background-color: rgba(230, 241, 252, 1);color: rgba(26, 85, 226, 1);font-size: 14px;text-align: center;border: 1px solid rgba(206, 219, 222, 1);}

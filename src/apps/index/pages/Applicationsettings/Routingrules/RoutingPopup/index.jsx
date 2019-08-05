@@ -133,13 +133,10 @@ export default class RoutingPopup extends Component {
   }
   // two 通过channelId查找出对应的数据进行替换
   recursion =(nodeArr, callback)=> {
-    debugger;
     if (nodeArr && nodeArr.length) {
-      debugger;
       for (let index = 0; index < nodeArr.length; index++) {
         const element = nodeArr[index];
         const result = callback(element);
-        debugger;
         if (result) {
           callback && this.recursion(element, callback);
         } else {
@@ -153,9 +150,7 @@ export default class RoutingPopup extends Component {
   // channelId: 编辑情况下选中的通道，channelData：通道的所有数据，e:设备组已选择的id
   getNodeById= (channelId,channelData,e)=> {
     let matchNode;
-    debugger;
     this.recursion(channelData, (node) => {
-      debugger;
       if (node.value == channelId) {
         matchNode = node;
         return false;
@@ -224,11 +219,16 @@ export default class RoutingPopup extends Component {
       }
     }
     id.map((is)=>{
-      debugger;
       return devicesGroup.push(item[is]);
     });
     // 用于展示设备组详细信息的数组
     const devices = Object.assign({},this.state.value,{ devicesGroup,dGroupId: e });
+    debugger;
+    // var aaa = item[0].rule.outChannelData;
+    // var bbb = item[0].rule.autoOutCash.outChannelId;
+    // var selectDGroupData = aaa.filter((item)=>{
+    //   return (bbb.indexOf(item.outChannelId) > -1);
+    // });
     this.setState({
       value: devices,
     });
