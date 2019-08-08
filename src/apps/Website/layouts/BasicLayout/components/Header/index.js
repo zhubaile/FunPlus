@@ -9,7 +9,8 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 @withRouter
 export default class Header extends Component {
   signin() {
-    this.props.history.push('/user/login');
+    window.location.href = '/user/login';
+    // this.props.history.push('/user/login');
   }
 
   render() {
@@ -119,7 +120,7 @@ export default class Header extends Component {
                 {/* <Link to='/user/login' style={{ color: '#666' }}>
                   <FormattedMessage id="app.login.sign.in" />
                 </Link> */}
-                <a href="" style={{ color: '#666' }} onClick={this.signin.bind(this)}>
+                <a style={{ color: '#666' }} onClick={this.signin.bind(this)}>
                   {/* <FoundationSymbol type="person" size="small" /> */}
                   <FormattedMessage id="app.login.sign.in" />
                 </a>

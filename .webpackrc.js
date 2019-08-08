@@ -8,7 +8,7 @@ let proxy = {};
 };*/
 proxy['/web/beta/v1.0/**'] = {
   // 代理测试环境地址 如下，代理就是把请求本地的url接到配置好的url上。
-  target: "http://192.168.1.122:3000",
+  target: "http://192.168.1.121:3000",
   changeOrigin: true,
 };
 console.log('---------111112222333456---------')
@@ -19,6 +19,7 @@ module.exports = {
   // 如果需要代理请解开下面注释   regex e("abc")
   devServer: {
     proxy: proxy,
+    index: 'build/website.html',
     historyApiFallback: {
       index: 'build/website.html',
       disableDotRule: true,

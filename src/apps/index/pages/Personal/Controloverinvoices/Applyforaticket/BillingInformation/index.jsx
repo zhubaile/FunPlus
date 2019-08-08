@@ -20,21 +20,21 @@ export default class BillingInformation extends Component {
     this.state = {
       open: false,
       content: {
-        company: '',
+        // company: '',
         invoiceType: '',
         invoiceTitle: '',
         bank: '',
         bankNumber: '',
-        taxNumber: '',
+        // taxNumber: '',
       },
       confirm: null,
       value: {
-        companyname: '',
+        // companyname: '',
         invoicetype: '',
         invoice: '',
         bank: '',
         accountopening: '',
-        taxnumber: '',
+        // taxnumber: '',
       },
     };
   }
@@ -96,12 +96,12 @@ export default class BillingInformation extends Component {
           提示：因税务新政要求，申请开具企业增值普通发票的用户开票时必须提供“纳税人识别号”信息。
         </Message>
         <Form className='form'>
-          <FormItem
+        {/*  <FormItem
             label='公司名称'
             {...formItemLayout}
           >
             <Input name='company' placeholder='请填写有效的名称' defaultValue={content.company} />
-          </FormItem>
+          </FormItem>*/}
           <FormItem
             label='发票类型'
             {...formItemLayout}
@@ -134,12 +134,12 @@ export default class BillingInformation extends Component {
             <Input name="bankNumber" placeholder="请填写有效的开户账户" defaultValue={content.bankNumber} />
           </FormItem>
 
-          <FormItem
+          {/*<FormItem
             label='税号'
             {...formItemLayout}
           >
             <Input name="taxNumber" placeholder="请填写有效的税号" defaultValue={content.taxNumber} />
-          </FormItem>
+          </FormItem>*/}
           <FormItem wrapperCol={{ offset: 6 }} >
             <Form.Reset style={styles.cancelbtn} onClick={this.billinginformationclose.bind(this)}>取消</Form.Reset>
             <Form.Submit style={styles.submitbtn} validate type="primary" onClick={(v, e) => this.SubInvoiceinfo(v,e)}>提交</Form.Submit>

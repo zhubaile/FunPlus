@@ -179,80 +179,80 @@ class Membermanagement extends Component {
     );
   };
   // 状态
-   renderStatus = (datas) => {
+  /* renderStatus = (datas) => {
      debugger;
-     /*    */
+     /!*    *!/
      return (
        <div>
          <Radio id="status" value="status" checked={datas.enabled} >{datas.enabledName}</Radio>
        </div>
      );
-   };
-   btn() {
-     this.props.history.push('/admin/personal/membermanagement');
-   }
-   render() {
-     const { isLoading, datas, current, total } = this.state;
-     const {
-       intl: { formatMessage },
-     } = this.props;
+   }; */
+  btn() {
+    this.props.history.push('/admin/personal/membermanagement');
+  }
+  render() {
+    const { isLoading, datas, current, total } = this.state;
+    const {
+      intl: { formatMessage },
+    } = this.props;
 
-     const quanbuyingyong = [
-       { value: '0', label: '全部应用' },
-       { value: '1', label: '部分' },
-     ];
-     const jiaose = [
-       { value: '0', label: '角色' },
-       { value: '1', label: '人' },
-     ];
-     return (
-       <div className='membermanagement'>
-         <Newrole ref={node=>this.Newrole = node} fetchData={this.fetchData.bind(this)} />
-         <Editingrole ref={node=>this.Editingrole = node} fetchData={this.fetchData.bind(this)} />
-         <Tab shape='pure' defaultActiveKey='2'>
-           <Tab.Item title="成员管理" onClick={this.btn.bind(this)} key='1'>
+    const quanbuyingyong = [
+      { value: '0', label: '全部应用' },
+      { value: '1', label: '部分' },
+    ];
+    const jiaose = [
+      { value: '0', label: '角色' },
+      { value: '1', label: '人' },
+    ];
+    return (
+      <div className='membermanagement'>
+        <Newrole ref={node=>this.Newrole = node} fetchData={this.fetchData.bind(this)} />
+        <Editingrole ref={node=>this.Editingrole = node} fetchData={this.fetchData.bind(this)} />
+        <Tab shape='pure' defaultActiveKey='2'>
+          <Tab.Item title="成员管理" onClick={this.btn.bind(this)} key='1'>
 
-           </Tab.Item>
+          </Tab.Item>
 
 
-           <Tab.Item title="角色权限" key='2'>
-             <div className='membermanagements-top'>
-               <div className='membermanagement-bottom-top'>
-                 <button className='mybtn Newrole' onClick={this.newrolebtnopen.bind(this)}>新增角色</button>
-               </div>
-               <Table loading={isLoading} dataSource={datas} hasBorder={false}>
-                 <Table.Column title="角色" dataIndex="description" />
-                 <Table.Column
-                   title="说明"
-                   dataIndex="notes"
-                 />
-                 <Table.Column
+          <Tab.Item title="角色权限" key='2'>
+            <div className='membermanagements-top'>
+              <div className='membermanagement-bottom-top'>
+                <button className='mybtn Newrole' onClick={this.newrolebtnopen.bind(this)}>新增角色</button>
+              </div>
+              <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+                <Table.Column title="角色" dataIndex="description" />
+                <Table.Column
+                  title="说明"
+                  dataIndex="notes"
+                />
+                {/* <Table.Column
                    title="状态"
                    dataIndex="enabled"
                    cell={this.renderStatus}
-                 />
-                 {/*                <Table.Column title="操作" dataIndex="caozuo" /> */}
-                 <Table.Column
-                   title="操作"
-                   width={200}
-                   dataIndex="oper"
-                   cell={this.renderOper}
-                 />
-               </Table>
-               <Pagination
-                 style={{ marginTop: '20px', textAlign: 'right' }}
-                 current={current}
-                 onChange={this.handlePaginationChange}
-                 pageSize={10} // 界面展示多少条数据
-                 total={total} // 一共多少条数据
-               />
-             </div>
-           </Tab.Item>
-         </Tab>
-         <Customerservice />
-       </div>
-     );
-   }
+                 /> */}
+                {/*                <Table.Column title="操作" dataIndex="caozuo" /> */}
+                <Table.Column
+                  title="操作"
+                  width={200}
+                  dataIndex="oper"
+                  cell={this.renderOper}
+                />
+              </Table>
+              <Pagination
+                style={{ marginTop: '20px', textAlign: 'right' }}
+                current={current}
+                onChange={this.handlePaginationChange}
+                pageSize={10} // 界面展示多少条数据
+                total={total}
+              />
+            </div>
+          </Tab.Item>
+        </Tab>
+        <Customerservice />
+      </div>
+    );
+  }
 }
 
 const styles = {

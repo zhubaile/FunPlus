@@ -63,8 +63,8 @@ class UserLogin extends Component {
             Cookies.set('applicationId', data.appData[0].appId);
             Cookies.set('userId', data.userData._id);
             Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
-            this.props.history.push('/admin/income');
-            window.location.href = "";
+            // this.props.history.push('/admin/income');
+            window.location.href = "/admin/income";
           } else {
             Message.success(data.message);
           }

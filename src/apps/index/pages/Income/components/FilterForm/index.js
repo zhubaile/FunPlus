@@ -34,7 +34,7 @@ export default class FilterForm extends Component {
   handleReset() {
     this.setState({
       value: {
-        timeType: 'createAt',
+        timeType: 'createdAt',
         startdate: [],
         orderStatus: '',
         payChannel: '',

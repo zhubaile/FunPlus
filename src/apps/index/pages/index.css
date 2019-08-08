@@ -387,22 +387,23 @@ a:active{ text-decoration: none; }
 .membermanagements-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
 .Newrole{ border-radius: 6px; background-color: #E2EDFF; border: 1px solid #A3D0FD; color: #1989FA; cursor: pointer;}
-
 .membermanagement-top .member-role{ margin-left: 30px;}
 .member-panel .tab-panel{ padding-bottom: 20px; }
 /*成员管理----新增角色--starting*/
-.newrole{ position: fixed; width: 330px; height: 500px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px;  z-index: 8888;
+.newrole{ position: fixed; width: 800px; height: 800px; top: 50%; left: 50%; margin-top: -400px; margin-left: -400px;  z-index: 8888;
   border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 20px;
-  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
-.newrole div{ margin: 15px auto;}
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb; overflow: auto;}
+.newrole .premissions_li{ width: 20%; float: left; height: 30px;}
+.newrole div{ margin: 8px auto;}
 .newrole label{ margin-right: 10px;}
 /*成员管理----新增角色--ending*/
 
 /*成员管理----编辑角色--starting*/
-.editingrole{ position: fixed; width: 330px; height: 500px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px;  z-index: 8888;
+.editingrole{ position: fixed; width: 800px; height: 800px; top: 50%; left: 50%; margin-top: -400px; margin-left: -400px;  z-index: 8888;
   border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 20px;
-  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
-.editingrole div{ margin: 15px auto;}
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;overflow: auto;}
+.editingrole .premissions_li{ width: 20%; float: left; height: 30px;}
+.editingrole div{ margin: 8px auto;}
 .editingrole label{ margin-right: 10px;}
 /*成员管理----编辑角色--ending*/
 

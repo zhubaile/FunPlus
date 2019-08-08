@@ -21,19 +21,18 @@ export default class GoodsTable extends Component {
   };
 
   componentDidMount() {
-    const current = this.state.current;
-    const pageSize = this.state.pageSize;
-    this.fetchData(current,pageSize);
+    this.fetchData();
   }
 
-  fetchData = (page,pageSize,value,arrivalDate) => {
+  fetchData = (value,arrivalDate) => {
+    debugger;
     this.setState(
       {
         isLoading: true,
       },
       () => {
-        // const pages = this.state.current;
-        // const pageSize = this.state.pageSize;
+        const page = this.state.current;
+        const pageSize = this.state.pageSize;
         incomeList({
           page,
           pageSize,
@@ -53,7 +52,7 @@ export default class GoodsTable extends Component {
               Filtertag: data.data.result1,
               Filterform: Filterforms,
             });
-          }else {
+          } else {
             Message.success(data.message);
           }
         });
@@ -73,26 +72,23 @@ export default class GoodsTable extends Component {
         current,
       },
       () => {
-        const pageSize = this.state.pageSize;
-        const value = this.state.value;
-        const time = this.state.times;
-        this.fetchData(current,pageSize,value,time);
+        this.fetchData();
       }
     );
   };
   // 搜索
   handleFilterChange = (value,arrivalDate) => {
-    this.setState(
+    debugger;
+    this.fetchData(value,arrivalDate);
+    /* this.setState(
       {
         value,
         times: arrivalDate,
       },
       () => {
-        const current = this.state.current;
-        const pageSize = this.state.pageSize;
-        this.fetchData(current,pageSize,value,arrivalDate);
+        this.fetchData(value,arrivalDate);
       }
-    );
+    ); */
   };
 
   handleDelete(record,index) {

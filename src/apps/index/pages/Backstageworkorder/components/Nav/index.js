@@ -5,7 +5,7 @@ import { workOrdersessionList,workOrderserviceList } from '@indexApi';
 import '../../../../layouts/BasicLayout/components/Header/index.scss';
 import moment from 'moment';
 import '../index.css';
-import {Message} from "@alifd/next/lib/index";
+import { Message } from "@alifd/next/lib/index";
 
 export default class Nav extends Component {
   static displayName = 'Nav';
@@ -34,7 +34,9 @@ export default class Nav extends Component {
   }
   // 会话的列表
   fetchData = () => {
-    workOrdersessionList().then(({ status,data })=>{
+    workOrdersessionList({
+      senderType: 1,
+    }).then(({ status,data })=>{
       debugger;
       if (data.errCode == 0) {
         this.setState({
@@ -66,7 +68,7 @@ export default class Nav extends Component {
     this.props.history.push('/admin/backstageworkorder/Allworkorders');
   }
   // 点击列表某个人获取到id传到聊天界面
-  jiekou(e){
+  jiekou(e) {
     debugger;
     this.props.customerserviceid(e);
   }
@@ -115,19 +117,20 @@ export default class Nav extends Component {
                   stylecolor == true ? (
                       workOrdersessionLists.map((item)=>{
                       return (
-                        <div className='user-w' onClick={this.jiekou.bind(this,item.byReplyId)}>
+                        <div className='user-w' onClick={this.jiekou.bind(this,item.sendId)}>
                           <div className="avatar with-status status-green">
                             <img alt="" src={require('@img/img/avatar2.jpg')} />
                           </div>
                           <div className="user-info">
                             <div className="user-date">
-                              {moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}
+                              {moment(item.sendTime).format('YYYY-MM-DD HH:mm:ss')}
                             </div>
                             <div className="user-name">
-                              {item.username}
+                              {item.senderName}
+                              <span className={item.no_readed_num == 0 ? 'noreadednum no' : 'noreadednum'}>{item.no_readed_num}</span>
                             </div>
                             <div className="last-message">
-                              {item.customerContent}
+                              {item.last_message}
                             </div>
                           </div>
                         </div>

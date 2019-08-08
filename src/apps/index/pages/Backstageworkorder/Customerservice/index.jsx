@@ -62,19 +62,20 @@ export default class Customerservice extends Component {
   }
   componentDidMount() {
     const userId = Cookies.get('userId');
-    this.interval = setInterval(() => this.tick(userId), 3000);
+    // this.interval = setInterval(() => this.tick(userId), 3000);
     // 初始聊天记录内容
     workOrderuserRecordOne({
       userId,
+      senderType: 1,
     }).then(({ status,data })=>{
       debugger;
       if (data.errCode == 0) {
         this.setState({
-          datas: data.data.data,
-          array: data.data.userInfo,
-          username: data.data.userInfo.byReplyName,
+          datas: data.data, // 聊天记录
+          array: data.userInfo,
+          username: data.userInfo.byReplyName,
           userId,
-          byReplyId: data.data.userInfo.id,
+          byReplyId: data.userInfo.byReplyId,
         },()=>{
           this.onScrollHandle(this.messagesEnd);
         });
@@ -122,15 +123,15 @@ export default class Customerservice extends Component {
     workOrderuserRecord({
       userId: userid,
       byReplyId: e,
+      senderType: 1,
     }).then(({ status,data })=>{
       debugger;
       if (data.errCode == 0) {
         this.setState({
-          datas: data.data.data, // 获取之前的聊天记录
+          datas: data.data, // 获取之前的聊天记录
           messagelist: [], // 此刻聊天记录清空
-          array: data.data.userInfo,
-          username: data.data.userInfo.byReplyName,
-          // username: data.data.userInfo.username,
+          array: data.userInfo,
+          username: data.userInfo.byReplyName,
           byReplyId: e,
           userId: userid,
         },()=>{
@@ -160,7 +161,7 @@ export default class Customerservice extends Component {
       userId,
       customerContent,
       times,
-      reacordStatus: 1,
+      senderType: 1,
     };
     // this.socket.send(myMsg);
     this.socket.emit('sayTo',myMsg);
@@ -181,20 +182,22 @@ export default class Customerservice extends Component {
   }
   render() {
     const { datas, messagelist,username,array } = this.state;
+    // 此刻的聊天记录
     const zbla = (
       messagelist.map((item) => {
+        const userid = this.state.userId; // 自己的id
         const times = moment(item.times).format('YYYY-MM-DD HH:mm:ss');
         console.log(times);
         debugger;
         return (
           <div>
             {
-              item.isStatus == true ? (
-                <div className="chat-message">
+              item.userId == userid ? (
+                <div className="chat-message self">
                   <div className="chat-message-avatar">
-                    <img alt="" src={require('@img/img/avatar2.jpg')} />
+                    <img alt="" src={require('@img/img/avatar1.jpg')} />
                     <div>
-                      <p>{username}</p>
+                      <p>{array.username}</p>
                       <span>{times}</span>
                     </div>
                   </div>
@@ -205,11 +208,11 @@ export default class Customerservice extends Component {
                   </div>
                 </div>
               ) : (
-                <div className="chat-message self">
+                <div className="chat-message">
                   <div className="chat-message-avatar">
-                    <img alt="" src={require('@img/img/avatar1.jpg')} />
+                    <img alt="" src={require('@img/img/avatar2.jpg')} />
                     <div>
-                      <p>{array.username}</p>
+                      <p>{username}</p>
                       <span>{times}</span>
                     </div>
                   </div>
@@ -244,18 +247,18 @@ export default class Customerservice extends Component {
                     return (
                       <div>
                         {
-                          item.serviceStatus == 0 ? (
+                          item.senderType == 2 ? (
                             <div className="chat-message">
                               <div className="chat-message-avatar">
                                 <img alt="" src={require('@img/img/avatar2.jpg')} />
                                 <div>
                                   <p>{item.username}</p>
-                                  <span>{item.createdAt}</span>
+                                  <span>{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}</span>
                                 </div>
                               </div>
                               <div className="chat-message-content-w">
                                 <div className="chat-message-content">
-                                  {item.customerContent}
+                                  {item.message}
                                 </div>
                               </div>
                             </div>
@@ -265,12 +268,12 @@ export default class Customerservice extends Component {
                                 <img alt="" src={require('@img/img/avatar1.jpg')} />
                                 <div>
                                   <p>{item.username}</p>
-                                  <span>{item.createdAt}</span>
+                                  <span>{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}</span>
                                 </div>
                               </div>
                               <div className="chat-message-content-w">
                                 <div className="chat-message-content">
-                                  {item.customerContent}
+                                  {item.message}
                                 </div>
                               </div>
                             </div>

@@ -13,7 +13,8 @@ export default class Administration extends Component {
     };
   }
   signout() {
-    this.props.history.push('/website');
+    window.location.href = '/';
+    // this.props.history.push('/website');
   }
   render() {
     const {
@@ -77,7 +78,7 @@ export default class Administration extends Component {
                 </Link>
               </li>
               <li>
-                <a href="" onClick={this.signout.bind(this)}><i className="os-icon os-icon-signs-11" /><span>退出</span></a>
+                <a onClick={this.signout.bind(this)}><i className="os-icon os-icon-signs-11" /><span>退出</span></a>
               </li>
             </ul>
           </div>
