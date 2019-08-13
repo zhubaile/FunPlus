@@ -19,6 +19,9 @@ export default class HelpcenterHeader extends Component {
         <div style={styles.right}>
 
         </div>
+        <div style={styles.lcircular} />
+        <div style={styles.scircular} />
+        <div style={styles.mcircular} />
       </div>
     );
   }
@@ -26,11 +29,14 @@ export default class HelpcenterHeader extends Component {
 
 const styles = {
   container: {
+    position: 'relative',
     display: 'flex',
     width: '100%',
+    height: '300px',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundImage: `url(${require("../../../../../assets/img/helpcenter/develop/ks-bg1.png")})`,
+    background: 'linear-gradient(to top left, #41B6FE, #4FACFD)',
+    // backgroundImage: `url(${require("../../../../../assets/img/helpcenter/develop/ks-bg1.png")})`,
     backgroundSize: '100% 100%',
   },
   left: {
@@ -41,5 +47,32 @@ const styles = {
   },
   right: {
     width: '20%',
+  },
+  lcircular: {
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    position: 'absolute',
+    top: '30%',
+    left: '55%',
+    background: '#79d4eb',
+  },
+  scircular: {
+    width: '40px',
+    height: '40px',
+    borderRadius: '50%',
+    position: 'absolute',
+    top: '60%',
+    left: '75%',
+    background: '#968cf0',
+  },
+  mcircular: {
+    width: '30px',
+    height: '30px',
+    borderRadius: '50%',
+    position: 'absolute',
+    top: '20%',
+    left: '85%',
+    background: '#d7c56f',
   },
 };

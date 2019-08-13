@@ -7,7 +7,7 @@ import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binde
 import Linegraph from '../components/Linegraph';
 import { verifybillsummary,verifybillparams } from '@indexApi';
 import '../../index.css';
-import {Message} from "@alifd/next/lib/index";
+import { Message } from "@alifd/next/lib/index";
 
 const { RangePicker } = DatePicker;
 const { Row, Col } = Grid;
@@ -64,7 +64,6 @@ export default class Selfsummarization extends Component {
     }
     search() {
       const values = this.state.value;
-      debugger;
       this.refs.linegraph.fetchData(values);
     }
     render() {
@@ -73,59 +72,67 @@ export default class Selfsummarization extends Component {
       const paymentchannelone = this.state.Dropdownbox; // 父下拉框
       const paymentchanneltwo = this.state.Dropdownboxson; // 子下拉框
       const { Transactionfigures } = this.state; // 收入支出的数据量
+      let successPercent = Transactionfigures.successPercent;
+      if (successPercent) {
+        successPercent = successPercent.toFixed(2);
+      }
       return (
-        <FormBinderWrapper
-          value={this.state.value}
-          onChange={this.formChange}
-          ref="form"
-        >
-          <Row wrap gutter="20" style={styles.formRow}>
-            <Col l="24">
-              <div style={styles.formItem}>
-                <span style={styles.formLabel}>支付渠道</span>
-                <FormBinder name='channelId'>
-                  <Select style={styles.formSelect} dataSource={paymentchannelone} />
-                </FormBinder>
-                <FormBinder name="deviceId" required message="请输入正确的名称" >
-                  <Select style={{ width: '200px' }} dataSource={paymentchanneltwo} />
-                </FormBinder>
-                <FormBinder name='startdate'>
-                  <RangePicker style={{ margin: '0 10px' }} showTime resetTime defaultValue={[startValue,endValue]} />
-                </FormBinder>
-                <Button className='btn-all bg' size="large" type="primary" onClick={this.search.bind(this)}>搜索</Button>
-              </div>
-            </Col>
-          </Row>
-          <div className='selfsumm-exhibition'>
-            <div className='exhibition-bor'>
-              <span>收入</span>
-              <div>
-                <strong>￥{Transactionfigures.incomeAmount}</strong>
-                {/* 300/笔 */}
-              </div>
+          <FormBinderWrapper
+            value={this.state.value}
+            onChange={this.formChange}
+            ref="form"
+          >
+            <div className='customsummary-top'>
+              <Row wrap gutter="20" style={styles.formRow}>
+                <Col l="24">
+                  <div style={styles.formItem}>
+                    <span style={styles.formLabel}>支付渠道</span>
+                    <FormBinder name='channelId'>
+                      <Select style={styles.formSelect} dataSource={paymentchannelone} />
+                    </FormBinder>
+                    <FormBinder name="deviceId" required message="请输入正确的名称" >
+                      <Select style={{ width: '200px' }} dataSource={paymentchanneltwo} />
+                    </FormBinder>
+                    <FormBinder name='startdate'>
+                      <RangePicker style={{ margin: '0 10px' }} showTime resetTime defaultValue={[startValue,endValue]} />
+                    </FormBinder>
+                    <Button className='btn-all bg' size="large" type="primary" onClick={this.search.bind(this)}>搜索</Button>
+                  </div>
+                </Col>
+              </Row>
             </div>
-            <div className='exhibition-bor'>
-              <span>成功率</span>
-              <div>
-                <strong>{Transactionfigures.successPercent}</strong>
+            <div className='selfsumm-exhibition'>
+              <div className='exhibition-bor'>
+                <span>收入</span>
+                <div>
+                  <strong>￥{Transactionfigures.incomeAmount}</strong>
+                  {/* 300/笔 */}
+                </div>
               </div>
-            </div>
-            <div className='exhibition-bor'>
-              <span>退款</span>
-              <div>
-                <strong>￥{Transactionfigures.refundAmount}</strong>
+              <div className='exhibition-bor'>
+                <span>成功率</span>
+                <div>
+                  <strong>{successPercent}</strong>
+                </div>
               </div>
-            </div>
-            <div className='exhibition-bor'>
-              <span>付款</span>
-              <div>
-                <strong>￥{Transactionfigures.payMentAmount}</strong>
+              <div className='exhibition-bor'>
+                <span>退款</span>
+                <div>
+                  <strong>￥{Transactionfigures.refundAmount}</strong>
+                </div>
               </div>
+              <div className='exhibition-bor'>
+                <span>付款</span>
+                <div>
+                  <strong>￥{Transactionfigures.payMentAmount}</strong>
+                </div>
+              </div>
+              <div className='clearfix' />
             </div>
-            <div className='clearfix' />
-          </div>
-          <Linegraph ref='linegraph' />
-        </FormBinderWrapper>
+            <div>
+              <Linegraph ref='linegraph' />
+            </div>
+          </FormBinderWrapper>
       );
     }
 }

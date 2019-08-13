@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Input,Button , Grid, DatePicker , Tab, Select,Table,Pagination ,Message } from '@alifd/next';
+import { Input,Button , Grid, DatePicker , Tab, Select,Table,Pagination ,Message,Icon } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import moment from "moment/moment";
@@ -127,7 +127,7 @@ export default class Orderrefund extends Component {
               isLoading: false,
               total: data.data.totalCount,
             });
-          }else {
+          } else {
             Message.success(data.message);
           }
         });
@@ -178,7 +178,7 @@ export default class Orderrefund extends Component {
       <div>
         <a
           type="primary"
-          style={{ marginRight: '5px' }}
+          style={{ marginRight: '5px',cursor: 'pointer' }}
           onClick={this.handleDetail}
         >
           详情
@@ -238,47 +238,59 @@ export default class Orderrefund extends Component {
                 onChange={this.formChange}
                 ref="form"
               >
-                <Row wrap gutter="20" style={styles.formRow}>
-                  <Col l="24">
-                    <div style={styles.formItem}>
-                      <span style={styles.formLabel}>选择时间</span>
-                      <FormBinder name="timeType"
-                        required
-                        message="请输入正确的名称"
-                        autoWidth={false}
-                      >
-                        <Select style={styles.formSelect} dataSource={dateType} defaultValue='createdAt' />
-                      </FormBinder>
-                      <FormBinder name='startdate'>
-                        <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
-                      </FormBinder>
-                      <span style={styles.formLabel}>付款渠道</span>
-                      <FormBinder name='payChannel'>
-                        <Select style={styles.formSelect} dataSource={channel} />
-                      </FormBinder>
-                    </div>
-                  </Col>
-                  <Col l="24">
-                    <div style={styles.formItemTwo}>
-                      <span style={styles.formLabel}>付款状态</span>
-                      <FormBinder name='orderStatus'>
-                        <Select style={styles.formSelect} dataSource={orderStatus} />
-                      </FormBinder>
-                      <span style={styles.formLabel}>订单号</span>
-                      <FormBinder name='out_trade_no'>
-                        <Input className='input-bg' placeholder='输入订单号' hasClear />
-                      </FormBinder>
-                      <Button className='btn-all bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
-                      <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
-                      <Button className='btn-all bg right' size="large" type="secondary">导出表格</Button>
-                    </div>
-                  </Col>
-                </Row>
+                {/* <Row wrap gutter="20" style={styles.formRow}> */}
+                {/* <Col l="24"> */}
+                <div style={styles.formItem}>
+                  <div style={styles.formItemdiv}>
+                    <span style={styles.formLabel}>选择时间</span>
+                    <FormBinder name="timeType"
+                      required
+                      message="请输入正确的名称"
+                      autoWidth={false}
+                    >
+                      <Select style={styles.formSelect} dataSource={dateType} defaultValue='createdAt' />
+                    </FormBinder>
+                    <FormBinder name='startdate'>
+                      <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
+                    </FormBinder>
+                  </div>
+                  <div style={styles.formItemdiv}>
+                    <span style={styles.formLabel}>付款渠道</span>
+                    <FormBinder name='payChannel'>
+                      <Select style={styles.formSelect} dataSource={channel} />
+                    </FormBinder>
+                  </div>
+                  <div style={styles.formItemdiv}>
+                    <span style={styles.formLabel}>付款状态</span>
+                    <FormBinder name='orderStatus'>
+                      <Select style={styles.formSelect} dataSource={orderStatus} />
+                    </FormBinder>
+                  </div>
+                  <div style={styles.formItemdiv}>
+                    <span style={{ margin: '0 10px', minWidth: '80px', textAlign: 'center' }}>订单号</span>
+                    <FormBinder name='out_trade_no'>
+                      <Input className='input-bg' placeholder='输入订单号' hasClear />
+                    </FormBinder>
+                  </div>
+                  <div style={{ marginBottom: '10px',marginTop: '10px' }}>
+                    <Button className='btn-all bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
+                    <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
+                    <Button className='btn-all bg right' size="large" type="secondary">导出表格</Button>
+                  </div>
+                  <span className='all_span'><Icon type="success-filling" size='xs' style={{ marginRight: '5px' }} />本次搜索退款总额：5555</span>
+                </div>
+                {/* </Col> */}
+                {/* <Col l="24"> */}
+                {/* <div style={styles.formItemTwo}>
+
+                    </div> */}
+                {/* </Col> */}
+                {/* </Row> */}
               </FormBinderWrapper>
             </div>
-            <span className='all_span'>本次搜索付款总额：5555</span>
+            {/*<span className='all_span'>本次搜索付款总额：5555</span>*/}
             <hr />
-            {/*<div className='expendordbat-tabs-border' />*/}
+            {/* <div className='expendordbat-tabs-border' /> */}
 
             <IceContainer>
               <Table loading={isLoading} dataSource={datas} hasBorder={false}>
@@ -326,6 +338,7 @@ const styles = {
   formItem: {
     display: 'flex',
     alignItems: 'center',
+    flexWrap: 'wrap',
   },
   formItemTwo: {
     display: 'flex',
@@ -344,5 +357,8 @@ const styles = {
   pagination: {
     marginTop: '20px',
     textAlign: 'right',
+  },
+  formItemdiv: {
+    margin: '10px 0',
   },
 };

@@ -127,15 +127,15 @@ class ResetPassword extends Component {
               </div>
 
               <div style={styles.footer}>
-                  <Button
-                    type="primary"
-                    size="large"
+                <Button
+                  type="primary"
+                  size="large"
 /*                  onClick={this.handleSubmit} */
-                    style={styles.submitBtn}
-                  >
+                  style={styles.submitBtn}
+                >
                   下一步
-                    {/* <FormattedMessage id='app.login.sign.in' /> */}
-                  </Button>
+                  {/* <FormattedMessage id='app.login.sign.in' /> */}
+                </Button>
                 {/*                <Link to="/user/sendmailbox" style={styles.tips}>
                   <FormattedMessage id='app.login.register.now' />
                 </Link> */}
@@ -144,19 +144,21 @@ class ResetPassword extends Component {
           </IceFormBinderWrapper>
         </div>
         <div style={styles.right}>
-          <div style={styles.box}>
-            <IceImg
-              src={require('@img/login/tel.png')}
-            />
-            <p> <FormattedMessage id='app.login.Tel.consult' /></p>
-            <a>000-1111-2222</a>
-          </div>
-          <div style={styles.box}>
-            <IceImg
-              src={require('@img/login/email.png')}
-            />
-            <p><FormattedMessage id='app.login.Mail.box' /></p>
-            <a>YanYue@3FunPlus.com</a>
+          <div>
+            <div style={styles.box}>
+              <IceImg
+                src={require('@img/login/tel.png')}
+              />
+              <p> <FormattedMessage id='app.login.Tel.consult' /></p>
+              <a>000-1111-2222</a>
+            </div>
+            <div style={styles.box}>
+              <IceImg
+                src={require('@img/login/email.png')}
+              />
+              <p><FormattedMessage id='app.login.Mail.box' /></p>
+              <a>YanYue@3FunPlus.com</a>
+            </div>
           </div>
         </div>
       </div>
@@ -173,6 +175,7 @@ const styles = {
     marginTop: '-60px',
     border: '#cccccc 1px solid',
     display: 'flex',
+    zIndex: '2',
   },
   left: {
     float: 'left',
@@ -182,7 +185,7 @@ const styles = {
     flexGrow: '1',
   },
   title: {
-/*    margin: '0 0 40px',*/
+    /*    margin: '0 0 40px', */
     color: 'rgba(0,162,251,1)',
     fontSize: '18px',
     fontWeight: '400',
@@ -195,12 +198,12 @@ const styles = {
     position: 'relative',
     marginBottom: '20px',
   },
-/*  inputIcon: {
+  /*  inputIcon: {
     position: 'absolute',
     left: '10px',
     top: '12px',
     color: '#666',
-  },*/
+  }, */
   inputCol: {
     width: '100%',
     borderRadius: '10px',
@@ -219,11 +222,16 @@ const styles = {
   right: {
     float: 'left',
     // width: '250px',
+    display: 'flex',
     flexGrow: '1',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    textAlign: 'justify',
   },
   box: {
     textAlign: 'center',
-    marginTop: '20px',
+    margin: '20px 0',
     cursor: 'pointer',
   },
   prompt: {

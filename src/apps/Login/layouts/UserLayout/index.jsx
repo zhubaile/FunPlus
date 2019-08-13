@@ -16,29 +16,36 @@ export default class UserLayout extends Component {
     return (
       <div style={styles.container}>
         <Header />
-        <img src={require('@img/login/zbg.png')} />
-        <Row wrap style={styles.row}>
-          <Col l="12">
-            <div style={styles.form}>
-              <Suspense>
-                <Switch>
-                  {routerData.map((item, index) => {
-                    return item.component ? (
-                      <Route
-                        key={index}
-                        path={item.path}
-                        component={item.component}
-                        exact={item.exact}
-                      />
-                    ) : null;
-                  })}
-                  {/* <Redirect exact from="/" to="/user/login" /> */}
-                  <MainRoutes />
-                </Switch>
-              </Suspense>
-            </div>
-          </Col>
-        </Row>
+        <div style={styles.bgstyle} >
+          <div style={styles.lcircular} />
+          <div style={styles.scircular} />
+          <div style={styles.mcircular} />
+        </div>
+        {/* <img src={require('@img/login/zbg.png')} /> */}
+        <div>
+          <Row wrap style={styles.row}>
+            <Col l="12">
+              <div style={styles.form}>
+                <Suspense>
+                  <Switch>
+                    {routerData.map((item, index) => {
+              return item.component ? (
+                <Route
+                  key={index}
+                  path={item.path}
+                  component={item.component}
+                  exact={item.exact}
+                />
+              ) : null;
+            })}
+                    {/* <Redirect exact from="/" to="/user/login" /> */}
+                    <MainRoutes />
+                  </Switch>
+                </Suspense>
+              </div>
+            </Col>
+          </Row>
+        </div>
         <Footer />
       </div>
     );
@@ -50,8 +57,8 @@ const styles = {
     position: 'relative',
     width: '100wh',
     minWidth: '1200px',
-    height: '100vh',
-
+    minHeight: '100vh',
+    paddingBottom: '62px',
     display: 'flex',
     flexDirection: 'column',
   },
@@ -60,13 +67,43 @@ const styles = {
     alignItems: 'flex-start',
     justifyContent: 'center',
     flex: '1',
-    marginTop: '-30px;',
-
-    // background:'#fff',
   },
   form: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  bgstyle: {
+    position: 'relative',
+    width: '100%',
+    height: '300px',
+    background: 'linear-gradient(to top left, #D6A0FD , #B086FD)',
+  },
+  lcircular: {
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    position: 'absolute',
+    top: '30%',
+    left: '55%',
+    background: '#AAC9F6',
+  },
+  scircular: {
+    width: '40px',
+    height: '40px',
+    borderRadius: '50%',
+    position: 'absolute',
+    top: '60%',
+    left: '75%',
+    background: '#AAC9F6',
+  },
+  mcircular: {
+    width: '30px',
+    height: '30px',
+    borderRadius: '50%',
+    position: 'absolute',
+    top: '20%',
+    left: '85%',
+    background: '#F6F7CA',
   },
 };

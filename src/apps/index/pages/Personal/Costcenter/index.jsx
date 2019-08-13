@@ -43,6 +43,8 @@ class Costcenter extends Component {
       isLoading: false,
       datas: [],
       datass: [],
+      Deduction: '', // 累计扣费
+      balance: '', // 账户余额
     };
   }
   componentDidMount() {
@@ -61,9 +63,12 @@ class Costcenter extends Component {
           page,
           pageSize,
         }).then(({ status,data })=>{
+          debugger;
           if (data.errCode == 0) {
             this.setState({
               datas: data.data.result,
+              balance: data.data.balance,
+              Deduction: data.data.Deduction,
               isLoading: false,
               total: data.data.totalCount,
             });
@@ -115,7 +120,7 @@ class Costcenter extends Component {
     });
   }
   render() {
-    const { isLoading, datas, current,pageSize ,total,datass } = this.state;
+    const { isLoading, datas, current,pageSize ,total,datass,balance,Deduction  } = this.state;
     const {
       intl: { formatMessage },
     } = this.props;
@@ -140,7 +145,7 @@ class Costcenter extends Component {
                 <img src={require('@img/houtai/personal/008.png')} alt="" />
                 <div>
                   <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>账户余额</p>
-                  <strong>0.00元</strong>
+                  <strong>{balance}元</strong>
                 </div>
               </div>
               <p style={{ fontSize: '16px' }}>可用于支付待申请服务费用等</p>
@@ -151,7 +156,7 @@ class Costcenter extends Component {
                 <img src={require('@img/houtai/personal/009.png')} alt="" />
                 <div>
                   <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>累计扣费</p>
-                  <strong>0.00元</strong>
+                  <strong>{Deduction}元</strong>
                 </div>
               </div>
               <p style={{ fontSize: '16px' }}>默认显示所有消费总额</p>
@@ -187,10 +192,10 @@ class Costcenter extends Component {
                   <Table.Column title="订单号" dataIndex="orderNo" />
                   <Table.Column title="交易时间" dataIndex="createdAt" />
                   <Table.Column title="金额" dataIndex="deductionFee" />
-                  <Table.Column
+                  {/* <Table.Column
                     title="支付状态"
                     dataIndex="orderStatusName"
-                  />
+                  /> */}
                   <Table.Column title="支付渠道" dataIndex="channelName" />
                 </Table>
                 <Pagination

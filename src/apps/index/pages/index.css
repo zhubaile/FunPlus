@@ -1,11 +1,13 @@
 a:active{ text-decoration: none; }
 /*下拉框、输入框全局样式*/
-.next-range-picker.next-medium{ height: 30px; line-height: 30px;}
+.next-range-picker.next-medium{line-height: 28px;}
+.next-range-picker.next-medium .next-range-picker-trigger .next-input{ height: 28px;}
+.next-range-picker.next-medium{ height: 30px; line-height: 28px;}
 .next-range-picker.next-medium .next-range-picker-trigger{ border-radius: 4px;}
 .next-input.next-medium{ height: 30px;}
 .next-pagination-pages{ margin-right: 20px; }/*分页*/
 .next-table.only-bottom-border{ margin-right: 20px; }
-.next-input.next-medium .next-input-text-field{ height: 30px; }
+.next-input.next-medium .next-input-text-field{ height: 28px; }
 .next-select .next-select-inner{ height: 30px; border-radius: 4px;}
 .next-input.next-medium{ border-radius: 4px;}
 .next-btn.next-medium{ height: 30px; line-height: 30px;}
@@ -78,7 +80,7 @@ a:active{ text-decoration: none; }
 .routingrules .next-message.next-message-notice.next-inline{ width: 30%; background-color: #E6F7FF; border-color: #C6EAFF; border-radius: 4px; margin: 20px 0px 20px 0px;}
 .routingrules{ width: 100%;}
 .routingrules-tab{}
-.routingrules-tab-top{width: 100%; display: flex;}
+.routingrules-tab-top{width: 100%; display: flex; position: relative;}
 /*.next-btn.next-large.next-btn-secondary.bg{ margin: 20px 0px 0px 20px;}*/
   /* 支付渠道的公共组件footer */
 .paymentfooter{ width: 80%; display: flex; align-content: center; justify-content: center; margin-top: 50px;}
@@ -86,7 +88,7 @@ a:active{ text-decoration: none; }
 .paymentfooter .box-icon{ line-height: 100px;}
 
 /* 收入 */
-.all_span{ margin: 0px 0px 20px 20px;}
+.all_span{ margin-left: 15px; width: 240px; height: 30px; background: #e8f0fd; line-height: 30px; padding-left: 5px; border-radius: 4px; color: #1989FA; box-sizing: border-box;}
 .filterform .next-row.next-row-wrap{ margin: 20px 0px 0px 0px;}
 .incomepage{ width: 100%;}
 .incomepage .income-tab{ }
@@ -117,6 +119,10 @@ a:active{ text-decoration: none; }
 .auditofpayment .auditofpayment-top-border{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -2px;}
 /*ALL------Ending*/
 .expendordbat .expendordbat-tab{ margin-top: 20px;}
+
+.expendordbat .expendbatchre div .next-range-picker.next-medium{line-height: 28px;}
+.expendbatchre div .next-range-picker.next-medium .next-range-picker-trigger .next-input{ height: 28px;}
+
 .expendordbat-tab  .expendordbat-tabs-border{clear: both; border-bottom: 1px solid #dddddd;}
 .expendordbat-tab { position: relative;}
 .expendordbat-tab .orderposab{ position: absolute; top: 0; right: 20px; background:#E2EDFF; color: #1989FA; border-radius: 4px; border-color: #A3D0FD;}
@@ -128,7 +134,7 @@ a:active{ text-decoration: none; }
 /* 自定汇总 */
 .selfsumm-exhibition{ width: 100%; display: flex; margin-top: 20px;}
 .selfsumm-exhibition .exhibition-bor{border: 1px solid rgba(187, 187, 187, 1); margin: 0 20px; width: 200px; height: 75px; display: flex; justify-content: center; flex-direction: column; padding-left: 15px; color: rgba(16, 16, 16, 1);
-  font-size: 14px;}
+  font-size: 14px; background: #fff;}
 .selfsumm-exhibition .exhibition-bor div strong{ font-size: 28px; font-weight: 500; }
 
 
@@ -136,14 +142,15 @@ a:active{ text-decoration: none; }
 .reconcilichannel .next-tabs-tabpane{ margin: 20px 0px;}
 .reconcilichannel{ width: 100%;}
 .reconcilichannel-tab{ }
-/*.reconcilichannel-tab .next-tabs-content.reconcilichannel-tab-message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 20px 25px; width: 80%;}*/
-.reconcilichannel-tab .reconcilichannel-tab-message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 4px; width: 80%;}
+.reconcilichannel .next-tabs-tabpane .next-message.reconcilichannel-tab-message{ width: 90%;}
+/*.reconcilichannel-tab .next-tabs-content.reconcilichannel-tab-message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 5px; margin: 10px 20px 25px; width: 90%;}*/
+.reconcilichannel-tab .next-tabs-content .next-tabs-tabpane .reconcilichannel-tab-message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 4px; width: 90%;}
 
 .reconcilichannel-tab-left{ width: 49%; float: left; color: rgba(16, 16, 16, 1);font-size: 14px; line-height: 25px; margin-top: 20px;}
 .reconcilichannel-tab-right{ width: 49%; float: right; margin-top: 20px;}
 
 .reconcilichannel-tab-right-top{ display: flex; align-items: center; margin-top: 30px; justify-content: center;}
-.reconcilichannel-tab-right-top img{ width: 70px; height: 56px;}
+.reconcilichannel-tab-right-top img{ width: 90px; height: 56px;}
 .reconcilichannel-tab-right-top ul{ width: 180px; margin-left: 50px;}
 .reconcilichannel-tab-right-top ul li{ line-height: 25px;}
 /* 交易报表 */
@@ -175,7 +182,7 @@ a:active{ text-decoration: none; }
 .event-list .youchacuo-event{background: #FF9800;width: 100%;height: 80px;text-align: center; font-size: 20px; font-weight: 500;}
 .event-list .duizhangwanbi-event{background: #8BC34A;width: 100%;height: 80px;text-align: center; font-size: 20px; font-weight: 500;}
 
-.Trading-btn{ width: 100%; height: 50px;}
+.Trading-btn{ width: 100%; height: 50px; margin-top: 10px;}
 .Trading-btn ul{ display: flex; align-items: center; align-content: center; justify-items: center; justify-content: center;}
 .Trading-btn ul li{ width: 100px; height: 50px; line-height: 50px; text-align: center;border: 1px solid rgba(220, 223, 230, 1); cursor: pointer;}
 .Trading-btn ul li.active{ color: #1A55E2;}
@@ -225,7 +232,7 @@ a:active{ text-decoration: none; }
 
 /* 费用中心 */
 .costcenter{ display: flex; justify-content: center; flex-direction: column; align-items: center;}
-.costcenter .costcenter-top,.costcenter .costcenter-conter{ width: 95%; border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
+.costcenter .costcenter-top,.costcenter .costcenter-conter{ width: 100%; border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-top: 20px; display: flex; align-items: center;}
 .costcenter-top>span{ margin-right: 10px;}
 .costcenter-top .twospan{ margin: 0 10px 0 30px;}
@@ -240,7 +247,7 @@ a:active{ text-decoration: none; }
 .costcenter-conter-twocentent div strong{ font-size: 18px; font-weight: 400; margin-left: 20px;}
 .costcenter-conter-twocentent p strong{ color: rgba(34, 90, 225, 0.9);font-size: 14px;}
 .costcenter-conter-twocentent .next-btn.next-medium.next-btn-primary{background: #225AE1 90%;}
-.costcenter .costcenter-bottom{ width: 95%; border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
+.costcenter .costcenter-bottom{ width: 100%; border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-top: 20px;}
 /* 费用中心的点击充值弹框 */
 .Recharge{ top: 0; left: 0; height: 100%; z-index: 8010; min-width: 1440px; background: #fff;position: fixed;width: 100%; border-radius: 5px;
@@ -279,7 +286,7 @@ a:active{ text-decoration: none; }
 
 /* 发票管理 */
 .controloverinvoices{ display: flex; justify-content: center; flex-direction: column; align-items: center;}
-.controloverinvoices .controloverinvoices-top{ width: 95%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
+.controloverinvoices .controloverinvoices-top{ width: 100%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-top: 20px;}
 .controloverinvoices-top{ display: flex; align-items: center; }
 .controloverinvoices-top .controloverinvoices-top-left{ width: 70%;}
@@ -287,7 +294,7 @@ a:active{ text-decoration: none; }
 .controloverinvoices-top .controloverinvoices-top-left .controloverinvoices-top-left-bottom{ display: flex; margin-top: 20px;}
 .controloverinvoices-top .controloverinvoices-top-left .controloverinvoices-top-left-bottom .box{ width: 49%;}
 .controloverinvoices-top .controloverinvoices-top-right{ width: 30%; display: flex; justify-content: flex-end; flex-direction: column;}
-.controloverinvoices .controloverinvoices-bottom{ width: 95%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
+.controloverinvoices .controloverinvoices-bottom{ width: 100%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-top: 20px;}
 .controloverinvoices-bottom-left{float: left;}
 .controloverinvoices-bottom-right{ width: 200px; float: right;}
@@ -299,19 +306,19 @@ a:active{ text-decoration: none; }
 .applyticket-box .mailmessage{ width: 380px; padding: 8px; margin-top: 10px;line-height: 20px;background-color: rgba(230, 241, 252, 1);border: 1px solid rgba(187, 187, 187, 1);}
 /* 操作日志 */
 .operationlog{ display: flex; justify-content: center; flex-direction: column; align-items: center;}
-.operationlog .operationlog-top,.operationlog .operationlog-bottom{  width: 95%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
+.operationlog .operationlog-top,.operationlog .operationlog-bottom{  width: 100%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-top: 20px;}
 .operationlog-top .rightspan{ margin-left: 50px;}
 /* 个人账户 */
 .accountinformation{ display: flex; justify-content: center; flex-direction: column; align-items: center;}
-.accountinformation .accountinformation-top{ width: 95%; line-height: 20px;border-radius: 10px 10px 10px 10px;background-color: rgba(39, 94, 228, 0.84);color: rgba(16, 16, 16, 1);
+.accountinformation .accountinformation-top{ width: 100%; line-height: 20px;border-radius: 10px 10px 10px 10px;background-color: rgba(39, 94, 228, 0.84);color: rgba(16, 16, 16, 1);
   font-size: 14px;box-shadow: 0px 2px 6px 0px rgba(187, 187, 187, 1);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px;}
 .accountinformation .accountinformation-top .accountinformation-top-left{ float: left; display: flex; align-items: center; justify-content: flex-start; color: #fff;}
 .accountinformation-top-left .boxcentent div{ float: left; margin-left: 20px; margin-top: 20px;}
 .accountinformation .accountinformation-top .accountinformation-top-right{ float: right; padding: 20px}
 .accountinformation .accountinformation-top .accountinformation-top-right button{height: 40px;line-height: 20px;border-radius: 6px 6px 6px 6px;background-color: rgba(230, 241, 252, 1);text-align: center;}
 
-.accountinformation .accountinformation-center{ width: 95%; margin-top: 20px;}
+.accountinformation .accountinformation-center{ width: 100%; margin-top: 20px;}
 .accountinformation .accountinformation-center .accountinformation-center-left{ width: 30%; float: left; border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);
   box-shadow: 0px 3px 8px 0px rgba(219, 217, 217, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px;}
 .accountinformation .accountinformation-center .accountinformation-center-left>div{ width: 90%; border-bottom: 1px solid rgba(219, 217, 217, 1); padding-bottom: 10px; margin-bottom: 20px;}
@@ -343,7 +350,8 @@ a:active{ text-decoration: none; }
 .accesstoinformationaddition-left-btn{ padding: 20px; border-bottom: 1px solid #DBD9D9;}
 .accesstoinformationaddition-left-btn button{ border: none; background: none; margin-left: 25px;}
 .accesstoinformationaddition-left-btn button:active{ border: none;}
-.accesstoinformationaddition-left-btn button.zzz{width: 51px;height: 28px;line-height: 20px;border-radius: 6px 6px 6px 6px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(206, 219, 222, 1);}
+.accesstoinformationaddition-left-btn button.zzz{width: 64px;height: 28px;line-height: 20px;border-radius: 6px 6px 6px 6px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(187, 218, 249, 1);
+  color: rgba(26, 85, 226, 1);}
 .accesstoinformationaddition-left ul{ width: 90%; margin-left: 5%; position: relative;}
 .accesstoinformationaddition-left ul li{ padding: 10px; border-bottom: 1px solid rgba(206, 219, 222, 1); position: relative;}
 .accesstoinformationaddition-left ul li p{ color: #000;}
@@ -367,22 +375,25 @@ a:active{ text-decoration: none; }
 /* 成员管理 */
 .membermanagement{ width: 100%; }
 .membermanagement-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
-  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
-.membermanagement-top .next-select .next-select-inner{ height: auto;}
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px 0; margin-bottom: 20px;}
+.membermanagement-top .next-select .next-select-inner{ height: auto; min-height: 30px;}
 .addmemberbtn{position: absolute; top: 15px; right: 20px;border-radius: 6px; background-color: #E2EDFF; border: 1px solid #A3D0FD; color: #1989FA; cursor: pointer;}
 .membermanagement-bottom{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
 .membermanagement-bottom-top{ border-bottom: 1px solid rgba(187, 187, 187, 0.45); padding-bottom: 10px; margin-bottom: 10px;}
 
-.addmenber{ position: fixed; width: 330px; height: 550px; top: 50%; left: 50%; margin-top: -275px; margin-left: -165px;  z-index: 8888;
-  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding:10px 20px;
-  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
-.addmenber>span{ margin-top: 10px; width: 90%;}
-.addmenber>span input{ display: block; width: 90%;}
-.addmenber button{margin: 10px 20px;width: 80px;height: 30px;border-radius: 4px;background-color: rgba(26, 85, 226, 0.95);color: rgba(255, 255, 255, 1);font-size: 14px;text-align: center;border: 1px solid rgba(255, 255, 255, 0);}
-.addmenber button.quxiao{border-radius: 4px;background-color: rgba(230, 241, 252, 1);color: rgba(26, 85, 226, 0.95);font-size: 14px;border: 1px solid rgba(187, 218, 249, 1);}
-.addmenber .next-select .next-select-inner{ height: auto;}
+.addmenber{ position: fixed;  width: 600px; height: 640px; top: 50%; left: 50%; margin-top: -320px; margin-left: -300px; z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding:10px 20px;box-shadow: 0 0 10px #b5b3b3;}
+.addmember-title{ border-bottom: 1px solid #dddddd; padding: 0 10px;}
+.addmember-content{ margin: 20px auto; padding: 0 80px;}
+.addmember-content .next-select .next-select-inner{ height: auto;}
+.addmenber .addmember-content>span{ margin: 8px 0; width: 90%;}
+.addmenber .addmember-content>span input{ display: block; width: 90%;}
+.addmenber .addmember-content button{margin: 20px 20px 0 60px;width: 80px;height: 30px;border-radius: 4px;background-color: rgba(26, 85, 226, 0.95);color: rgba(255, 255, 255, 1);font-size: 14px;text-align: center;border: 1px solid rgba(255, 255, 255, 0);}
+.addmenber .addmember-content button.quxiao{border-radius: 4px;background-color: rgba(230, 241, 252, 1);color: rgba(26, 85, 226, 0.95);font-size: 14px;border: 1px solid rgba(187, 218, 249, 1);}
+.addmenber .addmember-content .next-select .next-select-inner{ height: auto;}
 .next-overlay-wrapper .next-overlay-inner{ z-index: 8889;}
+
 
 .membermanagements-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-bottom: 20px;}
@@ -390,18 +401,21 @@ a:active{ text-decoration: none; }
 .membermanagement-top .member-role{ margin-left: 30px;}
 .member-panel .tab-panel{ padding-bottom: 20px; }
 /*成员管理----新增角色--starting*/
-.newrole{ position: fixed; width: 800px; height: 800px; top: 50%; left: 50%; margin-top: -400px; margin-left: -400px;  z-index: 8888;
-  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 20px;
-  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb; overflow: auto;}
+.newrole{ position: fixed; width: 960px; height: 800px; top: 50%; left: 50%; margin-top: -400px; margin-left: -480px; z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;box-shadow: 0 0 10px #b5b3b3; overflow: auto;}
+.newrole .newrole-title{ border-bottom: 1px solid #dddddd; padding: 0 10px;}
+.newrole .newrole_main{width: 100%; padding: 10px 20px;}
 .newrole .premissions_li{ width: 20%; float: left; height: 30px;}
 .newrole div{ margin: 8px auto;}
 .newrole label{ margin-right: 10px;}
+.newrole .newrole-btn{ clear: both; text-align: center;}
 /*成员管理----新增角色--ending*/
-
 /*成员管理----编辑角色--starting*/
-.editingrole{ position: fixed; width: 800px; height: 800px; top: 50%; left: 50%; margin-top: -400px; margin-left: -400px;  z-index: 8888;
-  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 20px;
-  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;overflow: auto;}
+.editingrole{ position: fixed; width: 960px; height: 800px; top: 50%; left: 50%; margin-top: -400px; margin-left: -480px;  z-index: 8888;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;box-shadow: 0 0 10px #b5b3b3;overflow: auto;}
+.newrole-title{ border-bottom: 1px solid #dddddd; padding: 0 10px;}
+.editingrole_btn{ clear: both; text-align: center;}
+.editingrole .editingrole_main{width: 100%; padding: 10px 20px;}
 .editingrole .premissions_li{ width: 20%; float: left; height: 30px;}
 .editingrole div{ margin: 8px auto;}
 .editingrole label{ margin-right: 10px;}
@@ -413,7 +427,8 @@ a:active{ text-decoration: none; }
 .devicemanagement .devicemanagement-top{position: relative;padding-bottom: 10px; border-bottom: 1px solid #bbbbbb; font-size: 20px;}
 .devicemanagement .devicemanagement-top .devicemanagement-top-bottombor{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -12px;}
 .devicemanagement .devicemanagement-top .devicemanagement-top-btn{ position: absolute; right: 20px;bottom: 1px;}
-.devicemanagement .devicemanagement-top .devicemanagement-top-btn button{width: 130px;height: 41px;line-height: 20px;color: rgba(16, 16, 16, 1);font-size: 14px;text-align: center;margin: 0 10px;}
+.devicemanagement .devicemanagement-top .devicemanagement-top-btn button{width: 100px; height: 36px;line-height: 20px;font-size: 14px;text-align: center;margin: 0 10px;
+border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);border: 1px solid rgba(163, 208, 253, 1);color: rgba(25, 137, 250, 1);}
 .devicemanagement .devicemanagement-top .devicemanagement-top-list{ position: absolute; width: 300px; height: 300px; top: 41px; left: -160px; z-index: 999;overflow:auto;white-space:nowrap;display: none;
   border-radius: 10px;background-color: rgba(255, 255, 255, 1);box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
 .devicemanagement .devicemanagement-top .devicemanagement-top-list ul.event-list{  }
@@ -426,7 +441,7 @@ a:active{ text-decoration: none; }
 .devicemanagement-main{ position: relative;}
 .devicemanagement-main .devicemanagement-main-top{ display: flex; align-items: center; margin: 20px 0px;}
 .devicemanagement-main .devicemanagement-main-top button{width: 95px;height: 40px;line-height: 20px;border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);color: rgba(16, 16, 16, 1);font-size: 14px;text-align: center;border: 1px solid rgba(163, 208, 253, 1);}
-.devicemanagement-main .devicemanagement-main-top .next-message.next-message-notice.next-inline.next-medium.next-only-content{width: 271px;height: 40px;line-height: 20px; border-radius: 4px;background-color: rgba(230, 247, 255, 1);text-align: center;border: 1px solid rgba(145, 213, 255, 1); margin-left: 20px;}
+.devicemanagement-main .devicemanagement-main-top .next-message.next-message-notice.next-inline.next-medium.next-only-content{width: 271px;height: 40px;line-height: 20px; border-radius: 4px;background-color: rgba(230, 247, 255, 1);text-align: center;border: 1px solid rgba(145, 213, 255, 1);}
 /* 设备管理 添加分组弹框*/
 .addgrouping{  position: fixed; width: 330px; height: 300px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px; z-index: 8888;
   border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
@@ -548,7 +563,7 @@ div.tab-panel{ background: #FFFFFF;}
 .apply-billing{ height: 100%;}
 .apply-billing-topcontent .deduction-details-topcontent{ margin: 20px auto;}
 .apply-billing-topcontent .apply-billing-middlecontent{ margin: 20px auto;}
-.apply-billing-topcontent .apply-billing-bottomcontent{ width: 98%; background-color: #FFFFFF; border-radius: 6px; padding: 20px 10px; margin: 20px auto;}
+.apply-billing-topcontent .apply-billing-bottomcontent{ width: 100%; background-color: #FFFFFF; border-radius: 6px; padding: 20px 10px; margin: 20px auto;}
 .apply-billing-topcontent .apply-billing-bottomcontent div{ display: inline-flex; width: 33.3%; height: 100px; padding: 20px 60px;}
 .apply-billing-topcontent .apply-billing-bottomcontent .innertwo{ border-left: 1px solid #999999; border-right: 1px solid #999999;}
 .deduction-details-topcontent .tab-contenttwo-left-message ol li{ line-height: 28px; }
@@ -577,7 +592,7 @@ div.tab-panel{ background: #FFFFFF;}
   border-radius: 6px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
 .apply-billing-bulletbox h2{ display: inline-block;}
-.apply-billing-bulletbox .x-span{ margin-left: 500px; font-size: 28px; color: #666666; cursor: pointer;}
+.apply-billing-bulletbox .x-span{ float: right; margin-right: 20px; margin-top: 10px; font-size: 30px; color: #666666; cursor: pointer;}
 .apply-billing-bulletbox .message{ background: #E6F7FF; border: 1px solid #91D5FF; border-radius: 6px;}
 .apply-billing-bulletbox .message ul li{ padding-bottom: 5px;}
 /*申请开票弹框样式----ending*/
@@ -911,3 +926,5 @@ div.tab-panel{ background: #FFFFFF;}
 .Customerservice .onlineservice .chat-controls .chat-extra a:hover .extra-tooltip {
   display: block;
 }
+.customsummary-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px 15px; margin-bottom: 20px;}

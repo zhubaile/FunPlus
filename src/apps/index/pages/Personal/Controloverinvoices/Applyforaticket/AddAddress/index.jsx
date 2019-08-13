@@ -119,7 +119,7 @@ export default class AddAddress extends Component {
         </Message>
         <Form ref="form">
           <FormItem label='发票邮寄地址' {...formItemLayout} >
-            <CascaderSelect name='cityAddress' style={{ width: '100%' }} changeOnSelect defaultValue={messageaddress == 'Addto' ? (value) : (cityAddress)} dataSource={confirm} onChange={this.handleChange.bind(this)} />
+            <CascaderSelect name='cityAddress' style={{ width: '100%', marginBottom: '15px' }} changeOnSelect defaultValue={messageaddress == 'Addto' ? (value) : (cityAddress)} dataSource={confirm} onChange={this.handleChange.bind(this)} />
             {/* <Select style={styles.formselect} name='invoicemailingaddressone' placeholder='1' dataSource={addressOne} />
             <Select style={styles.formselect} name='invoicemailingaddresstwo' placeholder='1' dataSource={addressTwo} /> */}
             <Input style={styles.forminput} name='mailAddressson' placeholder='请填写有效地址，不必重复' defaultValue={content.mailAddressson} />
@@ -161,12 +161,12 @@ const styles = {
   },
   cancelbtn: {
     display: 'inline-block',
-    margin: '0px 60px 0px 130px',
+    marginRight: '30px',
     width: '80px',
     height: '30px',
-    backgroundColor: 'rgba(230, 241, 252, 1)',
-    color: 'rgba(78, 126, 232, 1)',
-    borderColor: 'rgba(193, 241, 248, 1)',
+    backgroundColor: '#E2EDFF',
+    borderColor: '#A3D0FD',
+    color: '#1989FA',
     borderRadius: '5px',
   },
   determinebtn: {

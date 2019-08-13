@@ -253,19 +253,21 @@ class UserRegister extends Component {
           </IceFormBinderWrapper>
         </div>
         <div style={styles.right}>
-          <div style={styles.box}>
-            <IceImg
-              src={require('@img/login/tel.png')}
-            />
-            <p><FormattedMessage id='app.login.Tel.consult' /></p>
-            <a>000-1111-2222</a>
-          </div>
-          <div style={styles.box}>
-            <IceImg
-              src={require('@img/login/email.png')}
-            />
-            <p><FormattedMessage id='app.login.Mail.box' /></p>
-            <a>YanYue@3FunPlus.com</a>
+          <div>
+            <div style={styles.box}>
+              <IceImg
+                src={require('@img/login/tel.png')}
+              />
+              <p><FormattedMessage id='app.login.Tel.consult' /></p>
+              <a>000-1111-2222</a>
+            </div>
+            <div style={styles.box}>
+              <IceImg
+                src={require('@img/login/email.png')}
+              />
+              <p><FormattedMessage id='app.login.Mail.box' /></p>
+              <a>YanYue@3FunPlus.com</a>
+            </div>
           </div>
         </div>
       </div>
@@ -276,12 +278,14 @@ class UserRegister extends Component {
 const styles = {
   container: {
     width: '700px',
+    height: '100%',
     padding: '40px',
     background: '#fff',
     borderRadius: '6px',
     marginTop: '-60px',
     border: '#cccccc 1px solid',
     display: 'flex',
+    zIndex: '2',
   },
   left: {
     float: 'left',
@@ -324,14 +328,16 @@ const styles = {
   right: {
     float: 'left',
     // width: '250px',
+    display: 'flex',
     flexGrow: '1',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
+    textAlign: 'justify',
   },
   box: {
     textAlign: 'center',
-    marginTop: '20px',
+    margin: '20px 0',
     cursor: 'pointer',
     alignItems: 'center',
     justifyContent: 'center',

@@ -156,12 +156,12 @@ export default class BillingInformation extends Component {
 const styles = {
   cancelbtn: {
     display: 'inline-block',
-    margin: '0px 60px 0px 130px',
+    marginRight: '30px',
     width: '80px',
     height: '28px',
-    backgroundColor: 'rgba(230, 241, 252, 1)',
-    color: 'rgba(78, 126, 232, 1)',
-    borderColor: 'rgba(193, 241, 248, 1)',
+    backgroundColor: '#E2EDFF',
+    borderColor: '#A3D0FD',
+    color: '#1989FA',
     borderRadius: '6px',
   },
   submitbtn: {

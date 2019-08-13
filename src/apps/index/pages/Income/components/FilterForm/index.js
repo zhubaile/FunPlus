@@ -87,47 +87,56 @@ export default class FilterForm extends Component {
           onChange={this.formChange}
           ref="form"
         >
-          <Row wrap gutter="20" style={styles.formRow}>
-            <Col l="24">
-              <div style={styles.formItem}>
-                <span style={styles.formLabel}>选择时间</span>
-                <FormBinder name="timeType"
-                  autoWidth={false}
-                >
-                  <Select style={styles.formSelect} dataSource={timeType} defaultValue='createdAt' />
-                </FormBinder>
-                <FormBinder name='startdate' >
-                  <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
-                </FormBinder>
-                <span style={styles.formLabel}>支付状态</span>
-                <FormBinder name='orderStatus'>
-                  <Select style={styles.formSelect} dataSource={orderStatus} />
-                </FormBinder>
-                {/* <span style={styles.formLabel}>退款状态</span>
+          {/* <Row wrap gutter="20" style={styles.formRow}>
+            <Col l="24"> */}
+          <div style={styles.formItem}>
+            <div style={styles.formItemdiv}>
+              <span style={styles.formLabel}>选择时间</span>
+              <FormBinder name="timeType"
+                autoWidth={false}
+              >
+                <Select style={styles.formSelect} dataSource={timeType} defaultValue='createdAt' />
+              </FormBinder>
+              <FormBinder name='startdate' >
+                <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
+              </FormBinder>
+            </div>
+            <div style={styles.formItemdiv}>
+              <span style={styles.formLabel}>支付状态</span>
+              <FormBinder name='orderStatus'>
+                <Select style={styles.formSelect} dataSource={orderStatus} />
+              </FormBinder>
+            </div>
+            <div style={styles.formItemdiv}>
+              <span style={{ margin: '0 10px', minWidth: '80px', textAlign: 'center' }}>订单号</span>
+              <FormBinder name='out_trade_no' style={{ marginLeft: '10px' }}>
+                <Input className='input-bg' placeholder='输入订单号' />
+              </FormBinder>
+            </div>
+            <div style={styles.formItemdiv}>
+              <span style={styles.formLabel}>支付渠道</span>
+              <FormBinder name='payChannel'>
+                <Select style={styles.formSelect} dataSource={payChannel} onChange={this.Accesschannels.bind(this)} />
+              </FormBinder>
+              <FormBinder name="device" >
+                <Select style={{ width: '200px' }} dataSource={device} />
+              </FormBinder>
+            </div>
+            <Button className='btn-all bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
+            <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
+            {/* <span style={styles.formLabel}>退款状态</span>
               <FormBinder name='refundStatus'>
                 <Select style={styles.formSelect} dataSource={refundStatus} />
               </FormBinder> */}
-              </div>
-            </Col>
+          </div>
+          {/* </Col>
 
-            <Col l="24">
-              <div style={styles.formItemTwo}>
-                <span style={styles.formLabel}>支付渠道</span>
-                <FormBinder name='payChannel'>
-                  <Select style={styles.formSelect} dataSource={payChannel} onChange={this.Accesschannels.bind(this)} />
-                </FormBinder>
-                <FormBinder name="device" >
-                  <Select style={{ width: '200px' }} dataSource={device} />
-                </FormBinder>
-                <span style={styles.formLabel}>订单号</span>
-                <FormBinder name='out_trade_no'>
-                  <Input className='input-bg' placeholder='输入订单号' />
-                </FormBinder>
-                <Button className='btn-all bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
-                <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
-              </div>
-            </Col>
-          </Row>
+            <Col l="24"> */}
+          {/* <div style={styles.formItemTwo}>
+
+              </div> */}
+          {/* </Col>
+          </Row> */}
         </FormBinderWrapper>
       </div>
     );
@@ -138,6 +147,7 @@ const styles = {
   formItem: {
     display: 'flex',
     alignItems: 'center',
+    flexWrap: 'wrap',
   },
   formItemTwo: {
     display: 'flex',
@@ -152,5 +162,8 @@ const styles = {
   formSelect: {
     width: '200px',
     margin: '0 10px',
+  },
+  formItemdiv: {
+    margin: '10px 0',
   },
 };

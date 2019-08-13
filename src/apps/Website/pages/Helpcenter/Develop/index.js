@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl'; // 国际化
 import { Button, Icon, Nav, Tab } from '@alifd/next';
-import HelpcenterHeader from '../../Components/HelpcenterHeader';
+import HelpcenterHeader from '../components/HelpcenterHeader';
 import '../../index.css';
 
 @injectIntl

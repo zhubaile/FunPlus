@@ -130,6 +130,7 @@ const styles = {
     borderRadius: '6px',
     marginTop: '-60px',
     border: '#cccccc 1px solid',
+    zIndex: '2',
   },
   title: {
     margin: '0 0 40px',

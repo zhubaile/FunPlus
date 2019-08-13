@@ -183,13 +183,13 @@ class Membermanagement extends Component {
     return (
       <div>
         <a
-          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
+          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px', cursor: 'pointer' }}
           onClick={this.onRemove.bind(this,record._id)}
         >
           <FormattedMessage id="app.btn.delete" />
         </a>
         <a
-          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
+          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px',cursor: 'pointer' }}
           onClick={()=>this.addmemberbtnopen(record)}
         >
           编辑

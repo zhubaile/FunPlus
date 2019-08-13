@@ -89,9 +89,9 @@ export default class Accesstoinformationaddition extends Component {
         <div className='accesstoinformationaddition'>
           <div className='accesstoinformationaddition-left'>
             <div className='accesstoinformationaddition-left-btn'>
-              <button className='zzz'>最新</button>
-              <button>周</button>
-              <button>月</button>
+              <button className='zzz'>顺序<Icon type="sorting" size='xs' style={{ margin: '0 2px' }} /></button>
+              {/* <button>周</button>
+              <button>月</button> */}
             </div>
             <ul>
               {
@@ -137,7 +137,8 @@ export default class Accesstoinformationaddition extends Component {
           </div>
 
           <div className='accesstoinformationaddition-right'>
-            <Administrators />
+            {/* array 是账户的个人信息内容 */}
+            {/* <Administrators array={array}/> */}
           </div>
         </div>
         <Customerservice />

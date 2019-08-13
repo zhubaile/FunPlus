@@ -1,0 +1,33 @@
+.logobtn{
+  animation:1s seconddiv;
+  -webkit-animation:1s seconddiv ; /* 1s 执行时间为1s,2s 延迟时间为2s,infinite 一直重复执行 linear 线性*/
+  animation-timing-function:ease-in;
+  -webkit-animation-timing-function:ease-in;
+  background: transparent;
+}
+.logobtn img{
+  /*float: left;*/
+  width: 100%;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 28px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+@keyframes seconddiv{
+  0% {transform: translateY(0px);}
+  25% {transform: translateY(-20px);}
+  50% {transform: translateY(0px);}
+  75% {transform: translateY(-10px);}
+  100% {transform: translateY(0px);}
+}
+/*@keyframes seconddiv{
+  0% {transform: scale(1.1,1.1);}
+  10% {transform: scale(1,1);}
+  25% {transform: scale(1.2,1.2);}
+  50% {transform: scale(1,1);}
+  70% {transform: scale(1.2,1.2);}
+  100% {transform: scale(1,1);}
+}*/

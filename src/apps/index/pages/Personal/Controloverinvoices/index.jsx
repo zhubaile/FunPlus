@@ -149,7 +149,7 @@ class Controloverinvoices extends Component {
     return (
       <div>
         <a
-          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px', borderRight: '2px solid #999999' }}
+          style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px', borderRight: '2px solid #999999',cursor: 'pointer' }}
           onClick={this.invoicebtn.bind(this,record)}
         >
           <FormattedMessage id="app.btn.detail" />
@@ -163,7 +163,7 @@ class Controloverinvoices extends Component {
         </a> */}
         {value.includes(2) ? (
           <a
-            style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
+            style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px',cursor: 'pointer' }}
             onClick={this.Applyrevokebtn.bind(this,record._id)}
           >
             申请撤销
@@ -171,7 +171,7 @@ class Controloverinvoices extends Component {
         ) : null}
         {value.includes(3) ? (
           <a
-            style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px' }}
+            style={{ color: 'rgba(26, 85, 226, 1)', padding: '0px 5px',cursor: 'pointer' }}
             onClick={this.Applyticketbtn.bind(this,record)}
           >
             申请退票

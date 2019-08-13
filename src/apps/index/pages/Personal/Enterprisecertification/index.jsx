@@ -166,13 +166,13 @@ class Enterprisecertification extends Component {
         </div>
         <div className="personalenter">
           <div className='personalenter-left'>
-            <div className='personalenter-left-step'>
+            {/* <div className='personalenter-left-step'>
               <Step current={userstatuss} shape="arrow" animation>
                 <Step.Item title="1 提交资料" />
                 <Step.Item title="2 审核中" />
                 <Step.Item title="3 审核通过" />
               </Step>
-            </div>
+            </div> */}
             {userStatus == 0 ? (
               <FormBinderWrapper
                 value={this.state.value}

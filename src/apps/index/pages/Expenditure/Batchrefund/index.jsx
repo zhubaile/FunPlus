@@ -74,7 +74,7 @@ export default class Submerchants extends Component {
       <div>
         <a
           type="primary"
-          style={{ marginRight: '5px' }}
+          style={{ marginRight: '5px',cursor: 'pointer' }}
           onClick={this.handleDetail}
         >
           详情

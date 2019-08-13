@@ -44,6 +44,7 @@ export default class Addmenber extends Component {
       this.setState({
         open: true,
         content,
+        confirm,
       });
     } else {
       this.setState({
@@ -100,58 +101,64 @@ export default class Addmenber extends Component {
     debugger;
     return (
       <div className="addmenber">
-        <h2>添加成员</h2>
-        <FormBinderWrapper
-          value={this.state.value}
-          onChange={this.formChange}
-          ref="form"
-        >
-          <FormBinder name="username">
-            <Input hasClear placeholder='用户名' />
-          </FormBinder>
-          <FormBinder name="name"
-            autoWidth={false}
+        {/* <h2>添加成员</h2> */}
+        <div className='addmember-title'>
+          <h2 style={{ display: 'inline-block' }}>添加成员</h2>
+          <span style={{ fontSize: '38px', color: '#666666', float: 'right', cursor: 'pointer' }} onClick={this.addmemberclose.bind(this)}>×</span>
+        </div>
+        <div className='addmember-content'>
+          <FormBinderWrapper
+            value={this.state.value}
+            onChange={this.formChange}
+            ref="form"
           >
-            <Input hasClear placeholder='姓名' />
-          </FormBinder>
+            <FormBinder name="username">
+              <Input hasClear placeholder='用户名' />
+            </FormBinder>
+            <FormBinder name="name"
+              autoWidth={false}
+            >
+              <Input hasClear placeholder='姓名' />
+            </FormBinder>
 
-          <FormBinder name='email' >
-            <Input hasClear placeholder='邮箱' />
-          </FormBinder>
-          <FormBinder name='phone'>
-            <Input hasClear placeholder='手机号' />
-          </FormBinder>
-          {
-            !confirm ? (
-              <FormBinder name='password'>
-                <Input hasClear placeholder='密码' htmlType="password" />
-              </FormBinder>
-            ) : null
-          }
-          {
-            !confirm ? (
-              <FormBinder name='passwordTwo'>
-                <Input hasClear placeholder='重复密码' htmlType="password" />
-              </FormBinder>
-            ) : null
-          }
-          <FormBinder name='notes'>
-            <Input hasClear placeholder='备注' htmlType="text" />
-          </FormBinder>
-          <FormBinder name='quanbuyingyong'>
-            <Select dataSource={yingyong} placeholder='选择应用' />
-          </FormBinder>
-          <FormBinder name='roles'>
-            <Select mode="multiple" dataSource={jiaose} placeholder='选择角色' />
-          </FormBinder>
-          <FormBinder name="status">
-            <Switch checkedChildren="正常" unCheckedChildren="禁止" defaultChecked={value.status} style={{ marginTop: '10px', width: '100px' }} />
-          </FormBinder>
-          <div>
-            <button className='quxiao' onClick={this.addmemberclose.bind(this)}>取消</button>
-            <button onClick={this.addmember}>添加</button>
-          </div>
-        </FormBinderWrapper>
+            <FormBinder name='email' >
+              <Input hasClear placeholder='邮箱' />
+            </FormBinder>
+            <FormBinder name='phone'>
+              <Input hasClear placeholder='手机号' />
+            </FormBinder>
+            {
+              !confirm ? (
+                <FormBinder name='password'>
+                  <Input hasClear placeholder='密码' htmlType="password" />
+                </FormBinder>
+              ) : null
+            }
+            {
+              !confirm ? (
+                <FormBinder name='passwordTwo'>
+                  <Input hasClear placeholder='重复密码' htmlType="password" />
+                </FormBinder>
+              ) : null
+            }
+            <FormBinder name='notes'>
+              <Input hasClear placeholder='备注' htmlType="text" />
+            </FormBinder>
+            <FormBinder name='quanbuyingyong'>
+              <Select dataSource={yingyong} placeholder='选择应用' />
+            </FormBinder>
+            <FormBinder name='roles'>
+              <Select mode="multiple" dataSource={jiaose} placeholder='选择角色' />
+            </FormBinder>
+            <FormBinder name="status">
+              <Switch checkedChildren="正常" unCheckedChildren="禁止" defaultChecked={value.status} style={{ marginTop: '10px', width: '100px' }} />
+            </FormBinder>
+            <div>
+              <button className='quxiao' onClick={this.addmemberclose.bind(this)}>取消</button>
+              <button onClick={this.addmember}>添加</button>
+            </div>
+          </FormBinderWrapper>
+        </div>
       </div>
     );
   }

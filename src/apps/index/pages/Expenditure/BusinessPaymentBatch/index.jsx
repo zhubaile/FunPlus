@@ -160,41 +160,51 @@ export default class Enterprise extends Component {
                   onChange={this.formChange}
                   ref="form"
                 >
-                  <Row wrap gutter="20" style={styles.formRow}>
-                    <Col l="24">
-                      <div style={styles.formItem}>
-                        <span style={styles.formLabel}>选择时间</span>
-                        <FormBinder name="timeType"
-                          required
-                          message="请输入正确的名称"
-                          autoWidth={false}
-                        >
-                          <Select style={styles.formSelect} dataSource={dataType} />
-                        </FormBinder>
-                        <FormBinder name='startdate'>
-                          <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
-                        </FormBinder>
-                        <span style={styles.formLabel}>付款渠道</span>
-                        <FormBinder name='payChannel'>
-                          <Select style={styles.formSelect} dataSource={channel} />
-                        </FormBinder>
-                      </div>
-                    </Col>
-                    <Col l="24">
-                      <div style={styles.formItemTwo}>
-                         <span style={styles.formLabel}>付款状态</span>
-                        <FormBinder name='orderStatus'>
-                          <Select style={styles.formSelect} dataSource={orderStatus} />
-                        </FormBinder>
-                        <span style={styles.formLabel}>批次号</span>
-                        <FormBinder name='batchNo'>
-                          <Input className='input-bg' placeholder='输入订单号' hasClear />
-                        </FormBinder>
-                        <Button className='btn-all bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
-                        <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
-                      </div>
-                    </Col>
-                  </Row>
+                  {/* <Row wrap gutter="20" style={styles.formRow}> */}
+                  {/* <Col l="24"> */}
+                  <div style={styles.formItem}>
+                    <div style={styles.formItemdiv}>
+                      <span style={styles.formLabel}>选择时间</span>
+                      <FormBinder name="timeType"
+                        required
+                        message="请输入正确的名称"
+                        autoWidth={false}
+                      >
+                        <Select style={styles.formSelect} dataSource={dataType} />
+                      </FormBinder>
+                      <FormBinder name='startdate'>
+                        <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
+                      </FormBinder>
+                    </div>
+                    <div style={styles.formItemdiv}>
+                      <span style={styles.formLabel}>付款渠道</span>
+                      <FormBinder name='payChannel'>
+                        <Select style={styles.formSelect} dataSource={channel} />
+                      </FormBinder>
+                    </div>
+                    <div style={styles.formItemdiv}>
+                      <span style={styles.formLabel}>付款状态</span>
+                      <FormBinder name='orderStatus'>
+                        <Select style={styles.formSelect} dataSource={orderStatus} />
+                      </FormBinder>
+                    </div>
+                    <div style={styles.formItemdiv}>
+                      <span style={{ margin: '0 10px', minWidth: '80px', textAlign: 'center' }}>批次号</span>
+                      <FormBinder name='batchNo'>
+                        <Input className='input-bg' placeholder='输入订单号' hasClear />
+                      </FormBinder>
+                    </div>
+                    <div style={{ marginBottom: '10px',marginTop: '10px' }}>
+                      <Button className='btn-all bg' size="large" type="secondary" onClick={this.search.bind(this)}>搜索</Button>
+                      <Button className='btn-all bg' size="large" type="secondary" onClick={this.handleReset.bind(this)}>重置</Button>
+                    </div>
+                  </div>
+                  {/* </Col> */}
+                  {/* <Col l="24"> */}
+                  {/* <div style={styles.formItemTwo}> */}
+                  {/* </div> */}
+                  {/* </Col> */}
+                  {/* </Row> */}
                 </FormBinderWrapper>
               </div>
               <div className='expendordbat-tabs-border' />
@@ -240,6 +250,7 @@ const styles = {
   formItem: {
     display: 'flex',
     alignItems: 'center',
+    flexWrap: 'wrap',
   },
   formItemTwo: {
     display: 'flex',
@@ -258,5 +269,8 @@ const styles = {
   pagination: {
     marginTop: '20px',
     textAlign: 'right',
+  },
+  formItemdiv: {
+    margin: '10px 0',
   },
 };

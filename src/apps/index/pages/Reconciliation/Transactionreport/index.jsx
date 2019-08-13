@@ -104,6 +104,7 @@ export default class Transactionreport extends Component {
                 <span className='duizhangwanbi' />
                 <span>对账完毕</span>
               </li>
+              <Button className='btn-all bg' size="large" type="secondary">下载本月报表</Button>
             </ul>
           </div>
           <div className='transactionreport-content-calendar'>
@@ -115,7 +116,7 @@ export default class Transactionreport extends Component {
             />
           </div>
         </div>
-        <Button className='btn-all bg' size="large" type="secondary">下载本月报表</Button>
+        {/*<Button className='btn-all bg' size="large" type="secondary">下载本月报表</Button>*/}
       </div>
     );
   }

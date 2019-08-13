@@ -25,7 +25,6 @@ export default class Header extends Component {
   }
   fetchData = (len) =>{
     appsget().then(({ status,data }) => {
-      debugger;
       if (data.errCode == 0) {
         const datas = data.data;
         const appid = Cookies.get('applicationId');
@@ -33,7 +32,6 @@ export default class Header extends Component {
           return (appid.indexOf(item.appId) > -1);
         });
         const startdata = startdatas[0];
-        debugger;
         this.setState({
           datas,
           startdata,

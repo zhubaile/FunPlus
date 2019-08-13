@@ -44,43 +44,43 @@ export default class Demoexperience extends Component {
             <div className='demoience-main-center-box'>
               <ul>
                 <li>
-                  <img src={require('../../../../../assets/img/demoience/zfb.png')}style={{ width: '36px' , height: '26px'}} alt="" />
+                  <img src={require('@img/demoience/zfb.png')}style={{ width: '36px' , height: '26px'}} alt="" />
                   <p><FormattedMessage id='app.website.demoexper.maincenter.p1'/></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/demoience/zfb.png')}style={{ width: '36px' , height: '26px'}} alt="" />
+                  <img src={require('@img/demoience/zfb.png')}style={{ width: '36px' , height: '26px'}} alt="" />
                   <p><FormattedMessage id='app.website.demoexper.maincenter.p2'/></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/demoience/d.wx.png')} style={{ width: '40px' , height: '32px'}} alt="" />
+                  <img src={require('@img/demoience/d.wx.png')} style={{ width: '45px' , height: '32px'}} alt="" />
                   <p><FormattedMessage id='app.website.demoexper.maincenter.p3'/></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/demoience/qq.png')} style={{ width: '29px' , height: '35px'}} alt="" />
+                  <img src={require('@img/demoience/qq.png')} style={{ width: '29px' , height: '35px'}} alt="" />
                   <p><FormattedMessage id='app.website.demoexper.maincenter.p4'/></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/demoience/qq.png')}style={{ width: '29px' , height: '35px'}} alt="" />
+                  <img src={require('@img/demoience/qq.png')}style={{ width: '29px' , height: '35px'}} alt="" />
                   <p><FormattedMessage id='app.website.demoexper.maincenter.p5'/></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/demoience/yl.png')} alt="" />
+                  <img src={require('@img/demoience/yl.png')} alt="" />
                   <p><FormattedMessage id='app.website.demoexper.maincenter.p6'/></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/demoience/yl.png')} alt="" />
+                  <img src={require('@img/demoience/yl.png')} alt="" />
                   <p><FormattedMessage id='app.website.demoexper.maincenter.p7'/></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/demoience/yl.png')} alt="" />
+                  <img src={require('@img/demoience/yl.png')} alt="" />
                   <p><FormattedMessage id='app.website.demoexper.maincenter.p8'/></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/demoience/jd.png')}style={{ width: '42px' , height: '17px'}} alt="" />
+                  <img src={require('@img/demoience/jd.png')}style={{ width: '42px' , height: '27px'}} alt="" />
                   <p><FormattedMessage id='app.website.demoexper.maincenter.p9'/></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/demoience/yl.png')} alt="" />
+                  <img src={require('@img/demoience/yl.png')} alt="" />
                   <p><FormattedMessage id='app.website.demoexper.maincenter.p10'/></p>
                 </li>
               </ul>

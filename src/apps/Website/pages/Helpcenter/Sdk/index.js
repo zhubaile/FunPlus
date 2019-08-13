@@ -22,7 +22,7 @@ export default class Sdk extends Component {
   render() {
     return (
       <div className='helpsdk'>
-        <HelpcenterHeader  HHcontent={this.state.HHcontent} HPcontent={this.state.HPcontent} />
+        <HelpcenterHeader HHcontent={this.state.HHcontent} HPcontent={this.state.HPcontent} />
         {/* 导航下面的展示内容 */}
         <div className='helpsdk-main'>
           <h1>SDK Download</h1>

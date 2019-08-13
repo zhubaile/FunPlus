@@ -131,7 +131,7 @@ export default class Aside extends Component {
                       渠道对账功能
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link to='/admin/reconciliation/errorTrading'>
                       差错交易
                     </Link>
@@ -140,7 +140,7 @@ export default class Aside extends Component {
                     <Link to='/admin/reconciliation/daysummary'>
                       当日汇总
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link to='/admin/reconciliation/transactionreport'>
                       交易报表
@@ -192,14 +192,12 @@ export default class Aside extends Component {
               </div> */}
               <div className="sub-menu-i">
                 <ul className="sub-menu">
-                  <li>
+                  {/* <li>
                     <Link to="/admin/Devicemanagement/paymentreview">设备列表</Link>
-                    {/*<a href="#">设备列表</a>*/}
                   </li>
                   <li>
                     <Link to="/admin/Devicemanagement/channelreconciliation">设备分组</Link>
-                    {/*<a href="#">设备分组</a>*/}
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -220,7 +218,7 @@ export default class Aside extends Component {
               </div> */}
               <div className="sub-menu-i">
                 <ul className="sub-menu">
-                  <li>
+                  {/* <li>
                     <Link to='/admin/privilegemanagement/applicationmember'>
                       应用成员
                     </Link>
@@ -229,8 +227,7 @@ export default class Aside extends Component {
                     <Link to='/admin/privilegemanagement/realtimedataincome'>
                       高级权限开关
                     </Link>
-                    {/* <a href="#">高级权限开关</a> */}
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -243,15 +240,9 @@ export default class Aside extends Component {
               <span>辅助工具</span>
             </a>
             <div className="sub-menu-w">
-              {/* <div className="sub-menu-header">
-                辅助工具
-              </div> */}
-              {/* <div className="sub-menu-icon">
-                <i className="os-icon os-icon-layout" />
-              </div> */}
               <div className="sub-menu-i">
                 <ul className="sub-menu">
-                  <li>
+                  {/* <li>
                     <Link to='/admin/auxiliarytools/webhooksr'>
                       Webhooksr
                     </Link>
@@ -270,7 +261,7 @@ export default class Aside extends Component {
                     <Link to='/admin/auxiliarytools/requestlog'>
                       请求log查看
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>

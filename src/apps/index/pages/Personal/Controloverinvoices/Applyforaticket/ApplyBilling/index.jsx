@@ -87,7 +87,7 @@ export default class ApplyBilling extends Component {
       <div className='apply-billing-bulletbox'>
         <ApplyBillingNext ref={ node => this.ApplyBillingNext = node } />
         <h2>申请开票</h2>
-        <span className='x-span' onClick={this.applybillingclose.bind(this)}>x</span>
+        <span className='x-span' onClick={this.applybillingclose.bind(this)}>×</span>
 
         <div>
           <Message type='notice' className='message'>
@@ -111,16 +111,16 @@ const styles = {
   inputsize: {
     width: '130px',
     height: '30px',
-    margin: '0px 10px',
+    margin: '0px 10px 0 0',
     /*    borderLeft: 'none', */
   },
   checkbox: {
     display: 'block',
-    margin: '15px 100px',
+    margin: '15px 98px',
   },
   nextbtn: {
     display: 'block',
-    margin: '15px 90px',
+    margin: '15px 98px',
     width: '80px',
     height: '28px',
     borderRadius: '6px',

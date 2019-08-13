@@ -135,7 +135,9 @@ export default class Routingrules extends Component {
               <Message type='notice'>
                每条路由规则对应一个支付渠道
               </Message>
-              <Button className='btn-all' style={styles.bg} size='large' type='secondary' onClick={this.routerRulebtn.bind(this)}>创建新规则</Button>
+              <div style={{ float: 'right' }}>
+                <Button className='btn-all' style={styles.bg} size='large' type='secondary' onClick={this.routerRulebtn.bind(this)}>创建新规则</Button>
+              </div>
             </div>
             <div>
               <Table loading={isLoading} dataSource={data} hasBorder={false}>
@@ -175,8 +177,11 @@ const styles = {
     fontWeight: '500',
   },
   bg: {
+    position: 'absolute',
     borderRadius: '4px',
-    marginLeft: '30%',
-    marginTop: '30px',
+    top: '30px',
+    right: '30px',
+    // marginRight: '30px',
+    // marginTop: '30px',
   },
 };

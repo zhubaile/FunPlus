@@ -132,7 +132,7 @@ export default class Applyticket extends Component {
 const styles = {
   cancelbtn: {
     display: 'inline-block',
-    margin: '0px 60px 0px 130px',
+    marginRight: '20px',
     width: '80px',
     height: '28px',
     backgroundColor: 'rgba(230, 241, 252, 1)',

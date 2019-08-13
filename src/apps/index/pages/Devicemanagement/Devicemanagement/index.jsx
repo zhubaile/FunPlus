@@ -154,7 +154,7 @@ export default class Devicemanagement extends Component {
   renderOper = (value,index,record) => {
     return (
       <div>
-        <a onClick={this.editbtn.bind(this,record)}>
+        <a onClick={this.editbtn.bind(this,record)} style={{ cursor: 'pointer' }}>
           编辑
         </a>
         {/* <Switch className='div-switch' defaultChecked={false} /> */}
@@ -221,7 +221,7 @@ export default class Devicemanagement extends Component {
         </div>
         <div className='devicemanagement-main'>
           <div className='devicemanagement-main-top'>
-            <button onClick={this.deviceopen.bind(this)}>添加设备</button>
+            {/* <button onClick={this.deviceopen.bind(this)}>添加设备</button> */}
             <Message type="notice">
               本组对应渠道：支付宝扫码渠道
             </Message>
