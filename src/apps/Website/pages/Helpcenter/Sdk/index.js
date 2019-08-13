@@ -13,7 +13,7 @@ export default class Sdk extends Component {
       intl: { formatMessage },
     } = this.props;
     const headerh1 = formatMessage({ id: 'app.website.helpsdk.header.h1' }) ,
-      headerp = formatMessage({ id: 'app.website.helpsdk.header.p' }) ;
+      headerp = formatMessage({ id: 'app.website.helpsdk.header.p' });
     this.state = {
       HHcontent: headerh1,
       HPcontent: headerp,
@@ -28,7 +28,7 @@ export default class Sdk extends Component {
           <h1>SDK Download</h1>
           <div className='helpsdk-main-conter'>
             <ul>
-{/*              <li className="img_outer"><img src={require('../../../../../assets/img/helpcenter/SDK/ios.1.png')} alt="" /></li>*/}
+              {/*              <li className="img_outer"><img src={require('../../../../../assets/img/helpcenter/SDK/ios.1.png')} alt="" /></li> */}
               <li className="img_outer">
                 <img src={require('../../../../../assets/img/helpcenter/SDK/android.1.png')} alt="" />
                 <strong>Android SDK</strong>
