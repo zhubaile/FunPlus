@@ -8,3 +8,10 @@ export async function getMenu(params) {
   });
 }
 
+// 收入
+export function incomeListBs(params) {
+  return ajaxAmd.post({
+    url: './incomeListBs',
+    data: params,
+  });
+}

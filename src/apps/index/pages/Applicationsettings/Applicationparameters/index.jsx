@@ -147,8 +147,8 @@ export default class Applicationparameters extends Component {
                     />
                   </Form.Item>
                   <Form.Item label={datas.mchRsaPubKey}>
-                    <Form.Submit className='button' onClick={this.handleSubmit}>立刻配置公钥</Form.Submit>
-                    <Form.Submit className='button' onClick={this.determine}>确定</Form.Submit>
+                    <Form.Submit className='button' style={{ marginLeft: '25%' }} onClick={this.handleSubmit}>立刻配置公钥</Form.Submit>
+                    <Form.Submit className='button' style={{ marginLeft: '10%' }} onClick={this.determine}>确定</Form.Submit>
                   </Form.Item>
                 </Form>
               </div>

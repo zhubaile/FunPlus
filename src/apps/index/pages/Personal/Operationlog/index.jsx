@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
-import { Input, Radio, Select , Button, Grid, Form, DatePicker,Table,Pagination } from '@alifd/next';
+import { Input, Radio, Select , Button, Grid, Form, DatePicker,Table,Pagination, Tab } from '@alifd/next';
 import Customerservice from "../components/Customerservice";
 import { loglist } from '@indexApi';
 import '../../index.css';
@@ -127,50 +127,48 @@ class Operationlog extends Component {
     const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
     const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
     return (
-      <div>
-        <div className='personal-top'>
-          <span>操作日志</span>
-          <div className='personal-top-border' />
-        </div>
-        <div className="operationlog">
-          <div className='operationlog-top'>
-            <FormBinderWrapper
-              value={this.state.value}
-              onChange={this.formChange}
-              ref="form"
-            >
-              <span>操作时间：</span>
-              <FormBinder name='Operationtime'>
-                <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
-              </FormBinder>
-              {/*     <span className='rightspan'>操作人：</span>
+      <div className="operationlog">
+        <Tab>
+          <Tab.Item shape='pure' title='操作日志'>
+            <div className='operationlog-top'>
+              <FormBinderWrapper
+                value={this.state.value}
+                onChange={this.formChange}
+                ref="form"
+              >
+                <span>操作时间：</span>
+                <FormBinder name='Operationtime'>
+                  <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
+                </FormBinder>
+                {/*     <span className='rightspan'>操作人：</span>
               <FormBinder name='Operator'>
                 <Select style={{ width: '200px' }} defaultValue={{ value: '全部 显示设备号可多选', label: '全部 显示设备号可多选' }} dataSource={Operator} />
               </FormBinder> */}
-            </FormBinderWrapper>
-            <Button className='btn-all bg' size="large" type="primary" onClick={this.search.bind(this)}>搜索</Button>
-            <Button className='btn-all' style={{ marginLeft: 20 }} size="large" type="secondary">重置</Button>
-          </div>
-          <div className='operationlog-bottom'>
-            <Table loading={isLoading} dataSource={datas} hasBorder={false}>
-              <Table.Column title="时间" dataIndex="createdAt" cell={this.createdAt} />
-              <Table.Column title="账号" dataIndex="username" />
-              <Table.Column title="应用" dataIndex="" />
-              <Table.Column title="操作" dataIndex="urlName" />
-              <Table.Column title="操作对象" dataIndex="names" />
-              <Table.Column title="备注" dataIndex="" />
-              <Table.Column title="IP" dataIndex="host" />
-            </Table>
-            <Pagination
-              style={{ marginTop: '20px', textAlign: 'right' }}
-              current={current}
-              onChange={this.handlePaginationChange}
-              pageSize={pageSize} // 界面展示多少条数据
-              total={total} // 一共多少条数据
-            />
-          </div>
-          <Customerservice />
-        </div>
+              </FormBinderWrapper>
+              <Button className='btn-all bg' size="large" type="primary" onClick={this.search.bind(this)}>搜索</Button>
+              <Button className='btn-all' style={{ marginLeft: 20 }} size="large" type="secondary">重置</Button>
+            </div>
+            <div className='operationlog-bottom'>
+              <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+                <Table.Column title="时间" dataIndex="createdAt" cell={this.createdAt} />
+                <Table.Column title="账号" dataIndex="username" />
+                <Table.Column title="应用" dataIndex="" />
+                <Table.Column title="操作" dataIndex="urlName" />
+                <Table.Column title="操作对象" dataIndex="names" />
+                <Table.Column title="备注" dataIndex="" />
+                <Table.Column title="IP" dataIndex="host" />
+              </Table>
+              <Pagination
+                style={{ marginTop: '20px', textAlign: 'right' }}
+                current={current}
+                onChange={this.handlePaginationChange}
+                pageSize={pageSize} // 界面展示多少条数据
+                total={total} // 一共多少条数据
+              />
+            </div>
+            <Customerservice />
+          </Tab.Item>
+        </Tab>
       </div>
     );
   }

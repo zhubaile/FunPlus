@@ -62,7 +62,7 @@ export default class Member extends Component {
           </div>
           <div className='helpmember-account-bottom'>
             <Slider {...settings}
-                    dotsRender={(index, current) => {
+              dotsRender={(index, current) => {
                       // 锚点问题
                       // 两个错误，不能使用遍历，遍历之前没有return
                       /* return zbl.map((index) => {
@@ -123,8 +123,14 @@ export default class Member extends Component {
         {/* 电商 */}
         <div className='helpmember-imgleft'>
           <div className='helpmember-imgleft-left'>
-            <h2><FormattedMessage id='app.website.helpmultistage.imgleftleft' /></h2>
-            <img src={require('../../../../../assets/img/helpcenter/member/hy7.png')} style={{ width: '300px', height: '300px' }} alt="" />
+            <div className="bgpic-leftb">
+              <dl>
+                <dt><FormattedMessage id='app.website.helpmultistage.imgleftleft' /></dt>
+                <dd><FormattedMessage id='app.website.helpmultistage.imgleftleftgl' /></dd>
+              </dl>
+            </div>
+
+           {/* <img src={require('../../../../../assets/img/helpcenter/member/hy7.png')} style={{ width: '300px', height: '300px' }} alt="" />*/}
           </div>
           <div className='helpmember-imgleft-right'>
             <FormattedMessage id='app.website.helpmultistage.imgleftright' />
@@ -135,8 +141,14 @@ export default class Member extends Component {
             <FormattedMessage id='app.website.helpmultistage.imgrightleft' />
           </div>
           <div className='helpmember-imgright-right'>
-            <h2><FormattedMessage id='app.website.helpmultistage.imgrightright' /></h2>
-            <img src={require('../../../../../assets/img/helpcenter/member/hy8.png')} style={{ width: '300px', height: '300px' }} alt="" />
+            <div className="bgpic-rightb">
+              <dl>
+                <dt><FormattedMessage id='app.website.helpmultistage.imgrightright' /></dt>
+                <dd><FormattedMessage id='app.website.helpmultistage.imgrightrightfx' /></dd>
+              </dl>
+            </div>
+
+{/*            <img src={require('../../../../../assets/img/helpcenter/member/hy8.png')} style={{ width: '300px', height: '300px' }} alt="" />*/}
           </div>
         </div>
 

@@ -155,10 +155,6 @@ a:active{ text-decoration: none; }
 .reconcilichannel-tab-right-top ul li{ line-height: 25px;}
 /* 交易报表 */
 .transactionreport{ width: 100%;}
-.transactionreport .transactionreport-top{border-bottom: 1px solid rgba(187, 187, 187, 1); margin-top: 20px;}
-.transactionreport .transactionreport-top span{ font-size: 20px; font-weight: 400;}
-.transactionreport-top-border{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -2px;}
-
 /* 日历 */
 .transactionreport .transactionreport-content{ width: 100%; margin-bottom: 10px;}
 .transactionreport .transactionreport-content .transactionreport-content-top ul{ display: flex; align-items: center;}
@@ -224,7 +220,7 @@ a:active{ text-decoration: none; }
 .personalenter-right-box{width: 300px;color: rgba(16, 16, 16, 0.8);font-size: 16px;text-align: left;margin-left: 25px; margin-top: 50px;}
 .personalenter-right-box h2{ font-weight: 500; font-size: 20px;}
 /* 企业认证第二个界面 */
-.personalenter .personalenter-left .personalentertwo{position: absolute;width: 568px;height: 181px;left: 50%;top: 100px;transform: translateX(-50%);border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);
+.personalenter .personalenter-left .personalentertwo{position: absolute;width: 568px;height: 181px;left: 50%;top: 100px;transform: translateX(-50%);border-radius: 10px;background-color: rgba(255, 255, 255, 1);
   color: rgba(16, 16, 16, 1);font-size: 14px;box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0);display: flex;align-items: center;justify-items: center;justify-content: center;}
 .personalenter .personalenter-left .personalentertwo p{margin-left: 30px;width: 280px;height: 29px;color: rgba(16, 16, 16, 1);font-size: 20px;text-align: left;font-family: SourceHanSansSC-regular;}
 /* 企业认证第三个界面的按钮 */
@@ -264,7 +260,7 @@ a:active{ text-decoration: none; }
 .Recharge-bottom .paymode .paymode-main p{color: rgba(16, 16, 16, 1);font-size: 14px;text-align: left; margin: 8px;}
 .Recharge-bottom .paymode .paymode-main  .next-radio-button-large label img{ width: 90%; margin-top: 3%;}
 
-.next-radio-button-large label{ width: 120px; height: 40px; margin-left: 30px; margin-top: 10px; border-radius: 2px 2px 2px 2px;background-color: rgba(239, 241, 245, 1);border: 1px solid rgba(206, 219, 222, 1);}
+.next-radio-button-large label{ width: 120px; height: 40px; margin-left: 30px; margin-top: 10px; border-radius: 2px;background-color: rgba(239, 241, 245, 1);border: 1px solid rgba(206, 219, 222, 1);}
 .next-radio-button-large > label:first-child{ margin-left: 30px;}
 .next-radio-button-large label img{ float: left; margin-right: 5px;}
 .next-radio-button-large label p{ line-height: 20px;}
@@ -283,7 +279,6 @@ a:active{ text-decoration: none; }
 .wxpaypopup-main .wxpaypopup-main-bottom{ position: relative; }
 .wxpaypopup-main .wxpaypopup-main-bottom img{ float: left; margin-left: 32px; margin-top: 5px; }
 .wxpaypopup-main .wxpaypopup-main-bottom div{ float: right; margin-right: 32px; margin-top: -15px;}
-
 /* 发票管理 */
 .controloverinvoices{ display: flex; justify-content: center; flex-direction: column; align-items: center;}
 .controloverinvoices .controloverinvoices-top{ width: 100%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
@@ -294,7 +289,7 @@ a:active{ text-decoration: none; }
 .controloverinvoices-top .controloverinvoices-top-left .controloverinvoices-top-left-bottom{ display: flex; margin-top: 20px;}
 .controloverinvoices-top .controloverinvoices-top-left .controloverinvoices-top-left-bottom .box{ width: 49%;}
 .controloverinvoices-top .controloverinvoices-top-right{ width: 30%; display: flex; justify-content: flex-end; flex-direction: column;}
-.controloverinvoices .controloverinvoices-bottom{ width: 100%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
+.controloverinvoices .controloverinvoices-bottom{ width: 100%;border-radius: 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-top: 20px;}
 .controloverinvoices-bottom-left{float: left;}
 .controloverinvoices-bottom-right{ width: 200px; float: right;}
@@ -306,58 +301,58 @@ a:active{ text-decoration: none; }
 .applyticket-box .mailmessage{ width: 380px; padding: 8px; margin-top: 10px;line-height: 20px;background-color: rgba(230, 241, 252, 1);border: 1px solid rgba(187, 187, 187, 1);}
 /* 操作日志 */
 .operationlog{ display: flex; justify-content: center; flex-direction: column; align-items: center;}
-.operationlog .operationlog-top,.operationlog .operationlog-bottom{  width: 100%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
+.operationlog .operationlog-top,.operationlog .operationlog-bottom{  width: 100%;border-radius: 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-top: 20px;}
 .operationlog-top .rightspan{ margin-left: 50px;}
 /* 个人账户 */
 .accountinformation{ display: flex; justify-content: center; flex-direction: column; align-items: center;}
-.accountinformation .accountinformation-top{ width: 100%; line-height: 20px;border-radius: 10px 10px 10px 10px;background-color: rgba(39, 94, 228, 0.84);color: rgba(16, 16, 16, 1);
+.accountinformation .accountinformation-top{ width: 100%; line-height: 20px;border-radius: 10px;background-color: rgba(39, 94, 228, 0.84);color: rgba(16, 16, 16, 1);
   font-size: 14px;box-shadow: 0px 2px 6px 0px rgba(187, 187, 187, 1);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px;}
 .accountinformation .accountinformation-top .accountinformation-top-left{ float: left; display: flex; align-items: center; justify-content: flex-start; color: #fff;}
 .accountinformation-top-left .boxcentent div{ float: left; margin-left: 20px; margin-top: 20px;}
 .accountinformation .accountinformation-top .accountinformation-top-right{ float: right; padding: 20px}
-.accountinformation .accountinformation-top .accountinformation-top-right button{height: 40px;line-height: 20px;border-radius: 6px 6px 6px 6px;background-color: rgba(230, 241, 252, 1);text-align: center;}
+.accountinformation .accountinformation-top .accountinformation-top-right button{height: 40px;line-height: 20px;border-radius: 6px;background-color: rgba(230, 241, 252, 1);text-align: center;}
 
 .accountinformation .accountinformation-center{ width: 100%; margin-top: 20px;}
-.accountinformation .accountinformation-center .accountinformation-center-left{ width: 30%; float: left; border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);
+.accountinformation .accountinformation-center .accountinformation-center-left{ width: 30%; float: left; border-radius: 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);
   box-shadow: 0px 3px 8px 0px rgba(219, 217, 217, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px;}
 .accountinformation .accountinformation-center .accountinformation-center-left>div{ width: 90%; border-bottom: 1px solid rgba(219, 217, 217, 1); padding-bottom: 10px; margin-bottom: 20px;}
 
-.accountinformation .accountinformation-center .accountinformation-center-right{ width: 68%; float: right; border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);
+.accountinformation .accountinformation-center .accountinformation-center-right{ width: 68%; float: right; border-radius: 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);
   box-shadow: 0px 3px 8px 0px rgba(219, 217, 217, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px;}
 
 .accountinformation .accountinformation-bottom{ width: 95%; margin-top: 20px;}
-.accountinformation-bottom .accountinformation-bottom-income,.accountinformation-bottom .accountinformation-bottom-follow{ width: 20%;float: left; border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);
+.accountinformation-bottom .accountinformation-bottom-income,.accountinformation-bottom .accountinformation-bottom-follow{ width: 20%;float: left; border-radius: 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);
   box-shadow: 0px 3px 8px 0px rgba(219, 217, 217, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px; margin-right: 4%;}
-.accountinformation-bottom .accountinformation-bottom-right{ width: 50%; float: right; border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);
+.accountinformation-bottom .accountinformation-bottom-right{ width: 50%; float: right; border-radius: 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);
   box-shadow: 0px 3px 8px 0px rgba(219, 217, 217, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px;}
 /* 运维帮助中心 */
 .helpcenteraddition{ width: 95%; display: flex; justify-content: center;}
 .helpcenteraddition .helpcenteraddition-left{ width: 78%;}
-.helpcenteraddition .helpcenteraddition-left .helpcenteraddition-left-common{line-height: 20px;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; color: #1A55E2;
+.helpcenteraddition .helpcenteraddition-left .helpcenteraddition-left-common{line-height: 20px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; color: #1A55E2;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 10px; margin-top: 20px; cursor: pointer;}
 .helpcenteraddition .helpcenteraddition-left .helpcenteraddition-left-common .lefttitle{ padding-left:10px;  margin-top: 10px;border-left: 2px solid blue;}
 .helpcenteraddition .helpcenteraddition-left .helpcenteraddition-left-common .mainbox{ }
 .helpcenteraddition .helpcenteraddition-left .helpcenteraddition-left-common .mainbox .helpcenteraddition-left-common-box{ float: left; width: 33%; margin-top: 15px;}
 .helpcenteraddition .helpcenteraddition-left .helpcenteraddition-left-common .mainbox .helpcenteraddition-left-common-box a{ color: #6C757D;}
 
-.helpcenteraddition .helpcenteraddition-right{ width: 20%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px;text-align: center;
+.helpcenteraddition .helpcenteraddition-right{ width: 20%;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px;text-align: center;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px;padding-top: 20px; height:260px; margin-left: 30px;}
 /* 查阅更多信息 */
 .accesstoinformationaddition{ width: 95%; display: flex; justify-content: center;}
-.accesstoinformationaddition .accesstoinformationaddition-left{ width: 78%; margin-top: 20px;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; color: #1A55E2;
+.accesstoinformationaddition .accesstoinformationaddition-left{ width: 78%; margin-top: 20px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; color: #1A55E2;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0);}
 .accesstoinformationaddition-left-btn{ padding: 20px; border-bottom: 1px solid #DBD9D9;}
 .accesstoinformationaddition-left-btn button{ border: none; background: none; margin-left: 25px;}
 .accesstoinformationaddition-left-btn button:active{ border: none;}
-.accesstoinformationaddition-left-btn button.zzz{width: 64px;height: 28px;line-height: 20px;border-radius: 6px 6px 6px 6px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(187, 218, 249, 1);
+.accesstoinformationaddition-left-btn button.zzz{width: 64px;height: 28px;line-height: 20px;border-radius: 6px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(187, 218, 249, 1);
   color: rgba(26, 85, 226, 1);}
 .accesstoinformationaddition-left ul{ width: 90%; margin-left: 5%; position: relative;}
 .accesstoinformationaddition-left ul li{ padding: 10px; border-bottom: 1px solid rgba(206, 219, 222, 1); position: relative;}
 .accesstoinformationaddition-left ul li p{ color: #000;}
 .accesstoinformationaddition-left ul li a{ position: absolute; top: 20px; right: 10px; font-size: 30px; color: rgba(0, 0, 0, 0.5);}
 
-.accesstoinformationaddition .accesstoinformationaddition-right{ width: 20%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px;text-align: center;
+.accesstoinformationaddition .accesstoinformationaddition-right{ width: 20%;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px;text-align: center;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px;padding-top: 20px; height:260px; margin-left: 30px;}
 /* 成组件了 管理员的信息 */
 .administrators{ display: flex; align-items: center; justify-content: center; flex-direction: column;}
@@ -424,19 +419,19 @@ a:active{ text-decoration: none; }
 
 /* 设备管理 */
 .devicemanagement{ width: 100%;}
-.devicemanagement .devicemanagement-top{position: relative;padding-bottom: 10px; border-bottom: 1px solid #bbbbbb; font-size: 20px;}
-.devicemanagement .devicemanagement-top .devicemanagement-top-bottombor{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -12px;}
-.devicemanagement .devicemanagement-top .devicemanagement-top-btn{ position: absolute; right: 20px;bottom: 1px;}
-.devicemanagement .devicemanagement-top .devicemanagement-top-btn button{width: 100px; height: 36px;line-height: 20px;font-size: 14px;text-align: center;margin: 0 10px;
-border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);border: 1px solid rgba(163, 208, 253, 1);color: rgba(25, 137, 250, 1);}
+.devicemanagement .devicemanagement-top{position: relative; font-size: 20px; float: right;  width: 300px;  height: 30px;}
+/*.devicemanagement .devicemanagement-top .devicemanagement-top-bottombor{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -12px;}*/
+.devicemanagement .devicemanagement-top .devicemanagement-top-btn{ position: absolute; right: 20px; z-index: 10;}
+.devicemanagement .devicemanagement-top .devicemanagement-top-btn button{width: 100px; height: 36px;line-height: 20px;font-size: 14px;text-align: center;margin: 0 10px;  cursor: pointer;
+  border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);border: 1px solid rgba(163, 208, 253, 1);color: rgba(25, 137, 250, 1);}
 .devicemanagement .devicemanagement-top .devicemanagement-top-list{ position: absolute; width: 300px; height: 300px; top: 41px; left: -160px; z-index: 999;overflow:auto;white-space:nowrap;display: none;
   border-radius: 10px;background-color: rgba(255, 255, 255, 1);box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
-.devicemanagement .devicemanagement-top .devicemanagement-top-list ul.event-list{  }
-.devicemanagement .devicemanagement-top .devicemanagement-top-list ul.event-list li{ height: 50px; margin-top: 5px;display: flex; align-items: center; justify-content: center;}
-.devicemanagement .devicemanagement-top .devicemanagement-top-list ul.event-list li p{width: 50%; text-align: center;}
-.devicemanagement .devicemanagement-top .devicemanagement-top-list ul.event-list li button{ width: 50%; text-align: center; width: 80px; height: 30px;}
-.devicemanagement .devicemanagement-top .devicemanagement-top-list.opicty{ display: block;}
-.devicemanagement .devicemanagement-top .devicemanagement-top-list.opicty .devicemanagement-top-list-btn{ position: absolute; bottom: 0; right: 0; width: 80px; height: 30px; background: red;}
+.devicemanagement .devicemanagement-top-list ul.event-list{  }
+.devicemanagement .devicemanagement-top-list ul.event-list li{ height: 50px; margin-top: 5px;display: flex; align-items: center; justify-content: center;}
+.devicemanagement .devicemanagement-top-list ul.event-list li p{width: 50%; text-align: center;}
+.devicemanagement .devicemanagement-top-list ul.event-list li button{ width: 50%; text-align: center; width: 80px; height: 30px;}
+.devicemanagement .devicemanagement-top-list.opicty{ display: block;}
+.devicemanagement .devicemanagement-top-list.opicty .devicemanagement-top-list-btn{ position: absolute; bottom: 0; right: 0; width: 80px; height: 30px; background: red;}
 
 .devicemanagement-main{ position: relative;}
 .devicemanagement-main .devicemanagement-main-top{ display: flex; align-items: center; margin: 20px 0px;}
@@ -444,13 +439,13 @@ border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);border: 
 .devicemanagement-main .devicemanagement-main-top .next-message.next-message-notice.next-inline.next-medium.next-only-content{width: 271px;height: 40px;line-height: 20px; border-radius: 4px;background-color: rgba(230, 247, 255, 1);text-align: center;border: 1px solid rgba(145, 213, 255, 1);}
 /* 设备管理 添加分组弹框*/
 .addgrouping{  position: fixed; width: 330px; height: 300px; top: 50%; left: 50%; margin-top: -250px; margin-left: -165px; z-index: 8888;
-  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
+  border-radius: 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
 .addgrouping .addgrouping-btn{ text-align: right;}
 .addgrouping .addgrouping-btn button{width: 65px;height: 30px;line-height: 20px;border-radius: 4px;background-color: rgba(230, 241, 252, 1);text-align: center;border: 1px solid rgba(163, 208, 253, 1); margin: 0 5px;}
 /* 添加设备-官方参数 */
 .official{  position: fixed; width: 450px; height: 700px; top: 50%; left: 50%; margin-top: -350px; margin-left: -175px; z-index: 8888;
-  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
+  border-radius: 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px; padding: 10px;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb; overflow: auto;}
 .official .next-form.next-medium.offocoal-main{ }
 .official .next-form.next-medium.offocoal-main .next-form-item.next-left.next-medium{ margin: 0;}
@@ -543,8 +538,8 @@ div.tab-panel{ background: #FFFFFF;}
 .invoicedetails .invoicedetails-top{ border-bottom: 1px solid rgba(187, 187, 187, 1); font-size: 20px; position: relative;}
 .invoicedetails-conter ul li{ display: inline-block; margin-right: 20%;}
 .invoicedetails .invoicedetails-top .invoicedetails-top-border{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -2px;}
-.invoicedetails-conter {line-height: 20px;border-radius: 10px 10px 10px 10px;box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px; padding: 20px; background: #fff;}
-.invoicedetails-footer{ border-radius: 10px 10px 10px 10px;box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px; padding: 20px; background: #fff;}
+.invoicedetails-conter {line-height: 20px;border-radius: 10px;box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px; padding: 20px; background: #fff;}
+.invoicedetails-footer{ border-radius: 10px;box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px; padding: 20px; background: #fff;}
 .invoicedetails-footer div{ width: 50%; display: inline-block; vertical-align: top;}
 .invoicedetails-footer div ul li{ line-height: 30px;}
 .invoicedetails-footer div ul li span{ font-weight: normal;}

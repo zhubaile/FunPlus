@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import Customerservice from "../components/Customerservice";
-import { Input, Radio, Select , Upload, Grid, Form ,Step, Button,Message ,Icon } from '@alifd/next';
+import { Input, Radio, Select , Upload, Grid, Form ,Step, Button,Message ,Icon, Tab } from '@alifd/next';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import { companydustyInfo,companycompanyInsert } from '@indexApi';
 import '../../index.css';
@@ -160,331 +160,330 @@ class Enterprisecertification extends Component {
     debugger;
     return (
       <div>
-        <div className='personal-top'>
-          <span>企业认证</span>
-          <div className='personal-top-border' />
-        </div>
-        <div className="personalenter">
-          <div className='personalenter-left'>
-            {/* <div className='personalenter-left-step'>
+        <Tab>
+          <Tab.Item shape='pure' title='企业认证'>
+            <div className="personalenter">
+              <div className='personalenter-left'>
+                {/* <div className='personalenter-left-step'>
               <Step current={userstatuss} shape="arrow" animation>
                 <Step.Item title="1 提交资料" />
                 <Step.Item title="2 审核中" />
                 <Step.Item title="3 审核通过" />
               </Step>
             </div> */}
-            {userStatus == 0 ? (
-              <FormBinderWrapper
-                value={this.state.value}
-                onChange={this.formChange}
-                ref="form"
-              >
-                <div style={styles.formContent}>
-                  {/* 企业名称 */}
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>企业名称：</span>
-                    <FormBinder
-                      name="cpName"
-                      required
-                      maxLength={10}
-                      requiredMessage={formatMessage({
+                {userStatus == 0 ? (
+                  <FormBinderWrapper
+                    value={this.state.value}
+                    onChange={this.formChange}
+                    ref="form"
+                  >
+                    <div style={styles.formContent}>
+                      {/* 企业名称 */}
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>企业名称：</span>
+                        <FormBinder
+                          name="cpName"
+                          required
+                          maxLength={10}
+                          requiredMessage={formatMessage({
                         id: 'app.setting.name.message',
                       })}
-                    >
-                      <Input style={styles.ationinpiu} placeholder="请输入您的企业名称" />
-                    </FormBinder>
-                  </div>
-                  {/* 企业营业执照号码 */}
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>企业营业执照号码：</span>
-                    <FormBinder
-                      required
-                      maxLength={18}
-                      requiredMessage={formatMessage({
+                        >
+                          <Input style={styles.ationinpiu} placeholder="请输入您的企业名称" />
+                        </FormBinder>
+                      </div>
+                      {/* 企业营业执照号码 */}
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>企业营业执照号码：</span>
+                        <FormBinder
+                          required
+                          maxLength={18}
+                          requiredMessage={formatMessage({
                         id: 'app.setting.name.message',
                       })}
-                      name="cpBusinessNumber"
-                    >
-                      <Input style={styles.ationinpiu} placeholder="企业营业执照号码或统一社会信用代码" />
-                    </FormBinder>
-                  </div>
+                          name="cpBusinessNumber"
+                        >
+                          <Input style={styles.ationinpiu} placeholder="企业营业执照号码或统一社会信用代码" />
+                        </FormBinder>
+                      </div>
+                      {/* 企业联系地址 */}
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>企业联系地址：</span>
+                        <FormBinder
+                          required
+                          maxLength={20}
+                          requiredMessage={formatMessage({
+                            id: 'app.setting.name.message',
+                          })}
+                          name="cpAddress"
+                        >
+                          <Input style={styles.ationinpiu} placeholder="公司实际详细地址（收发相关企业合同，发票等文件）" />
+                        </FormBinder>
+                      </div>
+                      <div style={styles.formItem} className='cpIndustryCategory'>
+                        <span style={styles.formItemLabel}>行业类目：</span>
+                        <FormBinder
+                          required
+                          maxLength={20}
+                          requiredMessage={formatMessage({
+                            id: 'app.setting.name.message',
+                          })}
+                          name="cpIndustryCategory"
+                        >
+                          <Select size='medium' name='cpIndustryCategory' placeholder="主类目" dataSource={dustyInfo} onChange={this.handleProvinceChange} style={{ width: '160px' }} />
+                        </FormBinder>
+                        <FormBinder
+                          required
+                          maxLength={20}
+                          requiredMessage={formatMessage({
+                            id: 'app.setting.name.message',
+                          })}
+                          name="cpIndustrySubcategory"
+                        >
+                          <Select size='medium' name='cpIndustrySubcategory' placeholder="子类目" dataSource={dustyInfoson} onChange={this.handleCityChange} style={{ marginLeft: '10px',width: '160px' }} />
+                        </FormBinder>
+                      </div>
+                      {/* 营业执照上传 */}
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>企业营业执照上传：</span>
+                        <FormBinder
+                          required
+                          requiredMessage={formatMessage({
+                            id: 'app.setting.avatar.message',
+                          })}
+                          name="cpIndustryImage"
+                        >
+                          {/* action 为代理的模式，在.webpackrc.js中设置 */}
+                          <Upload.Card
+                            action="/web/beta/v1.0/upload/uploadPhoto"
+                            name="avatar"
+                            limit={1}
+                            accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+                            beforeUpload={beforeUpload}
+                            onChange={onChange}
+                            onSuccess={onSuccess}
+                            onError={onError}
+                            formatter={(res, file) => {
+                              return {
+                                success: res.errCode === 0 ,
+                                url: res.data.downloadURL,
+                                names: res.data.name,
+                              };
+                            }}
+                          />
+                        </FormBinder>
+                      </div>
 
-                  {/* 企业联系地址 */}
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>企业联系地址：</span>
-                    <FormBinder
-                      required
-                      maxLength={20}
-                      requiredMessage={formatMessage({
-                        id: 'app.setting.name.message',
-                      })}
-                      name="cpAddress"
-                    >
-                      <Input style={styles.ationinpiu} placeholder="公司实际详细地址（收发相关企业合同，发票等文件）" />
-                    </FormBinder>
-                  </div>
-                  <div style={styles.formItem} className='cpIndustryCategory'>
-                    <span style={styles.formItemLabel}>行业类目：</span>
-                    <FormBinder
-                      required
-                      maxLength={20}
-                      requiredMessage={formatMessage({
-                        id: 'app.setting.name.message',
-                      })}
-                      name="cpIndustryCategory"
-                    >
-                      <Select size='medium' name='cpIndustryCategory' placeholder="主类目" dataSource={dustyInfo} onChange={this.handleProvinceChange} style={{ width: '160px' }} />
-                    </FormBinder>
-                    <FormBinder
-                      required
-                      maxLength={20}
-                      requiredMessage={formatMessage({
-                        id: 'app.setting.name.message',
-                      })}
-                      name="cpIndustrySubcategory"
-                    >
-                      <Select size='medium' name='cpIndustrySubcategory' placeholder="子类目" dataSource={dustyInfoson} onChange={this.handleCityChange} style={{ marginLeft: '10px',width: '160px' }} />
-                    </FormBinder>
-                  </div>
-                  {/* 营业执照上传 */}
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>企业营业执照上传：</span>
-                    <FormBinder
-                      required
-                      requiredMessage={formatMessage({
-                        id: 'app.setting.avatar.message',
-                      })}
-                      name="cpIndustryImage"
-                    >
-                      {/* action 为代理的模式，在.webpackrc.js中设置 */}
-                      <Upload.Card
-                        action="/web/beta/v1.0/upload/uploadPhoto"
-                        name="avatar"
-                        limit={1}
-                        accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
-                        beforeUpload={beforeUpload}
-                        onChange={onChange}
-                        onSuccess={onSuccess}
-                        onError={onError}
-                        formatter={(res, file) => {
-                          return {
-                            success: res.errCode === 0 ,
-                            url: res.data.downloadURL,
-                            names: res.data.name,
-                          };
-                        }}
-                      />
-                    </FormBinder>
-                  </div>
+                      {/* 法人身份证正反面上传 */}
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>法人身份证正面上传：</span>
+                        <FormBinder
+                          required
+                          requiredMessage={formatMessage({
+                            id: 'app.setting.avatar.message',
+                          })}
+                          name="cpFrontCardImg"
+                        >
+                          {/* action 为代理的模式，在.webpackrc.js中设置 */}
+                          <Upload.Card
+                            action="/web/beta/v1.0/upload/uploadPhoto"
+                            name="avatar"
+                            limit={1}
+                            accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+                            beforeUpload={beforeUpload}
+                            onChange={onChange}
+                            onSuccess={onSuccess}
+                            onError={onError}
+                            // defaultValue={[{
+                            //   url: 'http://192.168.1.105:3000/upload/1cdb684dd77b71c4454355cd67c080f8.png',
+                            // }]}
+                            formatter={(res, file) => {
+                              return {
+                                success: res.errCode === 0 ,
+                                url: res.data.downloadURL,
+                                names: res.data.name,
+                              };
+                            }}
+                          />
+                        </FormBinder>
+                      </div>
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>法人身份证反面上传：</span>
 
-                  {/* 法人身份证正反面上传 */}
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>法人身份证正面上传：</span>
-                    <FormBinder
-                      required
-                      requiredMessage={formatMessage({
-                        id: 'app.setting.avatar.message',
-                      })}
-                      name="cpFrontCardImg"
-                    >
-                      {/* action 为代理的模式，在.webpackrc.js中设置 */}
-                      <Upload.Card
-                        action="/web/beta/v1.0/upload/uploadPhoto"
-                        name="avatar"
-                        limit={1}
-                        accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
-                        beforeUpload={beforeUpload}
-                        onChange={onChange}
-                        onSuccess={onSuccess}
-                        onError={onError}
-                        // defaultValue={[{
-                        //   url: 'http://192.168.1.105:3000/upload/1cdb684dd77b71c4454355cd67c080f8.png',
-                        // }]}
-                        formatter={(res, file) => {
-                          return {
-                            success: res.errCode === 0 ,
-                            url: res.data.downloadURL,
-                            names: res.data.name,
-                          };
-                        }}
-                      />
-                    </FormBinder>
-                  </div>
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>法人身份证反面上传：</span>
+                        <FormBinder required
+                          requiredMessage={formatMessage({
+                                      id: 'app.setting.avatar.message',
+                                    })}
+                          name="cpBackCardImg"
+                        >
+                          <Upload.Card
+                            action="/web/beta/v1.0/upload/uploadPhoto"
+                            name="avatar"
+                            limit={1}
+                            accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+                            beforeUpload={beforeUpload}
+                            onChange={onChange}
+                            onSuccess={onSuccess}
+                            onError={onError}
+                            formatter={(res, file) => {
+                              debugger;
+                              return {
+                                success: res.errCode === 0 ,
+                                url: res.data.downloadURL,
+                                names: res.data.name,
+                              };
+                            }}
+                          />
+                        </FormBinder>
+                      </div>
+                      {/* 联系人姓名 */}
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>联系人姓名：</span>
+                        <FormBinder
+                          required
+                          requiredMessage={formatMessage({
+                            id: 'app.setting.website.message',
+                          })}
+                          name="linkName"
+                        >
+                          <Input style={styles.ationinpiu} placeholder="联系人真实姓名" />
+                        </FormBinder>
+                      </div>
 
-                    <FormBinder required
-                      requiredMessage={formatMessage({
-                                  id: 'app.setting.avatar.message',
-                                })}
-                      name="cpBackCardImg"
-                    >
-                      <Upload.Card
-                        action="/web/beta/v1.0/upload/uploadPhoto"
-                        name="avatar"
-                        limit={1}
-                        accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
-                        beforeUpload={beforeUpload}
-                        onChange={onChange}
-                        onSuccess={onSuccess}
-                        onError={onError}
-                        formatter={(res, file) => {
-                          debugger;
-                          return {
-                            success: res.errCode === 0 ,
-                            url: res.data.downloadURL,
-                            names: res.data.name,
-                          };
-                        }}
-                      />
-                    </FormBinder>
+                      {/* 联系人手机 */}
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>联系人手机号：</span>
+                        <FormBinder
+                          required
+                          requiredMessage={formatMessage({
+                            id: 'app.setting.github.message',
+                          })}
+                          name="linkPhone"
+                        >
+                          <Input style={styles.ationinpiu} placeholder="常用联系人手机号" />
+                        </FormBinder>
+                      </div>
+                      {/* 联系人常用邮箱 */}
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>常用联系邮箱：</span>
+                        <FormBinder
+                          required
+                          requiredMessage={formatMessage({
+                            id: 'app.setting.email.message',
+                          })}
+                          name="linkEmail"
+                        >
+                          <Input style={styles.ationinpiu} htmlType="email" placeholder="联系人邮箱" />
+                        </FormBinder>
+                      </div>
+                      <Row style={{ marginTop: 20 }}>
+                        <Col offset="3">
+                          <span>请在确认后提交设置。</span>
+                        </Col>
+                        <Col offset="3">
+                          <Button
+                            type="primary"
+                            style={{ width: 100, borderRadius: 6 }}
+                            // validate
+                            onClick={this.validateAllFormField}
+                          >
+                            <FormattedMessage id="app.setting.submit" />
+                          </Button>
+                        </Col>
+                      </Row>
+                    </div>
+                  </FormBinderWrapper>
+                ) : null}
+                {userStatus == 2 ? (
+                  <FormBinderWrapper
+                    value={this.state.value}
+                    onChange={this.formChange}
+                    ref="form"
+                  >
+                    <div>
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>企业名称：</span>
+                        <strong style={styles.ationinpiu}>{userCompanyInfo.cpName}</strong>
+                      </div>
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>企业营业执照号码：</span>
+                        <strong style={styles.ationinpiu}>{userCompanyInfo.cpBusinessNumber}</strong>
+                      </div>
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>企业联系地址：</span>
+                        <strong style={styles.ationinpiu}>{userCompanyInfo.cpAddress}</strong>
+                      </div>
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>行业类目：</span>
+                        <strong style={styles.ationinpiu}>{userCompanyInfo.cpIndustryCategory}——{userCompanyInfo.cpIndustrySubcategory}</strong>
+                      </div>
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>企业营业执照上传：</span>
+                        <img src={userCompanyStatus.cpIndustryImage} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
+                      </div>
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>法人身份证正面上传：</span>
+                        <img src={userCompanyStatus.cpFrontCardImg} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
+                      </div>
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>法人身份证反面上传：</span>
+                        <img src={userCompanyStatus.cpBackCardImg} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
+                      </div>
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>联系人姓名：</span>
+                        <strong style={styles.ationinpiu}>{userCompanyInfo.linkName}</strong>
+                      </div>
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>常用联系手机：</span>
+                        <strong style={styles.ationinpiu}>{userCompanyInfo.linkPhone}</strong>
+                      </div>
+                      <div style={styles.formItem}>
+                        <span style={styles.formItemLabel}>常用联系邮箱：</span>
+                        <strong style={styles.ationinpiu}>{userCompanyInfo.linkEmail}</strong>
+                      </div>
+                      <button className='modifyCertified' onClick={this.modifymessage.bind(this)}>修改认证信息</button>
+                    </div>
+                  </FormBinderWrapper>
+                ) : null}
+                {userStatus == 1 ? (
+                  <div className='personalentertwo'>
+                    <Icon type="success-filling" size='xxxl' style={{ color: '#0076FF' }} />
+                    <p>系统正在审核，请耐心等候。</p>
+                    {/* <p>{userContent}</p> */}
                   </div>
-                  {/* 联系人姓名 */}
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>联系人姓名：</span>
-                    <FormBinder
-                      required
-                      requiredMessage={formatMessage({
-                        id: 'app.setting.website.message',
-                      })}
-                      name="linkName"
-                    >
-                      <Input style={styles.ationinpiu} placeholder="联系人真实姓名" />
-                    </FormBinder>
-                  </div>
-
-                  {/* 联系人手机 */}
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>联系人手机号：</span>
-                    <FormBinder
-                      required
-                      requiredMessage={formatMessage({
-                        id: 'app.setting.github.message',
-                      })}
-                      name="linkPhone"
-                    >
-                      <Input style={styles.ationinpiu} placeholder="常用联系人手机号" />
-                    </FormBinder>
-                  </div>
-                  {/* 联系人常用邮箱 */}
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>常用联系邮箱：</span>
-                    <FormBinder
-                      required
-                      requiredMessage={formatMessage({
-                        id: 'app.setting.email.message',
-                      })}
-                      name="linkEmail"
-                    >
-                      <Input style={styles.ationinpiu} htmlType="email" placeholder="联系人邮箱" />
-                    </FormBinder>
-                  </div>
-                  <Row style={{ marginTop: 20 }}>
-                    <Col offset="3">
-                      <span>请在确认后提交设置。</span>
-                    </Col>
-                    <Col offset="3">
-                      <Button
-                        type="primary"
-                        style={{ width: 100, borderRadius: 6 }}
-                        // validate
-                        onClick={this.validateAllFormField}
-                      >
-                        <FormattedMessage id="app.setting.submit" />
-                      </Button>
-                    </Col>
-                  </Row>
-                </div>
-              </FormBinderWrapper>
-            ) : null}
-            {userStatus == 2 ? (
-              <FormBinderWrapper
-                value={this.state.value}
-                onChange={this.formChange}
-                ref="form"
-              >
-                <div>
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>企业名称：</span>
-                    <strong style={styles.ationinpiu}>{userCompanyInfo.cpName}</strong>
-                  </div>
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>企业营业执照号码：</span>
-                    <strong style={styles.ationinpiu}>{userCompanyInfo.cpBusinessNumber}</strong>
-                  </div>
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>企业联系地址：</span>
-                    <strong style={styles.ationinpiu}>{userCompanyInfo.cpAddress}</strong>
-                  </div>
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>行业类目：</span>
-                    <strong style={styles.ationinpiu}>{userCompanyInfo.cpIndustryCategory}——{userCompanyInfo.cpIndustrySubcategory}</strong>
-                  </div>
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>企业营业执照上传：</span>
-                    <img src={userCompanyStatus.cpIndustryImage} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
-                  </div>
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>法人身份证正面上传：</span>
-                    <img src={userCompanyStatus.cpFrontCardImg} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
-                  </div>
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>法人身份证反面上传：</span>
-                    <img src={userCompanyStatus.cpBackCardImg} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
-                  </div>
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>联系人姓名：</span>
-                    <strong style={styles.ationinpiu}>{userCompanyInfo.linkName}</strong>
-                  </div>
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>常用联系手机：</span>
-                    <strong style={styles.ationinpiu}>{userCompanyInfo.linkPhone}</strong>
-                  </div>
-                  <div style={styles.formItem}>
-                    <span style={styles.formItemLabel}>常用联系邮箱：</span>
-                    <strong style={styles.ationinpiu}>{userCompanyInfo.linkEmail}</strong>
-                  </div>
-                  <button className='modifyCertified' onClick={this.modifymessage.bind(this)}>修改认证信息</button>
-                </div>
-              </FormBinderWrapper>
-            ) : null}
-            {userStatus == 1 ? (
-              <div className='personalentertwo'>
-                <Icon type="success-filling" size='xxxl' style={{ color: '#0076FF' }} />
-                <p>系统正在审核，请耐心等候。</p>
-                {/* <p>{userContent}</p> */}
-              </div>
-            ) : null}
-            {userStatus == 3 ? (
-              <div>
-                <div className='personalentertwo'>
-                  <Icon type="delete-filling" size='xl' style={{ color: 'red' }} />
+                ) : null}
+                {userStatus == 3 ? (
                   <div>
-                    <p>认证未通过</p>
-                    <p>{userContent}</p>
-                    <button className='modifyCertified' onClick={this.modifymessage.bind(this)}>修改认证信息</button>
+                    <div className='personalentertwo'>
+                      <Icon type="delete-filling" size='xl' style={{ color: 'red' }} />
+                      <div>
+                        <p>认证未通过</p>
+                        <p>{userContent}</p>
+                        <button className='modifyCertified' onClick={this.modifymessage.bind(this)}>修改认证信息</button>
+                      </div>
+                    </div>
                   </div>
+                ) : null}
+              </div>
+              <div className='personalenter-right'>
+                <div className='personalenter-right-box'>
+                  <h2>公司信息</h2>
+                  <span>公司基本信息将用于认证账户，会完全保密，信息提交后2个工作日内完成审核。</span>
+                </div>
+                <div className='personalenter-right-box'>
+                  <h2>联系地址</h2>
+                  <span>如有需要，我们会向此地址寄送纸质合同。</span>
+                </div>
+                <div className='personalenter-right-box'>
+                  <h2>图片要求</h2>
+                  <span>上传图片必须为彩色无水印、PNG 或 JPG 格式、大小在500K 以内。</span>
                 </div>
               </div>
-            ) : null}
-          </div>
-          <div className='personalenter-right'>
-            <div className='personalenter-right-box'>
-              <h2>公司信息</h2>
-              <span>公司基本信息将用于认证账户，会完全保密，信息提交后2个工作日内完成审核。</span>
+              <div style={{ clear: 'both' }} />
+              <Customerservice />
             </div>
-            <div className='personalenter-right-box'>
-              <h2>联系地址</h2>
-              <span>如有需要，我们会向此地址寄送纸质合同。</span>
-            </div>
-            <div className='personalenter-right-box'>
-              <h2>图片要求</h2>
-              <span>上传图片必须为彩色无水印、PNG 或 JPG 格式、大小在500K 以内。</span>
-            </div>
-          </div>
-          <div style={{ clear: 'both' }} />
-          <Customerservice />
-        </div>
+          </Tab.Item>
+        </Tab>
       </div>
     );
   }

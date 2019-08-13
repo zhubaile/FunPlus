@@ -12,7 +12,7 @@ export default class Traffic extends Component {
       intl: { formatMessage },
     } = this.props;
     const headerh1 = formatMessage({ id: 'app.website.jjtraffic.header.h1' }) ,
-      headerp = formatMessage({ id: 'app.website.jjtraffic.header.p' }) ;
+      headerp = formatMessage({ id: 'app.website.jjtraffic.header.p' });
     this.state = {
       HHcontent: headerh1,
       HPcontent: headerp,
@@ -57,8 +57,8 @@ export default class Traffic extends Component {
                 <p className='text'>-PRODUCT SERVICE-</p>
               </div>
             </div>
-            <div className='service-conter-botton'>
-              <img src={require('../../../../../assets/img/solution/traffic/jt2.png')} style={{ width: '100%' }} alt="" />
+            <div className='service-conter-bottons'>
+              <img src={require('../../../../../assets/img/solution/traffic/jt2.png')} alt="" />
               <p><FormattedMessage id='app.website.jjtraffic.service2.bottomp1' /></p>
               <p><FormattedMessage id='app.website.jjtraffic.service2.bottomp2' /></p>
             </div>
@@ -73,21 +73,21 @@ export default class Traffic extends Component {
               </div>
             </div>
             <div className='scene-conter-xxl'>
-              <img src={require('../../../../../assets/img/solution/traffic/fn-jt.png')} style={{ width: '100%' }} alt="" />
+              <img src={require('../../../../../assets/img/solution/traffic/fn-jt.png')} alt="" />
             </div>
           </div>
         </div>
         {/*  */}
-        <div className='service'>
-          <div className='service-conter'>
-            <div className='service-conter-top'>
+        <div className='solu-services'>
+          <div className='solu-service-conter'>
+            <div className='solu-service-conter-top'>
               <div>
                 <h1><FormattedMessage id='app.website.jjtraffic.service3.toph1' /></h1>
               </div>
             </div>
-            <div className='service-conter-botton'>
+            <div className='solu-service-conter-botton'>
               <ul>
-                <li className='service-conter-botton-box'>
+                <li className='solu-service-conter-botton-box'>
                   <img src={require('../../../../../assets/img/solution/traffic/jt4.png')} alt="" />
                   <h2><FormattedMessage id='app.website.jjtraffic.service3.bottomli1h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #EB6100' }} />
@@ -95,7 +95,7 @@ export default class Traffic extends Component {
                     <FormattedMessage id='app.website.jjtraffic.service3.bottomli1p' />
                   </p>
                 </li>
-                <li className='service-conter-botton-box'>
+                <li className='solu-service-conter-botton-box'>
                   <img src={require('../../../../../assets/img/solution/traffic/jt5.png')} alt="" />
                   <h2><FormattedMessage id='app.website.jjtraffic.service3.bottomli2h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #E5DB4C' }} />
@@ -103,7 +103,7 @@ export default class Traffic extends Component {
                     <FormattedMessage id='app.website.jjtraffic.service3.bottomli2p' />
                   </p>
                 </li>
-                <li className='service-conter-botton-box'>
+                <li className='solu-service-conter-botton-box'>
                   <img src={require('../../../../../assets/img/solution/traffic/jt6.png')} alt="" />
                   <h2><FormattedMessage id='app.website.jjtraffic.service3.bottomli3h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #009944' }} />
@@ -111,7 +111,7 @@ export default class Traffic extends Component {
                     <FormattedMessage id='app.website.jjtraffic.service3.bottomli3p' />
                   </p>
                 </li>
-                <li className='service-conter-botton-box'>
+                <li className='solu-service-conter-botton-box'>
                   <img src={require('../../../../../assets/img/solution/traffic/jt7.png')} alt="" />
                   <h2><FormattedMessage id='app.website.jjtraffic.service3.bottomli4h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #AE5DA1' }} />

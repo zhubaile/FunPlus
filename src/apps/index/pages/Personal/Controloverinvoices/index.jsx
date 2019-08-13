@@ -1,7 +1,7 @@
 /* eslint  react/no-string-refs: 0 */
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Input, Radio, Select , Grid, Form ,Button,Pagination,Table, Message } from '@alifd/next';
+import { Input, Radio, Select , Grid, Form ,Button,Pagination,Table, Message,Tab } from '@alifd/next';
 import Customerservice from "../components/Customerservice";
 import { withRouter, Link } from 'react-router-dom';
 import { invoiceList,invoiceDelete,InvoiceOperation } from '@indexApi';
@@ -187,100 +187,98 @@ class Controloverinvoices extends Component {
     } = this.props;
     const { isLoading, datas, current,total,pageSize, MailAddress, InvoiceInfo, TotalAmount, ConsumptionAmount } = this.state;
     return (
-      <div>
+      <div className="controloverinvoices">
         <Applyticket ref={ node => this.Applyticket = node } fetchData={this.fetchData.bind(this)} />
-        <div className='personal-top'>
-          <span>发票管理</span>
-          <div className='personal-top-border' />
-        </div>
-        <div className="controloverinvoices">
-          <div className='controloverinvoices-top'>
+        <Tab>
+          <Tab.Item shape='pure' title='发票管理'>
 
-            <div className='controloverinvoices-top-onecontent'>
-              <div>
-                <img src={require('../../../../../assets/img/houtai/personal/008.png')} alt="" />
-                <div>
-                  <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>可开票金额</p>
-                  <strong>{TotalAmount}元</strong>
-                </div>
-              </div>
-              {/* <p style={{ fontSize: '16px' }}>可用于支付待申请服务费用等</p> */}
-              <span>
+              <div className='controloverinvoices-top'>
+
+                <div className='controloverinvoices-top-onecontent'>
+                  <div>
+                    <img src={require('../../../../../assets/img/houtai/personal/008.png')} alt="" />
+                    <div>
+                      <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>可开票金额</p>
+                      <strong>{TotalAmount}元</strong>
+                    </div>
+                  </div>
+                  {/* <p style={{ fontSize: '16px' }}>可用于支付待申请服务费用等</p> */}
+                  <span>
                 <p>已经开票金额</p>
                 <p>{ConsumptionAmount}元</p>
               </span>
 
-              <Button type='primary' style={{ borderRadius: '5px' }}><Link to='/admin/personal/applyforaticket' style={{ color: '#fff' }}>申请开票</Link></Button>
-            </div>
-            <div className='controloverinvoices-top-twocontent'>
-              <div>
-                {/*    <img src={require('../../../../../assets/img/houtai/personal/009.png')} alt="" /> */}
-                <div className='controloverinvoices-topright-content'>
-                  <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' }}>开票信息</p>
+                  <Button type='primary' style={{ borderRadius: '5px' }}><Link to='/admin/personal/applyforaticket' style={{ color: '#fff' }}>申请开票</Link></Button>
+                </div>
+                <div className='controloverinvoices-top-twocontent'>
                   <div>
-                    {
-                      !InvoiceInfo ? (
-                        <span className='topright-inner'>
+                    {/*    <img src={require('../../../../../assets/img/houtai/personal/009.png')} alt="" /> */}
+                    <div className='controloverinvoices-topright-content'>
+                      <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' }}>开票信息</p>
+                      <div>
+                        {
+                          !InvoiceInfo ? (
+                            <span className='topright-inner'>
                           <p>公司名称：</p>
                           <p>开户行：</p>
                           <p>开户账号：</p>
                           <p>税号：</p>
                         </span>
-                      ) : (
-                        <span className='topright-inner'>
+                          ) : (
+                            <span className='topright-inner'>
                           <p>公司名称：{InvoiceInfo.company}</p>
                           <p>开户行：{InvoiceInfo.bank}</p>
                           <p>开户账号：{InvoiceInfo.userId}</p>
                           <p>税号：{InvoiceInfo.taxNumber}</p>
                         </span>
-                      )
-                    }
-                    {
-                      !MailAddress ? (
-                        <span className='topright-inner'>
+                          )
+                        }
+                        {
+                          !MailAddress ? (
+                            <span className='topright-inner'>
                           <p>收件联系人：</p>
                           <p>地址：</p>
                           <p>联系方式：</p>
                         </span>
-                      ) : (
-                        <span className='topright-inner'>
+                          ) : (
+                            <span className='topright-inner'>
                           <p>收件联系人：{MailAddress.name}</p>
                           <p>地址：{MailAddress.mailAddress}</p>
                           <p>联系方式：{MailAddress.phone}</p>
                         </span>
-                      )
-                    }
+                          )
+                        }
+                      </div>
+
+                    </div>
                   </div>
+
 
                 </div>
               </div>
-
-
-            </div>
-          </div>
-          <div className='controloverinvoices-bottom'>
-            <Table loading={isLoading} dataSource={datas} hasBorder={false}>
-              <Table.Column title="发票ID" dataIndex="invoiceNo" />
-              <Table.Column title="申请日期" dataIndex="createdAt" cell={this.datatime} />
-              <Table.Column title="发票抬头" dataIndex="invoiceTitle" />
-              <Table.Column title="发票类型" dataIndex="invoiceTypeName" />
-              <Table.Column title="开票金额" dataIndex="fee" />
-              {/* <Table.Column title="订单号" dataIndex="_id" /> */}
-              <Table.Column title="发票状态" dataIndex="invoiceStatusName" />
-              <Table.Column
-                title="操作"
-                dataIndex="operation"
-                cell={this.renderOper}
-              />
-            </Table>
-            <Pagination
-              style={{ marginTop: '20px', textAlign: 'right' }}
-              current={current}
-              onChange={this.handlePaginationChange}
-              pageSize={pageSize} // 界面展示多少条数据
-              total={total} // 一共多少条数据
-            />
-            {/*            <h2>笔记：</h2>
+              <div className='controloverinvoices-bottom'>
+                <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+                  <Table.Column title="发票ID" dataIndex="invoiceNo" />
+                  <Table.Column title="申请日期" dataIndex="createdAt" cell={this.datatime} />
+                  <Table.Column title="发票抬头" dataIndex="invoiceTitle" />
+                  <Table.Column title="发票类型" dataIndex="invoiceTypeName" />
+                  <Table.Column title="开票金额" dataIndex="fee" />
+                  {/* <Table.Column title="订单号" dataIndex="_id" /> */}
+                  <Table.Column title="发票状态" dataIndex="invoiceStatusName" />
+                  <Table.Column
+                    title="操作"
+                    dataIndex="operation"
+                    cell={this.renderOper}
+                  />
+                </Table>
+                <Pagination
+                  style={{ marginTop: '20px', textAlign: 'right' }}
+                  current={current}
+                  onChange={this.handlePaginationChange}
+                  pageSize={pageSize} // 界面展示多少条数据
+                  total={total} // 一共多少条数据
+                />
+                {/*            <h2>笔记：</h2>
             <div className='controloverinvoices-bottom-left'>
               <p>所有账户将在收到发票7天内支付。通过支票或信用卡支付或在线直接支付</p>
               <p>如果在7天内未支付账户。则作为确认工作提供的详细信息将按上述商定的报价收取</p>
@@ -289,9 +287,11 @@ class Controloverinvoices extends Component {
               <p>小计： <strong>￥4142.00</strong></p>
               <p>增值税（12.5）：<strong>￥515.00</strong></p>
             </div> */}
-          </div>
-          <Customerservice />
-        </div>
+              </div>
+              <Customerservice />
+          </Tab.Item>
+        </Tab>
+
       </div>
     );
   }

@@ -18,13 +18,17 @@ export default class Ceshi extends Component {
       <div className='shouye'>
         <Consultation />
         {/* 导航下面的展示内容 */}
-        <div className='nav-belowimg' style={{ backgroundImage: `url(${require("../../../../assets/img/shouye/bg1.png")})` }}>
+        <div className='nav-belowimg'>
+          <div className="circle1" />
+          <div className="circle2" />
+          <div className="circle3" />
+          <div className="circle4" />
           <div className='nav-belowimg-conter'>
             <div className='nav-belowimg-conter-left'>
               <h1>3FunPlus/<FormattedMessage id='app.website.shouye.toph1' /></h1>
               <h3><FormattedMessage id='app.website.shouye.toph3' /></h3>
               <p><FormattedMessage id='app.website.shouye.topp' /></p>
-              <Button style={{ borderRadius: '20px' , color: '#00a292', marginTop: '50px', width: '150px', height: '43px' }}><FormattedMessage id='app.website.shouye.topButton' /></Button>
+              <Button style={{ borderRadius: '8px' , color: '#00A2F6FF', marginTop: '50px', width: '150px', height: '43px', fontSize: '20px', fontWeight: 400 }}><FormattedMessage id='app.website.shouye.topButton' /></Button>
             </div>
             <div className='nav-belowimg-conter-right'>
               <img
@@ -33,7 +37,11 @@ export default class Ceshi extends Component {
             </div>
           </div>
         </div>
+
         {/* 依托的内容 */}
+        <div className="asd">
+          <div className="bgbox" />
+        </div>
         <div className='rely'>
           <div className='rely-conter'>
             <div className='rely-conter-left'>
@@ -42,15 +50,15 @@ export default class Ceshi extends Component {
             </div>
             <div className='rely-conter-right'>
               <img
-                style={{ width: '55%', heght: '55%' }}
+                style={{ width: '55%', height: '55%' }}
                 src={require('../../../../assets/img/shouye/pic01.png')}
               />
-              <p style={{ fontSize: '16px' }}>依托蓝牙和NFC技术 支持多种移动硬件</p>
+              <p className="p"><FormattedMessage id='app.website.shouye.rely1p2' /></p>
             </div>
           </div>
         </div>
         {/* 产品服务 */}
-        <div className='service'>
+        <div className='services'>
           <div className='service-conter'>
             <div className='service-conter-top'>
               <div>
@@ -63,28 +71,28 @@ export default class Ceshi extends Component {
             <div className='service-conter-botton'>
               <ul>
                 <li className='service-conter-botton-box'>
-                  <img src={require('../../../../assets/img/shouye/sy04.png')} alt="" />
+                  <img src={require('../../../../assets/img/shouye/sq.png')} alt="" />
                   <h2><FormattedMessage id='app.website.shouye.servicebottom.box1h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #EB6100' }} />
                   <p><FormattedMessage id='app.website.shouye.servicebottom.box1p' />
                   </p>
                 </li>
                 <li className='service-conter-botton-box'>
-                  <img src={require('../../../../assets/img/shouye/sy05.png')} alt="" />
+                  <img src={require('../../../../assets/img/shouye/sh.png')} alt="" />
                   <h2><FormattedMessage id='app.website.shouye.servicebottom.box2h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #E5DB4C' }} />
                   <p><FormattedMessage id='app.website.shouye.servicebottom.box2p' />
                   </p>
                 </li>
                 <li className='service-conter-botton-box'>
-                  <img src={require('../../../../assets/img/shouye/sy06.png')} alt="" />
+                  <img src={require('../../../../assets/img/shouye/cw.png')} alt="" />
                   <h2><FormattedMessage id='app.website.shouye.servicebottom.box3h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #009944' }} />
                   <p><FormattedMessage id='app.website.shouye.servicebottom.box3p' />
                   </p>
                 </li>
                 <li className='service-conter-botton-box'>
-                  <img src={require('../../../../assets/img/shouye/sy07.png')} alt="" />
+                  <img src={require('../../../../assets/img/shouye/ewm.png')} alt="" />
                   <h2><FormattedMessage id='app.website.shouye.servicebottom.box4h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #AE5DA1' }} />
                   <p><FormattedMessage id='app.website.shouye.servicebottom.box4p' />
@@ -95,25 +103,33 @@ export default class Ceshi extends Component {
           </div>
         </div>
         {/*  */}
-        <div className='rely'>
-          <div className='rely-conter'>
-            <div className='rely-conter-left'>
-              <img
-                src={require('../../../../assets/img/shouye/sy09.png')}
-                style={{ width: '80%' }}
-              />
+        <div className='relys'>
+          <div className='relys-conter'>
+            <div className='relys-conter-left'>
+              <div className="bgpic">
+                <dl>
+                  <dt><FormattedMessage id='app.website.shouye.rely2h1' /></dt>
+                  <dd><FormattedMessage id='app.website.shouye.rely2h2' /></dd>
+                </dl>
+              </div>
             </div>
             <div className='rely-conter-right'>
-              <p style={{ width: '50%' }}><FormattedMessage id='app.website.shouye.rely2p' /></p>
-              <img className='myimg' src={require('@img/shouye/sy08.png')} />
+              <div style={{ width: '60%' }}>
+                <p><FormattedMessage id='app.website.shouye.rely2p' /></p>
+                <img className='myimg' src={require('@img/shouye/sy08.png')} />
+              </div>
+
             </div>
           </div>
         </div>
         {/*  */}
+        <div className="asda">
+          <div className="bgboxa" />
+        </div>
         <div className='rely'>
           <div className='rely-conter-special'>
             <div className='rely-conter-left-special'>
-              <h1>平滑</h1>
+              <h1><FormattedMessage id='app.website.shouye.rely3h1' /></h1>
               <h2 style={{ textIndent: '2em' }}><FormattedMessage id='app.website.shouye.rely3h2' /></h2>
               <p style={{ marginTop: '20px' }}><FormattedMessage id='app.website.shouye.rely3p' />
               </p>
@@ -131,18 +147,15 @@ export default class Ceshi extends Component {
           <div className='son-conter'>
             <div className='son-conter-left' style={{ position: 'relative' }}>
 
-              <div style={{ width: '4px', height: '100%', background: 'rgba(109,166,252,1)', position: 'absolute', left: '30%', borderRadius: '2px' }} />
+              <div style={{ width: '4px', height: '650px', background: 'rgba(109,166,252,1)', position: 'absolute', left: '30%', borderRadius: '2px' }} />
               <div style={{ width: '100%', height: '4px', background: 'rgba(109,166,252,1)', borderRadius: '2px' }} />
-              <img
-                style={{ backgroundSize: '100% 100%', width: '100%' }}
-                src={require('../../../../assets/img/shouye/pic02.png')}
-              />
-
-              {/*              <img
-                style={{ backgroundSize: '100% 100%', width: '100%' }}
-                src={require('../../../../assets/img/shouye/pic2.png')}
-              /> */}
-{/*               <p style={styles.promptMessage}>提供便捷、稳定和安全的技术服务</p>*/}
+              <div style={{ textAlign: 'center', paddingRight: '20%' }}>
+                <img
+                  style={{ width: '100%' }}
+                  src={require('../../../../assets/img/shouye/pic02.png')}
+                />
+                <p className="sonp"><FormattedMessage id='app.website.shouye.sonp1' /></p>
+              </div>
             </div>
             <div className='son-conter-right'>
               <div>
@@ -159,7 +172,7 @@ export default class Ceshi extends Component {
             <div className='rely-conter-left'>
               <img
                 src={require('../../../../assets/img/shouye/sy08.png')}
-                style={{ width: '80%' }}
+
               />
             </div>
             <div className='rely-conter-right'>
@@ -172,7 +185,7 @@ export default class Ceshi extends Component {
           </div>
         </div>
         {/*  */}
-        <div className='rely'>
+        <div className='relys'>
           <div className='rely-conter'>
             <div className='rely-conter-left'>
               <h1><FormattedMessage id='app.website.shouye.rely5h1' /></h1>
@@ -181,7 +194,6 @@ export default class Ceshi extends Component {
             </div>
             <div className='rely-conter-right'>
               <img
-                style={{ width: '100%' }}
                 src={require('../../../../assets/img/shouye/sy03.png')}
               />
             </div>

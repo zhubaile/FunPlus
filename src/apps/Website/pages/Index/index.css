@@ -29,7 +29,6 @@ img{ background-size: 100% 100%;}
 .service-conter-botton-box{float: left;width: 22%;height: 290px;margin-left: 2%;display: flex;flex-direction: column;align-items: center; justify-content: center;border: 2px solid #000;}
 .service-conter-botton-box>p{ display: block; width: 65%; text-align: center;}
 
-
 /*  */
 .son{ width: 100%; display: flex; justify-content: center;}
 .son .son-conter{  display: flex;width: 100%; color: #fff}
@@ -42,3 +41,4 @@ img{ background-size: 100% 100%;}
 /*  */
 .footer{ width: 100%; display: flex; justify-content: center; color: #fff; background-size: 100% 100%;}
 .footer-conter-left{ width: 80%; float: left; margin-top: 150px; margin-bottom: 150px; }
+

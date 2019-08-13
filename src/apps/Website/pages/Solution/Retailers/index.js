@@ -58,8 +58,8 @@ export default class Retailers extends Component {
                 <p className='text'>-problem to be solved-</p>
               </div>
             </div>
-            <div className='service-conter-botton'>
-              <img src={require('../../../../../assets/img/solution/retailers/ds2.png')} style={{ width: '100%' }} alt="" />
+            <div className='service-conter-bottons'>
+              <img src={require('../../../../../assets/img/solution/retailers/ds2.png')} alt="" />
               <p><FormattedMessage id='app.website.jjretailers.service2.bottomp1' /></p>
               <p><FormattedMessage id='app.website.jjretailers.service2.bottomp2' /></p>
             </div>
@@ -74,21 +74,21 @@ export default class Retailers extends Component {
               </div>
             </div>
             <div className='scene-conter-xxl'>
-              <img src={require('../../../../../assets/img/solution/retailers/fn-ds.png')} style={{ width: '100%' }} alt="" />
+              <img src={require('../../../../../assets/img/solution/retailers/fn-ds.png')} alt="" />
             </div>
           </div>
         </div>
         {/*  */}
-        <div className='service'>
-          <div className='service-conter'>
-            <div className='service-conter-top'>
+        <div className='solu-services'>
+          <div className='solu-service-conter'>
+            <div className='solu-service-conter-top'>
               <div>
-                <h1><FormattedMessage id='app.website.jjretailers.service3.h1' /></h1>
+                <h1><FormattedMessage id='app.website.jjretailers.service3.toph1' /></h1>
               </div>
             </div>
-            <div className='service-conter-botton'>
+            <div className='solu-service-conter-botton'>
               <ul>
-                <li className='service-conter-botton-box'>
+                <li className='solu-service-conter-botton-box'>
                   <img src={require('../../../../../assets/img/solution/retailers/ds4.png')} alt="" />
                   <h2><FormattedMessage id='app.website.jjretailers.service3.bottomli1h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #EB6100' }} />
@@ -96,7 +96,7 @@ export default class Retailers extends Component {
                     <FormattedMessage id='app.website.jjretailers.service3.bottomli1p' />
                   </p>
                 </li>
-                <li className='service-conter-botton-box'>
+                <li className='solu-service-conter-botton-box'>
                   <img src={require('../../../../../assets/img/solution/retailers/ds5.png')} alt="" />
                   <h2><FormattedMessage id='app.website.jjretailers.service3.bottomli2h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #E5DB4C' }} />
@@ -104,14 +104,14 @@ export default class Retailers extends Component {
                     <FormattedMessage id='app.website.jjretailers.service3.bottomli2p' />
                   </p>
                 </li>
-                <li className='service-conter-botton-box'>
+                <li className='solu-service-conter-botton-box'>
                   <img src={require('../../../../../assets/img/solution/retailers/ds6.png')} alt="" />
                   <h2><FormattedMessage id='app.website.jjretailers.service3.bottomli3h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #009944' }} />
                   <p>  <FormattedMessage id='app.website.jjretailers.service3.bottomli3p' />
                   </p>
                 </li>
-                <li className='service-conter-botton-box'>
+                <li className='solu-service-conter-botton-box'>
                   <img src={require('../../../../../assets/img/solution/retailers/ds7.png')} alt="" />
                   <h2><FormattedMessage id='app.website.jjretailers.service3.bottomli4h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #AE5DA1' }} />

@@ -208,7 +208,7 @@ export default class Border extends Component {
             </div>
           </div>
         </div>
-        <div className='service'>
+        <div className='services'>
           <div className='service-conter'>
             <div className='service-conter-top'>
               <div>

@@ -120,96 +120,94 @@ class Costcenter extends Component {
     });
   }
   render() {
-    const { isLoading, datas, current,pageSize ,total,datass,balance,Deduction  } = this.state;
+    const { isLoading, datas, current,pageSize ,total,datass,balance,Deduction } = this.state;
     const {
       intl: { formatMessage },
     } = this.props;
     const startValue = moment('2019-05-08', 'YYYY-MM-DD', true);
     const endValue = moment('2017-12-15', 'YYYY-MM-DD', true);
     return (
-      <div>
+      <div className="costcenter">
         <Recharges ref={ node => this.Recharges = node } />
-        <div className='personal-top'>
-          <span>费用中心</span>
-          <div className='personal-top-border' />
-        </div>
-        <div className="costcenter">
-          {/* <div className='costcenter-top'>
+        <Tab>
+          <Tab.Item shape='pure' title='费用中心'>
+            {/* <div className='costcenter-top'>
             <span>时间：</span>
             <RangePicker showTime resetTime defaultValue={[startValue,endValue]} />
             <span className='twospan'>总金额：<strong>￥0.00</strong></span>
           </div> */}
-          <div className='costcenter-conter'>
-            <div className='costcenter-conter-onecentent'>
-              <div>
-                <img src={require('@img/houtai/personal/008.png')} alt="" />
+            <div className='costcenter-conter'>
+              <div className='costcenter-conter-onecentent'>
                 <div>
-                  <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>账户余额</p>
-                  <strong>{balance}元</strong>
+                  <img src={require('@img/houtai/personal/008.png')} alt="" />
+                  <div>
+                    <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>账户余额</p>
+                    <strong>{balance}元</strong>
+                  </div>
                 </div>
+                <p style={{ fontSize: '16px' }}>可用于支付待申请服务费用等</p>
+                <Button type='primary' style={styles.btnRadius} onClick={this.balancerecharge.bind(this)}>点击充值</Button>
               </div>
-              <p style={{ fontSize: '16px' }}>可用于支付待申请服务费用等</p>
-              <Button type='primary' style={styles.btnRadius} onClick={this.balancerecharge.bind(this)}>点击充值</Button>
-            </div>
-            <div className='costcenter-conter-twocentent'>
-              <div>
-                <img src={require('@img/houtai/personal/009.png')} alt="" />
+              <div className='costcenter-conter-twocentent'>
                 <div>
-                  <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>累计扣费</p>
-                  <strong>{Deduction}元</strong>
+                  <img src={require('@img/houtai/personal/009.png')} alt="" />
+                  <div>
+                    <p style={{ fontSize: '14px' ,color: 'rgba(34, 90, 225, 0.9)' , marginLeft: '20px' }}>累计扣费</p>
+                    <strong>{Deduction}元</strong>
+                  </div>
                 </div>
+                <p style={{ fontSize: '16px' }}>默认显示所有消费总额</p>
+                <Button type='primary' style={styles.btnRadius} onClick={this.detailsdeduction.bind(this)}>查询明细</Button>
               </div>
-              <p style={{ fontSize: '16px' }}>默认显示所有消费总额</p>
-              <Button type='primary' style={styles.btnRadius} onClick={this.detailsdeduction.bind(this)}>查询明细</Button>
             </div>
-          </div>
-          <div className='costcenter-bottom'>
-            {/* <span style={{ fontSize: '20px', color: '#6C757D' }}>消费记录</span>
+            <div className='costcenter-bottom'>
+              {/* <span style={{ fontSize: '20px', color: '#6C757D' }}>消费记录</span>
             <Input hasClear placeholder='输入订单号' aria-label="please input" ref={node=>this.applicationID = node} style={{ marginLeft: '100px', width: '300px' }} />
             <Button className='bg' size="large" type="primary">查询</Button> */}
-            <Tab shape='pure' className='costcenter-bottom-tab'>
-              <Tab.Item title="充值记录">
-                <Table loading={isLoading} dataSource={datas} hasBorder={false}>
-                  <Table.Column title="订单号" dataIndex="orderNumber" />
-                  <Table.Column title="交易时间" dataIndex="createdAt" cell={this.datatime} />
-                  <Table.Column title="金额" dataIndex="totalFee" />
-                  <Table.Column
-                    title="支付状态"
-                    dataIndex="rechargeStatus"
+              <Tab shape='pure' className=''>
+                <Tab.Item title="充值记录">
+                  <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+                    <Table.Column title="订单号" dataIndex="orderNumber" />
+                    <Table.Column title="交易时间" dataIndex="createdAt" cell={this.datatime} />
+                    <Table.Column title="金额" dataIndex="totalFee" />
+                    <Table.Column
+                      title="支付状态"
+                      dataIndex="rechargeStatus"
+                    />
+                    <Table.Column title="支付渠道" dataIndex="payChannel" />
+                  </Table>
+                  <Pagination
+                    style={{ marginTop: '20px', textAlign: 'right' }}
+                    current={current}
+                    onChange={this.handlePaginationChange}
+                    pageSize={pageSize} // 界面展示多少条数据
+                    total={total} // 一共多少条数据
                   />
-                  <Table.Column title="支付渠道" dataIndex="payChannel" />
-                </Table>
-                <Pagination
-                  style={{ marginTop: '20px', textAlign: 'right' }}
-                  current={current}
-                  onChange={this.handlePaginationChange}
-                  pageSize={pageSize} // 界面展示多少条数据
-                  total={total} // 一共多少条数据
-                />
-              </Tab.Item>
-              <Tab.Item title="扣费记录" onClick={this.deductionbtn.bind(this)}>
-                <Table loading={isLoading} dataSource={datass} hasBorder={false}>
-                  <Table.Column title="订单号" dataIndex="orderNo" />
-                  <Table.Column title="交易时间" dataIndex="createdAt" />
-                  <Table.Column title="金额" dataIndex="deductionFee" />
-                  {/* <Table.Column
+                </Tab.Item>
+                <Tab.Item title="扣费记录" onClick={this.deductionbtn.bind(this)}>
+                  <Table loading={isLoading} dataSource={datass} hasBorder={false}>
+                    <Table.Column title="订单号" dataIndex="orderNo" />
+                    <Table.Column title="交易时间" dataIndex="createdAt" />
+                    <Table.Column title="金额" dataIndex="deductionFee" />
+                    {/* <Table.Column
                     title="支付状态"
                     dataIndex="orderStatusName"
                   /> */}
-                  <Table.Column title="支付渠道" dataIndex="channelName" />
-                </Table>
-                <Pagination
-                  style={{ marginTop: '20px', textAlign: 'right' }}
-                  current={current}
-                  onChange={this.handlePaginationChange}
-                  pageSize={pageSize} // 界面展示多少条数据
-                  total={total} // 一共多少条数据
-                />
-              </Tab.Item>
-            </Tab>
-          </div>
-          <Customerservice />
-        </div>
+                    <Table.Column title="支付渠道" dataIndex="channelName" />
+                  </Table>
+                  <Pagination
+                    style={{ marginTop: '20px', textAlign: 'right' }}
+                    current={current}
+                    onChange={this.handlePaginationChange}
+                    pageSize={pageSize} // 界面展示多少条数据
+                    total={total}
+                  />
+                </Tab.Item>
+              </Tab>
+            </div>
+            <Customerservice />
+          </Tab.Item>
+        </Tab>
       </div>
     );
   }

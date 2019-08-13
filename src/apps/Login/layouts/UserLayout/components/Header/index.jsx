@@ -32,7 +32,7 @@ const styles = {
     display: 'flex',
     width: '100%',
     height: '60px',
-    background: '#e5d2fe'
+    background: '#e5d2fe',
   },
   left: {
     display: 'flex',

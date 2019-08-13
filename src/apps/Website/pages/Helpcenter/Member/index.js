@@ -126,8 +126,13 @@ export default class Member extends Component {
         {/* 电商 */}
         <div className='helpmember-imgleft'>
           <div className='helpmember-imgleft-left'>
-            <h2><FormattedMessage id='app.website.helpmember.imgleftleft' /></h2>
-            <img src={require('../../../../../assets/img/helpcenter/multistage/dj1.png')} style={{ width: '300px', height: '300px' }} alt="" />
+            <div className="bgpic-lefta">
+              <dl>
+                <dt><FormattedMessage id='app.website.helpmember.imgleftleft' /></dt>
+                <dd><FormattedMessage id='app.website.helpmember.imgleftleftlh' /></dd>
+              </dl>
+            </div>
+{/*            <img src={require('../../../../../assets/img/helpcenter/multistage/dj1.png')} style={{ width: '300px', height: '300px' }} alt="" />*/}
           </div>
           <div className='helpmember-imgleft-right'>
             <FormattedMessage id='app.website.helpmember.imgleftright' />
@@ -138,8 +143,13 @@ export default class Member extends Component {
             <FormattedMessage id='app.website.helpmember.imgrightleft' />
           </div>
           <div className='helpmember-imgright-right'>
-            <h2><FormattedMessage id='app.website.helpmember.imgrightright' /></h2>
-            <img src={require('../../../../../assets/img/helpcenter/multistage/dj2.png')} style={{ width: '300px', height: '300px' }} alt="" />
+            <div className="bgpic-righta">
+              <dl>
+                <dt><FormattedMessage id='app.website.helpmember.imgrightright' /></dt>
+                <dd><FormattedMessage id='app.website.helpmember.imgrightrightxz' /></dd>
+              </dl>
+            </div>
+{/*            <img src={require('../../../../../assets/img/helpcenter/multistage/dj2.png')} style={{ width: '300px', height: '300px' }} alt="" />*/}
           </div>
         </div>
 

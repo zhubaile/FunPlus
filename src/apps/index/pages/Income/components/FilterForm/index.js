@@ -17,7 +17,7 @@ export default class FilterForm extends Component {
     super(props);
     this.state = {
       value: {
-        timeType: 'createAt',
+        timeType: 'createdAt',
         startdate: [],
         orderStatus: '',
         payChannel: '',

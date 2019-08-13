@@ -114,7 +114,7 @@ export default class Membermanagement extends Component {
     return (
       <div className='tb_span'>
         <span>编辑</span>
-        <span>展开</span>
+{/*        <span>展开</span>*/}
       </div>
     );
   };
@@ -248,11 +248,17 @@ export default class Membermanagement extends Component {
                       >
                         <Input style={styles.formInput} />
                       </FormBinder>
-                      <span style={styles.formLabel}>角色名称:</span>
+                      <span style={styles.formLabel}>企业名称:</span>
                       <FormBinder name="name"
                         autoWidth={false}
                       >
                         <Input style={styles.formInput} />
+                      </FormBinder>
+                      <span style={styles.formLabel}>角色名称:</span>
+                      <FormBinder name="role"
+                                  autoWidth={false}
+                      >
+                        <Select style={styles.formInput} />
                       </FormBinder>
                       <Button className='btn-all bg' size="large" type="primary">搜索</Button>
                       <Button className='btn-all bg' size="large" type="secondary" onClick={this.addmemberBtnOpen.bind(this)}>添加成员</Button>

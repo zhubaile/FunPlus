@@ -192,14 +192,14 @@ export default class Devicemanagement extends Component {
       <ul className="event-list">
         {
           grouplistdata.map((item,key)=>{
-              return (
-                <li key={key}>
-                  <p>{item.dGroupName}</p>
-                  <button onClick={()=>this.deviceopen(item._id)}>添加设备</button>
-                </li>
-              );
-            })
-          }
+            return (
+              <li key={key}>
+                <p>{item.dGroupName}</p>
+                <button onClick={()=>this.deviceopen(item._id)}>添加设备</button>
+              </li>
+            );
+          })
+        }
       </ul>
     );
     return (
@@ -208,8 +208,6 @@ export default class Devicemanagement extends Component {
         <Official ref={(node=>this.Official = node)} fetchData={this.fetchData.bind(this)} />
         <Custom ref={(node=>this.Custom = node)} />
         <div className='devicemanagement-top'>
-          设备列表
-          <div className='devicemanagement-top-bottombor' />
           <div className='devicemanagement-top-btn'>
             <button onClick={this.grouplist.bind(this)}>分组列表</button>
             <button onClick={this.groupingopen.bind(this)}>+添加分组</button>
@@ -219,41 +217,46 @@ export default class Devicemanagement extends Component {
             </div>
           </div>
         </div>
-        <div className='devicemanagement-main'>
-          <div className='devicemanagement-main-top'>
-            {/* <button onClick={this.deviceopen.bind(this)}>添加设备</button> */}
-            <Message type="notice">
-              本组对应渠道：支付宝扫码渠道
-            </Message>
-          </div>
-          <div className='devicemanagement-main-content'>
-            <Table loading={isLoading} dataSource={datas} hasBorder={false}>
-              <Table.Column title="创建时间" dataIndex="createdAt" cell={this.createdAt} />
-              <Table.Column title="设备分组" dataIndex="dGroupName" />
-              <Table.Column title="设备名称" dataIndex="dName" />
-              <Table.Column title="设备ID" dataIndex="_id" />
-              <Table.Column title="今日流水/笔" dataIndex="todayFlow" />
-              <Table.Column title="昨日流水/笔" dataIndex="yeTodayFlow" />
-              <Table.Column title="累计流水/笔" dataIndex="totalFlow" />
-              {/* cell={this.renderRule}  */}
-              <Table.Column title={copybtn} dataIndex="2" />
-              <Table.Column title="类型" dataIndex="classify" />
-              <Table.Column
-                title="操作"
-                width={200}
-                dataIndex="oper"
-                cell={this.renderOper}
-              />
-            </Table>
-            <Pagination
-              style={{ marginTop: '20px', textAlign: 'right' }}
-              current={current}
-              onChange={this.handlePaginationChange}
-              pageSize={pageSize} // 界面展示多少条数据
-              total={total} // 一共多少条数据
-            />
-          </div>
-        </div>
+        <Tab>
+          <Tab.Item shape='pure' title='设备列表'>
+
+            <div className='devicemanagement-main'>
+              <div className='devicemanagement-main-top'>
+                {/* <button onClick={this.deviceopen.bind(this)}>添加设备</button> */}
+                <Message type="notice">
+                  本组对应渠道：支付宝扫码渠道
+                </Message>
+              </div>
+              <div className='devicemanagement-main-content'>
+                <Table loading={isLoading} dataSource={datas} hasBorder={false}>
+                  <Table.Column title="创建时间" dataIndex="createdAt" cell={this.createdAt} />
+                  <Table.Column title="设备分组" dataIndex="dGroupName" />
+                  <Table.Column title="设备名称" dataIndex="dName" />
+                  <Table.Column title="设备ID" dataIndex="_id" />
+                  <Table.Column title="今日流水/笔" dataIndex="todayFlow" />
+                  <Table.Column title="昨日流水/笔" dataIndex="yeTodayFlow" />
+                  <Table.Column title="累计流水/笔" dataIndex="totalFlow" />
+                  {/* cell={this.renderRule}  */}
+                  <Table.Column title={copybtn} dataIndex="2" />
+                  <Table.Column title="类型" dataIndex="classify" />
+                  <Table.Column
+                    title="操作"
+                    width={200}
+                    dataIndex="oper"
+                    cell={this.renderOper}
+                  />
+                </Table>
+                <Pagination
+                  style={{ marginTop: '20px', textAlign: 'right' }}
+                  current={current}
+                  onChange={this.handlePaginationChange}
+                  pageSize={pageSize} // 界面展示多少条数据
+                  total={total} // 一共多少条数据
+                />
+              </div>
+            </div>
+          </Tab.Item>
+        </Tab>
       </div>
     );
   }

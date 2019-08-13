@@ -7,6 +7,7 @@ export default {
 
   'app.website.shouye.rely1h1': '依托',
   'app.website.shouye.rely1p': '蓝牙、NFC及二维码等多种连接方式，商户可通过我们自有移动应用程序及移动POS配件在智能手机上完成支付交易。',
+  'app.website.shouye.rely1p2': '依托蓝牙和NFC技术 支持多种移动硬件',
 
   'app.website.shouye.servicetop.strong': '产',
   'app.website.shouye.servicetop.strongsize': '品与服务',
@@ -19,11 +20,15 @@ export default {
   'app.website.shouye.servicebottom.box4h2': '二维码支付',
   'app.website.shouye.servicebottom.box4p': '专业收款工具线下商户经营必备',
 
+  'app.website.shouye.rely2h1': '统一',
+  'app.website.shouye.rely2h2': '没有差异',
   'app.website.shouye.rely2p': '金融科技创新支付产品，通过统一支付SDK封装终端、渠道、币种和语言差异，面向商户和开发者输出强大的统一支付解决能力。',
 
+  'app.website.shouye.rely3h1': '平滑',
   'app.website.shouye.rely3h2': '连续而完整',
   'app.website.shouye.rely3p': '跨场景提供平滑、连续和完整的支付解决方案，基于pc端场景、手机端场景和O2O场景提供端到端三位一体的全流程支付体验。',
 
+  'app.website.shouye.sonp1': '提供便捷、稳定和安全的技术服务',
   'app.website.shouye.sonh1': '安全服务',
   'app.website.shouye.sonh2': '完全管善',
   'app.website.shouye.sonp': '平台提供了多项安全服务，综合了业务安全服务、基础安全服务、身份认证产品和数据风控产品。从多个维度出发，为客户的网站提供量身打造的安全解决方案，全面保障用户的网络安全。',
