@@ -12,7 +12,7 @@ export default class Develop extends Component {
       intl: { formatMessage },
     } = this.props;
     const headerh1 = formatMessage({ id: 'app.website.helpdevelop.header.h1' }) ,
-      headerp = formatMessage({ id: 'app.website.helpdevelop.header.p' }) ;
+      headerp = formatMessage({ id: 'app.website.helpdevelop.header.p' });
     this.state = {
       HHcontent: headerh1,
       HPcontent: headerp,
@@ -24,41 +24,44 @@ export default class Develop extends Component {
     } = this.props;
     return (
       <div className='helpdevelop'>
-        <HelpcenterHeader  HHcontent={this.state.HHcontent} HPcontent={this.state.HPcontent} />
+        <HelpcenterHeader HHcontent={this.state.HHcontent} HPcontent={this.state.HPcontent} />
         {/* 导航下面的展示内容 */}
         <div className='helpdevelop-main'>
-          <div className='helpdevelop-main-top'></div>
+          <div className='helpdevelop-main-top' />
           <div className='helpdevelop-main-bottom'>
             <Tab shape='wrapped' tabPosition='left'>
               <Tab.Item title={formatMessage({ id: 'app.website.chanpinadmin.tab.title1' })} key="1">
                 <div className='helpdevelop-main-bottom-tab'>
                   <ul>
                     <li>
-                     <h2><FormattedMessage id='app.website.helpdevelop.tab1.li1h2' />
-                     <strong> <FormattedMessage id='app.website.helpdevelop.tab1.li1strong' /></strong>
-                     </h2>
+                      <h2><FormattedMessage id='app.website.helpdevelop.tab1.li1h2' />
+                        <strong> <FormattedMessage id='app.website.helpdevelop.tab1.li1strong' /></strong>
+                      </h2>
                       <p><FormattedMessage id='app.website.helpdevelop.tab1.li1p' /></p>
                       <a href="javascript:;"><FormattedMessage id='app.website.helpdevelop.tab1.li1a' /></a>
                     </li>
                     <li>
                       <h2><FormattedMessage id='app.website.helpdevelop.tab1.li2h2' />
-                      <strong><FormattedMessage id='app.website.helpdevelop.tab1.li2strong' /></strong>
+                        <strong><FormattedMessage id='app.website.helpdevelop.tab1.li2strong' /></strong>
                       </h2>
                       <p><FormattedMessage id='app.website.helpdevelop.tab1.li2p1' /></p>
                       <a href="javascript:;"><FormattedMessage id='app.website.helpdevelop.tab1.li2a' /></a>
                       <p><FormattedMessage id='app.website.helpdevelop.tab1.li2p2' />
                         <br />
-                        <FormattedMessage id='app.website.helpdevelop.tab1.li2p3' /></p>
+                        <FormattedMessage id='app.website.helpdevelop.tab1.li2p3' />
+                      </p>
                     </li>
                     <li>
                       <h2> <FormattedMessage id='app.website.helpdevelop.tab1.li3h2' /><strong> <FormattedMessage id='app.website.helpdevelop.tab1.li3strong' /></strong></h2>
                       <p>
                         <span>· <FormattedMessage id='app.website.helpdevelop.tab1.li3span1' /></span>
                         <br />
-                        <FormattedMessage id='app.website.helpdevelop.tab1.li3p1' /></p>
+                        <FormattedMessage id='app.website.helpdevelop.tab1.li3p1' />
+                      </p>
                       <p><span>· <FormattedMessage id='app.website.helpdevelop.tab1.li3span2' /></span>
                         <br />
-                        <FormattedMessage id='app.website.helpdevelop.tab1.li3p2' /></p>
+                        <FormattedMessage id='app.website.helpdevelop.tab1.li3p2' />
+                      </p>
                     </li>
                     <li>
                       <h2><FormattedMessage id='app.website.helpdevelop.tab1.li4h2' /><strong><FormattedMessage id='app.website.helpdevelop.tab1.li4strong' /></strong></h2>

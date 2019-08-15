@@ -31,68 +31,65 @@ export default class Ceshi extends Component {
               <Button style={{ borderRadius: '8px' , color: '#00A2F6FF', marginTop: '50px', width: '150px', height: '43px', fontSize: '20px', fontWeight: 400 }}><FormattedMessage id='app.website.shouye.topButton' /></Button>
             </div>
             <div className='nav-belowimg-conter-right'>
-              <img
-                src={require('../../../../assets/img/shouye/s1.png')}
-              />
+              <img src={require('@img/shouye/s1.png')} alt="" />
             </div>
           </div>
         </div>
 
         {/* 依托的内容 */}
-        <div className="asd">
-          <div className="bgbox" />
+        <div className="outer_div">
+          <div className="inner_div" />
         </div>
-        <div className='rely'>
-          <div className='rely-conter'>
-            <div className='rely-conter-left'>
-              <h1><FormattedMessage id='app.website.shouye.rely1h1' /></h1>
-              <p><FormattedMessage id='app.website.shouye.rely1p' /></p>
+        <div className="relys">
+          <div className="relys_main">
+            <div className="relys_content_left">
+              <dl>
+                <dt><FormattedMessage id='app.website.shouye.rely1h1' /></dt>
+                <dd><FormattedMessage id='app.website.shouye.rely1p' /></dd>
+              </dl>
             </div>
-            <div className='rely-conter-right'>
-              <img
-                style={{ width: '55%', height: '55%' }}
-                src={require('../../../../assets/img/shouye/pic01.png')}
-              />
-              <p className="p"><FormattedMessage id='app.website.shouye.rely1p2' /></p>
+            <div className="relys_content_right">
+              <img src={require('@img/shouye/pic01.png')} alt="" />
+              <p><FormattedMessage id='app.website.shouye.rely1p2' /></p>
             </div>
           </div>
         </div>
         {/* 产品服务 */}
-        <div className='services'>
-          <div className='service-conter'>
-            <div className='service-conter-top'>
+        <div className='product'>
+          <div className='product-content'>
+            <div className='product-content-top'>
               <div>
-                <img src={require('../../../../assets/img/shouye/small.png')} style={{ width: '60px' }} alt="云" />
+                <img src={require('@img/shouye/small.png')} style={{ width: '60px' }} alt="云" />
                 <strong><FormattedMessage id='app.website.shouye.servicetop.strong' /></strong><FormattedMessage id='app.website.shouye.servicetop.strongsize' />
                 <p className='text'>-PRODUCT SERVICE-</p>
               </div>
 
             </div>
-            <div className='service-conter-botton'>
+            <div className='product-content-botton'>
               <ul>
-                <li className='service-conter-botton-box'>
-                  <img src={require('../../../../assets/img/shouye/sq.png')} alt="" />
+                <li className='product-content-botton-box'>
+                  <img src={require('@img/shouye/sq.png')} alt="" />
                   <h2><FormattedMessage id='app.website.shouye.servicebottom.box1h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #EB6100' }} />
                   <p><FormattedMessage id='app.website.shouye.servicebottom.box1p' />
                   </p>
                 </li>
-                <li className='service-conter-botton-box'>
-                  <img src={require('../../../../assets/img/shouye/sh.png')} alt="" />
+                <li className='product-content-botton-box'>
+                  <img src={require('@img/shouye/sh.png')} alt="" />
                   <h2><FormattedMessage id='app.website.shouye.servicebottom.box2h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #E5DB4C' }} />
                   <p><FormattedMessage id='app.website.shouye.servicebottom.box2p' />
                   </p>
                 </li>
-                <li className='service-conter-botton-box'>
-                  <img src={require('../../../../assets/img/shouye/cw.png')} alt="" />
+                <li className='product-content-botton-box'>
+                  <img src={require('@img/shouye/cw.png')} alt="" />
                   <h2><FormattedMessage id='app.website.shouye.servicebottom.box3h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #009944' }} />
                   <p><FormattedMessage id='app.website.shouye.servicebottom.box3p' />
                   </p>
                 </li>
-                <li className='service-conter-botton-box'>
-                  <img src={require('../../../../assets/img/shouye/ewm.png')} alt="" />
+                <li className='product-content-botton-box'>
+                  <img src={require('@img/shouye/ewm.png')} alt="" />
                   <h2><FormattedMessage id='app.website.shouye.servicebottom.box4h2' /></h2>
                   <div style={{ width: '40%', height: '1px', borderTop: '2px solid #AE5DA1' }} />
                   <p><FormattedMessage id='app.website.shouye.servicebottom.box4p' />
@@ -103,9 +100,9 @@ export default class Ceshi extends Component {
           </div>
         </div>
         {/*  */}
-        <div className='relys'>
-          <div className='relys-conter'>
-            <div className='relys-conter-left'>
+        <div className='unite'>
+          <div className='unite_main'>
+            <div className='unite_content_left'>
               <div className="bgpic">
                 <dl>
                   <dt><FormattedMessage id='app.website.shouye.rely2h1' /></dt>
@@ -113,10 +110,10 @@ export default class Ceshi extends Component {
                 </dl>
               </div>
             </div>
-            <div className='rely-conter-right'>
-              <div style={{ width: '60%' }}>
-                <p><FormattedMessage id='app.website.shouye.rely2p' /></p>
-                <img className='myimg' src={require('@img/shouye/sy08.png')} />
+            <div className='unite_content_right'>
+              <p><FormattedMessage id='app.website.shouye.rely2p' /></p>
+              <div className="img_box">
+                <img className='myimg' src={require('@img/shouye/sy08.png')} alt="" />
               </div>
 
             </div>
@@ -126,87 +123,99 @@ export default class Ceshi extends Component {
         <div className="asda">
           <div className="bgboxa" />
         </div>
-        <div className='rely'>
-          <div className='rely-conter-special'>
-            <div className='rely-conter-left-special'>
-              <h1><FormattedMessage id='app.website.shouye.rely3h1' /></h1>
-              <h2 style={{ textIndent: '2em' }}><FormattedMessage id='app.website.shouye.rely3h2' /></h2>
-              <p style={{ marginTop: '20px' }}><FormattedMessage id='app.website.shouye.rely3p' />
-              </p>
-            </div>
-            <div className='rely-conter-right-special'>
-              <img
-                src={require('../../../../assets/img/shouye/b.png')}
-                style={{ backgroundSize: '100% 100%' , width: '100%', height: '100%' }}
-              />
-            </div>
+        <div className="smooth">
+          <div className="smooth_content_left">
+            <dl>
+              <dt><FormattedMessage id='app.website.shouye.rely3h1' /></dt>
+              <dd><FormattedMessage id='app.website.shouye.rely3h2' /></dd>
+              <dt><FormattedMessage id='app.website.shouye.rely3p' /></dt>
+            </dl>
+          </div>
+          <div className="smooth_content_right">
+            <img
+              src={require('@img/shouye/b.png')}
+              style={{ backgroundSize: '100% 100%' , width: '100%', height: '100%' }}
+              alt=""
+            />
           </div>
         </div>
         {/*  */}
-        <div className='son'>
-          <div className='son-conter'>
-            <div className='son-conter-left' style={{ position: 'relative' }}>
-
-              <div style={{ width: '4px', height: '650px', background: 'rgba(109,166,252,1)', position: 'absolute', left: '30%', borderRadius: '2px' }} />
+        <div className="safe">
+          <div className="safe_content_left">
+            <div className="inner_left" style={{ position: 'relative' }}>
+              <div style={{ width: '4px', height: '100%', background: 'rgba(109,166,252,1)', position: 'absolute', left: '30%', borderRadius: '2px' }} />
               <div style={{ width: '100%', height: '4px', background: 'rgba(109,166,252,1)', borderRadius: '2px' }} />
-              <div style={{ textAlign: 'center', paddingRight: '20%' }}>
-                <img
-                  style={{ width: '100%' }}
-                  src={require('../../../../assets/img/shouye/pic02.png')}
-                />
-                <p className="sonp"><FormattedMessage id='app.website.shouye.sonp1' /></p>
-              </div>
-            </div>
-            <div className='son-conter-right'>
-              <div>
-                <h1><FormattedMessage id='app.website.shouye.sonh1' /></h1>
-                <h2><FormattedMessage id='app.website.shouye.sonh2' /></h2>
-                <p><FormattedMessage id='app.website.shouye.sonp' /></p>
+              <div style={{ height: '100%', textAlign: 'center', paddingRight: '45%', paddingTop: '15%' }}>
+                <img src={require('@img/shouye/pic02.png')} alt="" />
+                <p><FormattedMessage id='app.website.shouye.sonp1' /></p>
               </div>
             </div>
           </div>
-        </div>
-        {/*  */}
-        <div className='rely'>
-          <div className='rely-conter'>
-            <div className='rely-conter-left'>
-              <img
-                src={require('../../../../assets/img/shouye/sy08.png')}
 
-              />
+          <div className="safe_content_right">
+            <div className="inner_right">
+              <dl>
+                <dt><FormattedMessage id='app.website.shouye.sonh1' /></dt>
+                <dd><FormattedMessage id='app.website.shouye.sonh2' /></dd>
+                <dt><FormattedMessage id='app.website.shouye.sonp' /></dt>
+              </dl>
             </div>
-            <div className='rely-conter-right'>
-              <div className='rely-conter-right-box'>
-                <h1 style={{ marginLeft: '5%' }}><FormattedMessage id='app.website.shouye.rely4h1' /></h1>
-                <h2 style={{ marginLeft: '8%' }}><FormattedMessage id='app.website.shouye.rely4h2' /></h2>
-                <p style={{ width: '60%' }}><FormattedMessage id='app.website.shouye.rely4p' /></p>
-              </div>
+
+          </div>
+        </div>
+        {/*  */}
+        <div className="powerful">
+          <div className="powerful_main">
+            <div className="powerful_content_left">
+              <img src={require('@img/shouye/sy08.png')} alt="" />
+            </div>
+            <div className="powerful_content_right">
+              <dl>
+                <dt><FormattedMessage id='app.website.shouye.rely4h1' /></dt>
+                <dd><FormattedMessage id='app.website.shouye.rely4h2' /></dd>
+                <dt><FormattedMessage id='app.website.shouye.rely4p' /></dt>
+              </dl>
             </div>
           </div>
         </div>
         {/*  */}
-        <div className='relys'>
-          <div className='rely-conter'>
-            <div className='rely-conter-left'>
-              <h1><FormattedMessage id='app.website.shouye.rely5h1' /></h1>
-              <h2 style={{ textIndent: '2em' }}><FormattedMessage id='app.website.shouye.rely5h2' /></h2>
-              <p style={{ marginTop: '20px' }}><FormattedMessage id='app.website.shouye.rely5p' /></p>
+        <div className="serve">
+          <div className="serve_main">
+            <div className="serve_content_left">
+              <dl>
+                <dt><FormattedMessage id='app.website.shouye.rely5h1' /></dt>
+                <dd><FormattedMessage id='app.website.shouye.rely5h2' /></dd>
+                <dt><FormattedMessage id='app.website.shouye.rely5p' /></dt>
+              </dl>
             </div>
-            <div className='rely-conter-right'>
+            <div className="serve_content_right">
               <img
-                src={require('../../../../assets/img/shouye/sy03.png')}
+                src={require('@img/shouye/sy03.png')}
               />
             </div>
           </div>
+
         </div>
         {/*  */}
-        <div className='footer' style={{ backgroundImage: `url(${require("../../../../assets/img/shouye/bg2.png")})` }}>
-          <div className='footer-conter-left'>
-            <h1 style={{ color: '#000' }}><FormattedMessage id='app.website.shouye.footerh1' /></h1>
-            <h3 style={{ textIndent: '2em', color: '#fff' }}><FormattedMessage id='app.website.shouye.footerh3' /></h3>
-            <p style={{ marginTop: '30px' , width: '40%' }}><FormattedMessage id='app.website.shouye.footerp' /></p>
-          </div>
+        <div className="outer_box">
+          <div className="inner_box" />
         </div>
+        <div className='intelligent'>
+          <div className="intelligent_main">
+            <div className='intelligent_content_left'>
+              <dl>
+                <dt><FormattedMessage id='app.website.shouye.footerh1' /></dt>
+                <dd><FormattedMessage id='app.website.shouye.footerh3' /></dd>
+                <dt><FormattedMessage id='app.website.shouye.footerp' /></dt>
+              </dl>
+            </div>
+            <div className='intelligent_content_right'>
+              <img src={require('@img/shouye/banner_cover1.png')} alt="" />
+            </div>
+          </div>
+
+        </div>
+
       </div>
     );
   }

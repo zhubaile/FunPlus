@@ -3,7 +3,7 @@ export default {
   'app.website.shouye.toph1': '一站式全球支付服务商',
   'app.website.shouye.toph3': '让支付接口对接前所未有的简单',
   'app.website.shouye.topp': '无需后端开发，一个SDK即可接入一套完整的支付系统，高速集成主流支付 接口，以更稳定的接口、更快的速度直达支付。',
-  'app.website.shouye.topButton': '了解更多',
+  'app.website.shouye.topButton': '注册',
 
   'app.website.shouye.rely1h1': '依托',
   'app.website.shouye.rely1p': '蓝牙、NFC及二维码等多种连接方式，商户可通过我们自有移动应用程序及移动POS配件在智能手机上完成支付交易。',

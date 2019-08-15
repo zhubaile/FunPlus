@@ -30,27 +30,27 @@ export default class Sdk extends Component {
             <ul>
               {/*              <li className="img_outer"><img src={require('../../../../../assets/img/helpcenter/SDK/ios.1.png')} alt="" /></li> */}
               <li className="img_outer">
-                <img src={require('../../../../../assets/img/helpcenter/SDK/android.1.png')} alt="" />
+                <img src={require('@img/helpcenter/SDK/android.1.png')} alt="" />
                 <strong>Android SDK</strong>
                 <p><FormattedMessage id='app.website.helpsdk.main.li1p' /></p>
               </li>
               <li className="img_outer">
-                <img src={require('../../../../../assets/img/helpcenter/SDK/ios.1.png')} alt="" />
+                <img src={require('@img/helpcenter/SDK/ios.1.png')} alt="" />
                 <strong>IOS SDK</strong>
                 <p><FormattedMessage id='app.website.helpsdk.main.li2p' /></p>
               </li>
               <li className="img_outer">
-                <img src={require('../../../../../assets/img/helpcenter/SDK/h5.1.png')} alt="" />
+                <img src={require('@img/helpcenter/SDK/h5.1.png')} alt="" />
                 <strong>H5 SDK</strong>
                 <p><FormattedMessage id='app.website.helpsdk.main.li3p' /></p>
               </li>
               <li className="img_outer">
-                <img src={require('../../../../../assets/img/helpcenter/SDK/PC.1.png')} alt="" />
+                <img src={require('@img/helpcenter/SDK/PC.1.png')} alt="" />
                 <strong>PC SDK</strong>
                 <p><FormattedMessage id='app.website.helpsdk.main.li4p' /></p>
               </li>
               <li className="img_outer">
-                <img src={require('../../../../../assets/img/helpcenter/SDK/cloud.1.png')} alt="" />
+                <img src={require('@img/helpcenter/SDK/cloud.1.png')} alt="" />
                 <strong>SERVICE DEMO</strong>
                 <p><FormattedMessage id='app.website.helpsdk.main.li5p' /></p>
               </li>

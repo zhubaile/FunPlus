@@ -68,16 +68,16 @@ export default class Member extends Component {
               dotsRender={(index, current) => {
                 // 锚点问题
                 // 两个错误，不能使用遍历，遍历之前没有return
-                /* return zbl.map((index) => {
-                  debugger;
-                  return <a>{index}</a>;
-                }); */
+                //  return zbl.map((index) => {
+                //   debugger;
+                //   return <a>{index}</a>;
+                // });
                  return <a>{navigation[index]}</a>;
             }}
             >
               <div>
                 <div className='Carousel' >
-                  <img src={require('../../../../../assets/img/helpcenter/member/hy9.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <img src={require('@img/helpcenter/member/hy9.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
                   <h2><FormattedMessage id='app.website.helpmember.slider.dots1' /></h2>
                   <button><FormattedMessage id='app.website.helpmember.Carousel.button' /></button>
                   <p><FormattedMessage id='app.website.helpmember.Carousel1p' /></p>
@@ -86,7 +86,7 @@ export default class Member extends Component {
               </div>
               <div>
                 <div className='Carousel' >
-                  <img src={require('../../../../../assets/img/helpcenter/member/hy2.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <img src={require('@img/helpcenter/member/hy2.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
                   <h2><FormattedMessage id='app.website.helpmember.slider.dots2' /></h2>
                   <button><FormattedMessage id='app.website.helpmember.Carousel.button' /></button>
                   <p><FormattedMessage id='app.website.helpmember.Carousel2p' /></p>
@@ -95,7 +95,7 @@ export default class Member extends Component {
               </div>
               <div>
                 <div className='Carousel' >
-                  <img src={require('../../../../../assets/img/helpcenter/member/hy1.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <img src={require('@img/helpcenter/member/hy1.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
                   <h2><FormattedMessage id='app.website.helpmember.slider.dots3' /></h2>
                   <button><FormattedMessage id='app.website.helpmember.Carousel.button' /></button>
                   <p><FormattedMessage id='app.website.helpmember.Carousel3p' /></p>
@@ -104,7 +104,7 @@ export default class Member extends Component {
               </div>
               <div>
                 <div className='Carousel' >
-                  <img src={require('../../../../../assets/img/helpcenter/member/hy3.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <img src={require('@img/helpcenter/member/hy3.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
                   <h2><FormattedMessage id='app.website.helpmember.slider.dots4' /></h2>
                   <button><FormattedMessage id='app.website.helpmember.Carousel.button' /></button>
                   <p><FormattedMessage id='app.website.helpmember.Carousel4p' /></p>
@@ -113,7 +113,7 @@ export default class Member extends Component {
               </div>
               <div>
                 <div className='Carousel' >
-                  <img src={require('../../../../../assets/img/helpcenter/member/hy10.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <img src={require('@img/helpcenter/member/hy10.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
                   <h2><FormattedMessage id='app.website.helpmember.slider.dots5' /></h2>
                   <button><FormattedMessage id='app.website.helpmember.Carousel.button' /></button>
                   <p><FormattedMessage id='app.website.helpmember.Carousel5p' /></p>
@@ -132,7 +132,6 @@ export default class Member extends Component {
                 <dd><FormattedMessage id='app.website.helpmember.imgleftleftlh' /></dd>
               </dl>
             </div>
-{/*            <img src={require('../../../../../assets/img/helpcenter/multistage/dj1.png')} style={{ width: '300px', height: '300px' }} alt="" />*/}
           </div>
           <div className='helpmember-imgleft-right'>
             <FormattedMessage id='app.website.helpmember.imgleftright' />
@@ -149,7 +148,6 @@ export default class Member extends Component {
                 <dd><FormattedMessage id='app.website.helpmember.imgrightrightxz' /></dd>
               </dl>
             </div>
-{/*            <img src={require('../../../../../assets/img/helpcenter/multistage/dj2.png')} style={{ width: '300px', height: '300px' }} alt="" />*/}
           </div>
         </div>
 
@@ -164,17 +162,17 @@ export default class Member extends Component {
             <div className='helpmember-footer-conter-botton'>
               <ul>
                 <li>
-                  <img src={require('../../../../../assets/img/helpcenter/member/hy4.png')} style={{ width: '95px',height: '95px' }} alt="" />
+                  <img src={require('@img/helpcenter/member/hy4.png')} style={{ width: '95px',height: '95px' }} alt="" />
                   <strong><FormattedMessage id='app.website.helpmember.footerbottom.strong1' /></strong>
                   <p style={{ fontSize: '16px' }}><FormattedMessage id='app.website.helpmember.footerbottom.p1' /></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/helpcenter/member/hy5.png')} style={{ width: '97px',height: '97px' }} alt="" />
+                  <img src={require('@img/helpcenter/member/hy5.png')} style={{ width: '97px',height: '97px' }} alt="" />
                   <strong><FormattedMessage id='app.website.helpmember.footerbottom.strong2' /></strong>
                   <p style={{ fontSize: '16px' }}><FormattedMessage id='app.website.helpmember.footerbottom.p2' /></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/helpcenter/member/hy6.png')} style={{ width: '79px', height: '94px' }} alt="" />
+                  <img src={require('@img/helpcenter/member/hy6.png')} style={{ width: '79px', height: '94px' }} alt="" />
                   <strong><FormattedMessage id='app.website.helpmember.footerbottom.strong3' /></strong>
                   <p style={{ fontSize: '16px' }}><FormattedMessage id='app.website.helpmember.footerbottom.p3' /></p>
                 </li>

@@ -430,7 +430,7 @@ a:active{ text-decoration: none; }
 /* 设备管理 */
 .devicemanagement{ width: 100%;}
 .devicemanagement .devicemanagement-top{position: relative; font-size: 20px; float: right;  width: 300px;  height: 30px;}
-/*.devicemanagement .devicemanagement-top .devicemanagement-top-bottombor{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -12px;}*/
+.devicemanagement-main-content{ background: #FFFFFF; padding: 20px; border-radius: 4px;}
 .devicemanagement .devicemanagement-top .devicemanagement-top-btn{ position: absolute; right: 20px; z-index: 10;}
 .devicemanagement .devicemanagement-top .devicemanagement-top-btn button{width: 100px; height: 36px;line-height: 20px;font-size: 14px;text-align: center;margin: 0 10px;  cursor: pointer;
   border-radius: 4px 4px 4px 4px;background-color: rgba(230, 241, 252, 1);border: 1px solid rgba(163, 208, 253, 1);color: rgba(25, 137, 250, 1);}

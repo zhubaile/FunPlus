@@ -13,15 +13,20 @@ export default class Ceshi extends Component {
     return (
       <div className='prodect'>
         {/* 导航下面的展示内容 */}
-        <div className='nav-belowimg' style={{ backgroundImage: `url(${require("../../../../../assets/img/shouye/bg1.png")})` }}>
-          <div className='nav-belowimg-conter'>
-            <div className='nav-belowimg-conter-left'>
+        <div className='headers'>
+          <div className="circles1" />
+          <div className="circles2" />
+          <div className="circles3" />
+          <div className='headers-content'>
+            <div className='headers-content-left'>
               <h1>-<FormattedMessage id='app.website.chanpinmode.prodecth1' /></h1>
               <p><FormattedMessage id='app.website.chanpinmode.prodectp' /></p>
             </div>
-            <div className='nav-belowimg-conter-right'>
-            </div>
+{/*            <div className='headers-content-right' />*/}
           </div>
+        </div>
+        <div className="outer_boxs">
+          <div className="inner_boxs" />
         </div>
         {/* 聚合支付 */}
         <div className='service'>
@@ -33,11 +38,11 @@ export default class Ceshi extends Component {
               </div>
             </div>
             <div className='service-conter-botton'>
-             <Img
-               src={require('../../../../../assets/img/prodect/mode/add.png')}
-               type="contain"
-               style={{ width: '100%' }}
-             />
+              <Img
+                src={require('@img/prodect/mode/add.png')}
+                type="contain"
+                style={{ width: '100%' }}
+              />
             </div>
           </div>
         </div>
@@ -53,7 +58,7 @@ export default class Ceshi extends Component {
             </div>
             <div className='commonly-conter-right'>
               <img
-                src={require('../../../../../assets/img/prodect/mode/pic_1.png')}
+                src={require('@img/prodect/mode/pic_1.png')}
               />
             </div>
           </div>
@@ -63,7 +68,7 @@ export default class Ceshi extends Component {
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
               <img
-                src={require('../../../../../assets/img/prodect/mode/pic_2.png')}
+                src={require('@img/prodect/mode/pic_2.png')}
               />
             </div>
             <div className='commonly-conter-right'>
@@ -86,7 +91,7 @@ export default class Ceshi extends Component {
             </div>
             <div className='commonly-conter-right'>
               <img
-                src={require('../../../../../assets/img/prodect/mode/pic_3.png')}
+                src={require('@img/prodect/mode/pic_3.png')}
               />
             </div>
           </div>
@@ -96,7 +101,7 @@ export default class Ceshi extends Component {
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
               <img
-                src={require('../../../../../assets/img/prodect/mode/pic_4.png')}
+                src={require('@img/prodect/mode/pic_4.png')}
               />
             </div>
             <div className='commonly-conter-right'>
@@ -110,8 +115,11 @@ export default class Ceshi extends Component {
         </div>
 
         {/*  */}
-        <div className='footer' style={{ backgroundImage: `url(${require("../../../../../assets/img/prodect/administration/sy4.png")})` }}>
-          <div className='footer-conter-left'>
+        <div className="outer_box">
+          <div className="inner_box" />
+        </div>
+        <div className='footers'>
+          <div className='footers-content-left'>
             <h1 style={{ color: '#000' }}><FormattedMessage id='app.website.chanpinmode.footerh1' /></h1>
             <p style={{ marginTop: '50px' , width: '55%' }}><FormattedMessage id='app.website.chanpinmode.footerp' /></p>
           </div>

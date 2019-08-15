@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
 import { Button, Icon, Nav } from '@alifd/next';
+import '../../../index.css';
 
 export default class HelpcenterHeader extends Component {
   static displayName = 'HelpcenterHeader';
@@ -11,20 +12,28 @@ export default class HelpcenterHeader extends Component {
   }
   render() {
     return (
-      <div style={styles.container}>
-        <div style={styles.left}>
-          <h1 style={{ fontSize: '38px' }}>{this.props.HHcontent}</h1>
-          <p sstyle={{ fontSize: '20px', paddingTop: '25px', lineHeight: '36px' }}>{this.props.HPcontent}</p>
-        </div>
-        <div style={styles.right}>
+      <div>
+        <div className="containers">
+          <div className="cir1" />
+          <div className="cir2" />
+          <div className="cir3" />
+          <div className="containers_content">
+            <div className="containers_left">
+              <h1>{this.props.HHcontent}</h1>
+              <p>{this.props.HPcontent}</p>
+            </div>
+          </div>
 
+        </div>
+        <div className="outers">
+          <div className="inners" />
         </div>
       </div>
     );
   }
 }
 
-const styles = {
+/* const styles = {
   container: {
     display: 'flex',
     width: '100%',
@@ -43,4 +52,13 @@ const styles = {
   right: {
     width: '35%',
   },
-};
+}; */
+// <div style={styles.container}>
+//   <div style={styles.left}>
+//     <h1 style={{ fontSize: '38px' }}>{this.props.HHcontent}</h1>
+//     <p sstyle={{ fontSize: '20px', paddingTop: '25px', lineHeight: '36px' }}>{this.props.HPcontent}</p>
+//   </div>
+//   <div style={styles.right}>
+//
+//   </div>
+// </div>

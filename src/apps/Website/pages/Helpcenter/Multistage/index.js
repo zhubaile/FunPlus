@@ -74,7 +74,7 @@ export default class Member extends Component {
             >
               <div>
                 <div className='Carousel' >
-                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj10.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <img src={require('@img/helpcenter/multistage/dj10.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
                   <h2><FormattedMessage id='app.website.helpmultistage.slider.dots1' /></h2>
                   <button><FormattedMessage id='app.website.helpmultistage.Carousel.button' /></button>
                   <p><FormattedMessage id='app.website.helpmultistage.Carousel1p' /></p>
@@ -83,7 +83,7 @@ export default class Member extends Component {
               </div>
               <div>
                 <div className='Carousel' >
-                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj7.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <img src={require('@img/helpcenter/multistage/dj7.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
                   <h2><FormattedMessage id='app.website.helpmultistage.slider.dots2' /></h2>
                   <button><FormattedMessage id='app.website.helpmultistage.Carousel.button' /></button>
                   <p><FormattedMessage id='app.website.helpmultistage.Carousel2p' /></p>
@@ -92,7 +92,7 @@ export default class Member extends Component {
               </div>
               <div>
                 <div className='Carousel' >
-                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj8.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <img src={require('@img/helpcenter/multistage/dj8.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
                   <h2><FormattedMessage id='app.website.helpmultistage.slider.dots3' /></h2>
                   <button><FormattedMessage id='app.website.helpmultistage.Carousel.button' /></button>
                   <p><FormattedMessage id='app.website.helpmultistage.Carousel3p' /></p>
@@ -101,7 +101,7 @@ export default class Member extends Component {
               </div>
               <div>
                 <div className='Carousel' >
-                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj9.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <img src={require('@img/helpcenter/multistage/dj9.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
                   <h2><FormattedMessage id='app.website.helpmultistage.slider.dots4' /></h2>
                   <button><FormattedMessage id='app.website.helpmultistage.Carousel.button' /></button>
                   <p><FormattedMessage id='app.website.helpmultistage.Carousel4p' /></p>
@@ -110,7 +110,7 @@ export default class Member extends Component {
               </div>
               <div>
                 <div className='Carousel' >
-                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj11.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
+                  <img src={require('@img/helpcenter/multistage/dj11.png')} style={{ width: '50px',textAlign: 'center' ,marginTop: '0' }} alt="" />
                   <h2><FormattedMessage id='app.website.helpmultistage.slider.dots5' /></h2>
                   <button><FormattedMessage id='app.website.helpmultistage.Carousel.button' /></button>
                   <p><FormattedMessage id='app.website.helpmultistage.Carousel5p' /></p>
@@ -163,22 +163,22 @@ export default class Member extends Component {
             <div className='helpmember-footer-conter-botton'>
               <ul>
                 <li>
-                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj3.png')} alt="" />
+                  <img src={require('@img/helpcenter/multistage/dj3.png')} alt="" />
                   <strong><FormattedMessage id='app.website.helpmultistage.footerbottom.strong1' /></strong>
                   <p><FormattedMessage id='app.website.helpmultistage.footerbottom.p1' /></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj4.png')} alt="" />
+                  <img src={require('@img/helpcenter/multistage/dj4.png')} alt="" />
                   <strong><FormattedMessage id='app.website.helpmultistage.footerbottom.strong2' /></strong>
                   <p><FormattedMessage id='app.website.helpmultistage.footerbottom.p2' /></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj5.png')} alt="" />
+                  <img src={require('@img/helpcenter/multistage/dj5.png')} alt="" />
                   <strong><FormattedMessage id='app.website.helpmultistage.footerbottom.strong3' /></strong>
                   <p><FormattedMessage id='app.website.helpmultistage.footerbottom.p3' /></p>
                 </li>
                 <li>
-                  <img src={require('../../../../../assets/img/helpcenter/multistage/dj6.png')} alt="" />
+                  <img src={require('@img/helpcenter/multistage/dj6.png')} alt="" />
                   <strong><FormattedMessage id='app.website.helpmultistage.footerbottom.strong4' /></strong>
                   <p><FormattedMessage id='app.website.helpmultistage.footerbottom.p4' /></p>
                 </li>
