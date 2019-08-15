@@ -208,7 +208,7 @@ const styles = {
     background: '#fff',
     borderRadius: '10px',
     marginTop: '-60px',
-    border: '#cccccc 1px solid',
+    boxShadow: '0px 0px 10px rgba(170,170,170,60%)',
     display: 'flex',
     zIndex: '2',
   },

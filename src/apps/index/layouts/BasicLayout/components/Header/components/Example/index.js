@@ -167,7 +167,10 @@ export default class Header extends Component {
           </div> */}
 
           <div className="fancy-selector-actions text-right" onClick={this.addtionbtn.bind(this)}>
-            <a className="btn btn-primary" href="#"><i className="os-icon os-icon-ui-22" /><span>添加应用</span></a>
+            <button className='addtionbtn'>
+              <i className="os-icon os-icon-ui-22" /><span>添加应用</span>
+            </button>
+            {/* <a className="btn btn-primary" href="#"><i className="os-icon os-icon-ui-22" /><span>添加应用</span></a> */}
           </div>
         </div>
       </div>

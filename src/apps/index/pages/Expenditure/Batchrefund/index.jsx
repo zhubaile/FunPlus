@@ -132,7 +132,7 @@ export default class Submerchants extends Component {
               <Message type='notice' className='message-all expendbatchre-message'>
                 应用直连：使用您直接申请的渠道支付参数或我们代为您申请的渠道参数进行交易，所有资金有微信，支付宝，银联，持牌方清算
               </Message>
-              <div style={{ marginBottom: '20px' }}>
+              <div style={styles.formItem}>
                 <FormBinderWrapper
                   value={this.state.value}
                   onChange={this.formChange}
@@ -155,7 +155,6 @@ export default class Submerchants extends Component {
                 <Button className='btn-all orderposab' size='large' type='secondary' >批量退款</Button>
               </div>
               {/* <div className='expendordbat-tabs-border' /> */}
-              <hr />
 
               <IceContainer>
                 <Table loading={isLoading} dataSource={datas} hasBorder={false}>
@@ -197,11 +196,19 @@ const styles = {
   formItem: {
     display: 'flex',
     alignItems: 'center',
-    margin: '10px 0',
+    flexWrap: 'wrap',
+    width: '100%',
+    borderRadius: '10px',
+    backgroundColor: 'rgba(255, 255, 255, 1)',
+    color: 'ba(16, 16, 16, 1)',
+    fontSize: '14px',
+    boxShadow: '0px 2px 6px 0px rgba(229, 229, 229, 1)',
+    border: '1px solid rgba(255, 255, 255, 0)',
+    padding: '20px 0',
+    marginTop: '20px',
   },
   formLabel: {
     minWidth: '80px',
-    marginLeft: '10px',
     textAlign: 'center',
   },
   formSelect: {

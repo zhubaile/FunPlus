@@ -1,3 +1,33 @@
+.ice-menu .ice-menu-submenu-inline > .ice-menu-submenu-title:after{ font-size: 24px; font-weight: bold;}
+.headaside{ width: 260px;min-height: 100%; border-right: 1px solid #DBD9D9; position: relative;}
+.headaside>ul{ width: 80%; margin-left: 10%; background: none;font-size: 16px; color: #666666;}
+.headaside>ul>li{ border-bottom: 1px solid #DBD9D9;}
+.headaside ul{background: none;}
+.headaside ul li .ice-menu-submenu-title{ height: 60px; line-height: 60px; }
+.headaside ul li .ice-menu-submenu-title span i{ color: #3978ff; margin-right: 20px; font-size: 24px; }
+.headaside ul li .ice-menu-item{ padding-left: 20px; }
+
+
+.headaside .side-menu-magic {background-image: -webkit-linear-gradient(244deg, #1643A3 8%, #2E1170 90%);background-image: linear-gradient(-154deg, #1643A3 8%, #2E1170 90%);border-radius: 6px;padding: 40px;
+  text-align: center;margin: 20px;}
+.headaside .side-menu-magic h1, .menu-w .side-menu-magic h2, .menu-w .side-menu-magic h3, .menu-w .side-menu-magic h4, .menu-w .side-menu-magic h5 {color: #fff;margin-bottom: 5px;}
+.headaside .side-menu-magic p {color: rgba(255, 255, 255, 0.6);}
+.headaside .side-menu-magic .btn-w {margin-top: 15px;}
+.headaside .side-menu-magic .btn-white, .menu-w .side-menu-magic .all-wrapper .fc-button, .all-wrapper .menu-w .side-menu-magic .fc-button {border: none;box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);}
+
+// 让没有子元素的不显示向下图标
+.headaside .ice-menu .cancel.ice-menu-submenu-inline > .ice-menu-submenu-title:after{content: none;}
+.headaside .ice-menu .cancel .ice-menu-submenu-title span a{ display: block; width: 100%; height: 60px; color: #666; line-height: 60px;}
+.headaside .ice-menu .cancel .ice-menu-submenu-title span a:hover{ color: #3080f1;}
+.headaside .ice-menu .ice-menu-submenu-title span a:hover{ color: #3080f1;}
+.headaside .ice-menu .ice-menu-submenu-title span a{ display: block; width: 100%; height: 60px; color: #666; line-height: 60px;}
+.headaside .ice-menu.ice-menu-inline .ice-menu{ font-size: 14px;}
+// 交易和应用两个标识
+.headaside .sub-header {text-transform: uppercase;color: #448eef;font-size: 14px;letter-spacing: 1px;padding-top: 10px;padding-bottom: 0px;border-bottom: none;width: 80%; margin-left: 10%; list-style: none;}
+.headaside .sub-header p{ line-height: 16px;}
+
+/*
+
 .menu-w {
   padding: 10px 20px;
   display: -webkit-box;
@@ -47,7 +77,7 @@
 }
 
 .menu-w ul.main-menu > li.has-sub-menu > a:before {
-  /* use !important to prevent issues with browser extensions that change fonts */
+  !* use !important to prevent issues with browser extensions that change fonts *!
   font-family: 'osfont' !important;
   speak: none;
   font-style: normal;
@@ -55,7 +85,7 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-  /* Better Font Rendering =========== */
+  !* Better Font Rendering =========== *!
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\e91c";
@@ -267,7 +297,7 @@
   transform: translate(0px, -50%);
 }
 .menu-w ul.main-menu > li.has-sub-menu > a:before {
-  /* use !important to prevent issues with browser extensions that change fonts */
+  !* use !important to prevent issues with browser extensions that change fonts *!
   font-family: 'osfont' !important;
   speak: none;
   font-style: normal;
@@ -275,7 +305,7 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-  /* Better Font Rendering =========== */
+  !* Better Font Rendering =========== *!
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\e91c";
@@ -326,13 +356,13 @@
 
 
 
-/*.menu-w ul.sub-menu li a:hover:before {
+!*.menu-w ul.sub-menu li a:hover:before {
   -webkit-transform: translate(-5px, -50%);
   transform: translate(-5px, -50%);
   border-radius: 6px;
   background-color: #047bf8;
   border-color: #047bf8;
-}*/
+}*!
 .menu-w.sub-menu-style-flyout ul.sub-menu li a {
   color: #3E4B5B;
   white-space: nowrap;
@@ -366,3 +396,4 @@
   border: none;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
 }
+*/

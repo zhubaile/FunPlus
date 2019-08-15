@@ -145,7 +145,7 @@ class Operationlog extends Component {
                 <Select style={{ width: '200px' }} defaultValue={{ value: '全部 显示设备号可多选', label: '全部 显示设备号可多选' }} dataSource={Operator} />
               </FormBinder> */}
               </FormBinderWrapper>
-              <Button className='btn-all bg' size="large" type="primary" onClick={this.search.bind(this)}>搜索</Button>
+              <Button style={{ marginLeft: 20 }} size="large" type='primary' onClick={this.search.bind(this)}>搜索</Button>
               <Button className='btn-all' style={{ marginLeft: 20 }} size="large" type="secondary">重置</Button>
             </div>
             <div className='operationlog-bottom'>

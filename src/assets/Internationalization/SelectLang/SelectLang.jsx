@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Select } from '@alifd/next';
+import { Select,Icon } from '@alifd/next';
 import { getLocale, setLocale } from '../locale';
 
 const Option = Select.Option;
@@ -26,11 +26,14 @@ export default class SelectLang extends Component {
         onChange={this.changeLang}
         value={selectedLang}
         size="small"
+        autoWidth={false}
+        hasBorder={false}
         style={{ display: 'flex', alignItems: 'center' }}
+        popupStyle={{ border: 'none',borderRadius: '4px' }}
       >
         {Object.keys(LANG_CONFIG).map((lang) => {
           return (
-            <Option value={lang} key={lang}>
+            <Option value={lang} key={lang} >
               {LANG_CONFIG[lang].text}
             </Option>
           );

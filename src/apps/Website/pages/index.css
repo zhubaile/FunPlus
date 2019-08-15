@@ -386,14 +386,8 @@ img{ background-size: 100% 100%;}
 .helpsdk .helpsdk-main .helpsdk-main-conter ul li{ display: flex; align-items: center; justify-content: center; flex-direction: column; width: 20%; margin-left: 5%; padding: 20px 0;}
 .helpsdk .helpsdk-main .helpsdk-main-conter ul li strong{ font-size: 20px; margin-top: 10px;}
 .helpsdk .helpsdk-main .helpsdk-main-conter ul li p{ font-size: 14px;line-height: 22px; padding: 0 8px;}
-.img_outer>img{
-  cursor: pointer;
-  filter: grayscale(100%);
-  transition:all 0.2s;
-}
-.img_outer>img:hover{
-  filter: none;
-}
+.img_outer>img{cursor: pointer;-webkit-filter: grayscale(100%);filter: grayscale(100%);transition:all 0.2s;}
+.img_outer>img:hover{filter: none;}
 /* DEMO */
 /* 上面和下面的样式 */
 .demoience{ width: 100%; display: flex; align-items: center; flex-direction: column; background: #f5f5f5; font-size: 20px;}

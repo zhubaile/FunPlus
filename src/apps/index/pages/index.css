@@ -6,7 +6,7 @@ a:active{ text-decoration: none; }
 .next-range-picker.next-medium .next-range-picker-trigger{ border-radius: 4px;}
 .next-input.next-medium{ height: 30px;}
 .next-pagination-pages{ margin-right: 20px; }/*分页*/
-.next-table.only-bottom-border{ margin-right: 20px; }
+/*.next-table.only-bottom-border{ margin-right: 20px; }*/
 .next-input.next-medium .next-input-text-field{ height: 28px; }
 .next-select .next-select-inner{ height: 30px; border-radius: 4px;}
 .next-input.next-medium{ border-radius: 4px;}
@@ -20,6 +20,14 @@ a:active{ text-decoration: none; }
 .next-btn.next-large.next-btn-normal:hover{ background-color: #225AE1; color: #FFFFFF;}
 .mybtn{ width: 100px; height: 40px; background-color: #E2EDFF; border-color: #A3D0FD; color: #1989FA; border-radius: 4px;}
 .mybtn:hover{ background-color: #225AE1; color: #FFFFFF;}
+
+.next-btn.next-large.next-btn-primary.bg{ background:#5677FC 100%; color: #fff; border-radius: 6px; margin-left: 20px;}
+.next-btn.next-large.next-btn-secondary.bg.right{position: absolute; right: 20px;}
+.next-btn.next-large.next-btn-secondary.bg{ margin-left: 20px;}
+.next-btn.next-large.next-btn-secondary.tablebtn{ margin-right: 5px;}
+/* IceContainer格式的列表页 (tabel)*/
+.expendbatchre .container-block, .expendordbat .container-block, .auditofpayment .container-block{margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px 0; margin-bottom: 20px;}
 /*开关组件样式*/
 .switchSty .next-switch-on{ background-color: #01E266;}
 .switchSty .next-switch-on:focus, .next-switch-on:hover{ background-color: #01E266;}
@@ -28,7 +36,7 @@ a:active{ text-decoration: none; }
 /* 应用参数 */
 .applicationters{ width: 100%;}
 .applicationters .backstage-tab{ margin-top: 10px;}
-.next-tabs-pure > .next-tabs-bar .next-tabs-nav-container .next-tabs-tab:first-child{ border-right: 2px solid rgba(187, 187, 187, 0.5);}
+.applicationters .next-tabs-pure > .next-tabs-bar .next-tabs-nav-container .next-tabs-tab:first-child{ border-right: 2px solid rgba(187, 187, 187, 0.5);}
 .next-btn.next-btn-normal.button{ border-radius: 6px;}
 .next-btn.next-btn-normal.button:hover{ background-color: #225AE1; color: #FFFFFF; border-color: #225AE1; }
 /* 左边内容 */
@@ -76,6 +84,7 @@ a:active{ text-decoration: none; }
 .paymentchannel .tab-contentone .tab-contentone-right{ width: 20%; padding-left: 20px;}
 .paymentchannel .tab-contentone .tab-contentone-left div Table .table-select{ border-radius: 8px; height: 30px; line-height: 30px; opacity: 0.5;}
 .paymentchannel .tab-contentone .tab-contentone-right div{margin-top: 50px;}
+.paymentchannel .tab-contentone .tab-contentone-left .next-table.only-bottom-border{ margin-right: 20px;}
 /* 路由规则 */
 .routingrules .next-message.next-message-notice.next-inline{ width: 30%; background-color: #E6F7FF; border-color: #C6EAFF; border-radius: 4px; margin: 20px 0px 20px 0px;}
 .routingrules{ width: 100%;}
@@ -101,16 +110,13 @@ a:active{ text-decoration: none; }
 /* Button */
 /*.next-btn.next-large.next-btn-secondary.bg{ background:#E6F1FC; color: #1989FA; border-radius: 6px; margin-left: 20px;}*/
 /*.next-btn.next-large.next-btn-secondary.bg.right{position: absolute; right: 20px; background:#E6F1FC; color: #1989FA; border-radius: 6px;}*/
-.next-btn.next-large.next-btn-primary.bg{ background:#5677FC 100%; color: #fff; border-radius: 6px; margin-left: 20px;}
 
-.next-btn.next-large.next-btn-secondary.bg.right{position: absolute; right: 20px;}
-.next-btn.next-large.next-btn-secondary.bg{ margin-left: 20px;}
-.next-btn.next-large.next-btn-secondary.tablebtn{ margin-right: 5px;}
 
 /* 支付 */
 /*ALL------Starting*/
 .expendbatchre .container-block,.expendordbat .container-block,.auditofpayment .container-block{ margin: 20px 0px 0px 0px;}
 .expendordbat .next-row.next-row-wrap{ margin: 20px 0px 20px 0px;}
+.expendordbat .next-tabs-pure > .next-tabs-bar .next-tabs-nav-container .next-tabs-tab:first-child{ border-right: 2px solid rgba(187, 187, 187, 0.5);}
 .auditofpayment{ width: 100%; position: relative;}
 .auditofpayment .auditofpayment-top{border-bottom: 1px solid rgba(187, 187, 187, 1); margin-top: 20px;}
 .auditofpayment .auditofpayment-top span{ font-size: 20px; font-weight: 400;width: 64px;height: 24px;color: rgba(116, 116, 116, 1);font-size: 16px;text-align: left;}
@@ -132,8 +138,11 @@ a:active{ text-decoration: none; }
 /*.auditofpayment-tab  .expendordbat-tabs-border{clear: both; border-bottom: 1px solid #dddddd;}*/
 
 /* 自定汇总 */
+.customsummary-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px 0; margin-bottom: 20px;}
+
 .selfsumm-exhibition{ width: 100%; display: flex; margin-top: 20px;}
-.selfsumm-exhibition .exhibition-bor{border: 1px solid rgba(187, 187, 187, 1); margin: 0 20px; width: 200px; height: 75px; display: flex; justify-content: center; flex-direction: column; padding-left: 15px; color: rgba(16, 16, 16, 1);
+.selfsumm-exhibition .exhibition-bor{border: 1px solid rgba(187, 187, 187, 1); margin: 0 30px 0 5px; width: 200px; height: 75px; display: flex; justify-content: center; flex-direction: column; padding-left: 15px; color: rgba(16, 16, 16, 1);
   font-size: 14px; background: #fff;}
 .selfsumm-exhibition .exhibition-bor div strong{ font-size: 28px; font-weight: 500; }
 
@@ -369,6 +378,7 @@ a:active{ text-decoration: none; }
 
 /* 成员管理 */
 .membermanagement{ width: 100%; }
+.membermanagement .next-tabs-pure > .next-tabs-bar .next-tabs-nav-container .next-tabs-tab:first-child{ border-right: 2px solid rgba(187, 187, 187, 0.5);}
 .membermanagement-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px 0; margin-bottom: 20px;}
 .membermanagement-top .next-select .next-select-inner{ height: auto; min-height: 30px;}
@@ -921,5 +931,4 @@ div.tab-panel{ background: #FFFFFF;}
 .Customerservice .onlineservice .chat-controls .chat-extra a:hover .extra-tooltip {
   display: block;
 }
-.customsummary-top{ margin-top: 10px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; position: relative;
-  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); padding: 20px 15px; margin-bottom: 20px;}
+

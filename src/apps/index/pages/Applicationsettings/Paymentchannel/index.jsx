@@ -81,22 +81,18 @@ export default class Paymentchannel extends Component {
     const Nindex = e.target.value; // 里面的索引
     const Nstart = this.state.datas[Windex].rules[Nindex].ruleSwitch; // 选中的值的状态(true/false)
     const judgeid = this.state.datas[Windex]._id;
-    debugger;
+
     const data = [...this.state.datas];
     const datas = data.map((item, idx) => (item._id == judgeid ? { ...item, ruleSwitch: Nstart } : item)); // 如果id相等，则替换ruleSwitch
-    debugger;
+
     this.setState({
       datas,
       waiceng: Windex,
       shuzi: Nindex, // 里面的索引
     });
-    debugger;
-    console.log(e);
   }
   // 下拉框
   renderRule = (rules,index) => {
-    console.log(index);
-    debugger;
     if (!rules || rules.length == 0) {
       return null;
     }
@@ -105,7 +101,8 @@ export default class Paymentchannel extends Component {
         <select className='table-select' name={index} onChange={this.ceshibtn.bind(this)}>
           {
             rules.map((item,index)=>{
-              return <option value={index} selected={item.ruleSwitch}>{item.ruleName}</option>;
+              debugger;
+              return <option key={index} value={index} selected={item.ruleSwitch}>{item.ruleName}</option>;
             })
           }
         </select>
@@ -125,18 +122,14 @@ export default class Paymentchannel extends Component {
   };
   // 改变开关
   changeswitch(record,index) {
-    debugger;
     const shuzi = this.state.shuzi;
     const reluss = record.rules;
     if (!reluss || reluss.length == 0) {
       return null;
     }
-    debugger;
     const zbl = record.rules[shuzi]._id;
     const lbz = record.rules[shuzi].channelId;
     const operationSwitch = record.rules[shuzi].ruleSwitch;
-    console.log(operationSwitch);
-    debugger;
     channelbindRule({
       ruleSwitch: (operationSwitch != true),
       ruleId: zbl,
@@ -149,8 +142,6 @@ export default class Paymentchannel extends Component {
   }
   render() {
     const { isLoading, datas, current, total, pageSize } = this.state;
-    console.log(this.state.datas);
-    debugger;
     return (
       <div className='paymentchannel'>
         <Tab shape='pure' className='backstage-tab'>

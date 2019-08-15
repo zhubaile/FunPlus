@@ -100,7 +100,7 @@ export default class Selfsummarization extends Component {
                           <FormBinder name='startdate'>
                             <RangePicker style={{ margin: '0 10px' }} showTime resetTime defaultValue={[startValue,endValue]} />
                           </FormBinder>
-                          <Button className='btn-all bg' size="large" type="primary" onClick={this.search.bind(this)}>搜索</Button>
+                          <Button className='btn-all' size="large" type="primary" onClick={this.search.bind(this)}>搜索</Button>
                         </div>
                       </Col>
                     </Row>
@@ -148,6 +148,10 @@ export default class Selfsummarization extends Component {
 const styles = {
   mainBox: {
     marginTop: '15px',
+  },
+  formRow: {
+    marginLeft: '-20px',
+    marginRight: '-20px',
   },
   formItem: {
     display: 'flex',

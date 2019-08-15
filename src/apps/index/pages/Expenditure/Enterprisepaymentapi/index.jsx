@@ -288,8 +288,7 @@ export default class Orderrefund extends Component {
                 {/* </Row> */}
               </FormBinderWrapper>
             </div>
-            {/*<span className='all_span'>本次搜索付款总额：5555</span>*/}
-            <hr />
+            {/* <span className='all_span'>本次搜索付款总额：5555</span> */}
             {/* <div className='expendordbat-tabs-border' /> */}
 
             <IceContainer>
@@ -339,6 +338,15 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     flexWrap: 'wrap',
+    width: '100%',
+    borderRadius: '10px',
+    backgroundColor: 'rgba(255, 255, 255, 1)',
+    color: 'ba(16, 16, 16, 1)',
+    fontSize: '14px',
+    boxShadow: '0px 2px 6px 0px rgba(229, 229, 229, 1)',
+    border: '1px solid rgba(255, 255, 255, 0)',
+    padding: '20px 0',
+    marginTop: '20px',
   },
   formItemTwo: {
     display: 'flex',

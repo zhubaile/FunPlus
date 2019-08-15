@@ -85,7 +85,7 @@ export default class Aside extends Component {
                       <span>
                         {nav.icon ? (
                           <FoundationSymbol
-                            style={{ marginRight: '8px' }}
+                            // style={{ marginRight: '8px' }}
                             size="small"
                             type={nav.icon}
                           />
@@ -131,7 +131,7 @@ export default class Aside extends Component {
                     <span>
                       {nav.icon ? (
                         <FoundationSymbol
-                          style={{ marginRight: '8px' }}
+                          // style={{ marginRight: '8px' }}
                           size="small"
                           type={nav.icon}
                         />

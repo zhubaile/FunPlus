@@ -235,7 +235,7 @@ class Membermanagement extends Component {
                 <FormBinder name='keyword' >
                   <Input hasClear placeholder='支持姓名邮箱手机号' style={styles.forminput} />
                 </FormBinder>
-                <Button className='btn-all' style={{ marginLeft: '20px' }} size="large" type="primary" onClick={this.searchbtn.bind(this)}>搜索</Button>
+                <Button className='btn-all' style={{ marginLeft: '20px' }} size="large" type='primary' onClick={this.searchbtn.bind(this)}>搜索</Button>
                 <button className='mybtn addmemberbtn' onClick={()=>this.addmemberbtnopen()}>添加成员</button>
               </FormBinderWrapper>
             </div>

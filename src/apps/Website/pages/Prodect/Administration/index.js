@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl'; // 国际化
-import { Button, Icon, Nav, Tab } from '@alifd/next';
+import { Slider, Icon, Nav, Tab } from '@alifd/next';
 import '../../index.css';
 
 @injectIntl
@@ -65,6 +65,34 @@ export default class Ceshi extends Component {
                 <strong><FormattedMessage id='app.website.chanpinadmin.scene1top.strong' /></strong><FormattedMessage id='app.website.chanpinadmin.scene1top.strongsize' />
               </div>
             </div>
+            {/* <div className='scene-conter-botton'>
+               <Slider slideDirection="ver" dots={false} arrowPosition="inner" arrowDirection="ver" className="ver-slick" infinite arrows={false}>
+                <div className='scene-conter-botton-tab'>
+                  <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
+                  <img
+                    src={require('../../../../../assets/img/prodect/administration/scene-ds.png')}
+                  />
+                </div>
+                <div className='scene-conter-botton-tab'>
+                  <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
+                  <img
+                    src={require('../../../../../assets/img/prodect/administration/scene-ds.png')}
+                  />
+                </div>
+                <div className='scene-conter-botton-tab'>
+                  <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
+                  <img
+                    src={require('../../../../../assets/img/prodect/administration/scene-ds.png')}
+                  />
+                </div>
+                <div className='scene-conter-botton-tab'>
+                  <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
+                  <img
+                    src={require('../../../../../assets/img/prodect/administration/scene-ds.png')}
+                  />
+                </div>
+              </Slider>
+            </div> */}
             <div className='scene-conter-botton'>
               <Tab shape='wrapped' tabPosition='left'>
                 <Tab.Item title={formatMessage({ id: 'app.website.chanpinadmin.tab.title1' })} key="1">

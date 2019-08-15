@@ -147,6 +147,15 @@ export default class GoodsTable extends Component {
       <p>{updatedAt}</p>
     );
   }
+  yirubtn(e) {}
+  yichubtn() {}
+  ceshiZhuanyong = (value,index,record) => {
+    return (
+      <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} onMouseMove={this.yirubtn.bind(this,value)} onMouseOut={this.yichubtn.bind(this)} title={value} >
+        {value}
+      </div>
+    );
+  };
   render() {
     const { isLoading, datas, current, total, pageSize,Filtertag,Filterform } = this.state;
     return (
@@ -156,25 +165,26 @@ export default class GoodsTable extends Component {
           <FilterForm onChange={this.handleFilterChange} Filterform={Filterform} />
         </IceContainer>
         <IceContainer>
-          <Table loading={isLoading} dataSource={datas} hasBorder={false}>
-            <Table.Column title="创建时间" dataIndex="createdAt" cell={this.createdAt} />
-            <Table.Column title="完成时间" dataIndex="updatedAt" cell={this.updatedAt} />
-            <Table.Column title="商户订单号" dataIndex="out_trade_no" />
-            <Table.Column title="平台流水号" dataIndex="orderNo" />
-            <Table.Column title="商品名称" dataIndex="orderDes" />
-            <Table.Column title="备注" dataIndex="orderDes" />
-            <Table.Column title="订单金额" dataIndex="amount" />
-            <Table.Column title="实付金额" dataIndex="amount_real" />
-            <Table.Column title="支付状态" dataIndex="orderStatusName" />
-            <Table.Column title="退款金额" dataIndex="" />
-            <Table.Column title="退款状态" dataIndex="" />
-            <Table.Column title="分润金额" dataIndex="" />
-            <Table.Column title="分润状态" dataIndex="" />
-            <Table.Column title="渠道" dataIndex="channelId" />
-            <Table.Column title="设备ID" dataIndex="deviceId" />
+          <Table loading={isLoading} dataSource={datas} hasBorder={false} fixedHeader maxBodyHeight={600} >
+            <Table.Column title="创建时间" dataIndex="createdAt" cell={this.createdAt} width={200} />
+            <Table.Column title="完成时间" dataIndex="updatedAt" cell={this.updatedAt} width={200} />
+            <Table.Column title="商户订单号" dataIndex="out_trade_no" width={150} />
+            <Table.Column title="平台流水号" dataIndex="orderNo" width={150} />
+            <Table.Column title="商品名称" dataIndex="orderDes" width={150} />
+            <Table.Column title="备注" dataIndex="orderDes" width={150} />
+            <Table.Column title="订单金额" dataIndex="amount" width={150} />
+            <Table.Column title="实付金额" dataIndex="amount_real" width={150} />
+            <Table.Column title="支付状态" dataIndex="orderStatusName" width={150} />
+            <Table.Column title="退款金额" dataIndex="" width={100} />
+            <Table.Column title="退款状态" dataIndex="" width={100} />
+            <Table.Column title="分润金额" dataIndex="" width={100} />
+            <Table.Column title="分润状态" dataIndex="" width={100} />
+            <Table.Column title="渠道" dataIndex="channelId" width={100} cell={this.ceshiZhuanyong} />
+            <Table.Column title="设备ID" dataIndex="deviceId" width={200} />
             <Table.Column
               title="操作"
               dataIndex="oper"
+              width={70}
               cell={this.renderOper}
             />
           </Table>

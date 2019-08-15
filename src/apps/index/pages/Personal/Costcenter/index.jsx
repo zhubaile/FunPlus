@@ -146,7 +146,7 @@ class Costcenter extends Component {
                   </div>
                 </div>
                 <p style={{ fontSize: '16px' }}>可用于支付待申请服务费用等</p>
-                <Button type='primary' style={styles.btnRadius} onClick={this.balancerecharge.bind(this)}>点击充值</Button>
+                <Button className='btn-all' size="large" type='primary ' style={styles.btnRadius} onClick={this.balancerecharge.bind(this)}>点击充值</Button>
               </div>
               <div className='costcenter-conter-twocentent'>
                 <div>
@@ -157,14 +157,14 @@ class Costcenter extends Component {
                   </div>
                 </div>
                 <p style={{ fontSize: '16px' }}>默认显示所有消费总额</p>
-                <Button type='primary' style={styles.btnRadius} onClick={this.detailsdeduction.bind(this)}>查询明细</Button>
+                <Button className='btn-all' size="large" type='primary' style={styles.btnRadius} onClick={this.detailsdeduction.bind(this)}>查询明细</Button>
               </div>
             </div>
             <div className='costcenter-bottom'>
               {/* <span style={{ fontSize: '20px', color: '#6C757D' }}>消费记录</span>
             <Input hasClear placeholder='输入订单号' aria-label="please input" ref={node=>this.applicationID = node} style={{ marginLeft: '100px', width: '300px' }} />
             <Button className='bg' size="large" type="primary">查询</Button> */}
-              <Tab shape='pure' className=''>
+              <Tab shape='pure' className='tab'>
                 <Tab.Item title="充值记录">
                   <Table loading={isLoading} dataSource={datas} hasBorder={false}>
                     <Table.Column title="订单号" dataIndex="orderNumber" />
@@ -215,6 +215,7 @@ class Costcenter extends Component {
 
 const styles = {
   btnRadius: {
+    marginTop: '15px',
     borderRadius: '4px',
   },
   label: {
