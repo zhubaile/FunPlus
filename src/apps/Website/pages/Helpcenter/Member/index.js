@@ -137,6 +137,7 @@ export default class Member extends Component {
             <FormattedMessage id='app.website.helpmember.imgleftright' />
           </div>
         </div>
+
         <div className='helpmember-imgright'>
           <div className='helpmember-imgright-left'>
             <FormattedMessage id='app.website.helpmember.imgrightleft' />

@@ -22,7 +22,7 @@ export default class Ceshi extends Component {
               <h1>-<FormattedMessage id='app.website.chanpinmode.prodecth1' /></h1>
               <p><FormattedMessage id='app.website.chanpinmode.prodectp' /></p>
             </div>
-{/*            <div className='headers-content-right' />*/}
+            {/*            <div className='headers-content-right' /> */}
           </div>
         </div>
         <div className="outer_boxs">
@@ -57,9 +57,7 @@ export default class Ceshi extends Component {
               <p><FormattedMessage id='app.website.chanpinmode.commonlyleft1p' /></p>
             </div>
             <div className='commonly-conter-right'>
-              <img
-                src={require('@img/prodect/mode/pic_1.png')}
-              />
+              <img src={require('@img/prodect/mode/pic_1.png')} alt="" />
             </div>
           </div>
         </div>
@@ -67,9 +65,7 @@ export default class Ceshi extends Component {
         <div className='commonly-right'>
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
-              <img
-                src={require('@img/prodect/mode/pic_2.png')}
-              />
+              <img src={require('@img/prodect/mode/pic_2.png')} alt="" />
             </div>
             <div className='commonly-conter-right'>
               <div className='commonly-conter-right-box'>
@@ -90,9 +86,7 @@ export default class Ceshi extends Component {
               <p><FormattedMessage id='app.website.chanpinmode.commonlyleft2p' /></p>
             </div>
             <div className='commonly-conter-right'>
-              <img
-                src={require('@img/prodect/mode/pic_3.png')}
-              />
+              <img src={require('@img/prodect/mode/pic_3.png')} alt="" />
             </div>
           </div>
         </div>
@@ -100,9 +94,7 @@ export default class Ceshi extends Component {
         <div className='commonly-right'>
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
-              <img
-                src={require('@img/prodect/mode/pic_4.png')}
-              />
+              <img src={require('@img/prodect/mode/pic_4.png')} alt="" />
             </div>
             <div className='commonly-conter-right'>
               <div className='commonly-conter-right-box'>

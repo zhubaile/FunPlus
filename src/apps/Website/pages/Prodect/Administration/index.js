@@ -32,7 +32,7 @@ export default class Ceshi extends Component {
                 <FormattedMessage id='app.website.chanpinadmin.prodectp' />
               </p>
             </div>
-{/*            <div className='nav-belowimg-conter-right' />*/}
+            {/*            <div className='nav-belowimg-conter-right' /> */}
           </div>
         </div>
         <div className="outer_boxs">
@@ -104,33 +104,25 @@ export default class Ceshi extends Component {
                 <Tab.Item title={formatMessage({ id: 'app.website.chanpinadmin.tab.title1' })} key="1">
                   <div className='scene-conter-botton-tab'>
                     <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
-                    <img
-                      src={require('@img/prodect/administration/scene-ds.png')}
-                    />
+                    <img src={require('@img/prodect/administration/scene-ds.png')} alt="" />
                   </div>
                 </Tab.Item>
                 <Tab.Item title={formatMessage({ id: 'app.website.chanpinadmin.tab.title1' })} key="2">
                   <div className='scene-conter-botton-tab'>
                     <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
-                    <img
-                      src={require('@img/prodect/administration/scene-wl.png')}
-                    />
+                    <img src={require('@img/prodect/administration/scene-wl.png')} alt="" />
                   </div>
                 </Tab.Item>
                 <Tab.Item title={formatMessage({ id: 'app.website.chanpinadmin.tab.title1' })} key="3">
                   <div className='scene-conter-botton-tab'>
                     <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
-                    <img
-                      src={require('@img/prodect/administration/scene-ls.png')}
-                    />
+                    <img src={require('@img/prodect/administration/scene-ls.png')} alt="" />
                   </div>
                 </Tab.Item>
                 <Tab.Item title={formatMessage({ id: 'app.website.chanpinadmin.tab.title1' })} key="4">
                   <div className='scene-conter-botton-tab'>
                     <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
-                    <img
-                      src={require('@img/prodect/administration/scene-jr.png')}
-                    />
+                    <img src={require('@img/prodect/administration/scene-jr.png')} alt="" />
                   </div>
                 </Tab.Item>
               </Tab>

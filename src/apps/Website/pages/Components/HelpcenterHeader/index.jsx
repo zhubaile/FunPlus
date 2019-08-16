@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
 import { Button, Icon, Nav } from '@alifd/next';
 import '../../index.css';
+
 export default class HelpcenterHeader extends Component {
   static displayName = 'HelpcenterHeader';
 
@@ -23,11 +24,11 @@ export default class HelpcenterHeader extends Component {
                 {this.props.HPcontent}
               </p>
             </div>
-            {/*          <div className='nav-belowimg-conter-right' />*/}
+            {/*          <div className='nav-belowimg-conter-right' /> */}
           </div>
         </div>
-        <div className="outer_boxs">
-          <div className="inner_boxs" />
+        <div className="outer_boxs1">
+          <div className="inner_boxs1" />
         </div>
       </div>
     );

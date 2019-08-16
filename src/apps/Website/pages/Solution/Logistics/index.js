@@ -29,7 +29,12 @@ export default class Logistics extends Component {
           <div className='service-conter'>
             <div className='service-conter-top'>
               <div>
-                <div style={{ backgroundImage: `url(${require("@img/solution/logistics/wl2.png")})`,width: '395px', height: '60px', textAlign: 'center', lineHeight: '60px',fontWeight: '400',fontSize: '36px' }}><FormattedMessage id='app.website.jjlogistics.service1.div' /></div>
+                <div
+                  className="headline"
+                  // style={{ backgroundImage: `url(${require("@img/solution/logistics/wl2.png")})`,width: '395px', height: '60px', textAlign: 'center', lineHeight: '60px',fontWeight: '400',fontSize: '36px' }}
+                >
+                  <FormattedMessage id='app.website.jjlogistics.service1.div' />
+                </div>
                 <p style={{ fontSize: '20px' , opacity: '0.8' }}><FormattedMessage id='app.website.jjlogistics.service1.p' /></p>
               </div>
             </div>
