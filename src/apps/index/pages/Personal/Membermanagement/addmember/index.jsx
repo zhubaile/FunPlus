@@ -1,7 +1,7 @@
 /* eslint  react/no-string-refs: 0 */
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Input, Radio , Switch, Grid, Form, Select } from '@alifd/next';
+import { Input, Radio , Switch, Button, Form, Select } from '@alifd/next';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import { createUser } from '@indexApi';
 import '../../../index.css';
@@ -154,8 +154,8 @@ export default class Addmenber extends Component {
               <Switch checkedChildren="正常" unCheckedChildren="禁止" defaultChecked={value.status} style={{ marginTop: '10px', width: '100px' }} />
             </FormBinder>
             <div>
-              <button className='quxiao' onClick={this.addmemberclose.bind(this)}>取消</button>
-              <button onClick={this.addmember}>添加</button>
+              <Button className='btn-all' type='secondary' size='large' onClick={this.addmemberclose.bind(this)}>取消</Button>
+              <Button type='primary' size='large' onClick={this.addmember}>添加</Button>
             </div>
           </FormBinderWrapper>
         </div>

@@ -409,21 +409,26 @@ a:active{ text-decoration: none; }
 .newrole{ position: fixed; width: 960px; height: 800px; top: 50%; left: 50%; margin-top: -400px; margin-left: -480px; z-index: 8888;
   border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;box-shadow: 0 0 10px #b5b3b3; overflow: auto;}
 .newrole .newrole-title{ border-bottom: 1px solid #dddddd; padding: 0 10px;}
-.newrole .newrole_main{width: 100%; padding: 10px 20px;}
+.newrole .newrole-title p{ margin: 6px 0 12px 0;}
+.newrole .newrole-title span{ margin-top: -12px;}
+.newrole .newrole_main{width: 100%; padding: 5px 20px;}
 .newrole .premissions_li{ width: 20%; float: left; height: 30px;}
 .newrole div{ margin: 8px auto;}
-.newrole label{ margin-right: 10px;}
+.newrole label{ margin-right: 12px;}
 .newrole .newrole-btn{ clear: both; text-align: center;}
 /*成员管理----新增角色--ending*/
 /*成员管理----编辑角色--starting*/
 .editingrole{ position: fixed; width: 960px; height: 800px; top: 50%; left: 50%; margin-top: -400px; margin-left: -480px;  z-index: 8888;
   border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;box-shadow: 0 0 10px #b5b3b3;overflow: auto;}
-.newrole-title{ border-bottom: 1px solid #dddddd; padding: 0 10px;}
+.editingrole .editingrole-title{ border-bottom: 1px solid #dddddd; padding: 0 10px;}
+.editingrole .editingrole-title p{ margin: 6px 0 12px 0;}
+.editingrole .editingrole-title span{ margin-top: -12px;}
 .editingrole_btn{ clear: both; text-align: center;}
-.editingrole .editingrole_main{width: 100%; padding: 10px 20px;}
+.editingrole .editingrole_main{width: 100%; padding: 5px 20px;}
 .editingrole .premissions_li{ width: 20%; float: left; height: 30px;}
 .editingrole div{ margin: 8px auto;}
 .editingrole label{ margin-right: 10px;}
+.editingrole .newrole-btn{ clear: both; text-align: center;}
 /*成员管理----编辑角色--ending*/
 
 

@@ -79,6 +79,42 @@ $ice-header-icon-down-color: #fff !default;
 .os-icon-ui-51:before {
   content: "\e94f";
 }
+// 设备管理
+.os-icon-link-3:before {
+  content: "\e90a";
+}
+// 企业认证
+.os-icon-window-content:before {
+  content: "\e903";
+}
+// 费用中心
+.os-icon-database-remove:before {
+  content: "\e908";
+}
+// 成员管理
+.os-icon-robot-1:before {
+  content: "\e945";
+}
+// 发票管理
+.os-icon-newspaper:before {
+  content: "\e902";
+}
+// 操作日志
+.os-icon-pencil-1:before {
+  content: "\e90b";
+}
+.os-icon-user-male-circle:before {
+  content: "\e906";
+}
+.os-icon-edit-1:before {
+  content: "\e90d";
+}
+.os-icon-mail-07:before {
+  content: "\e94b";
+}
+.os-icon-grid-circles:before {
+  content: "\e93c";
+}
 /* HEADER */
 .ice-design-layout-header {
   width: 100%;
@@ -482,5 +518,5 @@ $ice-header-icon-down-color: #fff !default;
 .logged-user-w .logged-user-menu ul li:last-child {
   border-bottom: none;
 }
-
+.next-input.next-small .next-input-text-field{ padding-left: 10px;}
 //end

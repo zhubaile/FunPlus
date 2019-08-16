@@ -54,27 +54,27 @@ export default class Administration extends Component {
               </li>
               <li>
                 <Link to='/admin/personal/enterprisecertification'>
-                  <i className="os-icon os-icon-coins-4" /><span>企业认证</span>
+                  <i className="os-icon os-icon-window-content" /><span>企业认证</span>
                 </Link>
               </li>
               <li>
                 <Link to='/admin/personal/costcenter'>
-                  <i className="os-icon os-icon-others-43" /><span>费用中心</span>
+                  <i className="os-icon os-icon-database-remove" /><span>费用中心</span>
                 </Link>
               </li>
               <li>
                 <Link to='/admin/personal/membermanagement'>
-                  <i className="os-icon os-icon-others-43" /><span>成员管理</span>
+                  <i className="os-icon os-icon-robot-1" /><span>成员管理</span>
                 </Link>
               </li>
               <li>
                 <Link to='/admin/personal/controloverinvoices'>
-                  <i className="os-icon os-icon-others-43" /><span>发票管理</span>
+                  <i className="os-icon os-icon-newspaper" /><span>发票管理</span>
                 </Link>
               </li>
               <li>
                 <Link to='/admin/personal/operationlog'>
-                  <i className="os-icon os-icon-others-43" /><span>操作日志</span>
+                  <i className="os-icon os-icon-pencil-1" /><span>操作日志</span>
                 </Link>
               </li>
               <li>

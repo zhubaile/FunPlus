@@ -75,7 +75,7 @@ export default class Nav extends Component {
   render() {
     const navtop1 = (
       <div className="tab-title">
-        <i className="os-icon os-icon-mail-14" />
+        <i className="os-icon os-icon-user-male-circle" />
         <div>客服</div>
         {/* <Link to='/admin/backstageworkorder/Customerservice'>
           <i className="os-icon os-icon-mail-14" />
@@ -85,7 +85,7 @@ export default class Nav extends Component {
     );
     const navtop2 = (
       <div className="tab-title">
-        <i className="os-icon os-icon-mail-14" />
+        <i className="os-icon os-icon-edit-1" />
         <div>工单</div>
         {/* <Link to='/admin/backstageworkorder/Allworkorders'>
           <i className="os-icon os-icon-mail-14" />
@@ -101,11 +101,11 @@ export default class Nav extends Component {
             <div className='navtop1-box'>
               <div className='chat-list'>
                 <div className={stylecolor == true ? 'chat-list-box color' : 'chat-list-box'} onClick={this.Conversation.bind(this)}>
-                  <i className="os-icon os-icon-mail-14" />
+                  <i className="os-icon os-icon-mail-07" />
                   <span>会话</span>
                 </div>
                 <div className={stylecolor == false ? 'chat-list-box color' : 'chat-list-box'} onClick={this.listbtn.bind(this)}>
-                  <i className="os-icon os-icon-mail-14" />
+                  <i className="os-icon os-icon-grid-circles" />
                   <span>列表</span>
                 </div>
                 {/* <div className='element-search'> */}

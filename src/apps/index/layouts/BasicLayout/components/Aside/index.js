@@ -151,7 +151,7 @@ export default class Aside extends Component {
             title={
               <span>
                 <Link to='/admin/devicemanagement/devicemanagement'>
-                  <i className="os-icon os-icon-fingerprint" />
+                  <i className="os-icon os-icon-link-3" />
                   <span>设备管理</span>
                 </Link>
               </span>
