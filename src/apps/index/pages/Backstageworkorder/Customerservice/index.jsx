@@ -40,7 +40,7 @@ export default class Customerservice extends Component {
       datas: [], // 之前的聊天记录
       messagelist: [], // 此刻聊天的记录
       array: [], // 用户的个人信息
-      username: '', // 当前客服名称
+      // username: '', // 当前客服名称,8-19更改成array.byReplyName
       byReplyId: '', // 客服id
       userId: '', // 用户id
     };
@@ -52,12 +52,12 @@ export default class Customerservice extends Component {
 
 }) */
   // 定时器
-  tick(userId){
+  tick(userId) {
     debugger;
     this.socket.emit('heartbeat',userId);
   }
   // 解除定时器
-  componentWillUnmount(){
+  componentWillUnmount() {
     clearInterval(this.interval);
   }
   componentDidMount() {
@@ -73,7 +73,7 @@ export default class Customerservice extends Component {
         this.setState({
           datas: data.data, // 聊天记录
           array: data.userInfo,
-          username: data.userInfo.byReplyName,
+          // username: data.userInfo.byReplyName,
           userId,
           byReplyId: data.userInfo.byReplyId,
         },()=>{
@@ -131,7 +131,7 @@ export default class Customerservice extends Component {
           datas: data.data, // 获取之前的聊天记录
           messagelist: [], // 此刻聊天记录清空
           array: data.userInfo,
-          username: data.userInfo.byReplyName,
+          // username: data.userInfo.byReplyName,
           byReplyId: e,
           userId: userid,
         },()=>{
@@ -181,7 +181,12 @@ export default class Customerservice extends Component {
     this.messagesEnd.scrollTop = scrollTop;
   }
   render() {
-    const { datas, messagelist,username,array } = this.state;
+    const { datas, messagelist,array } = this.state;
+    const username = array.byReplyName;
+    /* let username;
+    if (array.byReplyName) {
+      username = array.byReplyName;
+    } */
     // 此刻的聊天记录
     const zbla = (
       messagelist.map((item) => {

@@ -26,20 +26,22 @@ export default class Member extends Component {
   render() {
     const settings = {
       className: 'custom-slide center',
-      autoplay: true,
-      autoplaySpeed: '4000',
-      lazyLoad: true,
-      slidesToShow: 3,
-      adaptiveHeight: true,
-      centerMode: true,
-      infinite: true,
-      dots: true,
-      slideDirection: 'hoz',
-      centerPadding: '60px',
-      speed: 500,
-      arrowSize: "large",
-      arrowPosition: "outer",
-      dotsClass: 'dots-cusst',
+      autoplay: true, // 是否自动轮播
+      autoplaySpeed: '4000', // 自动播放的轮播速度
+      lazyLoad: true, // 懒加载
+      slidesToShow: 3, // 同时展示的图片数量
+      speed: 500, // 轮播速度
+      adaptiveHeight: true, // 自适应高度
+      centerMode: true, // 启用居中模式
+      infinite: true, // 使用无穷循环模式
+      dots: true, // 显示导航锚点
+      dotsDirection: 'hoz',
+      dotsClass: 'dots-cusst', //  dotsClass 可覆盖dots的样式
+      slideDirection: 'hoz', // 轮播方向
+      centerPadding: '60px', // pading会产生前后预览
+      arrowDirection: 'hoz', // 导航箭头的方向
+      arrowSize: "large", // 导航箭头大小
+      arrowPosition: "outer", // 导航箭头位置
     };
     const { intl: { formatMessage } } = this.props;
     const dots1 = formatMessage({ id: 'app.website.helpmember.slider.dots1' }) ,

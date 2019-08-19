@@ -77,7 +77,7 @@ export default class Aside extends Component {
           mode='inline'
           openKeys={this.state.openKeys}
           selectedKeys={[this.state.current]}
-          style={{ width: 240 }}
+          // style={{ width: 240 }}
           onOpenChange={this.onOpenChange}
           onClick={this.handleClick}
         >

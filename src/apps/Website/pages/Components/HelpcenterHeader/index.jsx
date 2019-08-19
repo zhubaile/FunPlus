@@ -12,7 +12,7 @@ export default class HelpcenterHeader extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{ width: '100%' }}>
         <div className='headers'>
           <div className="circles1" />
           <div className="circles2" />
@@ -24,7 +24,7 @@ export default class HelpcenterHeader extends Component {
                 {this.props.HPcontent}
               </p>
             </div>
-            {/*          <div className='nav-belowimg-conter-right' /> */}
+
           </div>
         </div>
         <div className="outer_boxs1">

@@ -12,7 +12,7 @@ export default class HelpcenterHeader extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{ width: '100%' }}>
         <div className="containers">
           <div className="cir1" />
           <div className="cir2" />
@@ -23,7 +23,6 @@ export default class HelpcenterHeader extends Component {
               <p>{this.props.HPcontent}</p>
             </div>
           </div>
-
         </div>
         <div className="outers">
           <div className="inners" />

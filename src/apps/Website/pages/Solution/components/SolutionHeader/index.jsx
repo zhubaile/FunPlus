@@ -11,19 +11,19 @@ export default class SolutionHeader extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{ width: '100%'}} >
         <div className='headers'>
           <div className="circles1" />
           <div className="circles2" />
           <div className="circles3" />
           <div className='headers-content'>
             <div className='headers-content-left'>
-              <h1>{this.props.HHcontent} </h1>
+              <h1>{this.props.HHcontent}</h1>
               <p>
                 {this.props.HPcontent}
               </p>
             </div>
-            {/*          <div className='nav-belowimg-conter-right' />*/}
+            {/*          <div className='nav-belowimg-conter-right' /> */}
           </div>
         </div>
         <div className="outer_boxs">
