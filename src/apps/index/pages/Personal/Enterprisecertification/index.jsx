@@ -57,7 +57,7 @@ class Enterprisecertification extends Component {
       dustyInfo: [],// 全部类目的数据值
       userCompanyInfo: [],
       userCompanyStatus: {
-        status: 0,
+        cpStatus: 0,
       },
     };
     this.handleProvinceChange = this.handleProvinceChange.bind(this);
@@ -89,26 +89,22 @@ class Enterprisecertification extends Component {
     companydustyInfo().then(({ status,data })=>{
       debugger;
       if (data.errCode == 0) {
+        // const sss = data.data.state;
+        // const userStatus = Object.assign({},sss,{ cpStatus: 0 });
         this.setState({
           dustyInfo: data.data.dustyInfo, // 类目选择
-          userCompanyInfo: data.data.userCompanyInfo, // 审核的信息
-          userCompanyStatus: data.data.userCompanyStatus,
+          userCompanyInfo: data.data.company, // 审核的信息
+          userCompanyStatus: data.data.state, // 审核状态 userCompanyStatus
         });
       } else {
         Message.success(data.message);
       }
     });
   }
-  /* fetchData = (len) => {
-    companydustyInfo().then(({ status,data })=>{
-      debugger;
-    });
-  }; */
   // 提交
   validateAllFormField = () => {
     const { validateFields } = this.refs.form;
     validateFields((errors,values)=>{
-      debugger;
       if (!errors) {
         const cpIndustryImage = values.cpIndustryImage[0].response.names;
         const cpFrontCardImg = values.cpFrontCardImg[0].response.names;
@@ -122,7 +118,7 @@ class Enterprisecertification extends Component {
           debugger;
           if (data.errCode == 0) {
             Message.success(data.message);
-            const userStatus = Object.assign({},this.state.userCompanyStatus,{ status: 1 });
+            const userStatus = Object.assign({},this.state.userCompanyStatus,{ cpStatus: 1 });
             this.setState({
               userCompanyStatus: userStatus,
             });
@@ -138,25 +134,21 @@ class Enterprisecertification extends Component {
   };
   // 修改审核信息的按钮
   modifymessage() {
-    const userStatus = Object.assign({},this.state.userCompanyStatus,{ status: 0 });
+    const userStatus = Object.assign({},this.state.userCompanyStatus,{ cpStatus: 0 });
+    debugger;
     this.setState({
       userCompanyStatus: userStatus,
       value: this.state.userCompanyInfo,
     });
   }
   render() {
-    const { dustyInfoson, userCompanyStatus,dustyInfo,userCompanyInfo } = this.state;
+    const { dustyInfoson, userCompanyStatus,dustyInfo,userCompanyInfo,value } = this.state;
     const {
       intl: { formatMessage },
     } = this.props;
     const userContent = userCompanyStatus.content;
-    const userStatus = userCompanyStatus.status;
-    let userstatuss = userStatus;
-    if (userstatuss == 3) {
-      userstatuss = 1;
-    } else {
-      userstatuss;
-    }
+    const userStatus = userCompanyStatus.cpStatus;
+    console.log(value);
     debugger;
     return (
       <div>
@@ -164,22 +156,18 @@ class Enterprisecertification extends Component {
           <Tab.Item shape='pure' title='企业认证'>
             <div className="personalenter">
               <div className='personalenter-left'>
-                {/* <div className='personalenter-left-step'>
-              <Step current={userstatuss} shape="arrow" animation>
-                <Step.Item title="1 提交资料" />
-                <Step.Item title="2 审核中" />
-                <Step.Item title="3 审核通过" />
-              </Step>
-            </div> */}
                 {userStatus == 0 ? (
                   <FormBinderWrapper
-                    value={this.state.value}
+                    value={value}
                     onChange={this.formChange}
                     ref="form"
                   >
                     <div style={styles.formContent}>
                       {/* 企业名称 */}
                       <div style={styles.formItem}>
+                        {/* <input type="file" ref={node=>this.filebtn1 = node} />
+                        <input type="file" ref={node=>this.filebtn2 = node} />
+                        <input type="file" ref={node=>this.filebtn3 = node} /> */}
                         <span style={styles.formItemLabel}>企业名称：</span>
                         <FormBinder
                           name="cpName"
@@ -270,6 +258,22 @@ class Enterprisecertification extends Component {
                                 names: res.data.name,
                               };
                             }}
+                            /* defaultValue={[{
+                              uid: '0',
+                              name: 'IMG.png',
+                              state: 'done',
+                              url: 'http://192.168.1.121:3001/upload/image/8f3433e80d704f03da03cf760213cabd.png',
+                              downloadURL: 'http://192.168.1.121:3001/upload/image/8f3433e80d704f03da03cf760213cabd.png',
+                              imgURL: 'http://192.168.1.121:3001/upload/image/8f3433e80d704f03da03cf760213cabd.png'
+                            }, {
+                              uid: '1',
+                              name: 'IMG.png',
+                              percent: 50,
+                              state: 'uploading',
+                              url: 'http://192.168.1.121:3000/upload/image/9d4b9b8b028a14882425eb09825a7034.png',
+                              downloadURL: 'http://192.168.1.121:3000/upload/image/9d4b9b8b028a14882425eb09825a7034.png',
+                              imgURL: 'http://192.168.1.121:3000/upload/image/9d4b9b8b028a14882425eb09825a7034.png'
+                            }]} */
                           />
                         </FormBinder>
                       </div>

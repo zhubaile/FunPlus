@@ -446,6 +446,9 @@ export function companycompanyInsert(params) {
   return ajaxAmd.post({
     url: '/company/companyInsert',
     data: params,
+    /* headers: {
+      'content-type': 'form-data'
+    }, */
   });
 }
 // 账户信息
@@ -525,5 +528,19 @@ export function appsget(params) {
   return ajaxAmd.get({
     url: '/apps',
     params,
+  });
+}
+// 公告列表
+export function bulletinlist(params) {
+  return ajaxAmd.get({
+    url: '/bulletin/list',
+    params,
+  });
+}
+// 公告删除
+export function bulletindelete(params) {
+  return ajaxAmd.delete({
+    url: '/bulletin/delete',
+    data: params,
   });
 }

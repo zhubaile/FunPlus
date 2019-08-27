@@ -129,7 +129,7 @@ export default class Accountinformation extends Component {
               <div className='personal-account-right'>
                 <div>
                   <h3>企业认证</h3>
-                  <p>认证状态： {datas.companyStatus == 2 ? (<span style={styles.mySpan}>已认证</span>) : (<span style={styles.mySpan} onClick={this.goauthentication.bind(this)}>未认证</span>)}</p>
+                  <p>认证状态： {datas.cpStatus == 2 ? (<span style={styles.mySpan}>已认证</span>) : (<span style={styles.mySpan} onClick={this.goauthentication.bind(this)}>未认证</span>)}</p>
                 </div>
                 <hr />
                 <Form >
@@ -137,8 +137,8 @@ export default class Accountinformation extends Component {
                     <h3>行业信息</h3>
                     <FormItem style={{ marginTop: '10px' }}>
                       <span>所属行业：</span>
-                      <Select name="pmsName" value={datas.pmsName} />
-                      <Select name="sonName" style={{ marginLeft: '15px' }} value={datas.sonName} />
+                      <Select name="cpIndustryCategory" value={datas.cpIndustryCategory} />
+                      <Select name="cpIndustrySubcategory" style={{ marginLeft: '15px' }} value={datas.cpIndustrySubcategory} />
                     </FormItem>
                   </div>
                 </Form>

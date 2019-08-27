@@ -5,7 +5,8 @@ import { Input, Radio , Button, Grid, Form, Message } from '@alifd/next';
 // import { Link,withRouter } from 'react-router-dom';
 import { recharge } from '@indexApi';
 // import Demopay from '../../../../../Website/pages/Demo/Demopay';
-import Demopayendpopup from '../../../../../Website/pages/Demo/Demopay/Demopayendpopup';
+// import Demopayendpopup from '../../../../../Website/pages/Demo/Demopay/Demopayendpopup'; // 引用这个会有样式冲突,下面的为替换
+import Demopayendpopup from './Zfbpaypopup';
 import Wxpaypopup from './Wxpaypopup';
 // import Zfbpaypopup from './Zfbpaypopup';
 import '../../../index.css';

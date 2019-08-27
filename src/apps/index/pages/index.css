@@ -288,6 +288,14 @@ a:active{ text-decoration: none; }
 .wxpaypopup-main .wxpaypopup-main-bottom{ position: relative; }
 .wxpaypopup-main .wxpaypopup-main-bottom img{ float: left; margin-left: 32px; margin-top: 5px; }
 .wxpaypopup-main .wxpaypopup-main-bottom div{ float: right; margin-right: 32px; margin-top: -15px;}
+/* 支付完成的弹框 */
+.demopayendpopup{ position: fixed; width: 350px; height: 249px; top: 50%; left: 50%; margin-top: -124px; margin-left: -175px; text-align: center; z-index: 8988;
+  border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid #bbbbbb;}
+.demopayendpopup-top{ padding: 20px; margin-bottom: 20px; border-bottom: 1px solid #BBBBBB; }
+.demopayendpopup-bottom{ padding: 5px;}
+.demopayendpopup-bottom p strong{ color:rgba(0,162,246,1) }
+.demopayendpopup-bottom button{ margin: 5px 10px;}
 /* 发票管理 */
 .controloverinvoices{ display: flex; justify-content: center; flex-direction: column; align-items: center;}
 .controloverinvoices .controloverinvoices-top{ width: 100%;border-radius: 10px 10px 10px 10px;background-color: rgba(255, 255, 255, 1);color: rgba(16, 16, 16, 1);font-size: 14px;
@@ -349,7 +357,7 @@ a:active{ text-decoration: none; }
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px;padding-top: 20px; height:260px; margin-left: 30px;}
 /* 查阅更多信息 */
 .accesstoinformationaddition{ width: 95%; display: flex; justify-content: center;}
-.accesstoinformationaddition .accesstoinformationaddition-left{ width: 78%; margin-top: 20px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; color: #1A55E2;
+.accesstoinformationaddition .accesstoinformationaddition-left{ width: 100%; margin-top: 20px;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px; color: #1A55E2;
   box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0);}
 .accesstoinformationaddition-left-btn{ padding: 20px; border-bottom: 1px solid #DBD9D9;}
 .accesstoinformationaddition-left-btn button{ border: none; background: none; margin-left: 25px;}
@@ -361,8 +369,8 @@ a:active{ text-decoration: none; }
 .accesstoinformationaddition-left ul li p{ color: #000;}
 .accesstoinformationaddition-left ul li a{ position: absolute; top: 20px; right: 10px; font-size: 30px; color: rgba(0, 0, 0, 0.5);}
 
-.accesstoinformationaddition .accesstoinformationaddition-right{ width: 20%;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px;text-align: center;
-  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px;padding-top: 20px; height:260px; margin-left: 30px;}
+/*.accesstoinformationaddition .accesstoinformationaddition-right{ width: 20%;border-radius: 10px;background-color: rgba(255, 255, 255, 1);font-size: 14px;text-align: center;
+  box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px;padding-top: 20px; height:260px; margin-left: 30px;}*/
 /* 成组件了 管理员的信息 */
 .administrators{ display: flex; align-items: center; justify-content: center; flex-direction: column;}
 .administrators img{ width: 100px; height: auto;border-radius: 50%;}
@@ -824,12 +832,10 @@ div.tab-panel{ background: #FFFFFF;}
   -ms-flex: 1;
   flex: 1;
 }
-
 .Customerservice .onlineservice .chat-head .user-w .user-title {
   margin-bottom: 2px;
   color: #047bf8;
 }
-
 .Customerservice .onlineservice .chat-head .user-w .user-role {
   font-weight: 500;
   font-size: 0.81rem;
