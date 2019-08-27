@@ -24,9 +24,6 @@ export default class HelpcenterHeader extends Component {
             </div>
           </div>
         </div>
-        <div className="outers">
-          <div className="inners" />
-        </div>
       </div>
     );
   }

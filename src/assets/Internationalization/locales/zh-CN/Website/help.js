@@ -1,5 +1,17 @@
 export default {
   // 帮助中心
+  // 联系我们
+  'app.website.helpcontactus.header.h1': '联系我们',
+  'app.website.helpcontactus.header.p': '产品使用和技术问题，在帮助中心找到答案。',
+  'app.website.helpcontactus.name.label': '姓名：',
+  'app.website.helpcontactus.email.label': '邮箱：',
+  'app.website.helpcontactus.address.label': '公司地址：',
+  'app.website.helpcontactus.tel.label': '手机号：',
+  'app.website.helpcontactus.company.label': '公司名称：',
+  'app.website.helpcontactus.province.label': '问题描述：',
+  'app.website.helpcontactus.description.label': '详细咨询内容：',
+  'app.website.helpcontactus.send.button': '发送',
+  '': '联系人所在省：',
   // 快速开发
   'app.website.helpdevelop.header.h1': '-快速开始',
   'app.website.helpdevelop.header.p': '帮助用户快速轻松了解平台的服务功能。',

@@ -12,6 +12,7 @@ export default {
   'app.website.helpcenter.member': '会员系统',
   'app.website.helpcenter.multistage': '多级商户管理系统',
   'app.website.helpcenter.sdk': 'SDK下载',
+  'app.website.helpcenter.Contactus': '联系我们',
 
   'app.website.solution': '解决方案',
   'app.website.solution.logistics': '物流行业解决方案',

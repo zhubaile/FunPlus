@@ -22,7 +22,6 @@ const ICE_CONTAINER = document.getElementById('root');
 if (!ICE_CONTAINER) {
   throw new Error('当前页面不存在 <div id="root"></div> 节点.');
 }
-
 ReactDOM.render(
   <LanguageProvider locale={locale}>
     <Provider store={store}>

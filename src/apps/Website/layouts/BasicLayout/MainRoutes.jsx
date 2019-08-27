@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter, Link } from 'react-router-dom';
 import NotFound from '../../components/NotFound';
 import routerData from '../../routerConfig';
 
+@withRouter
 class MainRoutes extends Component {
   /**
    * 渲染路由组件
@@ -17,7 +18,13 @@ class MainRoutes extends Component {
       />
     ) : null;
   };
-
+  componentDidMount(){
+    console.log(123456)
+    this.props.history.listen(() => {
+      console.log(654321)
+      window.scroll(0,0);
+    });
+  }
   render() {
     return (
       <Switch>

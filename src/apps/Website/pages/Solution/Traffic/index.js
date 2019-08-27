@@ -40,15 +40,13 @@ export default class Traffic extends Component {
           </div>
         </div>
         {/*  */}
-        <div className='commonly-right'>
-          <div className='commonly-conter'>
-            <div className='commonly-conter-left'>
-              <img
-                src={require('@img/solution/traffic/jt_1.png')}
-              />
+        <div className='generic'>
+          <div className='generic_content'>
+            <div className='generic_content_left'>
+              <img src={require('@img/solution/traffic/jt_1.png')} alt="" />
             </div>
-            <div className='commonly-conter-right'>
-              <p style={{ width: '380px', textIndent: '2em' }}><FormattedMessage id='app.website.jjtraffic.commonlyright.p' /></p>
+            <div className='generic_content_right'>
+              <p><FormattedMessage id='app.website.jjtraffic.commonlyright.p' /></p>
             </div>
           </div>
         </div>
@@ -65,7 +63,6 @@ export default class Traffic extends Component {
             <div className='service-conter-bottons'>
               <img src={require('@img/solution/traffic/jt2.png')} alt="" />
               <p><FormattedMessage id='app.website.jjtraffic.service2.bottomp1' /></p>
-              <p><FormattedMessage id='app.website.jjtraffic.service2.bottomp2' /></p>
             </div>
           </div>
         </div>
@@ -111,7 +108,7 @@ export default class Traffic extends Component {
                 <li className='boxs'>
                   <img src={require('@img/solution/traffic/jt6.png')} alt="" />
                   <h2><FormattedMessage id='app.website.jjtraffic.service3.bottomli3h2' /></h2>
-                  <hr style={{ width: '40%', borderTop: '1px solid #009944' }} />
+                  <hr style={{ width: '40%', border: '1px solid #009944' }} />
                   <p>
                     <FormattedMessage id='app.website.jjtraffic.service3.bottomli3p' />
                   </p>
@@ -119,7 +116,7 @@ export default class Traffic extends Component {
                 <li className='boxs'>
                   <img src={require('@img/solution/traffic/jt7.png')} alt="" />
                   <h2><FormattedMessage id='app.website.jjtraffic.service3.bottomli4h2' /></h2>
-                  <hr style={{ width: '40%', borderTop: '1px solid #AE5DA1' }} />
+                  <hr style={{ width: '40%', border: '1px solid #AE5DA1' }} />
                   <p> <FormattedMessage id='app.website.jjtraffic.service3.bottomli4p' />
                   </p>
                 </li>

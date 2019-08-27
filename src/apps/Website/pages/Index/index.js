@@ -141,17 +141,18 @@ export default class Ceshi extends Component {
         </div>
         {/*  */}
         <div className="safe">
-          <div className="safe_content_left">
-            <div className="inner_left" style={{ position: 'relative' }}>
-              <div style={{ width: '4px', height: '100%', background: 'rgba(109,166,252,1)', position: 'absolute', left: '30%', borderRadius: '2px' }} />
-              <div style={{ width: '100%', height: '4px', background: 'rgba(109,166,252,1)', borderRadius: '2px' }} />
-              <div style={{ height: '100%', textAlign: 'center', paddingRight: '45%', paddingTop: '15%' }}>
-                <img src={require('@img/shouye/pic02.png')} alt="" />
-                <p><FormattedMessage id='app.website.shouye.sonp1' /></p>
+          <div style={{ width: '50%', display: 'inline-block' }}>
+            <div className="safe_content_left">
+              <div className="inner_left" style={{ position: 'relative' }}>
+                <div style={{ width: '4px', height: '100%', background: 'rgba(109,166,252,1)', position: 'absolute', left: '30%', borderRadius: '2px' }} />
+                <div style={{ width: '50%', height: '4px', background: 'rgba(109,166,252,1)', borderRadius: '2px', marginTop: '200px' }} />
+                <div style={{ height: '650px', textAlign: 'center', marginRight: '20%' }}>
+                  <img src={require('@img/shouye/pic02.png')} alt="" />
+                  <p><FormattedMessage id='app.website.shouye.sonp1' /></p>
+                </div>
               </div>
             </div>
           </div>
-
           <div className="safe_content_right">
             <div className="inner_right">
               <dl>
@@ -163,6 +164,7 @@ export default class Ceshi extends Component {
 
           </div>
         </div>
+
         {/*  */}
         <div className="powerful">
           <div className="powerful_main">

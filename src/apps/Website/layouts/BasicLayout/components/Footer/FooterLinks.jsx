@@ -289,7 +289,7 @@ export default class FooterLinks extends Component {
               <FormattedMessage id='app.website.footer.hotline' />：010-666-888
             </div>
             <div>
-              <Button type="primary" style={{ borderRadius: '20px' }}> <FormattedMessage id='app.website.footer.Immediateconsultation' /></Button>
+{/*              <Button type="primary" style={{ borderRadius: '20px' }}> <FormattedMessage id='app.website.footer.Immediateconsultation' /></Button>*/}
             </div>
           </div>
           <div className="footer-clearfix" style={styles.footerClearfix} />

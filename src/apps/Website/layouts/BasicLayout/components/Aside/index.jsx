@@ -80,12 +80,12 @@ export default class Aside extends Component {
               if (nav.children && nav.children.length > 0) {
                 return (
                   <Nav.SubNav
+                    style={{ padding: '0 34px 0 16px' }}
                     key={index}
                     label={
                       <span>
                         {nav.icon ? (
                           <FoundationSymbol
-                            // style={{ marginRight: '8px' }}
                             size="small"
                             type={nav.icon}
                           />
@@ -131,7 +131,7 @@ export default class Aside extends Component {
                     <span>
                       {nav.icon ? (
                         <FoundationSymbol
-                          // style={{ marginRight: '8px' }}
+                          style={{ right: '18px' }}
                           size="small"
                           type={nav.icon}
                         />

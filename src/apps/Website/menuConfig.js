@@ -49,6 +49,7 @@ const asideMenuConfig = [
       { name: '会员系统', path: '/website/helpcenter/member', icon: 'refresh' },
       { name: '多级商户管理系统', path: '/website/helpcenter/multistage', icon: 'refresh' },
       { name: 'SDK下载', path: '/website/helpcenter/sdk', icon: 'refresh' },
+      { name: '联系我们', path: '/website/helpcenter/Contactus', icon: 'refresh' },
     ],
   },
   {

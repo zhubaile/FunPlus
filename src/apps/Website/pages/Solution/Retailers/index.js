@@ -13,7 +13,7 @@ export default class Retailers extends Component {
       intl: { formatMessage },
     } = this.props;
     const headerh1 = formatMessage({ id: 'app.website.jjretailers.header.h1' }) ,
-      headerp = formatMessage({ id: 'app.website.jjretailers.header.p' }) ;
+      headerp = formatMessage({ id: 'app.website.jjretailers.header.p' });
     this.state = {
       HHcontent: headerh1,
       HPcontent: headerp,
@@ -41,15 +41,13 @@ export default class Retailers extends Component {
           </div>
         </div>
         {/*  */}
-        <div className='commonly-right'>
-          <div className='commonly-conter'>
-            <div className='commonly-conter-left'>
-              <img
-                src={require('@img/solution/retailers/ds_2.png')}
-              />
+        <div className='generic'>
+          <div className='generic_content'>
+            <div className='generic_content_left'>
+              <img src={require('@img/solution/retailers/ds_2.png')} alt="" />
             </div>
-            <div className='commonly-conter-right'>
-              <p style={{ width: '380px', textIndent: '2em' }}><FormattedMessage id='app.website.jjretailers.commonlyright.p' /></p>
+            <div className='generic_content_right'>
+              <p><FormattedMessage id='app.website.jjretailers.commonlyright.p' /></p>
             </div>
           </div>
         </div>
@@ -60,13 +58,12 @@ export default class Retailers extends Component {
               <div>
                 <img src={require('@img/solution/retailers/small.png')} style={{ width: '60px' }} alt="" />
                 <strong><FormattedMessage id='app.website.jjretailers.service2.topstrong' /></strong><FormattedMessage id='app.website.jjretailers.service2.topstrongsize' />
-                <p className='text'>-problem to be solved-</p>
+                <p className='text'>-PROBLEM TO BE SOLVED-</p>
               </div>
             </div>
             <div className='service-conter-bottons'>
               <img src={require('@img/solution/retailers/ds2.png')} alt="" />
               <p><FormattedMessage id='app.website.jjretailers.service2.bottomp1' /></p>
-              <p><FormattedMessage id='app.website.jjretailers.service2.bottomp2' /></p>
             </div>
           </div>
         </div>
@@ -96,7 +93,7 @@ export default class Retailers extends Component {
                 <li className='boxs'>
                   <img src={require('@img/solution/retailers/ds4.png')} alt="" />
                   <h2><FormattedMessage id='app.website.jjretailers.service3.bottomli1h2' /></h2>
-                  <hr style={{ width: '40%', borderTop: '1px solid #EB6100' }} />
+                  <hr style={{ width: '40%', border: '1px solid #EB6100' }} />
                   <p>
                     <FormattedMessage id='app.website.jjretailers.service3.bottomli1p' />
                   </p>
@@ -127,7 +124,7 @@ export default class Retailers extends Component {
             </div>
           </div>
         </div>
-       {/*  */}
+        {/*  */}
         <SolutionFooter />
       </div>
     );

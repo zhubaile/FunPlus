@@ -12,10 +12,6 @@ export default class HelpcenterFooter extends Component {
    }
    render() {
      return (
-       <div style={{ width: '100%' }}>
-         <div className="outers_foots">
-           <div className="inners_foots" />
-         </div>
          <div className="foots_containers">
            <div className="foots_containers_content">
              <div className="foots_containers_left">
@@ -23,9 +19,7 @@ export default class HelpcenterFooter extends Component {
                <p>{this.props.FPcontent}</p>
              </div>
            </div>
-
          </div>
-       </div>
      );
    }
 }

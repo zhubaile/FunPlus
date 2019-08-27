@@ -24,11 +24,7 @@ export default class HelpcenterHeader extends Component {
                 {this.props.HPcontent}
               </p>
             </div>
-
           </div>
-        </div>
-        <div className="outer_boxs1">
-          <div className="inner_boxs1" />
         </div>
       </div>
     );

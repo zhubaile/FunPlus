@@ -54,13 +54,13 @@ export default class Border extends Component {
           </div>
         </div>
         {/*  */}
-        <div className='commonly-right'>
-          <div className='commonly-conter'>
-            <div className='commonly-conter-left'>
+        <div className='generic'>
+          <div className='generic_content'>
+            <div className='generic_content_left'>
               <img src={require('@img/solution/border/kj_1.png')} alt="" />
             </div>
-            <div className='commonly-conter-right'>
-              <p style={{ width: '380px', textIndent: '2em' }}><FormattedMessage id='app.website.jjborder.commonlyright.p' /></p>
+            <div className='generic_content_right'>
+              <p><FormattedMessage id='app.website.jjborder.commonlyright.p' /></p>
             </div>
           </div>
         </div>
@@ -79,21 +79,21 @@ export default class Border extends Component {
                     <li>
                       <img src={require('@img/solution/border/kj11.png')} alt="" />
                       <p style={{ fontSize: '18px' , lineHeight: '18px' }}><FormattedMessage id='app.website.jjborder.tab1.li1p1' /></p>
-                      <p style={{ fontSize: '14px' , lineHeight: '14px' }}><FormattedMessage id='app.website.jjborder.tab1.li1p2' />
+                      <p className="p" style={{ fontSize: '14px' , lineHeight: '22px' }}><FormattedMessage id='app.website.jjborder.tab1.li1p2' />
                         <br /><FormattedMessage id='app.website.jjborder.tab1.li1p1' />
                       </p>
                     </li>
                     <li>
                       <img src={require('@img/solution/border/kj12.png')} alt="" />
                       <p style={{ fontSize: '18px' , lineHeight: '18px' }}><FormattedMessage id='app.website.jjborder.tab1.li2p1' /></p>
-                      <p style={{ fontSize: '14px' , lineHeight: '14px' }}><FormattedMessage id='app.website.jjborder.tab1.li2p2' />
+                      <p className="p" style={{ fontSize: '14px' , lineHeight: '22px' }}><FormattedMessage id='app.website.jjborder.tab1.li2p2' />
                         <br /><FormattedMessage id='app.website.jjborder.tab1.li2p3' />
                       </p>
                     </li>
                     <li>
                       <img src={require('@img/solution/border/kj13.png')} alt="" />
                       <p style={{ fontSize: '18px' , lineHeight: '18px' }}><FormattedMessage id='app.website.jjborder.tab1.li3p1' /></p>
-                      <p style={{ fontSize: '14px' , lineHeight: '14px' }}><FormattedMessage id='app.website.jjborder.tab1.li3p2' />
+                      <p className="p" style={{ fontSize: '14px' , lineHeight: '22px' }}><FormattedMessage id='app.website.jjborder.tab1.li3p2' />
                         <br /><FormattedMessage id='app.website.jjborder.tab1.li3p3' />
                       </p>
                     </li>
@@ -195,21 +195,23 @@ export default class Border extends Component {
           <div className='solution-border-botton'>
             <div className='solution-border-botton-business'>
               <div>
-                <img src={require('@img/solution/border/06.png')} alt="" />
+                <div className="bgcircle"><img src={require('@img/solution/border/cir_1.png')} alt="" /></div>
                 <p style={{ fontSize: '18px' , lineHeight: '18px' }}><FormattedMessage id='app.website.jjborder.solutionbor.bottomp1' /></p>
                 <p style={{ fontSize: '14px' , lineHeight: '14px' }}><FormattedMessage id='app.website.jjborder.solutionbor.bottomp2' />
                 </p>
               </div>
-              <img src={require('@img/solution/border/kj9.png')} alt="" />
+              <div className="doublearrows"><img src={require('@img/solution/border/kj9.png')} alt="" /></div>
+
               <div>
-                <img src={require('@img/solution/border/07.png')} alt="" />
+                <div className="bgcircle2"><img src={require('@img/solution/border/cir_2.png')} alt="" /></div>
                 <p style={{ fontSize: '18px' , lineHeight: '18px' }}><FormattedMessage id='app.website.jjborder.solutionbor.bottomp3' /></p>
                 <p style={{ fontSize: '14px' , lineHeight: '14px' }}><FormattedMessage id='app.website.jjborder.solutionbor.bottomp4' />
                 </p>
               </div>
-              <img src={require('@img/solution/border/kj9.png')} alt="" />
+              <div className="doublearrows"><img src={require('@img/solution/border/kj9.png')} alt="" /></div>
+
               <div>
-                <img src={require('@img/solution/border/08.png')} alt="" />
+                <div className="bgcircle2"><img src={require('@img/solution/border/cir_3.png')} alt="" /></div>
                 <p style={{ fontSize: '18px' , lineHeight: '18px' }}><FormattedMessage id='app.website.jjborder.solutionbor.bottomp5' /></p>
                 <p style={{ fontSize: '14px' , lineHeight: '14px' }}><FormattedMessage id='app.website.jjborder.solutionbor.bottomp6' />
                 </p>

@@ -53,9 +53,7 @@ export default class Ceshi extends Component {
         <div className='commonly-right'>
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
-              <img
-                src={require('@img/prodect/administration/sy2.png')}
-              />
+              <img src={require('@img/prodect/administration/sy2.png')} alt="" />
             </div>
             <div className='commonly-conter-right'>
               <p> <FormattedMessage id='app.website.chanpinadmin.commonlyrightp' /></p>

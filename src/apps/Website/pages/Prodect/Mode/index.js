@@ -47,7 +47,61 @@ export default class Ceshi extends Component {
           </div>
         </div>
         {/*  */}
-        <div className='commonly-left'>
+        <div className="general_one">
+          <div className="maincontent">
+            <div className="leftcontent">
+              <p><FormattedMessage id='app.website.chanpinmode.commonlyleft1con' /></p>
+              <div className="gline" />
+              <p><FormattedMessage id='app.website.chanpinmode.commonlyleft1p' /></p>
+
+            </div>
+            <div className="rightcontent">
+              <img src={require('@img/prodect/mode/pic_1.png')} alt="" />
+            </div>
+          </div>
+
+        </div>
+        <div className="general_two">
+          <div className="maincontent">
+            <div className="leftcontent2">
+              <img src={require('@img/prodect/mode/pic_2.png')} alt="" />
+            </div>
+            <div className="rightcontent2">
+              <p><FormattedMessage id='app.website.chanpinmode.commonlyright1con' /></p>
+              <div className="gline2" />
+              <p><FormattedMessage id='app.website.chanpinmode.commonlyright1p' /></p>
+            </div>
+          </div>
+        </div>
+        <div className="general_one">
+          <div className="maincontent">
+            <div className="leftcontent">
+              <p> <FormattedMessage id='app.website.chanpinmode.commonlyleft2con' /></p>
+              <div className="gline" />
+              <p><FormattedMessage id='app.website.chanpinmode.commonlyleft2p' /></p>
+
+            </div>
+            <div className="rightcontent">
+              <img src={require('@img/prodect/mode/pic_3.png')} alt="" />
+            </div>
+          </div>
+
+        </div>
+        <div className="general_two">
+          <div className="maincontent">
+            <div className="leftcontent2">
+              <img src={require('@img/prodect/mode/pic_4.png')} alt="" />
+            </div>
+            <div className="rightcontent2">
+              <p><FormattedMessage id='app.website.chanpinmode.commonlyright2con' /></p>
+              <div className="gline2" />
+              <p><FormattedMessage id='app.website.chanpinmode.commonlyright2p' /></p>
+            </div>
+          </div>
+        </div>
+
+
+{/*        <div className='commonly-left'>
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
               <div className='commonly-conter-left-box'>
@@ -61,7 +115,6 @@ export default class Ceshi extends Component {
             </div>
           </div>
         </div>
-
         <div className='commonly-right'>
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
@@ -90,7 +143,6 @@ export default class Ceshi extends Component {
             </div>
           </div>
         </div>
-
         <div className='commonly-right'>
           <div className='commonly-conter'>
             <div className='commonly-conter-left'>
@@ -104,7 +156,7 @@ export default class Ceshi extends Component {
               <p> <FormattedMessage id='app.website.chanpinmode.commonlyright2p' /></p>
             </div>
           </div>
-        </div>
+        </div>*/}
 
         {/*  */}
         <div className="outer_box">

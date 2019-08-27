@@ -31,7 +31,6 @@ export default class Logistics extends Component {
               <div>
                 <div
                   className="headline"
-                  // style={{ backgroundImage: `url(${require("@img/solution/logistics/wl2.png")})`,width: '395px', height: '60px', textAlign: 'center', lineHeight: '60px',fontWeight: '400',fontSize: '36px' }}
                 >
                   <FormattedMessage id='app.website.jjlogistics.service1.div' />
                 </div>
@@ -41,14 +40,12 @@ export default class Logistics extends Component {
           </div>
         </div>
         {/*  */}
-        <div className='commonly-right'>
-          <div className='commonly-conter'>
-            <div className='commonly-conter-left'>
-              <img
-                src={require('@img/solution/logistics/wl_1.png')}
-              />
+        <div className='generic'>
+          <div className='generic_content'>
+            <div className='generic_content_left'>
+              <img src={require('@img/solution/logistics/wl_1.png')} alt="" />
             </div>
-            <div className='commonly-conter-right'>
+            <div className='generic_content_right'>
               <p><FormattedMessage id='app.website.jjlogistics.commonlyright.p' /></p>
             </div>
           </div>
@@ -60,13 +57,12 @@ export default class Logistics extends Component {
               <div>
                 <img src={require('@img/solution/retailers/small.png')} style={{ width: '60px' }} alt="" />
                 <strong><FormattedMessage id='app.website.jjlogistics.service2.topstrong' /></strong><FormattedMessage id='app.website.jjlogistics.service2.topstrongsize' />
-                <p className='text'>-problem to be solved-</p>
+                <p className='text'>-PROBLEM TO BE SOLVED-</p>
               </div>
             </div>
             <div className='service-conter-bottons'>
               <img src={require('@img/solution/logistics/wl4.png')} alt="" />
-              <p className="myp"><FormattedMessage id='app.website.jjlogistics.service2.bottomp1' /></p>
-              <p className='myp'><FormattedMessage id='app.website.jjlogistics.service2.bottomp2' /></p>
+              <p><FormattedMessage id='app.website.jjlogistics.service2.bottomp1' /></p>
             </div>
           </div>
         </div>
@@ -96,7 +92,7 @@ export default class Logistics extends Component {
                 <li className='boxs'>
                   <img src={require('@img/solution/logistics/wl6.png')} alt="" />
                   <h2><FormattedMessage id='app.website.jjlogistics.service3.bottomli1h2' /></h2>
-                  <hr style={{ width: '40%', borderTop: '1px solid #EB6100' }} />
+                  <hr style={{ width: '40%', border: '1px solid #EB6100' }} />
                   <p>
                     <FormattedMessage id='app.website.jjlogistics.service3.bottomli1p' />
                   </p>
@@ -112,7 +108,7 @@ export default class Logistics extends Component {
                 <li className='boxs'>
                   <img src={require('@img/solution/logistics/wl8.png')} alt="" />
                   <h2><FormattedMessage id='app.website.jjlogistics.service3.bottomli3h2' /></h2>
-                  <hr style={{ width: '40%', borderTop: '1px solid #009944' }} />
+                  <hr style={{ width: '40%', border: '1px solid #009944' }} />
                   <p>
                     <FormattedMessage id='app.website.jjlogistics.service3.bottomli3p' />
                   </p>

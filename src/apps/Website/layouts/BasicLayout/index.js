@@ -14,7 +14,7 @@ export default class BasicLayout extends Component {
         style={{ minHeight: '100vh' }}
         className="ice-design-layout"
       >
-        <Layout.Section>
+        <Layout.Section >
 
           <Layout.Main scrollable>
             <Layout.Header>

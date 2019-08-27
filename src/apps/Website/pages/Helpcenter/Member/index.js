@@ -165,17 +165,17 @@ export default class Member extends Component {
             <div className='helpmember-footer-conter-botton'>
               <ul>
                 <li>
-                  <img src={require('@img/helpcenter/member/hy4.png')} style={{ width: '95px',height: '95px' }} alt="" />
+                  <img src={require('@img/helpcenter/member/hy4.png')} alt="" />
                   <strong><FormattedMessage id='app.website.helpmember.footerbottom.strong1' /></strong>
                   <p style={{ fontSize: '16px' }}><FormattedMessage id='app.website.helpmember.footerbottom.p1' /></p>
                 </li>
                 <li>
-                  <img src={require('@img/helpcenter/member/hy5.png')} style={{ width: '97px',height: '97px' }} alt="" />
+                  <img src={require('@img/helpcenter/member/hy5.png')} alt="" />
                   <strong><FormattedMessage id='app.website.helpmember.footerbottom.strong2' /></strong>
                   <p style={{ fontSize: '16px' }}><FormattedMessage id='app.website.helpmember.footerbottom.p2' /></p>
                 </li>
                 <li>
-                  <img src={require('@img/helpcenter/member/hy6.png')} style={{ width: '79px', height: '94px' }} alt="" />
+                  <img src={require('@img/helpcenter/member/hy6.png')} alt="" />
                   <strong><FormattedMessage id='app.website.helpmember.footerbottom.strong3' /></strong>
                   <p style={{ fontSize: '16px' }}><FormattedMessage id='app.website.helpmember.footerbottom.p3' /></p>
                 </li>

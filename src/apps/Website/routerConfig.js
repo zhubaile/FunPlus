@@ -16,6 +16,7 @@ import Develop from './pages/Helpcenter/Develop';
 import Member from './pages/Helpcenter/Member';
 import Multistage from './pages/Helpcenter/Multistage';
 import Sdk from './pages/Helpcenter/Sdk';
+import Contactus from './pages/Helpcenter/Contactus';
 import Experience from './pages/Demo/Demoexperience';
 import DemoPay from './pages/Demo/Demopay';
 import React from "react";
@@ -66,6 +67,10 @@ const routerConfig = [
   {
     path: '/website/helpcenter/sdk', // SDK下载
     component: Sdk,
+  },
+  {
+    path: '/website/helpcenter/Contactus', // 联系我们
+    component: Contactus,
   },
   {
     path: '/website/demo/experience', // demo体验
