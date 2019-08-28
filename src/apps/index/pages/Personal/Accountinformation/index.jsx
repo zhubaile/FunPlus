@@ -32,7 +32,8 @@ export default class Accountinformation extends Component {
       // industry: '互联网',
       // hangye: '1',
       checked: false,
-      datas: [], // 用户所有数据
+      datas: {}, // 认证信息
+      userInfo: {}, // 用户信息
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -41,7 +42,8 @@ export default class Accountinformation extends Component {
       debugger;
       if (data.errCode == 0) {
         this.setState({
-          datas: data.data,
+          datas: data.data.companyInfo,
+          userInfo: data.data.userInfo,
         });
       } else {
         Message.success(data.message);
@@ -91,7 +93,8 @@ export default class Accountinformation extends Component {
     const Hangye = [
       { value: '1', label: '1' },
     ]; */
-    const { datas } = this.state;
+    const { datas,userInfo } = this.state;
+    debugger;
     return (
       <div className='personal-account'>
         <Editprofile ref={ node => this.Editprofile = node } />
@@ -104,7 +107,7 @@ export default class Accountinformation extends Component {
                 <div className='content-top'>
                   <img style={{ borderRadius: '100%', width: '100px', height: '100px' }} alt="" src={require('@img/img/avatar1.jpg')} />
                   <ul>
-                    <li>{datas.email}</li>
+                    <li>{userInfo.email}</li>
                     <li>超级管理员</li>
                     <li style={{ display: 'inline-block', marginRight: '5px' }}>￥{datas.tradeMoney}<br />交易金额</li>
                     <li style={{ display: 'inline-block', marginLeft: '5px' }}>{datas.tradeCount}笔<br />交易数量</li>
@@ -118,9 +121,9 @@ export default class Accountinformation extends Component {
                   </div>
                   <hr />
                   <ul>
-                    <li><span>全名：</span>{datas.username}</li>
-                    <li><span>手机：</span>{datas.phone}</li>
-                    <li><span>电子邮件：</span>{datas.email}</li>
+                    <li><span>全名：</span>{userInfo.name}</li>
+                    <li><span>手机：</span>{userInfo.phone}</li>
+                    <li><span>电子邮件：</span>{userInfo.email}</li>
                     <li><span>地区：</span>中国</li>
                   </ul>
                 </div>

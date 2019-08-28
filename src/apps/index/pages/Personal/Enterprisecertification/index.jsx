@@ -5,6 +5,7 @@ import Customerservice from "../components/Customerservice";
 import { Input, Radio, Select , Upload, Grid, Form ,Step, Button,Message ,Icon, Tab } from '@alifd/next';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import { companydustyInfo,companycompanyInsert } from '@indexApi';
+import Img from '@icedesign/img';
 import '../../index.css';
 
 const { Row, Col } = Grid;
@@ -15,7 +16,7 @@ const formItemLayout = {
   labelCol: { xxs: 8, s: 6, l: 5 },
   wrapperCol: { s: 12, l: 10 },
 };
-function beforeUpload(info) {
+/* function beforeUpload(info) {
   console.log('beforeUpload callback : ', info);
 }
 
@@ -29,7 +30,7 @@ function onSuccess(data, file) {
 
 function onError(file) {
   console.log('onError callback : ', file);
-}
+} */
 class Enterprisecertification extends Component {
   static displayName = 'Enterprisecertification';
 
@@ -46,16 +47,21 @@ class Enterprisecertification extends Component {
         cpAddress: '',
         cpIndustryCategory: '',
         cpIndustrySubcategory: '',
-        cpIndustryImage: [],
-        cpFrontCardImg: [],
-        cpBackCardImg: [],
+        cpIndustryImage: '',
+        cpFrontCardImg: '',
+        cpBackCardImg: '',
         linkName: '',
         linkEmail: '',
         linkPhone: '',
       },
+      img: {
+        cpIndustryImage: '',
+        cpFrontCardImg: '',
+        cpBackCardImg: '',
+      },
       dustyInfoson: [],// 子类目数据的值
       dustyInfo: [],// 全部类目的数据值
-      userCompanyInfo: [],
+      userCompanyInfo: {}, // 审核的所有信息
       userCompanyStatus: {
         cpStatus: 0,
       },
@@ -76,25 +82,60 @@ class Enterprisecertification extends Component {
     const valuecporyson = Object.assign({}, this.state.value, { cpIndustrySubcategory: e.label });
     this.setState({ value: valuecporyson });
   }
-  /*
-  onDragOver = () => {
-    console.log('dragover callback');
-  };
-
-  onDrop = (fileList) => {
-    console.log('drop callback : ', fileList);
-  }; */
+  cpIndustryImage=(info) => {
+    if (info.length != 0) {
+      const names = info[0].response.names;
+      const img = this.state.img;
+      const imgs = Object.assign({},img,{ cpIndustryImage: names });
+      debugger;
+      this.setState({
+        img: imgs,
+      });
+    } else {
+      return null;
+    }
+  }
+  cpFrontCardImg=(info) => {
+    if (info.length != 0) {
+      const names = info[0].response.names;
+      const img = this.state.img;
+      const imgs = Object.assign({},img,{ cpFrontCardImg: names });
+      debugger;
+      this.setState({
+        img: imgs,
+      });
+    } else {
+      return null;
+    }
+  }
+  cpBackCardImg=(info) => {
+    if (info.length != 0) {
+      const names = info[0].response.names;
+      const img = this.state.img;
+      const imgs = Object.assign({},img,{ cpBackCardImg: names });
+      debugger;
+      this.setState({
+        img: imgs,
+      });
+    } else {
+      return null;
+    }
+  }
   componentDidMount() {
     // this.fetchData();
     companydustyInfo().then(({ status,data })=>{
       debugger;
       if (data.errCode == 0) {
-        // const sss = data.data.state;
-        // const userStatus = Object.assign({},sss,{ cpStatus: 0 });
+        const company = data.data.company;
+        let imgs;
+        if (company.cpIndustryImage) {
+          imgs = Object.assign({},this.state.img,{ cpIndustryImage: company.cpIndustryImage,cpFrontCardImg: company.cpFrontCardImg,cpBackCardImg: company.cpBackCardImg });
+        }
         this.setState({
           dustyInfo: data.data.dustyInfo, // 类目选择
           userCompanyInfo: data.data.company, // 审核的信息
           userCompanyStatus: data.data.state, // 审核状态 userCompanyStatus
+          img: imgs,
         });
       } else {
         Message.success(data.message);
@@ -106,14 +147,13 @@ class Enterprisecertification extends Component {
     const { validateFields } = this.refs.form;
     validateFields((errors,values)=>{
       if (!errors) {
-        const cpIndustryImage = values.cpIndustryImage[0].response.names;
-        const cpFrontCardImg = values.cpFrontCardImg[0].response.names;
-        const cpBackCardImg = values.cpBackCardImg[0].response.names;
+        const imgs = this.state.img;
+        // const cpIndustryImage = values.cpIndustryImage[0].response.names;
+        // const cpFrontCardImg = values.cpFrontCardImg[0].response.names;
+        // const cpBackCardImg = values.cpBackCardImg[0].response.names;
         companycompanyInsert({
           ...values,
-          cpIndustryImage,
-          cpFrontCardImg,
-          cpBackCardImg,
+          ...imgs,
         }).then(({ status, data })=>{
           debugger;
           if (data.errCode == 0) {
@@ -148,8 +188,41 @@ class Enterprisecertification extends Component {
     } = this.props;
     const userContent = userCompanyStatus.content;
     const userStatus = userCompanyStatus.cpStatus;
-    console.log(value);
-    debugger;
+    // userCompanyInfo
+    // src={`http://${userCompanyInfo.cpIndustryImage}`}
+    let cpIndustryImages,
+      cpBackCardImgs,
+      cpFrontCardImgs;
+    if (userCompanyInfo.cpIndustryImage) {
+      debugger;
+      cpIndustryImages = [{
+        uid: '0',
+        name: 'IMG.png',
+        state: 'done',
+        url: `http://192.168.1.121:3000${userCompanyInfo.cpIndustryImage}`,
+        downloadURL: `http://192.168.1.121:3000${userCompanyInfo.cpIndustryImage}`,
+        imgURL: `http://192.168.1.121:3000${userCompanyInfo.cpIndustryImage}`,
+        size: 50,
+      }];
+      cpBackCardImgs = [{
+        uid: '0',
+        name: 'IMG.png',
+        state: 'done',
+        url: `http://192.168.1.121:3000${userCompanyInfo.cpBackCardImg}`,
+        downloadURL: `http://192.168.1.121:3000${userCompanyInfo.cpBackCardImg}`,
+        imgURL: `http://192.168.1.121:3000${userCompanyInfo.cpBackCardImg}`,
+        size: 50,
+      }];
+      cpFrontCardImgs = [{
+        uid: '0',
+        name: 'IMG.png',
+        state: 'done',
+        url: `http://192.168.1.121:3000${userCompanyInfo.cpFrontCardImg}`,
+        downloadURL: `http://192.168.1.121:3000${userCompanyInfo.cpFrontCardImg}`,
+        imgURL: `http://192.168.1.121:3000${userCompanyInfo.cpFrontCardImg}`,
+        size: 50,
+      }];
+    }
     return (
       <div>
         <Tab>
@@ -165,9 +238,6 @@ class Enterprisecertification extends Component {
                     <div style={styles.formContent}>
                       {/* 企业名称 */}
                       <div style={styles.formItem}>
-                        {/* <input type="file" ref={node=>this.filebtn1 = node} />
-                        <input type="file" ref={node=>this.filebtn2 = node} />
-                        <input type="file" ref={node=>this.filebtn3 = node} /> */}
                         <span style={styles.formItemLabel}>企业名称：</span>
                         <FormBinder
                           name="cpName"
@@ -234,102 +304,52 @@ class Enterprisecertification extends Component {
                       {/* 营业执照上传 */}
                       <div style={styles.formItem}>
                         <span style={styles.formItemLabel}>企业营业执照上传：</span>
-                        <FormBinder
-                          required
-                          requiredMessage={formatMessage({
-                            id: 'app.setting.avatar.message',
-                          })}
-                          name="cpIndustryImage"
-                        >
-                          {/* action 为代理的模式，在.webpackrc.js中设置 */}
-                          <Upload.Card
-                            action="/web/beta/v1.0/upload/uploadPhoto"
-                            name="avatar"
-                            limit={1}
-                            accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
-                            beforeUpload={beforeUpload}
-                            onChange={onChange}
-                            onSuccess={onSuccess}
-                            onError={onError}
-                            formatter={(res, file) => {
-                              return {
-                                success: res.errCode === 0 ,
-                                url: res.data.downloadURL,
-                                names: res.data.name,
-                              };
-                            }}
-                            /* defaultValue={[{
-                              uid: '0',
-                              name: 'IMG.png',
-                              state: 'done',
-                              url: 'http://192.168.1.121:3001/upload/image/8f3433e80d704f03da03cf760213cabd.png',
-                              downloadURL: 'http://192.168.1.121:3001/upload/image/8f3433e80d704f03da03cf760213cabd.png',
-                              imgURL: 'http://192.168.1.121:3001/upload/image/8f3433e80d704f03da03cf760213cabd.png'
-                            }, {
-                              uid: '1',
-                              name: 'IMG.png',
-                              percent: 50,
-                              state: 'uploading',
-                              url: 'http://192.168.1.121:3000/upload/image/9d4b9b8b028a14882425eb09825a7034.png',
-                              downloadURL: 'http://192.168.1.121:3000/upload/image/9d4b9b8b028a14882425eb09825a7034.png',
-                              imgURL: 'http://192.168.1.121:3000/upload/image/9d4b9b8b028a14882425eb09825a7034.png'
-                            }]} */
-                          />
-                        </FormBinder>
+                        <Upload.Card
+                          action="/web/beta/v1.0/upload/uploadPhoto"
+                          name="avatar"
+                          limit={1}
+                          accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+                          onChange={this.cpIndustryImage}
+                          formatter={(res, file) => {
+                            debugger;
+                                return {
+                                  success: res.errCode === 0 ,
+                                  url: res.data.downloadURL,
+                                  names: res.data.name,
+                                };
+                              }}
+                          defaultValue={cpIndustryImages}
+                        />
                       </div>
 
                       {/* 法人身份证正反面上传 */}
                       <div style={styles.formItem}>
                         <span style={styles.formItemLabel}>法人身份证正面上传：</span>
-                        <FormBinder
-                          required
-                          requiredMessage={formatMessage({
-                            id: 'app.setting.avatar.message',
-                          })}
-                          name="cpFrontCardImg"
-                        >
-                          {/* action 为代理的模式，在.webpackrc.js中设置 */}
-                          <Upload.Card
-                            action="/web/beta/v1.0/upload/uploadPhoto"
-                            name="avatar"
-                            limit={1}
-                            accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
-                            beforeUpload={beforeUpload}
-                            onChange={onChange}
-                            onSuccess={onSuccess}
-                            onError={onError}
-                            // defaultValue={[{
-                            //   url: 'http://192.168.1.105:3000/upload/1cdb684dd77b71c4454355cd67c080f8.png',
-                            // }]}
-                            formatter={(res, file) => {
+                        <Upload.Card
+                          action="/web/beta/v1.0/upload/uploadPhoto"
+                          name="avatar"
+                          limit={1}
+                          accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+                          onChange={this.cpFrontCardImg}
+                          formatter={(res, file) => {
                               return {
                                 success: res.errCode === 0 ,
                                 url: res.data.downloadURL,
                                 names: res.data.name,
                               };
                             }}
-                          />
-                        </FormBinder>
+                          defaultValue={cpFrontCardImgs}
+                        />
                       </div>
                       <div style={styles.formItem}>
                         <span style={styles.formItemLabel}>法人身份证反面上传：</span>
-
-                        <FormBinder required
-                          requiredMessage={formatMessage({
-                                      id: 'app.setting.avatar.message',
-                                    })}
-                          name="cpBackCardImg"
-                        >
-                          <Upload.Card
-                            action="/web/beta/v1.0/upload/uploadPhoto"
-                            name="avatar"
-                            limit={1}
-                            accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
-                            beforeUpload={beforeUpload}
-                            onChange={onChange}
-                            onSuccess={onSuccess}
-                            onError={onError}
-                            formatter={(res, file) => {
+                        <Upload.Card
+                          action="/web/beta/v1.0/upload/uploadPhoto"
+                          name="avatar"
+                          limit={1}
+                          accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+                          onChange={this.cpBackCardImg}
+                          formatter={(res, file) => {
                               debugger;
                               return {
                                 success: res.errCode === 0 ,
@@ -337,8 +357,8 @@ class Enterprisecertification extends Component {
                                 names: res.data.name,
                               };
                             }}
-                          />
-                        </FormBinder>
+                          defaultValue={cpBackCardImgs}
+                        />
                       </div>
                       {/* 联系人姓名 */}
                       <div style={styles.formItem}>
@@ -423,15 +443,15 @@ class Enterprisecertification extends Component {
                       </div>
                       <div style={styles.formItem}>
                         <span style={styles.formItemLabel}>企业营业执照上传：</span>
-                        <img src={userCompanyStatus.cpIndustryImage} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
+                        <img src={`http://192.168.1.121:3000${userCompanyInfo.cpIndustryImage}`} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
                       </div>
                       <div style={styles.formItem}>
                         <span style={styles.formItemLabel}>法人身份证正面上传：</span>
-                        <img src={userCompanyStatus.cpFrontCardImg} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
+                        <img src={`http://192.168.1.121:3000${userCompanyInfo.cpFrontCardImg}`} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
                       </div>
                       <div style={styles.formItem}>
                         <span style={styles.formItemLabel}>法人身份证反面上传：</span>
-                        <img src={userCompanyStatus.cpBackCardImg} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
+                        <img src={`http://192.168.1.121:3000${userCompanyInfo.cpBackCardImg}`} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
                       </div>
                       <div style={styles.formItem}>
                         <span style={styles.formItemLabel}>联系人姓名：</span>

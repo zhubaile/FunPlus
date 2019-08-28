@@ -40,6 +40,7 @@ class UserRegister extends Component {
     this.state = {
       value: {
         name: '',
+        username: '',
         tel: '',
         email: initialemail,
         passwd: '',
@@ -102,7 +103,8 @@ class UserRegister extends Component {
       const { intl } = this.props;
       // 注册的ajax请求
       registerUser({
-        username: values.name,
+        name: values.name,
+        username: values.username,
         phone: values.tel,
         email: values.email,
         password: values.passwd,
@@ -120,7 +122,6 @@ class UserRegister extends Component {
           } else {
             Message.success(data.message);
           }
-
           // console.log(values);
           // Message.success(intl.formatMessage({ id: 'app.register.success' }));
           // Message.success('注册成功');
@@ -160,13 +161,29 @@ class UserRegister extends Component {
                     <IceFormBinder name="name" required message={txt}>
                       <Input
                         size="large"
-                        placeholder={intl.formatMessage({ id: 'app.login.username' })}
+                        placeholder={intl.formatMessage({ id: 'app.register.name' })}
                         style={styles.inputCol}
                       />
                     </IceFormBinder>
                   )}
                 </FormattedMessage>
                 <IceFormError name="name" />
+              </div>
+
+              <div style={styles.formItem}>
+                <IceIcon type="person" size="small" style={styles.inputIcon} />
+                <FormattedMessage id='app.register.user.errorusername'>
+                  {txt => (
+                    <IceFormBinder name="username" required message={txt}>
+                      <Input
+                        size="large"
+                        placeholder={intl.formatMessage({ id: 'app.login.username' })}
+                        style={styles.inputCol}
+                      />
+                    </IceFormBinder>
+                  )}
+                </FormattedMessage>
+                <IceFormError name="username" />
               </div>
 
               <div style={styles.formItem}>

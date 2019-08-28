@@ -23,7 +23,9 @@ export default {
   'app.sendregister.mailbox': '请输入您的邮箱',
 
   // 注册界面
-  'app.register.user.errorname': '请输入正确的用户名',
+  'app.register.name': '请输入您的姓名',
+  'app.register.user.errorname': '请输入正确的姓名',
+  'app.register.user.errorusername': '请输入正确的用户名',
   'app.register.user.phone': '请输入正确的手机号',
   'app.register.user.errormailbox': '请输入正确的邮箱',
   'app.register.user.errorpass': '请输入正确的密码',
