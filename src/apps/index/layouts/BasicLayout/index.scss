@@ -21,7 +21,8 @@ body {
     width: 100%;
     min-height: 100vh;
     // padding: 0 20px;
-    background: transparent;
+    // background: transparent;
+    background: #F6F9FE;
   }
   .ice-layout-aside.ice-layout-aside-null{
     max-width: 20%;
@@ -29,6 +30,7 @@ body {
   }
   .ice-layout-main {
     width: 80%;
+    padding: 20px;
     // padding: 0 0 0 10px;
     // background: #E6F1FC 100%;
   }

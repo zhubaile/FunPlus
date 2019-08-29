@@ -162,6 +162,8 @@ const styles = {
     marginTop: '20px',
     display: 'block',
     textAlign: 'center',
+    color: '#108EE9',
+    textDecoration: 'none',
   },
   usermessage: {
     lineHeight: '30px',

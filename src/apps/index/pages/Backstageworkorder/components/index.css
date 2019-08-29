@@ -11,9 +11,9 @@
 .leftheader .header-logo .logo-element {content: "";width: 30px;height: 30px;border-radius: 15px;position: relative;background-color: #98c9fd;display: inline-block;vertical-align: middle;margin-right: 20px;-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}
 .leftheader .header-logo .logo-element:after {content: "";width: 30px;height: 30px;background-color: #fff;border-radius: 15px;right: -20px;position: absolute;-webkit-transition: all 0.2s ease;transition: all 0.2s ease;}*/
 
-.leftnav{ width: 300px; background: #F2F4F8; border-right: 1px solid rgba(0, 0, 0, 0.05);}
+.leftnav{ width: 300px; border-right: 1px solid rgba(0, 0, 0, 0.05);} /*  background: #F2F4F8; */
 .leftnav-navtop{white-space: nowrap;margin-right: 0;}
-.navtop1-box{ width: 300px; background: #F2F4F8;}
+.navtop1-box{ width: 300px;} /*  background: #F2F4F8; */
 
 .chat-list{ display: flex; align-items: center; justify-items: center; height: 68px; background: #fff}
 .chat-list .chat-list-box{ width: 50%; display: flex; align-items: center; justify-items: center; text-align: center; justify-content: center; font-size: 14px; cursor: pointer;}
@@ -80,14 +80,14 @@
 
 /* 全部工单 */
 .wodegongdan{ width: 100%; display: flex; justify-items: center; flex-direction: column; padding: 20px;}
-.wodegongdan .wodegongdan-top{ border-bottom: 1px solid rgba(187, 187, 187, 1); font-size: 20px; position: relative;}
+.wodegongdan .wodegongdan-top{ border-bottom: 1px solid rgba(187, 187, 187, 1); font-size: 18px; position: relative;}
 .wodegongdan .wodegongdan-top .wodegongdan-top-border{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -2px;}
 
-.wodegongdan-conter {line-height: 20px;border-radius: 10px 10px 10px 10px;box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px; padding: 20px;}
+.wodegongdan-conter {line-height: 20px;border-radius: 10px 10px 10px 10px;box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px; padding: 20px; background: #fff;}
 .wodegongdan-conter-main>span{ margin-left: 20px;}
-.wodegongdan-footer{ border-radius: 10px 10px 10px 10px;box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px; padding: 20px;}
+.wodegongdan-footer{ border-radius: 10px 10px 10px 10px;box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0); margin-top: 20px; padding: 20px; background: #fff;}
 /* 工单详情 */
-.wodegongdan{ background: #F2F4F8;}
+/*.wodegongdan{ background: #F2F4F8;}*/
 .wodegongdan-step{ margin-top: 30px;}
 .wodegongdan-step .next-step-arrow{ border-radius: 20px;}
 .wodegongdan-table{ margin-top: 20px;}
@@ -95,18 +95,20 @@
 display: flex; align-items: center; }
 .wodegongdan-message a{ display: block; width: 30px; height: 30px; border-radius: 5px; margin-right: 10px;}
 .wodegongdan-message a i{ color: #fff; font-size: 25px; padding:2px;}
-.wodegongdan-pingjia{ width: 100%; padding: 20px 15px; border-radius: 10px 10px 10px 10px;box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0); display: flex;flex-direction: column;}
+.wodegongdan-pingjia{ width: 100%; padding: 10px 15px; border-radius: 10px; background: #fff; margin-top: 20px;
+  box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81);border: 1px solid rgba(255, 255, 255, 0); display: flex;flex-direction: column;}
 .wodegongdan-pingjia.nodisplay{ display: none;}
 /*.wodegongdan-pingjia div{ margin-top: 20px;}*/
 .wodegongdan-pingjia .fankui span{ float: left;}
 .wodegongdan-pingjia .fankui span.next-input.next-input-textarea{ width: 60%;}
-.wodegongdan-pingjia .fankui Button{ margin-left: 5px; margin-top: 140px; border-radius: 5px;}
+.wodegongdan-pingjia .fankui Button{ margin-left: 5px; margin-top: 123px; border-radius: 5px;}
 /* 评分 */
 .wodegongdan-pingjia .next-rating-underlay .next-rating-icon,.wodegongdan-pingjia .next-rating-overlay .next-rating-icon{margin-left: 0;}
+.wodegongdan-pingjia .next-row .next-col-16{ line-height: 28px;}
 /* 提交工单 */
-.submissionworkorder{ width: 100%; padding-left: 20px; background: #F2F4F8;}
+.submissionworkorder{ width: 100%; padding-left: 20px; } /* background: #F2F4F8; */
 /*.submissionworkorder-top{  border-bottom: 1px solid rgba(187, 187, 187, 1); font-size: 20px;}*/
-.submissionworkorder-top{  border-bottom: 1px solid rgba(187, 187, 187, 1); font-size: 20px; margin-top: 20px;}/*modify*/
+.submissionworkorder-top{  border-bottom: 1px solid rgba(187, 187, 187, 1); font-size: 18px; margin-top: 20px;}/*modify*/
 .submissionworkorder-top .submissionworkorder-top-border{ border-bottom: 3px solid #037cf8; width: 35px; margin-top: 10px; margin-bottom: -2px;}
 .submissionworkorder-main{ width: 100%; display: flex; justify-content: center;}
 .submissionworkorder-left{ width: 70%; margin-top: 20px;}
@@ -120,16 +122,16 @@ display: flex; align-items: center; }
 .submissionworkorder-right ul li{line-height: 21px; padding: 10px 0px;}/*modify*/
 
 /*工单次导航栏样式----starting*/
-.sidebar-navone i,.sidebar-navtwo i{ padding: 0px 10px; text-align: center;}
-.sidebar-navone{ width: 100%; padding: 15px 0px; text-align: center; font-size: 14px; color: #666666; border-top: 1px solid #eeeeee;}
-.sidebar-navtwo{ width: 100%; padding: 15px 0px; text-align: center; font-size: 14px; color: #666666; border-top: 1px solid #eeeeee; border-bottom: 1px solid #eeeeee;}
-a:hover .sidebar-navone,a:hover .sidebar-navtwo{ background:#037cf8; color: #FFFFFF; font-size: 14px; text-align: center;}
+.sidebar-nav i{ padding: 0px 10px; text-align: center; font-size: 20px;}
+.sidebar-nav{ width: 100%; height: 70px; line-height: 70px; text-align: center; font-size: 16px; color: #666666; border-bottom: 1px solid #eeeeee;}
+/*a:hover .sidebar-nav{ color: #037cf8; font-size: 18px; text-align: center;}*/
+.sidebar-nav.color{ color: #037cf8;}
 /*工单侧导航栏样式----ending*/
 
 
 /*  */
-.dealwith-workorder{ width: 100%; height: 550px; padding:15px 15px 40px 15px; border-radius: 10px; box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81); border: 1px solid rgba(255, 255, 255, 0); background: #fff;}
-.dealwith-workorder.record{ width: 100%; height: 360px; padding:15px 15px 5px 15px; border-radius: 10px; box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81); border: 1px solid rgba(255, 255, 255, 0); background: #fff;}
+.dealwith-workorder{ width: 100%; height: 550px; padding:15px 15px 30px 15px; border-radius: 10px; box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81); border: 1px solid rgba(255, 255, 255, 0); background: #fff;}
+.dealwith-workorder.record{ width: 100%; height: 370px; padding:10px 10px 0 10px; border-radius: 10px; box-shadow: 0px 1px 8px 0px rgba(229, 229, 229, 0.81); border: 1px solid rgba(255, 255, 255, 0); background: #fff;}
 .dealwith-workorder .communicationrecord{ width: 100%; height: 350px; overflow-y: scroll;}
 .communicationrecord .communicate{ padding: 10px 5px; border-bottom: 1px solid #f5f5f5}
 .communicationrecord .communicate img{ width: 50px; height: 50px; border-radius: 100px;}
@@ -139,6 +141,6 @@ a:hover .sidebar-navone,a:hover .sidebar-navtwo{ background:#037cf8; color: #FFF
 .communicationrecord .communicate hr{ border-color: #dddddd;}
 .dealwith-workorder .next-input.next-input-textarea{ width: 100%; height: 120px; border-radius: 6px;}
 .dealwith-workorder .next-input.next-input-textarea textarea{ height: 120px;}
-.dealwith-workorder .submit-btn{ text-align: right; margin: 20px 0px;}
+.dealwith-workorder .submit-btn{ text-align: right; margin: 10px 0px;}
 .dealwith-workorder .submit-btn .next-btn.next-large.next-btn-primary{ border-radius: 6px;}
 

@@ -20,6 +20,7 @@ export default class Allworkorders extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      sidebarnav: true, // 传给Nav界面，让其显示样式
       total: 0, // 总数据
       pageSize: 10, // 一页条数
       current: 1, // 页码
@@ -212,7 +213,7 @@ export default class Allworkorders extends Component {
     const { isLoading, datas, current, total, pageSize } = this.state;
     return (
       <div className='backstageworkorder'>
-        <Nav defaultActiveKey='2' history={this.props.history} />
+        <Nav defaultActiveKey='2' history={this.props.history} sidebarnav={this.state.sidebarnav} />
         <div className='wodegongdan'>
           <div className='wodegongdan-top'>
             <span>全部工单</span>

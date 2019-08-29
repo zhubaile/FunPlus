@@ -16,6 +16,7 @@ export default class Nav extends Component {
       workOrdersessionLists: [], // 会话列表的内容
       workOrderserviceLists: [], // 列表内容
       stylecolor: true,
+      sidebarnav: this.props.sidebarnav,
     };
   }
   componentDidMount() {
@@ -69,9 +70,20 @@ export default class Nav extends Component {
   }
   // 点击列表某个人获取到id传到聊天界面
   jiekou(e) {
-    debugger;
     this.props.customerserviceid(e);
   }
+  /*  // 点击改变样式，我的工单变颜色
+  sidebarmy() {
+    this.setState({
+      sidebarnav: true,
+    });
+  }
+  // 点击改变样式，提交工单变颜色
+  sidebarsub() {
+    this.setState({
+      sidebarnav: false,
+    });
+  } */
   render() {
     const navtop1 = (
       <div className="tab-title">
@@ -93,7 +105,7 @@ export default class Nav extends Component {
         </Link> */}
       </div>
     );
-    const { stylecolor,workOrdersessionLists,workOrderserviceLists } = this.state;
+    const { stylecolor,sidebarnav,workOrdersessionLists,workOrderserviceLists } = this.state;
     return (
       <div className='leftnav'>
         <Tab navClassName='leftnav-navtop' defaultActiveKey={this.props.defaultActiveKey}>
@@ -162,16 +174,16 @@ export default class Nav extends Component {
 
           <Tab.Item title={navtop2} key="2" contentClassName='navtop2' onClick={this.btngd.bind(this)}>
             <div className='navtop1-box'>
-              <div className='chat-search'>
+              {/* <div className='chat-search'>
                 <div className='element-search'>
                   <input placeholder="Search users by name..." type="text" />
                 </div>
-              </div>
+              </div> */}
 
-              <div style={{ marginTop: '30px' }}>
+              <div style={{}}>
                 <div>
                   <Link to='/admin/backstageworkorder/Allworkorders'>
-                    <div className='sidebar-navone'>
+                    <div className={sidebarnav == true ? 'sidebar-nav color' : 'sidebar-nav'}>
                       <i className="os-icon os-icon-mail-14" />
                       <span>我的工单</span>
                     </div>
@@ -180,7 +192,7 @@ export default class Nav extends Component {
 
                 <div>
                   <Link to='/admin/backstageworkorder/Submissionworkorder'>
-                    <div className='sidebar-navtwo'>
+                    <div className={sidebarnav == false ? 'sidebar-nav color' : 'sidebar-nav'}>
                       <i className="os-icon os-icon-mail-14" />
                       <span>提交工单</span>
                     </div>

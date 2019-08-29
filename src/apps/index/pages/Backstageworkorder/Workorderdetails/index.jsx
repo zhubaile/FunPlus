@@ -14,8 +14,8 @@ import Check from './Check';
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 const formItemLayout = {
-  labelCol: { span: 3 },
-  wrapperCol: { span: 17 },
+  labelCol: { span: 4 },
+  wrapperCol: { span: 16 },
 };
 
 
@@ -244,7 +244,7 @@ export default class Workorderdetails extends Component {
               />
             </Table>
           </div>
-          <p style={{ borderLeft: '2px solid blue', marginLeft: '5px' }}>沟通记录</p>
+          <p style={{ borderLeft: '3px solid #037CF8', paddingLeft: '6px' }}>沟通记录</p>
           <div className={isStatement == 1 ? 'dealwith-workorder record' : 'dealwith-workorder'}>
             <div className='communicationrecord' ref={(node) => { this.messagesEnd = node; }} >
               {/* <div className='communicate'> */}
@@ -264,7 +264,6 @@ export default class Workorderdetails extends Component {
                   })
                 }
             </div>
-            <hr />
             {isStatement == 1 ? ('') : (
               <div>
                 <div>
@@ -277,7 +276,7 @@ export default class Workorderdetails extends Component {
             )}
           </div>
           <div className={isStatement == 1 ? 'wodegongdan-pingjia' : 'wodegongdan-pingjia nodisplay'}>
-            <p style={{ borderLeft: '2px solid blue', marginLeft: '5px' }}>{status == 3 ? ('您的评价') : ('待评价')}</p>
+            <p style={{ borderLeft: '3px solid #037CF8', paddingLeft: '6px' }}>{status == 3 ? ('您的评价') : ('待评价')}</p>
             {status == 3 ? (
               <Form
                 {...formItemLayout}

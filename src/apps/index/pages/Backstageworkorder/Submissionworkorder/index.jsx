@@ -29,15 +29,6 @@ function onSuccess(data, file) {
 function onError(file) {
   console.log('onError callback : ', file);
 }
-const provinceData = ['电商', '生活', '餐饮', '网络技术', '服务'];
-const cityData = {
-  电商: ['刘雅琪', '刘晓军', '留情啊'],
-  生活: ['朱娇娇', '朱柏乐', '祝票选'],
-  餐饮: ['王力宏', '王晨阳', '王家兴'],
-  网络技术: ['张子琪', '张一一', '张力'],
-  服务: ['Nanjing', 'Suzhou', 'Zhenjiang'],
-
-};
 class Submissionworkorder extends Component {
   static displayName = 'Submissionworkorder';
 
@@ -48,6 +39,7 @@ class Submissionworkorder extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      sidebarnav: false, // 传给Nav界面，让其显示样式
       value: {
         // enterprisename: '',
         title: '',
@@ -123,10 +115,10 @@ class Submissionworkorder extends Component {
     } = this.props;
     return (
       <div className='backstageworkorder'>
-        <Nav defaultActiveKey='2' history={this.props.history} />
+        <Nav defaultActiveKey='2' history={this.props.history} sidebarnav={this.state.sidebarnav} />
         <div className='submissionworkorder'>
           <div className='submissionworkorder-top'>
-            <span>全部工单</span>
+            <span>提交工单</span>
             <div className='submissionworkorder-top-border' />
           </div>
           <div className='submissionworkorder-main'>

@@ -308,16 +308,15 @@ class Enterprisecertification extends Component {
                           action="/web/beta/v1.0/upload/uploadPhoto"
                           name="avatar"
                           limit={1}
-                          accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+                          accept="image/png, image/jpg, image/jpeg,image/bmp"
                           onChange={this.cpIndustryImage}
                           formatter={(res, file) => {
-                            debugger;
-                                return {
-                                  success: res.errCode === 0 ,
-                                  url: res.data.downloadURL,
-                                  names: res.data.name,
-                                };
-                              }}
+                            return {
+                              success: res.errCode === 0 ,
+                              url: res.data.downloadURL,
+                              names: res.data.name,
+                            };
+                          }}
                           defaultValue={cpIndustryImages}
                         />
                       </div>
@@ -329,7 +328,7 @@ class Enterprisecertification extends Component {
                           action="/web/beta/v1.0/upload/uploadPhoto"
                           name="avatar"
                           limit={1}
-                          accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+                          accept="image/png, image/jpg, image/jpeg, image/bmp"
                           onChange={this.cpFrontCardImg}
                           formatter={(res, file) => {
                               return {
@@ -347,7 +346,7 @@ class Enterprisecertification extends Component {
                           action="/web/beta/v1.0/upload/uploadPhoto"
                           name="avatar"
                           limit={1}
-                          accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+                          accept="image/png, image/jpg, image/jpeg, image/bmp"
                           onChange={this.cpBackCardImg}
                           formatter={(res, file) => {
                               debugger;

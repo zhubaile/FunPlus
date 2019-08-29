@@ -1,13 +1,14 @@
 /* eslint react/no-string-refs:0 */
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { Input, Button, Checkbox, Message } from '@alifd/next';
+import { Input, Button, Checkbox, Message,Icon } from '@alifd/next';
 import {
   FormBinderWrapper as IceFormBinderWrapper,
   FormBinder as IceFormBinder,
   FormError as IceFormError,
 } from '@icedesign/form-binder';
 import IceIcon from '@icedesign/icon';
+import FoundationSymbol from '@icedesign/foundation-symbol';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { loginUser } from '@loginApi';
 import IceImg from '@icedesign/img';
@@ -108,6 +109,8 @@ class UserLogin extends Component {
             <div style={styles.formItems}>
               <div style={styles.formItem}>
                 <IceIcon type="person" size="small" style={styles.inputIcon} />
+                {/* <Icon type="account" size="small" style={styles.inputIcon} /> */}
+                {/* <FoundationSymbol type='person' size="small" style={styles.inputIcon} /> */}
                 <FormattedMessage id='app.login.user.errormessage'>
                   {txt => (
                     <IceFormBinder name="username" required message={txt}>
@@ -239,6 +242,8 @@ const styles = {
     marginTop: '20px',
     display: 'block',
     textAlign: 'center',
+    color: '#108EE9',
+    textDecoration: 'none',
   },
   right: {
     float: 'left',

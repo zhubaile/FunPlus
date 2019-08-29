@@ -27,7 +27,7 @@ export default class Member extends Component {
     const settings = {
       className: 'custom-slide center',
       autoplay: true, // 是否自动轮播
-      autoplaySpeed: '4000', // 自动播放的轮播速度
+      autoplaySpeed: '2000', // 自动播放的轮播速度
       lazyLoad: true, // 懒加载
       slidesToShow: 3, // 同时展示的图片数量
       speed: 500, // 轮播速度
@@ -56,7 +56,7 @@ export default class Member extends Component {
         <HelpcenterHeader HHcontent={this.state.HHcontent} HPcontent={this.state.HPcontent} />
         {/* 导航下面的展示内容 */}
         <div className="helpmember-topcontent">
-          <h2><FormattedMessage id='app.website.helpmember.topcontent.h2' /></h2>
+          <h2 style={{ fontSize: '26px' }}><FormattedMessage id='app.website.helpmember.topcontent.h2' /></h2>
           <p><FormattedMessage id='app.website.helpmember.topcontent.p' />
           </p>
         </div>

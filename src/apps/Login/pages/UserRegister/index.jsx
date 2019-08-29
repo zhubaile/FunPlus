@@ -341,6 +341,8 @@ const styles = {
     marginTop: '20px',
     display: 'block',
     textAlign: 'center',
+    color: '#108EE9',
+    textDecoration: 'none',
   },
   right: {
     float: 'left',

@@ -8,6 +8,7 @@ import routerData from '../../routerConfig';
 // import PageLoading from '../../components/PageLoading';
 import MainRoutes from './MainRoutes';
 import IceImg from '@icedesign/img';
+import './index.scss';
 
 const { Row, Col } = Grid;
 

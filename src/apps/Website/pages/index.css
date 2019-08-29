@@ -1,6 +1,6 @@
 /* 首页  word-wrap:break-word 英文换行*/
 *{ font-family: "Microsoft YaHei"; }
-.shouye , .prodect, .helpmember{padding: 0; margin: 0;}
+.shouye , .prodect{padding: 0; margin: 0;}
 h1{ font-size: 36px;}
 img{ background-size: 100% 100%; max-width: 100%; max-height: 100%;}
 .clear{ clear: both;}
@@ -189,32 +189,18 @@ img{ background-size: 100% 100%; max-width: 100%; max-height: 100%;}
 
 .helpmember .helpmember-account .helpmember-account-bottom{width: 80%; height: 500px;display: flex; justify-content: center; align-items: center; position: relative;}
 .helpmember .helpmember-account .helpmember-account-bottom .next-slick-container.next-slick-initialized{ width: 800px; height: 350px; display: flex; justify-content: center; align-items: center; position: relative;}
-.helpmember .helpmember-account .helpmember-account-bottom .next-slick-slide.next-slick-active{position:relative; height: 300px; margin-left: 20px; opacity: 0.8;transition: all 300ms ease;}
+.helpmember .helpmember-account .helpmember-account-bottom .next-slick-slide.next-slick-active{position:relative; height: 350px; margin-left: 20px; opacity: 0.8;transition: all 300ms ease;}
 .helpmember .helpmember-account .helpmember-account-bottom .center .next-slick-slide.next-slick-active.next-slick-center{color: #e67e22;opacity: 1;transform: scale(1.08);}
 /*.helpmember-account-bottom .next-slick-container.next-slick-initialized div{ background: black; width: 300px; height: 350px;}*/
 .helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel{font-size: 36px;margin: 10px;position: relative; height: 340px;display:flex;justify-content: center;
   align-items: center;  flex-direction: column;background-size: 100% 100%;  background-image: url('../../../assets/img/helpcenter/member/hy-bg2.png'); background-repeat:'no-repeat';}
 .helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel img{ position: absolute; left: 50%; margin-left: -25px; top: 20px;}
-.next-slick-container.next-slick-initialized div .Carousel button{ width: 150px; height: 24px; border-radius: 12px; background: rgba(162,162,162,1); font-size: 12px; line-height: 24px;font-weight: 300; }
+.next-slick-container.next-slick-initialized div .Carousel button{ width: 150px; height: 24px; border-radius: 12px; background: rgba(162,162,162,1); font-size: 12px; line-height: 24px; font-weight: 300; }
 .helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel p{color:rgba(102,102,102,1);line-height:22px;font-size: 14px;width: 80%; text-align: center;}
 .helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel a{position: absolute; left: 20px; bottom: 40px;font-weight:300;color:rgba(0,162,246,1);line-height:20px; font-size: 12px;}
-
-/*.helpmember .helpmember-account{width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;}
-.helpmember .helpmember-account .helpmember-account-top{ text-align: center; font-size: 26px;}
-.helpmember .helpmember-account .helpmember-account-top strong{ font-size: 36px;}
-
-.helpmember .helpmember-account .helpmember-account-bottom{width: 80%; height: 500px;display: flex; justify-content: center; align-items: center; position: relative;}
-.helpmember .helpmember-account .helpmember-account-bottom .next-slick-container.next-slick-initialized{ width: 800px; height: 350px; display: flex; justify-content: center; align-items: center; position: relative;}
-.helpmember .helpmember-account .helpmember-account-bottom .next-slick-slide.next-slick-active{position:relative; height: 300px; margin-left: 20px; opacity: 0.8;transition: all 300ms ease;}
-.helpmember .helpmember-account .helpmember-account-bottom .center .next-slick-slide.next-slick-active.next-slick-center{color: #e67e22;opacity: 1;transform: scale(1.08);}
-.helpmember-account-bottom .next-slick-container.next-slick-initialized div{ background: black; width: 800px; height: 350px;}
-.helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel{font-size: 36px;margin: 10px;position: relative; height: 340px;display:flex;justify-content: center;
-  align-items: center;  flex-direction: column;background-size: 100% 100%;  background-image: url('../../../assets/img/helpcenter/member/hy-bg2.png'); background-repeat:'no-repeat';}
-.helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel img{ position: absolute; left: 50%; margin-left: -25px; top: 20px;}
-.next-slick-container.next-slick-initialized div .Carousel button{ width: 150px; height: 24px; border-radius: 12px; background: rgba(162,162,162,1); font-size: 12px; line-height: 24px;font-weight: 300; }
-.helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel p{color:rgba(102,102,102,1);line-height:22px;font-size: 14px;width: 80%; text-align: center;}
-.helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel a{position: absolute; left: 20px; bottom: 40px;font-weight:300;color:rgba(0,162,246,1);line-height:20px; font-size: 12px;}*/
-
+/* 按钮 */
+.helpmember .next-slick.next-slick-hoz .next-slick-arrow.large.outer.next-slick-prev{ left: -60px}
+.helpmember .next-slick.next-slick-hoz .next-slick-arrow.large.outer.next-slick-next{ right: -60px}
 /* 锚点的位置 */
 .next-slick-dots.hoz.dots-cusst{ top: -40px;}
 .dots-cusst .next-slick-dots-item span a{ color: #000; padding: 10px 20px; opacity: 0.7;}
@@ -234,7 +220,6 @@ img{ background-size: 100% 100%; max-width: 100%; max-height: 100%;}
 .bgpic-leftb{background: url("../../../assets/img/helpcenter/member/hy7.png") no-repeat;}
 .bgpic-rightb{background: url("../../../assets/img/helpcenter/member/hy8.png") no-repeat;}
 /*修改*/
-
 .helpmember .helpmember-imgleft{ width: 70%; display: flex; align-items: center; justify-content: center;}
 .helpmember .helpmember-imgleft .helpmember-imgleft-left{ width: 40%; display: flex; align-items: center; justify-content: center; flex-direction: column;}
 .helpmember .helpmember-imgleft .helpmember-imgleft-right{ width: 60%; display: flex; align-items: center; justify-content: center;}

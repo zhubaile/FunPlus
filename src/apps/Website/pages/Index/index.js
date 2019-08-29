@@ -13,6 +13,9 @@ export default class Ceshi extends Component {
     super(props);
     this.state = {};
   }
+  Jumpregister() {
+    window.location.href = '/user/sendmailbox';
+  }
   render() {
     return (
       <div className='shouye'>
@@ -28,7 +31,7 @@ export default class Ceshi extends Component {
               <h1>3FunPlus/<FormattedMessage id='app.website.shouye.toph1' /></h1>
               <h3><FormattedMessage id='app.website.shouye.toph3' /></h3>
               <p><FormattedMessage id='app.website.shouye.topp' /></p>
-              <Button style={{ borderRadius: '8px' , color: '#00A2F6FF', marginTop: '50px', width: '150px', height: '43px', fontSize: '20px', fontWeight: 400 }}><FormattedMessage id='app.website.shouye.topButton' /></Button>
+              <Button style={{ borderRadius: '8px' , color: '#00A2F6FF', marginTop: '50px', width: '150px', height: '43px', fontSize: '20px', fontWeight: 400 }} onClick={this.Jumpregister.bind(this)}><FormattedMessage id='app.website.shouye.topButton' /></Button>
             </div>
             <div className='nav-belowimg-conter-right'>
               <img src={require('@img/shouye/s1.png')} alt="" />

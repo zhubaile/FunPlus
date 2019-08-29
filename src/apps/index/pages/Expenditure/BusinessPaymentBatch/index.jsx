@@ -207,7 +207,6 @@ export default class Enterprise extends Component {
                   {/* </Row> */}
                 </FormBinderWrapper>
               </div>
-              <div className='expendordbat-tabs-border' />
               <IceContainer>
                 <Table loading={isLoading} dataSource={datas} hasBorder={false}>
                   <Table.Column title="创建时间" dataIndex="createdAt" cell={this.createdAt} />

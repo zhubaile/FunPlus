@@ -52,19 +52,27 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
-    "ice-scripts": "^2.0.0",
-    "mini-css-extract-plugin": "^0.6.0",
-    "ice-plugin-fusion": "^0.1.4",
-    "ice-plugin-moment-locales": "^0.1.0"
+    "ice-scripts": "^1.10.2",
+    "mini-css-extract-plugin": "^0.6.0"
   },
   "scripts": {
-    "start": "node ./node_modules/ice-scripts/bin/ice-scripts-dev.js --port=21144",
+    "start": "node ./node_modules/ice-scripts/bin/ice.js dev --port=21144",
     "prod": "cross-env NODE_ENV=production  node ./node_modules/ice-scripts/bin/ice.js dev --port=21144",
-    "build": "ice-scripts build",
+    "build": "node ./node_modules/ice-scripts/bin/ice.js build",
     "lint": "eslint . --ext '.js,.jsx' --fix"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "buildConfig": {
+    "theme": "../src/assets/skin/",
+    "entry": {
+      "index": "./src/apps/index/index.js",
+      "login": "./src/apps/Login/index.js",
+      "website": "./src/apps/Website/index.js",
+      "backadmin": "./src/apps/Backadmin/index.js"
+    },
+    "localization": false
   },
   "scaffoldConfig": {
     "builder": "ice-scripts",
