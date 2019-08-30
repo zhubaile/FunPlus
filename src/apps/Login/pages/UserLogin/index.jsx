@@ -145,14 +145,14 @@ class UserLogin extends Component {
               </div>
 
               <div style={styles.formItem}>
-                <IceFormBinder name="checkbox">
+                {/* <IceFormBinder name="checkbox">
                   <Checkbox style={styles.checkbox}>
                     <FormattedMessage id='app.login.storage.number' />
                   </Checkbox>
-                </IceFormBinder>
-                <a style={{ float: 'right', cursor: 'pointer' }}>
+                </IceFormBinder> */}
+                <Link to="/user/resetpassword" style={{ float: 'right', cursor: 'pointer', textAlign: 'center', color: '#000', textDecoration: 'none',fontSize: '14', marginBottom: '10px' }}>
                   <FormattedMessage id='app.login.forget.password' />
-                </a>
+                </Link>
               </div>
 
               <div style={styles.footer}>

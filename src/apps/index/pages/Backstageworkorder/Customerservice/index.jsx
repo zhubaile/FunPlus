@@ -95,6 +95,8 @@ export default class Customerservice extends Component {
     });
     this.socket.on('message',(msg)=>{
       console.log(msg);
+
+
       debugger;
       this.setState((prevState)=>{
         prevState.messagelist.push(msg);
@@ -299,6 +301,7 @@ export default class Customerservice extends Component {
                   value={this.state.Probleminput}
                   onChange={this.probleminput.bind(this)}
                   onKeyDown={this.onprobleminputKey}
+                  disabled={!username}
                   // ref={node => this.charmessageself = node}
                 />
                 {/* <input placeholder="Type your message here..." type="text" /> */}

@@ -26,6 +26,7 @@ export default class Member extends Component {
   render() {
     const settings = {
       className: 'custom-slide center',
+      // defaultActiveIndex: 2,
       autoplay: true, // 是否自动轮播
       autoplaySpeed: '2000', // 自动播放的轮播速度
       lazyLoad: true, // 懒加载
@@ -38,10 +39,11 @@ export default class Member extends Component {
       dotsDirection: 'hoz',
       dotsClass: 'dots-cusst', //  dotsClass 可覆盖dots的样式
       slideDirection: 'hoz', // 轮播方向
-      centerPadding: '60px', // pading会产生前后预览
+      centerPadding: '0px', // pading会产生前后预览
       arrowDirection: 'hoz', // 导航箭头的方向
       arrowSize: "large", // 导航箭头大小
       arrowPosition: "outer", // 导航箭头位置
+      pauseOnHover: true,
     };
     const { intl: { formatMessage } } = this.props;
     const dots1 = formatMessage({ id: 'app.website.helpmember.slider.dots1' }) ,

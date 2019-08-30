@@ -47,7 +47,7 @@ const styles = {
     display: 'flex',
     width: '100%',
     height: '60px',
-    background: '#d0d1fd  ',
+    background: 'rgba(185,218,252) ',
   },
   left: {
     display: 'flex',

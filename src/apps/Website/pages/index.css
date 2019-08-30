@@ -170,14 +170,20 @@ img{ background-size: 100% 100%; max-width: 100%; max-height: 100%;}
 /* 快速开发 */
 .helpdevelop{ width: 100%; display: flex; flex-direction: column; justify-content: center;align-items: center; color: #000;}
 .helpdevelop .helpdevelop-main{ width: 60%;}
-.helpdevelop .helpdevelop-main .helpdevelop-main-top{ width: 100%; height: 60px; background: #75afd7;}
-.helpdevelop .helpdevelop-main .helpdevelop-main-bottom{ width: 100%; border:1px solid rgba(204,204,204,1);}
-.helpdevelop .helpdevelop-main .helpdevelop-main-bottom .helpdevelop-main-bottom-tab { width: 70%; margin-left: 10%; line-height: 38px; margin-top: 30px; margin-bottom: 80px;}
-.helpdevelop .helpdevelop-main .helpdevelop-main-bottom .helpdevelop-main-bottom-tab ul li{ padding-top: 10px;}
-.helpdevelop .helpdevelop-main .helpdevelop-main-bottom .helpdevelop-main-bottom-tab ul li h2{ margin-top: 20px; font-size: 20px; font-weight: 400;}
-.helpdevelop .helpdevelop-main .helpdevelop-main-bottom .helpdevelop-main-bottom-tab ul li strong{ font-size: 16px; line-height: 38px; font-weight: 300}
-.helpdevelop .helpdevelop-main .helpdevelop-main-bottom .helpdevelop-main-bottom-tab ul li p{ font-size: 14px;}
-.helpdevelop .helpdevelop-main .helpdevelop-main-bottom .helpdevelop-main-bottom-tab ul li a{ color: #00A2F6; font-size: 14px;}
+.helpdevelop .helpdevelop-main .helpdevelop-main-top{ width: 100%; height: 40px; background: #75afd7; border-radius: 4px;}
+.helpdevelop .helpdevelop-main .helpdevelop-main-bottom{ width: 100%;}
+
+.helpdevelop .helpdevelop-main .helpdevelop-main-bottom .buttonleft{ width: 20%; float: left;}
+.helpdevelop .helpdevelop-main .helpdevelop-main-bottom .buttonleft ul li{  width: 98%; height: 40px; text-align: center; margin: 10px 0; border-radius: 4px; line-height: 40px; cursor: pointer; color: #333;}
+.helpdevelop .helpdevelop-main .helpdevelop-main-bottom .buttonleft ul li.active{ width: 98%; height: 40px; background: #75afd7; text-align: center; margin: 10px 0; border-radius: 4px; line-height: 40px; cursor: pointer; color: #fff;}
+.helpdevelop .helpdevelop-main .helpdevelop-main-bottom .mainright{ width: 80%; float: left;}
+
+.mainright .helpdevelop-main-bottom-tab { width: 70%; margin-left: 10%; line-height: 38px; margin-top: 30px; margin-bottom: 80px;}
+.mainright .helpdevelop-main-bottom-tab ul li{ padding-top: 10px;}
+.mainright .helpdevelop-main-bottom-tab ul li h2{ margin-top: 20px; font-size: 20px; font-weight: 400;}
+.mainright .helpdevelop-main-bottom-tab ul li strong{ font-size: 16px; line-height: 38px; font-weight: 300}
+.mainright .helpdevelop-main-bottom-tab ul li p{ font-size: 14px;}
+.mainright .helpdevelop-main-bottom-tab ul li a{ color: #00A2F6; font-size: 14px;}
 /* 会员系统 */
 .helpmember{ width: 100%; display: flex; flex-direction: column; justify-content: center;align-items: center; color: #000; font-size: 20px;}
 .helpmember .helpmember-topcontent{ width: 50%;}
@@ -189,13 +195,13 @@ img{ background-size: 100% 100%; max-width: 100%; max-height: 100%;}
 
 .helpmember .helpmember-account .helpmember-account-bottom{width: 80%; height: 500px;display: flex; justify-content: center; align-items: center; position: relative;}
 .helpmember .helpmember-account .helpmember-account-bottom .next-slick-container.next-slick-initialized{ width: 800px; height: 350px; display: flex; justify-content: center; align-items: center; position: relative;}
-.helpmember .helpmember-account .helpmember-account-bottom .next-slick-slide.next-slick-active{position:relative; height: 350px; margin-left: 20px; opacity: 0.8;transition: all 300ms ease;}
-.helpmember .helpmember-account .helpmember-account-bottom .center .next-slick-slide.next-slick-active.next-slick-center{color: #e67e22;opacity: 1;transform: scale(1.08);}
-/*.helpmember-account-bottom .next-slick-container.next-slick-initialized div{ background: black; width: 300px; height: 350px;}*/
+.helpmember .helpmember-account .helpmember-account-bottom .next-slick-slide.next-slick-active{position:relative; height: 350px;opacity: 0.8;transition: all 300ms ease;}/*  margin-left: 20px;  */
+.helpmember .helpmember-account .helpmember-account-bottom .center .next-slick-slide.next-slick-active.next-slick-center{color: #e67e22;opacity: 1; transform: scaleY(1.08);}/* transform: scale(1.08); */
+.helpmember-account-bottom .next-slick-container.next-slick-initialized div{ height: 350px;}
 .helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel{font-size: 36px;margin: 10px;position: relative; height: 340px;display:flex;justify-content: center;
   align-items: center;  flex-direction: column;background-size: 100% 100%;  background-image: url('../../../assets/img/helpcenter/member/hy-bg2.png'); background-repeat:'no-repeat';}
 .helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel img{ position: absolute; left: 50%; margin-left: -25px; top: 20px;}
-.next-slick-container.next-slick-initialized div .Carousel button{ width: 150px; height: 24px; border-radius: 12px; background: rgba(162,162,162,1); font-size: 12px; line-height: 24px; font-weight: 300; }
+.next-slick-container.next-slick-initialized div .Carousel button{ width: 150px; height: 24px; border-radius: 12px; background: rgba(162,162,162,1); font-size: 12px; line-height: 24px; font-weight: 300; border: none; color: #fff;}
 .helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel p{color:rgba(102,102,102,1);line-height:22px;font-size: 14px;width: 80%; text-align: center;}
 .helpmember-account-bottom .next-slick-container.next-slick-initialized div .Carousel a{position: absolute; left: 20px; bottom: 40px;font-weight:300;color:rgba(0,162,246,1);line-height:20px; font-size: 12px;}
 /* 按钮 */

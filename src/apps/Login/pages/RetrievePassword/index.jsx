@@ -88,6 +88,10 @@ class RetrievePassword extends Component {
       type: this.state.type === 'password' ? 'text' : 'password',
     });
   }
+  // 下一步
+  nextBtntwo(){
+    this.props.history.push('/user/setnewpassword');
+  }
   render() {
     const { intl } = this.props;
     return (
@@ -164,16 +168,16 @@ class RetrievePassword extends Component {
                   <Button
                     type="primary"
                     size="large"
-/*                  onClick={this.handleSubmit} */
+                    onClick={this.nextBtntwo.bind(this)}
                     style={styles.submitBtn}
                   >
                   下一步
                     {/* <FormattedMessage id='app.login.sign.in' /> */}
                   </Button>
                 </Link>
-                {/*                <Link to="/user/sendmailbox" style={styles.tips}>
-                  <FormattedMessage id='app.login.register.now' />
-                </Link> */}
+                <Link to="/user/resetpassword" style={styles.tips}>
+                  上一步
+                </Link>
               </div>
             </div>
           </IceFormBinderWrapper>
@@ -253,6 +257,8 @@ const styles = {
     marginTop: '20px',
     display: 'block',
     textAlign: 'center',
+    color: '#108EE9',
+    textDecoration: 'none',
   },
   right: {
     float: 'left',

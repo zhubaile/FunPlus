@@ -33,11 +33,12 @@ export default class Member extends Component {
       centerMode: true,
       infinite: true,
       dots: true,
-      centerPadding: '60px',
+      centerPadding: '0px',
       speed: 500,
       arrowSize: "large",
       arrowPosition: "outer",
       dotsClass: 'dots-cusst',
+      pauseOnHover: true,
     };
     const { intl: { formatMessage } } = this.props;
     const dots1 = formatMessage({ id: 'app.website.helpmultistage.slider.dots1' }) ,

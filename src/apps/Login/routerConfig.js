@@ -23,15 +23,15 @@ const login = [
     component: SendMailbox,
   },
   {
-    path: '/user/retrievepassword',
+    path: '/user/retrievepassword', /* 忘记密码第二步 */
     component: RetrievePassword,
   },
   {
-    path: '/user/setnewpassword',
+    path: '/user/setnewpassword',/* 忘记密码第三步 */
     component: SetNewPassword,
   },
   {
-    path: '/user/resetpassword',
+    path: '/user/resetpassword', /* 忘记密码第一步 */
     component: ResetPassword,
   },
 ];
