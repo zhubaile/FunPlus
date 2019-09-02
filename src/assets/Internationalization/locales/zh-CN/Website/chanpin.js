@@ -19,6 +19,10 @@ export default {
   'app.website.chanpinmode.footerp': '支持微信、支付宝和 QQ 钱包代扣接口，满足免密支付、自动扣费等委托代扣需求场景。',
 
   // 产品  商业管理
+  'app.website.chanpinadmin.slider.dots1': '电商行业',
+  'app.website.chanpinadmin.slider.dots2': '物流行业',
+  'app.website.chanpinadmin.slider.dots3': '零售行业',
+  'app.website.chanpinadmin.slider.dots4': '金融行业',
   'app.website.chanpinadmin.prodecth1': '商业智能',
   'app.website.chanpinadmin.prodectp': '针对企业客户推出的商业智能系统，对企业支付数据，产品数据，客户行为数据进行深度挖掘，提供轻量化，可视化的，全流程的客户营销管理与产品推荐服务。',
 

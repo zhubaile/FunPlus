@@ -10,6 +10,26 @@ export default class Ceshi extends Component {
     this.state = {};
   }
   render() {
+    const settings = {
+      className: 'custom-slide center',
+      autoplay: true, // 是否自动轮播
+      autoplaySpeed: '2000', // 自动播放的轮播速度
+      lazyLoad: true, // 懒加载
+      slidesToShow: 1, // 同时展示的图片数量
+      speed: 500, // 轮播速度
+      adaptiveHeight: true, // 自适应高度
+      // centerMode: true, // 启用居中模式
+      infinite: true, // 使用无穷循环模式
+      // dots: true, // 显示导航锚点
+      dotsDirection: 'ver',
+      dotsClass: 'dots-cusst', //  dotsClass 可覆盖dots的样式
+      slideDirection: 'hoz', // 轮播方向
+      centerPadding: '60px', // pading会产生前后预览
+      // arrowDirection: 'ver', // 导航箭头的方向
+      // arrowSize: "large", // 导航箭头大小
+      // arrowPosition: "outer", // 导航箭头位置
+      arrows: false,
+    };
     /* const detachedContentStyle = {
       border: '1px solid #DCDEE3',
       padding: '20px',
@@ -18,6 +38,11 @@ export default class Ceshi extends Component {
     const {
       intl: { formatMessage },
     } = this.props;
+    const dots1 = formatMessage({ id: 'app.website.chanpinadmin.slider.dots1' }) ,
+      dots2 = formatMessage({ id: 'app.website.chanpinadmin.slider.dots2' }) ,
+      dots3 = formatMessage({ id: 'app.website.chanpinadmin.slider.dots3' }) ,
+      dots4 = formatMessage({ id: 'app.website.chanpinadmin.slider.dots4' });
+    const navigation = [dots1,dots2,dots3,dots4];
     return (
       <div className='prodect'>
         {/* 导航下面的展示内容 */}
@@ -97,7 +122,7 @@ export default class Ceshi extends Component {
                 </div>
               </Slider>
             </div> */}
-            <div className='scene-conter-botton'>
+{/*            <div className='scene-conter-botton'>
               <Tab shape='wrapped' tabPosition='left'>
                 <Tab.Item title={formatMessage({ id: 'app.website.chanpinadmin.tab.title1' })} key="1">
                   <div className='scene-conter-botton-tab'>
@@ -124,8 +149,42 @@ export default class Ceshi extends Component {
                   </div>
                 </Tab.Item>
               </Tab>
+            </div>*/}
+            <div className="maincontainer">
+              <div className="contents">
+                <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
+                <Slider
+                  {...settings}
+                  dotsRender={(index, current)=>{
+                    return <a>{navigation[index]}</a>;
+                  }}
+                >
+                  <div><img src={require('@img/prodect/administration/scene-ds.png')} alt="" /></div>
+                  <div><img src={require('@img/prodect/administration/scene-wl.png')} alt="" /></div>
+                  <div><img src={require('@img/prodect/administration/scene-ls.png')} alt="" /></div>
+                  <div><img src={require('@img/prodect/administration/scene-jr.png')} alt="" /></div>
+                </Slider>
+              </div>
+              {/*              <div className="leftcontainer">
+                <Slider arrows={false} infinite autoplay slideDirection="ver" dots={false} slidesToShow={1}>
+                  <div><p><span className="corls1" />电商行业</p></div>
+                  <div><p><span className="corls2" />物流行业</p></div>
+                  <div><p><span className="corls3" />零售行业</p></div>
+                  <div><p><span className="corls4" />金融行业</p></div>
+                </Slider>
+              </div>
+              <div className="rightcontainer">
+                <p>适用于B2C交易模式，面向中国消费者消费</p>
+                <Slider arrows={false} infinite autoplay>
+                  <div><img src={require('@img/prodect/administration/scene-ds.png')} alt="" /></div>
+                  <div><img src={require('@img/prodect/administration/scene-wl.png')} alt="" /></div>
+                  <div><img src={require('@img/prodect/administration/scene-ls.png')} alt="" /></div>
+                  <div><img src={require('@img/prodect/administration/scene-jr.png')} alt="" /></div>
+                </Slider>
+              </div> */}
             </div>
           </div>
+
         </div>
         {/**/}
         <div className='scene'>
@@ -150,6 +209,7 @@ export default class Ceshi extends Component {
               <img src={require('@img/prodect/administration/pic_5.png')} alt="" />
             </div>
           </div>
+
         </div>
         {/**/}
         <div className='service'>

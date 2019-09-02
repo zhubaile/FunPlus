@@ -521,3 +521,13 @@ box-shadow: 0 0 30px #9ad6fd;
 .btn_style{ margin-top: 2%;}
 .btn_send{ width:86px; height:40px; background:rgba(0,162,246,1); border-radius:2px; border: none; color: #FFFFFF; font-size: 14px; line-height: 22px; font-weight: 400; display: inline-block; cursor: pointer; float: right;}
 
+
+/**/
+.maincontainer{width: 100%;}
+.contents{ width: 70%; margin: 0 auto;}
+.contents p{width: 65%; text-align: center;}
+.contents .next-slick-list{ width: 610px !important; height: 424px !important;}
+.contents .next-slick-dots-item{ width: 200px !important; height: 50px !important; text-align: center;}
+.contents .next-slick-dots-item span{ display: block; font-size: 18px; margin-left: 25%;}
+.contents .next-slick-dots-item span a{border-radius: 4px; box-shadow: 0 0 10px #eeeeee;}
+.contents .next-slick-dots.ver{left: 700px;}
