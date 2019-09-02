@@ -8,11 +8,6 @@ export async function getMenu(params) {
     url: 'menu/user',
     data: params ,
   });
-  // .then(({ status, data }) => {
-  //   console.log(status);
-  //   console.log(data);
-  //   ;
-  // });
 }
 // 发送邮件
 export async function sendMailbox(params) {
