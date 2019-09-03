@@ -21,15 +21,20 @@ export default class Consultation extends Component {
   consultationpopup() {
     this.Popup.open();
   }
+  topBtn() {
+    window.scrollTo(0,0);
+  }
   render() {
     return (
       <div>
         <Popup ref={ node => this.Popup = node } />
         <div className='consultation'>
-          <a href='javascript:;' onClick={this.consultationpopup.bind(this)}><img src={require('../../../../assets/img/shouye/syf1.png')} style={{ width: '22px', height: '20px', marginTop: '12px' }} /></a>
-          <p>
-            <FormattedMessage id='app.Online.consultation' /> </p>
-          <a href='#linktop'><img src={require('../../../../assets/img/shouye/syf2.png')} style={{ width: '21px', height: '23px', marginTop: '11px' }} /></a>
+          <a href='javascript:;' onClick={this.consultationpopup.bind(this)}><img src={require('@img/shouye/syf1.png')} style={{ width: '22px', height: '20px', marginTop: '12px' }} /></a>
+          <p onClick={this.consultationpopup.bind(this)}>
+            <FormattedMessage id='app.Online.consultation' />
+          </p>
+          {/* <a href='#linktop'><img src={require('@img/shouye/syf2.png')} style={{ width: '21px', height: '23px', marginTop: '11px' }} /></a> */}
+          <a href='javascript:;' onClick={this.topBtn.bind(this)}><img src={require('@img/shouye/syf2.png')} style={{ width: '21px', height: '23px', marginTop: '11px' }} /></a>
         </div>
       </div>
     );

@@ -49,5 +49,5 @@ export default {
   'app.main.footer': '掩月网络技术（上海）有限公司',
 
   //
-  'app.Online.consultation': '在线咨询',
+  'app.Online.consultation': '产品咨询',
 };

@@ -9,7 +9,7 @@ import {
 } from '@icedesign/form-binder';
 import IceIcon from '@icedesign/icon';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { loginUser } from '@loginApi';
+import { usermodifyPwd } from '@loginApi';
 import IceImg from '@icedesign/img';
 
 @withRouter
@@ -23,11 +23,38 @@ class SetNewPassword extends Component {
 
   constructor(props) {
     super(props);
+    console.log(this.props.match); // 获取到详细的路由地址
+    const query = this.props.location.search; // '?s=1&f=7'
+    let arr,
+      initialemail,
+      failedCount;
+    if (query) {
+      arr = query.split('&');
+      initialemail = arr[0].substr(7); // 获取邮箱值
+      failedCount = arr[1].substr(5); // '7'
+    } else {
+      initialemail = '';
+      failedCount = '';
+    }
+    let phones,
+      codes;
+    if (this.props.location.state) {
+      phones = this.props.location.state.phone;
+      codes = this.props.location.state.code;
+    } else {
+      phones = '';
+      codes = '';
+    }
+    console.log(phones,codes,initialemail,failedCount)
+    debugger;
     this.state = {
       value: {
-        username: '',
+        passwordTwo: '',
         password: '',
-        checkbox: false,
+        email: initialemail,
+        sign: failedCount,
+        phone: phones,
+        code: codes,
       },
       type: 'password',
     };
@@ -41,44 +68,29 @@ class SetNewPassword extends Component {
 
   /* 登录按钮的出发时间 */
   handleSubmit=(e)=> {
-    e.preventDefault();// 如果删除此行，表单将自动提交
-    this.refs.form.validateAll((errors, values) => {
-      // values.username为账号框的内容
-      // 可在此处添加ajax方法
-      if (errors) {
-        console.log('errors', errors);
-        return;
+    // e.preventDefault();// 如果删除此行，表单将自动提交
+    // this.refs.form.validateAll((errors, values) => {
+    //   if (errors) {
+    //     console.log('errors', errors);
+    //     return;
+    //   }
+    const values = this.state.value;
+    const { intl } = this.props;
+    // 访问登录接口
+    usermodifyPwd({
+      ...values,
+    }).then(
+      ({ status, data }) => {
+        if (data.errCode == 0) {
+          // Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
+          Message.success(data.message);
+          this.props.history.push('/user/login');
+        } else {
+          Message.success(data.message);
+        }
       }
-      const { intl } = this.props;
-      // 访问登录接口
-      loginUser({
-        username: values.username,
-        password: values.password,
-      }).then(
-        ({ status, data }) => {
-          if (data.errCode == 0) {
-            console.log(values);
-            Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
-            this.props.history.push('/admin/income');
-            window.location.href = "";
-          } else {
-            Message.success(data.message);
-          }
-        }
-      ).catch(
-        ({ status, data }) => {
-          console.log(values);
-          Message.success('登录失败');
-          // this.props.history.push('/user/login');
-        }
-      );
-      // const { intl } = this.props;
-      // Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
-      // this.props.history.push('/');  //可以添加配置的路由为跳转
-      // Message.success("登录成功");
-      // window.location.href = "index.html"; // 跳转到中后台界面
-      // window.open('index.html');    //打开新的窗口
-    });
+    );
+    // });
   }
 
   // 点击显示和隐藏密码的按钮
@@ -97,7 +109,7 @@ class SetNewPassword extends Component {
             <img src={require('@img/login/suo.png')} />
           </div>
           <h4 style={styles.title}>
-            密码找回
+            重置密码
             {/* <FormattedMessage id='app.login.sign.in' /> */}
           </h4>
           <IceFormBinderWrapper
@@ -109,9 +121,9 @@ class SetNewPassword extends Component {
               <div style={styles.formItem}>
                 <FormattedMessage id='app.login.pass.errormessage'>
                   {txt => (
-                    <IceFormBinder name="username" required message={txt}>
+                    <IceFormBinder name="password" required message={txt}>
                       <Input
-                        hasClear
+                        // hasClear
                         htmlType={this.state.type}
                         size="large"
                         maxLength={20}
@@ -121,13 +133,13 @@ class SetNewPassword extends Component {
                     </IceFormBinder>
                   )}
                 </FormattedMessage>
-                <IceFormError name="username" />
+                <IceFormError name="password" />
               </div>
 
               <div style={styles.formItem}>
                 <FormattedMessage id='app.login.pass.errormessage'>
                   {txt => (
-                    <IceFormBinder name="password" required message={txt}>
+                    <IceFormBinder name="passwordTwo" required message={txt}>
                       <Input
                         size="large"
                         htmlType={this.state.type}
@@ -137,7 +149,7 @@ class SetNewPassword extends Component {
                     </IceFormBinder>
                   )}
                 </FormattedMessage>
-                <IceFormError name="password" />
+                <IceFormError name="passwordTwo" />
               </div>
               <div style={styles.footer}>
                 <Button
@@ -149,6 +161,9 @@ class SetNewPassword extends Component {
                   提交
                   {/* <FormattedMessage id='app.login.sign.in' /> */}
                 </Button>
+                <Link to="/user/login" style={styles.tips}>
+                  <FormattedMessage id='app.sendregister.newaccount' />
+                </Link>
               </div>
             </div>
           </IceFormBinderWrapper>
@@ -228,6 +243,8 @@ const styles = {
     marginTop: '20px',
     display: 'block',
     textAlign: 'center',
+    color: '#108EE9',
+    textDecoration: 'none',
   },
   right: {
     float: 'left',

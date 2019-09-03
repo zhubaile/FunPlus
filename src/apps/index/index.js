@@ -16,6 +16,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import BasicLayout from './layouts/BasicLayout';
 import router from "./router";
 import moment from 'moment';
+import ScrollToTop from './ScrollToTop';
 
 const locale = getLocale();
 const CONTAINER = document.getElementById('root');
@@ -29,9 +30,11 @@ ReactDOM.render(
   <LanguageProvider locale={locale}>
     <Provider store={store} >
       <Router>
-        <BasicLayout>
-          {router}
-        </BasicLayout>
+        <ScrollToTop>
+          <BasicLayout>
+            {router}
+          </BasicLayout>
+        </ScrollToTop>
       </Router>
     </Provider>
   </LanguageProvider>,

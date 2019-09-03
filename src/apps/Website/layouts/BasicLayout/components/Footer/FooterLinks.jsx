@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Button } from '@alifd/next';
-import { Link } from 'react-router-dom';
+import { Link,withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-
+@withRouter
 
 export default class FooterLinks extends Component {
   static displayName = 'FooterLinks';
@@ -16,7 +16,6 @@ export default class FooterLinks extends Component {
     super(props);
     this.state = {};
   }
-
   render() {
     return (
       <div className="footer-box" style={styles.footerBox}>
@@ -47,43 +46,39 @@ export default class FooterLinks extends Component {
                         className="footer-box-content-subli"
                         style={styles.footerBoxContentSubli}
                       >
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="#"
+                        <Link
                           className="footer-box-content-item-link"
+                          to="/website/product/mode"
                           style={styles.footerBoxContentItemLink}
                         >
                           <FormattedMessage id='app.website.footer.Paymentmethod' />
-                        </a>
+                        </Link>
                       </li>
                       <li
                         className="footer-box-content-subli"
                         style={styles.footerBoxContentSubli}
                       >
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="#"
+                        <Link
+                          to='/website/solution/logistics'
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
                           <FormattedMessage id='app.website.footer.Solution' />
-                        </a>
+                        </Link>
                       </li>
                       <li
                         className="footer-box-content-subli"
                         style={styles.footerBoxContentSubli}
                       >
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="#"
+
+                        <Link
+                          to='/website/product/administration'
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
                           <FormattedMessage id='app.website.footer.businessmanagement' />
-                        </a>
+                        </Link>
+
                       </li>
                     </ul>
                   </div>
@@ -123,29 +118,25 @@ export default class FooterLinks extends Component {
                         className="footer-box-content-subli"
                         style={styles.footerBoxContentSubli}
                       >
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="#"
+                        <Link
+                          to='/website/helpcenter/develop'
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
                           <FormattedMessage id='app.website.footer.Rapiddevelopment' />
-                        </a>
+                        </Link>
                       </li>
                       <li
                         className="footer-box-content-subli"
                         style={styles.footerBoxContentSubli}
                       >
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="#"
+                        <Link
+                          to='/website/helpcenter/member'
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
                           <FormattedMessage id='app.website.footer.Membershipsystem' />
-                        </a>
+                        </Link>
                       </li>
                       <li
                         className="footer-box-content-subli"
@@ -186,15 +177,13 @@ export default class FooterLinks extends Component {
                         className="footer-box-content-subli"
                         style={styles.footerBoxContentSubli}
                       >
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="#"
+                        <Link
+                          to='/website/helpcenter/Contactus'
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
                           <FormattedMessage id='app.website.footer.Contactus' />
-                        </a>
+                        </Link>
                       </li>
                       <li
                         className="footer-box-content-subli"
@@ -248,31 +237,21 @@ export default class FooterLinks extends Component {
                         className="footer-box-content-subli"
                         style={styles.footerBoxContentSubli}
                       >
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="#"
+                        <Link
+                          to='/website/helpcenter/sdk'
                           className="footer-box-content-item-link"
                           style={styles.footerBoxContentItemLink}
                         >
                           <FormattedMessage id='app.website.footer.SDKDownload' />
-                        </a>
+                        </Link>
                       </li>
                       <li
                         className="footer-box-content-subli"
                         style={styles.footerBoxContentSubli}
                       >
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="javascript:;"
-                          className="footer-box-content-item-link"
-                          style={styles.footerBoxContentItemLink}
-                        >
-                          <Link to='/website/demo/experience' style={styles.footerBoxContentItemLinks}>
-                            <FormattedMessage id='app.website.footer.DEMOexperience' />
-                          </Link>
-                        </a>
+                        <Link to='/website/demo/experience' style={styles.footerBoxContentItemLink}>
+                          <FormattedMessage id='app.website.footer.DEMOexperience' />
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -289,7 +268,7 @@ export default class FooterLinks extends Component {
               <FormattedMessage id='app.website.footer.hotline' />：010-666-888
             </div>
             <div>
-{/*              <Button type="primary" style={{ borderRadius: '20px' }}> <FormattedMessage id='app.website.footer.Immediateconsultation' /></Button>*/}
+              {/*              <Button type="primary" style={{ borderRadius: '20px' }}> <FormattedMessage id='app.website.footer.Immediateconsultation' /></Button> */}
             </div>
           </div>
           <div className="footer-clearfix" style={styles.footerClearfix} />
@@ -380,6 +359,7 @@ const styles = {
   footerBoxContentItemLinks: {
     fontSize: '16px',
     color: '#000',
+    opacity: '0.6',
     textDecoration: 'none',
   },
   footerBoxRightTitle: {

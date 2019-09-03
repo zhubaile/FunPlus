@@ -6,17 +6,21 @@ img{ background-size: 100% 100%; max-width: 100%; max-height: 100%;}
 .clear{ clear: both;}
 .next-btn.next-btn-normal{ border:none;}
 /* 首页的咨询 */
-.shouye .consultation{ position: fixed; bottom: 50px; right: 15px; width: 44px; cursor: pointer;}
+.shouye .consultation{ position: fixed; bottom: 50px; right: 15px; width: 44px; cursor: pointer; z-index: 9988;}
 .shouye .consultation a{ width: 44px; height: 44px;background:rgba(0,162,246,1); display: flex; justify-content: center;}
 .shouye .consultation p{ width: 20px; font-size: 20px; margin-left: 12px; word-wrap: break-word; font-weight: 400; color: rgba(51,51,51,1); cursor: pointer; padding-bottom: 10px;}
 /* 咨询弹框 */
-.consultpopup{ position: fixed; bottom: 50px; right: 100px; width: 365px; height: 500px; z-index: 9999; background: #fff;  box-shadow: 0 0 10px #666666;}
+.consultpopup{ position: fixed; bottom: 50px; right: 100px; width: 365px; height: 500px; z-index: 9998; background: rgba(245,245,245,1);  box-shadow: 0 0 6px #666666;}
 .consultpopup .consultpopup-head{ width: 365px; height: 50px; background:rgba(0,162,246,1); color: #fff; font-weight: 400; line-height: 50px;}
 .consultpopup .consultpopup-head .consultpopup-head-left{ float: left; padding-left: 10px; font-size: 16px;}
 .consultpopup .consultpopup-head .consultpopup-head-right{ float: right; padding-right: 10px; cursor: pointer;}
 .consultpopup .consultpopup-main{ width: 365px; height: 350px;}
 .consultpopup .consultpopup-userinput{ width: 365px; height: 100px; border-top: 2px solid rgba(47, 50, 51, 0.2); padding: 10px;}
-.consultpopup .consultpopup-footer .sendbtn{ border-radius: 5px; position: absolute; bottom: 5px; right: 5px;}
+.consultpopup .consultpopup-footer .formmain{ margin: 10px 0; border-radius: 6px; border:1px solid rgba(224,224,224,1); background: #fff}
+.consultpopup .consultpopup-footer .formmain .next-input.next-medium{ border-radius: 6px; height: 32px; line-height: 32px;}
+.consultpopup .consultpopup-footer .next-form-item .next-form-item-control .next-btn.sendbtn{ border-radius: 6px; position: absolute; bottom: 15px; right: 10px;background:rgba(0,162,246,1);}
+.consultpopup .consultpopup-footer .formmain .next-form-item-control .next-select{ width: 100%;}
+.next-overlay-wrapper .next-overlay-inner{ z-index: 9999;}
 
 /* 导航下面的展示内容 */
 .nav-belowimg{background-size: 100% 100%; display: flex; justify-content: center; width: 100%; height: 500px; background: linear-gradient(left, #06A1FB, #3F7AF8); position: relative;}
@@ -249,7 +253,7 @@ img{ background-size: 100% 100%; max-width: 100%; max-height: 100%;}
 .helpsdk .helpsdk-main .helpsdk-main-conter ul li{ display: flex; align-items: center; justify-content: center; flex-direction: column; width: 20%; margin-left: 5%; padding: 20px 0;}
 .helpsdk .helpsdk-main .helpsdk-main-conter ul li strong{ font-size: 20px; margin-top: 10px;}
 .helpsdk .helpsdk-main .helpsdk-main-conter ul li p{ font-size: 14px;line-height: 22px; padding: 0 8px;}
-.img_outer>img{cursor: pointer;-webkit-filter: grayscale(100%);filter: grayscale(100%);transition:all 0.2s;}
+.img_outer>img{cursor: pointer;-webkit-filter: grayscale(100%);filter: grayscale(100%);transition:all 0.2s;-moz-transition:all 0.2s;-webkit-transition:all 0.2s;-o-transition:all 0.2s; }
 .img_outer>img:hover{filter: none;}
 /* DEMO */
 /* 上面和下面的样式 */
@@ -362,13 +366,8 @@ img{ background-size: 100% 100%; max-width: 100%; max-height: 100%;}
 .product-content-botton ul{ width: 100%;}
 .product-content-botton-box{float: left;width: 22%;height: 290px;margin: 0 1%;display: flex;flex-direction: column;align-items: center; justify-content: center;  cursor: pointer; background: rgba(255,255,255,1)}
 .product-content-botton-box:hover.product-content-botton-box{
-  transform:translateY(-50px);/**上移元素**/
--ms-transform:translateY(-50px);
--webkit-transform:translateY(-50px);
-/*box-shadow: 0 0 6px #a7ecfd;*/
-box-shadow: 0 0 30px #9ad6fd;
-  transition-duration: 0.5s; -moz-transition-duration: 0.5s; -webkit-transition-duration: 0.5s;
-}
+  transform:translateY(-50px);/**上移元素**/-ms-transform:translateY(-50px);-webkit-transform:translateY(-50px);
+box-shadow: 0 0 30px #9ad6fd;transition-duration: 0.5s; -moz-transition-duration: 0.5s; -webkit-transition-duration: 0.5s;}
 .product-content-botton-box>h2{ font-size: 20px;}
 .product-content-botton-box>p{ display: block; text-align: center; font-size: 14px;}
 

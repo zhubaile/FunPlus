@@ -95,8 +95,6 @@ export default class Customerservice extends Component {
     });
     this.socket.on('message',(msg)=>{
       console.log(msg);
-
-
       debugger;
       this.setState((prevState)=>{
         prevState.messagelist.push(msg);

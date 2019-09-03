@@ -32,8 +32,36 @@ export async function registerUser(params) {
   });
 }
 //  获取用户权限
-export function functionUser() {
+export async function functionUser() {
   return ajaxAmd.post({
     url: 'function/user',
+  });
+}
+// 手机号找回密码
+export async function smsfindPass(params) {
+  return ajaxAmd.post({
+    url: '/sms/findPass',
+    data: params ,
+  });
+}
+// 验证短信验证码
+export async function smsverify(params) {
+  return ajaxAmd.get({
+    url: '/sms/verify',
+    params ,
+  });
+}
+// 重置密码
+export async function usermodifyPwd(params) {
+  return ajaxAmd.post({
+    url: '/user/modifyPwd',
+    data: params ,
+  });
+}
+// 邮箱找回密码
+export async function sendFindPassMail(params) {
+  return ajaxAmd.get({
+    url: '/sendFindPassMail',
+    params ,
   });
 }

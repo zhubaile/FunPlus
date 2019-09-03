@@ -9,7 +9,7 @@ import {
 } from '@icedesign/form-binder';
 import IceIcon from '@icedesign/icon';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { loginUser } from '@loginApi';
+import { smsfindPass,sendFindPassMail } from '@loginApi';
 import IceImg from '@icedesign/img';
 
 @withRouter
@@ -25,11 +25,10 @@ class ResetPassword extends Component {
     super(props);
     this.state = {
       value: {
-        username: '',
-        password: '',
-        checkbox: false,
+        phone: '',
+        email: '',
       },
-      type: 'password',
+      type: 'phone',
     };
   }
   /* 文本框输入内容的事件 */
@@ -38,28 +37,55 @@ class ResetPassword extends Component {
       value,
     });
   };
-
-  /* 登录按钮的出发时间 */
-  handleSubmit=(e)=> {
-    e.preventDefault();// 如果删除此行，表单将自动提交
-    this.refs.form.validateAll((errors, values) => {
-      // values.username为账号框的内容
-      // 可在此处添加ajax方法
+  // 下一步
+  nextBtn=(e)=> {
+    // e.preventDefault();// 如果删除此行，表单将自动提交
+    const values = this.inputvalue.getInputNode().value;
+    if (!values) {
+      Message.success('手机账户不能为空');
+      return null;
+    }
+    smsfindPass({
+      phone: values,
+    }).then(
+      ({ status, data }) => {
+        if (data.errCode == 0) {
+          // Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
+          Message.success(data.message);
+          this.props.history.push({ pathname: "/user/retrievepassword", state: values });
+          // window.location.href = "";
+        } else {
+          Message.success(data.message);
+        }
+      }
+    );
+    /* this.refs.form.validateAll((errors, values) => {
       if (errors) {
         console.log('errors', errors);
         return;
       }
-      const { intl } = this.props;
-      // 访问登录接口
-      loginUser({
-        username: values.username,
-        password: values.password,
+      // const { intl } = this.props;
+      // const { type,types } = this.state;
+      // const phone = values.phone;
+      // const email = values.email;
+      // const savaFun = types ? smsfindPass : sendFindPassMail;
+      // const sendName = {};
+      // if (phone) {
+      //   sendName.phone = phone;
+      // } else {
+      //   sendName.email = email;
+      // }
+      // console.log(sendName);
+      // debugger;
+      smsfindPass({
+        phone: values.phone,
       }).then(
         ({ status, data }) => {
+          debugger;
           if (data.errCode == 0) {
             console.log(values);
             Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
-            this.props.history.push('/admin/income');
+            this.props.history.push('/user/retrievepassword');
             window.location.href = "";
           } else {
             Message.success(data.message);
@@ -72,40 +98,69 @@ class ResetPassword extends Component {
           // this.props.history.push('/user/login');
         }
       );
-      // const { intl } = this.props;
-      // Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
-      // this.props.history.push('/');  //可以添加配置的路由为跳转
-      // Message.success("登录成功");
-      // window.location.href = "index.html"; // 跳转到中后台界面
-      // window.open('index.html');    //打开新的窗口
-    });
+    }); */
   }
-
+  // 邮箱提交
+  sendBtn=(e)=>{
+    const values = this.inputvalue.getInputNode().value;
+    if (!values) {
+      Message.success('邮箱账户不能为空');
+      return null;
+    }
+    sendFindPassMail({
+      email: values,
+    }).then(
+      ({ status, data }) => {
+        if (data.errCode == 0) {
+          this.setState({
+            value: {
+              email: '',
+            },
+          },()=>{
+            Message.success(data.message);
+          });
+          // Message.success(intl.formatMessage({ id: 'app.login.Login successfully' }));
+          // this.props.history.push('/user/retrievepassword');
+          // window.location.href = "";
+        } else {
+          Message.success(data.message);
+        }
+      }
+    );
+  }
   // 点击显示和隐藏密码的按钮
-  showPassword() {
+  emailbtn() {
     this.setState({
-      type: this.state.type === 'password' ? 'text' : 'password',
+      type: 'email',
     });
   }
-  // 下一步
-  nextBtn() {
-    this.props.history.push('/user/retrievepassword');
+  phonebtn() {
+    this.setState({
+      type: 'phone',
+    });
   }
   render() {
     const { intl } = this.props;
+    const { type } = this.state;
+    const spanstyle = { margin: '0 20px' };
+    const spancolor = { color: '#00A2F6', margin: '0 20px' };
     return (
       <div style={styles.container}>
         <div style={styles.left}>
           <p style={styles.prompt}>请在此填写你的信息和联系方式</p>
+          <p style={styles.prompts}>
+            <span style={type == 'email' ? spanstyle : spancolor} onClick={this.phonebtn.bind(this)}>手机号找回</span>
+            <span style={type == 'email' ? spancolor : spanstyle} onClick={this.emailbtn.bind(this)}>邮箱找回</span>
+          </p>
           <div style={styles.icon}>
             <img src={require('@img/login/suo.png')} />
           </div>
 
           <h4 style={styles.title}>
-            重置密码
+            密码找回
             {/* <FormattedMessage id='app.login.sign.in' /> */}
           </h4>
-          <p style={styles.promptMessage}>验证码将发送到您注册的邮箱和手机上</p>
+          {/* <p style={styles.promptMessage}>验证码将发送到您注册的邮箱和手机上</p> */}
           <IceFormBinderWrapper
             value={this.state.value}
             onChange={this.formChange}
@@ -116,12 +171,12 @@ class ResetPassword extends Component {
                 {/*                <IceIcon type="person" size="small" style={styles.inputIcon} /> */}
                 <FormattedMessage id='app.login.user.errormessage'>
                   {txt => (
-                    <IceFormBinder name="username" required message="邮箱或手机号输入错误">
+                    <IceFormBinder name={type == 'phone' ? 'phone' : 'email'} required message={type == 'phone' ? '手机号输入错误' : '邮箱输入错误'}>
                       <Input
                         hasClear
                         size="large"
-/*                        maxLength={20} */
-                        placeholder='邮箱或手机号'
+                        ref={node=>this.inputvalue = node}
+                        placeholder={type == 'phone' ? '请输入已绑定的手机号' : '请输入已绑定的邮箱'}
                         style={styles.inputCol}
                       />
                     </IceFormBinder>
@@ -135,9 +190,9 @@ class ResetPassword extends Component {
                   type="primary"
                   size="large"
                   style={styles.submitBtn}
-                  onClick={this.nextBtn.bind(this)}
+                  onClick={type == 'phone' ? this.nextBtn : this.sendBtn}
                 >
-                  下一步
+                  {type == 'phone' ? '下一步' : '提交'}
                   {/* <FormattedMessage id='app.login.sign.in' /> */}
                 </Button>
                 <Link to="/user/login" style={styles.tips}>
@@ -201,6 +256,7 @@ const styles = {
   },
   formItem: {
     position: 'relative',
+    marginTop: '10px',
     marginBottom: '20px',
   },
   /*  inputIcon: {
@@ -248,6 +304,16 @@ const styles = {
     color: 'rgba(102,102,102,1)',
     lineHeight: '22px',
     paddingBottom: '15px',
+  },
+  prompts: {
+    fontSize: '14px',
+    fontFamily: 'MicrosoftYaHei',
+    fontWeight: '400',
+    color: 'rgba(102,102,102,1)',
+    lineHeight: '22px',
+    paddingBottom: '15px',
+    textAlign: 'center',
+    cursor: 'pointer',
   },
   promptMessage: {
     textAlign: 'center',

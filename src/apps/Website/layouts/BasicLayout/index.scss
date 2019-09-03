@@ -2,11 +2,33 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.ice-layout {
-  min-width: 1200px;
-
+//.ice-layout {
+//  min-width: 1200px;
+//  min-height: 100vh;
+//  .ice-layout-main {
+//    // background: #f2f2f2;
+//    background: #fff;
+//    padding: 0;
+//    .main-header {
+//      background: red;
+//    }
+//    .main-container {
+//      padding: 0;
+//    }
+//  }
+//}
+.ice-design-layout {
+  min-width: 1440px;
+  min-height: 100vh;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  .ice-layout {
+    width: 100%;
+    min-height: 100vh;
+    background: #F6F9FE;
+  }
   .ice-layout-main {
-    // background: #f2f2f2;
     background: #fff;
     padding: 0;
     .main-header {

@@ -94,62 +94,6 @@ export default class Ceshi extends Component {
                 <strong><FormattedMessage id='app.website.chanpinadmin.scene1top.strong' /></strong><FormattedMessage id='app.website.chanpinadmin.scene1top.strongsize' />
               </div>
             </div>
-            {/* <div className='scene-conter-botton'>
-               <Slider slideDirection="ver" dots={false} arrowPosition="inner" arrowDirection="ver" className="ver-slick" infinite arrows={false}>
-                <div className='scene-conter-botton-tab'>
-                  <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
-                  <img
-                    src={require('../../../../../assets/img/prodect/administration/scene-ds.png')}
-                  />
-                </div>
-                <div className='scene-conter-botton-tab'>
-                  <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
-                  <img
-                    src={require('../../../../../assets/img/prodect/administration/scene-ds.png')}
-                  />
-                </div>
-                <div className='scene-conter-botton-tab'>
-                  <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
-                  <img
-                    src={require('../../../../../assets/img/prodect/administration/scene-ds.png')}
-                  />
-                </div>
-                <div className='scene-conter-botton-tab'>
-                  <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
-                  <img
-                    src={require('../../../../../assets/img/prodect/administration/scene-ds.png')}
-                  />
-                </div>
-              </Slider>
-            </div> */}
-{/*            <div className='scene-conter-botton'>
-              <Tab shape='wrapped' tabPosition='left'>
-                <Tab.Item title={formatMessage({ id: 'app.website.chanpinadmin.tab.title1' })} key="1">
-                  <div className='scene-conter-botton-tab'>
-                    <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
-                    <img src={require('@img/prodect/administration/scene-ds.png')} alt="" />
-                  </div>
-                </Tab.Item>
-                <Tab.Item title={formatMessage({ id: 'app.website.chanpinadmin.tab.title1' })} key="2">
-                  <div className='scene-conter-botton-tab'>
-                    <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
-                    <img src={require('@img/prodect/administration/scene-wl.png')} alt="" />
-                  </div>
-                </Tab.Item>
-                <Tab.Item title={formatMessage({ id: 'app.website.chanpinadmin.tab.title1' })} key="3">
-                  <div className='scene-conter-botton-tab'>
-                    <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
-                    <img src={require('@img/prodect/administration/scene-ls.png')} alt="" />
-                  </div>
-                </Tab.Item>
-                <Tab.Item title={formatMessage({ id: 'app.website.chanpinadmin.tab.title1' })} key="4">
-                  <div className='scene-conter-botton-tab'>
-                    <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>
-                    <img src={require('@img/prodect/administration/scene-jr.png')} alt="" />
-                  </div>
-                </Tab.Item>
-              </Tab>
-            </div>*/}
             <div className="maincontainer">
               <div className="contents">
                 <p><FormattedMessage id='app.website.chanpinadmin.tab.p' /></p>

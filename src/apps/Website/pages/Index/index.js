@@ -218,7 +218,6 @@ export default class Ceshi extends Component {
               <img src={require('@img/shouye/banner_cover1.png')} alt="" />
             </div>
           </div>
-
         </div>
 
       </div>

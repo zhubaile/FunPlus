@@ -14,6 +14,7 @@ import { getLocale } from '../../assets/Internationalization/locale';
 import BasicLayout from './layouts/BasicLayout'; // 中后台界面布局
 import router from './router';
 import Store from "../index/store";
+import ScrollToTop from './ScrollToTop';
 
 const locale = getLocale();
 const store = Store({});
@@ -26,7 +27,9 @@ ReactDOM.render(
   <LanguageProvider locale={locale}>
     <Provider store={store}>
       <Router>
-        <BasicLayout>{router}</BasicLayout>
+        <ScrollToTop>
+          <BasicLayout>{router}</BasicLayout>
+        </ScrollToTop>
       </Router>
     </Provider>
   </LanguageProvider>

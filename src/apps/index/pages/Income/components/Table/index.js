@@ -184,7 +184,7 @@ export default class GoodsTable extends Component {
             <Table.Column
               title="操作"
               dataIndex="oper"
-              width={70}
+              width={100}
               cell={this.renderOper}
             />
           </Table>
