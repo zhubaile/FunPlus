@@ -14,7 +14,7 @@ export default class Ceshi extends Component {
       className: 'custom-slide center',
       autoplay: true, // 是否自动轮播
       autoplaySpeed: '2000', // 自动播放的轮播速度
-      lazyLoad: true, // 懒加载
+      // lazyLoad: true, // 懒加载
       slidesToShow: 1, // 同时展示的图片数量
       speed: 500, // 轮播速度
       adaptiveHeight: true, // 自适应高度
@@ -24,7 +24,7 @@ export default class Ceshi extends Component {
       dotsDirection: 'ver',
       dotsClass: 'dots-cusst', //  dotsClass 可覆盖dots的样式
       slideDirection: 'hoz', // 轮播方向
-      centerPadding: '60px', // pading会产生前后预览
+      // centerPadding: '60px', // pading会产生前后预览
       // arrowDirection: 'ver', // 导航箭头的方向
       // arrowSize: "large", // 导航箭头大小
       // arrowPosition: "outer", // 导航箭头位置
@@ -104,9 +104,9 @@ export default class Ceshi extends Component {
                   }}
                 >
                   <div><img src={require('@img/prodect/administration/scene-ds.png')} alt="" /></div>
-                  <div><img src={require('@img/prodect/administration/scene-wl.png')} alt="" /></div>
-                  <div><img src={require('@img/prodect/administration/scene-ls.png')} alt="" /></div>
-                  <div><img src={require('@img/prodect/administration/scene-jr.png')} alt="" /></div>
+                  <div><img src={require('@img/prodect/administration/scene-wl.jpg')} alt="" /></div>
+                  <div><img src={require('@img/prodect/administration/scene-ls.jpg')} alt="" /></div>
+                  <div><img src={require('@img/prodect/administration/scene-jr.jpg')} alt="" /></div>
                 </Slider>
               </div>
               {/*              <div className="leftcontainer">

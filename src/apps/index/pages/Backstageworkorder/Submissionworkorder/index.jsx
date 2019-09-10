@@ -44,7 +44,7 @@ class Submissionworkorder extends Component {
         // enterprisename: '',
         title: '',
         description: '',
-        encryptMessage: '',
+        // encryptMessage: '',
         level: '标准',
         avatar: [],
       },
@@ -144,7 +144,7 @@ class Submissionworkorder extends Component {
                     label='工单描述：'
                     {...formItemLayout}
                     required
-                    maxLength={20}
+                    // maxLength={20}
                     requiredMessage={formatMessage({
                       id: 'app.setting.name.message',
                     })}
@@ -158,7 +158,7 @@ class Submissionworkorder extends Component {
                     温馨提示：您所提交的工单问题服务时间为周一至周五9:00-18:00（节假日除外 ）我们会在两个工作日内处理，请您耐心等待。
                     </span>
                   </FormItem>
-                  <FormItem
+                  {/* <FormItem
                     // label={formatMessage({ id: 'app.setting.name' })}
                     label='加密信息：'
                     {...formItemLayout}
@@ -170,14 +170,13 @@ class Submissionworkorder extends Component {
                   >
                     <Input name="encryptMessage" placeholder="选填" />
                     <span>请在此填写账号、密码和加密信息，我们会在后台为您处理，确保信息安全。</span>
-                  </FormItem>
+                  </FormItem> */}
                   <FormItem
                     // name='selectiontime'
                     // label={formatMessage({ id: 'app.setting.name' })}
                     label='紧急程度：'
                     {...formItemLayout}
                     required
-                    maxLength={20}
                     requiredMessage={formatMessage({
                       id: 'app.setting.name.message',
                     })}
@@ -185,7 +184,7 @@ class Submissionworkorder extends Component {
                     <Select name='level' style={styles.formSelect} dataSource={level} defaultValue="标准" />
                   </FormItem>
                   {/* 上传附件 */}
-                  <FormItem
+                  {/* <FormItem
                     // label={formatMessage({ id: 'app.setting.avatar' })}
                     label='上传附件：'
                     {...formItemLayout}
@@ -200,10 +199,6 @@ class Submissionworkorder extends Component {
                       onSuccess={onSuccess}
                       onError={onError}
                       formatter={(res, file) => {
-                        debugger;
-                        // (上传图片)函数里面根据当前服务器返回的响应数据
-                        // 重新拼装符合组件要求的数据格式   res为后端返回的数据
-                        // success: res.errCode === 200 ,200没有引号,这个坑踩了三个小时
                         return {
                           success: res.errCode === 0 ,
                           url: res.data.downloadURL,
@@ -211,7 +206,7 @@ class Submissionworkorder extends Component {
                         };
                       }}
                     />
-                  </FormItem>
+                  </FormItem> */}
                   {/* 联系人信息 */}
                   {/* 联系人姓名 */}
                   <FormItem

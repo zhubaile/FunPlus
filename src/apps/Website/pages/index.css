@@ -173,7 +173,7 @@ img{ background-size: 100% 100%; max-width: 100%; max-height: 100%;}
 .helpmember-footer-conter-top h1 span{ font-size: 26px; line-height: 36px; color:rgba(102,102,102,1); font-weight: 400;}
 /* 快速开发 */
 .helpdevelop{ width: 100%; display: flex; flex-direction: column; justify-content: center;align-items: center; color: #000;}
-.helpdevelop .helpdevelop-main{ width: 60%;}
+.helpdevelop .helpdevelop-main{ width: 60%; border-bottom: 1px solid #eee;}
 .helpdevelop .helpdevelop-main .helpdevelop-main-top{ width: 100%; height: 40px; background: #75afd7; border-radius: 4px;}
 .helpdevelop .helpdevelop-main .helpdevelop-main-bottom{ width: 100%;}
 
@@ -183,7 +183,7 @@ img{ background-size: 100% 100%; max-width: 100%; max-height: 100%;}
 .helpdevelop .helpdevelop-main .helpdevelop-main-bottom .mainright{ width: 80%; float: left;}
 
 .mainright .helpdevelop-main-bottom-tab { width: 70%; margin-left: 10%; line-height: 38px; margin-top: 30px; margin-bottom: 80px;}
-.mainright .helpdevelop-main-bottom-tab ul li{ padding-top: 10px;}
+.mainright .helpdevelop-main-bottom-tab ul li{ padding-top: 10px; display: inline-table}
 .mainright .helpdevelop-main-bottom-tab ul li h2{ margin-top: 20px; font-size: 20px; font-weight: 400;}
 .mainright .helpdevelop-main-bottom-tab ul li strong{ font-size: 16px; line-height: 38px; font-weight: 300}
 .mainright .helpdevelop-main-bottom-tab ul li p{ font-size: 14px;}
@@ -197,7 +197,7 @@ img{ background-size: 100% 100%; max-width: 100%; max-height: 100%;}
 .helpmember .helpmember-account .helpmember-account-top{ text-align: center; font-size: 26px;}
 .helpmember .helpmember-account .helpmember-account-top strong{ font-size: 36px;}
 
-.helpmember .helpmember-account .helpmember-account-bottom{width: 80%; height: 500px;display: flex; justify-content: center; align-items: center; position: relative;}
+.helpmember .helpmember-account .helpmember-account-bottom{width: 80%; height: 500px;display: flex; justify-content: center; align-items: center; position: relative; margin-top: 20px;}
 .helpmember .helpmember-account .helpmember-account-bottom .next-slick-container.next-slick-initialized{ width: 800px; height: 350px; display: flex; justify-content: center; align-items: center; position: relative;}
 .helpmember .helpmember-account .helpmember-account-bottom .next-slick-slide.next-slick-active{position:relative; height: 350px;opacity: 0.8;transition: all 300ms ease;}/*  margin-left: 20px;  */
 .helpmember .helpmember-account .helpmember-account-bottom .center .next-slick-slide.next-slick-active.next-slick-center{color: #e67e22;opacity: 1; transform: scaleY(1.08);}/* transform: scale(1.08); */
@@ -212,7 +212,7 @@ img{ background-size: 100% 100%; max-width: 100%; max-height: 100%;}
 .helpmember .next-slick.next-slick-hoz .next-slick-arrow.large.outer.next-slick-prev{ left: -60px}
 .helpmember .next-slick.next-slick-hoz .next-slick-arrow.large.outer.next-slick-next{ right: -60px}
 /* 锚点的位置 */
-.next-slick-dots.hoz.dots-cusst{ top: -40px;}
+.next-slick-dots.hoz.dots-cusst{ top: -55px;}
 .dots-cusst .next-slick-dots-item span a{ color: #000; padding: 10px 20px; opacity: 0.7;}
 .dots-cusst .next-slick-dots-item.active span a{opacity: 1; color:#00A2F6;}
 .next-slick-arrow.next-slick-prev.outer.large.hoz,.next-slick-arrow.next-slick-next.outer.large.hoz{ opacity: 1; color: #000;} /* 按钮的样式 */
@@ -247,9 +247,9 @@ img{ background-size: 100% 100%; max-width: 100%; max-height: 100%;}
 
 /* SDK */
 .helpsdk{ width: 100%; display: flex; justify-content: center; flex-direction: column; align-items: center; margin-bottom: 30px;}
-.helpsdk .helpsdk-main{ width: 70%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 20px;}
+.helpsdk .helpsdk-main{ width: 70%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 50px; padding-bottom:40px;  border-bottom: 1px solid #eee;}
 .helpsdk .helpsdk-main .helpsdk-main-conter{ display: flex; align-items: center; justify-content: center;}
-.helpsdk .helpsdk-main .helpsdk-main-conter ul{ display: flex;  flex-wrap: wrap; margin-top: 2%;}
+.helpsdk .helpsdk-main .helpsdk-main-conter ul{ display: flex;  flex-wrap: wrap; margin-top: 30px;}
 .helpsdk .helpsdk-main .helpsdk-main-conter ul li{ display: flex; align-items: center; justify-content: center; flex-direction: column; width: 20%; margin-left: 5%; padding: 20px 0;}
 .helpsdk .helpsdk-main .helpsdk-main-conter ul li strong{ font-size: 20px; margin-top: 10px;}
 .helpsdk .helpsdk-main .helpsdk-main-conter ul li p{ font-size: 14px;line-height: 22px; padding: 0 8px;}

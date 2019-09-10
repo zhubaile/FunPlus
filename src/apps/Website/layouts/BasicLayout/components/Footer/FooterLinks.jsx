@@ -265,7 +265,7 @@ export default class FooterLinks extends Component {
               className="footer-box-right-title"
               style={styles.footerBoxRightTitle}
             >
-              <FormattedMessage id='app.website.footer.hotline' />：010-666-888
+              <FormattedMessage id='app.website.footer.hotline' />：400-0165505
             </div>
             <div>
               {/*              <Button type="primary" style={{ borderRadius: '20px' }}> <FormattedMessage id='app.website.footer.Immediateconsultation' /></Button> */}
@@ -337,9 +337,9 @@ const styles = {
     boxSizing: 'border-box',
   },
   footerBoxContentName: {
-    fontSize: '22px',
+    fontSize: '20px',
     color: '#000',
-    paddingBottom: '20px',
+    paddingBottom: '10px',
     boxSizing: 'border-box',
   },
   footerBoxContentSubli: {
@@ -351,7 +351,7 @@ const styles = {
     listStyle: 'none',
   },
   footerBoxContentItemLink: {
-    fontSize: '16px',
+    fontSize: '14px',
     color: '#000',
     opacity: '0.6',
     textDecoration: 'none',

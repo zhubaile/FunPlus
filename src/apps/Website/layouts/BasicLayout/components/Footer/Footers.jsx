@@ -59,7 +59,7 @@ const styles = {
   },
   left: {
     display: 'flex',
-    fontSize: '16px',
+    fontSize: '14px',
     flexGrow: '1',
     alignItems: 'center',
     justifyContent: 'center',

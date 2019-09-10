@@ -28,7 +28,6 @@ export default class Member extends Component {
       className: 'custom-slide center',
       autoplay: true,
       autoplaySpeed: '2000',
-      lazyLoad: true,
       slidesToShow: 3,
       centerMode: true,
       infinite: true,

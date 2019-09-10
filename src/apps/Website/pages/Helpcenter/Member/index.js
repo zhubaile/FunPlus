@@ -29,7 +29,7 @@ export default class Member extends Component {
       // defaultActiveIndex: 2,
       autoplay: true, // 是否自动轮播
       autoplaySpeed: '2000', // 自动播放的轮播速度
-      lazyLoad: true, // 懒加载
+      // lazyLoad: true, // 懒加载
       slidesToShow: 3, // 同时展示的图片数量
       speed: 500, // 轮播速度
       adaptiveHeight: true, // 自适应高度

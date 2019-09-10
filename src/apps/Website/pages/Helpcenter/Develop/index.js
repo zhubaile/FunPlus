@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl'; // 国际化
 import { Button, Icon, Nav, Tab } from '@alifd/next';
+import { Link } from 'react-router-dom';
 import HelpcenterHeader from '../components/HelpcenterHeader';
 import '../../index.css';
 
@@ -29,6 +30,10 @@ export default class Develop extends Component {
       status: 2,
     });
   }
+  // 跳转到注册
+  sendmailboxbtn() {
+    window.location.href = '/user/sendmailbox';
+  }
   render() {
     const {
       intl: { formatMessage },
@@ -43,8 +48,8 @@ export default class Develop extends Component {
           <div className='helpdevelop-main-bottom'>
             <div className='buttonleft'>
               <ul>
-                <li className={status == 1 ? 'active' : ''} onClick={this.btnleftDian.bind(this)}>电商行业</li>
-                <li className={status == 2 ? 'active' : ''} onClick={this.btnleftWu.bind(this)}>物流行业</li>
+                <li className={status == 1 ? 'active' : ''} onClick={this.btnleftDian.bind(this)}>快速引导</li>
+                <li className={status == 2 ? 'active' : ''} onClick={this.btnleftWu.bind(this)}>接入指南</li>
               </ul>
             </div>
             <div className='mainright'>
@@ -57,14 +62,15 @@ export default class Develop extends Component {
                           <strong> <FormattedMessage id='app.website.helpdevelop.tab1.li1strong' /></strong>
                         </h2>
                         <p><FormattedMessage id='app.website.helpdevelop.tab1.li1p' /></p>
-                        <a href="javascript:;"><FormattedMessage id='app.website.helpdevelop.tab1.li1a' /></a>
+                        <a href="javascript:;" onClick={this.sendmailboxbtn.bind(this)}><FormattedMessage id='app.website.helpdevelop.tab1.li1a' /></a>
                       </li>
                       <li>
                         <h2><FormattedMessage id='app.website.helpdevelop.tab1.li2h2' />
                           <strong><FormattedMessage id='app.website.helpdevelop.tab1.li2strong' /></strong>
                         </h2>
                         <p><FormattedMessage id='app.website.helpdevelop.tab1.li2p1' /></p>
-                        <a href="javascript:;"><FormattedMessage id='app.website.helpdevelop.tab1.li2a' /></a>
+                        <Link to='/website/helpcenter/sdk'><FormattedMessage id='app.website.helpdevelop.tab1.li2a' /></Link>
+                        {/* <a href="javascript:;"><FormattedMessage id='app.website.helpdevelop.tab1.li2a' /></a> */}
                         <p><FormattedMessage id='app.website.helpdevelop.tab1.li2p2' />
                           <br />
                           <FormattedMessage id='app.website.helpdevelop.tab1.li2p3' />
@@ -101,7 +107,8 @@ export default class Develop extends Component {
                           <br /><FormattedMessage id='app.website.helpdevelop.tab2.li1p3' />
                           <br /><FormattedMessage id='app.website.helpdevelop.tab2.li1p4' />
                         </p>
-                        <a href="javascript:;"><FormattedMessage id='app.website.helpdevelop.tab2.li1a' /></a>
+                        <Link to='/website/helpcenter/sdk'><FormattedMessage id='app.website.helpdevelop.tab2.li1a' /></Link>
+                        {/* <a href="javascript:;"><FormattedMessage id='app.website.helpdevelop.tab2.li1a' /></a> */}
                       </li>
                       <li>
                         <h2><FormattedMessage id='app.website.helpdevelop.tab2.li2h2' /></h2>

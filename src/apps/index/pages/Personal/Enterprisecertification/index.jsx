@@ -199,27 +199,27 @@ class Enterprisecertification extends Component {
         uid: '0',
         name: 'IMG.png',
         state: 'done',
-        url: `http://192.168.1.121:3000${userCompanyInfo.cpIndustryImage}`,
-        downloadURL: `http://192.168.1.121:3000${userCompanyInfo.cpIndustryImage}`,
-        imgURL: `http://192.168.1.121:3000${userCompanyInfo.cpIndustryImage}`,
+        url: `http://funplus.yue-net.com${userCompanyInfo.cpIndustryImage}`,
+        downloadURL: `http://funplus.yue-net.com${userCompanyInfo.cpIndustryImage}`,
+        imgURL: `http://funplus.yue-net.com${userCompanyInfo.cpIndustryImage}`,
         size: 50,
       }];
       cpBackCardImgs = [{
         uid: '0',
         name: 'IMG.png',
         state: 'done',
-        url: `http://192.168.1.121:3000${userCompanyInfo.cpBackCardImg}`,
-        downloadURL: `http://192.168.1.121:3000${userCompanyInfo.cpBackCardImg}`,
-        imgURL: `http://192.168.1.121:3000${userCompanyInfo.cpBackCardImg}`,
+        url: `http://funplus.yue-net.com${userCompanyInfo.cpBackCardImg}`,
+        downloadURL: `http://funplus.yue-net.com${userCompanyInfo.cpBackCardImg}`,
+        imgURL: `http://funplus.yue-net.com${userCompanyInfo.cpBackCardImg}`,
         size: 50,
       }];
       cpFrontCardImgs = [{
         uid: '0',
         name: 'IMG.png',
         state: 'done',
-        url: `http://192.168.1.121:3000${userCompanyInfo.cpFrontCardImg}`,
-        downloadURL: `http://192.168.1.121:3000${userCompanyInfo.cpFrontCardImg}`,
-        imgURL: `http://192.168.1.121:3000${userCompanyInfo.cpFrontCardImg}`,
+        url: `http://funplus.yue-net.com${userCompanyInfo.cpFrontCardImg}`,
+        downloadURL: `http://funplus.yue-net.com${userCompanyInfo.cpFrontCardImg}`,
+        imgURL: `http://funplus.yue-net.com${userCompanyInfo.cpFrontCardImg}`,
         size: 50,
       }];
     }
@@ -442,15 +442,15 @@ class Enterprisecertification extends Component {
                       </div>
                       <div style={styles.formItem}>
                         <span style={styles.formItemLabel}>企业营业执照上传：</span>
-                        <img src={`http://192.168.1.121:3000${userCompanyInfo.cpIndustryImage}`} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
+                        <img src={`http://funplus.yue-net.com${userCompanyInfo.cpIndustryImage}`} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
                       </div>
                       <div style={styles.formItem}>
                         <span style={styles.formItemLabel}>法人身份证正面上传：</span>
-                        <img src={`http://192.168.1.121:3000${userCompanyInfo.cpFrontCardImg}`} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
+                        <img src={`http://funplus.yue-net.com${userCompanyInfo.cpFrontCardImg}`} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
                       </div>
                       <div style={styles.formItem}>
                         <span style={styles.formItemLabel}>法人身份证反面上传：</span>
-                        <img src={`http://192.168.1.121:3000${userCompanyInfo.cpBackCardImg}`} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
+                        <img src={`http://funplus.yue-net.com${userCompanyInfo.cpBackCardImg}`} alt="" style={{ marginLeft: '20px', width: '80px', height: '80px' }} />
                       </div>
                       <div style={styles.formItem}>
                         <span style={styles.formItemLabel}>联系人姓名：</span>

@@ -44,7 +44,8 @@ export default class Customerservice extends Component {
       byReplyId: '', // 客服id
       userId: '', // 用户id
     };
-    this.socket = io.connect(`ws://192.168.1.121:3000`);
+    this.socket = io.connect(`ws://192.168.1.121:3000`,{ path: '/chat' },{ transports: ['websocket', 'polling'] });
+    // this.socket = io.connect(`ws://192.168.1.121:3000`);
     // this.socket = io.connect(`ws://47.100.188.156`);
     this.onScrollHandle = this.onScrollHandle.bind(this);
   }

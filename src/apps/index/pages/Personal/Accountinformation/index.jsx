@@ -8,6 +8,7 @@ import Editprofile from './Editprofile';
 import Authentication from './Authentication';
 import Accountassociation from './Accountassociation';
 import Circularchart from './Circularchart';
+import ChangePassword from './ChangePassword';
 import Customerservice from '../components/Customerservice';
 import '../../index.css';
 
@@ -85,7 +86,10 @@ export default class Accountinformation extends Component {
   accountinformationOpentwo() {
     this.Accountassociation.accountassociationopen();
   }
-
+ // 修改密码
+  changepasswordbtn(){
+    this.ChangePassword.resetPasswordopen();
+  }
   render() {
     /* const Industry = [
       { value: '互联网', label: '互联网' },
@@ -100,10 +104,11 @@ export default class Accountinformation extends Component {
         <Editprofile ref={ node => this.Editprofile = node } />
         <Authentication ref={ node => this.Authentication = node } />
         <Accountassociation ref={ node => this.Accountassociation = node } />
+        <ChangePassword ref={ node => this.ChangePassword = node } />
         <Tab>
           <Tab.Item shape='pure' title='个人账户'>
             <div className='main'>
-              <div className='personal-account-left'>
+              <div className='personal-account-top'>
                 <div className='content-top'>
                   <img style={{ borderRadius: '100%', width: '100px', height: '100px' }} alt="" src={require('@img/img/avatar1.jpg')} />
                   <ul>
@@ -113,23 +118,44 @@ export default class Accountinformation extends Component {
                     <li style={{ display: 'inline-block', marginLeft: '5px' }}>{datas.tradeCount}笔<br />交易数量</li>
                   </ul>
                 </div>
-                <div style={{ height: '15px', width: '100%' }} />
                 <div className='content-bottom'>
                   <div>
-                    <h3 style={{ display: 'inline-block', marginRight: '40%' }}>联系人资料</h3>
-                    <Button onClick={this.accountinformationOpen.bind(this)} style={styles.btnStyle}><Icon type="account" size='xs' style={{ display: 'inline-block' }} />编辑个人资料</Button>
+                    <h3>企业认证</h3>
+                    <p>认证状态： {datas.cpStatus == 2 ? (<span style={styles.mySpan}>已认证</span>) : (<span style={styles.mySpan} onClick={this.goauthentication.bind(this)}>未认证</span>)}</p>
                   </div>
                   <hr />
-                  <ul>
-                    <li><span>全名：</span>{userInfo.name}</li>
-                    <li><span>手机：</span>{userInfo.phone}</li>
-                    <li><span>电子邮件：</span>{userInfo.email}</li>
-                    <li><span>地区：</span>中国</li>
-                  </ul>
+                  <Form >
+                    <div>
+                      <h3>行业信息</h3>
+                      <FormItem style={{ marginTop: '10px' }}>
+                        <span>所属行业：</span>
+                        <Select name="cpIndustryCategory" value={datas.cpIndustryCategory} />
+                        <Select name="cpIndustrySubcategory" style={{ marginLeft: '15px' }} value={datas.cpIndustrySubcategory} />
+                      </FormItem>
+                    </div>
+                  </Form>
                 </div>
               </div>
+              <div style={{ height: '15px', width: '100%' }} />
+              <div className='personal-account-bottom'>
+                <div>
+                  <h3 style={{ display: 'inline-block', marginRight: '40%' }}>联系人资料</h3>
+                  <div style={styles.btnStyle}>
+                    <Button onClick={this.accountinformationOpen.bind(this)} style={styles.btnStyles}><Icon type="account" size='xs' style={{ display: 'inline-block' }} />编辑个人资料</Button>
+                    <Button onClick={this.changepasswordbtn.bind(this)} style={styles.btnStyles}><Icon type="account" size='xs' style={{ display: 'inline-block' }} />修改密码</Button>
+                  </div>
+                </div>
+                <hr />
+                <ul>
+                  <li><span>全名：</span>{userInfo.name}</li>
+                  <li><span>手机：</span>{userInfo.phone}</li>
+                  <li><span>电子邮件：</span>{userInfo.email}</li>
+                  <li><span>地区：</span>中国</li>
+                </ul>
+              </div>
 
-              <div className='personal-account-right'>
+
+              {/*    <div className='personal-account-right'>
                 <div>
                   <h3>企业认证</h3>
                   <p>认证状态： {datas.cpStatus == 2 ? (<span style={styles.mySpan}>已认证</span>) : (<span style={styles.mySpan} onClick={this.goauthentication.bind(this)}>未认证</span>)}</p>
@@ -170,7 +196,7 @@ export default class Accountinformation extends Component {
                   <h3>设备异常通知</h3>
                   <p>通知方式：安全手机、 安全邮箱、 微信通知</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </Tab.Item>
         </Tab>
@@ -196,8 +222,12 @@ const styles = {
     marginLeft: '20px',
   },
   btnStyle: {
+    float: 'right',
+  },
+  btnStyles: {
+    marginBottom: '8px',
+    marginLeft: '10px',
     backgroundColor: '#E6F1FC',
-    borderRadius: '6px',
     border: 'none',
   },
   containerTitle: {

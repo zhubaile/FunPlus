@@ -276,7 +276,7 @@ class UserRegister extends Component {
                 src={require('@img/login/tel.png')}
               />
               <p><FormattedMessage id='app.login.Tel.consult' /></p>
-              <a>000-1111-2222</a>
+              <a>400-0165505</a>
             </div>
             <div style={styles.box}>
               <IceImg
