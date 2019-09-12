@@ -29,17 +29,29 @@ const ajaxBase = (param) => {
   return axios(axiosParam).then((params) => {
     if ((params.status === 200)) {
       const data = params.data;
+      debugger;
       // 判断权限 还需添加
-      if (data.status === 401) {
+      if (data.errCode === 401) {
         // 没有权限统一跳转到登录页面 非法请求
-        window.location.href = 'login.html';
+        window.location.href = "/user/login";
+        // window.location.href = 'login.html';
         return {
           status: false,
           data: params.data,
         };
       }
+      if (data.data === null) {
+        debugger;
+        // 没有权限统一跳转到登录页面 非法请求
+        // window.location.href = "/user/login";
+        // window.location.href = 'login.html';
+        return {
+          status: false,
+          data: [],
+        };
+      }
       return {
-        status: (params.data.status === 200),
+        status: (params.data.errCode === 0),
         data: params.data,
       };
     }

@@ -13,7 +13,7 @@ module.exports = {
     index: "./src/apps/index/index.js",
     login: "./src/apps/Login/index.js",
     website: "./src/apps/Website/index.js",
-    backadmin: "./src/apps/Backadmin/index.js",
+    // backadmin: "./src/apps/Backadmin/index.js",
   },
   outputDir: 'build',
   vendor: false,
@@ -45,7 +45,7 @@ module.exports = {
         { from: /^\/user/, to: 'build/login.html' }, // 登录界面
         { from: /^\/website/, to: 'build/website.html' }, // 官网界面
         { from: /^\/admin/, to: 'build/index.html' }, // 用户后台
-        { from: /^\/backadmin/, to: 'build/backadmin.html' }, // 管理后台
+        // { from: /^\/backadmin/, to: 'build/backadmin.html' }, // 管理后台
       ],
     },
   },

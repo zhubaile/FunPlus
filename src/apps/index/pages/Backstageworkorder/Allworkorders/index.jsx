@@ -251,7 +251,7 @@ export default class Allworkorders extends Component {
           <div className='wodegongdan-footer'>
             <Table loading={isLoading} dataSource={datas} hasBorder={false}>
               <Table.Column title="工单编号" dataIndex="_id" width={100} />
-              <Table.Column title="工单标题" dataIndex="title" width={100} />
+              <Table.Column title="工单标题" dataIndex="title" width={80} />
               <Table.Column title="描述" dataIndex="description" width={250} />
               <Table.Column title="优先级" dataIndex="level" width={70} />
               <Table.Column title="提交账号" dataIndex="account" width={100} />

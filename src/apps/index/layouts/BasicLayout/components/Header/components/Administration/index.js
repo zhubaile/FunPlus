@@ -4,6 +4,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import '../../index.scss';
 
+const Cookies = require('js-cookie');
+
 @injectIntl
 @withRouter
 export default class Administration extends Component {
@@ -13,6 +15,8 @@ export default class Administration extends Component {
     };
   }
   signout() {
+    Cookies.remove('applicationId');
+    Cookies.remove('userId');
     window.location.href = '/';
     // this.props.history.push('/website');
   }

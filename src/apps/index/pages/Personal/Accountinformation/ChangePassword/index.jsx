@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Input,Button , Grid, Form, DatePicker , Tab,Message ,Table,Pagination,Select,Radio,Switch, Checkbox } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
-// import { changePwd } from '@indexApi';
+import { changePwd } from '@indexApi';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import '../../../index.css';
 
@@ -14,6 +14,8 @@ const formItemLayout = {
   labelCol: { xxs: 6, s: 6, l: 6 },
   wrapperCol: { xxs: 14, s: 14, l: 14 },
 };
+const Cookies = require('js-cookie');
+
 export default class Resetpassword extends Component {
   constructor(props) {
     super(props);
@@ -54,16 +56,18 @@ export default class Resetpassword extends Component {
     });
   };
   Subadd() {
-    const content = this.state.content;
     const value = this.state.value;
     changePwd({
-      _id: content,
       ...value,
     }).then(({ status,data })=>{
       if (data.errCode == 0) {
         Message.success(data.message);
         this.resetPasswordclose();
-        this.props.fetchData();
+        setInterval(() => {
+          Cookies.remove('applicationId');
+          Cookies.remove('userId');
+          window.location.href = '/user/login';
+        }, 1000);
       } else {
         Message.success(data.message);
       }

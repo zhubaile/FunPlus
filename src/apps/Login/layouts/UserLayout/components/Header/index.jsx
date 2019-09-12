@@ -30,7 +30,7 @@ export default class Home extends Component {
             <IceImg
               height={40}
               width={120}
-              src={require('@img/index/ailogo.png')}
+              src={require('@img/index/ailogos.png')}
               style={styles.logo}
             />
           </div>

@@ -458,6 +458,20 @@ export function companyaccountInfo(params) {
     params,
   });
 }
+// 修改个人信息
+export function changeUserOne(params) {
+  return ajaxAmd.post({
+    url: '/changeUserOne',
+    data: params,
+  });
+}
+// 修改个人密码
+export function changePwd(params) {
+  return ajaxAmd.post({
+    url: '/changePwd',
+    data: params,
+  });
+}
 // 对账 财务汇总
 export function verifybillsummary(params) {
   return ajaxAmd.get({

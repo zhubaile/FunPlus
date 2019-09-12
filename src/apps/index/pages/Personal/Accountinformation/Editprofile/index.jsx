@@ -5,6 +5,7 @@ import { Input,Button , Grid, Form, DatePicker , Tab,Message ,Table,Pagination,S
 import { actions, reducers, connect } from '@indexStore';
 import IceContainer from '@icedesign/container';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
+import { changeUserOne } from '@indexApi';
 import '../../../index.css';
 import Editavatar from '././././Editavatar';
 
@@ -25,10 +26,10 @@ export default class Editprofile extends Component {
       open: false,
       content: null,
       value: {
-        username: '',
+        name: '',
         phone: '',
         email: '',
-        location: '',
+        location: '中国',
       },
     };
   }
@@ -51,10 +52,25 @@ export default class Editprofile extends Component {
       value,
     });
   };
-  editprofileOpen() {
+  // 更换头像
+  /* editprofileOpen() {
     this.Editavatar.editavataropen();
+  } */
+  //
+  changeUserOnebtn() {
+    const values = this.state.value;
+    changeUserOne({
+      ...values,
+    }).then(({ status,data })=>{
+      if (data.errCode == 0) {
+        Message.success(data.message);
+        this.editprofileclose();
+        this.props.fetchData();
+      } else {
+        Message.success(data.message);
+      }
+    });
   }
-
   render() {
     const { content } = this.state;
     if (!this.state.open) return null;
@@ -66,16 +82,16 @@ export default class Editprofile extends Component {
           提示：因税务新政要求，申请开具企业增值普通发票的用户开票时必须提供“纳税人识别号”信息。
         </Message> */}
         <span style={{ display: 'block', marginLeft: '260px', fontSize: '30px' }} onClick={this.editprofileclose.bind(this)}>×</span>
-        <a onClick={this.editprofileOpen.bind(this)}>
+        <a> {/*  onClick={this.editprofileOpen.bind(this)} */}
           <img style={{ borderRadius: '100%', width: '100px', height: '100px' }} alt="" src={require('@img/img/avatar1.jpg')} />
         </a>
 
-        <Form className='form'>
+        <Form className='form' onChange={this.formChange}>
           <FormItem
             label='全名'
             {...formItemLayout}
           >
-            <Input name='username' defaultValue={content.username} />
+            <Input name='name' defaultValue={content.name} />
           </FormItem>
 
           <FormItem
@@ -96,10 +112,10 @@ export default class Editprofile extends Component {
             label='地址'
             {...formItemLayout}
           >
-            <Input name="location" placeholder="中国" />
+            <Input name="location" placeholder="中国" value='中国' readOnly />
           </FormItem>
           {/*          <Button type='secondary'style={styles.cancelbtn} siza='large' onClick={this.billinginformationclose.bind(this)}>取消</Button> */}
-          <Button type='primary'style={styles.submitbtn} siza='large'>保存</Button>
+          <Button type='primary'style={styles.submitbtn} siza='large' onClick={this.changeUserOnebtn.bind(this)}>保存</Button>
         </Form>
 
       </div>

@@ -257,8 +257,8 @@ const styles = {
   },
   box: {
     textAlign: 'center',
+    // fontSize: '14px',
     margin: '20px 0',
-
     cursor: 'pointer',
   },
   prompt: {

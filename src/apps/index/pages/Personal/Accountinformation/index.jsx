@@ -39,8 +39,10 @@ export default class Accountinformation extends Component {
     this.onChange = this.onChange.bind(this);
   }
   componentDidMount() {
+    this.fetchData();
+  }
+  fetchData=()=>{
     companyaccountInfo().then(({ status,data })=>{
-      debugger;
       if (data.errCode == 0) {
         this.setState({
           datas: data.data.companyInfo,
@@ -75,8 +77,8 @@ export default class Accountinformation extends Component {
 
   // 编辑个人资料
   accountinformationOpen() {
-    const datas = this.state.datas;
-    this.Editprofile.editprofileopen(datas);
+    const userInfo = this.state.userInfo;
+    this.Editprofile.editprofileopen(userInfo);
   }
 
   accountinformationOpenone() {
@@ -86,8 +88,8 @@ export default class Accountinformation extends Component {
   accountinformationOpentwo() {
     this.Accountassociation.accountassociationopen();
   }
- // 修改密码
-  changepasswordbtn(){
+  // 修改密码
+  changepasswordbtn() {
     this.ChangePassword.resetPasswordopen();
   }
   render() {
@@ -101,7 +103,7 @@ export default class Accountinformation extends Component {
     debugger;
     return (
       <div className='personal-account'>
-        <Editprofile ref={ node => this.Editprofile = node } />
+        <Editprofile ref={ node => this.Editprofile = node } fetchData={this.fetchData.bind(this)} />
         <Authentication ref={ node => this.Authentication = node } />
         <Accountassociation ref={ node => this.Accountassociation = node } />
         <ChangePassword ref={ node => this.ChangePassword = node } />

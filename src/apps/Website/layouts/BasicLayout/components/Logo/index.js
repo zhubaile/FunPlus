@@ -22,9 +22,9 @@ export default class Logo extends PureComponent {
       <div className={this.state.open ? 'logobtn' : ''} onMouseEnter={this.enterbtn.bind(this)} onMouseLeave={this.leavebtn.bind(this)}>
         <Link to="/website/index">
           <IceImg
-            width={120}
+            width={125}
             height={40}
-            src={require('@img/index/ailogo.png')}
+            src={require('@img/index/ailogos.png')}
             style={{ ...styles.logoStyle }}
           />
           {/* <img src={require('@img/logo/logo1.png')} alt="" />
