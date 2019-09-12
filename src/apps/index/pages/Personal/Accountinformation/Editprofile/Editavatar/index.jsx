@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Input, Button , Grid, Form, DatePicker , Tab,Message ,Table,Pagination,Select,Radio,Switch, Checkbox, Upload, Slider } from '@alifd/next';
+import { Input, Button , Grid, Form, Dialog,Message, Upload, Slider } from '@alifd/next';
 import { actions, reducers, connect } from '@indexStore';
 
 import IceContainer from '@icedesign/container';
@@ -18,6 +18,7 @@ const formItemLayout = {
   wrapperCol: { s: 14 },
 };
 function beforeUpload(info) {
+  debugger;
   console.log('beforeUpload callback : ', info);
 }
 
@@ -33,28 +34,42 @@ function onError(file) {
   console.log('onError callback : ', file);
 }
 
-export default class Editavatar extends Component {
+class Editavatar extends Component {
   constructor(props) {
     super(props);
+    debugger;
     this.state = {
       open: false,
-      value: {
-      },
+      imgUrl: '',
+      value: {},
     };
   }
 
-  editavatarclose() {
+  editavatarclose=()=> {
     this.setState({
       open: false,
+      imgUrl: '',
       content: null,
     });
   }
-  editavataropen(content,confirm) {
+  editavataropen=(content,confirm)=>{
     this.setState({
       open: true,
       content,
     });
-    this.confirmCallBack = confirm;
+    // this.confirmCallBack = confirm;
+  }
+  Preservation() {
+    const imgUrl = this.state.imgUrl;
+    this.setState({
+      open: false,
+    },()=>{
+      this.props.fetchData(imgUrl);
+    });
+    // const imgUrl = this.state.imgUrl;
+    // debugger;
+    // this.props.editor(imgUrl);
+    // this.editavatarclose();
   }
   formChange = (value) => {
     this.setState({
@@ -70,8 +85,8 @@ export default class Editavatar extends Component {
         <h2>编辑头像</h2>
         <div>
           <Upload.Card
-            action="/web/beta/v1.0/uploadPhoto"
-            name="businesslicenseimg"
+            action="/web/beta/v1.0/upload/uploadPhoto"
+            name="avatar"
             limit={1}
             accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
             beforeUpload={beforeUpload}
@@ -79,6 +94,9 @@ export default class Editavatar extends Component {
             onSuccess={onSuccess}
             onError={onError}
             formatter={(res, file) => {
+              this.setState({
+                imgUrl: res.data.downloadURL,
+              });
               return {
                 success: res.errCode === 0 ,
                 url: res.data.downloadURL,
@@ -88,9 +106,9 @@ export default class Editavatar extends Component {
           <p>支持jpg、png格式，大小不超过3M</p>
         </div>
 
-        <div style={{ marginTop: '20%' }}>
-          <Button type='secondary'style={styles.cancelbtn} siza='large' onClick={this.editavatarclose.bind(this)}>取消</Button>
-          <Button type='primary'style={styles.submitbtn} siza='large'>保存</Button>
+        <div style={{ marginTop: '30px' }}>
+          <Button type='secondary'style={styles.cancelbtn} siza='large' onClick={this.editavatarclose}>取消</Button>
+          <Button type='primary'style={styles.submitbtn} siza='large' onClick={this.Preservation.bind(this)}>保存</Button>
         </div>
 
       </div>
@@ -117,3 +135,11 @@ const styles = {
     borderRadius: '6px',
   },
 };
+export default connect(
+  (state) => {
+    return { Userinformation: state.Userinformation };
+  },
+  { ...actions.Userinformation },
+  null,
+  { withRef: true }
+)(Editavatar);

@@ -6,6 +6,7 @@ import Administrators from '../../Personal/components/Administrators/Administrat
 import '../../../layouts/BasicLayout/components/Header/index.scss';
 import '../components/index.css';
 import { workOrderuserRecord,workOrderuserRecordOne } from '@indexApi';
+import { actions, reducers, connect } from '@indexStore';
 import { Message } from "@alifd/next/lib/index";
 import moment from 'moment';
 import io from 'socket.io-client';
@@ -13,24 +14,12 @@ import io from 'socket.io-client';
 const Cookies = require('js-cookie');
 
 const listss = [];
-
-// const fs = require('../../../../../../node_modules/fs');
-// const server = require('http').createServer();
-// const io = require('../../../../../../node_modules/socket.io')(server);
-
-// const socket = require('socket.io-client')('http://192.168.1.105:8081/');
-
-
-/* const socket = io("http://localhost:21144",{
-  path: '/',
-  transports: ['websocket', 'polling']
-}); */
 /* const socket = io('http://192.168.1.105:3000', { // 指定后台的url地址
   path: '/web/beta/v1.0/', // 如果需要的话添加 path 路径以及其他可选项
 }); */
 // const socket = io("ws://192.168.1.105:3000");
 
-export default class Customerservice extends Component {
+class Customerservice extends Component {
   static displayName = 'Setting';
 
   constructor(props) {
@@ -44,7 +33,8 @@ export default class Customerservice extends Component {
       byReplyId: '', // 客服id
       userId: '', // 用户id
     };
-    this.socket = io.connect(`ws://192.168.1.121:3000`,{ path: '/chat' },{ transports: ['websocket', 'polling'] });
+    // this.socket = io.connect(`ws://192.168.1.121:3000`,{ path: '/chat' },{ transports: ['websocket', 'polling'] });
+    this.socket = io.connect(`ws://funplus.yue-net.com`,{ path: '/chat' },{ transports: ['websocket', 'polling'] });
     // this.socket = io.connect(`ws://192.168.1.121:3000`);
     // this.socket = io.connect(`ws://47.100.188.156`);
     this.onScrollHandle = this.onScrollHandle.bind(this);
@@ -201,7 +191,7 @@ export default class Customerservice extends Component {
               item.userId == userid ? (
                 <div className="chat-message self">
                   <div className="chat-message-avatar">
-                    <img alt="" src={require('@img/img/avatar1.jpg')} />
+                    <img alt="头像" src={this.props.Userinformation} />
                     <div>
                       <p>{array.username}</p>
                       <span>{times}</span>
@@ -271,7 +261,7 @@ export default class Customerservice extends Component {
                           ) : (
                             <div className="chat-message self">
                               <div className="chat-message-avatar">
-                                <img alt="" src={require('@img/img/avatar1.jpg')} />
+                                <img alt="头像" src={this.props.Userinformation} />
                                 <div>
                                   <p>{item.username}</p>
                                   <span>{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}</span>
@@ -324,3 +314,11 @@ export default class Customerservice extends Component {
     );
   }
 }
+export default connect(
+  (state) => {
+    return { Userinformation: state.Userinformation };
+  },
+  { ...actions.Userinformation },
+  null,
+  { withRef: true }
+)(Customerservice);

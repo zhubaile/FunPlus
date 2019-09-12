@@ -1,6 +1,6 @@
 /* eslint jsx-a11y/no-noninteractive-element-interactions:0 */
 import React, { Component } from 'react';
-// import { Balloon, Nav } from '@alifd/next';
+import { Balloon, Message } from '@alifd/next';
 // import IceImg from '@icedesign/img';
 import Layout from '@icedesign/layout';
 import cx from 'classnames';
@@ -12,6 +12,8 @@ import Example from './components/Example';
 import Information from './components/Information';
 import Personnel from './components/Personnel';
 import Administration from './components/Administration';
+import { actions, reducers, connect } from '@indexStore';
+import { userImg } from '@indexApi';
 
 import './index.scss';
 
@@ -19,7 +21,7 @@ const Cookies = require('js-cookie');
 
 @injectIntl
 @withRouter
-export default class Header extends Component {
+class Header extends Component {
   constructor(props) {
     super(props);
 
@@ -27,6 +29,16 @@ export default class Header extends Component {
     };
   }
   componentDidMount() {
+    userImg().then(({ status,data })=>{
+      if (data.errCode == 0) {
+        const imgUrl = data.data;
+        // const imgUrls = `http://funplus.yue-net.com${imgUrl}`;
+        // const imgUrls = `http://192.168.1.121:3000${imgUrl}`;
+        this.props.editor(imgUrl);
+      } else {
+        Message.success(data.message);
+      }
+    });
     // Cookies.set('applicationId', '5d1023eb8e0d1931a86af94f');
   }
   // f9d61ca0837211e99467c3c360ea292a  ,0a1cc81090cb11e992cd4b62d0c37a7c,5d1023eb8e0d1931a86af94f
@@ -73,3 +85,11 @@ export default class Header extends Component {
     );
   }
 }
+export default connect(
+  (state) => {
+    return { Userinformation: state.Userinformation };
+  },
+  { ...actions.Userinformation },
+  null,
+  { withRef: true }
+)(Header);

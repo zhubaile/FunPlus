@@ -7,7 +7,7 @@ import IceContainer from '@icedesign/container';
 import { FormBinderWrapper, FormBinder , FormError } from '@icedesign/form-binder';
 import { changeUserOne } from '@indexApi';
 import '../../../index.css';
-import Editavatar from '././././Editavatar';
+import Editavatar from './Editavatar';
 
 const FormItem = Form.Item;
 
@@ -19,7 +19,7 @@ const formItemLayout = {
   wrapperCol: { s: 14 },
 };
 
-export default class Editprofile extends Component {
+class Editprofile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,19 +30,34 @@ export default class Editprofile extends Component {
         phone: '',
         email: '',
         location: '中国',
+        userImg: this.props.Userinformation,
       },
     };
   }
-
+  fetchData=(imgUrl)=>{
+    const values = { ...this.state.value,...{ userImg: imgUrl } };
+    debugger;
+    this.setState({
+      value: values,
+    });
+  }
   editprofileclose() {
     this.setState({
       open: false,
       content: null,
+      value: {
+        name: '',
+        phone: '',
+        email: '',
+        location: '中国',
+        userImg: this.props.Userinformation,
+      },
     });
   }
   editprofileopen(content,confirm) {
     this.setState({
       open: true,
+      value: content,
       content,
     });
     this.confirmCallBack = confirm;
@@ -53,17 +68,19 @@ export default class Editprofile extends Component {
     });
   };
   // 更换头像
-  /* editprofileOpen() {
-    this.Editavatar.editavataropen();
-  } */
-  //
+  editprofileOpen() {
+    this.Editavatar.wrappedInstance.editavataropen();
+  }
+  // 保存
   changeUserOnebtn() {
     const values = this.state.value;
+    debugger;
     changeUserOne({
       ...values,
     }).then(({ status,data })=>{
       if (data.errCode == 0) {
         Message.success(data.message);
+        this.props.editor(values.userImg);
         this.editprofileclose();
         this.props.fetchData();
       } else {
@@ -72,24 +89,26 @@ export default class Editprofile extends Component {
     });
   }
   render() {
-    const { content } = this.state;
+    const { content,value } = this.state;
     if (!this.state.open) return null;
+    debugger;
     return (
       <div className='editprofile-bulletbox'>
-        <Editavatar ref={ node => this.Editavatar = node } />
+        <Editavatar ref={ node=>this.Editavatar = node } fetchData={this.fetchData.bind(this)} />
         {/*        <h2>开票信息</h2>
         <Message type='notice' className='message'>
           提示：因税务新政要求，申请开具企业增值普通发票的用户开票时必须提供“纳税人识别号”信息。
         </Message> */}
-        <span style={{ display: 'block', marginLeft: '260px', fontSize: '30px' }} onClick={this.editprofileclose.bind(this)}>×</span>
-        <a> {/*  onClick={this.editprofileOpen.bind(this)} */}
-          <img style={{ borderRadius: '100%', width: '100px', height: '100px' }} alt="" src={require('@img/img/avatar1.jpg')} />
+        <span style={{ display: 'block', marginLeft: '360px', fontSize: '30px', cursor: 'pointer' }} onClick={this.editprofileclose.bind(this)}>×</span>
+        <a onClick={this.editprofileOpen.bind(this)} >
+          <img style={{ borderRadius: '100%', width: '100px', height: '100px' }} alt="头像" src={value.userImg} />
         </a>
 
-        <Form className='form' onChange={this.formChange}>
+        <Form className='form' value={value} onChange={this.formChange}>
           <FormItem
-            label='全名'
+            label='姓名'
             {...formItemLayout}
+            style={styles.formItem}
           >
             <Input name='name' defaultValue={content.name} />
           </FormItem>
@@ -97,6 +116,7 @@ export default class Editprofile extends Component {
           <FormItem
             label='手机'
             {...formItemLayout}
+            style={styles.formItem}
           >
             <Input name="phone" defaultValue={content.phone} />
           </FormItem>
@@ -104,6 +124,7 @@ export default class Editprofile extends Component {
           <FormItem
             label='电子邮箱'
             {...formItemLayout}
+            style={styles.formItem}
           >
             <Input name="email" defaultValue={content.email} />
           </FormItem>
@@ -111,6 +132,7 @@ export default class Editprofile extends Component {
           <FormItem
             label='地址'
             {...formItemLayout}
+            style={styles.formItem}
           >
             <Input name="location" placeholder="中国" value='中国' readOnly />
           </FormItem>
@@ -141,4 +163,15 @@ const styles = {
     backgroundColor: 'rgba(86, 119, 252, 1)',
     borderRadius: '6px',
   },
+  formItem: {
+    margin: '16px 0',
+  },
 };
+export default connect(
+  (state) => {
+    return { Userinformation: state.Userinformation };
+  },
+  { ...actions.Userinformation },
+  null,
+  { withRef: true }
+)(Editprofile);

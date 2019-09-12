@@ -81,7 +81,7 @@ export default class FilterForm extends Component {
     const timeType = this.props.Filterform.dateType; // 支付时间
     const device = this.state.value.device; // 支付渠道 子数据
     return (
-      <div className='filterform'>
+      <div className='filterform' style={{ paddingTop: '10px' }}>
         <FormBinderWrapper
           value={this.state.value}
           onChange={this.formChange}

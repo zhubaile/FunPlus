@@ -660,12 +660,12 @@ div.tab-panel{ background: #FFFFFF;}
 /*删除应用弹框Ending*/
 
 /*账户信息Starting*/
-.personal-account-top{ width: 100%;  margin-top: 20px; display: inline-block; float: left; margin-left: 1%;}
-.personal-account-top .content-top{ width: 33%; background: #4775E7; border-radius: 4px; padding: 15px 100px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); float: left; text-align: center}
-.personal-account-top .content-top ul{ color: #FFFFFF; display: inline-block; line-height: 24px;}
+.personal-account-top{ width: 100%;  margin-top: 20px; display: inline-block; float: left; margin-left: 10px; margin-right: 20px;}
+.personal-account-top .content-top{ width: 30%; background: #4775E7; border-radius: 4px; padding: 25px 0; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); float: left; text-align: center}
+.personal-account-top .content-top ul{ color: #FFFFFF; display: inline-block; line-height: 24px; margin-left: 30px;}
 .personal-account-top .content-top ul li{ text-align: center;}
 .personal-account-top .content-top ul>li{ padding-top: 16px;}
-.personal-account-top .content-bottom{ width: 63%; margin-left: 2%; border-radius: 4px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); padding: 20px; float: left;}
+.personal-account-top .content-bottom{ width: 66%; margin-left: 2%; border-radius: 4px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1); padding: 20px; float: left; background: #fff;}
 .personal-account-top .content-bottom h3{ margin: 0px;}
 .personal-account-top .content-bottom ul{ margin: 20px 0px; color: #999999;}
 .personal-account-top .content-bottom ul li{ line-height: 36px;}
@@ -674,7 +674,7 @@ div.tab-panel{ background: #FFFFFF;}
 .login-method p{ padding-right: 40px; }
 
 .personal-account-bottom{ width: 98%; display: inline-block; margin: 20px 20px 10px 10px;padding: 15px;line-height: 20px;border-radius: 10px;box-shadow: 0px 3px 8px 0px rgba(219, 217, 217, 1);
-  border: 1px solid rgba(255, 255, 255, 0);}
+  border: 1px solid rgba(255, 255, 255, 0); background: #fff;}
 .personal-account-bottom h3{ margin: 0px;}
 .personal-account-bottom ul{ margin: 20px 0px; color: #999999;}
 .personal-account-bottom ul li{ line-height: 36px;}
@@ -691,14 +691,14 @@ div.tab-panel{ background: #FFFFFF;}
 .resetpsd-bulletbox .resetpsd-content .next-btn.next-medium.next-btn-normal:hover{background-color: #225AE1; color: #FFFFFF;}
 /* 修改密码弹框ending */
 /*编辑个人资料弹框Starting*/
-.editprofile-bulletbox{ position: fixed; width: 300px; height: 450px; top: 50%; left: 50%; margin-top: -280px; margin-left: -180px; z-index: 8888;
+.editprofile-bulletbox{ position: fixed; width: 400px; height: 450px; top: 50%; left: 50%; margin-top: -280px; margin-left: -180px; z-index: 8888;
   border-radius: 10px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; padding: 10px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
   border: 1px solid #BBBBBB; text-align: center;}
-.editprofile-bulletbox .form span.next-input.next-medium{ width: 200px;}
+.editprofile-bulletbox .form span.next-input.next-medium{ width: 240px;}
 /*编辑个人资料弹框Ending*/
 
 /*编辑头像弹框Starting*/
-.editavatar-bulletbox{ position: fixed; width: 300px; height: 300px; top: 50%; left: 50%; margin-top: -280px; margin-left: -180px; z-index: 8888;
+.editavatar-bulletbox{ position: fixed; width: 300px; height: 300px; top: 50%; left: 50%; margin-top: -280px; margin-left: -130px; z-index: 8889;
   border-radius: 10px; background-color: rgba(255, 255, 255, 1); color: rgba(16, 16, 16, 1); font-size: 14px; padding: 10px; box-shadow: 0px 2px 6px 0px rgba(229, 229, 229, 1);
   border: 1px solid #BBBBBB;}
 /*编辑头像弹框Ending*/

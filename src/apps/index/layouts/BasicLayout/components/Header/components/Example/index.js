@@ -5,6 +5,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Message } from '@alifd/next';
 import { appsget } from "@indexApi";
 import Tionpopup from './Popup';
+import { actions, reducers, connect } from '@indexStore';
 
 const Cookies = require('js-cookie');
 
@@ -25,7 +26,6 @@ export default class Header extends Component {
   }
   fetchData = (len) =>{
     appsget().then(({ status,data }) => {
-      debugger;
       if (data.errCode == 0) {
         const datas = data.data;
         const appid = Cookies.get('applicationId');
@@ -116,62 +116,11 @@ export default class Header extends Component {
               );
             })
           }
-          {/* <div className="fancy-selector-option">
-            <div className="fs-img">
-              <img alt="" src={require('@img/img/card2.png')} />
-            </div>
-            <div className="fs-main-info">
-              <div className="fs-name">
-                  测试应用2
-              </div>
-              <div className="fs-sub">
-                <span>状态:</span><strong>交易正常</strong>
-              </div>
-            </div>
-            <div className="fs-extra-info">
-              <strong>¥5476</strong><span>45笔</span>
-            </div>
-          </div>
-
-          <div className="fancy-selector-option active">
-            <div className="fs-img">
-              <img alt="" src={require('@img/img/card1.png')} />
-            </div>
-            <div className="fs-main-info">
-              <div className="fs-name">
-                  展示类应用2
-              </div>
-              <div className="fs-sub">
-                <span>状态:</span><strong>交易正常</strong>
-              </div>
-            </div>
-            <div className="fs-extra-info">
-              <strong>¥5476</strong><span>45笔</span>
-            </div>
-          </div>
-
-          <div className="fancy-selector-option">
-            <div className="fs-img">
-              <img alt="" src={require('@img/img/card3.png')} />
-            </div>
-            <div className="fs-main-info">
-              <div className="fs-name">
-                  测试应用5 app
-              </div>
-              <div className="fs-sub">
-                <span>状态:</span><strong>交易正常</strong>
-              </div>
-            </div>
-            <div className="fs-extra-info">
-              <strong>¥5476</strong><span>45笔</span>
-            </div>
-          </div> */}
 
           <div className="fancy-selector-actions text-right" onClick={this.addtionbtn.bind(this)}>
             <button className='addtionbtn'>
               <i className="os-icon os-icon-ui-22" /><span>添加应用</span>
             </button>
-            {/* <a className="btn btn-primary" href="#"><i className="os-icon os-icon-ui-22" /><span>添加应用</span></a> */}
           </div>
         </div>
       </div>

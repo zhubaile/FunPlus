@@ -2,13 +2,15 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { actions, reducers, connect } from '@indexStore';
 import '../../index.scss';
 
 const Cookies = require('js-cookie');
 
 @injectIntl
 @withRouter
-export default class Administration extends Component {
+
+class Administration extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,19 +25,21 @@ export default class Administration extends Component {
   render() {
     const {
       intl: { formatMessage },
+      Userinformation,
     } = this.props;
     // const zzz = '/asdasdasdasd'; // 路由定义的（：appid?）动态路由，用来给路由后面加参数；zzzshi 想要添加的参数
     return (
       <div className="logged-user-w">
         <div className="logged-user-i">
           <div className="avatar-w">
-            <img alt="" src={require('../../../../../../../../assets/img/img/avatar1.jpg')} />
+            <img alt="头像" src={Userinformation} />
+            {/* <img alt="" src={require('../../../../../../../../assets/img/img/avatar1.jpg')} /> */}
           </div>
 
           <div className="logged-user-menu color-style-bright">
             <div className="logged-user-avatar-info">
               <div className="avatar-w">
-                <img alt="" src={require('../../../../../../../../assets/img/img/avatar1.jpg')} />
+                <img alt="头像" src={Userinformation} />
               </div>
               <div className="logged-user-info-w">
                 <div className="logged-user-name">
@@ -91,3 +95,11 @@ export default class Administration extends Component {
     );
   }
 }
+export default connect(
+  (state) => {
+    return { Userinformation: state.Userinformation };
+  },
+  { ...actions.Userinformation },
+  null,
+  { withRef: true }
+)(Administration);

@@ -5,7 +5,7 @@ import { actions, reducers, connect } from '@indexStore';
 import '../../../index.css';
 
 const { Row, Col } = Grid;
-export default class Administrators extends Component {
+class Administrators extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -14,7 +14,7 @@ export default class Administrators extends Component {
     const { array } = this.props;
     return (
       <div className='administrators'>
-        <img src={require('@img/img/avatar1.jpg')} alt="" />
+        <img src={this.props.Userinformation} alt="头像" />
         <h2>{array.username}</h2>
         <p>{array.premissions}</p>
         <div>
@@ -25,3 +25,11 @@ export default class Administrators extends Component {
     );
   }
 }
+export default connect(
+  (state) => {
+    return { Userinformation: state.Userinformation };
+  },
+  { ...actions.Userinformation },
+  null,
+  { withRef: true }
+)(Administrators);

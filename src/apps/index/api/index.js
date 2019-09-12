@@ -558,3 +558,10 @@ export function bulletindelete(params) {
     data: params,
   });
 }
+// 获取用户头像
+export function userImg(params) {
+  return ajaxAmd.get({
+    url: '/userImg',
+    params,
+  });
+}

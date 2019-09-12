@@ -29,7 +29,6 @@ const ajaxBase = (param) => {
   return axios(axiosParam).then((params) => {
     if ((params.status === 200)) {
       const data = params.data;
-      debugger;
       // 判断权限 还需添加
       if (data.errCode === 401) {
         // 没有权限统一跳转到登录页面 非法请求
@@ -41,7 +40,6 @@ const ajaxBase = (param) => {
         };
       }
       if (data.data === null) {
-        debugger;
         // 没有权限统一跳转到登录页面 非法请求
         // window.location.href = "/user/login";
         // window.location.href = 'login.html';

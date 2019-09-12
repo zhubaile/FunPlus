@@ -23,12 +23,11 @@ const formItemLayout = {
 };
 const { Row, Col } = Grid;
 
-export default class Accountinformation extends Component {
+class Accountinformation extends Component {
   constructor(props) {
     super(props);
     // console.log(this.props.match); // 获取到详细的路由地址
     // const query = this.props.match.params.appid; // '?s=1&f=7'
-    debugger;
     this.state = {
       // industry: '互联网',
       // hangye: '1',
@@ -36,7 +35,7 @@ export default class Accountinformation extends Component {
       datas: {}, // 认证信息
       userInfo: {}, // 用户信息
     };
-    this.onChange = this.onChange.bind(this);
+    // this.onChange = this.onChange.bind(this);
   }
   componentDidMount() {
     this.fetchData();
@@ -57,9 +56,9 @@ export default class Accountinformation extends Component {
   goauthentication() {
     this.props.history.push('/admin/personal/enterprisecertification');
   }
-  onChange(checked) {
+  /*  onChange(checked) {
     this.setState({ checked });
-  }
+  } */
 
   btnClick() {
     // console.log(this.input.value,this);
@@ -78,7 +77,7 @@ export default class Accountinformation extends Component {
   // 编辑个人资料
   accountinformationOpen() {
     const userInfo = this.state.userInfo;
-    this.Editprofile.editprofileopen(userInfo);
+    this.Editprofile.wrappedInstance.editprofileopen(userInfo);
   }
 
   accountinformationOpenone() {
@@ -100,7 +99,6 @@ export default class Accountinformation extends Component {
       { value: '1', label: '1' },
     ]; */
     const { datas,userInfo } = this.state;
-    debugger;
     return (
       <div className='personal-account'>
         <Editprofile ref={ node => this.Editprofile = node } fetchData={this.fetchData.bind(this)} />
@@ -112,7 +110,7 @@ export default class Accountinformation extends Component {
             <div className='main'>
               <div className='personal-account-top'>
                 <div className='content-top'>
-                  <img style={{ borderRadius: '100%', width: '100px', height: '100px' }} alt="" src={require('@img/img/avatar1.jpg')} />
+                  <img style={{ borderRadius: '100%', width: '100px', height: '100px' }} alt="头像" src={this.props.Userinformation} />
                   <ul>
                     <li>{userInfo.email}</li>
                     <li>超级管理员</li>
@@ -149,7 +147,7 @@ export default class Accountinformation extends Component {
                 </div>
                 <hr />
                 <ul>
-                  <li><span>全名：</span>{userInfo.name}</li>
+                  <li><span>姓名：</span>{userInfo.name}</li>
                   <li><span>手机：</span>{userInfo.phone}</li>
                   <li><span>电子邮件：</span>{userInfo.email}</li>
                   <li><span>地区：</span>中国</li>
@@ -225,12 +223,14 @@ const styles = {
   },
   btnStyle: {
     float: 'right',
+    marginTop: '-6px',
   },
   btnStyles: {
     marginBottom: '8px',
     marginLeft: '10px',
     backgroundColor: '#E6F1FC',
     border: 'none',
+    borderRadius: '4px',
   },
   containerTitle: {
     overflow: 'hidden',
@@ -240,3 +240,11 @@ const styles = {
   },
 
 };
+export default connect(
+  (state) => {
+    return { Userinformation: state.Userinformation };
+  },
+  { ...actions.Userinformation },
+  null,
+  { withRef: true }
+)(Accountinformation);
